@@ -1,5 +1,5 @@
 <div class="content-wrapper">
-
-  <div>
-  <?php echo $output; ?>
+  <div class="container-fluid">
+    <h1>hello world</h1>
   </div>
+</div>

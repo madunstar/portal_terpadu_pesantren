@@ -27,10 +27,11 @@
         > li > a {
           display: block;
 
-          padding: 0.5em 0;
+          padding: 0em 0;
           &:focus,
           &:hover {
             text-decoration: none;
+            border-right: 2px solid;
           }
         }
       }
@@ -102,7 +103,7 @@
           width: $sidenav-base-width;
           padding: 0;
           > .nav-link {
-            padding: 1em;
+            padding: 0em;
           }
           .sidenav-second-level,
           .sidenav-third-level {
@@ -113,7 +114,7 @@
             > li {
               width: $sidenav-base-width;
               > a {
-                padding: 1em;
+                padding: 0em;
               }
             }
           }
