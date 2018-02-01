@@ -14,7 +14,9 @@ class Examples extends CI_Controller {
 
 	public function _example_output($output = null)
 	{
+		$this->load->view('sidebar_master');
 		$this->load->view('example.php',(array)$output);
+		$this->load->view('footer');
 	}
 
 	public function offices()
@@ -26,7 +28,7 @@ class Examples extends CI_Controller {
 
 	public function index()
 	{
-		$this->_example_output((object)array('output' => '' , 'js_files' => array() , 'css_files' => array()));
+		$this->_example_output((object)array('output' => ''));
 	}
 
 	public function offices_management()

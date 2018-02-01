@@ -1,0 +1,11 @@
+#mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a, #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a
+{
+  padding-top:  0.5em;
+  padding-bottom: 0.5em;
+}
+
+#mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a:hover, #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a
+{
+  border-right: 3px solid;
+  border-color: #a8adb5;
+}
