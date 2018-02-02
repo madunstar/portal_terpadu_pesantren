@@ -22,9 +22,9 @@ class Welcome extends CI_Controller {
 
  	public function index()
  	{
- 		$this->load->view('sidebar_master');
+ 		
 		$this->load->view('main_content_ex');
-		$this->load->view('footer');
+
 	}
 
 
