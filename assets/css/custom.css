@@ -5,8 +5,8 @@
 
 #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a, #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a
 {
-  padding-top:  0.5em;
-  padding-bottom: 0.5em;
+  padding-top:0.3em;
+  padding-bottom:0.4em;
 }
 
 #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a:hover, #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a
@@ -33,4 +33,8 @@
 
 .navbar-brand {
   font-weight: bold;
+}
+
+#mainNav.fixed-top .sidenav-toggler > .nav-item > .nav-link{
+  padding: 0;
 }
