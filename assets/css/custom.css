@@ -1,11 +1,41 @@
+/*sidebar item*/
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link {
+  padding :  1em;
+}
+
 #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a, #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a
 {
-  padding-top:  0.5em;
-  padding-bottom: 0.5em;
+  padding-top:0.3em;
+  padding-bottom:0.4em;
 }
 
 #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a:hover, #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a
 {
   border-right: 3px solid;
   border-color: #a8adb5;
+}
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
+  background: #293344;
+}
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level, #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level {
+  background: #1f2633;
+}
+
+#mainNav.fixed-top.navbar-dark .sidenav-toggler {
+  background: #1f2633;
+}
+
+#mainNav {
+  background: #1f2633;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+#mainNav.fixed-top .sidenav-toggler > .nav-item > .nav-link{
+  padding-top: 0;
+  padding-left: 0;
 }

@@ -64,7 +64,7 @@ body.fixed-nav {
     #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level > li > a,
     #mainNav .navbar-collapse .navbar-sidenav .sidenav-third-level > li > a {
       display: block;
-      padding: 0em 0; }
+      padding: 1em 0; }
       #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level > li > a:focus, #mainNav .navbar-collapse .navbar-sidenav .sidenav-second-level > li > a:hover,
       #mainNav .navbar-collapse .navbar-sidenav .sidenav-third-level > li > a:focus,
       #mainNav .navbar-collapse .navbar-sidenav .sidenav-third-level > li > a:hover {
@@ -114,7 +114,7 @@ body.fixed-nav {
         width: 250px;
         padding: 0; }
         #mainNav .navbar-collapse .navbar-sidenav > .nav-item > .nav-link {
-          padding: 0em; }
+          padding: 1em; }
         #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level,
         #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level {
           padding-left: 0;
@@ -124,7 +124,7 @@ body.fixed-nav {
             width: 250px; }
             #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a,
             #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a {
-              padding: 0em; }
+              padding: 1em; }
         #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a {
           padding-left: 2.75em; }
         #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a {
@@ -153,7 +153,7 @@ body.fixed-nav {
     margin-top: calc(100vh - 56px); }
     #mainNav.fixed-top .sidenav-toggler > .nav-item {
       width: 250px;
-      padding: 0; }
+      padding: 1em; }
       #mainNav.fixed-top .sidenav-toggler > .nav-item > .nav-link {
         padding: 1em; } }
 #mainNav.fixed-top.navbar-dark .sidenav-toggler {
@@ -241,7 +241,7 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   color: #adb5bd; }
 @media (min-width: 992px) {
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
-    background: #343a40; }
+    background: #283651; }
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
       color: white !important;
       background-color: #495057; }
