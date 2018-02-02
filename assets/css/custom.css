@@ -1,4 +1,8 @@
 /*sidebar item*/
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link {
+  padding :  1em;
+}
+
 #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a, #mainNav .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a
 {
   padding-top:  0.5em;
