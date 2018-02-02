@@ -36,5 +36,6 @@
 }
 
 #mainNav.fixed-top .sidenav-toggler > .nav-item > .nav-link{
-  padding: 0;
+  padding-top: 0;
+  padding-left: 0;
 }
