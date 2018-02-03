@@ -27,13 +27,9 @@ class Tb_role_admin_model extends CI_Model
     /*
      * Get all tb_role_admin
      */
-    function get_all_tb_role_admin($params = array())
+    function get_all_tb_role_admin()
     {
-        $this->db->order_by('kode_role', 'desc');
-        if(isset($params) && !empty($params))
-        {
-            $this->db->limit($params['limit'], $params['offset']);
-        }
+    
         return $this->db->get('tb_role_admin')->result_array();
     }
     /*
