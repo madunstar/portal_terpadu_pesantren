@@ -1,3 +1,5 @@
+<p><a href="<?php echo site_url('master_data_c/Tb_role_admin/add'); ?>"><btn class="btn btn-primary">Tambah data&nbsp;&nbsp;<span class="fa fa-plus-circle"></span></btn></a></p>
+total data <?php echo $t_row ?>
 <table border="1" width="100%">
     <tr>
 		<th>Kode Role</th>
@@ -9,12 +11,12 @@
 		<td><?php echo $t['kode_role']; ?></td>
 		<td><?php echo $t['nama_role']; ?></td>
 		<td>
-            <a href="<?php echo site_url('tb_role_admin/edit/'.$t['kode_role']); ?>">Edit</a> |
+            <a href="<?php echo site_url('tb_role_admin/edit/'.$t['kode_role']); ?>"><span class="fa fa-edit"></span></a> |
             <a href="<?php echo site_url('tb_role_admin/remove/'.$t['kode_role']); ?>">Delete</a>
         </td>
     </tr>
 	<?php } ?>
 </table>
 <div class="pull-right">
-    <?php echo $this->pagination->create_links(); ?>
+
 </div>

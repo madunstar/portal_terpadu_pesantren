@@ -14,12 +14,8 @@ class Tb_role_admin extends CI_Controller{
      */
     function index()
     {
-        $params['limit'] = 'RECORDS_PER_PAGE';
-        $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
-        $config = $this->config->item('pagination');
-        $config['total_rows'] = $this->Tb_role_admin_model->get_all_tb_role_admin_count();
-        $this->pagination->initialize($config);
-        $data['tb_role_admin'] = $this->Tb_role_admin_model->get_all_tb_role_admin($params);
+        $data['t_row'] = $this->Tb_role_admin_model->get_all_tb_role_admin_count();
+        $data['tb_role_admin'] = $this->Tb_role_admin_model->get_all_tb_role_admin();
         $data['_view'] = 'master_data_v/tb_role_admin_v';
         $this->load->view('contoh',$data);
     }
