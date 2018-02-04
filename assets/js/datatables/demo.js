@@ -6,7 +6,7 @@
   $('[data-ride="datatables"]').each(function() {
     var oTable = $(this).dataTable( {
       "bProcessing": true,
-      "sAjaxSource": "js/datatables/datatable.json",
+      "sAjaxSource": "assets/js/datatables/datatable.json",
       "sDom": "<'row'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
       "sPaginationType": "full_numbers",
       "aoColumns": [
@@ -19,16 +19,16 @@
     } );
   });
 
-  $('#growthrate').length && $.ajax('js/datatables/growthrate.csv').done(function(re){
+  $('#growthrate').length && $.ajax('assets/js/datatables/growthrate.csv').done(function(re){
     var data = $.csv.toArrays(re);
       $('#growthrate').html( '<table cellpadding="0" cellspacing="0" border="0" class="table table-striped m-b-none" id="example"></table>' );
       $('#example').dataTable( {
-          "aaData": data,    
+          "aaData": data,
           "bProcessing": true,
           "sDom": "<'row'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
           "iDisplayLength": 50,
           "sPaginationType": "full_numbers",
-          "aoColumnDefs": [              
+          "aoColumnDefs": [
               { "bSearchable": false, "bVisible": false, "aTargets": [ 1 ] },
               { "bVisible": false, "aTargets": [ 4 ] },
               {
@@ -55,8 +55,8 @@
               { "sTitle": "Value", "sClass": "center" },
               { "sTitle": "", "sClass": "center" }
           ]
-      } );  
-  }); 
+      } );
+  });
 
 
 
