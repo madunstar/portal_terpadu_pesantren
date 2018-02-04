@@ -3,11 +3,11 @@
 
 <section class="scrollable padder">
   <div class="m-b-md">
-    <h3 class="m-b-none">Datatable</h3>
+    <h3 class="m-b-none">Data Master</h3>
   </div>
   <section class="panel panel-default">
       <header class="panel-heading">
-                    DataTables
+                    Data Role Admin
                     <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
 <div class="table-responsive">
@@ -19,15 +19,15 @@
     		<th>aksi</th>
       </tr>
     </thead>
-    
+
    <tbody>
  	   <?php foreach($tb_role_admin as $t){ ?>
         <tr>
  		       <td><?php echo $t['kode_role']; ?></td>
  		       <td><?php echo $t['nama_role']; ?></td>
  		       <td>
-             <a href="<?php echo site_url('tb_role_admin/edit/'.$t['kode_role']); ?>"><span class="fa fa-edit"></span></a> |
-             <a href="<?php echo site_url('tb_role_admin/remove/'.$t['kode_role']); ?>">Delete</a>
+             <a href="<?php echo site_url('tb_role_admin/edit/'.$t['kode_role']); ?>"><button class="btn btn-xs btn-warning"><span class="fa fa-edit"></span></button></a> |
+             <a href="<?php echo site_url('tb_role_admin/remove/'.$t['kode_role']); ?>"><button class="btn btn-xs btn-danger"><span class="fa fa-trash-o"></span></button></a>
            </td>
        </tr>
  	   <?php } ?>
