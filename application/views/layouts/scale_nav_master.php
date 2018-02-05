@@ -371,7 +371,7 @@
                         </a>
                       </li>
                       <li >
-                        <a href="media.html" class="auto">
+                        <a href="<?php echo site_url('master_data_c/Tb_role_admin'); ?>" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Role Admin</span>

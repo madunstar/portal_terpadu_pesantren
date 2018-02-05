@@ -114,9 +114,14 @@ class Tb_role_admin extends CI_Controller{
         if(isset($tb_role_admin['kode_role']))
         {
             $this->Tb_role_admin_model->delete_tb_role_admin($kode_role);
-            redirect('tb_role_admin/index');
+            redirect('master_data_c/tb_role_admin/index');
         }
         else
             show_error('The tb_role_admin you are trying to delete does not exist.');
+    }
+
+    function modal_tb_role_admin()
+    {
+      $this->load->view('layouts/modal_lockme.php');
     }
 }
