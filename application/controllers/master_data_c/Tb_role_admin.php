@@ -86,19 +86,21 @@ class Tb_role_admin extends CI_Controller{
         if(isset($data['tb_role_admin']['kode_role']))
         {
             $this->load->library('form_validation');
-			$this->form_validation->set_rules('nama_role','Nama Role','required|max_length[25]');
+            $this->form_validation->set_rules('kode_role','Kode Role','required|max_length[25]');
+			      $this->form_validation->set_rules('nama_role','Nama Role','required|max_length[25]');
 			if($this->form_validation->run())
             {
                 $params = array(
 					'nama_role' => $this->input->post('nama_role'),
+          'kode_role' => $this->input->post('kode_role'),
                 );
                 $this->Tb_role_admin_model->update_tb_role_admin($kode_role,$params);
-                redirect('tb_role_admin/index');
+                redirect('master_data_c/Tb_role_admin/index');
             }
             else
             {
-                $data['_view'] = 'tb_role_admin/edit';
-                $this->load->view('layouts/main',$data);
+                $data['_view'] = 'master_data_v/edit_role_admin_v';
+                $this->load->view('layouts/content',$data);
             }
         }
         else
