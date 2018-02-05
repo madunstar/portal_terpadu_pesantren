@@ -5,7 +5,6 @@
       <div class="row m-b-md">
         <div class="col-sm-6">
           <h3 class="m-b-xs text-black">Dashboard</h3>
-
         </div>
       </div>
       <div class="row">

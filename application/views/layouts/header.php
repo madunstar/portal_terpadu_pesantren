@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>Portal Terpadu Pesantren Darul Ilmi</title>
   <!-- Bootstrap core CSS-->
   <link href="<?php echo base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet" type="text/css"/>
   <link href="<?php echo base_url('assets/css/animate.css'); ?>" type="text/css" rel="stylesheet"/>
