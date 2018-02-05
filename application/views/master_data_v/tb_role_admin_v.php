@@ -28,7 +28,7 @@
  		       <td><?php echo $t['nama_role']; ?></td>
  		       <td>
              <a  class="pull-right" href="<?php echo site_url('tb_role_admin/edit/'.$t['kode_role']); ?>"><button class="btn btn-xs btn-warning"><span class="fa fa-edit"></span></button></a>
-             <a style="margin-right:5px" class="pull-right" href="<?php echo site_url('tb_role_admin/remove/'.$t['kode_role']); ?>"><button class="btn btn-xs btn-danger"><span class="fa fa-trash-o"></span></button></a>
+             <button style="margin-right:5px" data-toggle="modal" data-target="#deleteModal" class="btn btn-xs btn-danger pull-right"><span class="fa fa-trash-o"></span></button></a>
            </td>
        </tr>
  	   <?php } ?>
@@ -42,6 +42,24 @@
 
 </section>
 </section>
+
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h4 class="modal-title">Konfirmasi Hapus Data</h4>
+      </div>
+      <div class="modal-body">
+        <b>Apakah yakin menghapus data?</b>
+      </div>
+      <div class="modal-footer">
+        <a style="margin-left:5px" href="<?php echo site_url('master_data_c/Tb_role_admin/remove/'.$t['kode_role']); ?>"><button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Konfirmasi</button></a>
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="<?php echo base_url('assets/js/jquery.min.js');?>"></script>
   <!-- Bootstrap -->
   <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
