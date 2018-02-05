@@ -17,11 +17,45 @@ class Tb_role_admin extends CI_Controller{
         $data['t_row'] = $this->Tb_role_admin_model->get_all_tb_role_admin_count();
         $data['tb_role_admin'] = $this->Tb_role_admin_model->get_all_tb_role_admin();
         $data['_view'] = 'master_data_v/tb_role_admin_v';
-        $this->load->view('contoh',$data);
+        $this->load->view('layouts/content',$data);
     }
     /*
      * Adding a new tb_role_admin
      */
+
+     public function Tb_role_admin_page()
+       {
+
+            // Datatables Variables
+            $draw = intval($this->input->get("draw"));
+            $start = intval($this->input->get("start"));
+            $length = intval($this->input->get("length"));
+
+
+            $role_admin = $this->Tb_role_admin_model->get_all_tb_role_admin();
+
+            $data = array();
+
+            foreach($role_admin->result() as $r) {
+
+                 $data[] = array(
+                      $r->kode_role,
+                      $r->nama_role
+
+
+                 );
+            }
+
+            $output = array(
+                 "draw" => $draw,
+                   "recordsTotal" => $role_admin->num_rows(),
+                   "recordsFiltered" => $role_admin->num_rows(),
+                   "data" => $data
+              );
+            echo json_encode($output);
+            exit();
+       }
+
    function add()
     {
         $this->load->library('form_validation');
@@ -39,7 +73,7 @@ class Tb_role_admin extends CI_Controller{
         else
         {
             $data['_view'] = 'master_data_v/add_role_admin_v';
-            $this->load->view('contoh',$data);
+            $this->load->view('layouts/content',$data);
         }
     }
     /*

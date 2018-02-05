@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="app">
 
 <head>
   <meta charset="utf-8">
@@ -9,12 +9,16 @@
   <meta name="author" content="">
   <title>SB Admin - Start Bootstrap Template</title>
   <!-- Bootstrap core CSS-->
-  <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet" type="text/css"/>
+  <link href="<?php echo base_url('assets/css/animate.css'); ?>" type="text/css" rel="stylesheet"/>
   <!-- Custom fonts for this template-->
-  <link href="<?php echo base_url('assets/vendor/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url('assets/css/font-awesome.min.css')?>" rel="stylesheet" type="text/css"/>
   <!-- Custom styles for this template-->
-  <link href="<?php echo base_url('assets/css/sb-admin.css')?>" rel="stylesheet">
-  <link href="<?php echo base_url('assets/css/custom.css')?>" rel="stylesheet">
-  <link href="<?php echo base_url('assets/vendor/datatables/dataTables.bootstrap4.css')?>" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/icon.css');?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/font.css');?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/app.css');?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url('assets/js/datatables/datatables.css');?>" type="text/css"/>
+  <link rel="stylesheet" href="<?php echo base_url('assets/js/calendar/bootstrap_calendar.css');?>" type="text/css" />
+
 
 </head>

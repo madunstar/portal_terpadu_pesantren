@@ -1,18 +1,8 @@
+<?php $this->load->view('layouts/header'); ?>
+<body class="" >
+  <section class="vbox">
+<?php $this->load->view('layouts/scale_nav_master'); ?>
 
-<div class="content-wrapper">
-  <div class="container-fluid">
-    <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item active">
-        <a href="#">Dashboard</a>
-      </li>
-
-    </ol>
-
-  <!-- /.container-fluid-->
-  <!-- /.content-wrapper-->
-
-  <!-- Scroll to Top Button-->
-
-
-</div>
+    <?php 	if(isset($_view) && $_view)
+    $this->load->view($_view);
+    ?>
