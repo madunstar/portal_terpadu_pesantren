@@ -73,7 +73,7 @@ class Tb_role_admin extends CI_Controller{
         else
         {
             $data['_view'] = 'master_data_v/add_role_admin_v';
-            $this->load->view('contoh',$data);
+            $this->load->view('layouts/content',$data);
         }
     }
     /*

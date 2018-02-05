@@ -174,7 +174,7 @@
               <nav class="nav-primary hidden-xs">
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
-                  <li  class="active">
+                  <li  class="">
                     <a href="index.html" class="auto">
                       <i class="fa fa-dashboard">
                       </i>

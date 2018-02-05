@@ -3,31 +3,32 @@
 
 <section class="scrollable padder">
   <div class="m-b-md">
-    <h3 class="m-b-none">Data Master</h3>
   </div>
   <section class="panel panel-default">
       <header class="panel-heading">
-                    Data Role Admin
-                    <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
+                    <a style="margin-bottom:9px;" href="<?php echo site_url('master_data_c/Tb_role_admin/add'); ?>"><button class="btn btn-s-md btn-success btn-rounded">Tambah data</button></a>
+                    <h4 class="pull-right font-bold">Data Role Admin</h4>
       </header>
+
 <div class="table-responsive">
+
   <table class="table table-striped m-b-none" id="role_admin">
     <thead>
       <tr>
         <th>Kode</th>
         <th>role</th>
-    		<th>aksi</th>
+    		<th>Aksi</th>
       </tr>
     </thead>
 
    <tbody>
  	   <?php foreach($tb_role_admin as $t){ ?>
-        <tr>
+        <tr style="height:12px">
  		       <td><?php echo $t['kode_role']; ?></td>
  		       <td><?php echo $t['nama_role']; ?></td>
  		       <td>
-             <a href="<?php echo site_url('tb_role_admin/edit/'.$t['kode_role']); ?>"><button class="btn btn-xs btn-warning"><span class="fa fa-edit"></span></button></a> |
-             <a href="<?php echo site_url('tb_role_admin/remove/'.$t['kode_role']); ?>"><button class="btn btn-xs btn-danger"><span class="fa fa-trash-o"></span></button></a>
+             <a  class="pull-right" href="<?php echo site_url('tb_role_admin/edit/'.$t['kode_role']); ?>"><button class="btn btn-xs btn-warning"><span class="fa fa-edit"></span></button></a>
+             <a style="margin-right:5px" class="pull-right" href="<?php echo site_url('tb_role_admin/remove/'.$t['kode_role']); ?>"><button class="btn btn-xs btn-danger"><span class="fa fa-trash-o"></span></button></a>
            </td>
        </tr>
  	   <?php } ?>
