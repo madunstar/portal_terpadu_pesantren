@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Welcome extends CI_Controller {
+class Dashboard_adm extends CI_Controller {
 function __construct()
 {
   parent::__construct();
@@ -26,7 +26,7 @@ function __construct()
 public function index()
 {
 
-  $data['_view'] = 'master_data_v/dashboard_master_admin';
-  $this->load->view('layouts/content',$data);
+  $data['_view'] = 'pendaftaran_v/dashboard_adm_v';
+  $this->load->view('layouts/content_pendaftaran_adm',$data);
 }
 }
