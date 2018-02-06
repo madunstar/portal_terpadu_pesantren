@@ -2,11 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Dashboard_adm extends CI_Controller {
+class Pengaturan extends CI_Controller {
 function __construct()
 {
   parent::__construct();
-  $this->load->model('master_data_m/Tb_role_admin_model');
+  $this->load->model('pendaftaran_m/pengaturan_model');
 }
 /**
 * Index Page for this controller.
@@ -25,8 +25,8 @@ function __construct()
 */
 public function index()
 {
-
-  $data['_view'] = 'pendaftaran_v/dashboard_adm_v';
+  $data['tb_pengaturan_pendaftaran'] = $this->pengaturan_model->get_tb_pengaturan();
+  $data['_view'] = 'pendaftaran_v/pengaturan_adm_v';
   $this->load->view('layouts/content_pendaftaran_adm',$data);
 }
 }
