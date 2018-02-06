@@ -172,7 +172,7 @@
               <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
               <ul class="nav nav-main" data-ride="collapse">
                 <li  class="">
-                  <a href="<?php echo site_url('')?>" class="auto">
+                  <a href="<?php echo site_url('pendaftaran_adm/dashboard')?>" class="auto">
                     <i class="fa fa-dashboard">
                     </i>
                     <span class="font-bold">Dashboard</span>
@@ -271,7 +271,7 @@
                   </ul>
                 </li>
                 <li  class="">
-                  <a href="<?php echo site_url('')?>" class="auto">
+                  <a href="<?php echo site_url('pendaftaran_adm/pengaturan')?>" class="auto">
                     <i class="fa fa-cog">
                     </i>
                     <span class="font-bold">Pengaturan</span>
