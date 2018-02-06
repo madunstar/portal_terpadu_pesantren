@@ -15,12 +15,13 @@
               <b>Pengaturan dasar</b>
             </header>
             <div class="panel-body">
+
               <form class="form-horizontal">
               <div class="form-group">
                 <label class="control-label col-sm-2">Pendaftaran Aktif</label>
                 <div class="col-sm-10">
                   <label class="switch">
-                      <input type="checkbox">
+                      <input type="checkbox" name="aktif[]" value="<?php echo $tb_pengaturan_pendaftaran['pendaftaran_aktif']?>" <?php echo ($tb_pengaturan_pendaftaran['pendaftaran_aktif'] == 1 ? 'checked' : null);?>>
                       <span></span>
                     </label>
                 </div>
@@ -30,7 +31,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="input-id-1">Tahun Ajaran</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="input-id-1">
+                        <input type="text" class="form-control" id="input-id-1" value="<?php echo $tb_pengaturan_pendaftaran['tahun_ajaran']?>">
                       </div>
                     </div>
                       <div class="line line-dashed b-b line-lg pull-in"></div>
