@@ -167,9 +167,6 @@
       <section class="vbox">
         <section class="w-f scrollable">
           <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
-
-
-
             <!-- nav -->
             <nav class="nav-primary hidden-xs">
               <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
@@ -193,6 +190,13 @@
                     <span class="font-bold">Pendaftaran</span>
                   </a>
                   <ul class="nav dk">
+                    <li >
+                      <a href="layout-color.html" class="auto">
+                        <i class="i i-dot text-primary"></i>
+
+                        <span>Semua</span>
+                      </a>
+                    </li>
                     <li >
                       <a href="layout-color.html" class="auto">
                         <i class="i i-dot text-success"></i>
@@ -236,16 +240,16 @@
                       <i class="i i-circle-sm-o text"></i>
                       <i class="i i-circle-sm text-active"></i>
                     </span>
-                    <i class="fa fa-archive icon">
+                    <i class="fa fa-pencil icon">
                     </i>
-                    <span class="font-bold">Laporan</span>
+                    <span class="font-bold">Tes</span>
                   </a>
                   <ul class="nav dk">
                     <li >
                       <a href="buttons.html" class="auto">
                         <i class="i i-dot"></i>
 
-                        <span>Laporan Pendaftaran</span>
+                        <span>Ruangan Tes</span>
                       </a>
                     </li>
                     <li >
@@ -253,7 +257,15 @@
                         <b class="badge bg-info pull-right">369</b>
                         <i class="i i-dot"></i>
 
-                        <span>Laporan Pembayaran</span>
+                        <span>Peserta Tes</span>
+                      </a>
+                    </li>
+                    <li >
+                      <a href="icons.html" class="auto">
+                        <b class="badge bg-info pull-right">369</b>
+                        <i class="i i-dot"></i>
+
+                        <span>Atur Tes</span>
                       </a>
                     </li>
                   </ul>
@@ -270,7 +282,6 @@
             <!-- / nav -->
           </div>
         </section>
-
         <footer class="footer hidden-xs no-padder text-center-nav-xs">
           <a href="modal.lockme.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
             <i class="i i-logout"></i>
