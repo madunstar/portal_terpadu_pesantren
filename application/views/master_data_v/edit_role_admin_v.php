@@ -6,8 +6,9 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<?php echo form_open('master_data_c/Tb_role_admin/edit/'.$tb_role_admin['kode_role']); ?>
-			<form data-validate="parsley" action="#">
+      <?php $att_form = array('data-validate'=>'parsley','id'=>'pengaturan'); ?>
+			<?php echo form_open('master_data_c/Tb_role_admin/edit/'.$tb_role_admin['kode_role'],$att_form); ?>
+
                     <section class="panel panel-default">
                       <header class="panel-heading text-right">
                         <span class="h4 font-bold">Edit data role admin</span>
@@ -28,7 +29,7 @@
 													<button type="submit" class="btn btn-success btn-s-xs">Save</button>
 												</div>
 											</section>
-			</form>
+
 			<?php echo form_close(); ?>
 </div>
 </div>
@@ -59,7 +60,8 @@
 <script src="<?php echo base_url('assets/js/calendar/demo.js');?>"></script>
 
 <script src="<?php echo base_url('assets/js/datatables/jquery.dataTables.js');?>"></script>
-
+<script src="<?php echo base_url('assets/js/parsley/parsley.min.js');?>"></script>
+<script src="<?php echo base_url('assets/js/parsley/parsley.extend.js');?>"></script>
 <script src="<?php echo base_url('assets/js/app.plugin.js');?>"></script>
 
 <script type="text/javascript">

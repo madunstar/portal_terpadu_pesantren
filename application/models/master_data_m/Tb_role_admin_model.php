@@ -29,7 +29,7 @@ class Tb_role_admin_model extends CI_Model
      */
     function get_all_tb_role_admin()
     {
-    
+
         return $this->db->get('tb_role_admin')->result_array();
     }
     /*
@@ -54,5 +54,19 @@ class Tb_role_admin_model extends CI_Model
     function delete_tb_role_admin($kode_role)
     {
         return $this->db->delete('tb_role_admin',array('kode_role'=>$kode_role));
+    }
+
+    function cek_duplikat($post_kode)
+    {
+      $this->db->where('kode_role',$post_kode);
+      $query = $this->db->get('tb_role_admin');
+      $count_row = $query->num_rows();
+
+      if ($count_row > 0) {
+        return FALSE;
+      } else {
+        return TRUE;
+      }
+
     }
 }
