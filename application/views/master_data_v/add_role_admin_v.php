@@ -30,7 +30,7 @@
 													</div>
 												</div>
 												<div class="panel-footer">
-													<button type="submit" class="btn btn-success btn-s-xs">Save</button>
+													<button type="submit" class="btn btn-success btn-s-xs" >Simpan</button>
 												</div>
 											</section>
 
