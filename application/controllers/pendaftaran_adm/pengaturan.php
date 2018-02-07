@@ -29,4 +29,15 @@ public function index()
   $data['_view'] = 'pendaftaran_v/pengaturan_adm_v';
   $this->load->view('layouts/content_pendaftaran_adm',$data);
 }
+
+function edit(){
+
+  $params = array(
+    'pendaftaran_aktif' => $this->input->post('aktif'),
+    'tahun_ajaran' => $this->input->post('tahun_ajaran'),
+  );
+  $this->pengaturan_model->update_tb_pengaturan_pendaftran($params);
+  $this->session->set_flashdata('response',"Data Inserted Successfully");
+  redirect('pendaftaran_adm/pengaturan/index');
+}
 }

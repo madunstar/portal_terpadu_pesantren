@@ -10,40 +10,54 @@
 
       <div class="row">
         <div class="col-sm-12">
+          <?php echo $this->session->flashdata('response'); ?>
           <section class="panel">
             <header class="panel-heading bg-dark">
               <b>Pengaturan dasar</b>
             </header>
-            <div class="panel-body">
+            <?php $att_form = array('class'=>'form-horizontal','data-validate'=>'parsley','id'=>'pengaturan');
+            echo form_open('pendaftaran_adm/pengaturan/edit',$att_form); ?>
 
-              <form class="form-horizontal">
-              <div class="form-group">
+            <div class="panel-body">
+              <div class="form-group col-sm-12">
                 <label class="control-label col-sm-2">Pendaftaran Aktif</label>
-                <div class="col-sm-10">
+                <div class="col-sm-1">
                   <label class="switch">
-                      <input type="checkbox" name="aktif[]" value="<?php echo $tb_pengaturan_pendaftaran['pendaftaran_aktif']?>" <?php echo ($tb_pengaturan_pendaftaran['pendaftaran_aktif'] == 1 ? 'checked' : null);?>>
+                      <input type="radio" name="aktif" value="1" <?php echo ($tb_pengaturan_pendaftaran['pendaftaran_aktif'] == 1 ? 'checked' : null);?>>
+                      <span></span>
+                    </label>
+                </div>
+                <label class="control-label col-sm-2">Pendaftaran Tidak Aktif</label>
+                <div class="col-sm-1">
+                  <label class="switch">
+                      <input type="radio" name="aktif" value="0" <?php echo ($tb_pengaturan_pendaftaran['pendaftaran_aktif'] == 0 ? 'checked' : null);?>>
                       <span></span>
                     </label>
                 </div>
 
               </div>
-              <div class="line line-dashed b-b line-lg pull-in"></div>
-                    <div class="form-group">
+
+                    <div class="form-group col-sm-12">
+                      <div class="line line-dashed b-b line-lg pull-in"></div>
                       <label class="col-sm-2 control-label" for="input-id-1">Tahun Ajaran</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="input-id-1" value="<?php echo $tb_pengaturan_pendaftaran['tahun_ajaran']?>">
+                        <input data-required="true" type="text" class="form-control parsley-validated" name="tahun_ajaran" value="<?php echo $tb_pengaturan_pendaftaran['tahun_ajaran']?>">
                       </div>
                     </div>
+                    <div class="form-group col-sm-12">
                       <div class="line line-dashed b-b line-lg pull-in"></div>
-                      <button type="button" class="btn btn-success pull-right" name="button">Simpan</button>
-            </form>
+                      <button type="submit" data-loading-text="Menyimpan..." class="btn btn-success pull-right" name="button">Simpan</button>
+
+                    </div>
 
             </div>
 
+            <?php echo form_close(); ?>
 
 
 
                 </section>
+
                 <section class="panel">
                   <header class="panel-heading bg-dark">
                     <b>Pengaturan akun Pendaftar</b>
@@ -61,6 +75,7 @@
 
 
       </div>
+
     </section>
   </section>
 </section>
@@ -68,6 +83,9 @@
 
 </section>
 </section>
+
+
+
 <script src="<?php echo base_url('assets/js/jquery.min.js');?>"></script>
 <!-- Bootstrap -->
 <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
@@ -88,7 +106,8 @@
 <script src="<?php echo base_url('assets/js/calendar/demo.js');?>"></script>
 
 <script src="<?php echo base_url('assets/js/datatables/jquery.dataTables.js');?>"></script>
-
+<script src="<?php echo base_url('assets/js/parsley/parsley.min.js');?>"></script>
+<script src="<?php echo base_url('assets/js/parsley/parsley.extend.js');?>"></script>
 <script src="<?php echo base_url('assets/js/app.plugin.js');?>"></script>
 
 

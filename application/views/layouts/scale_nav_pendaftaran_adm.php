@@ -268,6 +268,14 @@
                         <span>Atur Tes</span>
                       </a>
                     </li>
+                    <li >
+                      <a href="icons.html" class="auto">
+                        <b class="badge bg-info pull-right">369</b>
+                        <i class="i i-dot"></i>
+
+                        <span>Atur Hasil Tes</span>
+                      </a>
+                    </li>
                   </ul>
                 </li>
                 <li  class="">
