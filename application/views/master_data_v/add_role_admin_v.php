@@ -6,8 +6,13 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<?php echo form_open('master_data_c/Tb_role_admin/add'); ?>
-			<form data-validate="parsley" action="#">
+
+        <?php echo form_error('kode_role');?>
+
+      <?php $att_form = array('data-validate'=>'parsley','id'=>'pengaturan'); ?>
+			<?php echo form_open('master_data_c/Tb_role_admin/add',$att_form); ?>
+
+
                     <section class="panel panel-default">
                       <header class="panel-heading text-right">
                         <span class="h4 font-bold">Tambah data role admin</span>
@@ -16,19 +21,19 @@
 													<div class="form-group">
 												    <label>Kode Role :</label>
 														<input data-required="true" class="form-control" type="text" name="kode_role" value="<?php echo $this->input->post('kode_role'); ?>" />
-														<span class="text-danger"><?php echo form_error('kode_role');?></span>
+
 													</div>
 													<div class="form-group">
 														<label>Nama Role :</label>
 														<input data-required="true" class="form-control"type="text" name="nama_role" value="<?php echo $this->input->post('nama_role'); ?>" />
-														<span class="text-danger"><?php echo form_error('nama_role');?></span>
+
 													</div>
 												</div>
 												<div class="panel-footer">
-													<button type="submit" class="btn btn-success btn-s-xs">Save</button>
+													<button type="submit" class="btn btn-success btn-s-xs" >Simpan</button>
 												</div>
 											</section>
-			</form>
+
 			<?php echo form_close(); ?>
 </div>
 </div>
@@ -60,6 +65,8 @@
 
 <script src="<?php echo base_url('assets/js/datatables/jquery.dataTables.js');?>"></script>
 
+<script src="<?php echo base_url('assets/js/parsley/parsley.min.js');?>"></script>
+<script src="<?php echo base_url('assets/js/parsley/parsley.extend.js');?>"></script>
 <script src="<?php echo base_url('assets/js/app.plugin.js');?>"></script>
 
 <script type="text/javascript">

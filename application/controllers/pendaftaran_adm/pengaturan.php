@@ -39,9 +39,14 @@ function edit(){
   $this->pengaturan_model->update_tb_pengaturan_pendaftran($params);
   $this->session->set_flashdata('response',"
   <div class='alert alert-success'>
-            <button type='button' class='close' data-dismiss='alert'>&times;</button>
-            Pengaturan Berhasil Diubah. &nbsp; <i class='fa fa-check'></i>
-  </div>
+
+                  <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                  <strong>Selamat!</strong> Pengaturan Berhasil Dirubah <span class='fa fa-check'></span>
+                </div>
+
+            
+ 
+
   ");
   redirect('pendaftaran_adm/pengaturan/index');
 }

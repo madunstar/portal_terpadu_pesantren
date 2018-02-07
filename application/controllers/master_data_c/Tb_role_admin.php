@@ -58,9 +58,16 @@ class Tb_role_admin extends CI_Controller{
 
    function add()
     {
-        $this->load->library('form_validation');
+    $this->load->library('form_validation');
+    $post_kode = $this->input->post('kode_role');
 		$this->form_validation->set_rules('nama_role','Nama Role','required|max_length[25]');
-    $this->form_validation->set_rules('kode_role','Kode Role','required|max_length[25]');
+    $this->form_validation->set_rules('kode_role','Kode Role','required|max_length[25]|callback_cek_duplikasi[' . $post_kode . ']');
+    $this->form_validation->set_message('cek_duplikasi',
+    ' <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Ooopps!</strong> Kode Role ini Sudah Ada <span class="fa fa-warning"></span>
+      </div>
+    ');
 		if($this->form_validation->run())
         {
             $params = array(
@@ -76,6 +83,12 @@ class Tb_role_admin extends CI_Controller{
             $this->load->view('layouts/content',$data);
         }
     }
+
+    function cek_duplikasi($post_kode) {
+
+      return $this->Tb_role_admin_model->cek_duplikat($post_kode);
+
+  }
     /*
      * Editing a tb_role_admin
      */
@@ -122,8 +135,5 @@ class Tb_role_admin extends CI_Controller{
             show_error('The tb_role_admin you are trying to delete does not exist.');
     }
 
-    function modal_tb_role_admin()
-    {
-      $this->load->view('layouts/modal_lockme.php');
-    }
+
 }
