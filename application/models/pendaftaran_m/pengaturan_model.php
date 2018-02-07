@@ -16,10 +16,10 @@ class Pengaturan_model extends CI_Model
         return $this->db->get_where('tb_pengaturan_pendaftaran',array('id_pengaturan'=>1))->row_array();
     }
 
-    function update_tb_role_admin($kode_role,$params)
+    function update_tb_pengaturan_pendaftran($params)
     {
-        $this->db->where('kode_role',$kode_role);
-        return $this->db->update('tb_role_admin',$params);
+        $this->db->where('id_pengaturan',1);
+        return $this->db->update('tb_pengaturan_pendaftaran',$params);
     }
 
 }

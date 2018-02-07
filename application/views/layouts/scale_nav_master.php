@@ -380,7 +380,7 @@
                   </ul>
                 </li>
                 <li  class="">
-                  <a href="index.html" class="auto">
+                  <a href="<?php echo site_url('pendaftaran_adm/dashboard')?>" class="auto">
                     <i class="fa fa-folder-open-o">
                     </i>
                     <span class="font-bold">Pendaftaran</span>

@@ -10,7 +10,7 @@
 			<form data-validate="parsley" action="#">
                     <section class="panel panel-default">
                       <header class="panel-heading text-right">
-                        <span class="h4 font-bold">Tambah data role admin</span>
+                        <span class="h4 font-bold">Edit data role admin</span>
                       </header>
 											<div class="panel-body">
 													<div class="form-group">
