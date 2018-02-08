@@ -58,9 +58,16 @@ class Tb_role_admin extends CI_Controller{
 
    function add()
     {
-        $this->load->library('form_validation');
+    $this->load->library('form_validation');
+    $post_kode = $this->input->post('kode_role');
 		$this->form_validation->set_rules('nama_role','Nama Role','required|max_length[25]');
-    $this->form_validation->set_rules('kode_role','Kode Role','required|max_length[25]');
+    $this->form_validation->set_rules('kode_role','Kode Role','required|max_length[25]|callback_cek_duplikasi[' . $post_kode . ']');
+    $this->form_validation->set_message('cek_duplikasi',
+    ' <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Ooopps!</strong> Kode Role ini Sudah Ada <span class="fa fa-warning"></span>
+      </div>
+    ');
 		if($this->form_validation->run())
         {
             $params = array(
@@ -76,6 +83,12 @@ class Tb_role_admin extends CI_Controller{
             $this->load->view('layouts/content',$data);
         }
     }
+
+    function cek_duplikasi($post_kode) {
+
+      return $this->Tb_role_admin_model->cek_duplikat($post_kode);
+
+  }
     /*
      * Editing a tb_role_admin
      */
@@ -86,19 +99,21 @@ class Tb_role_admin extends CI_Controller{
         if(isset($data['tb_role_admin']['kode_role']))
         {
             $this->load->library('form_validation');
-			$this->form_validation->set_rules('nama_role','Nama Role','required|max_length[25]');
+            $this->form_validation->set_rules('kode_role','Kode Role','required|max_length[25]');
+			      $this->form_validation->set_rules('nama_role','Nama Role','required|max_length[25]');
 			if($this->form_validation->run())
             {
                 $params = array(
 					'nama_role' => $this->input->post('nama_role'),
+          'kode_role' => $this->input->post('kode_role'),
                 );
                 $this->Tb_role_admin_model->update_tb_role_admin($kode_role,$params);
-                redirect('tb_role_admin/index');
+                redirect('master_data_c/Tb_role_admin/index');
             }
             else
             {
-                $data['_view'] = 'tb_role_admin/edit';
-                $this->load->view('layouts/main',$data);
+                $data['_view'] = 'master_data_v/edit_role_admin_v';
+                $this->load->view('layouts/content',$data);
             }
         }
         else
@@ -120,8 +135,5 @@ class Tb_role_admin extends CI_Controller{
             show_error('The tb_role_admin you are trying to delete does not exist.');
     }
 
-    function modal_tb_role_admin()
-    {
-      $this->load->view('layouts/modal_lockme.php');
-    }
+
 }
