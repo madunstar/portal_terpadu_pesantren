@@ -22,7 +22,7 @@
           </a>
           <ul class="sidenav-second-level collapse" id="MasterData">
             <li>
-              <a href="#">Data Santri</a>
+              <a href="<?php echo base_url()."master_data_c/datamaster/santri" ?>">Data Santri</a>
             </li>
             <li>
               <a href="#">Data Guru</a>

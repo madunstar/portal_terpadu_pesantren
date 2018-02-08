@@ -9,10 +9,8 @@
                     <a style="margin-bottom:9px;" href="<?php echo site_url('master_data_c/Tb_role_admin/add'); ?>"><button class="btn btn-s-md btn-success btn-rounded">Tambah data</button></a>
                     <h4 class="pull-right font-bold">Data Role Admin</h4>
       </header>
-
-<div class="table-responsive">
-
-  <table class="table table-striped m-b-none" id="role_admin">
+<div class="panel-body table-responsive">
+  <table class="table  table-striped" id="role_admin" width="100%" aria-describedby="example1_info">
     <thead>
       <tr>
         <th>Kode</th>
@@ -20,7 +18,6 @@
     		<th>Aksi</th>
       </tr>
     </thead>
-
    <tbody>
  	   <?php foreach($tb_role_admin as $t){ ?>
         <tr style="height:12px">
@@ -80,7 +77,7 @@
   <script src="<?php echo base_url('assets/js/calendar/demo.js');?>"></script>
 
   <script src="<?php echo base_url('assets/js/datatables/jquery.dataTables.js');?>"></script>
-
+  <script src="<?php echo base_url(); ?>assets/js/dataTables.bootstrap.js" type="text/javascript"></script>
   <script src="<?php echo base_url('assets/js/app.plugin.js');?>"></script>
 
   <script type="text/javascript">
