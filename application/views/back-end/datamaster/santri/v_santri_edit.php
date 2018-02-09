@@ -11,6 +11,7 @@
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Mengedit Data Santri","Gagal Mengedit Data Santri") ?>
        <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santriedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" method="post">
+       <a href="<?php echo base_url('admin/datamaster/santri') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -34,7 +35,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nik" data-required="true" value="<?php echo $data['nik']; ?>" />
+                <input type="text" class="form-control"  name="nik" value="<?php echo $data['nik']; ?>" />
               </div>
             </div>
             <div class="form-group">
@@ -67,7 +68,13 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Email</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="email_santri" value="<?php echo $data['email_santri']; ?>" />
+                <input type="text" class="form-control"  name="email_santri" value="<?php echo $data['email_santri']; ?>" data-type="email"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">Nomor HP</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control"  name="hp" value="<?php echo $data['hp']; ?>" />
               </div>
             </div>
             <div class="form-group">
@@ -188,6 +195,12 @@
               </div>
             </div>
             <div class="form-group">
+              <label class="col-lg-4 control-label">Nomor HP Ayah</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control"  name="hpayah" value="<?php echo $data['hpayah']; ?>" />
+              </div>
+            </div>
+            <div class="form-group">
               <label class="col-lg-4 control-label">NIK Ibu</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control"  name="nik_ibu"value="<?php echo $data['nik_ibu']; ?>" />
@@ -209,6 +222,12 @@
               <label class="col-lg-4 control-label">Pekerjaan Ibu</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control"  name="pekerjaan_ibu" value="<?php echo $data['pekerjaan_ibu']; ?>" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">Nomor HP Ibu</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control"  name="hpibu" value="<?php echo $data['hpibu']; ?>" />
               </div>
             </div>
             <div class="form-group">
@@ -239,6 +258,12 @@
               <label class="col-lg-4 control-label">Pekerjaan Wali</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control"  name="pekerjaan_wali" value="<?php echo $data['pekerjaan_wali']; ?>" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">Nomor HP Wali</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control"  name="hpwali" value="<?php echo $data['hpwali']; ?>" />
               </div>
             </div>
             <div class="form-group">

@@ -39,15 +39,15 @@
                           <span>Data Santri</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="layout-hbox.html" class="auto">
+                      <li class="<?= (($menu == "datamaster") &&  ($submenu == 'guru')) ? "active" : ""; ?>">
+                      <a href="<?php echo base_url() ?>admin/datamaster/guru" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Guru</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="layout-boxed.html" class="auto">
+                      <li class="<?= (($menu == "datamaster") &&  ($submenu == 'staff')) ? "active" : ""; ?>">
+                      <a href="<?php echo base_url() ?>admin/datamaster/staff" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Staff</span>

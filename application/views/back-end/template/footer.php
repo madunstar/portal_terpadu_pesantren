@@ -25,3 +25,4 @@
   <script src="<?php echo base_url('assets/js/datatable/dataTables.bootstrap.js');?>"></script>
   <script src="<?php echo base_url('assets/js/app.plugin.js');?>"></script>
   <script src="<?php echo base_url('assets/js/datepicker/bootstrap-datepicker.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/file-input/bootstrap-filestyle.min.js');?>"></script>

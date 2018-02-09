@@ -6,146 +6,157 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Lihat Santri 
+        Input Santri 
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Santri","Gagal Menambahkan Santri") ?>
        <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santritambah" method="post">
+       <a href="<?php echo base_url('admin/datamaster/santri') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label class="col-lg-4 control-label">NIS</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" name="nis_lokal" data-required="true" value="<?php echo $data['nis_lokal']; ?>" readonly/>
+                <input type="text" class="form-control" name="nis_lokal" data-required="true" value="<?php echo set_value('nis_lokal'); ?>" />
+                <?php if(isset($nis_lokal)) {
+                         echo '<label style="color:red;font-size:10px">NIS sudah pernah diinput !</label>';
+                       } 
+                ?>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">NISN</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nisn" data-required="true"  value="<?php echo $data['nisn']; ?>" readonly/>
+                <input type="text" class="form-control"  name="nisn" data-required="true"  value="<?php echo set_value('nisn'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nik" data-required="true" value="<?php echo $data['nik']; ?>" readonly/>
+                <input type="text" class="form-control"  name="nik" value="<?php echo set_value('nik'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" name="nama_lengkap" data-required="true" value="<?php echo $data['nama_lengkap']; ?>" readonly/>
+                <input type="text" class="form-control" name="nama_lengkap" data-required="true" value="<?php echo set_value('nama_lengkap'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Tempat Lahir</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="tempat_lahir" data-required="true" value="<?php echo $data['tempat_lahir']; ?>" readonly/>
+                <input type="text" class="form-control"  name="tempat_lahir" data-required="true" value="<?php echo set_value('tempat_lahir'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Tanggal Lahir</label>
               <div class="col-lg-8">
-              <input class="form-control" size="16" type="text" readonly name="tgl_lahir" data-required="true" value="<?php echo tanggal($data['tgl_lahir']); ?>" />
+              <input class="datepicker-input form-control" size="16" type="text" readonly data-date-format="dd-mm-yyyy" name="tgl_lahir" data-required="true" value="<?php echo set_value('tgl_lahir'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Jenis Kelamin</label>
               <div class="col-lg-8">
-                <select class="form-control"  name="jenis_kelamin" readonly/>
-                  <option value="L" <?php if ($data['jenis_kelamin']=="L")  echo "selected" ?> >Laki-laki</option>
-                  <option value="P" <?php if ($data['jenis_kelamin']=="P")  echo "selected" ?> >Perempuan</option>
+                <select class="form-control"  name="jenis_kelamin"/>
+                  <option value="L" <?php if (set_value('jenis_kelamin')=="L")  echo "selected" ?> >Laki-laki</option>
+                  <option value="P" <?php if (set_value('jenis_kelamin')=="P")  echo "selected" ?> >Perempuan</option>
                 </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">Nomor HP</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control"  name="hp" value="<?php echo set_value('hp'); ?>" />
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Email</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="email_santri" value="<?php echo $data['email_santri']; ?>" readonly/>
+                <input type="text" class="form-control"  name="email_santri" value="<?php echo set_value('email_santri'); ?>" data-type="email"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Alamat Lengkap</label>
               <div class="col-lg-8">
-                <textarea class="form-control"  name="alamat_lengkap" readonly><?php echo $data['alamat_lengkap']; ?></textarea>
+                <textarea class="form-control"  name="alamat_lengkap"><?php echo set_value('alamat_lengkap'); ?></textarea>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Provinsi</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="provinsi" value="<?php echo $data['provinsi']; ?>" readonly/>
+                <input type="text" class="form-control"  name="provinsi" value="<?php echo set_value('provinsi'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Kabupaten/Kota</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="kabupaten_kota" value="<?php echo $data['kabupaten_kota']; ?>" readonly/>
+                <input type="text" class="form-control"  name="kabupaten_kota"value="<?php echo set_value('kabupaten_kota'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Kecamatan</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="kecamatan" value="<?php echo $data['kecamatan']; ?>" readonly/>
+                <input type="text" class="form-control"  name="kecamatan" value="<?php echo set_value('kecamatan'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Desa/Kelurahan</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="desa_kelurahan" value="<?php echo $data['desa_kelurahan']; ?>" readonly/>
+                <input type="text" class="form-control"  name="desa_kelurahan" value="<?php echo set_value('desa_kelurahan'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Kode Pos</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="kode_pos" value="<?php echo $data['kode_pos']; ?>" readonly/>
+                <input type="text" class="form-control"  name="kode_pos"value="<?php echo set_value('kode_pos'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Hobi</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="hobi" value="<?php echo $data['hobi']; ?>" readonly/>
+                <input type="text" class="form-control"  name="hobi" value="<?php echo set_value('hobi'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Cita-cita</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="cita_cita" value="<?php echo $data['cita_cita']; ?>" readonly/>
+                <input type="text" class="form-control"  name="cita_cita" value="<?php echo set_value('cita_cita'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Jenis Sekolah Asal</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="jenis_sekolah_asal" value="<?php echo $data['jenis_sekolah_asal']; ?>" readonly/>
+                <input type="text" class="form-control"  name="jenis_sekolah_asal" value="<?php echo set_value('jenis_sekolah_asal'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Status Sekolah Asal</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="status_sekolah_asal" value="<?php echo $data['status_sekolah_asal']; ?>" readonly/>
+                <input type="text" class="form-control"  name="status_sekolah_asal" value="<?php echo set_value('status_sekolah_asal'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nomor Peserta Ujian</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nomor_peserta_ujian" value="<?php echo $data['nomor_peserta_ujian']; ?>" readonly/>
+                <input type="text" class="form-control"  name="nomor_peserta_ujian" value="<?php echo set_value('nomor_peserta_ujian'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Jarak Ke Sekolah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="jarak_ke_sekolah" value="<?php echo $data['jarak_ke_sekolah']; ?>" readonly/>
+                <input type="text" class="form-control"  name="jarak_ke_sekolah" value="<?php echo set_value('jarak_ke_sekolah'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Alat Transportasi</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="alat_transportasi" value="<?php echo $data['alat_transportasi']; ?>" readonly/>
+                <input type="text" class="form-control"  name="alat_transportasi" value="<?php echo set_value('alat_transportasi'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Status Tempat Tinggal</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="status_tempat_tinggal" value="<?php echo $data['status_tempat_tinggal']; ?>" readonly/>
+                <input type="text" class="form-control"  name="status_tempat_tinggal" value="<?php echo set_value('status_tempat_tinggal'); ?>"/>
               </div>
             </div>
             
@@ -154,104 +165,123 @@
           <div class="form-group">
               <label class="col-lg-4 control-label">No Kartu Keluarga</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="no_kk" value="<?php echo $data['no_kk']; ?>" readonly/>
+                <input type="text" class="form-control"  name="no_kk" value="<?php echo set_value('no_kk'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nik_ayah" value="<?php echo $data['nik_ayah']; ?>" readonly/>
+                <input type="text" class="form-control"  name="nik_ayah" value="<?php echo set_value('nik_ayah'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nama_lengkap_ayah" value="<?php echo $data['nama_lengkap_ayah']; ?>" readonly/>
+                <input type="text" class="form-control"  name="nama_lengkap_ayah" value="<?php echo set_value('nama_lengkap_ayah'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pendidikan_terakhir_ayah" value="<?php echo $data['pendidikan_terakhir_ayah']; ?>" readonly/>
+                <input type="text" class="form-control"  name="pendidikan_terakhir_ayah" value="<?php echo set_value('pendidikan_terakhir_ayah'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pekerjaan Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pekerjaan_ayah" value="<?php echo $data['pekerjaan_ayah']; ?>" readonly/>
+                <input type="text" class="form-control"  name="pekerjaan_ayah" value="<?php echo set_value('pekerjaan_ayah'); ?>"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">Nomor HP Ayah</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control"  name="hpayah" value="<?php echo set_value('hpayah'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Ibu</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nik_ibu"value="<?php echo $data['nik_ibu']; ?>" readonly/>
+                <input type="text" class="form-control"  name="nik_ibu" value="<?php echo set_value('nik_ibu'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama Ibu</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nama_lengkap_ibu" value="<?php echo $data['nama_lengkap_ibu']; ?>" readonly/>
+                <input type="text" class="form-control"  name="nama_lengkap_ibu" value="<?php echo set_value('nama_lengkap_ibu'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Ibu</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pendidikan_terakhir_ibu" value="<?php echo $data['pendidikan_terakhir_ibu']; ?>" readonly/>
+                <input type="text" class="form-control"  name="pendidikan_terakhir_ibu" value="<?php echo set_value('pendidikan_terakhir_ibu'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pekerjaan Ibu</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pekerjaan_ibu" value="<?php echo $data['pekerjaan_ibu']; ?>" readonly/>
+                <input type="text" class="form-control"  name="pekerjaan_ibu" value="<?php echo set_value('pekerjaan_ibu'); ?>"/>
               </div>
             </div>
             <div class="form-group">
+              <label class="col-lg-4 control-label">Nomor HP Ibu</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control"  name="hpibu" value="<?php echo set_value('hpibu'); ?>"/>
+              </div>
+            </div>
+            
+            <div class="form-group">
               <label class="col-lg-4 control-label">Penghasilan Orang Tua</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="penghasilan_orang_tua" value="<?php echo $data['penghasilan_orang_tua']; ?>" readonly/>
+                <input type="text" class="form-control"  name="penghasilan_orang_tua" value="<?php echo set_value('penghasilan_orang_tua'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Wali</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nik_wali" value="<?php echo $data['nik_wali']; ?>" readonly/>
+                <input type="text" class="form-control"  name="nik_wali" value="<?php echo set_value('nik_wali'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama Wali</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nama_lengkap_wali" value="<?php echo $data['nama_lengkap_wali']; ?>" readonly/>
+                <input type="text" class="form-control"  name="nama_lengkap_wali" value="<?php echo set_value('nama_lengkap_wali'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Wali</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pendidikan_terakhir_wali" value="<?php echo $data['pendidikan_terakhir_wali']; ?>" readonly/>
+                <input type="text" class="form-control"  name="pendidikan_terakhir_wali" value="<?php echo set_value('pendidikan_terakhir_wali'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pekerjaan Wali</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pekerjaan_wali" value="<?php echo $data['pekerjaan_wali']; ?>" readonly/>
+                <input type="text" class="form-control"  name="pekerjaan_wali" value="<?php echo set_value('pekerjaan_wali'); ?>"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">Nomor HP Wali</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control"  name="hpwali" value="<?php echo set_value('hpwali'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Penghasilan Wali</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="penghasilan_wali" value="<?php echo $data['penghasilan_wali']; ?>" readonly/>
+                <input type="text" class="form-control"  name="penghasilan_wali" value="<?php echo set_value('penghasilan_wali'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Jumlah Saudara Kandung</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="jumlah_saudara_kandung" value="<?php echo $data['jumlah_saudara_kandung']; ?>" readonly/>
+                <input type="text" class="form-control"  name="jumlah_saudara_kandung" value="<?php echo set_value('jumlah_saudara_kandung'); ?>"/>
               </div>
             </div>
           </div>
         </div>
       </div>
       <footer class="panel-footer text-right bg-light lter">
-      <a href="<?php echo base_url('admin/datamaster/santriedit?nis=1') ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
+        <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
         <a href="<?php echo base_url('admin/datamaster/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
       </footer>

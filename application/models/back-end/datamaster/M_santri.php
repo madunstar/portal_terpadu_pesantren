@@ -44,5 +44,40 @@ class M_santri extends CI_Model
         $this->db->where("nis_lokal",$nis);
         return $this->db->delete('tb_santri');
     }
-   
+   /////////////////////////////////////////
+
+   function lihatdataberkas($nis)
+   {
+        $this->db->where("nis_lokal",$nis);
+        return $this->db->get('tb_berkas_santri');
+   }
+
+   function tambahdataberkas($array)
+   {
+       return $this->db->insert('tb_berkas_santri',$array);
+   }
+
+   function lihatdatasatuberkas($id_berkas)
+   {
+       $this->db->where("id_berkas",$id_berkas);
+       return $this->db->get('tb_berkas_santri');
+   }
+
+   function cekdataberkas($id_berkas)
+    {
+        $this->db->where("id_berkas",$id_berkas);
+        return $this->db->get('tb_berkas_santri')->num_rows();
+    }
+
+    function editdataaberkas($id_berkas,$array)
+    {
+        $this->db->where("id_berkas",$id_berkas);
+        return $this->db->update('tb_berkas_santri',$array);
+    }
+    function hapusberkas($id_berkas)
+    {
+        $this->db->where("id_berkas",$id_berkas);
+        return $this->db->delete('tb_berkas_santri');
+    }
+
 }
