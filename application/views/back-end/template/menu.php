@@ -13,14 +13,14 @@
               <nav class="nav-primary hidden-xs">
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
-                  <li  class="">
-                    <a href="index.html" class="auto">
+                  <li  class="<?= (($menu == "datamaster") && ($submenu == 'index')) ? "active" : ""; ?>">
+                    <a href="<?php echo base_url() ?>admin/datamaster/" class="auto">
                       <i class="fa fa-dashboard">
                       </i>
                       <span class="font-bold">Dashboard</span>
                     </a>
                   </li>
-                  <li class="<?php echo ($menu == "datamaster") ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'guru') || ($submenu == 'staff')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -32,7 +32,7 @@
                       <span class="font-bold">Data Master</span>
                     </a>
                     <ul class="nav dk">
-                      <li class="<?= (($menu == "datamaster") && ($submenu == 'index') || ($submenu == 'santri')) ? "active" : ""; ?>">
+                      <li class="<?= (($menu == "datamaster") && ($submenu == 'santri')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/santri" class="auto">
                           <i class="i i-dot"></i>
 
@@ -219,7 +219,7 @@
                     </ul>
                   </li>
                   <li  class="">
-                    <a href="index.html" class="auto">
+                    <a href="<?php echo base_url('admin/Pendaftaran')?>" class="auto">
                       <i class="fa fa-folder-open-o">
                       </i>
                       <span class="font-bold">Pendaftaran</span>
