@@ -10,6 +10,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_santri');
         $this->load->model('back-end/datamaster/m_guru');
         $this->load->model('back-end/datamaster/m_staff');
+        $this->load->model('back-end/datamaster/m_provinsi');
         $this->load->library('layout');
     }
 
@@ -749,5 +750,79 @@ class Datamaster extends CI_Controller{
     }
 
     // End CRUD Staff
+
+   // CRUD provinsi
+   function provinsi()
+   {
+       $variabel['data'] = $this->m_provinsi->lihatdata();
+       $this->layout->render('back-end/datamaster/provinsi/v_provinsi',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
+   }
+
+
+
+   function provinsitambah()
+   {
+       if ($this->input->post()){
+
+               $array=array(
+                   'id_provinsi'=> $this->input->post('id_provinsi'),
+                   'nama_provinsi'=> $this->input->post('nama_provinsi'),
+                   );
+           if ($this->m_provinsi->cekdata($this->input->post('id_provinsi'))==0) {
+               $exec = $this->m_provinsi->tambahdata($array);
+               if ($exec) redirect(base_url("admin/datamaster/provinsitambah?msg=1"));
+               else redirect(base_url("admin/datamaster/provinsitambah?msg=0"));
+           } else {
+               $variabel['id_provinsi'] =$this->input->post('id_provinsi');
+               $this->layout->render('back-end/datamaster/provinsi/v_provinsi_tambah',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
+           }
+
+       } else {
+           $variabel ='';
+           $this->layout->render('back-end/datamaster/provinsi/v_provinsi_tambah',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
+       }
+   }
+
+   function provinsiedit()
+   {
+       if ($this->input->post()) {
+           $array=array(
+             'id_provinsi'=> $this->input->post('id_provinsi'),
+             'nama_provinsi'=> $this->input->post('nama_provinsi'),
+               );
+           $id_provinsilama = $this->input->post("id_provinsilama");
+           $id_provinsi = $this->input->post("id_provinsi");
+           if (($this->m_provinsi->cekdata($id_provinsi)>0) && ($id_provinsilama!=$id_provinsi)) {
+               $variabel['id_provinsi'] =$this->input->post('id_provinsi');
+               $variabel['id_provinsilama'] =$this->input->post('id_provinsilama');
+               $variabel['data'] = $array;
+               $this->layout->render('back-end/datamaster/provinsi/v_provinsi_edit',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
+           } else {
+               $exec = $this->m_provinsi->editdata($id_provinsilama,$array);
+               if ($exec){
+                 redirect(base_url("admin/datamaster/provinsiedit?id_provinsi=".$nis."&msg=1"));
+               }
+           }
+     } else {
+           $id_provinsi = $this->input->get("id_provinsi");
+           $exec = $this->m_provinsi->lihatdatasatu($id_provinsi);
+           if ($exec->num_rows()>0){
+               $variabel['data'] = $exec ->row_array();
+               $this->layout->render('back-end/datamaster/provinsi/v_provinsi_edit',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
+           } else {
+               redirect(base_url("admin/datamaster/provinsi"));
+           }
+     }
+
+   }
+
+   function provinsihapus()
+   {
+      $id_provinsi = $this->input->get("id_provinsi");
+      $exec = $this->m_provinsi->hapus($id_provinsi);
+      redirect(base_url()."admin/datamaster/provinsi?msg=1");
+   }
+
+
 
 }
