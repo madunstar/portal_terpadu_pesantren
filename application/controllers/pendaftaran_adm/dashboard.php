@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
 function __construct()
 {
   parent::__construct();
-  $this->load->model('master_data_m/Tb_role_admin_model');
+  $this->load->model('pendaftaran_m/dashboard_model');
 }
 /**
 * Index Page for this controller.
@@ -25,7 +25,7 @@ function __construct()
 */
 public function index()
 {
-
+  $data['total_diverifikasi'] = $this->dashboard_model->get_count_status_diverifikasi();
   $data['_view'] = 'pendaftaran_v/dashboard_adm_v';
   $this->load->view('layouts/content_pendaftaran_adm',$data);
 }

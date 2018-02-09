@@ -79,7 +79,7 @@
                 <small class="text-muted">Diverivikasi</small>
               </div>
               <div class="col-xs-6">
-                <div class="h2 font-bold">40</div>
+                <div class="h2 font-bold"><?php echo $total_diverifikasi['total']; ?></div>
 
               </div>
             </div>

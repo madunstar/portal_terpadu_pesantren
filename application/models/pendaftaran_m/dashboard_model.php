@@ -8,12 +8,11 @@ class Dashboard_model extends CI_Model {
       parent::__construct();
   }
 
-  function get_count_status_pendaftar() {
-    $this->db->select('status_biodata','count(email_pendaftar) as total')
-             ->from('tb_akun_pendaftar')
-             ->group_by('status_biodata')
+  function get_count_status_diverifikasi() {
+    return $this->db->select('(select count(*) from tb_akun_pendaftar where status_biodata = "diverifikasi") as total',FALSE)
              ->get()
-             ->result_array();
+             ->row_array();
+
   }
 }
 
