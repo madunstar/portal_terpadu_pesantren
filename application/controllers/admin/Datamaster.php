@@ -10,10 +10,11 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_santri');
         $this->load->model('back-end/datamaster/m_guru');
         $this->load->model('back-end/datamaster/m_staff');
+        $this->load->model('back-end/datamaster/m_provinsi');
         $this->load->library('layout');
     }
 
-      
+
     function index()
     {
         $this->santri();
@@ -36,7 +37,7 @@ class Datamaster extends CI_Controller{
         } else {
             redirect(base_url("admin/datamaster/santri"));
         }
-        
+
     }
 
     function santritambah()
@@ -172,7 +173,7 @@ class Datamaster extends CI_Controller{
                 redirect(base_url("admin/datamaster/santri"));
             }
       }
-        
+
     }
 
     function santrihapus()
@@ -193,7 +194,7 @@ class Datamaster extends CI_Controller{
         } else {
             redirect(base_url("admin/datamaster/santri"));
         }
-       
+
     }
 
     function santritambahberkas()
@@ -222,7 +223,7 @@ class Datamaster extends CI_Controller{
                 if ($exec) redirect(base_url("admin/datamaster/santritambahberkas?nis=".$nis_lokal."&msg=1"));
                 else redirect(base_url("admin/datamaster/santriberkastambah?nis=".$nis_lokal."&msg=0"));
             } else {
-                
+
                 $this->layout->render('back-end/datamaster/santri/v_santriberkas_tambah',$variabel,'back-end/datamaster/santri/v_santriberkas_js');
             }
         } else {
@@ -241,7 +242,7 @@ class Datamaster extends CI_Controller{
         $path1 ="./assets/berkas/berkassantri/".$berkas1temp."";
         if(is_file($path1)) {
             unlink($path1);
-        }		
+        }
 
         $exec = $this->m_santri->hapusberkas($id_berkas);
         redirect(base_url()."admin/datamaster/santriberkas?msg=1&nis=".$nis."");
@@ -271,8 +272,8 @@ class Datamaster extends CI_Controller{
                 $berkas1temp = $row2->file_berkas;
                 $path1 ="./assets/berkas/berkassantri/".$berkas1temp."";
                 if(is_file($path1)) {
-                    unlink($path1); //menghapus gambar di folder produk 
-                }	
+                    unlink($path1); //menghapus gambar di folder produk
+                }
             }
             $exec = $this->m_santri->editdataaberkas($id_berkas,$array);
             if ($exec) redirect(base_url("admin/datamaster/santrieditberkas?id=".$id_berkas."&nis=".$nis_lokal."&msg=1"));
@@ -286,7 +287,7 @@ class Datamaster extends CI_Controller{
                 $variabel['santri'] = $exec ->row_array();
                 $exec2 = $this->m_santri->lihatdatasatuberkas($id);
                 if ($exec2->num_rows()>0){
-                    
+
                     $variabel['data'] = $exec2->row_array();
                     $this->layout->render('back-end/datamaster/santri/v_santriberkas_edit',$variabel,'back-end/datamaster/santri/v_santriberkas_js');
                 } else {
@@ -296,11 +297,11 @@ class Datamaster extends CI_Controller{
                 redirect(base_url("admin/datamaster/santri"));
             }
         }
-        
+
     }
 
     // End CRUD Santri
-  
+
     // CRUD Guru
     function guru()
     {
@@ -318,7 +319,7 @@ class Datamaster extends CI_Controller{
         } else {
             redirect(base_url("admin/datamaster/guru"));
         }
-        
+
     }
 
     function gurutambah()
@@ -396,7 +397,7 @@ class Datamaster extends CI_Controller{
                 redirect(base_url("admin/datamaster/guru"));
             }
       }
-        
+
     }
 
     function guruhapus()
@@ -405,7 +406,7 @@ class Datamaster extends CI_Controller{
        $exec = $this->m_guru->hapus($nip);
        redirect(base_url()."admin/datamaster/guru?msg=1");
     }
-    
+
     function guruberkas()
     {
         $nip = $this->input->get("nip");
@@ -417,7 +418,7 @@ class Datamaster extends CI_Controller{
         } else {
             redirect(base_url("admin/datamaster/guru"));
         }
-       
+
     }
 
     function gurutambahberkas()
@@ -446,7 +447,7 @@ class Datamaster extends CI_Controller{
                 if ($exec) redirect(base_url("admin/datamaster/gurutambahberkas?nip=".$nip_guru."&msg=1"));
                 else redirect(base_url("admin/datamaster/guruberkastambah?nip=".$nip_guru."&msg=0"));
             } else {
-                
+
                 $this->layout->render('back-end/datamaster/guru/v_guruberkas_tambah',$variabel,'back-end/datamaster/guru/v_guruberkas_js');
             }
         } else {
@@ -465,7 +466,7 @@ class Datamaster extends CI_Controller{
         $path1 ="./assets/berkas/berkasguru/".$berkas1temp."";
         if(is_file($path1)) {
             unlink($path1);
-        }		
+        }
 
         $exec = $this->m_guru->hapusberkas($id_berkas);
         redirect(base_url()."admin/datamaster/guruberkas?msg=1&nip=".$nip."");
@@ -495,8 +496,8 @@ class Datamaster extends CI_Controller{
                 $berkas1temp = $row2->file_berkas;
                 $path1 ="./assets/berkas/berkasguru/".$berkas1temp."";
                 if(is_file($path1)) {
-                    unlink($path1); //menghapus gambar di folder produk 
-                }	
+                    unlink($path1); //menghapus gambar di folder produk
+                }
             }
             $exec = $this->m_guru->editdataaberkas($id_berkas,$array);
             if ($exec) redirect(base_url("admin/datamaster/gurueditberkas?id=".$id_berkas."&nip=".$nip_guru."&msg=1"));
@@ -510,7 +511,7 @@ class Datamaster extends CI_Controller{
                 $variabel['guru'] = $exec ->row_array();
                 $exec2 = $this->m_guru->lihatdatasatuberkas($id);
                 if ($exec2->num_rows()>0){
-                    
+
                     $variabel['data'] = $exec2->row_array();
                     $this->layout->render('back-end/datamaster/guru/v_guruberkas_edit',$variabel,'back-end/datamaster/guru/v_guruberkas_js');
                 } else {
@@ -520,7 +521,7 @@ class Datamaster extends CI_Controller{
                 redirect(base_url("admin/datamaster/guru"));
             }
         }
-        
+
     }
 
     // End CRUD Guru
@@ -543,7 +544,7 @@ class Datamaster extends CI_Controller{
         } else {
             redirect(base_url("admin/datamaster/staff"));
         }
-        
+
     }
 
     function stafftambah()
@@ -621,7 +622,7 @@ class Datamaster extends CI_Controller{
                 redirect(base_url("admin/datamaster/staff"));
             }
       }
-        
+
     }
 
     function staffhapus()
@@ -630,7 +631,7 @@ class Datamaster extends CI_Controller{
        $exec = $this->m_staff->hapus($nip);
        redirect(base_url()."admin/datamaster/staff?msg=1");
     }
-    
+
     function staffberkas()
     {
         $nip = $this->input->get("nip");
@@ -642,7 +643,7 @@ class Datamaster extends CI_Controller{
         } else {
             redirect(base_url("admin/datamaster/staff"));
         }
-       
+
     }
 
     function stafftambahberkas()
@@ -671,7 +672,7 @@ class Datamaster extends CI_Controller{
                 if ($exec) redirect(base_url("admin/datamaster/stafftambahberkas?nip=".$nip_staff."&msg=1"));
                 else redirect(base_url("admin/datamaster/staffberkastambah?nip=".$nip_staff."&msg=0"));
             } else {
-                
+
                 $this->layout->render('back-end/datamaster/staff/v_staffberkas_tambah',$variabel,'back-end/datamaster/staff/v_staffberkas_js');
             }
         } else {
@@ -690,7 +691,7 @@ class Datamaster extends CI_Controller{
         $path1 ="./assets/berkas/berkasstaff/".$berkas1temp."";
         if(is_file($path1)) {
             unlink($path1);
-        }		
+        }
 
         $exec = $this->m_staff->hapusberkas($id_berkas);
         redirect(base_url()."admin/datamaster/staffberkas?msg=1&nip=".$nip."");
@@ -720,8 +721,8 @@ class Datamaster extends CI_Controller{
                 $berkas1temp = $row2->file_berkas;
                 $path1 ="./assets/berkas/berkasstaff/".$berkas1temp."";
                 if(is_file($path1)) {
-                    unlink($path1); //menghapus gambar di folder produk 
-                }	
+                    unlink($path1); //menghapus gambar di folder produk
+                }
             }
             $exec = $this->m_staff->editdataaberkas($id_berkas,$array);
             if ($exec) redirect(base_url("admin/datamaster/staffeditberkas?id=".$id_berkas."&nip=".$nip_staff."&msg=1"));
@@ -735,7 +736,7 @@ class Datamaster extends CI_Controller{
                 $variabel['staff'] = $exec ->row_array();
                 $exec2 = $this->m_staff->lihatdatasatuberkas($id);
                 if ($exec2->num_rows()>0){
-                    
+
                     $variabel['data'] = $exec2->row_array();
                     $this->layout->render('back-end/datamaster/staff/v_staffberkas_edit',$variabel,'back-end/datamaster/staff/v_staffberkas_js');
                 } else {
@@ -745,9 +746,83 @@ class Datamaster extends CI_Controller{
                 redirect(base_url("admin/datamaster/staff"));
             }
         }
-        
+
     }
 
     // End CRUD Staff
+
+   // CRUD provinsi
+   function provinsi()
+   {
+       $variabel['data'] = $this->m_provinsi->lihatdata();
+       $this->layout->render('back-end/datamaster/provinsi/v_provinsi',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
+   }
+
+
+
+   function provinsitambah()
+   {
+       if ($this->input->post()){
+
+               $array=array(
+                   'id_provinsi'=> $this->input->post('id_provinsi'),
+                   'nama_provinsi'=> $this->input->post('nama_provinsi'),
+                   );
+           if ($this->m_provinsi->cekdata($this->input->post('id_provinsi'))==0) {
+               $exec = $this->m_provinsi->tambahdata($array);
+               if ($exec) redirect(base_url("admin/datamaster/provinsitambah?msg=1"));
+               else redirect(base_url("admin/datamaster/provinsitambah?msg=0"));
+           } else {
+               $variabel['id_provinsi'] =$this->input->post('id_provinsi');
+               $this->layout->render('back-end/datamaster/provinsi/v_provinsi_tambah',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
+           }
+
+       } else {
+           $variabel ='';
+           $this->layout->render('back-end/datamaster/provinsi/v_provinsi_tambah',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
+       }
+   }
+
+   function provinsiedit()
+   {
+       if ($this->input->post()) {
+           $array=array(
+             'id_provinsi'=> $this->input->post('id_provinsi'),
+             'nama_provinsi'=> $this->input->post('nama_provinsi'),
+               );
+           $id_provinsilama = $this->input->post("id_provinsilama");
+           $id_provinsi = $this->input->post("id_provinsi");
+           if (($this->m_provinsi->cekdata($id_provinsi)>0) && ($id_provinsilama!=$id_provinsi)) {
+               $variabel['id_provinsi'] =$this->input->post('id_provinsi');
+               $variabel['id_provinsilama'] =$this->input->post('id_provinsilama');
+               $variabel['data'] = $array;
+               $this->layout->render('back-end/datamaster/provinsi/v_provinsi_edit',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
+           } else {
+               $exec = $this->m_provinsi->editdata($id_provinsilama,$array);
+               if ($exec){
+                 redirect(base_url("admin/datamaster/provinsiedit?id_provinsi=".$nis."&msg=1"));
+               }
+           }
+     } else {
+           $id_provinsi = $this->input->get("id_provinsi");
+           $exec = $this->m_provinsi->lihatdatasatu($id_provinsi);
+           if ($exec->num_rows()>0){
+               $variabel['data'] = $exec ->row_array();
+               $this->layout->render('back-end/datamaster/provinsi/v_provinsi_edit',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
+           } else {
+               redirect(base_url("admin/datamaster/provinsi"));
+           }
+     }
+
+   }
+
+   function provinsihapus()
+   {
+      $id_provinsi = $this->input->get("id_provinsi");
+      $exec = $this->m_provinsi->hapus($id_provinsi);
+      redirect(base_url()."admin/datamaster/provinsi?msg=1");
+   }
+
+
 
 }
