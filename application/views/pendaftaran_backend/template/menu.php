@@ -118,7 +118,7 @@
 							</ul>
 						</li>
 						<li  class="">
-							<a href="#" class="auto">
+							<a href="<?php echo base_url() ?>admin/pendaftaran/pengaturan" class="auto">
 								<i class="fa fa-cog">
 								</i>
 								<span class="font-bold">Pengaturan</span>

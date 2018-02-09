@@ -28,12 +28,28 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/provinsiedit?id_provinsi='.$row['id_provinsi'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-                      <a href='".base_url('admin/datamaster/provinsihapus?id_provinsi='.$row['id_provinsi'].'')."' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_provinsi']."'><i class='fa fa-trash-o'></i></a>
+                      <a href='".base_url('admin/datamaster/provinsiedit?id_provinsi='.$row['id_provinsi'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                      <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#".$row['id_provinsi']."'><i class='fa fa-trash-o'></i></button>
                       </td>
                       <td>".$row['id_provinsi']."</td>
                       <td>".$row['nama_provinsi']."</td>
                       </tr>
+                      <div class='modal' id='".$row['id_provinsi']."' tabindex='-1' role='dialog'>
+               <div class='modal-dialog' role='document'>
+                 <div class='modal-content'>
+                   <div class='modal-header bg-danger'>
+                     <h4 class='modal-title'>Konfirmasi Hapus Data</h4>
+                   </div>
+                   <div class='modal-body'>
+                     <b>Apakah yakin menghapus data?</b>
+                   </div>
+                   <div class='modal-footer'>
+                     <a style='margin-left:5px' href='".base_url('admin/datamaster/provinsihapus?id_provinsi='.$row['id_provinsi'].'')."'><button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
+                     <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
+                   </div>
+                 </div>
+               </div>
+             </div>
                   ";
                 }
             ?>
