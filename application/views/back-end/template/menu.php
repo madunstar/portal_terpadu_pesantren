@@ -219,7 +219,7 @@
                     </ul>
                   </li>
                   <li  class="">
-                    <a href="index.html" class="auto">
+                    <a href="<?php echo base_url('admin/Pendaftaran')?>" class="auto">
                       <i class="fa fa-folder-open-o">
                       </i>
                       <span class="font-bold">Pendaftaran</span>

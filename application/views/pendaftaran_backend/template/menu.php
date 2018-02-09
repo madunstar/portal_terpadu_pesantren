@@ -11,7 +11,7 @@
 					<div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
 					<ul class="nav nav-main" data-ride="collapse">
 						<li  class="">
-							<a href="<?php echo site_url('pendaftaran_adm/dashboard')?>" class="auto">
+							<a href="<?php echo base_url('admin/Pendaftaran')?>" class="auto">
 								<i class="fa fa-dashboard">
 								</i>
 								<span class="font-bold">Dashboard</span>
