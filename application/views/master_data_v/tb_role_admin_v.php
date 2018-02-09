@@ -80,9 +80,9 @@
 <script src="<?php echo base_url('assets/js/calendar/bootstrap_calendar.js');?>"></script>
 <script src="<?php echo base_url('assets/js/calendar/demo.js');?>"></script>
 
-<script src="<?php echo base_url('assets/js/datatables/jquery.dataTables.js');?>"></script>
-
-<script src="<?php echo base_url('assets/js/app.plugin.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/datatables/jquery.dataTables.js');?>"></script>
+  <script src="<?php echo base_url(); ?>assets/js/dataTables.bootstrap.js" type="text/javascript"></script>
+  <script src="<?php echo base_url('assets/js/app.plugin.js');?>"></script>
 
 <script type="text/javascript">
   $(document).ready(function() {

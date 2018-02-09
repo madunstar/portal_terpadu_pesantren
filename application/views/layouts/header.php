@@ -20,8 +20,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Custom styles for this template-->
   <link rel="stylesheet" href="<?php echo base_url('assets/css/icon.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/css/font.css');?>" type="text/css" />
-  <link rel="stylesheet" href="<?php echo base_url('assets/css/app.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/datatables/datatables.css');?>" type="text/css"/>
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/app.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/calendar/bootstrap_calendar.css');?>" type="text/css" />
 
 
