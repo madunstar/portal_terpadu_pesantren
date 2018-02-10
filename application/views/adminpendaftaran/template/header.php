@@ -65,5 +65,5 @@
   <section>
     <section class="hbox stretch">
   <?php
-   $this->load->view("pendaftaran_backend/template/menu");
+   $this->load->view("adminpendaftaran/template/menu");
    ?>
