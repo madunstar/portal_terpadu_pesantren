@@ -65,8 +65,53 @@
                     <b>Pengaturan Akun Pendaftar</b>
                   </header>
                   <div class="panel-body">
-                    <button type="button" class="btn btn-danger" name="button">Reset Password Akun Pendaftar</button>
+                    <section class="panel panel-default pos-rlt clearfix">
 
+                    <ul class="nav">
+                      <li>
+                        <a href="#" class="panel-toggle"><button type="button" class="btn btn-danger" name="button">Reset Password Akun Pendaftar</button></a>
+                      </li>
+                    </ul>
+                  <div class="panel-body clearfix collapse animated fadeInRight">
+                    <div class="dropdown m-r">
+                      <div class="table-responsive">
+                        <table class="table table-striped m-b-none" id="datatable">
+                          <thead>
+                            <tr>
+                              <th>Aksi</th>
+                              <th>Nama</th>
+                              <th>Email</th>
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <button class='btn btn-warning btn-xs' data-toggle='modal' data-target=''><i class='fa fa-edit'></i></button>
+                              <button class='btn btn-danger btn-xs' data-toggle='modal' data-target=''><i class='fa fa-trash-o'></i></button>
+                            </td>
+                              <td>b</td>
+                              <td>mmm@mmmm</td>
+
+                            </tr>
+                            <tr>
+                              <td>
+                                <button class='btn btn-warning btn-xs' data-toggle='modal' data-target=''><i class='fa fa-edit'></i></button>
+                              <button class='btn btn-danger btn-xs' data-toggle='modal' data-target=''><i class='fa fa-trash-o'></i></button>
+                              </td>
+                              <td>b</td>
+                              <td>bbb@aaaa</td>
+
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+                    </div>
+
+                  </div>
+                </section>
                   </div>
 
 

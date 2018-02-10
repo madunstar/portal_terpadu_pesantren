@@ -15,14 +15,17 @@ class Pendaftaran extends CI_Controller
 
   function index()
   {
+      $variabel['total_tidak_lengkap'] = $this->dashboard_model->get_count_status_tidak_lengkap();
       $variabel['total_diverifikasi'] = $this->dashboard_model->get_count_status_diverifikasi();
+      $variabel['total_menunggu'] = $this->dashboard_model->get_count_status_menunggu();
+      $variabel['total_pendaftaran'] = $this->dashboard_model->get_count_pendaftaran();
       $this->layout_pendaftaran->render('pendaftaran_backend/dashboard',$variabel);
   }
 
   function pengaturan()
   {
     $variabel['tb_pengaturan_pendaftaran'] = $this->pengaturan_model->get_tb_pengaturan();
-    $this->layout_pendaftaran->render('pendaftaran_backend/pengaturan',$variabel);
+    $this->layout_pendaftaran->render('pendaftaran_backend/pengaturan',$variabel,'pendaftaran_backend/pengaturan_js');
   }
 
   function edit_pengaturan(){
