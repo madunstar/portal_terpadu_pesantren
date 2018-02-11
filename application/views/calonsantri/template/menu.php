@@ -13,62 +13,24 @@
               <nav class="nav-primary hidden-xs">
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
-                  <li  class="<?= (($menu == "datamaster") && ($submenu == 'index')) ? "active" : ""; ?>">
+                  <li  class="<?= (($menu == "pendaftaran") && ($submenu == 'dashboard')) ? "active" : ""; ?>">
                     <a href="<?php echo base_url() ?>admin/datamaster/" class="auto">
                       <i class="fa fa-dashboard">
                       </i>
                       <span class="font-bold">Dashboard</span>
                     </a>
                   </li>
-                  <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'guru') || ($submenu == 'staff')) ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "pendaftaran") && ($submenu == 'biodata'))  ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
                         <i class="i i-circle-sm text-active"></i>
                       </span>
 
-                      <i class="fa fa-bars">
+                      <i class="fa fa-user">
                       </i>
-                      <span class="font-bold">Data Master</span>
+                      <span class="font-bold">Biodata</span>
                     </a>
-                    <ul class="nav dk">
-                      <li class="<?= (($menu == "datamaster") && ($submenu == 'santri')) ? "active" : ""; ?>">
-                        <a href="<?php echo base_url() ?>admin/datamaster/santri" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Santri</span>
-                        </a>
-                      </li>
-                      <li class="<?= (($menu == "datamaster") &&  ($submenu == 'guru')) ? "active" : ""; ?>">
-                      <a href="<?php echo base_url() ?>admin/datamaster/guru" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Guru</span>
-                        </a>
-                      </li>
-                      <li class="<?= (($menu == "datamaster") &&  ($submenu == 'staff')) ? "active" : ""; ?>">
-                      <a href="<?php echo base_url() ?>admin/datamaster/staff" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Staff</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="layout-fluid.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data kelas</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="layout-fluid.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Mata Pelajaran</span>
-                        </a>
-                      </li>
-
-                    </ul>
                   </li>
                   <li >
                     <a href="#" class="auto">
@@ -76,35 +38,10 @@
                         <i class="i i-circle-sm-o text"></i>
                         <i class="i i-circle-sm text-active"></i>
                       </span>
-                      <i class="i i-file-check icon">
+                      <i class="fa fa-folder-open">
                       </i>
-                      <span class="font-bold">Presensi</span>
+                      <span class="font-bold">Berkas</span>
                     </a>
-                    <ul class="nav dk">
-                      <li >
-                        <a href="buttons.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Jadwal Pelajaran</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="icons.html" class="auto">
-                          <b class="badge bg-info pull-right">369</b>
-                          <i class="i i-dot"></i>
-
-                          <span>Presensi Siswa</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="grid.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Rekap Presensi Siswa</span>
-                        </a>
-                      </li>
-
-                    </ul>
                   </li>
                   <li >
                     <a href="#" class="auto">
@@ -112,41 +49,11 @@
                         <i class="i i-circle-sm-o text"></i>
                         <i class="i i-circle-sm text-active"></i>
                       </span>
-                      <i class="fa fa-briefcase">
+                      <i class="fa fa-money">
                       </i>
-                      <span class="font-bold">Perizinan</span>
+                      <span class="font-bold">Pembayaran</span>
                     </a>
-                    <ul class="nav dk">
-                      <li >
-                        <a href="profile.html" class="auto">
-                          <i class="i i-dot"></i>
 
-                          <span>Keluar Pondok</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="invoice.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Kembali ke Pondok</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="intro.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Denda</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="master.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Pembayaran Denda</span>
-                        </a>
-                      </li>
-
-                    </ul>
                   </li>
                   <li >
                     <a href="#" class="auto">
@@ -154,70 +61,13 @@
                         <i class="i i-circle-sm-o text"></i>
                         <i class="i i-circle-sm text-active"></i>
                       </span>
-                      <i class="fa fa-cogs">
+                      <i class="fa fa-info-circle">
                       </i>
-                      <span class="font-bold">Lain lain</span>
+                      <span class="font-bold">Informasi</span>
                     </a>
-                    <ul class="nav dk">
-                      <li >
-                        <a href="mail.html" class="auto">
 
-                          <i class="i i-dot"></i>
-
-                          <span>Data Admin</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="fullcalendar.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Pendidikan</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="project.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Pekerjaan</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="media.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Provinsi</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="media.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Kota /Kabupaten</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="media.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Kecamatan</span>
-                        </a>
-                      </li>
-                      <li >
-                        <a href="media.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Desa / Keluarahan</span>
-                        </a>
-                      </li>
-                    </ul>
                   </li>
-                  <li  class="">
-                    <a href="<?php echo base_url('admin/pendaftaran')?>" class="auto">
-                      <i class="fa fa-folder-open-o">
-                      </i>
-                      <span class="font-bold">Pendaftaran</span>
-                    </a>
-                  </li>
+
                 </ul>
 
 

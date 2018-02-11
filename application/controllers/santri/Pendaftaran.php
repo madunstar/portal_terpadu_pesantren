@@ -2,11 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Register extends CI_Controller {
+class Pendaftaran extends CI_Controller {
 function __construct()
 {
   parent::__construct();
-
+  $this->load->library('layout_pendaftaran');
 }
 /**
 * Index Page for this controller.
@@ -23,11 +23,24 @@ function __construct()
 * map to /index.php/welcome/<method_name>
 * @see https://codeigniter.com/user_guide/general/urls.html
 */
-public function index()
+function index()
 {
+    $this->layout_pendaftaran->renderregister('calonsantri/register');
 
-  $data['_view'] = 'pendaftaran_v/register_v';
-  $this->load->view('layouts/content_pendaftaran_register',$data);
 }
+
+function dashboard()
+{
+    $this->layout_pendaftaran->renderfront('calonsantri/register');
+
+}
+
+function biodata()
+{
+    $this->layout_pendaftaran->renderfront('calonsantri/v_biodata');
+
+}
+
+
 
 }
