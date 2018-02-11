@@ -39,7 +39,7 @@
       &nbsp
       <a href="<?php echo base_url() ?>admin/datamaster/kota_kabedit?id_kota_kab=<?php echo $data['id_kota_kab']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
       &nbsp
-      <a href="<?php echo base_url('admin/datamaster/kota_kab') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Kota dan Kabupaten</a>
+      <a href="<?php echo base_url('admin/datamaster/kota_kab') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Provinsi</a>
       </footer>
       </form>
 

@@ -12,6 +12,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_staff');
         $this->load->model('back-end/datamaster/m_provinsi');
         $this->load->model('back-end/datamaster/m_kota_kab');
+        $this->load->model('back-end/datamaster/m_kecamatan');
         $this->load->library('layout');
     }
 
@@ -840,20 +841,16 @@ function kota_kabtambah()
 
             $array=array(
                 'id_provinsi'=> $this->input->post('id_provinsi'),
-                'nama_provinsi'=> $this->input->post('nama_provinsi'),
+                'nama_kota_kab'=> $this->input->post('nama_kota_kab'),
                 );
-        if ($this->m_provinsi->cekdata($this->input->post('id_provinsi'))==0) {
-            $exec = $this->m_provinsi->tambahdata($array);
-            if ($exec) redirect(base_url("admin/datamaster/provinsitambah?msg=1"));
-            else redirect(base_url("admin/datamaster/provinsitambah?msg=0"));
-        } else {
-            $variabel['id_provinsi'] =$this->input->post('id_provinsi');
-            $this->layout->render('back-end/datamaster/provinsi/v_provinsi_tambah',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
-        }
+            $exec = $this->m_kota_kab->tambahdata($array);
+            if ($exec) redirect(base_url("admin/datamaster/kota_kabtambah?msg=1"));
+            else redirect(base_url("admin/datamaster/kota_kabtambah?msg=0"));
 
     } else {
-        $variabel ='';
-        $this->layout->render('back-end/datamaster/provinsi/v_provinsi_tambah',$variabel,'back-end/datamaster/provinsi/v_provinsi_js');
+
+        $variabel['data'] =   $this->m_kota_kab->dataprovinsi();
+        $this->layout->render('back-end/datamaster/kota_kab/v_kota_kab_tambah',$variabel,'back-end/datamaster/kota_kab/v_kota_kab_js');
     }
 }
 
@@ -876,6 +873,7 @@ function kota_kabedit()
         $exec = $this->m_kota_kab->lihatdatasatu($id_kota_kab);
         if ($exec->num_rows()>0){
             $variabel['data'] = $exec ->row_array();
+            $variabel['dataprovinsi'] = $this->m_kota_kab->dataprovinsi();
             $this->layout->render('back-end/datamaster/kota_kab/v_kota_kab_edit',$variabel,'back-end/datamaster/kota_kab/v_kota_kab_js');
         } else {
             redirect(base_url("admin/datamaster/kota_kab"));
@@ -891,4 +889,70 @@ function kota_kabhapus()
    redirect(base_url()."admin/datamaster/kota_kab?msg=1");
 }
 // End CRUD Kota dan Kabupaten
+
+// CRUD kecamatan
+function kecamatan()
+{
+    $variabel['data'] = $this->m_kecamatan->lihatdata();
+    $this->layout->render('back-end/datamaster/kecamatan/v_kecamatan',$variabel,'back-end/datamaster/kecamatan/v_kecamatan_js');
+}
+
+
+
+function kecamatantambah()
+{
+    if ($this->input->post()){
+
+            $array=array(
+                'id_provinsi'=> $this->input->post('id_provinsi'),
+                'nama_kota_kab'=> $this->input->post('nama_kota_kab'),
+                );
+            $exec = $this->m_kota_kab->tambahdata($array);
+            if ($exec) redirect(base_url("admin/datamaster/kota_kabtambah?msg=1"));
+            else redirect(base_url("admin/datamaster/kota_kabtambah?msg=0"));
+
+    } else {
+
+        $variabel['data'] =   $this->m_kota_kab->dataprovinsi();
+        $this->layout->render('back-end/datamaster/kecamatan/v_kecamatan_tambah',$variabel,'back-end/datamaster/kecamatan/v_kecamatan_js');
+    }
+}
+
+function kecamatanedit()
+{
+    if ($this->input->post()) {
+        $array=array(
+          'id_kota_kab'=> $this->input->post('id_kota_kab'),
+          'nama_kota_kab'=> $this->input->post('nama_kota_kab'),
+          'id_provinsi'=> $this->input->post('id_provinsi'),
+            );
+            $id_kota_kab = $this->input->post("id_kota_kab");
+            $exec = $this->m_kota_kab->editdata($id_kota_kab,$array);
+            if ($exec){
+              redirect(base_url("admin/datamaster/kota_kabedit?id_kota_kab=".$id_kota_kab."&msg=1"));
+            }
+
+  } else {
+        $id_kota_kab = $this->input->get("id_kota_kab");
+        $exec = $this->m_kota_kab->lihatdatasatu($id_kota_kab);
+        if ($exec->num_rows()>0){
+            $variabel['data'] = $exec ->row_array();
+            $variabel['dataprovinsi'] = $this->m_kota_kab->dataprovinsi();
+            $this->layout->render('back-end/datamaster/kota_kab/v_kota_kab_edit',$variabel,'back-end/datamaster/kota_kab/v_kota_kab_js');
+        } else {
+            redirect(base_url("admin/datamaster/kota_kab"));
+        }
+  }
+
+}
+
+function kecamatanhapus()
+{
+   $id_kota_kab = $this->input->get("id_kota_kab");
+   $exec = $this->m_kota_kab->hapus($id_kota_kab);
+   redirect(base_url()."admin/datamaster/kota_kab?msg=1");
+}
+
+
+// End CRUD Kecamatan
 }

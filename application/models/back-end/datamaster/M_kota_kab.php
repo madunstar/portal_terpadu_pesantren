@@ -27,6 +27,11 @@ class M_kota_kab extends CI_Model
       return $this->db->get();
     }
 
+    function dataprovinsi()
+    {
+        return $this->db->get('tb_provinsi');
+    }
+
     function cekdata($id_kota_kab)
     {
         $this->db->where("id_kota_kab",$id_kota_kab);
