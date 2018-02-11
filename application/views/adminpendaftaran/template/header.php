@@ -50,7 +50,6 @@
           John.Smith <b class="caret"></b>
         </a>
         <ul class="dropdown-menu animated fadeInRight">
-
           <li>
             <span class="arrow top"></span>
             <a href="docs.html">Ubah Kata Sandi </a>
@@ -66,5 +65,5 @@
   <section>
     <section class="hbox stretch">
   <?php
-   $this->load->view("back-end/template/menu");
+   $this->load->view("adminpendaftaran/template/menu");
    ?>

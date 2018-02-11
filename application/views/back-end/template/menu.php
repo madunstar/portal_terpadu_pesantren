@@ -209,17 +209,10 @@
                           <span>Data Desa / Keluarahan</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="<?php echo site_url('master_data_c/Tb_role_admin'); ?>" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Role Admin</span>
-                        </a>
-                      </li>
                     </ul>
                   </li>
                   <li  class="">
-                    <a href="<?php echo base_url('admin/Pendaftaran')?>" class="auto">
+                    <a href="<?php echo base_url('admin/pendaftaran')?>" class="auto">
                       <i class="fa fa-folder-open-o">
                       </i>
                       <span class="font-bold">Pendaftaran</span>
