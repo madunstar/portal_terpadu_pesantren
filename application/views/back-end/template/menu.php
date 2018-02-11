@@ -148,7 +148,8 @@
 
                     </ul>
                   </li>
-                  <li >
+
+									<li class="<?= (($menu == "datamaster") && ($submenu == 'provinsi')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -181,13 +182,14 @@
                           <span>Data Pekerjaan</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="media.html" class="auto">
-                          <i class="i i-dot"></i>
 
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'provinsi')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/provinsi" class="auto">
+                          <i class="i i-dot"></i>
                           <span>Data Provinsi</span>
                         </a>
                       </li>
+
                       <li >
                         <a href="media.html" class="auto">
                           <i class="i i-dot"></i>
