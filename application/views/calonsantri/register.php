@@ -29,7 +29,7 @@
             <div class="list-group">
 
               <div class="list-group-item">
-                <input name="email" data-required="true" type="email" placeholder="Email" class="form-control no-border">
+                <input name="email" data-required="true" type="email" placeholder="Email" value="<?php echo $id_pendaftar ?>" class="form-control no-border">
               </div>
               <div class="list-group-item">
                <input name="sandi" data-required="true" type="password" placeholder="Kata Sandi" class="form-control no-border" id="pwd">

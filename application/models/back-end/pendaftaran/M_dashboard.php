@@ -21,6 +21,7 @@ class M_dashboard extends CI_Model {
              ->row_array();
 
   }
+
   function get_count_status_menunggu() {
     return $this->db->select('(select count(*) from tb_akun_pendaftar where status_biodata = "menunggu verifikasi") as total',FALSE)
              ->get()

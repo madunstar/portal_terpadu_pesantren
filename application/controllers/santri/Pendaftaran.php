@@ -6,6 +6,8 @@ class Pendaftaran extends CI_Controller {
 function __construct()
 {
   parent::__construct();
+
+  $this->load->model('back-end/pendaftaran/m_santri');
   $this->load->library('layout_pendaftaran');
 }
 /**
@@ -25,8 +27,11 @@ function __construct()
 */
 function index()
 {
-    $this->layout_pendaftaran->renderregister('calonsantri/register');
-
+  $today = date('Ymd').'0000';
+  $cur_row = $this->m_santri->get_count_akun();
+  $next =  $cur_row + 1;
+  $id['id_pendaftar'] = $today + $next;
+    $this->layout_pendaftaran->renderregister('calonsantri/register',$id);
 }
 
 function dashboard()
@@ -39,6 +44,13 @@ function biodata()
 {
     $this->layout_pendaftaran->renderfront('calonsantri/v_biodata');
 
+}
+
+function addakun()
+{
+  $today = date(Ymd);
+  $cur_row = 1000 + $this->m_santri->get_count_akun();
+  $id = $today + $cur_row + 1;
 }
 
 
