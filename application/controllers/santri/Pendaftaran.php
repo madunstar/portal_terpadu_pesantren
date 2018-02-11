@@ -27,8 +27,8 @@ function __construct()
 */
 function index()
 {
-    $getdata['tahun_ajaran'] = $this->m_santri->get_tahun_ajaran();
-    $this->layout_pendaftaran->renderregister('calonsantri/register',$getdata);
+
+    $this->layout_pendaftaran->renderregister('calonsantri/register');
 }
 
 function dashboard()
@@ -45,6 +45,8 @@ function biodata()
 
 function addakun()
 {
+  $tahun_ajaran = $this->m_santri->get_tahun_ajaran();
+  $tgl_daftar = date('Y-m-d');
   $today = date('Ymd').'0000';
   $cur_row = $this->m_santri->get_count_biodata();
   if($cur_row > 0){
@@ -60,14 +62,14 @@ function addakun()
       $array=array(
         'email_pendaftar'=> $this->input->post('email'),
         'kata_sandi'=> $this->input->post('sandi'),
-        'status_pendaftaran'=> $this->input->post('status_pendaftaran'),
-        'status_biodata'=> $this->input->post('status_pendaftaran'),
-        'status_berkas'=> $this->input->post('status_pendaftaran'),
-        'status_pembayaran'=> $this->input->post('status_pendaftaran'),
+        'status_pendaftaran'=> ('belum lengkap'),
+        'status_biodata'=> ('belum lengkap'),
+        'status_berkas'=> ('belum lengkap'),
+        'status_pembayaran'=> ('belum lengkap'),
         'jenis_pendaftaran'=> $this->input->post('tingkat'),
-        'tanggal_daftar'=> $this->input->post('tanggal_daftar'),
-        'status_akun'=> $this->input->post('status_akun'),
-        'tahun_ajaran'=> $this->input->post('tahun_ajaran')
+        'tanggal_daftar'=> $tgl_daftar,
+        'status_akun'=>('tidak aktif'),
+        'tahun_ajaran'=> $tahun_ajaran
       );
       if ($this->m_santri->cekdata($this->input->post('email'))==0) {
         $exec = $this->m_santri->tambahakun($array);

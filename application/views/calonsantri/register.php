@@ -45,13 +45,9 @@
              </select>
            </div>
            </div>
-           <input type="hidden" name="status_akun" value="tidak aktif">
-           <input type="hidden" name="tahun_ajaran" value="<?php echo $tahun_ajaran; ?>">
-           <input type="hidden" name="status_pendaftaran" value="tidak lengkap">
-           <input type="hidden" name="tanggal_daftar" value="<?php echo date('Y-m-d'); ?>">
           <button type="submit" class="btn btn-success btn-block ">Daftar</button>
         </form>
-        <small>Perlu Bantuan <a class="text-primary" href="#"> <strong>Hubungi Kami</strong></a></small>
+        <small>Sudah Punya Akun?<a class="text-primary" href="#"> <strong>Halaman Login</strong></a></small>
         <div class="line line-dashed"></div>
         <footer id="footer">
         <p class="text-center text-muted"><small>&copy;2018</small></p>
