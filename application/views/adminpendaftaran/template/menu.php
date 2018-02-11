@@ -10,8 +10,8 @@
 				<nav class="nav-primary hidden-xs">
 					<div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
 					<ul class="nav nav-main" data-ride="collapse">
-						<li  class="">
-							<a href="<?php echo base_url('admin/Pendaftaran')?>" class="auto">
+						<li  class="<?= (($menu == "pendaftaran") && ($submenu == 'index')) ? "active" : ""; ?>">
+							<a href="<?php echo base_url('admin/pendaftaran')?>" class="auto">
 								<i class="fa fa-dashboard">
 								</i>
 								<span class="font-bold">Dashboard</span>
@@ -93,7 +93,7 @@
 								</li>
 								<li >
 									<a href="icons.html" class="auto">
-										<b class="badge bg-info pull-right">369</b>
+										
 										<i class="i i-dot"></i>
 
 										<span>Peserta Tes</span>
@@ -101,7 +101,7 @@
 								</li>
 								<li >
 									<a href="icons.html" class="auto">
-										<b class="badge bg-info pull-right">369</b>
+
 										<i class="i i-dot"></i>
 
 										<span>Atur Tes</span>
@@ -109,7 +109,7 @@
 								</li>
 								<li >
 									<a href="icons.html" class="auto">
-										<b class="badge bg-info pull-right">369</b>
+
 										<i class="i i-dot"></i>
 
 										<span>Atur Hasil Tes</span>
@@ -117,8 +117,8 @@
 								</li>
 							</ul>
 						</li>
-						<li  class="">
-							<a href="#" class="auto">
+						<li  class="<?= (($menu == "pendaftaran") && ($submenu == 'pengaturan')) ? "active" : ""; ?>">
+							<a href="<?php echo base_url() ?>admin/pendaftaran/pengaturan" class="auto">
 								<i class="fa fa-cog">
 								</i>
 								<span class="font-bold">Pengaturan</span>

@@ -17,7 +17,7 @@
               <b>Pengaturan dasar</b>
             </header>
             <?php $att_form = array('class'=>'form-horizontal','data-validate'=>'parsley','id'=>'pengaturan');
-            echo form_open('pendaftaran_adm/pengaturan/edit',$att_form); ?>
+            echo form_open('admin/Pendaftaran/edit_pengaturan',$att_form); ?>
 
             <div class="panel-body">
               <div class="form-group">
@@ -65,8 +65,53 @@
                     <b>Pengaturan Akun Pendaftar</b>
                   </header>
                   <div class="panel-body">
-                    <button type="button" class="btn btn-danger" name="button">Reset Password Akun Pendaftar</button>
+                    <section class="panel panel-default pos-rlt clearfix">
 
+                    <ul class="nav">
+                      <li>
+                        <a href="#" class="panel-toggle"><button type="button" class="btn btn-danger" name="button">Reset Password Akun Pendaftar</button></a>
+                      </li>
+                    </ul>
+                  <div class="panel-body clearfix collapse animated fadeInRight">
+                    <div class="dropdown m-r">
+                      <div class="table-responsive">
+                        <table class="table table-striped m-b-none" id="datatable">
+                          <thead>
+                            <tr>
+                              <th>Aksi</th>
+                              <th>Nama</th>
+                              <th>Email</th>
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <button class='btn btn-warning btn-xs' data-toggle='modal' data-target=''><i class='fa fa-edit'></i></button>
+                              <button class='btn btn-danger btn-xs' data-toggle='modal' data-target=''><i class='fa fa-trash-o'></i></button>
+                            </td>
+                              <td>b</td>
+                              <td>mmm@mmmm</td>
+
+                            </tr>
+                            <tr>
+                              <td>
+                                <button class='btn btn-warning btn-xs' data-toggle='modal' data-target=''><i class='fa fa-edit'></i></button>
+                              <button class='btn btn-danger btn-xs' data-toggle='modal' data-target=''><i class='fa fa-trash-o'></i></button>
+                              </td>
+                              <td>b</td>
+                              <td>bbb@aaaa</td>
+
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+                    </div>
+
+                  </div>
+                </section>
                   </div>
 
 
@@ -81,37 +126,3 @@
     </section>
   </section>
 </section>
-</section>
-
-</section>
-</section>
-
-
-
-<script src="<?php echo base_url('assets/js/jquery.min.js');?>"></script>
-<!-- Bootstrap -->
-<script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
-<!-- App -->
-<script src="<?php echo base_url('assets/js/app.js');?>"></script>
-<script src="<?php echo base_url('assets/js/slimscroll/jquery.slimscroll.min.js');?>"></script>
-<script src="<?php echo base_url('assets/js/charts/easypiechart/jquery.easy-pie-chart.js');?>"></script>
-<script src="<?php echo base_url('assets/js/charts/sparkline/jquery.sparkline.min.js');?>"></script>
-<script src="<?php echo base_url('assets/js/charts/flot/jquery.flot.min.js');?>"></script>
-<script src="<?php echo base_url('assets/js/charts/flot/jquery.flot.tooltip.min.js');?>"></script>
-<script src="<?php echo base_url('assets/js/charts/flot/jquery.flot.spline.js');?>"></script>
-<script src="<?php echo base_url('assets/js/charts/flot/jquery.flot.pie.min.js');?>"></script>
-<script src="<?php echo base_url('assets/js/charts/flot/jquery.flot.resize.js');?>"></script>
-<script src="<?php echo base_url('assets/js/charts/flot/jquery.flot.grow.js');?>"></script>
-<script src="<?php echo base_url('assets/js/charts/flot/demo.js');?>"></script>
-
-<script src="<?php echo base_url('assets/js/calendar/bootstrap_calendar.js');?>"></script>
-<script src="<?php echo base_url('assets/js/calendar/demo.js');?>"></script>
-
-<script src="<?php echo base_url('assets/js/datatables/jquery.dataTables.js');?>"></script>
-<script src="<?php echo base_url('assets/js/parsley/parsley.min.js');?>"></script>
-<script src="<?php echo base_url('assets/js/parsley/parsley.extend.js');?>"></script>
-<script src="<?php echo base_url('assets/js/app.plugin.js');?>"></script>
-
-
-</body>
-</html>
