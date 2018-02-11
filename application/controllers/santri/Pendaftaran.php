@@ -27,11 +27,8 @@ function __construct()
 */
 function index()
 {
-  $today = date('Ymd').'0000';
-  $cur_row = $this->m_santri->get_count_akun();
-  $next =  $cur_row + 1;
-  $id['id_pendaftar'] = $today + $next;
-    $this->layout_pendaftaran->renderregister('calonsantri/register',$id);
+
+    $this->layout_pendaftaran->renderregister('calonsantri/register');
 }
 
 function dashboard()
@@ -48,9 +45,53 @@ function biodata()
 
 function addakun()
 {
-  $today = date(Ymd);
-  $cur_row = 1000 + $this->m_santri->get_count_akun();
-  $id = $today + $cur_row + 1;
+  $tahun_ajaran = $this->m_santri->get_tahun_ajaran();
+  $tgl_daftar = date('Y-m-d');
+  $today = date('Ymd').'0000';
+  $cur_row = $this->m_santri->get_count_biodata();
+  if($cur_row > 0){
+    $last_bio = $this->m_santri->get_last_biodata();
+    $next =  $last_bio + 1;
+
+    $id_pendaftar = $today + $next;
+  } else {
+
+    $id_pendaftar = $today + 1;
+  }
+    if ($this->input->post()){
+      $array=array(
+        'email_pendaftar'=> $this->input->post('email'),
+        'kata_sandi'=> $this->input->post('sandi'),
+        'status_pendaftaran'=> ('belum lengkap'),
+        'status_biodata'=> ('belum lengkap'),
+        'status_berkas'=> ('belum lengkap'),
+        'status_pembayaran'=> ('belum lengkap'),
+        'jenis_pendaftaran'=> $this->input->post('tingkat'),
+        'tanggal_daftar'=> $tgl_daftar,
+        'status_akun'=>('tidak aktif'),
+        'tahun_ajaran'=> $tahun_ajaran
+      );
+      if ($this->m_santri->cekdata($this->input->post('email'))==0) {
+        $exec = $this->m_santri->tambahakun($array);
+        if ($exec) {
+          $email = $this->input->post('email');
+          $array_bio = array(
+            'id_biodata' => $id_pendaftar,
+            'email_pendaftar' => $email
+          );
+          $this->m_santri->tambahbio($array_bio);
+          redirect(base_url("santri/pendaftaran/index?msg=1"));
+
+        }
+        else {
+          redirect(base_url("santri/pendaftaran/index?msg=0"));
+        }
+
+      } else {
+        redirect(base_url("santri/pendaftaran/index?msg=0"));
+      }
+    } else
+      redirect(base_url("santri/pendaftaran/index"));
 }
 
 

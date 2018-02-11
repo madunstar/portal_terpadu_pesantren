@@ -10,10 +10,40 @@ class M_santri extends CI_Model
         parent::__construct();
     }
 
-    function get_count_akun() {
-      $query = $this->db->query('SELECT * FROM tb_akun_pendaftar');
+    function get_count_biodata() {
+      $query = $this->db->query('SELECT * FROM tb_biodata_pendaftar');
       return $query->num_rows();
 
     }
+
+    function get_last_biodata(){
+      $query = $this->db->query('select right(id_biodata,4) as id from tb_biodata_pendaftar order by id_biodata desc limit 1');
+      $data  = $query->row_array();
+      $value = $data['id'];
+      return $value;
+    }
+
+    function tambahakun($array){
+      return $this->db->insert('tb_akun_pendaftar',$array);
+    }
+
+    function cekdata($email)
+    {
+        $this->db->where("email_pendaftar",$email);
+        return $this->db->get('tb_akun_pendaftar')->num_rows();
+    }
+
+    function get_tahun_ajaran(){
+      $query =$this->db->query('select tahun_ajaran from tb_pengaturan_pendaftaran');
+      $data  = $query->row_array();
+      $value = $data['tahun_ajaran'];
+      return $value;
+    }
+
+    function tambahbio($array_bio){
+      $this->db->insert('tb_biodata_pendaftar',$array_bio);
+    }
+
+
 }
 ?>
