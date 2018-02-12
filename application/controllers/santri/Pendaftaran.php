@@ -31,9 +31,15 @@ function index()
     $this->layout_pendaftaran->renderregister('calonsantri/register');
 }
 
+function login()
+{
+    $this->layout_pendaftaran->renderregister('calonsantri/login');
+
+}
+
 function dashboard()
 {
-    $this->layout_pendaftaran->renderfront('calonsantri/register');
+    $this->layout_pendaftaran->renderfront('calonsantri/dashboard');
 
 }
 
