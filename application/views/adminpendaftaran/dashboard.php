@@ -178,7 +178,7 @@
                 </div>
                 <div class="col-xs-6">
                   <div class="padder-v text-right">
-                    <button class="btn btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button>
+                    <button class="btn btn-info btn-block">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button>
                   </div>
                 </div>
               </div>
