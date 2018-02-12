@@ -113,7 +113,7 @@
                 <small class="text-muted">Tidak Lengkap</small>
               </div>
               <div class="col-xs-6">
-                <div class="h3 font-bold"><?php echo $total_tidak_lengkap['total']; ?></div>
+                <div class="h2 font-bold"><?php echo $total_tidak_lengkap['total']; ?></div>
 
               </div>
             </div>
