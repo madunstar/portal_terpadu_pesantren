@@ -149,7 +149,11 @@
                     </ul>
                   </li>
 
+<<<<<<< HEAD
 									<li class="<?= (($menu == "datamaster") && ($submenu == 'provinsi') || ($submenu == 'provinsiedit') || ($submenu == 'provinsitambah') ||($submenu == 'kota_kab') || ($submenu == 'kota_kabtambah') || ($submenu == 'kota_kabedit') || ($submenu == 'kel_desa'))? "active" : ""; ?>">
+=======
+									<li class="<?= (($menu == "datamaster") && ($submenu == 'provinsi')|| ($submenu == 'kota_kab') || ($submenu == 'kecamatan') || ($submenu == 'pendidikan') || ($submenu == 'pekerjaan') || ($submenu == 'alat_transportasi')) ? "active" : ""; ?>">
+>>>>>>> menambah-ci
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
