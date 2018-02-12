@@ -42,7 +42,11 @@
 
                       <label class="col-sm-2 control-label" for="input-id-1">Tahun Ajaran</label>
                       <div class="col-sm-10">
-                        <input data-required="true" type="text" class="form-control parsley-validated" name="tahun_ajaran" value="<?php echo $tb_pengaturan_pendaftaran['tahun_ajaran']?>">
+                        <select class="form-control" name="tahun_ajaran">
+                          <?php foreach ($datatahun->result_array() as $tahun) {?>
+                            <option value= "<?php echo $tahun['id_tahun']?>" <?php if ($tahun['id_tahun']==$tb_pengaturan_pendaftaran['tahun_ajaran'])  echo "selected" ?>> <?php echo $tahun['tahun_ajaran']?> </option>
+                        <?php  } ?>
+                      </select>
                       </div>
                     </div>
                       <div class="line line-dashed b-b line-lg pull-in"></div>

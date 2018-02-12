@@ -22,5 +22,10 @@ class M_pengaturan extends CI_Model
         return $this->db->update('tb_pengaturan_pendaftaran',$params);
     }
 
+    function datatahun()
+    {
+      return $this->db->get('tb_tahun_ajaran');
+    }
+
 }
 ?>

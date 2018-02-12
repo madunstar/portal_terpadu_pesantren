@@ -16,6 +16,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_alat_transportasi');
         $this->load->model('back-end/datamaster/m_kota_kab');
         $this->load->model('back-end/datamaster/m_kecamatan');
+        $this->load->model('back-end/datamaster/m_tahun_ajaran');
         $this->load->library('layout');
     }
 
@@ -756,6 +757,78 @@ class Datamaster extends CI_Controller{
 
     // End CRUD Staff
 
+    // CRUD tahun ajaran
+    function tahunajar()
+    {
+        $variabel['data'] = $this->m_tahun_ajaran->lihatdata();
+        $this->layout->render('back-end/datamaster/tahunajar/v_tahunajar',$variabel,'back-end/datamaster/tahunajar/v_tahunajar_js');
+    }
+
+
+
+    function tahunajartambah()
+    {
+        if ($this->input->post()){
+
+                $array=array(
+
+                    'tahun_ajaran'=> $this->input->post('tahun_ajaran'),
+                    );
+                $exec = $this->m_tahun_ajaran->tambahdata($array);
+                if ($exec) redirect(base_url("admin/datamaster/tahunajartambah?msg=1"));
+                else redirect(base_url("admin/datamaster/tahunajartambah?msg=0"));
+            }
+
+         else {
+            $variabel ='';
+            $this->layout->render('back-end/datamaster/tahunajar/v_tahunajar_tambah',$variabel,'back-end/datamaster/tahunajar/v_tahunajar_js');
+        }
+    }
+
+    function tahunajaredit()
+    {
+        if ($this->input->post()) {
+            $array=array(
+              'id_tahun'=>$this->input->post('id_tahun'),
+              'tahun_ajaran'=> $this->input->post('tahun_ajaran'),
+                );
+            $id_tahunlama = $this->input->post("id_tahunlama");
+            $id_tahun = $this->input->post("id_tahun");
+            if (($this->m_tahun_ajaran->cekdata($id_tahun)>0) && ($id_tahunlama!=$id_tahun)) {
+                $variabel['id_tahun'] =$this->input->post('id_tahun');
+                $variabel['id_tahunlama'] =$this->input->post('id_tahunlama');
+                $variabel['data'] = $array;
+                $this->layout->render('back-end/datamaster/tahunajar/v_tahunajar_edit',$variabel,'back-end/datamaster/tahunajar/v_tahunajar_js');
+            } else {
+                $exec = $this->m_tahun_ajaran->editdata($id_tahunlama,$array);
+                if ($exec){
+                  redirect(base_url("admin/datamaster/tahunajaredit?id_tahun=".$id_tahun."&msg=1"));
+                }
+            }
+      } else {
+            $id_tahun = $this->input->get("id_tahun");
+            $exec = $this->m_tahun_ajaran->lihatdatasatu($id_tahun);
+            if ($exec->num_rows()>0){
+                $variabel['data'] = $exec ->row_array();
+                $this->layout->render('back-end/datamaster/tahunajar/v_tahunajar_edit',$variabel,'back-end/datamaster/tahunajar/v_tahunajar_js');
+            } else {
+                redirect(base_url("admin/datamaster/tahunajar"));
+            }
+      }
+
+    }
+
+    function tahunajarhapus()
+    {
+       $id_tahun = $this->input->get("id_tahun");
+       $exec = $this->m_tahun_ajaran->hapus($id_tahun);
+       redirect(base_url()."admin/datamaster/tahunajar?msg=1");
+    }
+
+    // End CRUD tahunajar
+
+
+
    // CRUD provinsi
    function provinsi()
    {
@@ -829,7 +902,7 @@ class Datamaster extends CI_Controller{
    }
 
    // End CRUD Provinsi
-  
+
 
 // END Provinsi
 // CRUD Kota dan Kabupaten
