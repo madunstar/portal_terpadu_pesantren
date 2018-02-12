@@ -31,9 +31,15 @@ function index()
     $this->layout_pendaftaran->renderregister('calonsantri/register');
 }
 
+function login()
+{
+    $this->layout_pendaftaran->renderregister('calonsantri/login');
+
+}
+
 function dashboard()
 {
-    $this->layout_pendaftaran->renderfront('calonsantri/register');
+    $this->layout_pendaftaran->renderfront('calonsantri/dashboard');
 
 }
 
@@ -62,10 +68,10 @@ function addakun()
       $array=array(
         'email_pendaftar'=> $this->input->post('email'),
         'kata_sandi'=> $this->input->post('sandi'),
-        'status_pendaftaran'=> ('belum lengkap'),
-        'status_biodata'=> ('belum lengkap'),
-        'status_berkas'=> ('belum lengkap'),
-        'status_pembayaran'=> ('belum lengkap'),
+        'status_pendaftaran'=> ('tidak lengkap'),
+        'status_biodata'=> ('tidak lengkap'),
+        'status_berkas'=> ('tidak lengkap'),
+        'status_pembayaran'=> ('tidak lengkap'),
         'jenis_pendaftaran'=> $this->input->post('tingkat'),
         'tanggal_daftar'=> $tgl_daftar,
         'status_akun'=>('tidak aktif'),

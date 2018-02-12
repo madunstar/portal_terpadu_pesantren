@@ -14,7 +14,7 @@
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
                   <li  class="<?= (($menu == "pendaftaran") && ($submenu == 'dashboard')) ? "active" : ""; ?>">
-                    <a href="<?php echo base_url() ?>admin/datamaster/" class="auto">
+                    <a href="<?php echo base_url() ?>santri/pendaftaran/dashboard" class="auto">
                       <i class="fa fa-dashboard">
                       </i>
                       <span class="font-bold">Dashboard</span>
