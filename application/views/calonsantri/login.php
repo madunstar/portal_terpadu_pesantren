@@ -38,11 +38,11 @@
 
 
            </div>
-           <!-- kena ganti buttonnya yang asli dalam form-->
+           <!-- kena ganti buttonnya pakai yang ini, didalam form-->
           <!-- <button type="submit" class="btn btn-success btn-lg btn-block ">Masuk</button> -->
         </form>
-        <!-- button sementara -->
-        <a href="<?php echo base_url('santri/pendaftaran/dashboard') ?>"><button type="submit" class="btn btn-success btn-lg btn-block ">Masuk</button></a>
+        <!-- button sementara , diluar form-->
+        <a href="<?php echo base_url('santri/pendaftaran/dashboard') ?>"><button  class="btn btn-success btn-lg btn-block ">Masuk</button></a>
 
         <small>Belum Punya Akun?<a class="text-primary" href="<?php echo base_url('santri/pendaftaran/index') ?>"> <strong>Halaman Pendafraran</strong></a></small>
         <div class="line line-dashed"></div>
