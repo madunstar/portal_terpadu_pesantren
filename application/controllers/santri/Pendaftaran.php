@@ -37,7 +37,6 @@ function index()
     } else if ($aktif == 1) {
         $this->layout_pendaftaran->renderregister('calonsantri/register');
       }
-
 }
 
 function login()
