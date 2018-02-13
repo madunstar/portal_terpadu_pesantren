@@ -24,6 +24,7 @@ class Pendaftaran extends CI_Controller
 
   function pengaturan()
   {
+    $variabel['tb_akun_pendaftar'] = $this->M_pengaturan->get_akun_pendaftar();
     $variabel['datatahun'] = $this->M_pengaturan->datatahun();
     $variabel['tb_pengaturan_pendaftaran'] = $this->M_pengaturan->get_tb_pengaturan();
     $this->layout_pendaftaran->render('adminpendaftaran/pengaturan',$variabel,'adminpendaftaran/pengaturan_js');

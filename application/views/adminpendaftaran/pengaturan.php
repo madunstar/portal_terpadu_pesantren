@@ -85,28 +85,27 @@
                               <th>Aksi</th>
                               <th>Nama</th>
                               <th>Email</th>
-
+                              <th>Tahun Ajaran</th>
+                              <th>Status Pendaftaran</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>
-                                <button class='btn btn-warning btn-xs' data-toggle='modal' data-target=''><i class='fa fa-edit'></i></button>
-                              <button class='btn btn-danger btn-xs' data-toggle='modal' data-target=''><i class='fa fa-trash-o'></i></button>
-                            </td>
-                              <td>b</td>
-                              <td>mmm@mmmm</td>
-
-                            </tr>
-                            <tr>
-                              <td>
-                                <button class='btn btn-warning btn-xs' data-toggle='modal' data-target=''><i class='fa fa-edit'></i></button>
-                              <button class='btn btn-danger btn-xs' data-toggle='modal' data-target=''><i class='fa fa-trash-o'></i></button>
-                              </td>
-                              <td>b</td>
-                              <td>bbb@aaaa</td>
-
-                            </tr>
+                            <?php
+                              foreach ($tb_akun_pendaftar->result_array() as $row){
+                                echo "
+                                  <tr>
+                                    <td>
+                                    <a href='' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                                    <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+                                    </td>
+                                    <td>".$row['nama_lengkap']."</td>
+                                    <td>".$row['email_pendaftar']."</td>
+                                    <td>".$row['tahun_ajaran']."</td>
+                                    <td>".$row['status_pendaftaran']."</td>
+                                  </tr>
+                                ";
+                              }
+                            ?>
                           </tbody>
                         </table>
                       </div>
