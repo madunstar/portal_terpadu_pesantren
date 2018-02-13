@@ -30,21 +30,21 @@
       <div class="col-sm-4 col-sm-offset-4">
         <div class="text-center m-b-lg">
           <h1 class="h text-white animated fadeInDownBig">404</h1>
-          <h3>Untuk Saat Ini Pendaftaran Tidak Dapat Diakses</h3>
+          <h3 class="text-danger animated fadeInDown font-bold">Untuk Saat Ini Pendaftaran Tidak Dapat Diakses</h3>
         </div>
         <div class="list-group bg-info auto m-b-sm m-b-lg bg-warning text-white">
           <a href="#" class="list-group-item">
             <i class="fa fa-chevron-right icon-muted"></i>
-            <i class="fa fa-fw fa-home icon-muted"></i> Goto homepage
+            <i class="fa fa-fw fa-home icon-muted"></i> Ke Halaman Beranda
           </a>
           <a href="#" class="list-group-item bg-war">
             <i class="fa fa-chevron-right icon-muted"></i>
-            <i class="fa fa-fw fa-question icon-muted"></i> Send us a tip
+            <i class="fa fa-fw fa-question icon-muted"></i> Temukan Kami
           </a>
           <a href="#" class="list-group-item">
             <i class="fa fa-chevron-right icon-muted"></i>
             <span class="badge bg-dark">021-215-584</span>
-            <i class="fa fa-fw fa-phone icon-muted"></i> Call us
+            <i class="fa fa-fw fa-phone icon-muted"></i> Hubungi Kami
           </a>
         </div>
       </div>
