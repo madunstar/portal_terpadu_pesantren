@@ -23,26 +23,53 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama Provinsi</label>
               <div class="col-lg-8">
-                <select class="form-control"  name="id_provinsi"/>
-                <?php foreach ($data->result_array() as $provinsi) {?>
-                <option value= "<?php echo $provinsi['id_provinsi']?>"> <?php echo $provinsi['nama_provinsi']?> </option>
-                <?php }?>
+                <select class="form-control"  name="id_provinsi" id="id_provinsi" data-required="true"/>
+                <option value="">-PILIH PROVINSI-</option>
+                <?php foreach($data->result() as $row):?>
+                  <option value="<?php echo $row->id_provinsi;?>"><?php echo $row->nama_provinsi;?></option>
+                <?php endforeach;?>
               </select>
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-lg-4 control-label">Nama Kota dan Kabupaten</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control" name="id_kota_kab" data-required="true" value="<?php echo set_value('nama_kota_kab'); ?>" />
-              </div>
-            </div>
-          </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Nama Kota dan Kabupaten</label>
+                    <div class="col-lg-8">
+                        <select name="id_kota_kab" class="id_kota_kab form-control" data-required="true">
+                          <option value="">-PILIH-</option>
+                        </select>
+                    </div>
+                </div>
         </div>
       </div>
+      <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery-2.2.3.min.js'?>"></script>
+      <script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.js'?>"></script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+        $('#id_provinsi').change(function(){
+          var id=$(this).val();
+          $.ajax({
+            url : "<?php echo base_url();?>admin/datamaster/datakotakab",
+            method : "POST",
+            data : {id: id},
+            async : false,
+                dataType : 'json',
+            success: function(data){
+              var html = '';
+                    var i;
+                    for(i=0; i<data.length; i++){
+                        html += '<option value="'+data[i].id_kota_kab+'">'+data[i].nama_kota_kab+'</option>';
+                    }
+                    $('.id_kota_kab').html(html);
+
+            }
+          });
+        });
+      });
+      </script>
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
-        <a href="<?php echo base_url('admin/datamaster/kota_kab') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Kota dan Kabupaten</a>
+        <a href="<?php echo base_url('admin/datamaster/kecamatan') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Kecamatan</a>
       </footer>
       </form>
 
