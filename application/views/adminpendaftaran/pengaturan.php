@@ -95,14 +95,33 @@
                                 echo "
                                   <tr>
                                     <td>
-                                    <a href='' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-                                    <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>
+                                    <button class='btn btn-warning btn-xs' data-toggle='modal' data-target='#' title='Edit'><i class='fa fa-edit'></i></a>
+                                    <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#".$row['email_pendaftar']."'><i class='fa fa-trash-o'></i></button>
                                     </td>
                                     <td>".$row['nama_lengkap']."</td>
                                     <td>".$row['email_pendaftar']."</td>
                                     <td>".$row['tahun_ajaran']."</td>
                                     <td>".$row['status_pendaftaran']."</td>
                                   </tr>
+                                  <div class='modal' id='".$row['email_pendaftar']."' tabindex='-1' role='dialog'>
+                                    <div class='modal-dialog' role='document'>
+                                     <div class='modal-content'>
+                                       <div class='modal-header bg-danger'>
+                                         <h4 class='modal-title'>Konfirmasi Hapus Data</h4>
+                                       </div>
+                                       <div class='modal-body'>
+                                        <input value='".$row['email_pendaftar']."'></input>
+                                        <input value='".$row['kata_sandi']."'></input>
+                                         <b>Apakah yakin menghapus data?</b>
+                                       </div>
+                                       <div class='modal-footer'>
+                                         <a style='margin-left:5px' href=''>
+                                           <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
+                                           <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
+                                         </div>
+                                       </div>
+                                     </div>
+                                    </div>
                                 ";
                               }
                             ?>

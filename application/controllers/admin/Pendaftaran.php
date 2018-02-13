@@ -22,6 +22,7 @@ class Pendaftaran extends CI_Controller
       $this->layout_pendaftaran->render('adminpendaftaran/dashboard',$variabel);
   }
 
+//pengaturan pendaftaran
   function pengaturan()
   {
     $variabel['tb_akun_pendaftar'] = $this->M_pengaturan->get_akun_pendaftar();
@@ -31,7 +32,6 @@ class Pendaftaran extends CI_Controller
   }
 
   function edit_pengaturan(){
-
     $params = array(
       'pendaftaran_aktif' => $this->input->post('aktif'),
       'tahun_ajaran' => $this->input->post('tahun_ajaran'),
@@ -45,4 +45,6 @@ class Pendaftaran extends CI_Controller
     ");
     redirect('admin/pendaftaran/pengaturan');
   }
+
+//edit akun pendaftar
 }
