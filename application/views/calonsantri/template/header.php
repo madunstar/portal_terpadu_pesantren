@@ -66,5 +66,5 @@
   <section>
     <section class="hbox stretch">
   <?php
-   $this->load->view("back-end/template/menu");
+   $this->load->view("calonsantri/template/menu");
    ?>

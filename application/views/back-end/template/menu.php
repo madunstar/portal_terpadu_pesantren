@@ -13,14 +13,14 @@
               <nav class="nav-primary hidden-xs">
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
-                  <li  class="">
-                    <a href="index.html" class="auto">
+                  <li  class="<?= (($menu == "datamaster") && ($submenu == 'index')) ? "active" : ""; ?>">
+                    <a href="<?php echo base_url() ?>admin/datamaster/" class="auto">
                       <i class="fa fa-dashboard">
                       </i>
                       <span class="font-bold">Dashboard</span>
                     </a>
                   </li>
-                  <li class="<?php echo ($menu == "datamaster") ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'guru') || ($submenu == 'staff')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -32,7 +32,7 @@
                       <span class="font-bold">Data Master</span>
                     </a>
                     <ul class="nav dk">
-                      <li class="<?= (($menu == "datamaster") && ($submenu == 'index') || ($submenu == 'santri')) ? "active" : ""; ?>">
+                      <li class="<?= (($menu == "datamaster") && ($submenu == 'santri')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/santri" class="auto">
                           <i class="i i-dot"></i>
 
@@ -148,7 +148,7 @@
 
                     </ul>
                   </li>
-                  <li >
+									<li class="<?= (($menu == "datamaster") && ($submenu == 'provinsi')|| ($submenu == 'kota_kab') || ($submenu == 'kecamatan') || ($submenu == 'pendidikan') || ($submenu == 'pekerjaan') || ($submenu == 'alat_transportasi')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -181,45 +181,49 @@
                           <span>Data Pekerjaan</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="media.html" class="auto">
-                          <i class="i i-dot"></i>
 
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'provinsi') || ($submenu == 'provinsiedit') || ($submenu == 'provinsitambah'))  ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/provinsi" class="auto">
+                          <i class="i i-dot"></i>
                           <span>Data Provinsi</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="media.html" class="auto">
+
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'kota_kab') || ($submenu == 'kota_kabtambah') || ($submenu == 'kota_kabedit')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/kota_kab" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Kota /Kabupaten</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="media.html" class="auto">
+
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'kecamatan') || ($submenu == 'kecamatantambah') || ($submenu == 'kecamatanedit')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/kecamatan" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Kecamatan</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="media.html" class="auto">
+
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'kel_desa') || ($submenu == 'kel_desatambah') || ($submenu == 'kel_desaedit')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/kel_desa" class="auto">
                           <i class="i i-dot"></i>
+
 
                           <span>Data Desa / Keluarahan</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="<?php echo site_url('master_data_c/Tb_role_admin'); ?>" class="auto">
-                          <i class="i i-dot"></i>
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'tahunaja')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/tahunajar" class="auto">
+													<i class="i i-dot"></i>
 
-                          <span>Data Role Admin</span>
-                        </a>
-                      </li>
+													<span>Data Tahun Ajaran</span>
+												</a>
+											</li>
                     </ul>
                   </li>
                   <li  class="">
-                    <a href="index.html" class="auto">
+                    <a href="<?php echo base_url('admin/pendaftaran')?>" class="auto">
                       <i class="fa fa-folder-open-o">
                       </i>
                       <span class="font-bold">Pendaftaran</span>
