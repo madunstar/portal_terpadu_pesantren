@@ -31,14 +31,23 @@ function __construct()
 
 function index()
 {
+    $aktif = $this->m_akunsantri->get_pengaturan();
+    if ($aktif == 0) {
+      $this->load->view('pendaftarannotfound');
+    } else if ($aktif == 1) {
+        $this->layout_pendaftaran->renderregister('calonsantri/register');
+      }
 
-    $this->layout_pendaftaran->renderregister('calonsantri/register');
 }
 
 function login()
 {
+  $aktif = $this->m_akunsantri->get_pengaturan();
+  if ($aktif == 0) {
+    $this->load->view('pendaftarannotfound');
+  } else if ($aktif == 1) {
     $this->layout_pendaftaran->renderregister('calonsantri/login');
-
+  }
 }
 
 function dashboard()
