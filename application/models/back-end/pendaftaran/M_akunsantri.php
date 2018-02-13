@@ -40,6 +40,13 @@ class M_akunsantri extends CI_Model
       return $value;
     }
 
+    function get_pengaturan(){
+      $query =$this->db->query('select pendaftaran_aktif from tb_pengaturan_pendaftaran');
+      $data  = $query->row_array();
+      $value = $data['pendaftaran_aktif'];
+      return $value;
+    }
+
     function tambahbio($array_bio){
       $this->db->insert('tb_biodata_pendaftar',$array_bio);
     }
