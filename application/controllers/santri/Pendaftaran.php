@@ -7,7 +7,8 @@ function __construct()
 {
   parent::__construct();
 
-  $this->load->model('back-end/pendaftaran/m_santri');
+  $this->load->model('back-end/pendaftaran/m_akunsantri');
+  $this->load->model('back-end/pendaftaran/m_pengumuman');
   $this->load->library('layout_pendaftaran');
 }
 /**
@@ -25,6 +26,9 @@ function __construct()
 * map to /index.php/welcome/<method_name>
 * @see https://codeigniter.com/user_guide/general/urls.html
 */
+
+//fungtion halaman
+
 function index()
 {
 
@@ -48,15 +52,23 @@ function biodata()
     $this->layout_pendaftaran->renderfront('calonsantri/v_biodata');
 
 }
+function pengumuman()
+{
+  $variabel['data'] = $this->m_pengumuman->lihatpengumuman();
+  $this->layout_pendaftaran->renderfront('calonsantri/v_pengumuman',$variabel,'calonsantri/calonsantri_js');
+}
+// akhir function halaman
+
+//membuat akun santri//
 
 function addakun()
 {
-  $tahun_ajaran = $this->m_santri->get_tahun_ajaran();
+  $tahun_ajaran = $this->m_akunsantri->get_tahun_ajaran();
   $tgl_daftar = date('Y-m-d');
   $today = date('Ymd').'0000';
-  $cur_row = $this->m_santri->get_count_biodata();
+  $cur_row = $this->m_akunsantri->get_count_biodata();
   if($cur_row > 0){
-    $last_bio = $this->m_santri->get_last_biodata();
+    $last_bio = $this->m_akunsantri->get_last_biodata();
     $next =  $last_bio + 1;
 
     $id_pendaftar = $today + $next;
@@ -77,15 +89,15 @@ function addakun()
         'status_akun'=>('tidak aktif'),
         'tahun_ajaran'=> $tahun_ajaran
       );
-      if ($this->m_santri->cekdata($this->input->post('email'))==0) {
-        $exec = $this->m_santri->tambahakun($array);
+      if ($this->m_akunsantri->cekdata($this->input->post('email'))==0) {
+        $exec = $this->m_akunsantri->tambahakun($array);
         if ($exec) {
           $email = $this->input->post('email');
           $array_bio = array(
             'id_biodata' => $id_pendaftar,
             'email_pendaftar' => $email
           );
-          $this->m_santri->tambahbio($array_bio);
+          $this->m_akunsantri->tambahbio($array_bio);
           redirect(base_url("santri/pendaftaran/index?msg=1"));
 
         }
