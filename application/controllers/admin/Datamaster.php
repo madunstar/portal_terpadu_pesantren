@@ -16,6 +16,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_alat_transportasi');
         $this->load->model('back-end/datamaster/m_kota_kab');
         $this->load->model('back-end/datamaster/m_kecamatan');
+        $this->load->model('back-end/datamaster/m_kel_desa');
         $this->load->model('back-end/datamaster/m_tahun_ajaran');
         $this->load->library('layout');
     }
@@ -1041,6 +1042,80 @@ function kecamatanhapus()
    redirect(base_url()."admin/datamaster/kecamatan?msg=1");
 }
   // End CRUD Kecamatan
+
+  // CRUD kel_desa
+  function kel_desa()
+  {
+      $variabel['data'] = $this->m_kel_desa->lihatdata();
+      $this->layout->render('back-end/datamaster/kel_desa/v_kel_desa',$variabel,'back-end/datamaster/kel_desa/v_kel_desa_js');
+  }
+
+  function datakecamatan()
+  {
+    $id=$this->input->post('id');
+    $data=$this->m_kel_desa->datakecamatanajax($id);
+    echo json_encode($data);
+  }
+
+  function kel_desatambah()
+  {
+      if ($this->input->post()){
+
+              $array=array(
+
+                  'id_kecamatan'=> $this->input->post('id_kecamatan'),
+                  'nama_kel_desa'=> $this->input->post('nama_kel_desa'),
+                  );
+              $exec = $this->m_kel_desa->tambahdata($array);
+              if ($exec) redirect(base_url("admin/datamaster/kel_desatambah?msg=1"));
+              else redirect(base_url("admin/datamaster/kel_desatambah?msg=0"));
+
+      } else {
+          $variabel['data'] =   $this->m_kel_desa->dataprovinsi();
+          $this->layout->render('back-end/datamaster/kel_desa/v_kel_desa_tambah',$variabel,'back-end/datamaster/kel_desa/v_kel_desa_js');
+      }
+  }
+
+  function kel_desaedit()
+  {
+      if ($this->input->post()) {
+          $array=array(
+            'id_kecamatan'=> $this->input->post('id_kecamatan'),
+            'nama_kel_desa'=> $this->input->post('nama_kel_desa'),
+              );
+              $id_kel_desa = $this->input->post("id_kel_desa");
+              $id_provinsi = $this->input->post("id_provinsi");
+              $id_kota_kab = $this->input->post("id_kota_kab");
+              $exec = $this->m_kel_desa->editdata($id_kel_desa,$array);
+              if ($exec){
+                redirect(base_url("admin/datamaster/kel_desaedit?id_kel_desa=".$id_kel_desa."&id_provinsi=".$id_provinsi."&id_kota_kab=".$id_kota_kab."&msg=1"));
+              }
+
+    } else {
+        $id_kel_desa  = $this->input->get("id_kel_desa");
+        $id_provinsi = $this->input->get("id_provinsi");
+        $id_kota_kab = $this->input->get("id_kota_kab");
+          $exec = $this->m_kel_desa->lihatdatasatu($id_kel_desa);
+          if ($exec->num_rows()>0){
+              $variabel['data'] = $exec ->row_array();
+              $variabel['dataprovinsi'] = $this->m_kel_desa->dataprovinsi();
+              $variabel['datakotakab']  = $this->m_kel_desa->datakotakab($id_provinsi);
+              $variabel['datakecamatan'] = $this->m_kel_desa->datakecamatan($id_kota_kab);
+              $this->layout->render('back-end/datamaster/kel_desa/v_kel_desa_edit',$variabel,'back-end/datamaster/kel_desa/v_kel_desa_js');
+          } else {
+              redirect(base_url("admin/datamaster/kel_desa"));
+          }
+    }
+
+  }
+
+  function kel_desahapus()
+  {
+     $id_kel_desa = $this->input->get("id_kel_desa");
+     $exec = $this->m_kel_desa->hapus($id_kel_desa);
+     redirect(base_url()."admin/datamaster/kel_desa?msg=1");
+  }
+    // End CRUD Kecamatan
 
 
    // CRUD Pendidikan
