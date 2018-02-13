@@ -212,7 +212,7 @@ class Datamaster extends CI_Controller{
             $variabel['santri'] = $exec->row_array();
             if ($this->input->post()){
                 $config['upload_path'] = './assets/berkas/berkassantri';
-                $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
                 $this->load->library('upload', $config);
                 $this->upload->do_upload("file_berkas");
                 $upload = $this->upload->data();
@@ -266,7 +266,7 @@ class Datamaster extends CI_Controller{
                 );
 
             $config['upload_path'] = './assets/berkas/berkassantri';
-            $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+            $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
             $this->load->library('upload', $config);
             if ( $this->upload->do_upload("file_berkas"))
             {
@@ -436,7 +436,7 @@ class Datamaster extends CI_Controller{
             $variabel['guru'] = $exec->row_array();
             if ($this->input->post()){
                 $config['upload_path'] = './assets/berkas/berkasguru';
-                $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
                 $this->load->library('upload', $config);
                 $this->upload->do_upload("file_berkas");
                 $upload = $this->upload->data();
@@ -490,7 +490,7 @@ class Datamaster extends CI_Controller{
                 );
 
             $config['upload_path'] = './assets/berkas/berkasguru';
-            $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+            $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
             $this->load->library('upload', $config);
             if ( $this->upload->do_upload("file_berkas"))
             {
@@ -661,7 +661,7 @@ class Datamaster extends CI_Controller{
             $variabel['staff'] = $exec->row_array();
             if ($this->input->post()){
                 $config['upload_path'] = './assets/berkas/berkasstaff';
-                $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
                 $this->load->library('upload', $config);
                 $this->upload->do_upload("file_berkas");
                 $upload = $this->upload->data();
@@ -715,7 +715,7 @@ class Datamaster extends CI_Controller{
                 );
 
             $config['upload_path'] = './assets/berkas/berkasstaff';
-            $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+            $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
             $this->load->library('upload', $config);
             if ( $this->upload->do_upload("file_berkas"))
             {
