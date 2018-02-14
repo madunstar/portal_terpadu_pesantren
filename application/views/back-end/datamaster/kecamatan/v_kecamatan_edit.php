@@ -44,50 +44,6 @@
           </div>
         </div>
       </div>
-      <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery-2.2.3.min.js'?>"></script>
-      <script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.js'?>"></script>
-      <script type="text/javascript">
-      $(document).ready(function(){
-        $('#id_provinsi').change(function(){
-          var id=$(this).val();
-          $.ajax({
-            url : "<?php echo base_url();?>admin/datamaster/datakotakab",
-            method : "POST",
-            data : {id: id},
-            async : false,
-                dataType : 'json',
-            success: function(data){
-              var html = '';
-                    var i;
-                    for(i=0; i<data.length; i++){
-                        html += '<option value="'+data[i].id_kota_kab+'">'+data[i].nama_kota_kab+'</option>';
-                    }
-                    $('.id_kota_kab').html(html);
-
-            }
-          });
-        });
-        $('#id_provinsi').change(function(){
-          var id=$(this).val();
-          $.ajax({
-            url : "<?php echo base_url();?>admin/datamaster/datakotakab",
-            method : "POST",
-            data : {id: id},
-            async : false,
-                dataType : 'json',
-            success: function(data){
-              var html = '';
-                    var i;
-                    for(i=0; i<data.length; i++){
-                        html += '<option value="'+data[i].id_kota_kab+'">'+data[i].nama_kota_kab+'</option>';
-                    }
-                    $('.id_kota_kab').html(html);
-
-            }
-          });
-        });
-      });
-      </script>
       <footer class="panel-footer text-right bg-light lter">
       <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
       &nbsp
