@@ -7,13 +7,10 @@ function __construct()
 {
   parent::__construct();
 
-<<<<<<< HEAD
   $this->load->model('back-end/pendaftaran/m_santri');
   $this->load->model('back-end/pendaftaran/m_pembayaran');
-=======
   $this->load->model('back-end/pendaftaran/m_akunsantri');
   $this->load->model('back-end/pendaftaran/m_pengumuman');
->>>>>>> 6fdbbf6e7bfa2d0442c9c00562dd5871c762a979
   $this->load->library('layout_pendaftaran');
   
 }
