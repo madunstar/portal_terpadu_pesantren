@@ -67,7 +67,7 @@
                     var i;
                     for(i=0; i<data.length; i++){
                         html += '<option value="'+data[i].id_kota_kab+'">'+data[i].nama_kota_kab+'</option>';
-                    }
+                    } 
                     $('.id_kota_kab').html(html);
                     $('.id_kecamatan').html(html2);
 

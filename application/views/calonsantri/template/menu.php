@@ -21,22 +21,15 @@
                     </a>
                   </li>
                   <li class="<?= (($menu == "pendaftaran") && ($submenu == 'biodata'))  ? "active" : ""; ?>">
-                    <a href="#" class="auto">
-                      <span class="pull-right text-muted">
-                        <i class="i i-circle-sm-o text"></i>
-                        <i class="i i-circle-sm text-active"></i>
-                      </span>
-
+                    <a href="<?php echo base_url() ?>santri/pendaftaran/biodata" class="auto">
                       <i class="fa fa-user">
                       </i>
                       <span class="font-bold">Biodata</span>
                     </a>
                   </li>
                   <li >
-                    <a href="#" class="auto">
+                    <a href="<?php echo base_url() ?>santri/pendaftaran/berkas" class="auto">
                       <span class="pull-right text-muted">
-                        <i class="i i-circle-sm-o text"></i>
-                        <i class="i i-circle-sm text-active"></i>
                       </span>
                       <i class="fa fa-folder-open">
                       </i>
@@ -44,10 +37,8 @@
                     </a>
                   </li>
                   <li >
-                    <a href="#" class="auto">
+                    <a href="<?php echo base_url() ?>santri/pendaftaran/pembayaran" class="auto">
                       <span class="pull-right text-muted">
-                        <i class="i i-circle-sm-o text"></i>
-                        <i class="i i-circle-sm text-active"></i>
                       </span>
                       <i class="fa fa-money">
                       </i>
