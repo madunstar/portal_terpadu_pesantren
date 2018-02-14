@@ -71,6 +71,8 @@ function pengumuman()
 
 function addakun()
 {
+  $kata_sandi = $this->input->post('sandi');
+  $encrypt_sandi = $this->encrypt->encode($kata_sandi);
   $tahun_ajaran = $this->m_akunsantri->get_tahun_ajaran();
   $tgl_daftar = date('Y-m-d');
   $today = date('Ymd').'0000';
@@ -87,7 +89,7 @@ function addakun()
     if ($this->input->post()){
       $array=array(
         'email_pendaftar'=> $this->input->post('email'),
-        'kata_sandi'=> $this->input->post('sandi'),
+        'kata_sandi'=> $encrypt_sandi,
         'status_pendaftaran'=> ('tidak lengkap'),
         'status_biodata'=> ('tidak lengkap'),
         'status_berkas'=> ('tidak lengkap'),
