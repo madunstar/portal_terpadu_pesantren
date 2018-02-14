@@ -148,7 +148,10 @@ class M_santri extends CI_Model
       $this->db->where("email_pendaftar",$email);
       return $this->db->update('tb_biodata_pendaftar',$array);
     }
-
+    function editakun($email,$array){
+        $this->db->where("email_pendaftar",$email);
+        return $this->db->update('tb_akun_pendaftar',$array);
+      }
     // end gawian nikman nasir
 
 

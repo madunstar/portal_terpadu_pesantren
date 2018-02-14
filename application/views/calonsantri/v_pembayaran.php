@@ -10,6 +10,7 @@
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Mengupdate Bukti Pembayaran","Gagal Mengupdate Bukti Pembayaran") ?>
+					<?php pesanvar('2',"","","Lengkapi Bukti Pembayaran dengan data sebenarnya dan selengkap-lengkapnya") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/pembayaran"
 					method="post" enctype="multipart/form-data">
 

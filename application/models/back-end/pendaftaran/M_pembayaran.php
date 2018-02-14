@@ -22,7 +22,10 @@ class M_pembayaran extends CI_Model
         $this->db->where("email_pendaftar",$email);
         return $this->db->update('tb_bayar_pendaftar',$data);
     }
-   
+    function editakun($email,$array){
+        $this->db->where("email_pendaftar",$email);
+        return $this->db->update('tb_akun_pendaftar',$array);
+      }
 
 }
 ?>
