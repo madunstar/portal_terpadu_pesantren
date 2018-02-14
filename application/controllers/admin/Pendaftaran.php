@@ -47,4 +47,32 @@ class Pendaftaran extends CI_Controller
   }
 
 //edit akun pendaftar
+  function editsandi(){
+    $this->form_validation->set_rules('sandi', 'Sandi', 'required');
+    if ($this->form_validation->run()== FALSE)
+    {
+      $this->session->set_flashdata('response',"
+          <div class='alert alert-danger'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Oooppss!</strong> Kata Sandi Calon Santri Gagal Dirubah <span class='fa fa-check'></span>
+          </div>
+      ");
+      redirect('admin/pendaftaran/pengaturan');
+    } else {
+      $kata_sandi = $this->input->post('sandi');
+      $encrypt_sandi = $this->encrypt->encode($kata_sandi);
+    $email_akun = $this->input->get("email_pendaftar");
+    $params = array (
+        'kata_sandi' => $encrypt_sandi
+      );
+      $this->M_pengaturan->editsandi($email_akun,$params);
+      $this->session->set_flashdata('response',"
+          <div class='alert alert-success'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Selamat!</strong> Kata Sandi Calon Santri Berhasil Dirubah <span class='fa fa-check'></span>
+          </div>
+      ");
+      redirect('admin/pendaftaran/pengaturan');
+    }
+  }
 }

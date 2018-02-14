@@ -12,6 +12,7 @@
         <div class="col-sm-12">
 
           <?php echo $this->session->flashdata('response'); ?>
+          <?php echo validation_errors(); ?>
           <section class="panel">
             <header class="panel-heading bg-dark">
               <b>Pengaturan dasar</b>
@@ -76,7 +77,7 @@
                         <a href="#" class="panel-toggle"><button type="button" class="btn btn-danger" name="button">Reset Password Akun Pendaftar</button></a>
                       </li>
                     </ul>
-                  <div class="panel-body clearfix collapse animated fadeInRight">
+                  <div class="panel-body clearfix collapse">
                     <div class="dropdown m-r">
                       <div class="table-responsive">
                         <table class="table table-striped m-b-none" id="datatable">
@@ -95,33 +96,40 @@
                                 echo "
                                   <tr>
                                     <td>
-                                    <button class='btn btn-warning btn-xs' data-toggle='modal' data-target='#' title='Edit'><i class='fa fa-edit'></i></a>
-                                    <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#".$row['email_pendaftar']."'><i class='fa fa-trash-o'></i></button>
+                                    <button class='btn btn-warning btn-xs' data-toggle='modal' data-target='#".$row['id_biodata']."' title='Edit'><i class='fa fa-edit'></i></button>
                                     </td>
                                     <td>".$row['nama_lengkap']."</td>
                                     <td>".$row['email_pendaftar']."</td>
                                     <td>".$row['tahun_ajaran']."</td>
                                     <td>".$row['status_pendaftaran']."</td>
                                   </tr>
-                                  <div class='modal' id='".$row['email_pendaftar']."' tabindex='-1' role='dialog'>
-                                    <div class='modal-dialog' role='document'>
+
+                                  <div class='modal' id='".$row['id_biodata']."' tabindex='-1' data-validate='parsley'>
+                                  <form class='form-horizontal' role='form' data-validate='parsley' action='". base_url()."admin/pendaftaran/editsandi?email_pendaftar=". $row['email_pendaftar']."' method='post'>
+                                    <div class='modal-dialog'>
                                      <div class='modal-content'>
-                                       <div class='modal-header bg-danger'>
-                                         <h4 class='modal-title'>Konfirmasi Hapus Data</h4>
+                                       <div class='modal-header bg-warning'>
+                                         <h4 class='modal-title'>Ubah Kata Sandi Pendaftar</h4>
                                        </div>
                                        <div class='modal-body'>
-                                        <input value='".$row['email_pendaftar']."'></input>
-                                        <input value='".$row['kata_sandi']."'></input>
-                                         <b>Apakah yakin menghapus data?</b>
+
+                                        <div class='form-group'>
+                                        <label class='control-label'>Kata Sandi</label>
+                                        <input type='password' name='sandi' class='form-control parsley-validated' data-required='true' value='".$row['kata_sandi']."'></input>
+
+                                        </div>
+                                        <button type='submit' class='btn btn-sm btn-success'>Ubah Password</button>
+
                                        </div>
                                        <div class='modal-footer'>
-                                         <a style='margin-left:5px' href=''>
-                                           <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
-                                           <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
+
+                                            <button class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                                          </div>
                                        </div>
                                      </div>
+                                     </form>
                                     </div>
+
                                 ";
                               }
                             ?>
