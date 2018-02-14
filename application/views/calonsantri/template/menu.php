@@ -46,8 +46,8 @@
                     </a>
 
                   </li>
-                  <li >
-                    <a href="#" class="auto">
+                  <li class="<?= (($menu == "pendaftaran") && ($submenu == 'pengumuman'))  ? "active" : ""; ?>" >
+                    <a href="<?php echo base_url() ?>santri/pendaftaran/pengumuman" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
                         <i class="i i-circle-sm text-active"></i>
