@@ -61,6 +61,7 @@ class Pendaftaran extends CI_Controller
     } else {
       $kata_sandi = $this->input->post('sandi');
       $encrypt_sandi = $this->encrypt->encode($kata_sandi);
+      // $decrypt_sandi = $this->encrypt->decode($encrypt_sandi);
     $email_akun = $this->input->get("email_pendaftar");
     $params = array (
         'kata_sandi' => $encrypt_sandi
