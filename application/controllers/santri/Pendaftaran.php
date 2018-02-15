@@ -128,15 +128,15 @@ function biodata()
           );
        $email = "1@edd.com";
 
-        $exec = $this->m_santri->editdatasantri($email,$array);
+      $exec = $this->m_santri->editdatasantri($email,$array);
 
-        if ($exec){
-          $array2 = array (
-            "status_biodata"=>"menunggu"
-           );
-          $exec2 = $this->m_santri->editakun($email,$array2);
-          redirect(base_url("santri/pendaftaran/biodata?msg=1"));
-        }
+      if ($exec){
+        $array2 = array (
+          "status_biodata"=>"menunggu"
+          );
+        $exec2 = $this->m_santri->editakun($email,$array2);
+        redirect(base_url("santri/pendaftaran/biodata?msg=1"));
+      }
 
     } else {
       $email = "1@edd.com";

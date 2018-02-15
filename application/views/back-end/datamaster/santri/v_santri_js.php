@@ -1,5 +1,5 @@
 <script>
-
+ $(document).ready(function(){
    $('#datatable').DataTable({});
 
    $(".hapus").click(function (e) {
@@ -83,5 +83,5 @@
         });
     });
 
-
+});
 </script>
