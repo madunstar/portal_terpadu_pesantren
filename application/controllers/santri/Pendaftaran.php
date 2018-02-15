@@ -255,7 +255,12 @@ function addakun()
             'id_biodata' => $id_pendaftar,
             'email_pendaftar' => $email
           );
+          $array_bayar = array(
+            'id_pembayaran' => $id_pendaftar,
+            'email_pendaftar' => $email
+          );
           $this->m_akunsantri->tambahbio($array_bio);
+          $this->m_akunsantri->tambahbayar($array_bayar);
           redirect(base_url("santri/pendaftaran/index?msg=1"));
 
         }

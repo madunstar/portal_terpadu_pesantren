@@ -51,7 +51,11 @@ class M_akunsantri extends CI_Model
       $this->db->insert('tb_biodata_pendaftar',$array_bio);
     }
 
-    // gawian nikman nasir 
+    function tambahbayar($array_bayar){
+      $this->db->insert('tb_bayar_pendaftar',$array_bayar);
+    }
+
+    // gawian nikman nasir
     function ambilprovinsi(){
       $this->db->order_by("nama_provinsi","ASC");
       return $this->db->get('tb_provinsi');
@@ -72,7 +76,7 @@ class M_akunsantri extends CI_Model
       $idkabupaten = $exec['id_kota_kab'];
       return $idkabupaten;
     }
-    
+
 
     function carikecamatan($kecamatan){
       $this->db->where('nama_kecamatan', $kecamatan);
@@ -81,7 +85,7 @@ class M_akunsantri extends CI_Model
       $idkecamatan = $exec['id_kecamatan'];
       return $idkecamatan;
     }
-    
+
     function ambilkabupaten($provinsi){
       $idprovinsi = $this->cariprovinsi($provinsi);
       $this->db->where('id_provinsi', $idprovinsi);
