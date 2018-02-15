@@ -156,7 +156,9 @@ function biodata()
     }
 }
 
-
+function berkas(){
+  $this->layout_pendaftaran->renderfront('calonsantri/v_berkas');
+}
 function pembayaran()
 {
     // $email = $this->session->userdata("email");
