@@ -12,7 +12,7 @@ function __construct()
   $this->load->model('back-end/pendaftaran/m_akunsantri');
   $this->load->model('back-end/pendaftaran/m_pengumuman');
   $this->load->library('layout_pendaftaran');
-  
+
 }
 /**
 * Index Page for this controller.
@@ -80,7 +80,7 @@ function datadesa()
 }
 
 function biodata()
-{ 
+{
     // $email = $this->session->userdata("email");
     if ($this->input->post()) {
       $array=array(
@@ -127,9 +127,9 @@ function biodata()
           'hpwali'=>$this->input->post('hpwali')
           );
        $email = "1@edd.com";
-     
+
         $exec = $this->m_santri->editdatasantri($email,$array);
-      
+
         if ($exec){
           $array2 = array (
             "status_biodata"=>"menunggu"
@@ -142,7 +142,7 @@ function biodata()
       $email = "1@edd.com";
       $exec=$this->m_santri->lihatbiodata($email)->row_array();
       $variabel['data']=$exec;
-      
+
       $variabel['provinsi']=$this->m_santri->ambilprovinsi();
       $variabel['kabupaten']=$this->m_santri->ambilkabupaten($exec['provinsi']);
       $variabel['kecamatan']=$this->m_santri->ambilkecamatan($exec['kabupaten_kota']);
@@ -191,9 +191,9 @@ function pembayaran()
         $foto1temp = $row2['bukti_pembayaran'];
         $path1 ="./assets/images/berkas/".$foto1temp."";
         if(is_file($path1)) {
-            unlink($path1); //menghapus gambar di folder produk 
-        }		 
-      }	
+            unlink($path1); //menghapus gambar di folder produk
+        }
+      }
       $this->m_pembayaran->edit($email,$data);
       $array2 = array (
         "status_pembayaran"=>"menunggu"
@@ -204,7 +204,7 @@ function pembayaran()
     $variabel['data']=$this->m_pembayaran->ambilpembayaran($email)->row_array();
     $this->layout_pendaftaran->renderfront('calonsantri/v_pembayaran',$variabel,'calonsantri/v_pembayaran_js');
     }
-    
+
 }
 function pengumuman()
 {
@@ -213,9 +213,10 @@ function pengumuman()
 }
 // akhir function halaman
 
-//membuat akun santri//
+
 
 // end nikman
+//membuat akun santri//
 function addakun()
 {
   $kata_sandi = $this->input->post('sandi');
@@ -268,6 +269,13 @@ function addakun()
     } else
       redirect(base_url("santri/pendaftaran/index"));
 }
+//akhir add akun santri
+
+//kartu pendaftaran sementara
+function kartupendaftaran(){
+  $this->layout_pendaftaran->renderfront('calonsantri/v_kartupendaftaran');
+}
+
 
 
 
