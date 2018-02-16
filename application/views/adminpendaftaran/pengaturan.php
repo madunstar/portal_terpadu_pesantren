@@ -118,11 +118,11 @@
                                         <input type='password' name='sandi' class='form-control parsley-validated' data-required='true' value='".$row['kata_sandi']."'></input>
 
                                         </div>
-                                        <button type='submit' class='btn btn-sm btn-success'>Ubah Password</button>
+
 
                                        </div>
                                        <div class='modal-footer'>
-
+                                            <button type='submit' class='btn btn-sm btn-success'>Ubah Password</button>
                                             <button class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                                          </div>
                                        </div>
