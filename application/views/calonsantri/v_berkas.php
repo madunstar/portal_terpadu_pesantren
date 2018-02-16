@@ -9,71 +9,73 @@
 					Berkas
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Mengupdate Bukti Pembayaran","Gagal Mengupdate Bukti Pembayaran") ?>
+					<?php pesan_get('msg',"Berhasil Menambah Berkas","Gagal Menambah Mengupdate Berkas","berhasil Update Berkas") ?>
 					<?php pesanvar('2',"","","Lengkapi berkas wajib dengan data sebenarnya dan selengkap-lengkapnya") ?>
 
 						<div class="row">
 							<div class="col-md-12">
                 <small class="text-primary font-bold">Wajib</small>
                 <div class="line"></div>
-                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/pembayaran"
+                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/berkas"
       					method="post" enctype="multipart/form-data">
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Pas Poto</label>
 									<div class="col-sm-7">
 										<input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s"
-										name="berkas" id=""> <button type="submit" class="btn btn-success btn-s-xs"> <i class="fa fa-save"></i> Simpan</button> <button type="button" class="btn btn-warning btn-s"><i class="fa fa-search"></i></button>
-                    <p class="text-danger"> Pas Poto Belum Lengkap </p>
+										name="file_berkas" id=""> <button type="submit" class="btn btn-success btn-s-xs"> <i class="fa fa-save"></i> Simpan</button> <button type="button" class="btn btn-warning btn-s"><i class="fa fa-search"></i></button>
+                     <?php echo ($datapoto['nama_berkas'] == 'paspoto' ? '<p class="text-success">Pas poto lengkap</p>' :'<p class="text-danger">Pas Poto Belum Lengkap</p>');?>
                     <input type="hidden" name="namaberkas" value="paspoto">
 									</div>
 								</div>
                 </form>
-                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/pembayaran"
+                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/berkas"
       					method="post" enctype="multipart/form-data">
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Kartu Keluarga</label>
 									<div class="col-sm-7">
 										<input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s"
-										name="berkas" id=""> <button type="submit" class="btn btn-success btn-s-xs"> <i class="fa fa-save"></i> Simpan</button> <button type="button" class="btn btn-warning btn-s"><i class="fa fa-search"></i></button>
-                    <p class="text-danger"> Kartu keluarga Belum Lengkap </p>
+										name="file_berkas" id=""> <button type="submit" class="btn btn-success btn-s-xs"> <i class="fa fa-save"></i> Simpan</button> <button type="button" class="btn btn-warning btn-s"><i class="fa fa-search"></i></button>
+                    <?php echo ($datakk['nama_berkas'] == 'kartu keluarga' ? '<p class="text-success">Kartu keluarga lengkap</p>' :'<p class="text-danger">Kartu keluarga Belum Lengkap</p>');?>
                     <input type="hidden" name="namaberkas" value="kartu keluarga">
 									</div>
 								</div>
                 </form>
-                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/pembayaran"
+                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/berkas"
                 method="post" enctype="multipart/form-data">
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Ijazah</label>
                   <div class="col-sm-7">
                     <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s"
-                    name="berkas" id=""> <button type="submit" class="btn btn-success btn-s-xs"> <i class="fa fa-save"></i> Simpan</button> <button type="button" class="btn btn-warning btn-s"><i class="fa fa-search"></i></button>
-                    <p class="text-danger">Ijazah Belum Lengkap </p>
-                    <input type="hidden" name="ijazah" value="namaberkas">
+                    name="file_berkas" id=""> <button type="submit" class="btn btn-success btn-s-xs"> <i class="fa fa-save"></i> Simpan</button> <button type="button" class="btn btn-warning btn-s"><i class="fa fa-search"></i></button>
+                    <?php echo ($dataijazah['nama_berkas'] == 'ijazah' ? '<p class="text-success">Ijazah lengkap</p>' :'<p class="text-danger">Ijazah Belum Lengkap</p>');?>
+                    <input type="hidden" name="namaberkas" value="ijazah">
                   </div>
                 </div>
                 </form>
                 <div class="line pull-in line-dashed b-b"></div>
                 <small class="text-muted">Optional</small>
                 <div class="line"></div>
-                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/pembayaran"
+                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/berkas"
                 method="post" enctype="multipart/form-data">
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Piagam / Sertifikat</label>
                   <div class="col-sm-7">
                     <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s"
-                    name="berkas" id=""> <button type="submit" class="btn btn-success btn-s-xs"> <i class="fa fa-save"></i> Simpan</button> <button type="button" class="btn btn-warning btn-s"><i class="fa fa-search"></i></button>
-                    <input type="hidden" name="namaberkas" value="piagam1">
+                    name="file_berkas" id=""> <button type="submit" class="btn btn-success btn-s-xs"> <i class="fa fa-save"></i> Simpan</button> <button type="button" class="btn btn-warning btn-s"><i class="fa fa-search"></i></button>
+										<?php echo ($datapiagam1['nama_berkas'] == 'piagam1' ? '<p class="text-success">Piagam / Sertifikat lengkap</p>' : null);?>
+										<input type="hidden" name="namaberkas" value="piagam1">
                   </div>
                 </div>
                 </form>
-                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/pembayaran"
+                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/berkas"
                 method="post" enctype="multipart/form-data">
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Piagam / Sertifikat</label>
                   <div class="col-sm-7">
                     <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s"
-                    name="berkas" id=""> <button type="submit" class="btn btn-success btn-s-xs"> <i class="fa fa-save"></i> Simpan</button> <button type="button" class="btn btn-warning btn-s"><i class="fa fa-search"></i></button>
-                    <input type="hidden" name="namaberkas" value="piagam2">
+                    name="file_berkas" id=""> <button type="submit" class="btn btn-success btn-s-xs"> <i class="fa fa-save"></i> Simpan</button> <button type="button" class="btn btn-warning btn-s"><i class="fa fa-search"></i></button>
+										<?php echo ($datapiagam2['nama_berkas'] == 'piagam2' ? '<p class="text-success">Piagam / Sertifikat lengkap</p>' : null);?>
+										<input type="hidden" name="namaberkas" value="piagam2">
                   </div>
                 </div>
                 </form>

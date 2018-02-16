@@ -9,6 +9,7 @@ function __construct()
 
   $this->load->model('back-end/pendaftaran/m_santri');
   $this->load->model('back-end/pendaftaran/m_pembayaran');
+  $this->load->model('back-end/pendaftaran/m_berkas');
   $this->load->model('back-end/pendaftaran/m_akunsantri');
   $this->load->model('back-end/pendaftaran/m_pengumuman');
   $this->load->library('layout_pendaftaran');
@@ -156,9 +157,67 @@ function biodata()
     }
 }
 
+//berkas dari madan
 function berkas(){
-  $this->layout_pendaftaran->renderfront('calonsantri/v_berkas');
+  // $email = $this->session->userdata("email");
+  $email = "1@edd.com";
+  $nama_berkas = $this->input->post('namaberkas');
+  if ($this->input->post()) {
+    $data=array(
+      'nama_berkas'=> $this->input->post('namaberkas'),
+      'email_pendaftar' => $email
+     );
+    $config['upload_path'] = './assets/images/berkas';
+    $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG';
+    $this->load->library('upload', $config);
+    if ($this->upload->do_upload("file_berkas"))
+    {
+      $upload = $this->upload->data();
+      $file_berkas = $upload["raw_name"].$upload["file_ext"];
+      $data['file_berkas'] = $file_berkas;
+      $config2['image_library'] = 'gd2';
+      $config2['create_thumb'] = FALSE;
+      $config2['maintain_ratio'] = TRUE;
+      $config2['width']= 500;
+      $config2['height']= 500;
+      $config2['source_image'] = "./assets/images/berkas/$file_berkas";
+      $this->load->library('image_lib');
+      $this->image_lib->clear();
+      $this->image_lib->initialize($config2);
+      $this->image_lib->resize();
+
+      $query2 = $this->m_berkas->ambilberkas($email);
+      $row2 = $query2->row_array();
+      $foto1temp = $row2['file_berkas'];
+      $path1 ="./assets/images/berkas/".$foto1temp."";
+      if(is_file($path1)) {
+          unlink($path1); //menghapus gambar di folder produk
+      }
+    }
+    if ($this->m_berkas->cekberkas($email,$nama_berkas)==0){
+        $this->m_berkas->addberkas($data);
+        $array2 = array (
+          "status_berkas"=>"menunggu"
+         );
+        $exec2 = $this->m_santri->editakun($email,$array2);
+        redirect(base_url("santri/pendaftaran/berkas?msg=1"));
+    } else{
+      $this->m_berkas->editberkas($email,$nama_berkas,$data);
+      redirect(base_url("santri/pendaftaran/berkas?msg=2"));
+    }
+
+  } else {
+    $variabel['datapiagam2']=$this->m_berkas->ambilberkaspiagam2($email)->row_array();
+    $variabel['datapiagam1']=$this->m_berkas->ambilberkaspiagam1($email)->row_array();
+    $variabel['datakk']=$this->m_berkas->ambilberkaskk($email)->row_array();
+  $variabel['datapoto']=$this->m_berkas->ambilberkaspoto($email)->row_array();
+  $variabel['dataijazah']=$this->m_berkas->ambilberkasijazah($email)->row_array();
+  $this->layout_pendaftaran->renderfront('calonsantri/v_berkas',$variabel);
 }
+}
+
+//akhir gawian madan
+
 function pembayaran()
 {
     // $email = $this->session->userdata("email");
