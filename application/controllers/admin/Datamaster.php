@@ -47,6 +47,28 @@ class Datamaster extends CI_Controller{
 
     }
 
+    function datakotakab2()
+    {
+      $id=$this->input->post('provinsi');
+      $data=$this->m_santri->datakotaajax($id);
+      echo json_encode($data);
+    }
+    
+    function datakecamatan2()
+    {
+      $id=$this->input->post('kecamatan');
+      $data=$this->m_santri->datakecamatanajax($id);
+      echo json_encode($data);
+    }
+    
+    function datadesa2()
+    {
+      $id=$this->input->post('desa');
+      $data=$this->m_santri->datadesaajax($id);
+      echo json_encode($data);
+    }
+
+
     function santritambah()
     {
         if ($this->input->post()){
@@ -100,12 +122,27 @@ class Datamaster extends CI_Controller{
                 if ($exec) redirect(base_url("admin/datamaster/santritambah?msg=1"));
                 else redirect(base_url("admin/datamaster/santritambah?msg=0"));
             } else {
+                $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+                $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
+                $variabel['kecamatan']=$this->m_santri->ambilkecamatan($this->input->post('kabupaten_kota'));
+                $variabel['desa']=$this->m_santri->ambildesa($this->input->post('kecamatan'));
+            $variabel['transportasi']=$this->m_santri->ambiltransportasi();
+             $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
+             $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
                 $variabel['nis_lokal'] =$this->input->post('nis_lokal');
                 $this->layout->render('back-end/datamaster/santri/v_santri_tambah',$variabel,'back-end/datamaster/santri/v_santri_js');
             }
 
         } else {
-            $variabel ='';
+            $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+            $variabel['transportasi']=$this->m_santri->ambiltransportasi();
+             $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
+             $variabel['pendidikan']
+             =$this->m_santri->ambilpendidikan();
+             $variabel['kabupaten']=$this->m_santri->ambilkabupaten("");
+             $variabel['kecamatan']=$this->m_santri->ambilkecamatan("");
+             $variabel['desa']=$this->m_santri->ambildesa("");
+
             $this->layout->render('back-end/datamaster/santri/v_santri_tambah',$variabel,'back-end/datamaster/santri/v_santri_js');
         }
     }
@@ -212,7 +249,7 @@ class Datamaster extends CI_Controller{
             $variabel['santri'] = $exec->row_array();
             if ($this->input->post()){
                 $config['upload_path'] = './assets/berkas/berkassantri';
-                $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
                 $this->load->library('upload', $config);
                 $this->upload->do_upload("file_berkas");
                 $upload = $this->upload->data();
@@ -266,7 +303,7 @@ class Datamaster extends CI_Controller{
                 );
 
             $config['upload_path'] = './assets/berkas/berkassantri';
-            $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+            $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
             $this->load->library('upload', $config);
             if ( $this->upload->do_upload("file_berkas"))
             {
@@ -436,7 +473,7 @@ class Datamaster extends CI_Controller{
             $variabel['guru'] = $exec->row_array();
             if ($this->input->post()){
                 $config['upload_path'] = './assets/berkas/berkasguru';
-                $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
                 $this->load->library('upload', $config);
                 $this->upload->do_upload("file_berkas");
                 $upload = $this->upload->data();
@@ -490,7 +527,7 @@ class Datamaster extends CI_Controller{
                 );
 
             $config['upload_path'] = './assets/berkas/berkasguru';
-            $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+            $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
             $this->load->library('upload', $config);
             if ( $this->upload->do_upload("file_berkas"))
             {
@@ -661,7 +698,7 @@ class Datamaster extends CI_Controller{
             $variabel['staff'] = $exec->row_array();
             if ($this->input->post()){
                 $config['upload_path'] = './assets/berkas/berkasstaff';
-                $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
                 $this->load->library('upload', $config);
                 $this->upload->do_upload("file_berkas");
                 $upload = $this->upload->data();
@@ -715,7 +752,7 @@ class Datamaster extends CI_Controller{
                 );
 
             $config['upload_path'] = './assets/berkas/berkasstaff';
-            $config['allowed_types'] = 'jpg|png|gif|jpeg|JPG|JPEG|doc|docx|xls|xlsx|ppt|pptx|pdf|DOC|DOCX';
+            $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
             $this->load->library('upload', $config);
             if ( $this->upload->do_upload("file_berkas"))
             {

@@ -1,32 +1,10 @@
 <script>
  $(document).ready(function(){
-   $('#datatable').DataTable({});
-
-   $(".hapus").click(function (e) {
-    var v_nis = this.id;
-    $.confirm({
-        title: 'Hapus!',
-        content: 'Yakin ingin menghapus ?',
-        buttons: {
-            hapus: {
-                text: 'Hapus',
-                btnClass: 'btn-green',
-                action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/datamaster/santrihapus?nis="+v_nis);
-                }
-            },
-            batal: function () {
-
-            }
-            
-        }
-        });
-    });
 
     $('#provinsi').change(function(){
         var id=$(this).val();
         $.ajax({
-        url : "<?php echo base_url();?>admin/datamaster/datakotakab2",
+        url : "<?php echo base_url();?>santri/pendaftaran/datakotakab",
         method : "POST",
         data : {provinsi: id},
         async : false,
@@ -46,7 +24,7 @@
     $('#kabupaten_kota').change(function(){
         var id=$(this).val();
         $.ajax({
-        url : "<?php echo base_url();?>admin/datamaster/datakecamatan2",
+        url : "<?php echo base_url();?>santri/pendaftaran/datakecamatan",
         method : "POST",
         data : {kecamatan: id},
         async : false,
@@ -66,7 +44,7 @@
     $('#kecamatan').change(function(){
         var id=$(this).val();
         $.ajax({
-        url : "<?php echo base_url();?>admin/datamaster/datadesa2",
+        url : "<?php echo base_url();?>santri/pendaftaran/datadesa",
         method : "POST",
         data : {desa: id},
         async : false,
@@ -83,5 +61,8 @@
         });
     });
 
+
+
 });
+
 </script>

@@ -64,7 +64,7 @@
         <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
-              <div class="font-bold h4">Status Pendaftaran no.<b class="h5 font-bold"> 201802120001</b></div>
+              <div class="font-bold h4">Status Pendaftaran</div>
             </header>
             <div class="panel-body">
               <div class="col-md-3 col-sm-6">
