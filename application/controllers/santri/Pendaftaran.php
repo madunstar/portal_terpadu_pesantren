@@ -281,7 +281,7 @@ function pengumuman()
 function addakun()
 {
   $kata_sandi = $this->input->post('sandi');
-  $encrypt_sandi = $this->encrypt->encode($kata_sandi);
+  $encrypt_sandi = md5($kata_sandi);
   $tahun_ajaran = $this->m_akunsantri->get_tahun_ajaran();
   $tgl_daftar = date('Y-m-d');
   $today = date('Ymd').'0000';
