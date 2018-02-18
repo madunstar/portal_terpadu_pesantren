@@ -9,13 +9,17 @@ class M_loginsantri extends CI_Model
     {
         parent::__construct();
     }
+    function cekemail($email){
+      $query = $this->db->query('SELECT * FROM tb_akun_pendaftar where email_pendaftar="'.$email.'"');
+      return $query;
+    }
 
-    function cekemail($email) {
-            $this->db->where("email_pendaftar", $email);
-            return $this->db->get("tb_akun_pendaftar");
+    function ceklogin($email,$katasandi) {
+      $query = $this->db->query('SELECT * FROM tb_akun_pendaftar where email_pendaftar="'.$email.'" and kata_sandi="'.$katasandi.'"');
+      return $query;
           }
 
-    
+
     // end
 
 
