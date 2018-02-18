@@ -53,11 +53,11 @@
                           <span>Data Staff</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="layout-fluid.html" class="auto">
+                      <li class="<?= (($menu == "datamaster") &&  ($submenu == 'kelas')) ? "active" : ""; ?>">
+                      <a href="<?php echo base_url() ?>admin/datamaster/kelas" class="auto">
                           <i class="i i-dot"></i>
 
-                          <span>Data kelas</span>
+                          <span>Data Kelas</span>
                         </a>
                       </li>
                       <li >

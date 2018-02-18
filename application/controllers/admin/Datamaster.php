@@ -18,6 +18,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_kecamatan');
         $this->load->model('back-end/datamaster/m_kel_desa');
         $this->load->model('back-end/datamaster/m_tahun_ajaran');
+        $this->load->model('back-end/datamaster/m_kelas');
         $this->load->library('layout');
     }
 
@@ -346,6 +347,80 @@ class Datamaster extends CI_Controller{
 
     // End CRUD Santri
 
+//CRUD KELAS
+   function kelas(){
+         $variabel['data'] = $this->m_kelas->lihatdata();
+        $this->layout->render('back-end/datamaster/kelas/v_kelas',$variabel,'back-end/datamaster/kelas/v_kelas_js');
+   }
+
+    function kelaslihat()
+    {
+        $kd_kelas = $this->input->get("kd_kelas");
+        $exec = $this->m_kelas->lihatdatasatu($kd_kelas);
+        if ($exec->num_rows()>0){
+            $variabel['data'] = $exec ->row_array();
+            $this->layout->render('back-end/datamaster/kelas/v_kelas_lihat',$variabel,'back-end/datamaster/kelas/v_kelas_js');
+        } else {
+            redirect(base_url("admin/datamaster/kelas"));
+        }
+
+    }
+    function kelastambah()
+    {
+        if ($this->input->post()){
+                $array=array(
+                    'kd_kelas'=> NULL,
+                    'nama_kelas'=> $this->input->post('nama_kelas'),
+                    'tingkat_kelas'=> $this->input->post('tingkat_kelas'),
+                    'kapasitas'=>$this->input->post('kapasitas')
+                    );
+            
+                $exec = $this->m_kelas->tambahdata($array);
+                if ($exec) redirect(base_url("admin/datamaster/kelastambah?msg=1"));
+                else redirect(base_url("admin/datamaster/kelastambah?msg=0"));
+        } else {
+            $variabel ='';
+            $this->layout->render('back-end/datamaster/kelas/v_kelas_tambah',$variabel,'back-end/datamaster/kelas/v_kelas_js');
+        }
+    }
+
+    function kelasedit()
+    {
+        
+        if ($this->input->post()) {
+            $kode = $this->input->post('kd_kelas');
+            $array=array(
+                'nama_kelas'=> $this->input->post('nama_kelas'),
+                'tingkat_kelas'=> $this->input->post('tingkat_kelas'),
+                'kapasitas'=> $this->input->post('kapasitas')
+                );
+
+                $exec = $this->m_kelas->editdata($kode,$array);
+                if ($exec){
+                  redirect(base_url("admin/datamaster/kelasedit?kd_kelas=".$kode."&msg=1"));
+                }
+                else
+                     redirect(base_url("admin/datamaster/kelasedit?kd_kelas=".$kode."&msg=0"));
+      }
+      else
+        $kode = $this->input->get("kd_kelas");
+        $exec = $this->m_kelas->lihatdatasatu($kode);
+        if ($exec->num_rows()>0){
+                $variabel['data'] = $exec ->row_array();
+                $this->layout->render('back-end/datamaster/kelas/v_kelas_edit',$variabel,'back-end/datamaster/kelas/v_kelas_js');
+            } else {
+                redirect(base_url("admin/datamaster/kelas"));
+            }
+    }
+
+    function kelashapus()
+    {
+       $kode = $this->input->get("kd_kelas");
+       $exec = $this->m_kelas->hapus($kode);
+       redirect(base_url()."admin/datamaster/kelas?msg=1");
+    }
+//end CRUD kelas
+
     // CRUD Guru
     function guru()
     {
@@ -569,6 +644,8 @@ class Datamaster extends CI_Controller{
     }
 
     // End CRUD Guru
+
+
 
 
     // CRUD Staff
@@ -1224,7 +1301,6 @@ function kecamatanhapus()
       redirect(base_url()."admin/datamaster/pendidikan?msg=1");
    }
    // End CRUD Pendidikan
-
 
 
    // CRUD Pekerjaan
