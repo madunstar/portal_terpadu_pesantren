@@ -167,18 +167,25 @@
                           <span>Data Admin</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="fullcalendar.html" class="auto">
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'pendidikan') || ($submenu == 'pendidikanedit') || ($submenu == 'pendidikantambah'))  ? "active" : ""; ?>">
+												<a href="<?php echo base_url() ?>admin/datamaster/pendidikan" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Pendidikan</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="project.html" class="auto">
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'pekerjaan') || ($submenu == 'pekerjaanedit') || ($submenu == 'pekerjaantambah'))  ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/pekerjaan" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Pekerjaan</span>
+                        </a>
+                      </li>
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'alat_transportasi') || ($submenu == 'alat_transportasiedit') || ($submenu == 'alat_transportasitambah'))  ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/alat_transportasi" class="auto">
+                          <i class="i i-dot"></i>
+
+                          <span>Data Alat Transportasi</span>
                         </a>
                       </li>
 
