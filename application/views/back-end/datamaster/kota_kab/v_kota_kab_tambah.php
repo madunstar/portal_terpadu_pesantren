@@ -24,6 +24,7 @@
               <label class="col-lg-4 control-label">Nama Provinsi</label>
               <div class="col-lg-8">
                 <select class="form-control"  name="id_provinsi" data-required="true"/>
+                <option value="">Pilih Provinsi</option>
                 <?php foreach ($data->result_array() as $provinsi) {?>
                 <option value= "<?php echo $provinsi['id_provinsi']?>"> <?php echo $provinsi['nama_provinsi']?> </option>
                 <?php }?>
