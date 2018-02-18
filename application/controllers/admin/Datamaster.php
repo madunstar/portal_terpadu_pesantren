@@ -54,14 +54,14 @@ class Datamaster extends CI_Controller{
       $data=$this->m_santri->datakotaajax($id);
       echo json_encode($data);
     }
-    
+
     function datakecamatan2()
     {
       $id=$this->input->post('kecamatan');
       $data=$this->m_santri->datakecamatanajax($id);
       echo json_encode($data);
     }
-    
+
     function datadesa2()
     {
       $id=$this->input->post('desa');
@@ -374,7 +374,7 @@ class Datamaster extends CI_Controller{
                     'tingkat_kelas'=> $this->input->post('tingkat_kelas'),
                     'kapasitas'=>$this->input->post('kapasitas')
                     );
-            
+
                 $exec = $this->m_kelas->tambahdata($array);
                 if ($exec) redirect(base_url("admin/datamaster/kelastambah?msg=1"));
                 else redirect(base_url("admin/datamaster/kelastambah?msg=0"));
@@ -386,7 +386,7 @@ class Datamaster extends CI_Controller{
 
     function kelasedit()
     {
-        
+
         if ($this->input->post()) {
             $kode = $this->input->post('kd_kelas');
             $array=array(
@@ -1261,6 +1261,7 @@ function kecamatanhapus()
            $this->layout->render('back-end/datamaster/pendidikan/v_pendidikan_tambah',$variabel,'back-end/datamaster/pendidikan/v_pendidikan_js');
        }
    }
+
    function pendidikanedit()
    {
        if ($this->input->post()) {
