@@ -10,6 +10,7 @@ class M_akunsantri extends CI_Model
         parent::__construct();
     }
 
+    
     function get_count_biodata() {
       $query = $this->db->query('SELECT * FROM tb_biodata_pendaftar');
       return $query->num_rows();
