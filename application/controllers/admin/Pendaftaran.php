@@ -60,7 +60,7 @@ class Pendaftaran extends CI_Controller
       redirect('admin/pendaftaran/pengaturan');
     } else {
       $kata_sandi = $this->input->post('sandi');
-      $encrypt_sandi = $this->encrypt->encode($kata_sandi);
+      $encrypt_sandi = md5($kata_sandi);
       // $decrypt_sandi = $this->encrypt->decode($encrypt_sandi);
     $email_akun = $this->input->get("email_pendaftar");
     $params = array (
