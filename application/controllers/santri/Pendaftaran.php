@@ -6,16 +6,23 @@ class Pendaftaran extends CI_Controller {
 function __construct()
 {
   parent::__construct();
-  if($this->session->userdata('status') != "loginsantri"){
-    $this->layout_pendaftaran->renderregister('calonsantri/login');
-  }
   $this->load->model('back-end/pendaftaran/m_santri');
   $this->load->model('back-end/pendaftaran/m_pembayaran');
   $this->load->model('back-end/pendaftaran/m_berkas');
   $this->load->model('back-end/pendaftaran/m_akunsantri');
   $this->load->model('back-end/pendaftaran/m_pengumuman');
-    $this->load->model('back-end/pendaftaran/m_loginsantri');
+  $this->load->model('back-end/pendaftaran/m_loginsantri');
   $this->load->library('layout_pendaftaran');
+
+  if($this->session->userdata('status') != "loginsantri"){
+    $aktif = $this->m_akunsantri->get_pengaturan();
+    if ($aktif == 0) {
+      $this->load->view('pendaftarannotfound');
+    } else if ($aktif == 1) {
+    $this->layout_pendaftaran->renderregister('calonsantri/login');
+  }
+}
+
 
 }
 /**
