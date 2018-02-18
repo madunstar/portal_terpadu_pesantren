@@ -27,7 +27,7 @@
             <small>Masuk dengan Email untuk Melanjutkan Pendaftaran</small>
           </header>
           <?php pesan_get('msg',"Sukses","Email Tidak Terdaftar") ?>
-          <form  action="#" method="post" data-validate="parsley">
+          <form  action="<?php echo base_url()?>santri/pendaftaran/ceklogin" method="post" data-validate="parsley">
             <div class="list-group">
               <div class="list-group-item">
                 <input name="email" data-required="true" type="email" data-type="email" placeholder="Email" value="<?php echo set_value('email_pendaftar'); ?>" class="form-control no-border">
@@ -35,14 +35,10 @@
               <div class="list-group-item">
                <input name="sandi" data-required="true" type="password" placeholder="Kata Sandi" value="<?php echo set_value('kata_sandi'); ?>" class="form-control no-border" id="pwd">
              </div>
-
-
            </div>
-           <!-- kena ganti buttonnya pakai yang ini, didalam form-->
-          <!-- <button type="submit" class="btn btn-success btn-lg btn-block ">Masuk</button> -->
+          <button type="submit" class="btn btn-success btn-lg btn-block ">Masuk</button>
         </form>
-        <!-- button sementara , diluar form-->
-        <a href="<?php echo base_url('santri/pendaftaran/dashboard') ?>"><button  class="btn btn-success btn-lg btn-block ">Masuk</button></a>
+
 
         <small>Belum Punya Akun?<a class="text-primary" href="<?php echo base_url('santri/pendaftaran/index') ?>"> <strong>Halaman Pendafraran</strong></a></small>
         <div class="line line-dashed"></div>

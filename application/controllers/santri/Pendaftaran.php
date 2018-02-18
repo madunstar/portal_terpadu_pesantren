@@ -1,4 +1,4 @@
-<?php
+ <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
@@ -12,6 +12,7 @@ function __construct()
   $this->load->model('back-end/pendaftaran/m_berkas');
   $this->load->model('back-end/pendaftaran/m_akunsantri');
   $this->load->model('back-end/pendaftaran/m_pengumuman');
+    $this->load->model('back-end/pendaftaran/m_loginsantri');
   $this->load->library('layout_pendaftaran');
 
 }
@@ -52,6 +53,34 @@ function login()
     $this->layout_pendaftaran->renderregister('calonsantri/login');
   }
 }
+
+function ceklogin()
+{
+  if ($this->input->post()) {
+    $sandi = $this->input->post('sandi');
+    $email = $this->input->post('email');
+    $cek = $this->m_loginsantri->cekemail($email);
+      if ($cek->num_rows() > 0) {
+        //cekemail Berhasil
+        foreach ($cek->result() as $datasandi) {
+          $kata_sandi = $datasandi->kata_sandi;
+        }
+        $encrypt_sandi = $this->encrypt->decode($kata_sandi);
+        if ($encrypt_sandi == $sandi){
+          //login berhasil, buat session
+            $sess_data['email'] = $email;
+            $this->session->set_userdata($sess_data);
+          $this->layout_pendaftaran->renderfront("calonsantri/dashboard?".$email."");
+        }
+        else {
+          $this->layout_pendaftaran->renderregister('calonsantri/login?msg=0');
+        }
+      } else {
+        $this->layout_pendaftaran->renderregister('calonsantri/login?msg=1');
+  }
+}
+}
+
 
 function dashboard()
 {
