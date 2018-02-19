@@ -9,6 +9,7 @@
 					Berkas
 				</header>
 				<div class="panel-body">
+					<?php echo $this->session->flashdata('error'); ?>
 					<?php pesan_get('msg',"Berhasil Menambah Berkas","Gagal Menambah Mengupdate Berkas","berhasil Update Berkas") ?>
 					<?php pesanvar('2',"","","Lengkapi berkas wajib dengan data sebenarnya dan selengkap-lengkapnya") ?>
 
@@ -94,21 +95,31 @@
 						</div>
 				</div>
 				<footer class="panel-footer bg-light lter">
-					<div class="row">
-						<div class="col-md-2">
-						</div>
-						<div class="col-md-10">
 
-						</div>
-
-					</div>
 
 				</footer>
 
-
+			</section>
+			<div class="row">
+				<div class="col-md-12">
+					<section class="panel panel-default">
+						<header class="panel-heading">
+								<h5 class="text-danger font-bold">PENTING!</h5>
+						</header>
+						<div class="panel-body">
+							Ukuran maksimal file 1MB <br>
+							Diutamakan untuk mengunggah file hasil scan <br>
+						</div>
+					</section>
+				</div>
+				<div class="col-md-10">
 
 				</div>
-			</section>
+
+			</div>
+
+
+			</div>
 		</section>
 	</section>
 

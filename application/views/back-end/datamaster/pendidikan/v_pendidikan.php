@@ -28,8 +28,8 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/pendidikanedit?id_pendidikan='.$row['id_pendidikan'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-                      <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_pendidikan']."'><i class='fa fa-trash-o'></i></a>
+                      <a href='".base_url('admin/datamaster/pendidikanedit?id_pendidikan='.$row['id_pendidikan'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                      <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_pendidikan']."'><i class='fa fa-trash-o'></i></a>
                       </td>
                       <td>".$row['id_pendidikan']."</td>
                       <td>".$row['nama_pendidikan']."</td>
