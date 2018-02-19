@@ -70,6 +70,7 @@ function ceklogin()
     $katasandi = md5($sandi);
     $email = $this->input->post('email');
     $cekemail = $this->m_loginsantri->cekemail($email)->num_rows();
+   
     if ($cekemail > 0) {
       $cek = $this->m_loginsantri->ceklogin($email, $katasandi);
       if ($cek->num_rows() > 0) {
@@ -123,7 +124,7 @@ function datadesa()
 
 function biodata()
 {
-    // $email = $this->session->userdata("email");
+     $email = $this->session->userdata("email");
     if ($this->input->post()) {
       $array=array(
           'nis_lokal'=> $this->input->post('nis_lokal'),
@@ -168,7 +169,6 @@ function biodata()
           'hpibu'=>$this->input->post('hpibu'),
           'hpwali'=>$this->input->post('hpwali')
           );
-       $email = "1@edd.com";
 
       $exec = $this->m_santri->editdatasantri($email,$array);
 
@@ -200,8 +200,7 @@ function biodata()
 
 //berkas dari madan
 function berkas(){
-  // $email = $this->session->userdata("email");
-  $email = "1@edd.com";
+  $email = $this->session->userdata("email");
   $nama_berkas = $this->input->post('namaberkas');
   if ($this->input->post()) {
     $data=array(
@@ -261,8 +260,7 @@ function berkas(){
 
 function pembayaran()
 {
-    // $email = $this->session->userdata("email");
-    $email = "1@edd.com";
+     $email = $this->session->userdata("email");
     if ($this->input->post()) {
       $data=array(
         'besar_pembayaran'=> $this->input->post('besar_pembayaran'),
