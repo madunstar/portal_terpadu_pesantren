@@ -10,6 +10,7 @@ class Pendaftaran extends CI_Controller
     parent::__construct();
     $this->load->model('back-end/pendaftaran/M_dashboard');
     $this->load->model('back-end/pendaftaran/M_pengaturan');
+    $this->load->model('back-end/pendaftaran/m_pendaftaran');
     $this->load->library('layout_pendaftaran');
   }
 
@@ -79,4 +80,40 @@ class Pendaftaran extends CI_Controller
       redirect('admin/pendaftaran/pengaturan');
     }
   }
+
+
+//////////////////////////////////////////////////////////////////
+function semuapendaftar()
+{
+    $tahunajaran = 1;
+    $variabel['data'] = $this->m_pendaftaran->lihatdatasemua($tahunajaran);
+    $this->layout_pendaftaran->render('adminpendaftaran/verifikasi/v_semua',$variabel,'adminpendaftaran/verifikasi/v_semua_js');
+}
+
+function semuabiodata()
+    {
+      if ($this->input->post()) {
+            $array=array(
+                'status_biodata'=>$this->input->post('status_biodata')
+            );
+            $email = $this->input->post("email");
+            $exec = $this->m_pendaftaran->editsemuabiodata($email,$array);
+            if ($exec){
+              redirect(base_url("admin/pendaftaran/semuabiodata?email=".$email."&msg=1"));
+            }
+      } else {
+            $email = $this->input->get("email");
+            $exec = $this->m_pendaftaran->lihatsemuabiodata($email);
+            if ($exec->num_rows()>0){
+                $variabel['data'] = $exec ->row_array();
+                $this->layout->render('adminpendaftaran/verifikasi/v_editsemuabiodata',$variabel,'adminpendaftaran/verifikasi/v_semua_js');
+            } else {
+                redirect(base_url("admin/pendaftaran/semuapendaftar"));
+            }
+      }
+
+    }
+
+//////////////////////////////////////////////////////////////////
+
 }

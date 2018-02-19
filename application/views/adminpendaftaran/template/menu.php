@@ -30,7 +30,7 @@
 							</a>
 							<ul class="nav dk">
 								<li >
-									<a href="layout-color.html" class="auto">
+									<a href="<?php echo base_url() ?>admin/pendaftaran/semuapendaftar" class="auto">
 										<i class="i i-dot text-primary"></i>
 
 										<span>Semua</span>
