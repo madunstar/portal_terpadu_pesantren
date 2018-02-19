@@ -168,13 +168,13 @@ function biodata()
           'hpibu'=>$this->input->post('hpibu'),
           'hpwali'=>$this->input->post('hpwali')
           );
-       $email = "1@edd.com";
+       $email = "1@edd.com"; //hapus ini nis tolong banar
 
       $exec = $this->m_santri->editdatasantri($email,$array);
 
       if ($exec){
         $array2 = array (
-          "status_biodata"=>"menunggu"
+          "status_biodata"=>"menunggu verifikasi"
           );
         $exec2 = $this->m_santri->editakun($email,$array2);
         redirect(base_url("santri/pendaftaran/biodata?msg=1"));
@@ -251,7 +251,7 @@ function berkas(){
       if ($this->m_berkas->cekberkas($email,$nama_berkas)==0){
           $this->m_berkas->addberkas($data);
           $array2 = array (
-            "status_berkas"=>"menunggu"
+            "status_berkas"=>"menunggu verifikasi"
            );
           $exec2 = $this->m_santri->editakun($email,$array2);
           redirect(base_url("santri/pendaftaran/berkas?msg=1"));
@@ -313,7 +313,7 @@ function pembayaran()
       }
       $this->m_pembayaran->edit($email,$data);
       $array2 = array (
-        "status_pembayaran"=>"menunggu"
+        "status_pembayaran"=>"menunggu verifikasi"
        );
       $exec2 = $this->m_santri->editakun($email,$array2);
       redirect(base_url("santri/pendaftaran/pembayaran?msg=1"));

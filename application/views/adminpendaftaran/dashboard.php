@@ -145,7 +145,7 @@
                           <tr>
                             <td>".$row['nama_lengkap']."</td>
                             <td>".$row['tanggal_pembayaran']."</td>
-                            <td>".$row['status_pembayaran']."</td>
+                            <td ".(($row['status_pembayaran'] == 'diverifikasi') ? 'class=text-success' : (($row['status_pembayaran'] == 'menunggu verifikasi') ? 'class=text-warning' : null)).">".$row['status_pembayaran']."</td>
                           </tr>
                         ";
                       }
@@ -183,7 +183,7 @@
                   <small class="text-muted">Diverifikasi</small>
                 </div>
                 <div class="col-xs-6">
-                  <div class="h3 font-bold">20</div>
+                  <div class="h3 font-bold"><?php echo $pembayaran_diverifikasi['total']; ?></div>
 
                 </div>
               </div>
@@ -192,7 +192,7 @@
           <div class="col-md-3 col-sm-6">
             <div class="panel b-a">
               <div class="panel-heading no-border bg-warning lt text-center">
-                <a href="#"><i class="fa fa-refresh fa fa-3x m-t m-b text-white"></i></a>
+                <a href="#"><i class="fa fa-spinner fa fa-3x m-t m-b text-white"></i></a>
               </div>
               <div class="padder-v text-center clearfix">
                 <div class="col-xs-6 b-r">
@@ -200,7 +200,7 @@
                   <small class="text-muted">Menunggu</small>
                 </div>
                 <div class="col-xs-6">
-                  <div class="h3 font-bold">20</div>
+                  <div class="h3 font-bold"><?php echo $pembayaran_menunggu['total']; ?></div>
 
                 </div>
               </div>
