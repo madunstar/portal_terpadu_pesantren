@@ -293,13 +293,16 @@ function pembayaran()
         if(is_file($path1)) {
             unlink($path1); //menghapus gambar di folder produk
         }
+        $this->m_pembayaran->edit($email,$data);
+        $array2 = array (
+          "status_pembayaran"=>"menunggu"
+         );
+        $exec2 = $this->m_santri->editakun($email,$array2);
+        redirect(base_url("santri/pendaftaran/pembayaran?msg=1"));
+      } else {
+        redirect(base_url("santri/pendaftaran/pembayaran?msg=0"));
       }
-      $this->m_pembayaran->edit($email,$data);
-      $array2 = array (
-        "status_pembayaran"=>"menunggu"
-       );
-      $exec2 = $this->m_santri->editakun($email,$array2);
-      redirect(base_url("santri/pendaftaran/pembayaran?msg=1"));
+     
     } else {
     $variabel['data']=$this->m_pembayaran->ambilpembayaran($email)->row_array();
     $this->layout_pendaftaran->renderfront('calonsantri/v_pembayaran',$variabel,'calonsantri/v_pembayaran_js');
