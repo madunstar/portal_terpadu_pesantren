@@ -15,6 +15,7 @@ class Pendaftaran extends CI_Controller
 
   function index()
   {
+      $variabel['pembayaran_terakhir'] = $this->M_dashboard->get_pembayaran_terakhir();
       $variabel['total_tidak_lengkap'] = $this->M_dashboard->get_count_status_tidak_lengkap();
       $variabel['total_diverifikasi'] = $this->M_dashboard->get_count_status_diverifikasi();
       $variabel['total_menunggu'] = $this->M_dashboard->get_count_status_menunggu();
