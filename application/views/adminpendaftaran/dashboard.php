@@ -12,20 +12,20 @@
         <div class="col-lg-12">
           <!-- .crousel fade -->
           <section class="panel bg-dark">
-            <div class="carousel slide carousel-fade panel-body" id="c-fade">
+            <div class="carousel slide auto carousel-fade panel-body" id="c-fade">
               <ol class="carousel-indicators out">
-                <li data-target="#c-fade" data-slide-to="0" class=""></li>
-                <li data-target="#c-fade" data-slide-to="1" class="active"></li>
+                <li data-target="#c-fade" data-slide-to="0" class="active"></li>
+                <li data-target="#c-fade" data-slide-to="1" class=""></li>
                 <li data-target="#c-fade" data-slide-to="2" class=""></li>
               </ol>
               <div class="carousel-inner">
-                <div class="item">
+                <div class="item active">
                   <p class="text-center">
                     <em class="h4 text-mute">Selamat Datang di Aplikasi Pendaftaran Santri Baru</em><br>
                     <small class="text-muted">Pesantren Darul ilmi</small>
                   </p>
                 </div>
-                <div class="item active">
+                <div class="item ">
                   <p class="text-center">
                     <em class="h4 text-mute">Periksa Biodata dan Berkas</em><br>
                     <small class="text-muted">Sebelum Melakukan Verifikasi</small>
@@ -129,40 +129,27 @@
             </header>
             <div class="panel-body">
               <div class="table-responsive">
-                <table class="table table-striped m-b-none" id="datacontoh">
+                <table class="table  m-b-none" id="datacontoh">
                   <thead>
                     <tr>
-                      <th width="20%">Nama</th>
-                      <th width="25%">Tanggal Bayar</th>
+                      <th >Nama</th>
+                      <th >Tanggal Bayar</th>
                       <th>Status Pembayaran</th>
 
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td><span class="label bg-warning">menunggu verifikasi</span></td>
-
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td><span class="label bg-success">Diverifikasi</span></td>
-
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td><span class="label bg-success">Diverifikasi</span></td>
-
-                    </tr>
-                    <!-- <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-
-                    </tr> -->
+                    <?php
+                      foreach ($pembayaran_terakhir->result_array() as $row ) {
+                        echo "
+                          <tr>
+                            <td>".$row['nama_lengkap']."</td>
+                            <td>".$row['tanggal_pembayaran']."</td>
+                            <td>".$row['status_pembayaran']."</td>
+                          </tr>
+                        ";
+                      }
+                    ?>
                   </tbody>
                 </table>
               </div>

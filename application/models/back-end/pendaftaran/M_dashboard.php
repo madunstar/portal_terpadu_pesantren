@@ -35,6 +35,17 @@ class M_dashboard extends CI_Model {
              ->row_array();
 
   }
+
+  function get_pembayaran_terakhir() {
+    $this->db->select('*');
+    $this->db->from('tb_akun_pendaftar');
+    $this->db->join('tb_bayar_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_bayar_pendaftar.email_pendaftar');
+    $this->db->join('tb_biodata_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_biodata_pendaftar.email_pendaftar');
+    $this->db->where('status_pembayaran','menunggu verifikasi');
+    $this->db->or_where('status_pembayaran','diverifikasi');
+    $this->db->limit(3);
+    return $this->db->get();
+  }
 }
 
 
