@@ -21,6 +21,8 @@ class Pendaftaran extends CI_Controller
       $variabel['total_diverifikasi'] = $this->M_dashboard->get_count_status_diverifikasi();
       $variabel['total_menunggu'] = $this->M_dashboard->get_count_status_menunggu();
       $variabel['total_pendaftaran'] = $this->M_dashboard->get_count_pendaftaran();
+      $variabel['pembayaran_diverifikasi'] = $this->M_dashboard->get_count_pembayaran_diverifikasi();
+      $variabel['pembayaran_menunggu'] = $this->M_dashboard->get_count_pembayaran_menunggu();
       $this->layout_pendaftaran->render('adminpendaftaran/dashboard',$variabel);
   }
 

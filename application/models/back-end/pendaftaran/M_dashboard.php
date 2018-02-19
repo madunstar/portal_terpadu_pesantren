@@ -46,6 +46,20 @@ class M_dashboard extends CI_Model {
     $this->db->limit(3);
     return $this->db->get();
   }
+
+  function get_count_pembayaran_menunggu() {
+    return $this->db->select('(select count(*) from tb_akun_pendaftar where status_pembayaran = "menunggu verifikasi" and status_akun = "aktif" ) as total',FALSE)
+             ->get()
+             ->row_array();
+
+  }
+
+  function get_count_pembayaran_diverifikasi() {
+    return $this->db->select('(select count(*) from tb_akun_pendaftar where status_pembayaran = "diverifikasi" and status_akun = "aktif" ) as total',FALSE)
+             ->get()
+             ->row_array();
+
+  }
 }
 
 
