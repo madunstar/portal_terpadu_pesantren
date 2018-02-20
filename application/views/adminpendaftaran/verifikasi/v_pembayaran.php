@@ -49,7 +49,7 @@
                             </form>
                           ': null))?>
                         </div>
-                        <a class="" target='__blank' <?php echo ($row['status_pembayaran'] == 'tidak lengkap' ? '' : 'href="'.base_url('assets/images/berkas/'.$row['bukti_pembayaran']).'"');?>><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-search"></i>lihat berkas</button></a>
+                        <a class="pull-right" target='__blank' <?php echo ($row['status_pembayaran'] == 'tidak lengkap' ? '' : 'href="'.base_url('assets/images/berkas/'.$row['bukti_pembayaran']).'"');?>><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-search"></i>lihat berkas</button></a>
 
 
 
