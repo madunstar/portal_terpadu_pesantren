@@ -228,7 +228,7 @@
               <label class="col-lg-4 control-label">NIK Wali</label>
               <div class="col-lg-8">
                <label class="control-label"><b><?php echo $data['nik_wali']; ?></b></label>
-             
+
               </div>
             </div>
             <div class="form-group">
@@ -272,7 +272,7 @@
               <div class="col-lg-8">
                  <select class="form-control" name="status_biodata">
                     <option value="tidak lengkap" <?php echo ($data['status_biodata']=="tidak lengkap"?"selected":""); ?> >tidak lengkap</option>
-                    <option value="menunggu" <?php echo ($data['status_biodata']=="menunggu"?"selected":""); ?> >menunggu</option>
+                    <option value="menunggu verifikasi" <?php echo ($data['status_biodata']=="menunggu verifikasi"?"selected":""); ?> >menunggu verifikasi</option>
                     <option value="diverifikasi" <?php echo ($data['status_biodata']=="diverifikasi"?"selected":""); ?> >diverifikasi</option>
                  </select>
               </div>

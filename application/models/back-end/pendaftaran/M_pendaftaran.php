@@ -12,6 +12,14 @@ class M_pendaftaran extends CI_Model
     /*
      * Get tb_role_admin by kode_role
      */
+
+    function gettahunajaran(){
+      $query =$this->db->query('select tahun_ajaran from tb_pengaturan_pendaftaran');
+      $data  = $query->row_array();
+      $value = $data['tahun_ajaran'];
+      return $value;
+    }
+
     function lihatdatasemua($tahunajaran)
     {
         $this->db->select('*')

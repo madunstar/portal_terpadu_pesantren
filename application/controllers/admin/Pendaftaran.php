@@ -85,7 +85,8 @@ class Pendaftaran extends CI_Controller
 //////////////////////////////////////////////////////////////////
 function semuapendaftar()
 {
-    $tahunajaran = 1;
+
+    $tahunajaran = $this->m_pendaftaran->gettahunajaran();
     $variabel['data'] = $this->m_pendaftaran->lihatdatasemua($tahunajaran);
     $this->layout_pendaftaran->render('adminpendaftaran/verifikasi/v_semua',$variabel,'adminpendaftaran/verifikasi/v_semua_js');
 }
