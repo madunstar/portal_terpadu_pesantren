@@ -37,13 +37,20 @@
                       <td><?php echo $row['status_pembayaran'] ?></td>
                       <td>
                         <div class="form-group">
-
-
-                          <form action='<?php echo base_url()?>admin/pendaftaran/verifikasibayar?email_pendaftar=<?php echo $row['email_pendaftar']?>' method='post'>
-                          <button type="submit" class='btn btn-success btn-xs'>verifikasi</button>
-                          <a class="" target='__blank' <?php echo ($row['status_pembayaran'] == 'tidak lengkap' ? '' : 'href="'.base_url('assets/images/berkas/'.$row['bukti_pembayaran']).'"');?>><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-search"></i></button></a>
-                          </form>
+                          <?php echo (($row['status_pembayaran'] == 'menunggu verifikasi') ?
+                          '
+                            <form action="'.base_url().'admin/pendaftaran/verifikasibayar?email_pendaftar='.$row['email_pendaftar'].'" method="post">
+                            <button type="submit" class="btn btn-success btn-xs">verifikasi</button>
+                            </form>
+                          ': (($row['status_pembayaran']== 'diverifikasi') ?
+                          '
+                            <form action="'.base_url().'admin/pendaftaran/verifikasibatal?email_pendaftar='.$row['email_pendaftar'].'" method="post">
+                            <button type="submit" class="btn btn-danger btn-xs">batalkan verifikasi</button>
+                            </form>
+                          ': null))?>
                         </div>
+                        <a class="" target='__blank' <?php echo ($row['status_pembayaran'] == 'tidak lengkap' ? '' : 'href="'.base_url('assets/images/berkas/'.$row['bukti_pembayaran']).'"');?>><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-search"></i>lihat berkas</button></a>
+
 
 
 

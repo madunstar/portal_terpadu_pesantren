@@ -100,6 +100,15 @@ function verifikasibayar(){
   redirect(base_url("admin/pendaftaran/datapembayaran"));
 }
 
+function verifikasibatal(){
+  $email_akun = $this->input->get("email_pendaftar");
+  $array = array(
+    "status_pembayaran"=> "menunggu verifikasi"
+  );
+  $this->m_pembayaran->editakun($email_akun,$array);
+  redirect(base_url("admin/pendaftaran/datapembayaran"));
+}
+
 //akhir//
 
 
