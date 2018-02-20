@@ -170,7 +170,7 @@ function biodata()
           'hpwali'=>$this->input->post('hpwali')
           );
 
-       $email = "1@edd.com"; //hapus ini nis tolong banar
+
 
 
       $exec = $this->m_santri->editdatasantri($email,$array);

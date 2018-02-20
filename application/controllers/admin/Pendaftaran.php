@@ -11,6 +11,7 @@ class Pendaftaran extends CI_Controller
     $this->load->model('back-end/pendaftaran/M_dashboard');
     $this->load->model('back-end/pendaftaran/M_pengaturan');
     $this->load->model('back-end/pendaftaran/m_pendaftaran');
+    $this->load->model('back-end/pendaftaran/m_pembayaran');
     $this->load->library('layout_pendaftaran');
   }
 
@@ -81,6 +82,24 @@ class Pendaftaran extends CI_Controller
     }
   }
 
+
+//pembayran admin//
+function datapembayaran(){
+  $tahunajaran = $this->m_pembayaran->gettahunajaran();
+  $variabel['data'] = $this->m_pembayaran->lihatpembayaran($tahunajaran);
+  $this->layout_pendaftaran->render('adminpendaftaran/verifikasi/v_pembayaran',$variabel,'adminpendaftaran/verifikasi/v_pembayaran_js');
+}
+
+function verifikasibayar(){
+  $email_akun = $this->input->get("email_pendaftar");
+  $array = array(
+    "status_pembayaran"=> "diverifikasi"
+  );
+  $this->m_pembayaran->editakun($email_akun,$array);
+  redirect(base_url("admin/pendaftaran/datapembayaran"));
+}
+
+//akhir//
 
 //////////////////////////////////////////////////////////////////
 function semuapendaftar()
