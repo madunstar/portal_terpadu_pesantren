@@ -10,7 +10,7 @@ class M_pembayaran extends CI_Model
         parent::__construct();
     }
 
-   
+
 
     function ambilpembayaran($email)
     {
@@ -26,6 +26,27 @@ class M_pembayaran extends CI_Model
         $this->db->where("email_pendaftar",$email);
         return $this->db->update('tb_akun_pendaftar',$array);
       }
+
+//bagian admin
+
+    function gettahunajaran(){
+      $query =$this->db->query('select tahun_ajaran from tb_pengaturan_pendaftaran');
+      $data  = $query->row_array();
+      $value = $data['tahun_ajaran'];
+      return $value;
+    }
+
+    function lihatpembayaran($tahunajaran)
+    {
+      $this->db->select('*')
+      ->from('tb_akun_pendaftar')
+      ->join('tb_biodata_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_biodata_pendaftar.email_pendaftar')
+      ->join('tb_bayar_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_bayar_pendaftar.email_pendaftar');
+      $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+      $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+      return $this->db->get();
+    }
+
 
 }
 ?>

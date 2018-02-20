@@ -170,7 +170,7 @@ function biodata()
           'hpwali'=>$this->input->post('hpwali')
           );
 
-       $email = "1@edd.com"; //hapus ini nis tolong banar
+
 
 
       $exec = $this->m_santri->editdatasantri($email,$array);
@@ -313,7 +313,7 @@ function pembayaran()
         }
         $this->m_pembayaran->edit($email,$data);
         $array2 = array (
-          "status_pembayaran"=>"menunggu"
+          "status_pembayaran"=>"menunggu verifikasi"
          );
         $exec2 = $this->m_santri->editakun($email,$array2);
         redirect(base_url("santri/pendaftaran/pembayaran?msg=1"));
@@ -334,6 +334,7 @@ function pembayaran()
     }
 
 }
+//informasi atau pengumuman
 function pengumuman()
 {
   $variabel['data'] = $this->m_pengumuman->lihatpengumuman();

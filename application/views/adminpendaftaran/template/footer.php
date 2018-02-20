@@ -26,3 +26,9 @@
   <script src="<?php echo base_url('assets/js/app.plugin.js');?>"></script>
   <script src="<?php echo base_url('assets/js/datepicker/bootstrap-datepicker.js');?>"></script>
   <script src="<?php echo base_url('assets/js/file-input/bootstrap-filestyle.min.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/wysiwyg/jquery.hotkeys.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/wysiwyg/bootstrap-wysiwyg.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/wysiwyg/demo.js');?>"></script>
+
+  <script src="<?php echo base_url('assets/js/markdown/epiceditor.min.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/markdown/demo.js');?>"></script>
