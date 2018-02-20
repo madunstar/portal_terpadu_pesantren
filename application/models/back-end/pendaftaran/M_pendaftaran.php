@@ -28,6 +28,36 @@ class M_pendaftaran extends CI_Model
        ->where("tb_akun_pendaftar.tahun_ajaran",$tahunajaran);
         return $this->db->get();
     }
+    function lihatdatadiverifikasi($tahunajaran)
+    {
+        $this->db->select('*')
+       ->from('tb_akun_pendaftar')
+       ->join('tb_biodata_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_biodata_pendaftar.email_pendaftar')
+       ->where("tb_akun_pendaftar.tahun_ajaran",$tahunajaran)
+       ->where("tb_akun_pendaftar.status_biodata","diverifikasi")
+       ->where("tb_akun_pendaftar.status_berkas","diverifikasi");
+        return $this->db->get();
+    }
+    function lihatdatamenunggu($tahunajaran)
+    {
+        $this->db->select('*')
+       ->from('tb_akun_pendaftar')
+       ->join('tb_biodata_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_biodata_pendaftar.email_pendaftar')
+       ->where("tb_akun_pendaftar.tahun_ajaran",$tahunajaran)
+       ->where("tb_akun_pendaftar.status_biodata","menunggu verifikasi")
+       ->or_where("tb_akun_pendaftar.status_berkas","menunggu verifikasi");
+        return $this->db->get();
+    }
+    function lihatdatabelumlengkap($tahunajaran)
+    {
+        $this->db->select('*')
+       ->from('tb_akun_pendaftar')
+       ->join('tb_biodata_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_biodata_pendaftar.email_pendaftar')
+       ->where("tb_akun_pendaftar.tahun_ajaran",$tahunajaran)
+       ->where("tb_akun_pendaftar.status_biodata","tidak lengkap")
+       ->or_where("tb_akun_pendaftar.status_berkas","tidak lengkap");
+        return $this->db->get();
+    }
 
     function lihatsemuabiodata($email)
     {
@@ -37,6 +67,24 @@ class M_pendaftaran extends CI_Model
        $this->db->where('tb_akun_pendaftar.email_pendaftar',$email);
         return $this->db->get();
     }
+
+    
+
+    function editakun($email,$array){
+       $this->db->where("email_pendaftar",$email);
+       return $this->db->update("tb_akun_pendaftar",$array);
+    }
+
+    function lihatsemuaberkas($email)
+    {
+       $this->db->select('*')
+       ->from('tb_akun_pendaftar')
+       ->join('tb_bayar_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_bayar_pendaftar.email_pendaftar');
+       $this->db->where('tb_akun_pendaftar.email_pendaftar',$email);
+        return $this->db->get();
+    }
+
+    
 
 
       //////////////////////////////////

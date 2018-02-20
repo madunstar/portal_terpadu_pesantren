@@ -1,3 +1,10 @@
+<?php 
+  if (isset($_GET['l'])) {
+    $l = $_GET['l'];
+  } else {
+    $l = "semuapendaftar";
+  }
+?>
 <section id="content">
 <section class="vbox">
   <section class="scrollable padder">
@@ -10,7 +17,9 @@
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil mengupdate biodata","Gagal mengupdate biodata") ?>
-       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/biodata" method="post">
+       <form class="bs-example form-horizontal"  action="<?php echo base_url() ?>admin/pendaftaran/semuabiodata?email=<?php echo $data['email_pendaftar'] ?>&l=<?php echo $l ?>" method="post">
+       <a href="<?php echo base_url("admin/pendaftaran/$l") ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
+       <input type="hidden" value="<?php echo $data['email_pendaftar'] ?>" name="email_pendaftar" >
         <div class="row">
           <div class="col-md-6">
           <div class="form-group">
@@ -282,7 +291,8 @@
       </div>
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
-
+        
+        <a href="<?php echo base_url("admin/pendaftaran/$l") ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
       </footer>
       </form>
 

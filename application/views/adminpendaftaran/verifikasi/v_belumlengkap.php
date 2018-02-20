@@ -2,7 +2,7 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Santri (Semua data)</h3>
+      <h3 class="m-b-none">Santri (belum lengkap)</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
@@ -32,7 +32,7 @@
                       <td>".$row['nisn']."</td>
                       <td>".($row['jenis_kelamin']=="L"?"Laki-laki":"Perempuan")."</td>
                       <td>
-                      <a href='".base_url('admin/pendaftaran/semuabiodata?email='.$row['email_pendaftar'].'')."'  title='Edit'><i class='fa fa-edit'></i> ".$row['status_biodata']."</a>
+                      <a href='".base_url('admin/pendaftaran/semuabiodata?email='.$row['email_pendaftar'].'&l=belumlengkap')."'  title='Edit'><i class='fa fa-edit'></i> ".$row['status_biodata']."</a>
                       </td>
                       <td>
                       <a href='".base_url('admin/pendaftaran/semuaberkas?email='.$row['email_pendaftar'].'')."'  title='Edit'><i class='fa fa-edit'></i> ".$row['status_berkas']."</a>

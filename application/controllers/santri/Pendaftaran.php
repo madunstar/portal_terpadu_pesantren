@@ -313,7 +313,7 @@ function pembayaran()
         }
         $this->m_pembayaran->edit($email,$data);
         $array2 = array (
-          "status_pembayaran"=>"menunggu"
+          "status_pembayaran"=>"menunggu verifikasi"
          );
         $exec2 = $this->m_santri->editakun($email,$array2);
         redirect(base_url("santri/pendaftaran/pembayaran?msg=1"));

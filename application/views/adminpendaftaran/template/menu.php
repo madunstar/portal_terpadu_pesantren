@@ -37,21 +37,21 @@
 									</a>
 								</li>
 								<li >
-									<a href="layout-color.html" class="auto">
+								<a href="<?php echo base_url() ?>admin/pendaftaran/diverifikasi" class="auto">
 										<i class="i i-dot text-success"></i>
 
 										<span>Diverifikasi</span>
 									</a>
 								</li>
 								<li >
-									<a href="layout-hbox.html" class="auto">
+								<a href="<?php echo base_url() ?>admin/pendaftaran/menunggu" class="auto">
 										<i class="i i-dot text-warning"></i>
 
 										<span>Menunggu Verifikasi</span>
 									</a>
 								</li>
 								<li >
-									<a href="layout-boxed.html" class="auto">
+								<a href="<?php echo base_url() ?>admin/pendaftaran/belumlengkap" class="auto">
 										<i class="i i-dot text-danger"></i>
 
 										<span>Belum Lengkap</span>
