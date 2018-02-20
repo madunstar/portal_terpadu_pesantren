@@ -60,14 +60,14 @@
 							</ul>
 						</li>
 						<li  class="">
-							<a href="<?php echo site_url('')?>" class="auto">
+							<a href="<?php echo base_url() ?>admin/pendaftaran/datapembayaran" class="auto">
 								<i class="fa fa-money">
 								</i>
 								<span class="font-bold">Pembayaran</span>
 							</a>
 						</li>
 						<li  class="">
-							<a href="<?php echo site_url('')?>" class="auto">
+							<a href="<?php echo base_url() ?>admin/pendaftaran/pengumuman" class="auto">
 								<i class="fa fa-info-circle">
 								</i>
 								<span class="font-bold">Informasi</span>
@@ -93,7 +93,7 @@
 								</li>
 								<li >
 									<a href="icons.html" class="auto">
-										
+
 										<i class="i i-dot"></i>
 
 										<span>Peserta Tes</span>
