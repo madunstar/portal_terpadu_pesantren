@@ -152,6 +152,11 @@ class M_santri extends CI_Model
         $this->db->where("email_pendaftar",$email);
         return $this->db->update('tb_akun_pendaftar',$array);
       }
+
+      function cekakun($email){
+        $this->db->where("email_pendaftar",$email);
+        return $this->db->get('tb_akun_pendaftar');
+      }
     // end gawian nikman nasir
 
 

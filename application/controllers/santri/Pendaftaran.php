@@ -184,7 +184,7 @@ function biodata()
       }
 
     } else {
-      $email = "1@edd.com";
+    //  $email = "1@edd.com";
       $exec=$this->m_santri->lihatbiodata($email)->row_array();
       $variabel['data']=$exec;
 
@@ -196,7 +196,7 @@ function biodata()
       $variabel['transportasi']=$this->m_santri->ambiltransportasi();
       $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
       $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
-
+      $variabel['cekakun']=$this->m_santri->cekakun($email)->row_array();
       $this->layout_pendaftaran->renderfront('calonsantri/v_biodata', $variabel,'calonsantri/v_biodata_js');
     }
 }
