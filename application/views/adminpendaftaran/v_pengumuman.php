@@ -14,7 +14,8 @@
 
             </header>
             <div class="panel-body">
-              <button type="button" name="button" class="btn btn-success">Tambah Informasi</button>
+              <a href="<?php echo base_url() ?>admin/pendaftaran/tambahpengumuman"><button type="button" name="button" class="btn btn-success">Tambah Informasi</button></a>
+
               <div class="table-responsive">
 
                 <table class="table table-hover" id="datatable">
