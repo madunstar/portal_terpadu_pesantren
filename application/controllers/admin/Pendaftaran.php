@@ -12,6 +12,7 @@ class Pendaftaran extends CI_Controller
     $this->load->model('back-end/pendaftaran/M_pengaturan');
     $this->load->model('back-end/pendaftaran/m_pendaftaran');
     $this->load->model('back-end/pendaftaran/m_pembayaran');
+    $this->load->model('back-end/pendaftaran/m_pengumuman');
     $this->load->library('layout_pendaftaran');
   }
 
@@ -100,6 +101,25 @@ function verifikasibayar(){
 }
 
 //akhir//
+
+
+
+//informasi atau pengumuman
+function pengumuman()
+{
+  $variabel['data'] = $this->m_pengumuman->lihatpengumuman();
+  $this->layout_pendaftaran->render('adminpendaftaran/v_pengumuman',$variabel,'adminpendaftaran/pengaturan_js');
+}
+
+function tambahpengumuman()
+{
+    $variabel['data'] = $this->m_pengumuman->lihatpengumuman();
+    $this->layout_pendaftaran->render('adminpendaftaran/v_tambahpengumuman',$variabel,'adminpendaftaran/pengaturan_js');
+}
+//sisanya tamabh sendiri yaa anis!
+//akhir
+
+
 
 //////////////////////////////////////////////////////////////////
 function semuapendaftar()

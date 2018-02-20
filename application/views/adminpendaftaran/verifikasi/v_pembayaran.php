@@ -11,7 +11,7 @@
       </header>
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus Data Santri","Gagal Menghapus Data Santri") ?>
-
+      
         <table class="table table-striped " id="datatable">
           <thead>
 
