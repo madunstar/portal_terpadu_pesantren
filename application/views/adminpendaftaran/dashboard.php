@@ -9,7 +9,9 @@
       </div>
 
       <div class="row">
+        
         <div class="col-lg-12">
+
           <!-- .crousel fade -->
           <section class="panel bg-dark">
             <div class="carousel slide auto carousel-fade panel-body" id="c-fade">
