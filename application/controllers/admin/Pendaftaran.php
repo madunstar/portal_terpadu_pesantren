@@ -33,7 +33,7 @@ class Pendaftaran extends CI_Controller
 
 //akhir dashboard admin //
 
-//pengaturan pendaftaran
+///////////////////pengaturan pendaftaran////////////////////////////
   function pengaturan()
   {
     $variabel['tb_akun_pendaftar'] = $this->M_pengaturan->get_akun_pendaftar();

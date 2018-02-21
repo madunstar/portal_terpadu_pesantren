@@ -53,12 +53,12 @@
 										name="bukti_pembayaran" id="bukti_pembayaran" onchange="PreviewImage1();">
 										<br/>
 										<?php if ($data['bukti_pembayaran']!="") { ?>
-										<img id="uploadPreview1"  style="max-width:200px; margin-top:5px; margin-bottom:0px;" src="<?php echo "".base_url()."assets/images/berkas/".$data['bukti_pembayaran']."" ?>" class="thumbnail"> 
+										<img id="uploadPreview1"  style="max-width:200px; margin-top:5px; margin-bottom:0px;" src="<?php echo "".base_url()."assets/images/berkas/".$data['bukti_pembayaran']."" ?>" class="thumbnail">
 									<?php } else {?>
-										<img id="uploadPreview1"  style="max-width:200px; margin-top:5px; margin-bottom:0px;" > 
+										<img id="uploadPreview1"  style="max-width:200px; margin-top:5px; margin-bottom:0px;" >
 									<?php } ?>
 									</div>
-									
+
 								</div>
 							</div>
 						</div>
