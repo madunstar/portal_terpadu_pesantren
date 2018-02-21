@@ -47,7 +47,8 @@
           <span class="thumb-sm avatar pull-left">
             <img src="<?php echo base_url('assets/images/a0.png'); ?>" alt="...">
           </span>
-          John.Smith <b class="caret"></b>
+          <?php $user = $this->session->userdata('user');
+          echo $user; ?> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu animated fadeInRight">
 
@@ -57,7 +58,7 @@
           </li>
           <li class="divider"></li>
           <li>
-            <a href="<?php echo base_url()?>santri/pendaftaran/logout" data-toggle="ajaxModal" ><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
+            <a href="<?php echo base_url()?>santri/pendaftaran/logout"  ><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
           </li>
         </ul>
       </li>

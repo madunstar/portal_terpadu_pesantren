@@ -60,6 +60,15 @@ class M_dashboard extends CI_Model {
              ->row_array();
 
   }
+  function status_santri($email){
+    $this->db->where('email_pendaftar',$email);
+    return $this->db->get('tb_akun_pendaftar');
+  }
+
+  function nama_user($email){
+    $this->db->where('email_pendaftar',$email);
+    return $this->db->get('tb_biodata_pendaftar');
+  }
 }
 
 

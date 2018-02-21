@@ -74,7 +74,7 @@
                     <div class=" h4 font-bold"> Status Biodata</div>
                   </div>
                   <div class="padder-v text-center clearfix">
-                    <div class="font-bold h4"><button class="btn btn-success font-bold disabled">Diverifikasi</button></div>
+                    <div class="font-bold h4"><button class="btn btn-success font-bold disabled"><?php echo $statussantri['status_biodata']?></button></div>
                   </div>
                 </div>
               </div>
@@ -85,7 +85,7 @@
                     <div class=" h4 font-bold"> Status Berkas</div>
                   </div>
                   <div class="padder-v text-center clearfix">
-                    <div class="font-bold h4"><button class="btn btn-warning font-bold disabled">Menunggu</button></div>
+                    <div class="font-bold h4"><button class="btn btn-warning font-bold disabled"><?php echo $statussantri['status_pembayaran']?></button></div>
                   </div>
                 </div>
               </div>
@@ -96,7 +96,7 @@
                     <div class=" h4 font-bold">Status Pembayaran</div>
                   </div>
                   <div class="padder-v text-center clearfix">
-                    <div class=""><button class="btn btn-danger font-bold disabled">Tidak Lengkap</button></div>
+                    <div class=""><button class="btn btn-danger font-bold disabled"><?php echo $statussantri['status_berkas']?></button></div>
                   </div>
                 </div>
               </div>

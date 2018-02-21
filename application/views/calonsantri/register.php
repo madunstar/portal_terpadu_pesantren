@@ -27,7 +27,7 @@
             <small>Daftarkan Email Anda Untuk Ketahap Selanjutnya</small>
           </header>
           <?php pesan_get('msg',"Berhasil Membuat Akun","Email Sudah Terdaftar") ?>
-          <form  action="<?php echo base_url() ?>santri/pendaftaran/addakun" method="post" data-validate="parsley">
+          <form  action="<?php echo base_url() ?>santri/register/addakun" method="post" data-validate="parsley">
             <div class="list-group">
               <div class="list-group-item">
                 <input name="email" data-required="true" type="email" placeholder="Email" value="<?php echo set_value('email_pendaftar'); ?>" class="form-control no-border">
