@@ -43,6 +43,12 @@ class M_pengaturan extends CI_Model
         return $this->db->update('tb_akun_pendaftar',$array);
     }
 
+    function editstatus($email_akun,$array)
+    {
+        $this->db->where("email_pendaftar",$email_akun);
+        return $this->db->update('tb_akun_pendaftar',$array);
+    }
+
     function untukmodal($email_pendaftar)
     {
 

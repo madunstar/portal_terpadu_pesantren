@@ -88,6 +88,7 @@
                               <th>Email</th>
                               <th>Tahun Ajaran</th>
                               <th>Status Pendaftaran</th>
+                              <th>Status Akun</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -96,12 +97,18 @@
                                 echo "
                                   <tr>
                                     <td>
-                                    <button class='btn btn-warning btn-xs' data-toggle='modal' data-target='#".$row['id_biodata']."' title='Edit'><i class='fa fa-edit'></i></button>
+                                      <button class='btn btn-warning btn-xs' data-toggle='modal' data-target='#".$row['id_biodata']."' title='Ubah Password'><i class='fa fa-edit'></i></button>
+                                      <div class='form-group'>
+                                      <form class='' data-validate='parsley' action='". base_url()."admin/pendaftaran/aktivasiakun?email_pendaftar=". $row['email_pendaftar']."' method='post'>
+                                      <button class='btn btn-success btn-xs' type='submit'>aktivasi akun</button>
+                                      </form>
+                                      </div>
                                     </td>
                                     <td>".$row['nama_lengkap']."</td>
                                     <td>".$row['email_pendaftar']."</td>
                                     <td>".$row['tahun_ajaran']."</td>
                                     <td>".$row['status_pendaftaran']."</td>
+                                    <td>".$row['status_akun']."</td>
                                   </tr>
 
                                   <div class='modal' id='".$row['id_biodata']."' tabindex='-1' data-validate='parsley'>

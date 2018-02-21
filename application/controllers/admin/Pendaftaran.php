@@ -88,6 +88,22 @@ class Pendaftaran extends CI_Controller
     }
   }
 
+//aktifasi akun pendaftar sementara
+  function aktivasiakun(){
+    $email_akun = $this->input->get("email_pendaftar");
+    $params = array(
+      'status_akun' => 'aktif'
+    );
+    $this->M_pengaturan->editstatus($email_akun,$params);
+    $this->session->set_flashdata('response',"
+        <div class='alert alert-success'>
+            <button type='button' class='close' data-dismiss='alert'>&times;</button>
+            <strong>Selamat!</strong> Aktifasi Akun Calon Santri Berhasil <span class='fa fa-check'></span>
+        </div>
+    ");
+    redirect('admin/pendaftaran/pengaturan');
+  }
+/////////////////////////////////akhir pengaturan/////////////////////////////////
 
 //pembayran admin//
 function datapembayaran(){
