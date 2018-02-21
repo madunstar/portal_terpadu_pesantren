@@ -13,7 +13,7 @@
       <div class="panel-body">
 
       <div class="table-responsive">
-      <?php pesan_get('msg',"Berhasil Menghapus Data Santri","Gagal Menghapus Data Santri") ?>
+      <?php pesan_get('msg',"Berhasil Verifikasi Pembayaran Santri","Berhasil Membatalkan Pembayaran Santri") ?>
 
         <table class="table table-striped " id="datatable">
           <thead>
@@ -22,6 +22,7 @@
               <th>Besar Pembayaran</th>
               <th>Tanggal Pembayaran</th>
               <th>Status Pembayaran</th>
+              <th>Bukti Pembayaran</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -36,6 +37,9 @@
                       <td><?php echo $row['tanggal_pembayaran'] ?></td>
                       <td><?php echo $row['status_pembayaran'] ?></td>
                       <td>
+                        <a class="" target='__blank' <?php echo ($row['status_pembayaran'] == 'tidak lengkap' ? '' : 'href="'.base_url('assets/images/berkas/'.$row['bukti_pembayaran']).'"');?>><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-search"></i>&nbsp;lihat berkas</button></a>
+                      </td>
+                      <td>
                         <div class="form-group">
                           <?php echo (($row['status_pembayaran'] == 'menunggu verifikasi') ?
                           '
@@ -47,12 +51,8 @@
                             <form action="'.base_url().'admin/pendaftaran/verifikasibatal?email_pendaftar='.$row['email_pendaftar'].'" method="post">
                             <button type="submit" class="btn btn-danger btn-xs">batalkan verifikasi</button>
                             </form>
-                          ': null))?>
+                          ': '<button class="btn btn-danger btn-xs">pembayaran tidak lengkap</button>'))?>
                         </div>
-                        <a class="pull-right" target='__blank' <?php echo ($row['status_pembayaran'] == 'tidak lengkap' ? '' : 'href="'.base_url('assets/images/berkas/'.$row['bukti_pembayaran']).'"');?>><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-search"></i>lihat berkas</button></a>
-
-
-
 
                       </td>
 

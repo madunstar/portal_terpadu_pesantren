@@ -16,8 +16,11 @@ class Pendaftaran extends CI_Controller
     $this->load->library('layout_pendaftaran');
   }
 
+//ini dashboard admin //
   function index()
   {
+      $tahunajaran = $this->m_pembayaran->gettahunajaran();
+      $variabel['total_pembayaran'] = $this->M_dashboard->hitungpembayaran($tahunajaran);
       $variabel['pembayaran_terakhir'] = $this->M_dashboard->get_pembayaran_terakhir();
       $variabel['total_tidak_lengkap'] = $this->M_dashboard->get_count_status_tidak_lengkap();
       $variabel['total_diverifikasi'] = $this->M_dashboard->get_count_status_diverifikasi();
@@ -27,6 +30,8 @@ class Pendaftaran extends CI_Controller
       $variabel['pembayaran_menunggu'] = $this->M_dashboard->get_count_pembayaran_menunggu();
       $this->layout_pendaftaran->render('adminpendaftaran/dashboard',$variabel);
   }
+
+//akhir dashboard admin //
 
 //pengaturan pendaftaran
   function pengaturan()
@@ -97,7 +102,7 @@ function verifikasibayar(){
     "status_pembayaran"=> "diverifikasi"
   );
   $this->m_pembayaran->editakun($email_akun,$array);
-  redirect(base_url("admin/pendaftaran/datapembayaran"));
+  redirect(base_url("admin/pendaftaran/datapembayaran?msg=1"));
 }
 
 function verifikasibatal(){
@@ -106,7 +111,7 @@ function verifikasibatal(){
     "status_pembayaran"=> "menunggu verifikasi"
   );
   $this->m_pembayaran->editakun($email_akun,$array);
-  redirect(base_url("admin/pendaftaran/datapembayaran"));
+  redirect(base_url("admin/pendaftaran/datapembayaran?msg=0"));
 }
 
 //akhir//
