@@ -87,7 +87,7 @@
                               <th>Nama</th>
                               <th>Email</th>
                               <th>Tahun Ajaran</th>
-                              <th>Status Pendaftaran</th>
+
                               <th>Status Akun</th>
                             </tr>
                           </thead>
@@ -107,7 +107,7 @@
                                     <td>".$row['nama_lengkap']."</td>
                                     <td>".$row['email_pendaftar']."</td>
                                     <td>".$row['tahun_ajaran']."</td>
-                                    <td>".$row['status_pendaftaran']."</td>
+                                    
                                     <td>".$row['status_akun']."</td>
                                   </tr>
 
