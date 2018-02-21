@@ -279,6 +279,8 @@ function berkas(){
 function pembayaran()
 {
      $email = $this->session->userdata("email");
+     $statusbio = $this->m_akunsantri->getstatusbiodata($email);
+     $statusberkas = $this->m_akunsantri->getstatusberkas($email);
     if ($this->input->post()) {
       $data=array(
         'besar_pembayaran'=> $this->input->post('besar_pembayaran'),
@@ -329,8 +331,13 @@ function pembayaran()
       redirect(base_url("santri/pendaftaran/pembayaran?msg=1"));
 
     } else {
-    $variabel['data']=$this->m_pembayaran->ambilpembayaran($email)->row_array();
-    $this->layout_pendaftaran->renderfront('calonsantri/v_pembayaran',$variabel,'calonsantri/v_pembayaran_js');
+      if ( $statusbio == "diverifikasi" ) {
+        $variabel['data']=$this->m_pembayaran->ambilpembayaran($email)->row_array();
+        $this->layout_pendaftaran->renderfront('calonsantri/v_pembayaran',$variabel,'calonsantri/v_pembayaran_js');
+      } else {
+        redirect(base_url("santri/pendaftaran/dashboard"));
+      }
+
     }
 
 }

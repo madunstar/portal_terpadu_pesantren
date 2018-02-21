@@ -10,7 +10,7 @@ class M_akunsantri extends CI_Model
         parent::__construct();
     }
 
-    
+
     function get_count_biodata() {
       $query = $this->db->query('SELECT * FROM tb_biodata_pendaftar');
       return $query->num_rows();
@@ -54,6 +54,28 @@ class M_akunsantri extends CI_Model
 
     function tambahbayar($array_bayar){
       $this->db->insert('tb_bayar_pendaftar',$array_bayar);
+    }
+
+    function getstatusbiodata($email){
+      $this->db->select("status_biodata")
+        ->from("tb_akun_pendaftar");
+      $this->db->where("email_pendaftar",$email);
+      $data =$this->db->get()
+            ->row_array();
+      $value = $data['status_biodata'];
+      return $value;
+
+    }
+
+    function getstatusberkas($email){
+      $this->db->select("status_berkas")
+        ->from("tb_akun_pendaftar");
+      $this->db->where("email_pendaftar",$email);
+      $data =$this->db->get()
+            ->row_array();
+      $value = $data['status_berkas'];
+      return $value;
+
     }
 
     // gawian nikman nasir
