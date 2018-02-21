@@ -230,10 +230,11 @@ function biodata()
     }
 }
 
-//berkas dari madan
+//berkas //
 function berkas(){
   $email = $this->session->userdata("email");
   $nama_berkas = $this->input->post('namaberkas');
+  $statusberkas = $this->m_akunsantri->getstatusberkas($email);
   if ($this->input->post()) {
     $data=array(
       'nama_berkas'=> $this->input->post('namaberkas'),
@@ -251,6 +252,7 @@ function berkas(){
           cobalah upload file jpg / jpeg / png
       </div>"
       );
+      $variabel['cekberkas'] =  $statusberkas;
       $variabel['datapiagam2']=$this->m_berkas->ambilberkaspiagam2($email)->row_array();
       $variabel['datapiagam1']=$this->m_berkas->ambilberkaspiagam1($email)->row_array();
       $variabel['datakk']=$this->m_berkas->ambilberkaskk($email)->row_array();
@@ -294,6 +296,7 @@ function berkas(){
 
 
   } else {
+    $variabel['cekberkas'] =  $statusberkas;
     $variabel['datapiagam2']=$this->m_berkas->ambilberkaspiagam2($email)->row_array();
     $variabel['datapiagam1']=$this->m_berkas->ambilberkaspiagam1($email)->row_array();
     $variabel['datakk']=$this->m_berkas->ambilberkaskk($email)->row_array();
@@ -308,6 +311,8 @@ function berkas(){
 function pembayaran()
 {
      $email = $this->session->userdata("email");
+     $statusbio = $this->m_akunsantri->getstatusbiodata($email);
+     $statusberkas = $this->m_akunsantri->getstatusberkas($email);
     if ($this->input->post()) {
       $data=array(
         'besar_pembayaran'=> $this->input->post('besar_pembayaran'),
@@ -358,8 +363,19 @@ function pembayaran()
       redirect(base_url("santri/pendaftaran/pembayaran?msg=1"));
 
     } else {
-    $variabel['data']=$this->m_pembayaran->ambilpembayaran($email)->row_array();
-    $this->layout_pendaftaran->renderfront('calonsantri/v_pembayaran',$variabel,'calonsantri/v_pembayaran_js');
+      if ( ($statusbio == "diverifikasi") and ($statusberkas == "diverifikasi")) {
+        $variabel['data']=$this->m_pembayaran->ambilpembayaran($email)->row_array();
+        $this->layout_pendaftaran->renderfront('calonsantri/v_pembayaran',$variabel,'calonsantri/v_pembayaran_js');
+      } else {
+        $this->session->set_flashdata('response',"
+            <div class='alert alert-danger'>
+                <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                <strong>Oooppss!</strong> Anda belum bisa melakukan pembayaran, Biodata atau Berkas Anda belum <strong>Diverifikasi</strong>
+            </div>
+        ");
+        redirect(base_url("santri/pendaftaran/dashboard"));
+      }
+
     }
 
 }

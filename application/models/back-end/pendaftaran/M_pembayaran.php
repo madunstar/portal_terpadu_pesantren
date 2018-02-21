@@ -10,7 +10,7 @@ class M_pembayaran extends CI_Model
         parent::__construct();
     }
 
-
+//calon santri
 
     function ambilpembayaran($email)
     {
@@ -26,6 +26,7 @@ class M_pembayaran extends CI_Model
         $this->db->where("email_pendaftar",$email);
         return $this->db->update('tb_akun_pendaftar',$array);
       }
+//----------//
 
 //bagian admin
 
@@ -47,6 +48,6 @@ class M_pembayaran extends CI_Model
       return $this->db->get();
     }
 
-
+    
 }
 ?>

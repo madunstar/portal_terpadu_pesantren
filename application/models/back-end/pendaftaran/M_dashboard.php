@@ -44,6 +44,7 @@ class M_dashboard extends CI_Model {
     $this->db->where('status_pembayaran','menunggu verifikasi');
     $this->db->or_where('status_pembayaran','diverifikasi');
     $this->db->limit(3);
+    $this->db->order_by('tb_bayar_pendaftar.tanggal_pembayaran','desc');
     return $this->db->get();
   }
 
@@ -57,9 +58,20 @@ class M_dashboard extends CI_Model {
   function get_count_pembayaran_diverifikasi() {
     return $this->db->select('(select count(*) from tb_akun_pendaftar where status_pembayaran = "diverifikasi" and status_akun = "aktif" ) as total',FALSE)
              ->get()
-             ->row_array();
+             ->row_array();}
 
+
+
+  function hitungpembayaran($tahunajaran){
+      $this->db->select_sum('besar_pembayaran','total')
+      ->from('tb_bayar_pendaftar')
+      ->join('tb_akun_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_bayar_pendaftar.email_pendaftar');
+      $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+      $this->db->where('tb_akun_pendaftar.status_pembayaran','diverifikasi');
+   return  $this->db->get()
+            ->row_array();
   }
+
   function status_santri($email){
     $this->db->where('email_pendaftar',$email);
     return $this->db->get('tb_akun_pendaftar');
@@ -69,6 +81,7 @@ class M_dashboard extends CI_Model {
     $this->db->where('email_pendaftar',$email);
     return $this->db->get('tb_biodata_pendaftar');
   }
+
 }
 
 

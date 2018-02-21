@@ -8,6 +8,7 @@
         </div>
       </div>
       <div class="col-lg-12">
+        <?php echo $this->session->flashdata('response'); ?>
         <!-- .crousel fade -->
         <section class="panel bg-primary">
           <div class="carousel slide auto carousel-fade panel-body" id="c-fade">

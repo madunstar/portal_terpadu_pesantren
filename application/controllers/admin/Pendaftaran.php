@@ -16,8 +16,11 @@ class Pendaftaran extends CI_Controller
     $this->load->library('layout_pendaftaran');
   }
 
+//ini dashboard admin //
   function index()
   {
+      $tahunajaran = $this->m_pembayaran->gettahunajaran();
+      $variabel['total_pembayaran'] = $this->M_dashboard->hitungpembayaran($tahunajaran);
       $variabel['pembayaran_terakhir'] = $this->M_dashboard->get_pembayaran_terakhir();
       $variabel['total_tidak_lengkap'] = $this->M_dashboard->get_count_status_tidak_lengkap();
       $variabel['total_diverifikasi'] = $this->M_dashboard->get_count_status_diverifikasi();
@@ -28,7 +31,9 @@ class Pendaftaran extends CI_Controller
       $this->layout_pendaftaran->render('adminpendaftaran/dashboard',$variabel);
   }
 
-//pengaturan pendaftaran
+//akhir dashboard admin //
+
+///////////////////pengaturan pendaftaran////////////////////////////
   function pengaturan()
   {
     $variabel['tb_akun_pendaftar'] = $this->M_pengaturan->get_akun_pendaftar();
@@ -83,6 +88,22 @@ class Pendaftaran extends CI_Controller
     }
   }
 
+//aktifasi akun pendaftar sementara
+  function aktivasiakun(){
+    $email_akun = $this->input->get("email_pendaftar");
+    $params = array(
+      'status_akun' => 'aktif'
+    );
+    $this->M_pengaturan->editstatus($email_akun,$params);
+    $this->session->set_flashdata('response',"
+        <div class='alert alert-success'>
+            <button type='button' class='close' data-dismiss='alert'>&times;</button>
+            <strong>Selamat!</strong> Aktifasi Akun Calon Santri Berhasil <span class='fa fa-check'></span>
+        </div>
+    ");
+    redirect('admin/pendaftaran/pengaturan');
+  }
+/////////////////////////////////akhir pengaturan/////////////////////////////////
 
 //pembayran admin//
 function datapembayaran(){
@@ -97,7 +118,16 @@ function verifikasibayar(){
     "status_pembayaran"=> "diverifikasi"
   );
   $this->m_pembayaran->editakun($email_akun,$array);
-  redirect(base_url("admin/pendaftaran/datapembayaran"));
+  redirect(base_url("admin/pendaftaran/datapembayaran?msg=1"));
+}
+
+function verifikasibatal(){
+  $email_akun = $this->input->get("email_pendaftar");
+  $array = array(
+    "status_pembayaran"=> "menunggu verifikasi"
+  );
+  $this->m_pembayaran->editakun($email_akun,$array);
+  redirect(base_url("admin/pendaftaran/datapembayaran?msg=0"));
 }
 
 //akhir//

@@ -9,7 +9,9 @@
       </div>
 
       <div class="row">
+        
         <div class="col-lg-12">
+
           <!-- .crousel fade -->
           <section class="panel bg-dark">
             <div class="carousel slide auto carousel-fade panel-body" id="c-fade">
@@ -159,13 +161,13 @@
               <div class="row pull-out">
                 <div class="col-xs-6">
                   <div class="padder-v">
-                    <span class="m-b-xs h4 block text-success font-bold">Rp. 200000000,-</span>
+                    <span class="m-b-xs h4 block text-success font-bold">Rp.<?php echo $total_pembayaran['total'] ?>,-</span>
                     <small class="text-muted">Uang Pendaftaran Masuk</small>
                   </div>
                 </div>
                 <div class="col-xs-6">
                   <div class="padder-v text-right">
-                    <button class="btn btn-info btn-block">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button>
+                    <a href="<?php echo base_url() ?>admin/pendaftaran/datapembayaran"><button class="btn btn-info btn-block">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                   </div>
                 </div>
               </div>
