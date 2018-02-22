@@ -1,39 +1,55 @@
-<html>
-<meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport"></meta>
-<title>
-    Login Admin Portal Terpadu Pesantren
-</title>
- <link href="<?php echo base_url() ?>/assets/css/materialize.css" rel="stylesheet" type="text/css" media="all">
- <script type="text/javascript" src="<?php echo base_url()?>/assets/js/jquary-1.11.1.min.js"></script>
- <script type="text/javascript" src="<?php echo base_url()?>/assets/js/materialize.js"></script>
- <body bgcolor="#006064">
- <div id="index-banner" class="section no-pad-bot cyan darken-4">
-    <div class="container center" style="padding-top:50px;">
-	<div id="index-banner" class="section no-pad-bot cyan darken-4">
+<section class="vbox">
+  <img src="<?php echo base_url('assets/images/masjid.jpg'); ?>" style="opacity:0.5" alt="">
+  <section class="hbox stretch">
+    <aside class="col-sm-1 no-padder">
+
+  </aside>
+    <aside class="aside-lg no-padder">
+      <section class="vbox">
+      <div class="wrapper" style="margin-top:70px">
+
+      </div>
     </div>
-			<form class="col s12 center light center grey-text text-lighten-4" style="padding-left:37%;" action="<?php echo base_url();?>index.php/admin/login/loginhalaman" method="post" name="login">
-				<div class="row">
-				<div class="input-field col s5">
-				<i class="mdi-action-account-circle prefix"></i>
-				<input placeholder="Nama Akun" type="text" name="nama_akun" maxlength="25" onkeyup="this.value=this.value.replace(/[^A-Z,^a-z,^0-9]/g,'')" value="<?php echo set_value('nama_akun');?>">
-				<div class="validate"> <?php echo form_error('username');?> </div>
-			</div>
-			</div>
-				<div class="row">
-				<div class="input-field col s5">
-				<i class="mdi-communication-vpn-key prefix"></i>
-				<input placeholder="Kata Sandi" type="password" name="kata_sandi" maxlength="25" onkeyup="this.value=this.value.replace(/[^A-Z,^a-z,^0-9]/g,'')" value="<?php echo set_value('kata_sandi');?>">
-				<div class="validate"> <?php echo form_error('password');?> </div>
-			</div>
-			</div>
-			<div class="row">
-			<div class="input-field col s6">
-            <input id="download-button" class="btn-large waves-effect waves-light" type="submit" name="login" value="Login"> </td>
-			</div>
-			</div>
-           </form>
-		   </div>
+
+  </section>
+  </aside>
+  <aside class="col-lg-4">
+    <section class="vbox">
+    <div class="wrapper" style="margin-top:30px">
+      <div class="container aside-xl bg-light" style="border-radius:10px">
+
+        <section class="m-b-lg">
+          <div class="text-center">
+          <img src="<?php echo base_url('assets/images/logo.png'); ?>" alt="">
         </div>
-	</div>
-</body>
-</html>
+          <a class="navbar-brand block" href="index.html">LOGIN ADMIN PORTAL PESANTREN DARUL ILMI</a>
+          <?php pesan_get('msg',"Sukses","Nama Akun tidak terdaftar","Nama Akun dan Kata Sandi tidak cocok") ?>
+          <form  action="<?php echo base_url()?>admin/login/loginhalaman" method="post" data-validate="parsley">
+            <div class="list-group">
+              <div class="list-group-item">
+                <input name="nama_akun" data-required="true" type="text" placeholder="Nama Akun" value="<?php echo set_value('nama_akun'); ?>" class="form-control no-border">
+              </div>
+              <div class="list-group-item">
+               <input name="kata_sandi" data-required="true" type="password" placeholder="Kata Sandi" value="<?php echo set_value('kata_sandi'); ?>" class="form-control no-border" id="pwd">
+             </div>
+           </div>
+          <button type="submit" class="btn btn-success btn-lg btn-block ">Masuk</button>
+        </form>
+        <footer id="footer">
+        <p class="text-center text-muted"><small>&copy;2018</small></p>
+      </footer>
+      </section>
+    </div>
+
+
+  </div>
+</section>
+
+
+</aside>
+</section>
+
+</section>
+
+</section>
+</section>
