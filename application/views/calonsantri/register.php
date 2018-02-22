@@ -40,8 +40,9 @@
             </div>
             <div class="list-group-item">
              <select data-required="true" name="tingkat" class="form-control no-border">
-               <option value="a">option 1</option>
-               <option value="b">option 2</option>
+               <option value="MI">MI</option>
+               <option value="MTs">MTs</option>
+               <option value="MA">MTA</option>
              </select>
            </div>
            </div>
