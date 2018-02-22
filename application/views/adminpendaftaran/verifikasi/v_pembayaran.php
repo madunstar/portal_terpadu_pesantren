@@ -2,18 +2,18 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Santri</h3>
+      <h3 class="m-b-none">Pembayaran</h3>
     </div>
 
     <section class="panel panel-default">
       <header class="panel-heading">
-        List Santri
+        Data Pembayaran
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="panel-body">
 
       <div class="table-responsive">
-      <?php pesan_get('msg',"Berhasil Verifikasi Pembayaran Santri","Berhasil Membatalkan Pembayaran Santri") ?>
+      <?php pesan_get('msg',"Berhasil Verifikasi Pembayaran Pendaftar","Berhasil Membatalkan Pembayaran Pendaftar") ?>
 
         <table class="table table-striped " id="datatable">
           <thead>
@@ -62,7 +62,42 @@
           </tbody>
         </table>
       </div>
+      <div class="line line-dashed b-b line-lg pull-in"></div>
+      <div class="row">
+        <div class="table-responsive col-sm-4">
+          <table class="table table-hover">
+            <tr>
+              <td>Pembayaran Diverifikasi</td>
+              <td><?php echo $pembayaran_diverifikasi['total'] ?></td>
+            </tr>
+            <tr>
+              <td>Pembayaran Menunggu Verifikasi</td>
+              <td><?php echo $pembayaran_menunggu['total'] ?></td>
+            </tr>
+            <tr>
+              <td>Pembayaran Tidak Lengkap</td>
+              <td><?php echo $pembayaran_tidaklengkap['total'] ?></td>
+            </tr>
+          </table>
+        </div>
+        <div class="table-responsive col-sm-6">
+          <table class="table table-hover">
+            <tr class="success">
+              <td>Total Pembayaran Diverifikasi</td>
+              <td>Rp. <?php echo $duitverifikasi['total'] ?> ,- </td>
+            </tr>
+            <tr class="warning">
+              <td>Total Pembayaran Menunggu Verifikasi</td>
+              <td>Rp. <?php echo $duitmenunggu['total'] ?>,- </td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
     </div>
+    <footer class="panel-footer">
+
+    </footer>
     </section>
   </section>
 </section>
