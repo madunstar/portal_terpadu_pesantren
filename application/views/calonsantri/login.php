@@ -40,7 +40,7 @@
         </form>
 
 
-        <small>Belum Punya Akun?<a class="text-primary" href="<?php echo base_url('santri/pendaftaran/index') ?>"> <strong>Halaman Pendaftaran</strong></a></small>
+        <small>Belum Punya Akun?<a class="text-primary" href="<?php echo base_url('santri/register/') ?>"> <strong>Halaman Pendaftaran</strong></a></small>
         <div class="line line-dashed"></div>
         <footer id="footer">
         <p class="text-center text-muted"><small>&copy;2018</small></p>
