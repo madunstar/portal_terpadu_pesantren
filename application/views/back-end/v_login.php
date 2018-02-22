@@ -22,7 +22,7 @@
 				<div class="row">
 				<div class="input-field col s5">
 				<i class="mdi-communication-vpn-key prefix"></i>
-				<input placeholder="Kata Sandi" type="kata_sandi" name="kata_sandi" maxlength="25" onkeyup="this.value=this.value.replace(/[^A-Z,^a-z,^0-9]/g,'')" value="<?php echo set_value('kata_sandi');?>">
+				<input placeholder="Kata Sandi" type="password" name="kata_sandi" maxlength="25" onkeyup="this.value=this.value.replace(/[^A-Z,^a-z,^0-9]/g,'')" value="<?php echo set_value('kata_sandi');?>">
 				<div class="validate"> <?php echo form_error('password');?> </div>
 			</div>
 			</div>
