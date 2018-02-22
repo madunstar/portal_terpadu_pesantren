@@ -82,6 +82,12 @@ class M_dashboard extends CI_Model {
     return $this->db->get('tb_biodata_pendaftar');
   }
 
+  function datafoto($email){
+    $this->db->where('email_pendaftar',$email);
+    $this->db->where('nama_berkas','paspoto');
+    return $this->db->get('tb_berkas_pendaftar');
+  }
+
 }
 
 

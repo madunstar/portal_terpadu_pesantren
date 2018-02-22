@@ -19,7 +19,6 @@ class M_loginsantri extends CI_Model
       return $query;
           }
 
-
     // end
 
 
