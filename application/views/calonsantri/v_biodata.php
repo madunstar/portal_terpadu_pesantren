@@ -296,6 +296,8 @@
                 <input type="text" class="form-control"  name="penghasilan_orang_tua" value="<?php echo $data['penghasilan_orang_tua']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
+            <hr/>
+            <p align="center" style="color:#238e7b">Tidak Wajib/Opsional</p>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Wali</label>
               <div class="col-lg-8">

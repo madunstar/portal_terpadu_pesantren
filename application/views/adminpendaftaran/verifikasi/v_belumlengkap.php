@@ -35,7 +35,7 @@
                       <a href='".base_url('admin/pendaftaran/semuabiodata?email='.$row['email_pendaftar'].'&l=belumlengkap')."'  title='Edit'><i class='fa fa-edit'></i> ".$row['status_biodata']."</a>
                       </td>
                       <td>
-                      <a href='".base_url('admin/pendaftaran/semuaberkas?email='.$row['email_pendaftar'].'')."'  title='Edit'><i class='fa fa-edit'></i> ".$row['status_berkas']."</a>
+                      <a href='".base_url('admin/pendaftaran/semuaberkas?email='.$row['email_pendaftar'].'&l=belumlengkap')."'  title='Edit'><i class='fa fa-edit'></i> ".$row['status_berkas']."</a>
                       </td>
                     </tr>
                   ";

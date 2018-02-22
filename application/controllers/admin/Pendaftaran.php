@@ -13,6 +13,7 @@ class Pendaftaran extends CI_Controller
     $this->load->model('back-end/pendaftaran/m_pendaftaran');
     $this->load->model('back-end/pendaftaran/m_pembayaran');
     $this->load->model('back-end/pendaftaran/m_pengumuman');
+    $this->load->model('back-end/pendaftaran/m_berkas');
     $this->load->library('layout_pendaftaran');
   }
 
@@ -158,6 +159,81 @@ function tambahpengumuman()
 
 
 //////////////////////////////////////////////////////////////////
+function berkas(){
+  $email = $this->session->userdata("email");
+  $nama_berkas = $this->input->post('namaberkas');
+  if ($this->input->post()) {
+    $data=array(
+      'nama_berkas'=> $this->input->post('namaberkas'),
+      'email_pendaftar' => $email
+     );
+    $config['upload_path'] = './assets/images/berkas';
+    $config['allowed_types'] = 'jpg|png|jpeg|JPG|JPEG';
+    $this->load->library('upload', $config);
+    if (! $this->upload->do_upload("file_berkas"))
+    {
+      $this->session->set_flashdata('error',
+      "<div class='alert alert-danger'>
+          <button type='button' class='close' data-dismiss='alert'>&times;</button>
+          <strong>Oooppss!</strong> Tipe berkas yang anda upload tidak sesuai<br>
+          cobalah upload file jpg / jpeg / png
+      </div>"
+      );
+      $variabel['datapiagam2']=$this->m_berkas->ambilberkaspiagam2($email)->row_array();
+      $variabel['datapiagam1']=$this->m_berkas->ambilberkaspiagam1($email)->row_array();
+      $variabel['datakk']=$this->m_berkas->ambilberkaskk($email)->row_array();
+      $variabel['datapoto']=$this->m_berkas->ambilberkaspoto($email)->row_array();
+      $variabel['dataijazah']=$this->m_berkas->ambilberkasijazah($email)->row_array();
+      $this->layout_pendaftaran->renderfront('calonsantri/v_berkas',$variabel);
+    }else{
+      $upload = $this->upload->data();
+      $file_berkas = $upload["raw_name"].$upload["file_ext"];
+      $data['file_berkas'] = $file_berkas;
+      $config2['image_library'] = 'gd2';
+      $config2['create_thumb'] = FALSE;
+      $config2['maintain_ratio'] = TRUE;
+      $config2['width']= 500;
+      $config2['height']= 500;
+      $config2['source_image'] = "./assets/images/berkas/$file_berkas";
+      $this->load->library('image_lib');
+      $this->image_lib->clear();
+      $this->image_lib->initialize($config2);
+      $this->image_lib->resize();
+
+      $query2 = $this->m_berkas->ambilberkas($email);
+      $row2 = $query2->row_array();
+      $foto1temp = $row2['file_berkas'];
+      $path1 ="./assets/images/berkas/".$foto1temp."";
+      if(is_file($path1)) {
+          unlink($path1); //menghapus gambar di folder produk
+      }
+      if ($this->m_berkas->cekberkas($email,$nama_berkas)==0){
+          $this->m_berkas->addberkas($data);
+          $array2 = array (
+            "status_berkas"=>"menunggu verifikasi"
+           );
+          $exec2 = $this->m_santri->editakun($email,$array2);
+          redirect(base_url("santri/pendaftaran/berkas?msg=1"));
+      } else{
+        $this->m_berkas->editberkas($email,$nama_berkas,$data);
+        redirect(base_url("santri/pendaftaran/berkas?msg=2"));
+      }
+    }
+
+
+  } else {
+    $variabel['datapiagam2']=$this->m_berkas->ambilberkaspiagam2($email)->row_array();
+    $variabel['datapiagam1']=$this->m_berkas->ambilberkaspiagam1($email)->row_array();
+    $variabel['datakk']=$this->m_berkas->ambilberkaskk($email)->row_array();
+  $variabel['datapoto']=$this->m_berkas->ambilberkaspoto($email)->row_array();
+  $variabel['dataijazah']=$this->m_berkas->ambilberkasijazah($email)->row_array();
+  $this->layout_pendaftaran->renderfront('calonsantri/v_berkas',$variabel);
+}
+}
+
+
+
+
 function semuapendaftar()
 {
 
@@ -213,32 +289,31 @@ function semuabiodata()
 
     }
 
-
-    function semuaberkas()
-    {
-      if ($this->input->post()) {
+    function semuaberkas(){
+        $email = $this->input->get("email");
+        if ($this->input->post()) {
             $array=array(
-                'status_biodata'=>$this->input->post('status_biodata')
+                'status_berkas'=>$this->input->post('status_berkas')
             );
             $email = $this->input->post("email_pendaftar");
             $exec = $this->m_pendaftaran->editakun($email,$array);
             echo $email;
             if ($exec){
-             redirect(base_url("admin/pendaftaran/semuabiodata?email=".$email."&msg=1"));
+             redirect(base_url("admin/pendaftaran/semuaberkas?email=".$email."&msg=1"));
             }
-      } else {
-            $email = $this->input->get("email");
-            $exec = $this->m_pendaftaran->lihatsemuaberkas($email);
-            if ($exec->num_rows()>0){
-                $variabel['data'] = $exec ->row_array();
-                $this->layout_pendaftaran->render('adminpendaftaran/verifikasi/v_editsemuapembayaran',$variabel,'adminpendaftaran/verifikasi/v_semua_js');
-            } else {
-                redirect(base_url("admin/pendaftaran/semuapendaftar"));
-            }
+        } else {
+          $exec = $this->m_pendaftaran->lihatsemuabiodata($email);
+          $variabel['data'] = $exec ->row_array();
+          $variabel['datapiagam2']=$this->m_berkas->ambilberkaspiagam2($email)->row_array();
+          $variabel['datapiagam1']=$this->m_berkas->ambilberkaspiagam1($email)->row_array();
+          $variabel['datakk']=$this->m_berkas->ambilberkaskk($email)->row_array();
+          $variabel['datapoto']=$this->m_berkas->ambilberkaspoto($email)->row_array();
+          $variabel['dataijazah']=$this->m_berkas->ambilberkasijazah($email)->row_array();
+          $this->layout_pendaftaran->render('adminpendaftaran/verifikasi/v_editsemuaberkas',$variabel);
+       }
       }
 
-    }
-
+   
 //////////////////////////////////////////////////////////////////
 
 }
