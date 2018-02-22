@@ -47,7 +47,59 @@ class M_pembayaran extends CI_Model
       $this->db->where('tb_akun_pendaftar.status_akun','aktif');
       return $this->db->get();
     }
+//hitung orang bayar //
+    function get_count_pembayaran_menunggu($tahunajaran) {
+      $this->db->select('count(*) as total');
+      $this->db->from('tb_akun_pendaftar');
+      $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+      $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+      $this->db->where('tb_akun_pendaftar.status_pembayaran','menunggu verifikasi');
+      return $this->db->get()
+       ->row_array();
+    }
 
-    
+    function get_count_pembayaran_diverifikasi($tahunajaran) {
+      $this->db->select('count(*) as total');
+      $this->db->from('tb_akun_pendaftar');
+      $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+      $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+      $this->db->where('tb_akun_pendaftar.status_pembayaran','diverifikasi');
+      return  $this->db->get()
+       ->row_array();
+    }
+
+    function get_count_pembayaran_tidaklengkap($tahunajaran) {
+      $this->db->select('count(*) as total');
+      $this->db->from('tb_akun_pendaftar');
+      $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+      $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+      $this->db->where('tb_akun_pendaftar.status_pembayaran','tidak lengkap');
+      return  $this->db->get()
+       ->row_array();
+    }
+//akhir//
+
+//hitung duit//
+function bayarverifikasi($tahunajaran){
+    $this->db->select_sum('besar_pembayaran','total')
+    ->from('tb_bayar_pendaftar')
+    ->join('tb_akun_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_bayar_pendaftar.email_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    $this->db->where('tb_akun_pendaftar.status_pembayaran','diverifikasi');
+ return  $this->db->get()
+          ->row_array();
+}
+function bayarmenunggu($tahunajaran){
+    $this->db->select_sum('besar_pembayaran','total')
+    ->from('tb_bayar_pendaftar')
+    ->join('tb_akun_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_bayar_pendaftar.email_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    $this->db->where('tb_akun_pendaftar.status_pembayaran','menunggu verifikasi');
+ return  $this->db->get()
+          ->row_array();
+}
+//akhir//
 }
 ?>

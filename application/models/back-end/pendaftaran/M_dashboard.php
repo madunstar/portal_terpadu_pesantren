@@ -8,31 +8,45 @@ class M_dashboard extends CI_Model {
       parent::__construct();
   }
 
-  function get_count_status_diverifikasi() {
-    return $this->db->select('(select count(*) from tb_akun_pendaftar where status_biodata = "diverifikasi" and status_akun = "aktif") as total',FALSE)
-             ->get()
-             ->row_array();
+  function get_count_status_diverifikasi($tahunajaran) {
+    $this->db->select('count(*) as total');
+    $this->db->from('tb_akun_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    $this->db->where('tb_akun_pendaftar.status_biodata','diverifikasi');
+    return  $this->db->get()
+     ->row_array();
 
   }
 
-  function get_count_status_tidak_lengkap() {
-    return $this->db->select('(select count(*) from tb_akun_pendaftar where status_biodata = "tidak lengkap" and status_akun = "aktif") as total',FALSE)
-             ->get()
-             ->row_array();
+  function get_count_status_tidak_lengkap($tahunajaran) {
+    $this->db->select('count(*) as total');
+    $this->db->from('tb_akun_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    $this->db->where('tb_akun_pendaftar.status_biodata','tidak lengkap');
+    return $this->db->get()
+     ->row_array();
 
   }
 
-  function get_count_status_menunggu() {
-    return $this->db->select('(select count(*) from tb_akun_pendaftar where status_biodata = "menunggu verifikasi" and status_akun = "aktif" ) as total',FALSE)
-             ->get()
-             ->row_array();
-
+  function get_count_status_menunggu($tahunajaran) {
+    $this->db->select('count(*) as total');
+    $this->db->from('tb_akun_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    $this->db->where('tb_akun_pendaftar.status_biodata','menunggu verifikasi');
+    return $this->db->get()
+     ->row_array();
   }
 
-  function get_count_pendaftaran() {
-    return $this->db->select('(select count(*) from tb_akun_pendaftar where status_akun = "aktif")  as total',FALSE)
-             ->get()
-             ->row_array();
+  function get_count_pendaftaran($tahunajaran) {
+    $this->db->select('count(*) as total');
+    $this->db->from('tb_akun_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    return $this->db->get()
+     ->row_array();
 
   }
 
@@ -48,30 +62,52 @@ class M_dashboard extends CI_Model {
     return $this->db->get();
   }
 
-  function get_count_pembayaran_menunggu() {
-    return $this->db->select('(select count(*) from tb_akun_pendaftar where status_pembayaran = "menunggu verifikasi" and status_akun = "aktif" ) as total',FALSE)
-             ->get()
-             ->row_array();
-
+//hitung pembayaran orang//
+  function get_count_pembayaran_menunggu($tahunajaran) {
+    $this->db->select('count(*) as total');
+    $this->db->from('tb_akun_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    $this->db->where('tb_akun_pendaftar.status_pembayaran','menunggu verifikasi');
+    return $this->db->get()
+     ->row_array();
   }
 
-  function get_count_pembayaran_diverifikasi() {
-    return $this->db->select('(select count(*) from tb_akun_pendaftar where status_pembayaran = "diverifikasi" and status_akun = "aktif" ) as total',FALSE)
-             ->get()
-             ->row_array();}
+  function get_count_pembayaran_diverifikasi($tahunajaran) {
+    $this->db->select('count(*) as total');
+    $this->db->from('tb_akun_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    $this->db->where('tb_akun_pendaftar.status_pembayaran','diverifikasi');
+    return  $this->db->get()
+     ->row_array();
+  }
 
+//////akhir hitung pembayaran orang///////
 
-
+/////////////hitunf duit pendaftaran///////////////////
   function hitungpembayaran($tahunajaran){
       $this->db->select_sum('besar_pembayaran','total')
       ->from('tb_bayar_pendaftar')
       ->join('tb_akun_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_bayar_pendaftar.email_pendaftar');
       $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+      $this->db->where('tb_akun_pendaftar.status_akun','aktif');
       $this->db->where('tb_akun_pendaftar.status_pembayaran','diverifikasi');
    return  $this->db->get()
             ->row_array();
   }
+  function hitungpembayaranmenunggu($tahunajaran){
+      $this->db->select_sum('besar_pembayaran','total')
+      ->from('tb_bayar_pendaftar')
+      ->join('tb_akun_pendaftar','tb_akun_pendaftar.email_pendaftar = tb_bayar_pendaftar.email_pendaftar');
+      $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+      $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+      $this->db->where('tb_akun_pendaftar.status_pembayaran','menunggu verifikasi');
+   return  $this->db->get()
+            ->row_array();
+  }
 
+/////akhir///////////
   function status_santri($email){
     $this->db->where('email_pendaftar',$email);
     return $this->db->get('tb_akun_pendaftar');

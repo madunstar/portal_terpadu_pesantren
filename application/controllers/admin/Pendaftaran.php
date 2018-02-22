@@ -23,12 +23,12 @@ class Pendaftaran extends CI_Controller
       $tahunajaran = $this->m_pembayaran->gettahunajaran();
       $variabel['total_pembayaran'] = $this->M_dashboard->hitungpembayaran($tahunajaran);
       $variabel['pembayaran_terakhir'] = $this->M_dashboard->get_pembayaran_terakhir();
-      $variabel['total_tidak_lengkap'] = $this->M_dashboard->get_count_status_tidak_lengkap();
-      $variabel['total_diverifikasi'] = $this->M_dashboard->get_count_status_diverifikasi();
-      $variabel['total_menunggu'] = $this->M_dashboard->get_count_status_menunggu();
-      $variabel['total_pendaftaran'] = $this->M_dashboard->get_count_pendaftaran();
-      $variabel['pembayaran_diverifikasi'] = $this->M_dashboard->get_count_pembayaran_diverifikasi();
-      $variabel['pembayaran_menunggu'] = $this->M_dashboard->get_count_pembayaran_menunggu();
+      $variabel['total_tidak_lengkap'] = $this->M_dashboard->get_count_status_tidak_lengkap($tahunajaran);
+      $variabel['total_diverifikasi'] = $this->M_dashboard->get_count_status_diverifikasi($tahunajaran);
+      $variabel['total_menunggu'] = $this->M_dashboard->get_count_status_menunggu($tahunajaran);
+      $variabel['total_pendaftaran'] = $this->M_dashboard->get_count_pendaftaran($tahunajaran);
+      $variabel['pembayaran_diverifikasi'] = $this->M_dashboard->get_count_pembayaran_diverifikasi($tahunajaran);
+      $variabel['pembayaran_menunggu'] = $this->M_dashboard->get_count_pembayaran_menunggu($tahunajaran);
       $this->layout_pendaftaran->render('adminpendaftaran/dashboard',$variabel);
   }
 
@@ -108,8 +108,14 @@ class Pendaftaran extends CI_Controller
 
 //pembayran admin//
 function datapembayaran(){
+
   $tahunajaran = $this->m_pembayaran->gettahunajaran();
   $variabel['data'] = $this->m_pembayaran->lihatpembayaran($tahunajaran);
+  $variabel['pembayaran_diverifikasi'] = $this->m_pembayaran->get_count_pembayaran_diverifikasi($tahunajaran);
+  $variabel['pembayaran_menunggu'] = $this->m_pembayaran->get_count_pembayaran_menunggu($tahunajaran);
+  $variabel['pembayaran_tidaklengkap'] = $this->m_pembayaran->get_count_pembayaran_tidaklengkap($tahunajaran);
+  $variabel['duitverifikasi'] = $this->m_pembayaran->bayarverifikasi($tahunajaran);
+  $variabel['duitmenunggu'] = $this->m_pembayaran->bayarmenunggu($tahunajaran);
   $this->layout_pendaftaran->render('adminpendaftaran/verifikasi/v_pembayaran',$variabel,'adminpendaftaran/verifikasi/v_pembayaran_js');
 }
 
