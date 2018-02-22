@@ -130,7 +130,7 @@
 			</div>
 		</section>
 		<footer class="footer hidden-xs no-padder text-center-nav-xs">
-			<a href="modal.lockme.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
+			<a href="<?php echo base_url() ?>admin/pendaftaran/logout" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
 				<i class="i i-logout"></i>
 			</a>
 			<a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">
