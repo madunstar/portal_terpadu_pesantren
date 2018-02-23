@@ -48,7 +48,8 @@ function addakun()
         'jenis_pendaftaran'=> $this->input->post('tingkat'),
         'tanggal_daftar'=> $tgl_daftar,
         'status_akun'=>('tidak aktif'),
-        'tahun_ajaran'=> $tahun_ajaran
+        'tahun_ajaran'=> $tahun_ajaran,
+        'asrama_pendaftar' =>$this->input->post('asrama')
       );
       if ($this->m_akunsantri->cekdata($this->input->post('email'))==0) {
         $exec = $this->m_akunsantri->tambahakun($array);
@@ -68,14 +69,14 @@ function addakun()
 
         }
         else {
-          redirect(base_url("santri/pendaftaran/index?msg=0"));
+          redirect(base_url("santri/register?msg=0"));
         }
 
       } else {
-        redirect(base_url("santri/pendaftaran/index?msg=0"));
+        redirect(base_url("santri/register?msg=0"));
       }
     } else
-      redirect(base_url("santri/pendaftaran/index"));
+      redirect(base_url("santri/register"));
 }
 //akhir add akun santri
 }
