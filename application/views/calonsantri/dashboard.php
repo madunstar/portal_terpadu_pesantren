@@ -143,7 +143,7 @@
               <div class="col-md-3 col-sm-6">
                 <div class="panel b-a">
                   <div class="panel-heading no-border <?php echo $datastatusbg;?> lt text-center">
-                    <a href="#"><i class="fa fa-ban fa fa-3x m-t m-b text-white"></i></a>
+                    <a href="#"><i class="fa <?php echo $datastatusicon; ?> fa fa-3x m-t m-b text-white"></i></a>
                     <div class=" h4 font-bold">Cetak Kartu</div>
                   </div>
                   <div class="padder-v text-center clearfix">
