@@ -9,7 +9,7 @@
       </div>
 
       <div class="row">
-        
+
         <div class="col-lg-12">
 
           <!-- .crousel fade -->
@@ -121,6 +121,39 @@
             </div>
           </div>
         </div>
+        <div class="col-sm-6">
+          <section class="panel panel-success">
+            <header class="panel-heading">
+              Rincian Pendaftaran Putra
+            </header>
+            <div class="panel-body">
+              <div class="table-responsive">
+                <table class="table table-hover" >
+                  <tbody>
+                    <tr>
+                      <td>Semua</td>
+                      <td><?php echo $putra_pendaftaran['total'];?></td>
+                    </tr>
+                    <tr>
+                      <td>Diverifikasi</td>
+                      <td><?php echo $putra_diverifikasi['total'];?></td>
+                    </tr>
+                    <tr>
+                      <td>Menunggu</td>
+                      <td><?php echo $putra_menunggu['total'];?></td>
+                    </tr>
+                    <tr>
+                      <td>Tidak Lengkap</td>
+                      <td><?php echo $putra_tidak_lengkap['total'];?></td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+
+          </div>
         <div class="col-sm-12">
           <h5 class="m-b-xs text-black">Ikhstisar Pembayaran</h5>
         </div>

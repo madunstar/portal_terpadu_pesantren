@@ -39,12 +39,20 @@
               <input name="resandi" data-required="true" type="password" placeholder="Tulis Ulang Kata Sandi" class="form-control no-border" data-equalto="#pwd">
             </div>
             <div class="list-group-item">
-             <select data-required="true" name="tingkat" class="form-control no-border">
+             <select data-required="true" name="tingkat" class="form-control no-border parsley-validated">
+               <option value>Pilih Tingkat</option>
                <option value="MI">MI</option>
                <option value="MTs">MTs</option>
                <option value="MA">MTA</option>
              </select>
            </div>
+           <div class="list-group-item">
+            <select data-required="true" name="asrama" class="form-control no-border parsley-validated">
+              <option value>Pilih Asrama</option>
+              <option value="putra">Putra</option>
+              <option value="putri">Putri</option>
+            </select>
+          </div>
            </div>
           <button type="submit" class="btn btn-success btn-block ">Daftar</button>
         </form>
