@@ -29,12 +29,20 @@ class Pendaftaran extends CI_Controller
   {
       $variabel['nama_akun'] = $this->session->userdata('nama_akun');
       $tahunajaran = $this->m_pembayaran->gettahunajaran();
+      //pembayaran
       $variabel['total_pembayaran'] = $this->M_dashboard->hitungpembayaran($tahunajaran);
       $variabel['pembayaran_terakhir'] = $this->M_dashboard->get_pembayaran_terakhir();
+      //general
+      $variabel['putra_tidak_lengkap'] = $this->M_dashboard->putra_status_tidak_lengkap($tahunajaran);
+      $variabel['putra_diverifikasi'] = $this->M_dashboard->putra_status_diverifikasi($tahunajaran);
+      $variabel['putra_menunggu'] = $this->M_dashboard->putra_status_menunggu($tahunajaran);
+      $variabel['putra_pendaftaran'] = $this->M_dashboard->putra_pendaftaran($tahunajaran);
+      //putra
       $variabel['total_tidak_lengkap'] = $this->M_dashboard->get_count_status_tidak_lengkap($tahunajaran);
       $variabel['total_diverifikasi'] = $this->M_dashboard->get_count_status_diverifikasi($tahunajaran);
       $variabel['total_menunggu'] = $this->M_dashboard->get_count_status_menunggu($tahunajaran);
       $variabel['total_pendaftaran'] = $this->M_dashboard->get_count_pendaftaran($tahunajaran);
+      //hitung bayar
       $variabel['pembayaran_diverifikasi'] = $this->M_dashboard->get_count_pembayaran_diverifikasi($tahunajaran);
       $variabel['pembayaran_menunggu'] = $this->M_dashboard->get_count_pembayaran_menunggu($tahunajaran);
       $this->layout_pendaftaran->render('adminpendaftaran/dashboard',$variabel);
@@ -327,7 +335,7 @@ function semuabiodata()
        }
       }
 
-   
+
 //////////////////////////////////////////////////////////////////
 
 }

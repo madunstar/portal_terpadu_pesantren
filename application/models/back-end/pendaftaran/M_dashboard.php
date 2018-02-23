@@ -49,6 +49,53 @@ class M_dashboard extends CI_Model {
      ->row_array();
 
   }
+///////////putra
+  function putra_status_diverifikasi($tahunajaran) {
+    $this->db->select('count(*) as total');
+    $this->db->from('tb_akun_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    $this->db->where('tb_akun_pendaftar.asrama_pendaftar','putra');
+    $this->db->where('tb_akun_pendaftar.status_biodata','diverifikasi');
+    return  $this->db->get()
+     ->row_array();
+
+  }
+
+  function putra_status_tidak_lengkap($tahunajaran) {
+    $this->db->select('count(*) as total');
+    $this->db->from('tb_akun_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    $this->db->where('tb_akun_pendaftar.asrama_pendaftar','putra');
+    $this->db->where('tb_akun_pendaftar.status_biodata','tidak lengkap');
+    return $this->db->get()
+     ->row_array();
+
+  }
+
+  function putra_status_menunggu($tahunajaran) {
+    $this->db->select('count(*) as total');
+    $this->db->from('tb_akun_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    $this->db->where('tb_akun_pendaftar.asrama_pendaftar','putra');
+    $this->db->where('tb_akun_pendaftar.status_biodata','menunggu verifikasi');
+    return $this->db->get()
+     ->row_array();
+  }
+
+  function putra_pendaftaran($tahunajaran) {
+    $this->db->select('count(*) as total');
+    $this->db->from('tb_akun_pendaftar');
+    $this->db->where('tb_akun_pendaftar.tahun_ajaran',$tahunajaran);
+    $this->db->where('tb_akun_pendaftar.asrama_pendaftar','putra');
+    $this->db->where('tb_akun_pendaftar.status_akun','aktif');
+    return $this->db->get()
+     ->row_array();
+
+  }
+//////////////////akhir putra//////////////////////
 
   function get_pembayaran_terakhir() {
     $this->db->select('*');
