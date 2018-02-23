@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/js/datepicker/datepicker.css');?>" type="text/css" />
 
 </head>
-<body class="" >
+<body class=""  >
   <section class="vbox">
   <header class="bg-dark header header-md navbar navbar-fixed-top-xs box-shadow">
     <div class="navbar-header aside-md dk">
@@ -54,7 +54,7 @@
           echo $user;?> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu animated fadeInRight">
-        
+
           <li>
             <span class="arrow top"></span>
             <a href="docs.html">Ubah Kata Sandi </a>

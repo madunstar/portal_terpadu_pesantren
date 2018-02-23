@@ -23,8 +23,8 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/js/datepicker/datepicker.css');?>" type="text/css" />
 
 </head>
-<body class="" >
-  <section class="vbox">
+<body class="" style="background-image:url(<?php echo base_url('assets/images/masjidbw.jpg'); ?>);">
+  <section class="vbox" >
 
   <section>
     <section class="hbox stretch">
