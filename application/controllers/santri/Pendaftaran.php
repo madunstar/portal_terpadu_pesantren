@@ -122,6 +122,20 @@ function dashboard()
           $sess_data['user'] = $email;
           $sess_data['foto'] = "assets/images/a0.png";
           $this->session->set_userdata($sess_data);
+          $cekstatus=$this->m_dashboard->cekstatus($email)->row_array();
+          if($cekstatus == 0)
+          {
+          $variabel['datastatusbg'] = "bg-danger";
+          $variabel['datastatusbtn'] = "<button class='btn btn-danger font-bold disabled'><i class='fa fa-print'></i>&nbsp;Cetak Kartu Pendaftaran</button>";
+          $variabel['datastatusicon'] ="fa-ban";
+          }
+          elseif($cekstatus > 1)
+          {
+            $variabel['datastatusbg'] = "bg-success";
+            $variabel['datastatusbtn'] = "<a href='../../santri/pendaftaran/kartupendaftaran'>
+            <button class='btn btn-success font-bold'><i class='fa fa-print'></i>&nbsp;Cetak Kartu Pendaftaran</button></a>";
+            $variabel['datastatusicon'] ="fa-check";
+          }
           $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
           $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
       }
@@ -133,6 +147,20 @@ function dashboard()
         $sess_data['user'] = $email;
         $sess_data['foto'] = $fotosantri;
         $this->session->set_userdata($sess_data);
+        $cekstatus=$this->m_dashboard->cekstatus($email)->row_array();
+        if($cekstatus == 0)
+        {
+        $variabel['datastatusbg'] = "bg-danger";
+        $variabel['datastatusbtn'] = "<button class='btn btn-danger font-bold disabled'><i class='fa fa-print'></i>&nbsp;Cetak Kartu Pendaftaran</button>";
+        $variabel['datastatusicon'] ="fa-ban";
+        }
+        elseif($cekstatus > 1)
+        {
+          $variabel['datastatusbg'] = "bg-success";
+          $variabel['datastatusbtn'] = "<a href='../../santri/pendaftaran/kartupendaftaran'>
+          <button class='btn btn-success font-bold'><i class='fa fa-print'></i>&nbsp;Cetak Kartu Pendaftaran</button></a>";
+          $variabel['datastatusicon'] ="fa-check";
+        }
         $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
         $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
 
@@ -148,6 +176,20 @@ function dashboard()
           $sess_data['user'] = $nama_user;
           $sess_data['foto'] = 'assets/images/a0.png';
           $this->session->set_userdata($sess_data);
+          $cekstatus=$this->m_dashboard->cekstatus($email)->row_array();
+          if($cekstatus == 0)
+          {
+          $variabel['datastatusbg'] = "bg-danger";
+          $variabel['datastatusbtn'] = "<button class='btn btn-danger font-bold disabled'><i class='fa fa-print'></i>&nbsp;Cetak Kartu Pendaftaran</button>";
+          $variabel['datastatusicon'] ="fa-ban";
+          }
+          elseif($cekstatus > 1)
+          {
+            $variabel['datastatusbg'] = "bg-success";
+            $variabel['datastatusbtn'] = "<a href='../../santri/pendaftaran/kartupendaftaran'>
+            <button class='btn btn-success font-bold'><i class='fa fa-print'></i>&nbsp;Cetak Kartu Pendaftaran</button></a>";
+            $variabel['datastatusicon'] ="fa-check";
+          }
           $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
           $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
       }
@@ -166,23 +208,24 @@ function dashboard()
         {
         $variabel['datastatusbg'] = "bg-danger";
         $variabel['datastatusbtn'] = "<button class='btn btn-danger font-bold disabled'><i class='fa fa-print'></i>&nbsp;Cetak Kartu Pendaftaran</button>";
+        $variabel['datastatusicon'] ="fa-ban";
         }
         elseif($cekstatus > 1)
         {
           $variabel['datastatusbg'] = "bg-success";
           $variabel['datastatusbtn'] = "<a href='../../santri/pendaftaran/kartupendaftaran'>
           <button class='btn btn-success font-bold'><i class='fa fa-print'></i>&nbsp;Cetak Kartu Pendaftaran</button></a>";
+          $variabel['datastatusicon'] ="fa-check";
         }
         $variabel['datafoto']=$this->m_dashboard->datafoto($email)->row_array();
         $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
         $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
 
       }
-
+    }
   }
+}
 
-}
-}
 // Nikman
 function datakotakab()
 {
