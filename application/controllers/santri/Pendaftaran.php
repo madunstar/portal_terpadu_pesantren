@@ -73,17 +73,26 @@ function ceklogin()
     $cekemail = $this->m_loginsantri->cekemail($email)->num_rows();
 
     if ($cekemail > 0) {
-      $cek = $this->m_loginsantri->ceklogin($email, $katasandi);
-      if ($cek->num_rows() > 0) {
-        foreach ($cek->result_array() as $datasandi) {
-          //login berhasil, buat session
-            $sess_data['email'] = $datasandi['email_pendaftar'];
-            $sess_data['user'] = $datasandi['email_pendaftar'];
-            $sess_data['status'] = "loginsantri";
-            $this->session->set_userdata($sess_data);
-          }
-          redirect(base_url("santri/pendaftaran/dashboard"));
-      } else { redirect(base_url("santri/pendaftaran/login?msg=2"));}
+      $cekstatusakun =$this->m_loginsantri->cekemail($email);
+      foreach ($cekstatusakun->result_array() as $akun) {
+          $statusakun = $akun['status_akun'];
+        }
+      if ($statusakun == "tidak aktif"){
+        redirect(base_url("santri/pendaftaran/login?akun=0"));
+      }
+      elseif ($statusakun == "aktif"){
+            $cek = $this->m_loginsantri->ceklogin($email, $katasandi);
+            if ($cek->num_rows() > 0) {
+              foreach ($cek->result_array() as $datasandi) {
+            //login berhasil, buat session
+              $sess_data['email'] = $datasandi['email_pendaftar'];
+              $sess_data['user'] = $datasandi['email_pendaftar'];
+              $sess_data['status'] = "loginsantri";
+              $this->session->set_userdata($sess_data);
+            }
+            redirect(base_url("santri/pendaftaran/dashboard"));
+        } else { redirect(base_url("santri/pendaftaran/login?msg=2"));}
+      }
     }
     else {
         redirect(base_url("santri/pendaftaran/login?msg=0"));
@@ -104,34 +113,64 @@ function dashboard()
     foreach ($cekstatusbiodata->result_array() as $cek) {
         $cekstatusbio = $cek['status_biodata'];
       }
+    if (($cekstatusbio == "tidak lengkap") || ($cekstatusbio == "menunggu verifikasi")){
+      $cekdatafoto=$this->m_dashboard->datafoto($email)->num_rows();
+      if ($cekdatafoto == 0 )
+      {
+          $sess_data['email'] = $email;
+          $sess_data['user'] = $email;
+          $sess_data['foto'] = "assets/images/a0.png";
+          $sess_data['status'] = "loginsantri";
+          $this->session->set_userdata($sess_data);
+          $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
+          $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
+      }
+      elseif ($cekdatafoto > 0){
+        $datafoto=$this->m_dashboard->datafoto($email);
+        foreach ($datafoto->result_array() as $foto) {$fotouser = $foto['file_berkas'];}
+        $fotosantri = "assets/images/berkas/$fotouser";
+        $sess_data['email'] = $email;
+        $sess_data['user'] = $email;
+        $sess_data['foto'] = $fotosantri;
+        $sess_data['status'] = "loginsantri";
+        $this->session->set_userdata($sess_data);
+        $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
+        $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
 
-    if ($cekstatusbio == "tidak lengkap"){
-      $sess_data['email'] = $email;
-      $sess_data['user'] = $email;
-      $sess_data['status'] = "loginsantri";
-      $this->session->set_userdata($sess_data);
-      $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
-      $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
-    }
-    elseif ($cekstatusbio == "menunggu verifikasi"){
-      $sess_data['email'] = $email;
-      $sess_data['user'] = $email;
-      $sess_data['status'] = "loginsantri";
-      $this->session->set_userdata($sess_data);
-      $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
-      $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
+      }
     }
     elseif($cekstatusbio == "diverifikasi"){
-      $namauser = $this->m_dashboard->nama_user($email);
-      foreach ($namauser->result_array() as $user) {$nama_user = $user['nama_lengkap'];}
-      $sess_data['email'] = $email;
-      $sess_data['user'] = $nama_user;
-      $sess_data['tes'] = "diverifikasi";
-      $this->session->set_userdata($sess_data);
+      $cekdatafoto=$this->m_dashboard->datafoto($email)->num_rows();
+      if ($cekdatafoto == 0 )
+      {
+          $namauser = $this->m_dashboard->nama_user($email);
+          foreach ($namauser->result_array() as $user) {$nama_user = $user['nama_lengkap'];}
+          $sess_data['email'] = $email;
+          $sess_data['user'] = $nama_user;
+          $sess_data['foto'] = 'assets/images/a0.png';
+          $sess_data['status'] = "loginsantri";
+          $this->session->set_userdata($sess_data);
+          $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
+          $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
+      }
+      elseif ($cekdatafoto > 0){
+        $namauser = $this->m_dashboard->nama_user($email);
+        foreach ($namauser->result_array() as $user) {$nama_user = $user['nama_lengkap'];}
+        $datafoto=$this->m_dashboard->datafoto($email);
+        foreach ($datafoto->result_array() as $foto) {$fotouser = $foto['file_berkas'];}
+        $fotosantri = "assets/images/berkas/$fotouser";
+        $sess_data['email'] = $email;
+        $sess_data['user'] = $nama_user;
+        $sess_data['foto'] = $fotosantri;
+        $sess_data['status'] = "loginsantri";
+        $this->session->set_userdata($sess_data);
+        $variabel['datafoto']=$this->m_dashboard->datafoto($email)->row_array();
+        $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
+        $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
 
-      $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
-      $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
-    }
+      }
+
+  }
 
 
 }
@@ -235,6 +274,26 @@ function berkas(){
   $email = $this->session->userdata("email");
   $nama_berkas = $this->input->post('namaberkas');
   $statusberkas = $this->m_akunsantri->getstatusberkas($email);
+  $cekdatafoto=$this->m_dashboard->datafoto($email)->num_rows();
+  if ($cekdatafoto == 0 )
+  {
+      $sess_data['email'] = $email;
+      $sess_data['user'] = $email;
+      $sess_data['foto'] = "assets/images/a0.png";
+      $sess_data['status'] = "loginsantri";
+      $this->session->set_userdata($sess_data);
+  }
+  elseif ($cekdatafoto > 0){
+    $datafoto=$this->m_dashboard->datafoto($email);
+    foreach ($datafoto->result_array() as $foto) {$fotouser = $foto['file_berkas'];}
+    $fotosantri = "assets/images/berkas/$fotouser";
+    $sess_data['email'] = $email;
+    $sess_data['user'] = $email;
+    $sess_data['foto'] = $fotosantri;
+    $sess_data['status'] = "loginsantri";
+    $this->session->set_userdata($sess_data);
+  }
+  
   if ($this->input->post()) {
     $data=array(
       'nama_berkas'=> $this->input->post('namaberkas'),

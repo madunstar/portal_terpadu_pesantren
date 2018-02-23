@@ -27,6 +27,7 @@
             <small>Masuk dengan Email untuk Melanjutkan Pendaftaran</small>
           </header>
           <?php pesan_get('msg',"Sukses","Email Tidak Terdaftar","Email dan Kata Sandi tidak cocok") ?>
+          <?php pesan_get('akun',"","Akun belum diaktifkan") ?>
           <form  action="<?php echo base_url()?>santri/pendaftaran/ceklogin" method="post" data-validate="parsley">
             <div class="list-group">
               <div class="list-group-item">

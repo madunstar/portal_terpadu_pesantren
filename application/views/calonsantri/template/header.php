@@ -45,10 +45,13 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <span class="thumb-sm avatar pull-left">
-            <img src="<?php echo base_url('assets/images/a0.png'); ?>" alt="...">
+            <img src="<?php
+            $foto = $this->session->userdata('foto');
+
+            echo base_url("$foto"); ?>" alt="...">
           </span>
           <?php $user = $this->session->userdata('user');
-          echo $user; ?> <b class="caret"></b>
+          echo $user;?> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu animated fadeInRight">
 
