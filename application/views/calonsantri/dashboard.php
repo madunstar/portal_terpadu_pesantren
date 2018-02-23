@@ -70,45 +70,84 @@
             <div class="panel-body">
               <div class="col-md-3 col-sm-6">
                 <div class="panel b-a">
-                  <div class="panel-heading no-border bg-success lt text-center">
+                  <div class="panel-heading no-border
+                  <?php if ($statussantri['status_biodata'] == "tidak lengkap")
+                        {echo "bg-danger";}
+                        elseif ($statussantri['status_biodata'] == "menunggu verifikasi")
+                        {echo "bg-warning";}
+                        elseif ($statussantri['status_biodata'] == "diverifikasi")
+                        {echo "bg-success";} ?> lt text-center">
                     <a href="#"><i class="fa fa-user fa fa-3x m-t m-b text-white"></i></a>
                     <div class=" h4 font-bold"> Status Biodata</div>
                   </div>
                   <div class="padder-v text-center clearfix">
-                    <div class="font-bold h4"><button class="btn btn-success font-bold disabled"><?php echo $statussantri['status_biodata']?></button></div>
+                    <div class="font-bold h4"><button class="btn
+                      <?php if ($statussantri['status_biodata'] == "tidak lengkap")
+                            {echo "btn-danger";}
+                            elseif ($statussantri['status_biodata'] == "menunggu verifikasi")
+                            {echo "btn-warning";}
+                            elseif ($statussantri['status_biodata'] == "diverifikasi")
+                            {echo "btn-success";} ?> font-bold disabled">
+
+                      <?php echo $statussantri['status_biodata']?></button></div>
                   </div>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6">
                 <div class="panel b-a">
-                  <div class="panel-heading no-border bg-warning lt text-center">
+                  <div class="panel-heading no-border
+                  <?php if ($statussantri['status_berkas'] == "tidak lengkap")
+                        {echo "bg-danger";}
+                        elseif ($statussantri['status_berkas'] == "menunggu verifikasi")
+                        {echo "bg-warning";}
+                        elseif ($statussantri['status_berkas'] == "diverifikasi")
+                        {echo "bg-success";} ?> lt text-center">
                     <a href="#"><i class="fa fa-folder-open fa fa-3x m-t m-b text-white"></i></a>
                     <div class=" h4 font-bold"> Status Berkas</div>
                   </div>
                   <div class="padder-v text-center clearfix">
-                    <div class="font-bold h4"><button class="btn btn-warning font-bold disabled"><?php echo $statussantri['status_berkas']?></button></div>
+                    <div class="font-bold h4"><button class="btn
+                      <?php if ($statussantri['status_berkas'] == "tidak lengkap")
+                            {echo "btn-danger";}
+                            elseif ($statussantri['status_berkas'] == "menunggu verifikasi")
+                            {echo "btn-warning";}
+                            elseif ($statussantri['status_berkas'] == "diverifikasi")
+                            {echo "btn-success";} ?> font-bold disabled">
+                            <?php echo $statussantri['status_berkas']?></button></div>
                   </div>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6">
                 <div class="panel b-a">
-                  <div class="panel-heading no-border bg-danger lt text-center">
+                  <div class="panel-heading no-border
+                  <?php if ($statussantri['status_pembayaran'] == "tidak lengkap")
+                          {echo "bg-danger";}
+                          elseif ($statussantri['status_pembayaran'] == "menunggu verifikasi")
+                          {echo "bg-warning";}
+                          elseif ($statussantri['status_pembayaran'] == "diverifikasi")
+                          {echo "bg-success";} ?> lt text-center">
                     <a href="#"><i class="fa fa-money fa fa-3x m-t m-b text-white"></i></a>
                     <div class=" h4 font-bold">Status Pembayaran</div>
                   </div>
                   <div class="padder-v text-center clearfix">
-                    <div class=""><button class="btn btn-danger font-bold disabled"><?php echo $statussantri['status_pembayaran']?></button></div>
+                    <div class=""><button class="btn
+                      <?php if ($statussantri['status_pembayaran'] == "tidak lengkap")
+                            {echo "btn-danger";}
+                            elseif ($statussantri['status_pembayaran'] == "menunggu verifikasi")
+                            {echo "btn-warning";}
+                            elseif ($statussantri['status_pembayaran'] == "diverifikasi")
+                            {echo "btn-success";} ?> font-bold disabled"><?php echo $statussantri['status_pembayaran']?></button></div>
                   </div>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6">
                 <div class="panel b-a">
-                  <div class="panel-heading no-border bg-danger lt text-center">
+                  <div class="panel-heading no-border <?php echo $datastatusbg;?> lt text-center">
                     <a href="#"><i class="fa fa-ban fa fa-3x m-t m-b text-white"></i></a>
                     <div class=" h4 font-bold">Cetak Kartu</div>
                   </div>
                   <div class="padder-v text-center clearfix">
-                    <div class=""><button class="btn btn-danger font-bold disabled"><i class="fa fa-print"></i>&nbsp;Cetak Kartu Pendaftaran</button></div>
+                    <div class=""><?php echo $datastatusbtn; ?></div>
                   </div>
                 </div>
               </div>

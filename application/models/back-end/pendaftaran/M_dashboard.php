@@ -171,7 +171,16 @@ class M_dashboard extends CI_Model {
     return $this->db->get('tb_berkas_pendaftar');
   }
 
+  function cekstatus($email){
+    $this->db->where('email_pendaftar',$email);
+    $this->db->where('status_biodata','diverifikasi');
+    $this->db->where('status_berkas','diverifikasi');
+    $this->db->where('status_pembayaran','diverifikasi');
+    return $this->db->get('tb_akun_pendaftar');
+  }
+
 }
+
 
 
 ?>

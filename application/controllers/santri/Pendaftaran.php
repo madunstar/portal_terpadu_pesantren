@@ -23,8 +23,6 @@ function __construct()
     $this->layout_pendaftaran->renderregister('calonsantri/login');
   }
 }
-
-
 }
 /**
 * Index Page for this controller.
@@ -97,7 +95,6 @@ function ceklogin()
     else {
         redirect(base_url("santri/pendaftaran/login?msg=0"));
       }
-
 }
 }
 
@@ -108,6 +105,10 @@ function logout(){
 
 function dashboard()
 {
+  if($this->session->userdata('status') != "loginsantri"){
+    redirect(base_url("santri/pendaftaran/"));
+  }
+  else{
     $email = $this->session->userdata('email');
     $cekstatusbiodata = $this->m_dashboard->status_santri($email);
     foreach ($cekstatusbiodata->result_array() as $cek) {
@@ -120,7 +121,6 @@ function dashboard()
           $sess_data['email'] = $email;
           $sess_data['user'] = $email;
           $sess_data['foto'] = "assets/images/a0.png";
-          $sess_data['status'] = "loginsantri";
           $this->session->set_userdata($sess_data);
           $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
           $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
@@ -132,7 +132,6 @@ function dashboard()
         $sess_data['email'] = $email;
         $sess_data['user'] = $email;
         $sess_data['foto'] = $fotosantri;
-        $sess_data['status'] = "loginsantri";
         $this->session->set_userdata($sess_data);
         $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
         $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
@@ -148,7 +147,6 @@ function dashboard()
           $sess_data['email'] = $email;
           $sess_data['user'] = $nama_user;
           $sess_data['foto'] = 'assets/images/a0.png';
-          $sess_data['status'] = "loginsantri";
           $this->session->set_userdata($sess_data);
           $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
           $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
@@ -162,8 +160,19 @@ function dashboard()
         $sess_data['email'] = $email;
         $sess_data['user'] = $nama_user;
         $sess_data['foto'] = $fotosantri;
-        $sess_data['status'] = "loginsantri";
         $this->session->set_userdata($sess_data);
+        $cekstatus=$this->m_dashboard->cekstatus($email)->row_array();
+        if($cekstatus == 0)
+        {
+        $variabel['datastatusbg'] = "bg-danger";
+        $variabel['datastatusbtn'] = "<button class='btn btn-danger font-bold disabled'><i class='fa fa-print'></i>&nbsp;Cetak Kartu Pendaftaran</button>";
+        }
+        elseif($cekstatus > 1)
+        {
+          $variabel['datastatusbg'] = "bg-success";
+          $variabel['datastatusbtn'] = "<a href='../../santri/pendaftaran/kartupendaftaran'>
+          <button class='btn btn-success font-bold'><i class='fa fa-print'></i>&nbsp;Cetak Kartu Pendaftaran</button></a>";
+        }
         $variabel['datafoto']=$this->m_dashboard->datafoto($email)->row_array();
         $variabel['statussantri']=$this->m_dashboard->status_santri($email)->row_array();
         $this->layout_pendaftaran->renderfront('calonsantri/dashboard',$variabel);
@@ -172,7 +181,7 @@ function dashboard()
 
   }
 
-
+}
 }
 // Nikman
 function datakotakab()
@@ -281,17 +290,17 @@ function berkas(){
       $sess_data['email'] = $email;
       $sess_data['user'] = $email;
       $sess_data['foto'] = "assets/images/a0.png";
-      $sess_data['status'] = "loginsantri";
       $this->session->set_userdata($sess_data);
   }
   elseif ($cekdatafoto > 0){
+    $namauser = $this->m_dashboard->nama_user($email);
+    foreach ($namauser->result_array() as $user) {$nama_user = $user['nama_lengkap'];}
     $datafoto=$this->m_dashboard->datafoto($email);
     foreach ($datafoto->result_array() as $foto) {$fotouser = $foto['file_berkas'];}
     $fotosantri = "assets/images/berkas/$fotouser";
     $sess_data['email'] = $email;
-    $sess_data['user'] = $email;
+    $sess_data['user'] = $nama_user;
     $sess_data['foto'] = $fotosantri;
-    $sess_data['status'] = "loginsantri";
     $this->session->set_userdata($sess_data);
   }
 
