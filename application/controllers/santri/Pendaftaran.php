@@ -269,7 +269,8 @@ function biodata()
     }
 }
 
-//berkas //
+/////////////////////////////berkas /////////////////////////////////////////
+
 function berkas(){
   $email = $this->session->userdata("email");
   $nama_berkas = $this->input->post('namaberkas');
@@ -293,7 +294,7 @@ function berkas(){
     $sess_data['status'] = "loginsantri";
     $this->session->set_userdata($sess_data);
   }
-  
+
   if ($this->input->post()) {
     $data=array(
       'nama_berkas'=> $this->input->post('namaberkas'),
@@ -349,6 +350,10 @@ function berkas(){
           redirect(base_url("santri/pendaftaran/berkas?msg=1"));
       } else{
         $this->m_berkas->editberkas($email,$nama_berkas,$data);
+        $array2 = array (
+          "status_berkas"=>"menunggu verifikasi"
+         );
+        $exec2 = $this->m_santri->editakun($email,$array2);
         redirect(base_url("santri/pendaftaran/berkas?msg=2"));
       }
     }
