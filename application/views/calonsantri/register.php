@@ -1,21 +1,12 @@
-<section class="vbox">
-  <img src="<?php echo base_url('assets/images/masjid.jpg'); ?>" style="opacity:0.5" alt="">
+<section class="vbox" >
+
   <section class="hbox stretch">
-    <aside class="col-sm-1 no-padder">
+  <div class="col-lg-6">
 
-  </aside>
-    <aside class="aside-lg no-padder">
-      <section class="vbox">
-      <div class="wrapper" style="margin-top:70px">
-
-      </div>
-    </div>
-
-  </section>
-  </aside>
-  <aside class="col-lg-4">
+  </div>
+  <aside class="col-lg-6 bg-dark">
     <section class="vbox">
-    <div class="wrapper" style="margin-top:30px">
+    <div class="wrapper" >
       <div class="container aside-xl bg-light" style="border-radius:10px">
 
         <section class="m-b-lg">
