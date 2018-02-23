@@ -44,7 +44,7 @@
 
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="thumb-sm avatar pull-left">
+          <span class="thumb-sm avatar pull-left" style="height:25px;width:25px">
             <img src="<?php
             $foto = $this->session->userdata('foto');
 
@@ -54,7 +54,7 @@
           echo $user;?> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu animated fadeInRight">
-
+        
           <li>
             <span class="arrow top"></span>
             <a href="docs.html">Ubah Kata Sandi </a>
