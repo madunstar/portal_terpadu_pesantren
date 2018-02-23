@@ -7,6 +7,8 @@ class Datamaster extends CI_Controller{
     function __construct()
     {
         parent::__construct();
+        $this->load->library(array('form_validation','session'));
+        $this->load->model('back-end/datamaster/m_admin');
         $this->load->model('back-end/datamaster/m_santri');
         $this->load->model('back-end/datamaster/m_guru');
         $this->load->model('back-end/datamaster/m_staff');
@@ -20,13 +22,117 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_tahun_ajaran');
         $this->load->model('back-end/datamaster/m_kelas');
         $this->load->library('layout');
+        if ($this->session->userdata('nama_akun')=="") {
+            redirect('admin/Login/loginhalaman');
+        }
+        if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
+            redirect('admin/Pendaftaran');
+        }
+        $this->load->helper('text');
     }
 
 
     function index()
     {
-        $this->layout->render('back-end/datamaster/dashboard');
+        $variabel['nama_akun'] = $this->session->userdata('nama_akun');
+        $this->layout->render('back-end/datamaster/dashboard',$variabel);
     }
+
+    function logout(){
+        $this->session->unset_userdata('nip_staff_admin');
+        $this->session->unset_userdata('nama_akun');
+        $this->session->unset_userdata('kode_role_admin');
+        session_destroy();
+        redirect('admin/login/loginhalaman');
+    }
+
+    // CRUD Admin
+    function admin(){
+       $variabel['data'] = $this->m_admin->lihatdata();
+       $this->layout->render('back-end/datamaster/admin/v_admin',$variabel,'back-end/datamaster/admin/v_admin_js');
+    }
+
+    function admintambah(){
+        if ($this->input->post()){
+            $array=array(
+                'kode_role_admin'=> $this->input->post('kode_role_admin'),
+                'nip_staff_admin'=> $this->input->post('nip_staff_admin'),
+                'nama_akun'=> $this->input->post('nama_akun'),
+                'kata_sandi'=> md5($this->input->post('kata_sandi')),
+                );
+            $nama_akun = $this->input->post("nama_akun");
+            $kata_sandi = $this->input->post("kata_sandi");
+            $rekata_sandi = $this->input->post("rekata_sandi");
+            if (($this->m_admin->cekdata($nama_akun)==0) && ($kata_sandi==$rekata_sandi)) {
+                $exec = $this->m_admin->tambahdata($array);
+                if ($exec) redirect(base_url("admin/datamaster/admintambah?msg=1"));
+                else redirect(base_url("admin/datamaster/admintambah?msg=0"));
+            } else if ($kata_sandi!=$rekata_sandi) {
+                $variabel['nip_staff_admin']=$this->m_admin->ambilstaff();
+                $variabel['kode_role_admin']=$this->m_admin->ambilroleadmin();
+                $variabel['rekata_sandi'] =$this->input->post("rekata_sandi");
+                $this->layout->render('back-end/datamaster/admin/v_admin_tambah',$variabel,'back-end/datamaster/admin/v_admin_js');
+            }
+            else {
+                $variabel['nip_staff_admin']=$this->m_admin->ambilstaff();
+                $variabel['kode_role_admin']=$this->m_admin->ambilroleadmin();
+                $variabel['nama_akun'] =$this->input->post('nama_akun');
+                $this->layout->render('back-end/datamaster/admin/v_admin_tambah',$variabel,'back-end/datamaster/admin/v_admin_js');
+            }
+        } else {
+            //$variabel ='';
+            $variabel['nip_staff_admin']=$this->m_admin->ambilstaff();
+            $variabel['kode_role_admin']=$this->m_admin->ambilroleadmin();
+            $this->layout->render('back-end/datamaster/admin/v_admin_tambah',$variabel,'back-end/datamaster/admin/v_admin_js');
+        }
+    }
+
+    function adminedit(){
+        if ($this->input->post()) {
+          $array=array(
+              'nama_role'=> $this->input->post('nama_role'),
+              'nip_staff_admin'=> $this->input->post('nip_staff_admin'),
+              'nama_lengkap'=> $this->input->post('nama_lengkap'),
+              'nama_akun'=> $this->input->post('nama_akun'),
+              'kata_sandi'=> $this->input->post('kata_sandi'),
+              );
+            $nama_akun = $this->input->post("nama_akun");
+            $kata_sandi = md5($this->input->post("kata_sandi"));
+            $kata_sandibr = md5($this->input->post("kata_sandibr"));
+            $rekata_sandibr = md5($this->input->post("rekata_sandibr"));
+            $query = $this->m_admin->cekdataedit($nama_akun);
+            if ($query->kata_sandi!=$kata_sandi) {
+                $variabel['kata_sandi'] =$this->input->post('kata_sandi');
+                $variabel['data'] = $array;
+                $this->layout->render('back-end/datamaster/admin/v_admin_edit',$variabel,'back-end/datamaster/admin/v_admin_js');
+            } else if ($kata_sandibr!=$rekata_sandibr){
+                 $variabel['rekata_sandibr'] =$this->input->post('rekata_sandibr');
+                 $variabel['data'] = $array;
+                 $this->layout->render('back-end/datamaster/admin/v_admin_edit',$variabel,'back-end/datamaster/admin/v_admin_js');
+            } else {
+                $exec = $this->m_admin->editdata($nama_akun,$kata_sandi,$kata_sandibr);
+                if ($exec){
+                    redirect(base_url("admin/datamaster/adminedit?username=".$nama_akun."&msg=1"));
+                }
+            }
+        } else {
+            $nama_akun = $this->input->get("nama_akun");
+            $exec = $this->m_admin->lihatdatasatu($nama_akun);
+            if ($exec->num_rows()>0){
+                $variabel['data'] = $exec ->row_array();
+                $this->layout->render('back-end/datamaster/admin/v_admin_edit',$variabel,'back-end/datamaster/admin/v_admin_js');
+            } else {
+                redirect(base_url("admin/datamaster/admin"));
+            }
+        }
+    }
+
+    function adminhapus(){
+        $nama_akun = $this->input->get("nama_akun");
+        $exec = $this->m_admin->hapus($nama_akun);
+        redirect(base_url()."admin/datamaster/admin?msg=1");
+    }
+    // End CRUD Admin
 
     // CRUD Santri
     function santri()

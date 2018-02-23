@@ -15,11 +15,19 @@ class Pendaftaran extends CI_Controller
     $this->load->model('back-end/pendaftaran/m_pengumuman');
     $this->load->model('back-end/pendaftaran/m_berkas');
     $this->load->library('layout_pendaftaran');
+    if ($this->session->userdata('nama_akun')=="") {
+        redirect('admin/Login/loginhalaman');
+    }
+    if ($this->session->userdata('kode_role_admin') == 'akd') {
+          redirect('admin/Datamaster');
+    }
+    $this->load->helper('text');
   }
 
 //ini dashboard admin //
   function index()
   {
+      $variabel['nama_akun'] = $this->session->userdata('nama_akun');
       $tahunajaran = $this->m_pembayaran->gettahunajaran();
       $variabel['total_pembayaran'] = $this->M_dashboard->hitungpembayaran($tahunajaran);
       $variabel['pembayaran_terakhir'] = $this->M_dashboard->get_pembayaran_terakhir();
@@ -34,6 +42,12 @@ class Pendaftaran extends CI_Controller
 
 //akhir dashboard admin //
 
+  function logout() {
+      $this->session->unset_userdata('nama_akun');
+      $this->session->unset_userdata('kode_role_admin');
+      session_destroy();
+      redirect('admin/login/loginhalaman');
+  }
 ///////////////////pengaturan pendaftaran////////////////////////////
   function pengaturan()
   {
