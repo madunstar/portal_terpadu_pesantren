@@ -16,10 +16,10 @@ class Pendaftaran extends CI_Controller
     $this->load->model('back-end/pendaftaran/m_berkas');
     $this->load->library('layout_pendaftaran');
     if ($this->session->userdata('nama_akun')=="") {
-        redirect('admin/Login/loginhalaman');
+        redirect('admin/login/loginhalaman');
     }
     if ($this->session->userdata('kode_role_admin') == 'akd') {
-          redirect('admin/Datamaster');
+          redirect('admin/datamaster');
     }
     $this->load->helper('text');
   }

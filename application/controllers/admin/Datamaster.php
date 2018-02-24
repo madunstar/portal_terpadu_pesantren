@@ -23,10 +23,10 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_kelas');
         $this->load->library('layout');
         if ($this->session->userdata('nama_akun')=="") {
-            redirect('admin/Login/loginhalaman');
+            redirect('admin/login/loginhalaman');
         }
         if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
-            redirect('admin/Pendaftaran');
+            redirect('admin/pendaftaran');
         }
         $this->load->helper('text');
     }
