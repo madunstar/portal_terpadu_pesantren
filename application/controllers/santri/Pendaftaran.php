@@ -501,9 +501,26 @@ function pengumuman()
 
 
 // end nikman
+
 //kartu pendaftaran sementara
 function kartupendaftaran(){
-  $this->layout_pendaftaran->renderfront('calonsantri/v_kartupendaftaran');
+  if($this->session->userdata('status') != "loginsantri"){
+    redirect(base_url("santri/pendaftaran/login"));
+  }
+  else{
+    $email = $this->session->userdata('email');
+    $datafoto=$this->m_dashboard->datafoto($email);
+    foreach ($datafoto->result_array() as $foto) {$fotouser = $foto['file_berkas'];}
+    $fotosantri = "assets/images/berkas/$fotouser";
+    $materi_tes = $this->m_santri->ambilmaterites();
+    $exec = $this->m_santri->kartucetak($email);
+    if ($exec->num_rows()>0){
+      $variabel['foto'] = $fotosantri;
+      $variabel['data'] = $exec->row_array();
+      $variabel['materi'] = $materi_tes;
+      $this->layout_pendaftaran->renderfront('calonsantri/v_kartupendaftaran',$variabel);
+    }
+  }
 }
 
 
