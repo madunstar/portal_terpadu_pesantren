@@ -87,8 +87,8 @@
                               <a class="btn btn-default btn-sm" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
                             </div>
                           </div>
-                          <div id="editor" class="form-control" style="overflow:scroll;height:150px;max-height:150px">
-
+                          <div>
+                            <textarea id="editor" class="form-control" style="overflow:scroll;height:150px;max-height:150px"></textarea>
                           </div>
                         </div>
                       </div>
