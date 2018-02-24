@@ -112,7 +112,7 @@ class Datamaster extends CI_Controller{
             } else {
                 $exec = $this->m_admin->editdata($nama_akun,$kata_sandi,$kata_sandibr);
                 if ($exec){
-                    redirect(base_url("admin/datamaster/adminedit?username=".$nama_akun."&msg=1"));
+                    redirect(base_url("admin/datamaster/adminedit?nama_akun=".$nama_akun."&msg=1"));
                 }
             }
         } else {

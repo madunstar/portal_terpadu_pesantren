@@ -8,8 +8,8 @@ class Pendaftaran extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('back-end/pendaftaran/M_dashboard');
-    $this->load->model('back-end/pendaftaran/M_pengaturan');
+    $this->load->model('back-end/pendaftaran/m_dashboard');
+    $this->load->model('back-end/pendaftaran/m_pengaturan');
     $this->load->model('back-end/pendaftaran/m_pendaftaran');
     $this->load->model('back-end/pendaftaran/m_pembayaran');
     $this->load->model('back-end/pendaftaran/m_pengumuman');
@@ -30,38 +30,79 @@ class Pendaftaran extends CI_Controller
       $variabel['nama_akun'] = $this->session->userdata('nama_akun');
       $tahunajaran = $this->m_pembayaran->gettahunajaran();
       //pembayaran
-      $variabel['total_pembayaran'] = $this->M_dashboard->hitungpembayaran($tahunajaran);
-      $variabel['pembayaran_terakhir'] = $this->M_dashboard->get_pembayaran_terakhir();
+      $variabel['total_pembayaran'] = $this->m_dashboard->hitungpembayaran($tahunajaran);
+      $variabel['pembayaran_terakhir'] = $this->m_dashboard->get_pembayaran_terakhir();
       //general
-      $variabel['putra_tidak_lengkap'] = $this->M_dashboard->putra_status_tidak_lengkap($tahunajaran);
-      $variabel['putra_diverifikasi'] = $this->M_dashboard->putra_status_diverifikasi($tahunajaran);
-      $variabel['putra_menunggu'] = $this->M_dashboard->putra_status_menunggu($tahunajaran);
-      $variabel['putra_pendaftaran'] = $this->M_dashboard->putra_pendaftaran($tahunajaran);
+      $variabel['putra_tidak_lengkap'] = $this->m_dashboard->putra_status_tidak_lengkap($tahunajaran);
+      $variabel['putra_diverifikasi'] = $this->m_dashboard->putra_status_diverifikasi($tahunajaran);
+      $variabel['putra_menunggu'] = $this->m_dashboard->putra_status_menunggu($tahunajaran);
+      $variabel['putra_pendaftaran'] = $this->m_dashboard->putra_pendaftaran($tahunajaran);
       //putra
-      $variabel['total_tidak_lengkap'] = $this->M_dashboard->get_count_status_tidak_lengkap($tahunajaran);
-      $variabel['total_diverifikasi'] = $this->M_dashboard->get_count_status_diverifikasi($tahunajaran);
-      $variabel['total_menunggu'] = $this->M_dashboard->get_count_status_menunggu($tahunajaran);
-      $variabel['total_pendaftaran'] = $this->M_dashboard->get_count_pendaftaran($tahunajaran);
+      $variabel['total_tidak_lengkap'] = $this->m_dashboard->get_count_status_tidak_lengkap($tahunajaran);
+      $variabel['total_diverifikasi'] = $this->m_dashboard->get_count_status_diverifikasi($tahunajaran);
+      $variabel['total_menunggu'] = $this->m_dashboard->get_count_status_menunggu($tahunajaran);
+      $variabel['total_pendaftaran'] = $this->m_dashboard->get_count_pendaftaran($tahunajaran);
       //hitung bayar
-      $variabel['pembayaran_diverifikasi'] = $this->M_dashboard->get_count_pembayaran_diverifikasi($tahunajaran);
-      $variabel['pembayaran_menunggu'] = $this->M_dashboard->get_count_pembayaran_menunggu($tahunajaran);
+      $variabel['pembayaran_diverifikasi'] = $this->m_dashboard->get_count_pembayaran_diverifikasi($tahunajaran);
+      $variabel['pembayaran_menunggu'] = $this->m_dashboard->get_count_pembayaran_menunggu($tahunajaran);
       $this->layout_pendaftaran->render('adminpendaftaran/dashboard',$variabel);
   }
 
 //akhir dashboard admin //
 
   function logout() {
+      $this->session->unset_userdata('nip_staff_admin');
       $this->session->unset_userdata('nama_akun');
       $this->session->unset_userdata('kode_role_admin');
       session_destroy();
       redirect('admin/login/loginhalaman');
   }
+
+  function ubahsandiadmin(){
+      if ($this->input->post()) {
+        $array=array(
+            'nama_role'=> $this->input->post('nama_role'),
+            'nip_staff_admin'=> $this->input->post('nip_staff_admin'),
+            'nama_lengkap'=> $this->input->post('nama_lengkap'),
+            'nama_akun'=> $this->input->post('nama_akun'),
+            'kata_sandi'=> $this->input->post('kata_sandi'),
+            );
+          $nama_akun = $this->input->post("nama_akun");
+          $kata_sandi = md5($this->input->post("kata_sandi"));
+          $kata_sandibr = md5($this->input->post("kata_sandibr"));
+          $rekata_sandibr = md5($this->input->post("rekata_sandibr"));
+          $query = $this->m_dashboard->cekubahsandi($nama_akun);
+          if ($query->kata_sandi!=$kata_sandi) {
+              $variabel['kata_sandi'] =$this->input->post('kata_sandi');
+              $variabel['data'] = $array;
+              $this->layout->render('adminpendaftaran/v_ubah_sandi',$variabel);
+          } else if ($kata_sandibr!=$rekata_sandibr){
+               $variabel['rekata_sandibr'] =$this->input->post('rekata_sandibr');
+               $variabel['data'] = $array;
+               $this->layout->render('adminpendaftaran/v_ubah_sandi',$variabel);
+          } else {
+              $exec = $this->m_dashboard->ubahsandi($nama_akun,$kata_sandi,$kata_sandibr);
+              if ($exec){
+                  redirect(base_url("admin/pendaftaran/ubahsandiadmin?nama_akun=".$nama_akun."&msg=1"));
+              }
+          }
+      } else {
+          $nama_akun = $this->input->get("nama_akun");
+          $exec = $this->m_dashboard->lihatubahsandi($nama_akun);
+          if ($exec->num_rows()>0){
+              $variabel['data'] = $exec ->row_array();
+              $this->layout->render('adminpendaftaran/v_ubah_sandi',$variabel);
+          } else {
+              redirect(base_url("admin/pendaftaran/dashboard"));
+          }
+      }
+  }
 ///////////////////pengaturan pendaftaran////////////////////////////
   function pengaturan()
   {
-    $variabel['tb_akun_pendaftar'] = $this->M_pengaturan->get_akun_pendaftar();
-    $variabel['datatahun'] = $this->M_pengaturan->datatahun();
-    $variabel['tb_pengaturan_pendaftaran'] = $this->M_pengaturan->get_tb_pengaturan();
+    $variabel['tb_akun_pendaftar'] = $this->m_pengaturan->get_akun_pendaftar();
+    $variabel['datatahun'] = $this->m_pengaturan->datatahun();
+    $variabel['tb_pengaturan_pendaftaran'] = $this->m_pengaturan->get_tb_pengaturan();
     $this->layout_pendaftaran->render('adminpendaftaran/pengaturan',$variabel,'adminpendaftaran/pengaturan_js');
   }
 
@@ -70,7 +111,7 @@ class Pendaftaran extends CI_Controller
       'pendaftaran_aktif' => $this->input->post('aktif'),
       'tahun_ajaran' => $this->input->post('tahun_ajaran'),
     );
-    $this->M_pengaturan->update_tb_pengaturan_pendaftran($params);
+    $this->m_pengaturan->update_tb_pengaturan_pendaftran($params);
     $this->session->set_flashdata('response',"
         <div class='alert alert-success'>
             <button type='button' class='close' data-dismiss='alert'>&times;</button>
@@ -100,7 +141,7 @@ class Pendaftaran extends CI_Controller
     $params = array (
         'kata_sandi' => $encrypt_sandi
       );
-      $this->M_pengaturan->editsandi($email_akun,$params);
+      $this->m_pengaturan->editsandi($email_akun,$params);
       $this->session->set_flashdata('response',"
           <div class='alert alert-success'>
               <button type='button' class='close' data-dismiss='alert'>&times;</button>
@@ -117,7 +158,7 @@ class Pendaftaran extends CI_Controller
     $params = array(
       'status_akun' => 'aktif'
     );
-    $this->M_pengaturan->editstatus($email_akun,$params);
+    $this->m_pengaturan->editstatus($email_akun,$params);
     $this->session->set_flashdata('response',"
         <div class='alert alert-success'>
             <button type='button' class='close' data-dismiss='alert'>&times;</button>

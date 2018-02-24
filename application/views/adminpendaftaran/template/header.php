@@ -51,6 +51,10 @@
           echo $nama_akun;?> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu animated fadeInRight">
+          <li>
+            <span class="arrow top"></span>
+            <a href="<?php echo base_url('admin/pendaftaran/ubahsandiadmin?nama_akun='.$nama_akun);?>">Ubah Kata Sandi </a>
+          </li>
           <li class="divider"></li>
           <li>
             <a href="<?php echo base_url() ?>admin/pendaftaran/logout"><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
