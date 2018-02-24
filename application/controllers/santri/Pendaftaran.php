@@ -44,7 +44,7 @@ function __construct()
 
 function index()
 {
-
+  redirect(base_url("santri/pendaftaran/dashboard"));
 }
 
 function login()
@@ -95,13 +95,13 @@ function ceklogin()
 
 function logout(){
       $this->session->sess_destroy();
-      redirect(base_url("santri/pendaftaran/"));
+      redirect(base_url("santri/pendaftaran"));
 }
 
 function dashboard()
 {
   if($this->session->userdata('status') != "loginsantri"){
-    redirect(base_url("santri/pendaftaran/"));
+    redirect(base_url("santri/pendaftaran/login"));
   }
   else{
     $email = $this->session->userdata('email');

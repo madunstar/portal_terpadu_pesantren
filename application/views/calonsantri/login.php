@@ -6,7 +6,7 @@
   </div>
   <aside class="col-lg-6 bg-dark">
     <section class="vbox">
-    <div class="wrapper" style="margin-top:30px">
+    <div class="wrapper" style="margin-top:60px">
       <div class="container aside-xl bg-light" style="border-radius:10px">
         <section class="m-b-lg">
           <div class="text-center">
