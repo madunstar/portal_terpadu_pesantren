@@ -44,7 +44,7 @@ class M_santri extends CI_Model
       $this->db->insert('tb_biodata_pendaftar',$array_bio);
     }
 
-    // gawian nikman nasir 
+    // gawian nikman nasir
     function ambilprovinsi(){
       $this->db->order_by("nama_provinsi","ASC");
       return $this->db->get('tb_provinsi');
@@ -65,7 +65,7 @@ class M_santri extends CI_Model
       $idkabupaten = $exec['id_kota_kab'];
       return $idkabupaten;
     }
-    
+
 
     function carikecamatan($kecamatan){
       $this->db->where('nama_kecamatan', $kecamatan);
@@ -74,7 +74,7 @@ class M_santri extends CI_Model
       $idkecamatan = $exec['id_kecamatan'];
       return $idkecamatan;
     }
-    
+
     function ambilkabupaten($provinsi){
       $idprovinsi = $this->cariprovinsi($provinsi);
       $this->db->where('id_provinsi', $idprovinsi);
@@ -159,6 +159,22 @@ class M_santri extends CI_Model
       }
     // end gawian nikman nasir
 
+    function kartucetak($email)
+    {
+        $this->db->select('id_biodata, nama_lengkap, alamat_lengkap, hp, jenis_pendaftaran, DATE_FORMAT(tanggal_pembayaran, "%d-%m-%Y") AS tgl_byr');
+        $this->db->from('tb_biodata_pendaftar');
+        $this->db->join('tb_akun_pendaftar', 'tb_biodata_pendaftar.email_pendaftar = tb_akun_pendaftar.email_pendaftar');
+        $this->db->join('tb_bayar_pendaftar', 'tb_biodata_pendaftar.email_pendaftar = tb_bayar_pendaftar.email_pendaftar');
+        $this->db->where("tb_biodata_pendaftar.email_pendaftar",$email);
+        return $this->db->get();
+    }
+
+    function ambilmaterites(){
+      $this->db->select('materi_tes, DATE_FORMAT(tanggal_tes, "%d-%m-%Y") AS tgl_tes');
+      $this->db->from('tb_materi_tes');
+      $this->db->order_by("tanggal_tes","ASC");
+      return $this->db->get();
+    }
 
 }
 ?>

@@ -1,5 +1,5 @@
 <section class="vbox">
-  <img src="<?php echo base_url('assets/images/masjid.jpg'); ?>" style="opacity:0.5" alt="">
+  <img src="<?php echo base_url('assets/images/masjid.jpg'); ?>" style="opacity:0.5; width: 100%; height: 100%;" alt="">
   <section class="hbox stretch">
     <aside class="col-sm-1 no-padder">
 
