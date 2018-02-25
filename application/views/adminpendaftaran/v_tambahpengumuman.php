@@ -36,9 +36,8 @@
                       </div>
                       <div class="form-group">
                         <label class="col-lg-2 control-label">Isi Informasi</label>
-
                         <div class="col-lg-9">
-                        <input class="summernote" name="isi_pengumuman" />
+                          <textarea class="summernote" id="isi_pengumuman" name="isi_pengumuman"></textarea>
                       </div>
 
                       </div>
