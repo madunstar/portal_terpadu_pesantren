@@ -19,7 +19,8 @@
                   <div class="form-group">
                     <label class="col-lg-4 control-label">Nama Kelas</label>
                     <div class="col-lg-8">
-                      <input type="hidden" class="form-control" name="kd_kelas" data-required="true" value="<?php echo $data['kd_kelas']; ?>"/>
+                      <input type="hidden" class="form-control" name="kd_kelas" data-required="true" value="<?php echo $data['kd_kelas']; ?>"/> 
+                      <!-- biar mudah mengambil kode kelasnya -->
                       <input type="text" class="form-control" name="nama_kelas" data-required="true" value="<?php echo $data['nama_kelas']; ?>"/>
                     </div>
                   </div>

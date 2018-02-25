@@ -237,7 +237,7 @@ function editpengumuman()
 $id_pengumuman = $this->input->get("idpengumuman");
   if ($this->input->post()){
           $array=array(
-              'id_pengumuman'=> $this->input->post('id_pengumuman'),
+              'isi_pengumuman'=> $this->input->post('isi_pengumuman'),
               'judul_pengumuman'=> $this->input->post('judul_pengumuman'),
               'link_pengumuman'=> $this->input->post('link_pengumuman'),
               'tanggal_pengumuman'=>$this->input->post('tanggal_pengumuman')
