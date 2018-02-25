@@ -213,8 +213,52 @@ function pengumuman()
 
 function tambahpengumuman()
 {
-    $variabel['data'] = $this->m_pengumuman->lihatpengumuman();
+  if ($this->input->post()){
+
+          $array=array(
+              'judul_pengumuman'=> $this->input->post('judul_pengumuman'),
+              'isi_pengumuman'=> $this->input->post('isi_pengumuman'),
+              'link_pengumuman'=> $this->input->post('link_pengumuman'),
+              'tanggal_pengumuman'=>$this->input->post('tanggal_pengumuman')
+              );
+          $exec = $this->m_pengumuman->tambahdata($array);
+          if ($exec) redirect(base_url("admin/pendaftaran/tambahpengumuman?msg=1"));
+          else redirect(base_url("admin/pendaftaran/tambahpengumuman?msg=0"));
+  } else {
+    $variabel= '';
     $this->layout_pendaftaran->render('adminpendaftaran/v_tambahpengumuman',$variabel,'adminpendaftaran/pengaturan_js');
+  }
+}
+
+
+
+function editpengumuman()
+{
+$id_pengumuman = $this->input->get("idpengumuman");
+  if ($this->input->post()){
+          $array=array(
+              'id_pengumuman'=> $this->input->post('id_pengumuman'),
+              'judul_pengumuman'=> $this->input->post('judul_pengumuman'),
+              'link_pengumuman'=> $this->input->post('link_pengumuman'),
+              'tanggal_pengumuman'=>$this->input->post('tanggal_pengumuman')
+              );
+          $exec = $this->m_pengumuman->editdata($id_pengumuman,$array);
+          if ($exec)redirect(base_url("admin/pendaftaran/editpengumuman?idpengumuman=".$id_pengumuman."&msg=1"));
+          else redirect(base_url("admin/pendaftaran/editpengumuman?idpengumuman=".$id_pengumuman."&msg=0"));
+  } else {
+    $exec =$this->m_pengumuman->data($id_pengumuman);
+    if ($exec->num_rows()>0){
+        $variabel['data'] = $exec ->row_array();
+        $this->layout_pendaftaran->render('adminpendaftaran/v_editpengumuman',$variabel,'adminpendaftaran/pengaturan_js');
+  }
+}
+}
+
+function deletepengumuman()
+{
+  $id_pengumuman = $this->input->get("idpengumuman");
+  $exec = $this->m_pengumuman->hapus($id_pengumuman);
+  redirect(base_url()."admin/pendaftaran/pengumuman?msg=1");
 }
 //sisanya tamabh sendiri yaa anis!
 //akhir

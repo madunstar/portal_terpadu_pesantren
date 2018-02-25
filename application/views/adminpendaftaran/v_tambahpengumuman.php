@@ -14,7 +14,10 @@
               <b>Tambah Informasi</b>
             </header>
             <div class="panel-body">
-                <form class="bs-example form-horizontal" data-validate="parsley" action="#" method="post">
+              <?php pesan_get('msg',"Berhasil Menambahkan Data Informasi Pengumuman","Gagal Menambahkan Data Informasi Pengumuman") ?>
+               <form id="myform" class="bs-example form-horizontal" data-validate="parsley"
+                action="<?php echo base_url() ?>admin/pendaftaran/tambahpengumuman" method="post">
+                 <a href="<?php echo base_url('admin/pendaftaran/pengumuman') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
                   <div class="row">
       							<div class="col-md-12">
       								<div class="form-group">
@@ -26,20 +29,23 @@
                       <div class="form-group">
                         <label class="col-sm-2 control-label">Tanggal Informasi</label>
                         <div class="col-sm-4">
-                          <input class="datepicker-input form-control" size="16" type="text" data-date-format="dd-mm-yyyy" name="tanggal_pembayaran" data-required="true"
+                          <input class="datepicker-input form-control" size="16" type="text" data-date-format="yyyy-mm-dd"
+                          name="tanggal_pengumuman" data-required="true"
                           value="" readonly/>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-lg-2 control-label">Isi Informasi</label>
+
                         <div class="col-lg-9">
                         <input class="summernote" name="isi" />
                       </div>
+
                       </div>
                       <div class="form-group">
                         <label class="col-lg-2 control-label">Tautan</label>
                         <div class="col-lg-4">
-                          <input class="form-control" name="keterangan" />
+                          <input class="form-control" name="link_pengumuman" />
                         </div>
                       </div>
                       <div class="line line-dashed b-b line-lg pull-in"></div>

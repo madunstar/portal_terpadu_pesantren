@@ -14,7 +14,6 @@ function __construct()
   $this->load->model('back-end/pendaftaran/m_loginsantri');
   $this->load->model('back-end/pendaftaran/m_dashboard');
   $this->load->library('layout_pendaftaran');
-
   if($this->session->userdata('status') != "loginsantri"){
     $aktif = $this->m_akunsantri->get_pengaturan();
     if ($aktif == 0) {
@@ -24,6 +23,7 @@ function __construct()
       }
     }
   }
+
 /**
 * Index Page for this controller.
 *
@@ -449,17 +449,23 @@ function pembayaran()
     }
 
 }
+// end nikman
 //informasi atau pengumuman
 function pengumuman()
 {
+  if($this->session->userdata('status') != "loginsantri"){
+    redirect(base_url("santri/pendaftaran/login"));
+  }
+  else{
   $variabel['data'] = $this->m_pengumuman->lihatpengumuman();
   $this->layout_pendaftaran->renderfront('calonsantri/v_pengumuman',$variabel,'calonsantri/calonsantri_js');
+}
 }
 // akhir function halaman
 
 
 
-// end nikman
+
 
 //kartu pendaftaran sementara
 function kartupendaftaran(){
