@@ -11,7 +11,10 @@
         </div>
         <div class="col-xs-8 text-center">
           <h4 class="font-bold">PESANTREN DARUL ILMI</h4>
-          <small>xxxxxxxxxxxxxxxxxx xxxxx xxxxxxx</small>
+          <small>
+            JL. A. YANI KM. 19.2 KEL. LANDASAN ULIN BARAT, KEC. LIANGANGGANG
+            <br>BANJARBARU - KALIMANTAN SELATAN 70722</br>
+          </small>
         </div>
         <div class="col-xs-2 h3 font-bold text-center">
         </div>
@@ -19,8 +22,8 @@
       <div class="line pull-in line-dashed b-b"></div>
       <div class="row">
         <div class="col-xs-12 text-right">
-          <h4>#xxxxxxxxxxx</h4>
-          <h5>Diverifikasi tanggal dd-mm-yyyy</h5>
+          <h4>#<?php echo $data['id_biodata'];?></h4>
+          <h5>Diverifikasi tanggal <?php echo $data['tgl_byr'];?></h5>
         </div>
       </div>
       <div class="well b bg-light m-t">
@@ -33,7 +36,7 @@
         <div class="row">
           <div class="col-xs-3 ">
             <div class="thumb-lg">
-              <img style="height:192px;width:128px;margin-left:10px"  src="<?php echo base_url('assets/images/PASPOTO.jpg'); ?>" alt="">
+              <img style="height:192px;width:128px;margin-left:10px"  src="<?php echo base_url($foto);?>" alt="">
             </div>
 
           </div>
@@ -47,10 +50,10 @@
           </div>
           <div class="col-xs-7">
             <p>
-              :   xxxxxxxxxxxxxxx<br><br>
-              :   St John Street, Aberdeenshire 2541<br><br>
-              :   031-432-678<br><br>
-              :   SMA
+              :  <?php echo $data['nama_lengkap'];?><br><br>
+              :  <?php echo $data['alamat_lengkap'];?><br><br>
+              :  <?php echo $data['hp'];?><br><br>
+              :  <?php echo $data['jenis_pendaftaran'];?>
             </p>
           </div>
         </div>
@@ -68,8 +71,13 @@
             </tr>
           </thead>
           <tbody>
-            <td>xxxxxxxxx</td>
-            <td>xxxxxxxxxxx</td>
+          <?php
+            foreach($materi->result_array() as $row) {?>
+              <tr>
+                <td><?php echo $row['materi_tes'];?></td>
+                <td><?php echo $row['tgl_tes'];?></td>
+              </tr>
+          <?php } ?>
           </tbody>
         </table>
       </div>

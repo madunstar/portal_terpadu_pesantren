@@ -23,10 +23,10 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_kelas');
         $this->load->library('layout');
         if ($this->session->userdata('nama_akun')=="") {
-            redirect('admin/Login/loginhalaman');
+            redirect('admin/login/loginhalaman');
         }
         if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
-            redirect('admin/Pendaftaran');
+            redirect('admin/pendaftaran');
         }
         $this->load->helper('text');
     }
@@ -112,7 +112,7 @@ class Datamaster extends CI_Controller{
             } else {
                 $exec = $this->m_admin->editdata($nama_akun,$kata_sandi,$kata_sandibr);
                 if ($exec){
-                    redirect(base_url("admin/datamaster/adminedit?username=".$nama_akun."&msg=1"));
+                    redirect(base_url("admin/datamaster/adminedit?nama_akun=".$nama_akun."&msg=1"));
                 }
             }
         } else {

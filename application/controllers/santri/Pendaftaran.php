@@ -14,7 +14,17 @@ function __construct()
   $this->load->model('back-end/pendaftaran/m_loginsantri');
   $this->load->model('back-end/pendaftaran/m_dashboard');
   $this->load->library('layout_pendaftaran');
-}
+
+  if($this->session->userdata('status') != "loginsantri"){
+    $aktif = $this->m_akunsantri->get_pengaturan();
+    if ($aktif == 0) {
+      redirect(base_url("santri/daftarnotfound"));
+    } else if ($aktif == 1) {
+      redirect(base_url("santri/login"));
+      }
+    }
+  }
+
 /**
 * Index Page for this controller.
 *
@@ -48,53 +58,10 @@ function login()
   }
 }
 
-function ceklogin()
-{
-  if ($this->input->post()) {
-    $sandi = $this->input->post('sandi');
-    $katasandi = md5($sandi);
-    $email = $this->input->post('email');
-    $cekemail = $this->m_loginsantri->cekemail($email)->num_rows();
 
-    if ($cekemail > 0) {
-      $cekstatusakun =$this->m_loginsantri->cekemail($email);
-      foreach ($cekstatusakun->result_array() as $akun) {
-          $statusakun = $akun['status_akun'];
-        }
-      if ($statusakun == "tidak aktif"){
-        redirect(base_url("santri/pendaftaran/login?akun=0"));
-      }
-      elseif ($statusakun == "aktif"){
-            $cek = $this->m_loginsantri->ceklogin($email, $katasandi);
-            if ($cek->num_rows() > 0) {
-              foreach ($cek->result_array() as $datasandi) {
-            //login berhasil, buat session
-              $sess_data['email'] = $datasandi['email_pendaftar'];
-              $sess_data['user'] = $datasandi['email_pendaftar'];
-              $sess_data['status'] = "loginsantri";
-              $this->session->set_userdata($sess_data);
-            }
-            redirect(base_url("santri/pendaftaran/dashboard"));
-        } else { redirect(base_url("santri/pendaftaran/login?msg=2"));}
-      }
-    }
-    else {
-        redirect(base_url("santri/pendaftaran/login?msg=0"));
-      }
-}
-}
-
-function logout(){
-      $this->session->sess_destroy();
-      redirect(base_url("santri/pendaftaran"));
-}
 
 function dashboard()
 {
-  if($this->session->userdata('status') != "loginsantri"){
-    redirect(base_url("santri/pendaftaran/login"));
-  }
-  else{
     $email = $this->session->userdata('email');
     $cekstatusbiodata = $this->m_dashboard->status_santri($email);
     foreach ($cekstatusbiodata->result_array() as $cek) {
@@ -210,7 +177,7 @@ function dashboard()
       }
     }
   }
-}
+
 
 // Nikman
 function datakotakab()
@@ -316,22 +283,22 @@ function berkas(){
   $cekdatafoto=$this->m_dashboard->datafoto($email)->num_rows();
   if ($cekdatafoto == 0 )
   {
-      $sess_data['email'] = $email;
-      $sess_data['user'] = $email;
-      $sess_data['foto'] = "assets/images/a0.png";
-      $this->session->set_userdata($sess_data);
+  //     $sess_data['email'] = $email;
+  //     $sess_data['user'] = $email;
+       $sess_data['foto'] = "assets/images/a0.png";
+       $this->session->set_userdata($sess_data);
   }
-  elseif ($cekdatafoto > 0){
-    $namauser = $this->m_dashboard->nama_user($email);
-    foreach ($namauser->result_array() as $user) {$nama_user = $user['nama_lengkap'];}
-    $datafoto=$this->m_dashboard->datafoto($email);
-    foreach ($datafoto->result_array() as $foto) {$fotouser = $foto['file_berkas'];}
-    $fotosantri = "assets/images/berkas/$fotouser";
-    $sess_data['email'] = $email;
-    $sess_data['user'] = $nama_user;
-    $sess_data['foto'] = $fotosantri;
-    $this->session->set_userdata($sess_data);
-  }
+   elseif ($cekdatafoto > 0){
+     $namauser = $this->m_dashboard->nama_user($email);
+     foreach ($namauser->result_array() as $user) {$nama_user = $user['nama_lengkap'];}
+     $datafoto=$this->m_dashboard->datafoto($email);
+     foreach ($datafoto->result_array() as $foto) {$fotouser = $foto['file_berkas'];}
+     $fotosantri = "assets/images/berkas/$fotouser";
+  //   $sess_data['email'] = $email;
+  //   $sess_data['user'] = $email;
+     $sess_data['foto'] = $fotosantri;
+     $this->session->set_userdata($sess_data);
+   }
 
   if ($this->input->post()) {
     $data=array(
@@ -415,6 +382,7 @@ function pembayaran()
      $email = $this->session->userdata("email");
      $statusbio = $this->m_akunsantri->getstatusbiodata($email);
      $statusberkas = $this->m_akunsantri->getstatusberkas($email);
+     $statusbayar = $this->m_akunsantri->getstatusbayar($email);
     if ($this->input->post()) {
       $data=array(
         'besar_pembayaran'=> $this->input->post('besar_pembayaran'),
@@ -466,6 +434,7 @@ function pembayaran()
 
     } else {
       if ( ($statusbio == "diverifikasi") and ($statusberkas == "diverifikasi")) {
+        $variabel['cekbayar'] = $statusbayar;
         $variabel['data']=$this->m_pembayaran->ambilpembayaran($email)->row_array();
         $this->layout_pendaftaran->renderfront('calonsantri/v_pembayaran',$variabel,'calonsantri/v_pembayaran_js');
       } else {
@@ -500,10 +469,24 @@ function pengumuman()
 
 //kartu pendaftaran sementara
 function kartupendaftaran(){
-  $this->layout_pendaftaran->renderfront('calonsantri/v_kartupendaftaran');
+  // if($this->session->userdata('status') != "loginsantri"){
+  //   redirect(base_url("santri/pendaftaran/login"));
+  // }
+  // else{
+    $email = $this->session->userdata('email');
+    $datafoto=$this->m_dashboard->datafoto($email);
+    foreach ($datafoto->result_array() as $foto) {$fotouser = $foto['file_berkas'];}
+    $fotosantri = "assets/images/berkas/$fotouser";
+    $materi_tes = $this->m_santri->ambilmaterites();
+    $exec = $this->m_santri->kartucetak($email);
+    if ($exec->num_rows()>0){
+      $variabel['foto'] = $fotosantri;
+      $variabel['data'] = $exec->row_array();
+      $variabel['materi'] = $materi_tes;
+      $this->layout_pendaftaran->renderfront('calonsantri/v_kartupendaftaran',$variabel);
+    }
+  // }
+}
 }
 
-
-
-
-}
+?>
