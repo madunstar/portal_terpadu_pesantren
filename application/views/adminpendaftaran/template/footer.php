@@ -29,6 +29,7 @@
   <script src="<?php echo base_url('assets/js/wysiwyg/jquery.hotkeys.js');?>"></script>
   <script src="<?php echo base_url('assets/js/wysiwyg/bootstrap-wysiwyg.js');?>"></script>
   <script src="<?php echo base_url('assets/js/wysiwyg/demo.js');?>"></script>
+  <script src="<?php echo base_url('assets/js/summernote/summernote.js');?>"></script>
 
   <script src="<?php echo base_url('assets/js/markdown/epiceditor.min.js');?>"></script>
   <script src="<?php echo base_url('assets/js/markdown/demo.js');?>"></script>
