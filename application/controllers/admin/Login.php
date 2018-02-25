@@ -19,7 +19,7 @@ Class Login extends CI_Controller{
 		$this->form_validation->set_rules('nama_akun','Nama Akun','required|trim');
 		$this->form_validation->set_rules('kata_sandi','Kata Sandi','required');
 		if ($this->form_validation->run()==FALSE){
-			$this->layout->render('back-end/v_login');
+			$this->layout->renderlogin('back-end/v_login');
 		}else{
 			$data = array('nama_akun' => $this->input->post('nama_akun', TRUE),
 						        'kata_sandi' => md5($this->input->post('kata_sandi', TRUE)));
@@ -34,13 +34,13 @@ Class Login extends CI_Controller{
 					//return TRUE;
 				}
 				if ($this->session->userdata('kode_role_admin')=='adm_pd') {
-					redirect('admin/Pendaftaran');
+					redirect('admin/pendaftaran');
 				}
 				else if ($this->session->userdata('kode_role_admin')=='akd') {
-					redirect('admin/Datamaster');
+					redirect('admin/datamaster');
 				}
 				elseif ($this->session->userdata('kode_role_admin')=='keu') {
-					redirect('admin/Pendaftaran');
+					redirect('admin/pendaftaran');
 				}
 			}
 			else {
@@ -55,7 +55,7 @@ Class Login extends CI_Controller{
 	function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('admin/Login/loginhalaman');
+		redirect('admin/login/loginhalaman');
 	}
 }
 ?>

@@ -30,7 +30,7 @@
       <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
         <i class="fa fa-bars"></i>
       </a>
-      <a href="index.html" class="navbar-brand">
+      <a href="<?php echo base_url() ?>admin/datamaster" class="navbar-brand">
         <img src="<?php echo base_url('assets/images/logo.png'); ?>" class="m-r-sm" alt="scale">
         <span class="hidden-nav-xs" style="font-size:15px">Pesantren Darul Ilmi</span>
       </a>
@@ -47,17 +47,18 @@
           <span class="thumb-sm avatar pull-left">
             <img src="<?php echo base_url('assets/images/a0.png'); ?>" alt="...">
           </span>
-          John.Smith <b class="caret"></b>
+          <?php $nama_akun = $this->session->userdata('nama_akun');
+          echo $nama_akun;?> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu animated fadeInRight">
 
           <li>
             <span class="arrow top"></span>
-            <a href="docs.html">Ubah Kata Sandi </a>
+            <a href="<?php echo base_url('admin/datamaster/adminedit?nama_akun='.$nama_akun);?>">Ubah Kata Sandi </a>
           </li>
           <li class="divider"></li>
           <li>
-            <a href="modal.lockme.html" data-toggle="ajaxModal" ><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
+            <a href="<?php echo base_url() ?>admin/datamaster/logout"><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
           </li>
         </ul>
       </li>
