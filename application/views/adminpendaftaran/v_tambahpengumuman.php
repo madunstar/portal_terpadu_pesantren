@@ -38,7 +38,7 @@
                         <label class="col-lg-2 control-label">Isi Informasi</label>
 
                         <div class="col-lg-9">
-                        <input class="summernote" name="isi" />
+                        <input class="summernote" name="isi_pengumuman" />
                       </div>
 
                       </div>
