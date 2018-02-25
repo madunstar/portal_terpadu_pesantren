@@ -14,4 +14,27 @@ class m_pengumuman extends CI_Model
   {
       return $this->db->get('tb_pengumuman');
   }
+
+  function data($id_pengumuman)
+  {
+    $this->db->where("id_pengumuman",$id_pengumuman);
+    return $this->db->get('tb_pengumuman');  
+  }
+
+  function tambahdata($array)
+  {
+      return $this->db->insert('tb_pengumuman',$array);
+  }
+
+  function editdata($id_pengumuman,$array)
+  {
+      $this->db->where("id_pengumuman",$id_pengumuman);
+      return $this->db->update('tb_pengumuman',$array);
+  }
+  function hapus($id_pengumuman)
+  {
+      $this->db->where("id_pengumuman",$id_pengumuman);
+      return $this->db->delete('tb_pengumuman');
+  }
+
 }

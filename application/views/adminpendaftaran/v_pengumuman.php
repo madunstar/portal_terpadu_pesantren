@@ -14,6 +14,7 @@
 
             </header>
             <div class="panel-body">
+              <?php pesan_get('msg',"Berhasil Menghapus Data Informasi Pengumuman","Gagal Menghapus Data Informasi Pengumuman") ?>
               <a href="<?php echo base_url() ?>admin/pendaftaran/tambahpengumuman"><button type="button" name="button" class="btn btn-success">Tambah Informasi</button></a>
 
               <div class="table-responsive">
@@ -36,8 +37,8 @@
                                 <div><p>".$row['isi_pengumuman']."</p></div>
                                 <div class='line line-dashed b-b line-lg pull-in'></div>
                                 <div class='pull-right'>
-                                <button class='btn btn-warning btn-sm'><i class='fa fa-edit'></i></button>
-                                <button class='btn btn-danger btn-sm'><i class='fa fa-trash-o'></i></button>
+                                <a href = '../../admin/pendaftaran/editpengumuman?idpengumuman=".$row['id_pengumuman']."'><button class='btn btn-warning btn-sm'><i class='fa fa-edit'></i></button></a>
+                                <a href = '../../admin/pendaftaran/deletepengumuman?idpengumuman=".$row['id_pengumuman']."'><button class='btn btn-danger btn-sm'><i class='fa fa-trash-o'></i></button></a>
                                 <a target='__blank' href=".$row['link_pengumuman']."><button class='btn btn-primary btn-sm'>Buka Tautan&nbsp; <i class='fa fa-external-link'></i></button></a>
                                 </div>
                               </td>

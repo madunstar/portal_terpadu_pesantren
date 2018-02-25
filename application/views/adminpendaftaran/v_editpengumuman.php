@@ -14,16 +14,18 @@
               <b>Tambah Informasi</b>
             </header>
             <div class="panel-body">
-              <?php pesan_get('msg',"Berhasil Menambahkan Data Informasi Pengumuman","Gagal Menambahkan Data Informasi Pengumuman") ?>
-               <form id="myform" class="bs-example form-horizontal" data-validate="parsley"
-                action="<?php echo base_url() ?>admin/pendaftaran/tambahpengumuman" method="post">
+              <?php pesan_get('msg',"Berhasil Mengedit Data Informasi Pengumuman","Gagal Mengedit Data Informasi Pengumuman") ?>
+               <form class="bs-example form-horizontal" data-validate="parsley"
+                action="<?php echo base_url() ?>admin/pendaftaran/editpengumuman?idpengumuman=<?php echo $data['id_pengumuman'];?>" method="post"
+                onsubmit="getEditorContents(this);">
                  <a href="<?php echo base_url('admin/pendaftaran/pengumuman') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
                   <div class="row">
       							<div class="col-md-12">
       								<div class="form-group">
       									<label class="col-lg-2 control-label">Judul Informasi</label>
       									<div class="col-lg-4">
-      										<input type="text" class="form-control" name="judul_pengumuman" data-required="true" value=""/>
+                          <input type="hidden" class="form-control" name="id_pengumuman" data-required="true" value="<?php echo $data['id_pengumuman']; ?>" />
+      										<input type="text" class="form-control" name="judul_pengumuman" data-required="true" value="<?php echo $data['judul_pengumuman']; ?>"/>
       									</div>
       								</div>
                       <div class="form-group">
@@ -31,7 +33,7 @@
                         <div class="col-sm-4">
                           <input class="datepicker-input form-control" size="16" type="text" data-date-format="yyyy-mm-dd"
                           name="tanggal_pengumuman" data-required="true"
-                          value="" readonly/>
+                          value="<?php echo $data['tanggal_pengumuman']; ?>" readonly/>
                         </div>
                       </div>
                       <div class="form-group">
@@ -93,23 +95,15 @@
                             </div>
                           </div>
                           <div id="editor" class="form-control" style="overflow:scroll;height:150px;max-height:150px">
-                            </div>
-                          <textarea  name="isi_pengumuman" id="MyTextarea"></textarea>
-                          <script>
-                          $('#myform').submit(function(){
-                            $('#hiddenFiel').val($('#editor').html());
-                            $('#myform').focusout(function(){
-                            $('#MyTextarea').val($('#editor').html());
-                          });
-                          });
-                          </script>
+                            <?php echo $data['isi_pengumuman']; ?>
+                            <textarea style="display:none;" name="editor"></textarea>
+                          </div>
                         </div>
-
                       </div>
                       <div class="form-group">
                         <label class="col-lg-2 control-label">Tautan</label>
-                        <div class="col-lg-4">
-                          <input class="form-control" name="link_pengumuman" />
+                        <div class="col-lg-8">
+                          <input class="form-control" name="link_pengumuman" value="<?php echo $data['link_pengumuman']; ?>"/>
                         </div>
                       </div>
                       <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -124,6 +118,13 @@
               </div>
             </div>
           </div>
+          <script>
+          function getEditorContents(form){
+            var html=document.getElementById("editor").innerHTML;
+            form.editor.value = html;
+            return true;
+          }
+          </script>
           <div class="col-sm-6">
             </div>
             <div class="col-sm-6">
