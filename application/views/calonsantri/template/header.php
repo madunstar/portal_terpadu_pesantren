@@ -61,7 +61,7 @@
           </li>
           <li class="divider"></li>
           <li>
-            <a href="<?php echo base_url()?>santri/pendaftaran/logout"  ><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
+            <a href="<?php echo base_url()?>santri/login/logout"  ><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
           </li>
         </ul>
       </li>

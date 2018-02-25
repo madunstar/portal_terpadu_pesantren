@@ -4,7 +4,7 @@
   <div class="col-lg-2">
 
   </div>
-  <aside class="col-lg-6 bg-dark">
+  <aside class="col-lg-6">
     <section class="vbox">
     <div class="wrapper" style="margin-top:60px">
       <div class="container aside-xl bg-light" style="border-radius:10px">
@@ -18,7 +18,7 @@
           </header>
           <?php pesan_get('msg',"Sukses","Email Tidak Terdaftar","Email dan Kata Sandi tidak cocok") ?>
           <?php pesan_get('akun',"","Akun belum diaktifkan") ?>
-          <form  action="<?php echo base_url()?>santri/pendaftaran/ceklogin" method="post" data-validate="parsley">
+          <form  action="<?php echo base_url()?>santri/login/ceklogin" method="post" data-validate="parsley">
             <div class="list-group">
               <div class="list-group-item">
                 <input name="email" data-required="true" type="email" data-type="email" placeholder="Email" value="<?php echo set_value('email_pendaftar'); ?>" class="form-control no-border">
