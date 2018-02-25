@@ -14,10 +14,6 @@ function __construct()
   $this->load->model('back-end/pendaftaran/m_loginsantri');
   $this->load->model('back-end/pendaftaran/m_dashboard');
   $this->load->library('layout_pendaftaran');
-<<<<<<< HEAD
-}
-=======
-
   if($this->session->userdata('status') != "loginsantri"){
     $aktif = $this->m_akunsantri->get_pengaturan();
     if ($aktif == 0) {
@@ -27,7 +23,7 @@ function __construct()
       }
     }
   }
->>>>>>> menambah-ci
+
 /**
 * Index Page for this controller.
 *
@@ -469,10 +465,7 @@ function pengumuman()
 
 
 
-<<<<<<< HEAD
-=======
-// end nikman
->>>>>>> menambah-ci
+
 
 //kartu pendaftaran sementara
 function kartupendaftaran(){
