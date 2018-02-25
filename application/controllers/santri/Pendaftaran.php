@@ -20,10 +20,10 @@ function __construct()
     if ($aktif == 0) {
       $this->load->view('pendaftarannotfound');
     } else if ($aktif == 1) {
-    $this->layout_pendaftaran->renderregister('calonsantri/login');
+      redirect(base_url("santri/login"));
+      }
+    }
   }
-}
-}
 /**
 * Index Page for this controller.
 *
@@ -44,7 +44,7 @@ function __construct()
 
 function index()
 {
-  redirect(base_url("santri/pendaftaran/dashboard"));
+
 }
 
 function login()
@@ -57,53 +57,10 @@ function login()
   }
 }
 
-function ceklogin()
-{
-  if ($this->input->post()) {
-    $sandi = $this->input->post('sandi');
-    $katasandi = md5($sandi);
-    $email = $this->input->post('email');
-    $cekemail = $this->m_loginsantri->cekemail($email)->num_rows();
 
-    if ($cekemail > 0) {
-      $cekstatusakun =$this->m_loginsantri->cekemail($email);
-      foreach ($cekstatusakun->result_array() as $akun) {
-          $statusakun = $akun['status_akun'];
-        }
-      if ($statusakun == "tidak aktif"){
-        redirect(base_url("santri/pendaftaran/login?akun=0"));
-      }
-      elseif ($statusakun == "aktif"){
-            $cek = $this->m_loginsantri->ceklogin($email, $katasandi);
-            if ($cek->num_rows() > 0) {
-              foreach ($cek->result_array() as $datasandi) {
-            //login berhasil, buat session
-              $sess_data['email'] = $datasandi['email_pendaftar'];
-              $sess_data['user'] = $datasandi['email_pendaftar'];
-              $sess_data['status'] = "loginsantri";
-              $this->session->set_userdata($sess_data);
-            }
-            redirect(base_url("santri/pendaftaran/dashboard"));
-        } else { redirect(base_url("santri/pendaftaran/login?msg=2"));}
-      }
-    }
-    else {
-        redirect(base_url("santri/pendaftaran/login?msg=0"));
-      }
-}
-}
-
-function logout(){
-      $this->session->sess_destroy();
-      redirect(base_url("santri/pendaftaran"));
-}
 
 function dashboard()
 {
-  if($this->session->userdata('status') != "loginsantri"){
-    redirect(base_url("santri/pendaftaran/login"));
-  }
-  else{
     $email = $this->session->userdata('email');
     $cekstatusbiodata = $this->m_dashboard->status_santri($email);
     foreach ($cekstatusbiodata->result_array() as $cek) {
@@ -219,7 +176,7 @@ function dashboard()
       }
     }
   }
-}
+
 
 // Nikman
 function datakotakab()
@@ -522,8 +479,6 @@ function kartupendaftaran(){
     }
   }
 }
-
-
-
-
 }
+
+?>

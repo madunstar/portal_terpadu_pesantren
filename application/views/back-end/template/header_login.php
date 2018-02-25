@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="app">
+<html lang="en" class="app" >
 
 <head>
   <meta charset="utf-8">
@@ -23,3 +23,13 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/js/datepicker/datepicker.css');?>" type="text/css" />
 
 </head>
+<body class="" style="background:url(<?php echo base_url('assets/images/masjidbw.jpg'); ?>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+  ">
+  <section class="vbox" >
+
+  <section>
+    <section class="hbox stretch">

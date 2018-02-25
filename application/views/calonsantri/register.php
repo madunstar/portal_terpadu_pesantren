@@ -4,7 +4,7 @@
   <div class="col-lg-6">
 
   </div>
-  <aside class="col-lg-6 bg-dark">
+  <aside class="col-lg-6">
     <section class="vbox">
     <div class="wrapper" >
       <div class="container aside-xl bg-light" style="border-radius:10px">

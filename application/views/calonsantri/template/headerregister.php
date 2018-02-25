@@ -23,7 +23,12 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/js/datepicker/datepicker.css');?>" type="text/css" />
 
 </head>
-<body class="" style="background-image:url(<?php echo base_url('assets/images/masjidbw.jpg'); ?>);">
+<body class="" style="background:url(<?php echo base_url('assets/images/masjidbw.jpg'); ?>) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+  ">
   <section class="vbox" >
 
   <section>
