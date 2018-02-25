@@ -44,8 +44,8 @@
 
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="thumb-sm avatar pull-left" style="height:25px;width:25px">
-            <img src="<?php
+          <span class="pull-left avatar" >
+            <img class="" src="<?php
             $foto = $this->session->userdata('foto');
 
             echo base_url("$foto"); ?>" alt="...">

@@ -78,6 +78,17 @@ class M_akunsantri extends CI_Model
 
     }
 
+    function getstatusbayar($email){
+      $this->db->select("status_pembayaran")
+        ->from("tb_akun_pendaftar");
+      $this->db->where("email_pendaftar",$email);
+      $data =$this->db->get()
+            ->row_array();
+      $value = $data['status_pembayaran'];
+      return $value;
+
+    }
+
     // gawian nikman nasir
     function ambilprovinsi(){
       $this->db->order_by("nama_provinsi","ASC");

@@ -47,7 +47,7 @@
            </div>
           <button type="submit" class="btn btn-success btn-block ">Daftar</button>
         </form>
-        <small>Sudah Punya Akun?<a class="text-primary" href="#"> <strong>Halaman Login</strong></a></small>
+        <small>Sudah Punya Akun?<a class="text-primary" href="<?php echo base_url('santri/login/') ?>"> <strong>Halaman Login</strong></a></small>
         <div class="line line-dashed"></div>
         <footer id="footer">
         <p class="text-center text-muted"><small>&copy;2018</small></p>

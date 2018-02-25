@@ -14,7 +14,7 @@ function index()
 {
     $aktif = $this->m_akunsantri->get_pengaturan();
     if ($aktif == 0) {
-      $this->load->view('pendaftarannotfound');
+      redirect(base_url("santri/daftarnotfound"));
     } else if ($aktif == 1) {
         $this->layout_pendaftaran->renderregister('calonsantri/register');
       }
