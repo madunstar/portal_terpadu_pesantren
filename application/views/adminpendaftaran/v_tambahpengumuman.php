@@ -92,11 +92,6 @@
                               <a class="btn btn-default btn-sm" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
                             </div>
                           </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> c1d37ef25d1477e1b2d97a1b67a03205c5a1a0dc
                           <div id="editor" class="form-control" style="overflow:scroll;height:150px;max-height:150px">
                             </div>
                           <textarea  name="isi_pengumuman" id="MyTextarea"></textarea>
@@ -108,16 +103,11 @@
                           });
                           });
                           </script>
-<<<<<<< HEAD
-=======
-                          <div name id="editor" class="form-control" style="overflow:scroll;height:150px;max-height:150px">
-
-                          </div>
->>>>>>> menambah-ci
-=======
-
->>>>>>> c1d37ef25d1477e1b2d97a1b67a03205c5a1a0dc
                         </div>
+
+                        <div class="col-lg-9">
+                        <input class="summernote" name="isi" />
+                      </div>
 
                       </div>
                       <div class="form-group">
