@@ -80,7 +80,7 @@
                   <div class="panel-body clearfix collapse">
                     <div class="dropdown m-r">
                       <div class="table-responsive">
-                        <table class="table table-striped m-b-none" id="datatable">
+                        <table class="table table-responsive table-striped m-b-none" id="datatable">
                           <thead>
                             <tr>
                               <th>Aksi</th>
@@ -107,7 +107,7 @@
                                     <td>".$row['nama_lengkap']."</td>
                                     <td>".$row['email_pendaftar']."</td>
                                     <td>".$row['tahun_ajaran']."</td>
-                                    
+
                                     <td>".$row['status_akun']."</td>
                                   </tr>
 

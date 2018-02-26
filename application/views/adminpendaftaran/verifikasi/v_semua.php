@@ -32,10 +32,15 @@
                       <td>".$row['nisn']."</td>
                       <td>".($row['jenis_kelamin']=="L"?"Laki-laki":"Perempuan")."</td>
                       <td>
-                      <a href='".base_url('admin/pendaftaran/semuabiodata?email='.$row['email_pendaftar'].'')."'  title='Edit'><i class='fa fa-edit'></i> ".$row['status_biodata']."</a>
+                        <a href='".base_url('admin/pendaftaran/semuabiodata?email='.$row['email_pendaftar'].'')."'  title='Edit'>
+                          <button class='btn btn-xs ".(($row['status_biodata'] == 'diverifikasi') ? 'btn-success' : (($row['status_biodata'] == 'menunggu verifikasi') ? 'btn-warning' : 'btn-danger'))."'><i class='fa fa-edit'></i> ".$row['status_biodata']."</button>
+                        </a>
                       </td>
                       <td>
-                      <a href='".base_url('admin/pendaftaran/semuaberkas?email='.$row['email_pendaftar'].'')."'  title='Edit'><i class='fa fa-edit'></i> ".$row['status_berkas']."</a>
+                        <a href='".base_url('admin/pendaftaran/semuaberkas?email='.$row['email_pendaftar'].'')."'  title='Edit'>
+                          <button class='btn btn-xs ".(($row['status_berkas'] == 'diverifikasi') ? 'btn-success' : (($row['status_berkas'] == 'menunggu verifikasi') ? 'btn-warning' : 'btn-danger'))."'><i class='fa fa-edit'></i> ".$row['status_berkas']."</button>
+
+                        </a>
                       </td>
                     </tr>
                   ";
