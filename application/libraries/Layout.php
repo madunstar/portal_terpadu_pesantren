@@ -6,6 +6,7 @@ class Layout {
     }
     public $header = 'back-end/template/header';
     public $header_login = 'back-end/template/header_login';
+    public $headerizin = 'back-end/template/header_perizinan';
 	//public $menu = 'template/menu';
     public $footer = 'back-end/template/footer';
     public $endhtml = 'back-end/template/endhtml';
@@ -28,6 +29,16 @@ class Layout {
     function renderlogin($view,$data = null,$js = null){
         $this->ci->load->view($this->header_login);
         $this->ci->load->view($view,$data);
+        if ($js!=NULL) {
+            $this->ci->load->view($js,$data);
+        }
+        $this->ci->load->view($this->endhtml);
+    }
+
+    function renderizin($view,$data = null,$js = null){
+        $this->ci->load->view($this->headerizin);
+        $this->ci->load->view($view,$data);
+        $this->ci->load->view($this->footer);
         if ($js!=NULL) {
             $this->ci->load->view($js,$data);
         }
