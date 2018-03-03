@@ -379,7 +379,6 @@ function semuabiodata()
             );
             $email = $this->input->post("email_pendaftar");
             $exec = $this->m_pendaftaran->editakun($email,$array);
-            echo $email;
             if ($exec){
              redirect(base_url("admin/pendaftaran/semuabiodata?email=".$email."&msg=1"));
             }
@@ -404,7 +403,7 @@ function semuabiodata()
             );
             $email = $this->input->post("email_pendaftar");
             $exec = $this->m_pendaftaran->editakun($email,$array);
-            echo $email;
+            
             if ($exec){
              redirect(base_url("admin/pendaftaran/semuaberkas?email=".$email."&msg=1"));
             }
