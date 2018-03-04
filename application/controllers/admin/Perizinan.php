@@ -36,10 +36,22 @@ class Perizinan extends CI_Controller
       $this->layout->renderizin('back-end/perizinan/keluarpondok',$variabel);
   }
 
-  function Kembali()
+  function kembali()
   {
       $variabel = '';
       $this->layout->renderizin('back-end/perizinan/kembalipondok',$variabel);
+  }
+
+  function datadenda()
+  {
+      $variabel = '';
+      $this->layout->renderizin('back-end/perizinan/denda',$variabel,'back-end/perizinan/denda_js');
+  }
+
+  function pembayarandenda()
+  {
+      $variabel = '';
+      $this->layout->renderizin('back-end/perizinan/bayar_denda',$variabel,'back-end/perizinan/denda_js');
   }
 }
 ?>
