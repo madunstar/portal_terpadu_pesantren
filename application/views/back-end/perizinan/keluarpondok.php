@@ -14,7 +14,7 @@
               <h4 class="font-bold">Input Data Santri Keluar Pondok</h4>
             </header>
             <div class="panel-body">
-              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/admintambah" method="post">
+              <form class="bs-example form-horizontal" data-validate="parsley" action="" method="post">
                 <div class="form-group">
                       <div class="col-sm-10">
                         <input type="text"  class="form-control" placeholder="Nomor Induk Santri">
@@ -58,51 +58,12 @@
                 </div>
                   <div class="line line-dashed b-b line-lg pull-in"></div>
                   <p>Penjemput <span class="text-danger">(Optional)</span></p>
-                  <section class="panel panel-default">
-                    <header class="panel-heading text-right bg-light">
-                  <ul class="nav nav-tabs pull-left">
-                        <li class="active"><a href="#baru" data-toggle="tab">Baru</a></li>
-                        <li><a href="#lama" data-toggle="tab">Lama</a></li>
 
-                  </ul>
-                  <span class="hidden-sm">&nbsp;</span>
-                </header>
-                <div class="panel-body">
-
-                  <div class="tab-content">
-                        <div class="tab-pane active" id="baru">
                           <div class="form-group">
-                                <label class="col-sm-1 control-label" for="input-id-1">Nama</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="input-id-1">
-                                </div>
-                          </div>
-                          <div class="form-group">
-                                <label class="col-sm-1 control-label" for="input-id-1">Nomor Telpon</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="input-id-1">
-                                </div>
-                          </div>
-                          <div class="form-group">
-                                <label class="col-sm-1 control-label" for="input-id-1">Alamat</label>
-                                <div class="col-sm-10">
-                                  <textarea name="name" rows="8" cols="100"></textarea>
-                                </div>
-                          </div>
-                          <div class="form-group">
-                                <label class="col-sm-1 control-label" for="input-id-1">Hubungan</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="input-id-1">
-                                </div>
-                          </div>
-
-                        </div>
-                        <div class="tab-pane" id="lama">
-                          <div class="form-group">
-                                <label class="col-sm-1 control-label" for="input-id-1">Nama</label>
+                                <label class="col-sm-1 control-label" for="input-id-1">Pilih Penjemput</label>
                                 <div class="col-sm-10">
                                   <select name="account" class="form-control m-b">
-                                    <option>option 1</option>
+                                    <option>baru</option>
                                     <option>option 2</option>
                                     <option>option 3</option>
                                     <option>option 4</option>
@@ -110,6 +71,18 @@
                                 </div>
                           </div>
                           <div class="form-group">
+                                <label class="col-sm-1 control-label" for="input-id-1">Nomor Identitas</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="input-id-1">
+                                </div>
+                          </div>
+                          <div class="form-group">
+                                <label class="col-sm-1 control-label" for="input-id-1">Nama</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="input-id-1">
+                                </div>
+                          </div>
+                          <div class="form-group">
                                 <label class="col-sm-1 control-label" for="input-id-1">Nomor Telpon</label>
                                 <div class="col-sm-10">
                                   <input type="text" class="form-control" id="input-id-1">
@@ -127,9 +100,7 @@
                                   <input type="text" class="form-control" id="input-id-1">
                                 </div>
                           </div>
-                        </div>
-                      </div>
-                </section>
+
 
                   </div>
 

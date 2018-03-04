@@ -30,10 +30,16 @@ class Perizinan extends CI_Controller
       $this->layout->renderizin('back-end/perizinan/dashboard',$variabel);
   }
 
-  function keluarpondok()
+  function keluar()
   {
       $variabel = '';
       $this->layout->renderizin('back-end/perizinan/keluarpondok',$variabel);
+  }
+
+  function Kembali()
+  {
+      $variabel = '';
+      $this->layout->renderizin('back-end/perizinan/kembalipondok',$variabel);
   }
 }
 ?>
