@@ -14,7 +14,7 @@
               <h4 class="font-bold">Input Data Santri Keluar Pondok</h4>
             </header>
             <div class="panel-body">
-              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/admintambah" method="post">
+              <form class="bs-example form-horizontal" data-validate="parsley" action="" method="post">
                 <div class="form-group">
                       <div class="col-sm-10">
                         <input type="text"  class="form-control" placeholder="Nomor Induk Santri">
