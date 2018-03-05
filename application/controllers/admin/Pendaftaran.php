@@ -426,6 +426,11 @@ function semuabiodata()
       $this->layout_pendaftaran->render('adminpendaftaran/tes/v_peserta_tes',$variabel,'adminpendaftaran/tes/peserta_tes_js');
     }
 
+    function jadwaltes(){
+      $variabel = '';
+      $this->layout_pendaftaran->render('adminpendaftaran/tes/v_jadwal_tes',$variabel,'adminpendaftaran/tes/peserta_tes_js');
+    }
+
 
 //////////////////////////////////////////////////////////////////
 
