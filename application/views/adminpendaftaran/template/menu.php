@@ -99,14 +99,7 @@
 										<span>Peserta Tes</span>
 									</a>
 								</li>
-								<li >
-									<a href="icons.html" class="auto">
 
-										<i class="i i-dot"></i>
-
-										<span>Atur Tes</span>
-									</a>
-								</li>
 								<li >
 									<a href="icons.html" class="auto">
 
