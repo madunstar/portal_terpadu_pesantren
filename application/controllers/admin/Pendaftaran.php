@@ -403,7 +403,7 @@ function semuabiodata()
             );
             $email = $this->input->post("email_pendaftar");
             $exec = $this->m_pendaftaran->editakun($email,$array);
-            
+
             if ($exec){
              redirect(base_url("admin/pendaftaran/semuaberkas?email=".$email."&msg=1"));
             }
@@ -418,6 +418,13 @@ function semuabiodata()
           $this->layout_pendaftaran->render('adminpendaftaran/verifikasi/v_editsemuaberkas',$variabel);
        }
       }
+
+////////////////bagian tes////////////////////////////
+
+    function pesertates(){
+      $variabel = '';
+      $this->layout_pendaftaran->render('adminpendaftaran/tes/v_peserta_tes',$variabel,'adminpendaftaran/tes/peserta_tes_js');
+    }
 
 
 //////////////////////////////////////////////////////////////////
