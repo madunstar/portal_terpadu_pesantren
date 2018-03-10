@@ -13,7 +13,7 @@
               <nav class="nav-primary hidden-xs">
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
-                  <li >
+                  <li class="<?= (($menu == "perizinan") && ($submenu == 'keluar') || ($submenu == 'kembali') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'pembayarandenda') || ($submenu == 'index')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -24,29 +24,29 @@
                       <span class="font-bold">Perizinan</span>
                     </a>
                     <ul class="nav dk">
-                      <li >
-                        <a href="profile.html" class="auto">
+                      <li class="<?= (($menu == "perizinan") && ($submenu == 'keluar')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/perizinan/keluar" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Keluar Pondok</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="invoice.html" class="auto">
+											<li class="<?= (($menu == "perizinan") && ($submenu == 'kembali')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/perizinan/kembali" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Kembali ke Pondok</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="intro.html" class="auto">
+											<li class="<?= (($menu == "perizinan") && ($submenu == 'datadenda')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/perizinan/datadenda" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Denda</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="master.html" class="auto">
+											<li class="<?= (($menu == "perizinan") && ($submenu == 'pembayarandenda')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/perizinan/pembayarandenda" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Pembayaran Denda</span>
