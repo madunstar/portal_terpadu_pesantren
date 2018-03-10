@@ -219,7 +219,7 @@
                           <span>Data Desa / Keluarahan</span>
                         </a>
                       </li>
-											<li class="<?= (($menu == "datamaster") && ($submenu == 'tahunaja')) ? "active" : ""; ?>">
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'tahunajaran')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/tahunajar" class="auto">
 													<i class="i i-dot"></i>
 
