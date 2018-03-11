@@ -14,14 +14,15 @@
               <h4 class="font-bold">Data Santri Keluar Pondok</h4>
             </header>
             <div class="panel-body">
+            <a href="<?php echo base_url() ?>admin/perizinan/keluar"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Buat Perizinan Keluar</button></a>
               <div class="table-responsive">
                 <table class="table table-striped m-b-none" id="datatable">
                   <thead>
                     <tr>
                       <th >Nama</th>
                       <th >Kelas</th>
-                      <th >Besar Denda</th>
-                      <th>Keterangan</th>
+                      <th >Tanggal Keluar</th>
+                      <th>Penjemput</th>
 
                     </tr>
                   </thead>

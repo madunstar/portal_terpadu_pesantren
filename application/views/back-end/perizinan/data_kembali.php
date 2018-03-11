@@ -14,14 +14,15 @@
               <h4 class="font-bold">Data Santri Kembali ke Pondok</h4>
             </header>
             <div class="panel-body">
+              <a href="<?php echo base_url() ?>admin/perizinan/kembali"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Kembali ke Pondok</button></a>
               <div class="table-responsive">
                 <table class="table table-striped m-b-none" id="datatable">
                   <thead>
                     <tr>
                       <th >Nama</th>
                       <th >Kelas</th>
-                      <th >Besar Denda</th>
-                      <th>Keterangan</th>
+                      <th >Tanggal Kembali</th>
+                      <th>Status Denda</th>
 
                     </tr>
                   </thead>

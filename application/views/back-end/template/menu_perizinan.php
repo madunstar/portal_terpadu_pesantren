@@ -24,15 +24,15 @@
                       <span class="font-bold">Perizinan</span>
                     </a>
                     <ul class="nav dk">
-                      <li class="<?= (($menu == "perizinan") && ($submenu == 'keluar')) ? "active" : ""; ?>">
-                        <a href="<?php echo base_url() ?>admin/perizinan/keluar" class="auto">
+                      <li class="<?= (($menu == "perizinan") && ($submenu == 'datakeluar') || ($submenu == 'keluar')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/perizinan/datakeluar" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Keluar Pondok</span>
                         </a>
                       </li>
-											<li class="<?= (($menu == "perizinan") && ($submenu == 'kembali')) ? "active" : ""; ?>">
-                        <a href="<?php echo base_url() ?>admin/perizinan/kembali" class="auto">
+											<li class="<?= (($menu == "perizinan") && ($submenu == 'datakembali') || ($submenu == 'kembali')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/perizinan/datakembali" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Kembali ke Pondok</span>
