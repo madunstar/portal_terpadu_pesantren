@@ -33,7 +33,7 @@ class Perizinan extends CI_Controller
   function datakeluar()
   {
       $variabel = '';
-      $this->layout->renderizin('back-end/perizinan/keluarpondok',$variabel);
+      $this->layout->renderizin('back-end/perizinan/data_keluar',$variabel,'back-end/perizinan/denda_js');
   }
 
   function keluar()
@@ -42,10 +42,10 @@ class Perizinan extends CI_Controller
       $this->layout->renderizin('back-end/perizinan/keluarpondok',$variabel);
   }
 
-  function datakeluar()
+  function datakembali()
   {
       $variabel = '';
-      $this->layout->renderizin('back-end/perizinan/keluarpondok',$variabel);
+      $this->layout->renderizin('back-end/perizinan/data_kembali',$variabel,'back-end/perizinan/denda_js');
   }
 
   function kembali()
@@ -64,6 +64,12 @@ class Perizinan extends CI_Controller
   {
       $variabel = '';
       $this->layout->renderizin('back-end/perizinan/bayar_denda',$variabel,'back-end/perizinan/denda_js');
+  }
+
+  function suratizin()
+  {
+      $variabel = '';
+      $this->layout->renderizin('back-end/perizinan/v_suratizin',$variabel,'back-end/perizinan/denda_js');
   }
 }
 ?>

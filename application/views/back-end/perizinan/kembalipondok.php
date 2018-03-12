@@ -19,7 +19,7 @@
                   <label class="col-sm-2 control-label" for="input-id-1">Pilih Santri</label>
                   <div class="col-sm-8">
                     <select name="account" class="form-control m-b">
-                      <option>baru</option>
+                      <option>Option 1</option>
                       <option>option 2</option>
                       <option>option 3</option>
                       <option>option 4</option>
