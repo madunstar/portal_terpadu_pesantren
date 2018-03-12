@@ -26,24 +26,18 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
+                    <?php
+                    foreach($data->result_array() as $row){
+                      echo "
+                        <tr>
+                          <td>".$row['nama_lengkap']."</td>
+                          <td></td>
+                          <td>".$row['besar_denda']."</td>
+                          <td>".$row['status_pembayaran']."</td>
+                        </tr>
+                      ";
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
