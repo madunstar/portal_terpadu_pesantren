@@ -19,32 +19,27 @@
                 <table class="table table-striped m-b-none" id="datatable">
                   <thead>
                     <tr>
-                      <th >Nama</th>
+
                       <th >Tanggal Bayar</th>
-                      <th >Besar Denda</th>
-                      <th>Keterangan</th>
+                      <th >Besar Bayar</th>
+                      <th>Petugas</th>
 
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
+                    <?php
+                    foreach($data->result_array() as $row){
+                      echo "
+                        <tr>
+                          <td>".$row['tanggal_bayar']."</td>
+
+                          <td>".$row['besar_bayar']."</td>
+                          <td>".$row['nama_akun']."</td>
+                        
+                        </tr>
+                      ";
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>

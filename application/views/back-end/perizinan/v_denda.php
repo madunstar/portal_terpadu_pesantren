@@ -22,7 +22,7 @@
                       <th >Kelas</th>
                       <th >Besar Denda</th>
                       <th>Keterangan</th>
-
+                      <th>Riwayat Pembayaran</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -34,6 +34,7 @@
                           <td></td>
                           <td>".$row['besar_denda']."</td>
                           <td>".$row['status_pembayaran']."</td>
+                          <td><a href='".base_url('admin/perizinan/riwayatbayardenda?nis='.$row['nis_lokal'].'')."'><button class='btn btn-xs btn-primary'>lihat riwayat pembayaran</button></a></td>
                         </tr>
                       ";
                     }
