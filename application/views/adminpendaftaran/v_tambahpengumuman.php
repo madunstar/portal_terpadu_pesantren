@@ -36,6 +36,7 @@
                       </div>
                       <div class="form-group">
                         <label class="col-lg-2 control-label">Isi Informasi</label>
+<<<<<<< HEAD
                         <div class="col-sm-10">
                           <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
                             <div class="btn-group">
@@ -105,8 +106,10 @@
                           </script>
                         </div>
 
+=======
+>>>>>>> menambah-ci
                         <div class="col-lg-9">
-                        <input class="summernote" name="isi" />
+                          <textarea class="summernote" id="isi_pengumuman" name="isi_pengumuman"></textarea>
                       </div>
 
                       </div>

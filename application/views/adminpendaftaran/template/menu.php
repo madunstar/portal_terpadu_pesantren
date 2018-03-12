@@ -17,7 +17,7 @@
 								<span class="font-bold">Dashboard</span>
 							</a>
 						</li>
-						<li >
+						<li class="<?= (($menu == "pendaftaran") && ($submenu == 'semuapendaftar') || ($submenu == 'diverifikasi') || ($submenu == 'menunggu') || ($submenu == 'belumlengkap') ) ? "active" : ""; ?>" >
 							<a href="#" class="auto">
 								<span class="pull-right text-muted">
 									<i class="i i-circle-sm-o text"></i>
@@ -29,28 +29,28 @@
 								<span class="font-bold">Pendaftaran</span>
 							</a>
 							<ul class="nav dk">
-								<li >
+								<li class="<?= (($menu == "pendaftaran") && ($submenu == 'semuapendaftar')) ? "active" : ""; ?>" >
 									<a href="<?php echo base_url() ?>admin/pendaftaran/semuapendaftar" class="auto">
 										<i class="i i-dot text-primary"></i>
 
 										<span>Semua</span>
 									</a>
 								</li>
-								<li >
+								<li class="<?= (($menu == "pendaftaran") && ($submenu == 'diverifikasi')) ? "active" : ""; ?>">
 								<a href="<?php echo base_url() ?>admin/pendaftaran/diverifikasi" class="auto">
 										<i class="i i-dot text-success"></i>
 
 										<span>Diverifikasi</span>
 									</a>
 								</li>
-								<li >
+								<li class="<?= (($menu == "pendaftaran") && ($submenu == 'menunggu')) ? "active" : ""; ?>">
 								<a href="<?php echo base_url() ?>admin/pendaftaran/menunggu" class="auto">
 										<i class="i i-dot text-warning"></i>
 
 										<span>Menunggu Verifikasi</span>
 									</a>
 								</li>
-								<li >
+								<li class="<?= (($menu == "pendaftaran") && ($submenu == 'belumlengkap')) ? "active" : ""; ?>">
 								<a href="<?php echo base_url() ?>admin/pendaftaran/belumlengkap" class="auto">
 										<i class="i i-dot text-danger"></i>
 
@@ -59,21 +59,21 @@
 								</li>
 							</ul>
 						</li>
-						<li  class="">
+						<li  class="<?= (($menu == "pendaftaran") && ($submenu == 'datapembayaran')) ? "active" : ""; ?>">
 							<a href="<?php echo base_url() ?>admin/pendaftaran/datapembayaran" class="auto">
 								<i class="fa fa-money">
 								</i>
 								<span class="font-bold">Pembayaran</span>
 							</a>
 						</li>
-						<li  class="">
+						<li  class="<?= (($menu == "pendaftaran") && ($submenu == 'pengumuman')) ? "active" : ""; ?>">
 							<a href="<?php echo base_url() ?>admin/pendaftaran/pengumuman" class="auto">
 								<i class="fa fa-info-circle">
 								</i>
 								<span class="font-bold">Informasi</span>
 							</a>
 						</li>
-						<li >
+						<li class="<?= (($menu == "pendaftaran") && ($submenu == 'jadwaltes') || ($submenu == 'pesertates') ) ? "active" : ""; ?>">
 							<a href="#" class="auto">
 								<span class="pull-right text-muted">
 									<i class="i i-circle-sm-o text"></i>
@@ -84,29 +84,22 @@
 								<span class="font-bold">Tes</span>
 							</a>
 							<ul class="nav dk">
-								<li >
-									<a href="buttons.html" class="auto">
+								<li class="<?= (($menu == "pendaftaran") && ($submenu == 'jadwaltes')) ? "active" : ""; ?>">
+									<a href="<?php echo base_url() ?>admin/pendaftaran/jadwaltes" class="auto">
 										<i class="i i-dot"></i>
 
-										<span>Ruangan Tes</span>
+										<span>Jadwal Tes</span>
 									</a>
 								</li>
-								<li >
-									<a href="icons.html" class="auto">
+								<li class="<?= (($menu == "pendaftaran") && ($submenu == 'pesertates')) ? "active" : ""; ?>">
+									<a href="<?php echo base_url() ?>admin/pendaftaran/pesertates" class="auto">
 
 										<i class="i i-dot"></i>
 
 										<span>Peserta Tes</span>
 									</a>
 								</li>
-								<li >
-									<a href="icons.html" class="auto">
 
-										<i class="i i-dot"></i>
-
-										<span>Atur Tes</span>
-									</a>
-								</li>
 								<li >
 									<a href="icons.html" class="auto">
 

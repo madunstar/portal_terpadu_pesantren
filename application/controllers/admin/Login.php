@@ -39,8 +39,8 @@ Class Login extends CI_Controller{
 				else if ($this->session->userdata('kode_role_admin')=='akd') {
 					redirect('admin/datamaster');
 				}
-				elseif ($this->session->userdata('kode_role_admin')=='keu') {
-					redirect('admin/pendaftaran');
+				elseif ($this->session->userdata('kode_role_admin')=='adm_prz') {
+					redirect('admin/perizinan');
 				}
 			}
 			else {
