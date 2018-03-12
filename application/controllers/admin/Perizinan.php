@@ -8,12 +8,7 @@ class Perizinan extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('back-end/pendaftaran/m_dashboard');
-    $this->load->model('back-end/pendaftaran/m_pengaturan');
-    $this->load->model('back-end/pendaftaran/m_pendaftaran');
-    $this->load->model('back-end/pendaftaran/m_pembayaran');
-    $this->load->model('back-end/pendaftaran/m_pengumuman');
-    $this->load->model('back-end/pendaftaran/m_berkas');
+    $this->load->model('back-end/perizinan/m_denda');
     $this->load->library('layout_pendaftaran');
     if ($this->session->userdata('nama_akun')=="") {
         redirect('admin/login/loginhalaman');
@@ -22,6 +17,14 @@ class Perizinan extends CI_Controller
         redirect('admin/pendaftaran');
     }
     $this->load->helper('text');
+  }
+
+  function logout(){
+      $this->session->unset_userdata('nip_staff_admin');
+      $this->session->unset_userdata('nama_akun');
+      $this->session->unset_userdata('kode_role_admin');
+      session_destroy();
+      redirect('admin/login/loginhalaman');
   }
 
   function index()
@@ -56,8 +59,8 @@ class Perizinan extends CI_Controller
 
   function datadenda()
   {
-      $variabel = '';
-      $this->layout->renderizin('back-end/perizinan/denda',$variabel,'back-end/perizinan/denda_js');
+      $variabel['data'] = $this->m_denda->lihatdata();
+      $this->layout->renderizin('back-end/perizinan/v_denda',$variabel,'back-end/perizinan/denda_js');
   }
 
   function pembayarandenda()
