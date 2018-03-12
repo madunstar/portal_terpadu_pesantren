@@ -20,6 +20,18 @@ class M_denda extends CI_Model
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
         return $this->db->get();
     }
+
+    function lihatbayar($nis){
+      $this->db->select('*');
+      $this->db->from('tb_perizinan_bayar');
+      $this->db->join('tb_perizinan_denda', 'tb_perizinan_bayar.id_denda = tb_perizinan_denda.id_denda');
+      $this->db->join('tb_perizinan_kembali', 'tb_perizinan_denda.id_kembali = tb_perizinan_kembali.id_kembali');
+      $this->db->join('tb_perizinan_keluar', 'tb_perizinan_kembali.id_keluar = tb_perizinan_keluar.id_keluar');
+      $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
+      $this->db->join('tb_akun_admin', 'tb_akun_admin.nama_akun = tb_perizinan_bayar.petugas');
+      $this->db->where('tb_santri.nis_lokal', $nis);
+      return $this->db->get();
+    }
 }
 
 ?>

@@ -63,10 +63,11 @@ class Perizinan extends CI_Controller
       $this->layout->renderizin('back-end/perizinan/v_denda',$variabel,'back-end/perizinan/denda_js');
   }
 
-  function pembayarandenda()
+  function riwayatbayardenda()
   {
-      $variabel = '';
-      $this->layout->renderizin('back-end/perizinan/bayar_denda',$variabel,'back-end/perizinan/denda_js');
+      $nis = $this->input->get("nis");
+      $variabel['data'] = $this->m_denda->lihatbayar($nis);
+      $this->layout->renderizin('back-end/perizinan/v_data_bayar_denda',$variabel,'back-end/perizinan/denda_js');
   }
 
   function suratizin()
