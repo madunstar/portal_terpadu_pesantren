@@ -66,6 +66,8 @@ class Perizinan extends CI_Controller
   function riwayatbayardenda()
   {
       $nis = $this->input->get("nis");
+      $denda = $this->input->get("denda");
+      $variabel['totalbayar'] = $this->m_denda->totalbayar($denda);
       $variabel['data'] = $this->m_denda->lihatbayar($nis);
       $this->layout->renderizin('back-end/perizinan/v_data_bayar_denda',$variabel,'back-end/perizinan/denda_js');
   }
