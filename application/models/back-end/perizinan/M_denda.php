@@ -40,6 +40,10 @@ class M_denda extends CI_Model
         return $this->db->get()
           ->row_array();
     }
+
+    function tambahbayar($array){
+      return $this->db->insert('tb_perizinan_bayar',$array);
+    }
 }
 
 ?>
