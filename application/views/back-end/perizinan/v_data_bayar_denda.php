@@ -15,7 +15,7 @@
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menambahkan Data Bayar","Gagal Menambahkan Data Bayar") ?>
-              <button data-toggle='modal' data-target='#tambahbayar' type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Pembayaran Denda</button><br><br>
+              <button data-toggle='modal' data-target='#tambahbayar' type="button" name="button" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Pembayaran Denda</button> <a class="btn btn-default btn-s-xs" href="<?php echo base_url() ?>admin/perizinan/datadenda"><i class="fa fa-list"></i> List Data Denda</a><br><br>
               <div class="table-responsive">
                 <table class="table m-b-none" id="">
                   <thead>
@@ -46,7 +46,10 @@
 
               </div>
               <div class="panel-footer">
+
                 <p><b>total pembayaran</b> : <?php echo $totalbayar['total'] ?>
+                <p><b>status pembayaran</b> : <?php echo $statusdenda['status_pembayaran'] ?>
+
               </div>
               <div class='modal' id='tambahbayar' tabindex='-1' role='dialog'>
                 <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/perizinan/bayardenda' method='post'>
@@ -66,6 +69,7 @@
                        </div>
                      <div class='modal-footer'>
                        <button type='submit' class='btn btn-success'>Tambah Data</button>
+                       <button type='button' class='btn btn-default' data-dismiss='modal'>Batal</button>
                      </div>
                    </div>
                  </div>
