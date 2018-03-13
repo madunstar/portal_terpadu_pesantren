@@ -32,6 +32,14 @@ class M_denda extends CI_Model
       $this->db->where('tb_santri.nis_lokal', $nis);
       return $this->db->get();
     }
+
+    function totalbayar($denda){
+      $this->db->select_sum('besar_bayar','total')
+        ->from('tb_perizinan_bayar')
+        ->where('id_denda',$denda);
+        return $this->db->get()
+          ->row_array();
+    }
 }
 
 ?>

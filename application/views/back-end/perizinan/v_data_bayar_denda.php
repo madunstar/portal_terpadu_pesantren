@@ -14,9 +14,9 @@
               <h4 class="font-bold">Data Pembayaran Denda</h4>
             </header>
             <div class="panel-body">
-              <button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Pembayaran Denda</button>
+              <button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Pembayaran Denda</button><br><br>
               <div class="table-responsive">
-                <table class="table table-striped m-b-none" id="datatable">
+                <table class="table m-b-none" id="">
                   <thead>
                     <tr>
 
@@ -35,13 +35,17 @@
 
                           <td>".$row['besar_bayar']."</td>
                           <td>".$row['nama_akun']."</td>
-                        
+
                         </tr>
                       ";
                     }
                     ?>
                   </tbody>
                 </table>
+
+              </div>
+              <div class="panel-footer">
+                <p><b>total pembayaran</b> : <?php echo $totalbayar['total'] ?>
               </div>
 
             </div>
