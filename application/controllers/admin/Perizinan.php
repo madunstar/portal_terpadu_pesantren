@@ -56,6 +56,7 @@ class Perizinan extends CI_Controller
       $variabel = '';
       $this->layout->renderizin('back-end/perizinan/kembalipondok',$variabel);
   }
+///////////////////denda ini denda//////////////////////////
 
   function datadenda()
   {
@@ -67,10 +68,33 @@ class Perizinan extends CI_Controller
   {
       $nis = $this->input->get("nis");
       $denda = $this->input->get("denda");
+      $variabel['id_denda'] = $this->input->get("denda");
+      $variabel['nis'] = $this->input->get("nis");
       $variabel['totalbayar'] = $this->m_denda->totalbayar($denda);
       $variabel['data'] = $this->m_denda->lihatbayar($nis);
       $this->layout->renderizin('back-end/perizinan/v_data_bayar_denda',$variabel,'back-end/perizinan/denda_js');
   }
+
+  function bayardenda(){
+    $tgl_bayar = date('Y-m-d');
+    $petugas = $this->session->userdata('nama_akun');
+    if ($this->input->post()){
+        $array=array(
+          'id_denda' => $this->input->post('id_denda'),
+          'besar_bayar' => $this->input->post('besar_bayar'),
+          'tanggal_bayar' => $tgl_bayar,
+          'petugas' => $petugas
+        );
+        $id_denda = $this->input->post('id_denda');
+        $nis = $this->input->post('nis');
+          $exec = $this->m_denda->tambahbayar($array);
+          if ($exec) redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
+          else redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=0"));
+      }
+
+  }
+///////////////////////////akhiri semua denda ini!! ///////////////////////////////////////////
+
 
   function suratizin()
   {
