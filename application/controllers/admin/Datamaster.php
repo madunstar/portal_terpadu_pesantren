@@ -25,8 +25,11 @@ class Datamaster extends CI_Controller{
         if ($this->session->userdata('nama_akun')=="") {
             redirect('admin/login/loginhalaman');
         }
-        if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
+        else if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
             redirect('admin/pendaftaran');
+        }
+        else if ($this->session->userdata('kode_role_admin') == 'adm_prz') {
+            redirect('admin/perizinan');
         }
         $this->load->helper('text');
     }

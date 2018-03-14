@@ -18,8 +18,11 @@ class Pendaftaran extends CI_Controller
     if ($this->session->userdata('nama_akun')=="") {
         redirect('admin/login/loginhalaman');
     }
-    if ($this->session->userdata('kode_role_admin') == 'akd') {
-          redirect('admin/datamaster');
+    else if ($this->session->userdata('kode_role_admin') == 'akd') {
+        redirect('admin/datamaster');
+    }
+    else if ($this->session->userdata('kode_role_admin') == 'adm_prz') {
+        redirect('admin/perizinan');
     }
     $this->load->helper('text');
   }
