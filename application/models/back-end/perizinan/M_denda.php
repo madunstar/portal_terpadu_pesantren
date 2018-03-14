@@ -74,6 +74,11 @@ class M_denda extends CI_Model
       return $this->db->update('tb_perizinan_denda',$arrayupdate);
     }
 
+    function hapus($id_bayar)
+    {
+        $this->db->where("id_bayar",$id_bayar);
+        return $this->db->delete('tb_perizinan_bayar');
+    }
 
 }
 
