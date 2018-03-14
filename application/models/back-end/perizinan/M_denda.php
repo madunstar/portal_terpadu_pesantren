@@ -49,6 +49,8 @@ class M_denda extends CI_Model
           ->row_array();
     }
 
+    // return ganti $query = kaya di jumlahbayar
+
     function tambahbayar($array){
       return $this->db->insert('tb_perizinan_bayar',$array);
     }
