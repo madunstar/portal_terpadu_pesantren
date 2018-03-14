@@ -157,8 +157,18 @@ class Perizinan extends CI_Controller
     $nis = $this->input->get("nis");
     $id_denda = $this->input->get("id_denda");
     $id_bayar = $this->input->get("id_bayar");
+    $besardenda = $this->m_denda->besardenda($id_denda);
     $exec = $this->m_denda->hapus($id_bayar);
-    redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
+    if ($exec){
+      $totalbayar = $this->m_denda->jumlahbayar($id_denda);
+      if ($totalbayar < $besardenda){
+        $arrayupdate=array(
+          'status_pembayaran' => 'hutang'
+        );
+        $this->m_denda->editdenda($id_denda,$arrayupdate);
+        redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
+    } else redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
+  } else redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=0"));
   }
 ///////////////////////////akhiri semua denda ini!! ///////////////////////////////////////////
 

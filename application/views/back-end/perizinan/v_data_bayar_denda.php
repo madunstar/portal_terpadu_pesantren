@@ -25,7 +25,7 @@
                       <th >Tanggal Bayar</th>
                       <th >Besar Bayar</th>
                       <th>Petugas</th>
-
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
