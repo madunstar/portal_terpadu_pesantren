@@ -152,6 +152,14 @@ class Perizinan extends CI_Controller
       }
 
   }
+
+  function bayardendahapus(){
+    $nis = $this->input->get("nis");
+    $id_denda = $this->input->get("id_denda");
+    $id_bayar = $this->input->get("id_bayar");
+    $exec = $this->m_denda->hapus($id_bayar);
+    redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
+  }
 ///////////////////////////akhiri semua denda ini!! ///////////////////////////////////////////
 
 
