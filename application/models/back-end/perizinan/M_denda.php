@@ -32,6 +32,49 @@ class M_denda extends CI_Model
       $this->db->where('tb_santri.nis_lokal', $nis);
       return $this->db->get();
     }
+
+    function totalbayar($denda){
+      $this->db->select_sum('besar_bayar','total')
+        ->from('tb_perizinan_bayar')
+        ->where('id_denda',$denda);
+        return $this->db->get()
+          ->row_array();
+    }
+
+    function statusdenda($denda){
+      $this->db->select('status_pembayaran')
+        ->from('tb_perizinan_denda')
+        ->where('id_denda',$denda);
+        return $this->db->get()
+          ->row_array();
+    }
+
+    function tambahbayar($array){
+      return $this->db->insert('tb_perizinan_bayar',$array);
+    }
+
+    function besardenda($id_denda){
+      $query = $this->db->query('select besar_denda from tb_perizinan_denda where id_denda ='.$id_denda);
+        $data  = $query->row_array();
+        $value = $data['besar_denda'];
+        return $value;
+
+    }
+
+    function jumlahbayar($id_denda){
+      $query = $this->db->query('select sum(besar_bayar) as total from tb_perizinan_bayar where id_denda ='.$id_denda);
+        $data  = $query->row_array();
+        $value = $data['total'];
+        return $value;
+
+    }
+
+    function editdenda($id_denda,$arrayupdate){
+      $this->db->where("id_denda",$id_denda);
+      return $this->db->update('tb_perizinan_denda',$arrayupdate);
+    }
+
+
 }
 
 ?>
