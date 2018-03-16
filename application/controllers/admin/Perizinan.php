@@ -173,7 +173,10 @@ class Perizinan extends CI_Controller
 
 
 function laporandenda(){
-  $variabel ='';
+  $tahun = $this->input->post('tahun');
+  $bulan = $this->input->post('bulan');
+
+  $variabel['data'] = $this->m_denda->laporandenda($tahun,$bulan);
   $this->layout->renderlaporan('back-end/perizinan/v_lap_denda',$variabel,'back-end/perizinan/denda_js');
 }
 ///////////////////////////akhiri semua denda ini!! ///////////////////////////////////////////
