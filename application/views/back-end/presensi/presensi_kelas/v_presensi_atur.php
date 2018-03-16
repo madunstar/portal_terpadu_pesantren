@@ -26,7 +26,7 @@
                         </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Tahun Ajaran</label>
+                    <label class="col-sm-2 control-label">Ruang Kelas</label>
                       <div class="col-sm-3">
                         <select name="tahunajaran" class="form-control m-b">
                           <option>Option 1</option>
@@ -40,14 +40,22 @@
                         </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Status Kelas</label>
-                      <div class="col-sm-8">
-                        <select name="account" class="form-control m-b">
-                          <option>Aktif</option>
-                          <option>Tidak Aktif</option>
+                    <label class="col-sm-2 control-label">Tahun Ajaran</label>
+                      <div class="col-sm-3">
+                        <select name="tahunajaran" class="form-control m-b">
+                          <option>Option 1</option>
+                          <option>option 2</option>
 
                         </select>
                       </div>
+                      <label class="col-sm-2 control-label">Status Kelas</label>
+                        <div class="col-sm-3">
+                          <select name="tahunajaran" class="form-control m-b">
+                            <option>Aktif</option>
+                            <option>Tidak Aktif</option>
+
+                          </select>
+                        </div>
                 </div>
 
                 <div class="line line-dashed b-b line-lg pull-in"></div>
