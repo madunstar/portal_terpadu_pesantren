@@ -7,6 +7,7 @@ class Layout {
     public $header = 'back-end/template/header';
     public $header_login = 'back-end/template/header_login';
     public $headerizin = 'back-end/template/header_perizinan';
+    public $headerlaporan = 'back-end/template/header_laporan';
 	//public $menu = 'template/menu';
     public $footer = 'back-end/template/footer';
     public $endhtml = 'back-end/template/endhtml';
@@ -54,5 +55,16 @@ class Layout {
         }
         $this->ci->load->view($this->endhtmlfront);
     }
+
+    function renderlaporan($view,$data = null,$js = null){
+        $this->ci->load->view($this->headerlaporan);
+        $this->ci->load->view($view,$data);
+        $this->ci->load->view($this->footer);
+        if ($js!=NULL) {
+            $this->ci->load->view($js,$data);
+        }
+        $this->ci->load->view($this->endhtml);
+    }
+
 
 }

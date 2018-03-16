@@ -21,7 +21,6 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/js/calendar/bootstrap_calendar.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/confirm/jquery-confirm.min.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/datepicker/datepicker.css');?>" type="text/css" />
-  <link rel="stylesheet" href="<?php echo base_url('assets/js/chosen/chosen.css');?>" type="text/css" />
 
 </head>
 <body class="" >
@@ -55,11 +54,11 @@
 
           <li>
             <span class="arrow top"></span>
-            <a href="<?php echo base_url('admin/datamaster/adminedit?nama_akun='.$nama_akun);?>">Ubah Kata Sandi </a>
+            <a href="<?php echo base_url('admin/perizinan/ubahsandiadmin?nama_akun='.$nama_akun);?>">Ubah Kata Sandi </a>
           </li>
           <li class="divider"></li>
           <li>
-            <a href="<?php echo base_url() ?>admin/datamaster/logout"><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
+            <a href="<?php echo base_url() ?>admin/perizinan/logout"><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
           </li>
         </ul>
       </li>
@@ -67,6 +66,3 @@
   </header>
   <section>
     <section class="hbox stretch">
-  <?php
-   $this->load->view("back-end/template/menu");
-   ?>

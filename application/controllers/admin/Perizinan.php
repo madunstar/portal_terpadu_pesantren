@@ -152,6 +152,33 @@ class Perizinan extends CI_Controller
       }
 
   }
+
+  function bayardendahapus(){
+    $nis = $this->input->get("nis");
+    $id_denda = $this->input->get("id_denda");
+    $id_bayar = $this->input->get("id_bayar");
+    $besardenda = $this->m_denda->besardenda($id_denda);
+    $exec = $this->m_denda->hapus($id_bayar);
+    if ($exec){
+      $totalbayar = $this->m_denda->jumlahbayar($id_denda);
+      if ($totalbayar < $besardenda){
+        $arrayupdate=array(
+          'status_pembayaran' => 'hutang'
+        );
+        $this->m_denda->editdenda($id_denda,$arrayupdate);
+        redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
+    } else redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
+  } else redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=0"));
+  }
+
+
+function laporandenda(){
+  $tahun = $this->input->post('tahun');
+  $bulan = $this->input->post('bulan');
+
+  $variabel['data'] = $this->m_denda->laporandenda($tahun,$bulan);
+  $this->layout->renderlaporan('back-end/perizinan/v_lap_denda',$variabel,'back-end/perizinan/denda_js');
+}
 ///////////////////////////akhiri semua denda ini!! ///////////////////////////////////////////
 
 

@@ -15,6 +15,7 @@
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menambahkan Data Bayar","Gagal Menambahkan Data Bayar") ?>
+              <?php pesan_get('hps',"Berhasil Menghapus Data Bayar","Gagal Menghapus Data Bayar") ?>
               <button data-toggle='modal' data-target='#tambahbayar' type="button" name="button" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Pembayaran Denda</button> <a class="btn btn-default btn-s-xs" href="<?php echo base_url() ?>admin/perizinan/datadenda"><i class="fa fa-list"></i> List Data Denda</a><br><br>
               <div class="table-responsive">
                 <table class="table m-b-none" id="">
@@ -24,7 +25,7 @@
                       <th >Tanggal Bayar</th>
                       <th >Besar Bayar</th>
                       <th>Petugas</th>
-
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -36,8 +37,25 @@
 
                           <td>".$row['besar_bayar']."</td>
                           <td>".$row['nama_akun']."</td>
-
+                          <td><button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#".$row['id_bayar']."'><i class='fa fa-trash-o'></i></button></td>
                         </tr>
+                        <div class='modal' id='".$row['id_bayar']."' tabindex='-1' role='dialog'>
+                         <div class='modal-dialog' role='document'>
+                           <div class='modal-content'>
+                             <div class='modal-header bg-danger'>
+                               <h4 class='modal-title'>Konfirmasi Hapus Data</h4>
+                             </div>
+                             <div class='modal-body'>
+                               <b>Apakah yakin menghapus data?</b>
+                             </div>
+                             <div class='modal-footer'>
+                               <a style='margin-left:5px' href='".base_url('admin/perizinan/bayardendahapus?id_bayar='.$row['id_bayar'].'&nis='.$row['nis_lokal'].'&id_denda='.$row['id_denda'].'')."'>
+                               <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
+                               <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
                       ";
                     }
                     ?>
@@ -61,15 +79,15 @@
                      <div class='modal-body'>
                        <div class='form-group'>
                          <label class='control-label col-sm-3'>Besar Pembayaran </label>
-                         <div class="col-sm-9">
+                         <div class="col-sm-8">
                            <input type='text' name='besar_bayar' data-type='number' class='form-control parsley-validated' data-required='true' value=''></input>
                            <input type="hidden" name="id_denda" value="<?php echo $id_denda ?>">
                            <input type="hidden" name="nis" value="<?php echo $nis ?>">
                          </div>
                        </div>
                      <div class='modal-footer'>
-                       <button type='submit' class='btn btn-success'>Tambah Data</button>
-                       <button type='button' class='btn btn-default' data-dismiss='modal'>Batal</button>
+                       <button type='submit' class='btn btn-sm btn-success'>Tambah Bayar <i class="fa fa-check"></i></button>
+                       <button type='button' class='btn btn-sm btn-default' data-dismiss='modal'>Batal</button>
                      </div>
                    </div>
                  </div>
@@ -77,6 +95,7 @@
                </div>
              </form>
             </div>
+
 
           </div>
             </div>
