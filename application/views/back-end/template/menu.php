@@ -89,7 +89,7 @@
                         </a>
                       </li>
                       <li >
-                        <a href="<?php echo base_url() ?>admin/datamaster/aturkelas" class="auto">
+                        <a href="<?php echo base_url() ?>admin/datamaster/datakelasbelajar" class="auto">
 
                           <i class="i i-dot"></i>
 
