@@ -14,7 +14,7 @@
               <h4 class="font-bold">Data Presensi Kelas</h4>
             </header>
             <div class="panel-body">
-              <a href="<?php echo base_url() ?>admin/perizinan/kembali"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Kelas</button></a>
+              <a href="<?php echo base_url() ?>admin/perizinan/kembali"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Atur Kelas Baru</button></a>
               <div class="table-responsive">
                 <table class="table table-striped m-b-none" id="datatable">
                   <thead>
