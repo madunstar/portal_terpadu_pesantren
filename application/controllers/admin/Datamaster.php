@@ -1557,6 +1557,11 @@ function kecamatanhapus()
    }
    // End CRUD Alat Transportasi
 
-
+///////////////////////////////////////////memulai presensi////////////////////////////////////////////////
+   function aturkelas()
+   {
+     $variabel='';
+      $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_kelas',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
+   }
 
 }

@@ -170,6 +170,12 @@ class Perizinan extends CI_Controller
     } else redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
   } else redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=0"));
   }
+
+
+function laporandenda(){
+  $variabel ='';
+  $this->layout->renderlaporan('back-end/perizinan/v_lap_denda',$variabel,'back-end/perizinan/denda_js');
+}
 ///////////////////////////akhiri semua denda ini!! ///////////////////////////////////////////
 
 
