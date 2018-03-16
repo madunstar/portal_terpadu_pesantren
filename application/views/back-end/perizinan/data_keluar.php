@@ -23,28 +23,21 @@
                       <th >Kelas</th>
                       <th >Tanggal Keluar</th>
                       <th>Penjemput</th>
-
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
+                    <?php
+                      foreach($data->result_array() as $row){
+                        echo "
+                          <tr>
+                            <td>".$row['nama_lengkap']."</td>
+                            <td>".$row['jenis_sekolah_asal']."</td>
+                            <td>".$row['tanggal_keluar']."</td>
+                            <td>".$row['nama_penjemput']."</td>
+                            </tr>
+                        ";
+                      }
+                  ?>
                   </tbody>
                 </table>
               </div>

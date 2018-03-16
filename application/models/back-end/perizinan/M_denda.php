@@ -20,6 +20,80 @@ class M_denda extends CI_Model
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
         return $this->db->get();
     }
+
+    function lihatbayar($nis){
+      $this->db->select('*');
+      $this->db->from('tb_perizinan_bayar');
+      $this->db->join('tb_perizinan_denda', 'tb_perizinan_bayar.id_denda = tb_perizinan_denda.id_denda');
+      $this->db->join('tb_perizinan_kembali', 'tb_perizinan_denda.id_kembali = tb_perizinan_kembali.id_kembali');
+      $this->db->join('tb_perizinan_keluar', 'tb_perizinan_kembali.id_keluar = tb_perizinan_keluar.id_keluar');
+      $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
+      $this->db->join('tb_akun_admin', 'tb_akun_admin.nama_akun = tb_perizinan_bayar.petugas');
+      $this->db->where('tb_santri.nis_lokal', $nis);
+      return $this->db->get();
+    }
+
+    function totalbayar($denda){
+      $this->db->select_sum('besar_bayar','total')
+        ->from('tb_perizinan_bayar')
+        ->where('id_denda',$denda);
+        return $this->db->get()
+          ->row_array();
+    }
+
+    function statusdenda($denda){
+      $this->db->select('status_pembayaran')
+        ->from('tb_perizinan_denda')
+        ->where('id_denda',$denda);
+        return $this->db->get()
+          ->row_array();
+    }
+
+    // return ganti $query = kaya di jumlahbayar
+
+    function tambahbayar($array){
+      return $this->db->insert('tb_perizinan_bayar',$array);
+    }
+
+    function besardenda($id_denda){
+      $query = $this->db->query('select besar_denda from tb_perizinan_denda where id_denda ='.$id_denda);
+        $data  = $query->row_array();
+        $value = $data['besar_denda'];
+        return $value;
+
+    }
+
+    function jumlahbayar($id_denda){
+      $query = $this->db->query('select sum(besar_bayar) as total from tb_perizinan_bayar where id_denda ='.$id_denda);
+        $data  = $query->row_array();
+        $value = $data['total'];
+        return $value;
+
+    }
+
+    function editdenda($id_denda,$arrayupdate){
+      $this->db->where("id_denda",$id_denda);
+      return $this->db->update('tb_perizinan_denda',$arrayupdate);
+    }
+
+    function hapus($id_bayar)
+    {
+        $this->db->where("id_bayar",$id_bayar);
+        return $this->db->delete('tb_perizinan_bayar');
+    }
+
+    function laporandenda($tahun,$bulan){
+      $this->db->select('*');
+      $this->db->from('tb_perizinan_denda');
+      $this->db->join('tb_perizinan_kembali', 'tb_perizinan_denda.id_kembali = tb_perizinan_kembali.id_kembali');
+      $this->db->join('tb_perizinan_keluar', 'tb_perizinan_kembali.id_keluar = tb_perizinan_keluar.id_keluar');
+      $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
+      $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+      $this->db->where('year(tb_perizinan_kembali.tanggal_kembali)',$tahun);
+      $this->db->where('month(tb_perizinan_kembali.tanggal_kembali)',$bulan);
+      return $this->db->get();
+    }
+
 }
 
 ?>

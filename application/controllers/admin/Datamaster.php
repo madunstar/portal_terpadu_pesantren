@@ -25,8 +25,11 @@ class Datamaster extends CI_Controller{
         if ($this->session->userdata('nama_akun')=="") {
             redirect('admin/login/loginhalaman');
         }
-        if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
+        else if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
             redirect('admin/pendaftaran');
+        }
+        else if ($this->session->userdata('kode_role_admin') == 'adm_prz') {
+            redirect('admin/perizinan');
         }
         $this->load->helper('text');
     }
@@ -1554,6 +1557,16 @@ function kecamatanhapus()
    }
    // End CRUD Alat Transportasi
 
+///////////////////////////////////////////memulai presensi////////////////////////////////////////////////
+   function datakelasbelajar()
+   {
+     $variabel='';
+      $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_kelas',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
+   }
 
-
+   function aturkelasbelajar(){
+     $variabel='';
+     $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_atur',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
+   }
+/////////////////////////////////akhir presensi/////////////////////////////////////////////////////
 }

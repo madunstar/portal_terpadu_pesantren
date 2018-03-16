@@ -89,11 +89,11 @@
                         </a>
                       </li>
                       <li >
-                        <a href="icons.html" class="auto">
-                          <b class="badge bg-info pull-right">369</b>
+                        <a href="<?php echo base_url() ?>admin/datamaster/datakelasbelajar" class="auto">
+
                           <i class="i i-dot"></i>
 
-                          <span>Presensi Siswa</span>
+                          <span>Atur Kelas Belajar</span>
                         </a>
                       </li>
                       <li >
