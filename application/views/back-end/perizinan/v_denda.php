@@ -49,7 +49,7 @@
               <div class="panel-footer">
                 <button type="button" data-toggle='modal' data-target='#cetaklap' name="button" class="btn btn-primary">Cetak Laporan <i class="fa fa-print"></i></button>
                 <div class='modal' id='cetaklap' tabindex='-1' role='dialog'>
-                  <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/perizinan/bayardenda' method='post'>
+                  <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/perizinan/laporandenda' method='post'>
                    <div class='modal-dialog' role='document'>
                      <div class='modal-content'>
                        <div class='modal-header bg-primary'>

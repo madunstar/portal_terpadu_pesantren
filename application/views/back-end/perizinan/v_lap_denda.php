@@ -4,7 +4,7 @@
   <section class="vbox bg-white">
     <header class="header b-b b-light hidden-print">
       <button href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</button>
-      <p>Bukti Pendaftaran</p>
+      <p>Laporan Denda</p>
     </header>
 
     <section class="scrollable wrapper">
@@ -27,18 +27,28 @@
       <br>
       <h5>Laporan Denda <b>Bulan xxxxxxxxxxxxx Tahun xxxx</b></h5>
       <table class="table table-bordered">
-        <tr>
-          <th>NIS</th>
-          <th>Nama</th>
-          <th>Besar Denda</th>
-          <th>Status Denda</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>asda</td>
-          <td>333</td>
-          <td>hutang</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>NIS</th>
+            <th>Nama</th>
+            <th>Besar Denda</th>
+            <th>Status Denda</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          foreach($data->result_array() as $row){
+            echo "
+              <tr>
+                <td>".$row['nis_lokal']."</td>
+                <td>".$row['nama_lengkap']."</td>
+                <td>".$row['besar_denda']."</td>
+                <td>".$row['status_pembayaran']."</td>
+              </tr>
+            ";
+          }
+          ?>
+        </tbody>
       </table>
       <div class="well b bg-light m-t">
         <div class="row">
