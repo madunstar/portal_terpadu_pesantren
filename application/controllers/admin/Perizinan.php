@@ -13,6 +13,7 @@ class Perizinan extends CI_Controller
     $this->load->model('back-end/perizinan/m_perizinan');
     $this->load->model('back-end/perizinan/m_denda');
     $this->load->library('layout_pendaftaran');
+    $this->load->helper('indo_helper');
     if ($this->session->userdata('nama_akun')=="") {
         redirect('admin/login/loginhalaman');
     }
@@ -23,6 +24,7 @@ class Perizinan extends CI_Controller
         redirect('admin/datamaster');
     }
     $this->load->helper('text');
+    setlocale(LC_ALL, 'INDONESIA');
   }
 
   function logout(){
@@ -173,9 +175,14 @@ class Perizinan extends CI_Controller
 
 
 function laporandenda(){
+
   $tahun = $this->input->post('tahun');
   $bulan = $this->input->post('bulan');
-
+  $variabel['bulan'] = $bulan;
+  $variabel['tahun'] = $tahun;
+  $variabel['semuadenda'] = $this->m_denda->semuadenda($tahun,$bulan);
+  $variabel['dendalunas'] = $this->m_denda->dendalunas($tahun,$bulan);
+  $variabel['dendahutang'] = $this->m_denda->dendahutang($tahun,$bulan);
   $variabel['data'] = $this->m_denda->laporandenda($tahun,$bulan);
   $this->layout->renderlaporan('back-end/perizinan/v_lap_denda',$variabel,'back-end/perizinan/denda_js');
 }
