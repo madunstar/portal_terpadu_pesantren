@@ -30,6 +30,7 @@ Class Login extends CI_Controller{
           $sess_data['nip_staff_admin'] = $sess->nip_staff_admin;
           $sess_data['nama_akun'] = $sess->nama_akun;
 					$sess_data['kode_role_admin'] = $sess->kode_role_admin;
+          $sess_data['password'] = $sess->kata_sandi;
 					$this->session->set_userdata($sess_data);
 					//return TRUE;
 				}

@@ -94,6 +94,20 @@ class M_denda extends CI_Model
       return $this->db->get();
     }
 
+
+    function aturdenda()
+    {
+      $this->db->select('*');
+      $this->db->from('tb_perizinan_atur_denda');
+      return  $this->db->get();
+    }
+
+    function updateaturdenda($arrayupdate)
+    {
+      $this->db->where("id_aturan","1");
+      return $this->db->update('tb_perizinan_atur_denda',$arrayupdate);
+    }
+
     function semuadenda($tahun,$bulan){
       $this->db->select_sum('besar_denda','total');
       $this->db->from('tb_perizinan_denda');
@@ -134,6 +148,7 @@ class M_denda extends CI_Model
         return $this->db->get()
           ->row_array();
     }
+
 
 }
 
