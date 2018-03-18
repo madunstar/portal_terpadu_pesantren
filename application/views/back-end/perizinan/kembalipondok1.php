@@ -18,7 +18,7 @@
                   <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-id-1">Pilih Santri</label>
                   <div class="col-sm-8">
-                    <select name="id_santri" id="id_santri" class="form-control m-b">
+                    <select name="id_santri" id="id_santri" class="form-control m-b chosen-select" data-required="true">
                       <option value="">-PILIH SANTRI KELUAR-</option>
                       <?php foreach($santrikeluarlagi->result_array() as $row):?>
                         <option value="<?php echo $row['nis_santri'];?>"<?php if ($row['nis_santri']==$santrikeluar->nis_santri)  echo "selected" ?>><?php echo $row['nis_santri'];?></option>
@@ -44,7 +44,7 @@
                 <div class="form-group">
                       <label class="col-sm-2 control-label">Tanggal keluar</label>
                       <div class="col-sm-8">
-                        <input class="input-sm input-s datepicker-input form-control" size="16" type="text" value="<?php echo $santrikeluar->tanggal_keluar;?>" readonly data-date-format="dd-mm-yyyy" >
+                        <input class="input-sm input-s  form-control" size="16" type="text" value="<?php echo $santrikeluar->tanggal_keluar;?>" readonly data-date-format="dd-mm-yyyy" >
                       </div>
                 </div>
                 <div class="form-group">
