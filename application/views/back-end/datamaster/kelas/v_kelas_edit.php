@@ -51,7 +51,7 @@
                   <i class="fa fa-refresh"></i> Reset</a>
                   &nbsp
                   <a href="<?php echo base_url('admin/datamaster/kelas') ?>" class="btn btn-default btn-s-xs">
-                    <i class="fa fa-list"></i> List Guru</a>
+                    <i class="fa fa-list"></i> List Mata Pelajaran</a>
                   </footer>
                 </form>
 
