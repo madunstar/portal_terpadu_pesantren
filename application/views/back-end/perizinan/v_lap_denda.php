@@ -3,7 +3,9 @@
 
   <section class="vbox bg-white">
     <header class="header b-b b-light hidden-print">
-      <button href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</button>
+      <a href="<?php echo base_url() ?>admin/perizinan/datadenda" class="btn btn-sm btn-warning pull-right">Kembali</a>
+      <p class="pull-right"></p>
+      <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>&nbsp;&nbsp;
       <p>Laporan Denda</p>
     </header>
 
@@ -25,10 +27,11 @@
       </div>
       <div class="line pull-in line-dashed b-b"></div>
       <br>
-      <h5>Laporan Denda <b>Bulan xxxxxxxxxxxxx Tahun xxxx</b></h5>
+      <h5>Laporan Denda <b>Bulan <?php echo bulan($bulan) ?> Tahun <?php echo $tahun ?></b></h5>
       <table class="table table-bordered">
         <thead>
           <tr>
+            <th>no</th>
             <th>NIS</th>
             <th>Nama</th>
             <th>Besar Denda</th>
@@ -37,15 +40,18 @@
         </thead>
         <tbody>
           <?php
+          $i = 1;
           foreach($data->result_array() as $row){
+
             echo "
               <tr>
+                <td>".$i."</td>
                 <td>".$row['nis_lokal']."</td>
                 <td>".$row['nama_lengkap']."</td>
                 <td>".$row['besar_denda']."</td>
                 <td>".$row['status_pembayaran']."</td>
               </tr>
-            ";
+            "; $i++;
           }
           ?>
         </tbody>
@@ -61,9 +67,9 @@
           </div>
           <div class="col-xs-3">
             <p>
-              : xxxxxxxxxxxx <br><br>
-              : xxxxxxxxxxxx <br><br>
-              : xxxxxxxxxxxx  <br>
+              : <?php echo $semuadenda['total']?> <br><br>
+              : <?php echo $dendalunas['total']?> <br><br>
+              : <?php echo $dendahutang['total']?>  <br>
             </p>
           </div>
         </div>

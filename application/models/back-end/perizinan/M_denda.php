@@ -94,6 +94,7 @@ class M_denda extends CI_Model
       return $this->db->get();
     }
 
+
     function aturdenda()
     {
       $this->db->select('*');
@@ -106,6 +107,49 @@ class M_denda extends CI_Model
       $this->db->where("id_aturan","1");
       return $this->db->update('tb_perizinan_atur_denda',$arrayupdate);
     }
+
+    function semuadenda($tahun,$bulan){
+      $this->db->select_sum('besar_denda','total');
+      $this->db->from('tb_perizinan_denda');
+        $this->db->join('tb_perizinan_kembali', 'tb_perizinan_denda.id_kembali = tb_perizinan_kembali.id_kembali');
+        $this->db->join('tb_perizinan_keluar', 'tb_perizinan_kembali.id_keluar = tb_perizinan_keluar.id_keluar');
+        $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
+        $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+        $this->db->where('year(tb_perizinan_kembali.tanggal_kembali)',$tahun);
+        $this->db->where('month(tb_perizinan_kembali.tanggal_kembali)',$bulan);
+        return $this->db->get()
+          ->row_array();
+    }
+
+    function dendalunas($tahun,$bulan){
+      $this->db->select_sum('besar_denda','total');
+      $this->db->from('tb_perizinan_denda');
+        $this->db->join('tb_perizinan_kembali', 'tb_perizinan_denda.id_kembali = tb_perizinan_kembali.id_kembali');
+        $this->db->join('tb_perizinan_keluar', 'tb_perizinan_kembali.id_keluar = tb_perizinan_keluar.id_keluar');
+        $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
+        $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+        $this->db->where('year(tb_perizinan_kembali.tanggal_kembali)',$tahun);
+        $this->db->where('month(tb_perizinan_kembali.tanggal_kembali)',$bulan);
+        $this->db->where('tb_perizinan_denda.status_pembayaran','lunas');
+        return $this->db->get()
+          ->row_array();
+    }
+
+    function dendahutang($tahun,$bulan){
+      $this->db->select_sum('besar_denda','total');
+      $this->db->from('tb_perizinan_denda');
+        $this->db->join('tb_perizinan_kembali', 'tb_perizinan_denda.id_kembali = tb_perizinan_kembali.id_kembali');
+        $this->db->join('tb_perizinan_keluar', 'tb_perizinan_kembali.id_keluar = tb_perizinan_keluar.id_keluar');
+        $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
+        $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+        $this->db->where('year(tb_perizinan_kembali.tanggal_kembali)',$tahun);
+        $this->db->where('month(tb_perizinan_kembali.tanggal_kembali)',$bulan);
+        $this->db->where('tb_perizinan_denda.status_pembayaran','hutang');
+        return $this->db->get()
+          ->row_array();
+    }
+
+
 }
 
 ?>
