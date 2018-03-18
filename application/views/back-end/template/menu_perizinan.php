@@ -13,7 +13,7 @@
               <nav class="nav-primary hidden-xs">
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
-                  <li class="<?= (($menu == "perizinan") && ($submenu == 'keluar') || ($submenu == 'kembali') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'pembayarandenda') || ($submenu == 'index')) ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "perizinan") && ($submenu == 'keluar') || ($submenu == 'aturdenda')|| ($submenu == 'kembali') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'index')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -31,7 +31,7 @@
                           <span>Keluar Pondok</span>
                         </a>
                       </li>
-											<li class="<?= (($menu == "perizinan") && ($submenu == 'datakembali') || ($submenu == 'kembali')) ? "active" : ""; ?>">
+											<li class="<?= (($menu == "perizinan") && ($submenu == 'datakembali') || ($submenu == 'kembali') || ($submenu == 'kembalidenda')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/perizinan/datakembali" class="auto">
                           <i class="i i-dot"></i>
 
@@ -52,7 +52,13 @@
                           <span>Data Pembayaran Denda</span>
                         </a>
                       </li>
+											<li class="<?= (($menu == "perizinan") && ($submenu == 'aturdenda')) ? "active" : ""; ?>">
+												<a href="<?php echo base_url() ?>admin/perizinan/aturdenda" class="auto">
+													<i class="i i-dot"></i>
 
+													<span>Pengaturan Denda</span>
+												</a>
+											</li>
                     </ul>
                   </li>
 

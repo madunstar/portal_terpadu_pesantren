@@ -27,24 +27,21 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
+                      <?php
+                      foreach($santrikembali->result_array() as $row){
+                        if ($row['status_denda'] == 1)
+                        {$status_denda = "bayar denda";}
+                        elseif ($row['status_denda'] == 0)
+                        {$status_denda = "tidak bayar denda";}
+                        echo "
+                          <tr>
+                            <td>".$row['nama_lengkap']."</td>
+                            <td></td>
+                            <td>".$row['tanggal_kembali']."</td>
+                            <td>".$status_denda."</td>
+                        ";
+                      }
+                      ?>
                   </tbody>
                 </table>
               </div>

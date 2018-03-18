@@ -93,14 +93,94 @@ class Perizinan extends CI_Controller
 
   function datakembali()
   {
-      $variabel = '';
+      $variabel['santrikembali'] = $this->m_perizinan->datasantrikembali();
       $this->layout->renderizin('back-end/perizinan/data_kembali',$variabel,'back-end/perizinan/denda_js');
   }
 
   function kembali()
   {
-      $variabel = '';
+      $variabel['santrikeluar'] = $this->m_perizinan->datasantrikeluar();
       $this->layout->renderizin('back-end/perizinan/kembalipondok',$variabel);
+  }
+
+  function kembalidenda()
+  {
+    $nis_santri = $this->input->post("id_santri");
+    $datadenda = $this->m_denda->aturdenda();
+    foreach ($datadenda->result_array() as $row) {
+        $denda = $row['denda_perjam'];
+        $dendamaks = $row['denda_maks'];
+      }
+    $santrikeluar = $this->m_perizinan->datasantrikeluarsatu($nis_santri);
+    foreach ($santrikeluar->result_array() as $santri) {
+        $tanggalkeluar = $santri['tanggal_keluar'];
+      }
+      $tglkmblshrsny = date('Y-m-d H:i:s', strtotime('+1 days 07:00:00', strtotime($tanggalkeluar)));
+      $tglkmblshrsny2 = date('Y-m-d H:i:s', strtotime('+2 days 07:00:00', strtotime($tanggalkeluar)));
+      $today = date("Y-m-d H:i:s");
+      if ($today > $tglkmblshrsny) {
+        if ($today < $tglkmblshrsny2){
+        $jamtoday = date("H:i");
+        $jamtoday = new DateTime($jamtoday);
+        $jamkembali = new DateTime("07:00");
+        $selisihjam = $jamkembali->diff($jamtoday);
+        $jamselisih = $selisihjam->format('%h');
+        $totaldenda = $jamselisih*$denda;
+        if ($totaldenda < $dendamaks){
+          $bayardenda = $totaldenda;
+        }
+        elseif ($totaldenda >= $dendamaks) {
+          $bayardenda = $dendamaks;
+        }
+      }
+      elseif ($today > $tglkmblshrsny2 ) {
+         $bayardenda = $dendamaks;
+      }
+      }
+      else {
+        $bayardenda = 0;
+      }
+    $variabel['santrikeluar'] = $santrikeluar->row();
+    $variabel['totaldenda'] = $bayardenda;
+    $variabel['santrikeluarlagi'] = $this->m_perizinan->datasantrikeluar();
+    $this->layout->renderizin('back-end/perizinan/kembalipondok1',$variabel);
+  }
+
+  function tambahdatakembali(){
+    $petugas = $this->session->userdata('nama_akun');
+    $denda = $this->input->post('total_denda');
+    $id_keluar = $this->input->post('id_keluar');
+    if ($denda == 0){
+      $statusdenda = "0";
+    }
+    elseif ($denda > 0) {
+      $statusdenda = "1";
+      $status_pembayaran = "hutang";
+    }
+    if ($this->input->post()){
+        $arraykembali=array(
+          'id_keluar' => $this->input->post('id_keluar'),
+          'tanggal_kembali' => $this->input->post('tanggal_kembali'),
+          'status_denda' => $statusdenda,
+          'petugas' => $petugas
+        );
+      }
+      $exec = $this->m_perizinan->tambahdatakembali($arraykembali);
+      $exec1 = $this->m_perizinan->updatedatakeluar($id_keluar);
+      if ($denda > 0){
+        $ambiliddatakembali = $this->m_perizinan->ambilidkembaliterakhir();
+        foreach ($ambiliddatakembali->result_array() as $row) {
+            $id_kembali = $row['id_kembali'];
+          }
+        $arraydenda=array(
+          'id_kembali' => $id_kembali,
+          'besar_denda' => $denda,
+          'status_pembayaran' => $status_pembayaran
+        );
+        $exec2= $this->m_perizinan->tambahdatadenda($arraydenda);
+      }
+      redirect(base_url("admin/perizinan/datakembali"));
+
   }
 ///////////////////denda ini denda//////////////////////////
 
@@ -179,6 +259,37 @@ function laporandenda(){
   $variabel['data'] = $this->m_denda->laporandenda($tahun,$bulan);
   $this->layout->renderlaporan('back-end/perizinan/v_lap_denda',$variabel,'back-end/perizinan/denda_js');
 }
+
+  function aturdenda(){
+    $datadenda = $this->m_denda->aturdenda();
+    $variabel['datadenda'] = $datadenda->row();
+    $this->layout->renderizin('back-end/perizinan/pengaturandenda',$variabel,'back-end/perizinan/denda_js');
+
+  }
+
+  function updateaturdenda(){
+
+    $password = $this->session->userdata('password');
+    $kata_sandi = md5($this->input->post('password'));
+    $kata_sandi2 = md5($this->input->post('password2'));
+
+    if ($kata_sandi == $kata_sandi2){
+      if ($kata_sandi == $password) {
+        $arrayupdate=array(
+          'denda_perjam' => $this->input->post('dendajam'),
+          'denda_maks' => $this->input->post('dendamaks'),
+        );
+        $exec = $this->m_denda->updateaturdenda($arrayupdate);
+        redirect(base_url("admin/perizinan/aturdenda?&msg=1"));
+      }
+      else{
+        redirect(base_url("admin/perizinan/aturdenda?&msg=0"));
+      }}
+      else{
+        redirect(base_url("admin/perizinan/aturdenda?&msg=2"));
+      }
+  }
+
 ///////////////////////////akhiri semua denda ini!! ///////////////////////////////////////////
 
 
