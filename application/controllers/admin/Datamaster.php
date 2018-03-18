@@ -21,6 +21,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_kel_desa');
         $this->load->model('back-end/datamaster/m_tahun_ajaran');
         $this->load->model('back-end/datamaster/m_kelas');
+        $this->load->model('back-end/datamaster/m_matpel');
         $this->load->library('layout');
         if ($this->session->userdata('nama_akun')=="") {
             redirect('admin/login/loginhalaman');
@@ -456,6 +457,74 @@ class Datamaster extends CI_Controller{
 
     // End CRUD Santri
 
+//CRUD Mata Pelajaran
+    function matpel(){
+         $variabel['data'] = $this->m_matpel->lihatdata();
+        $this->layout->render('back-end/datamaster/matpel/v_matpel',$variabel,'back-end/datamaster/matpel/v_matpel_js');
+    }
+
+    function matpellihat()
+    {
+        $kd_matpel = $this->input->get("kd_matpel");
+        $exec = $this->m_matpel->lihatdatasatu($kd_matpel);
+        if ($exec->num_rows()>0){
+            $variabel['data'] = $exec ->row_array();
+            $this->layout->render('back-end/datamaster/matpel/v_matpel_lihat',$variabel,'back-end/datamaster/matpel/v_matpel_js');
+        } else {
+            redirect(base_url("admin/datamaster/matpel"));
+        }
+    }
+    function matpeltambah()
+    {
+        if ($this->input->post()){
+                $array=array(
+                    'kd_matpel'=> NULL,
+                    'nama_matpel'=> $this->input->post('nama_matpel'),
+                    'tingkat_matpel'=> $this->input->post('tingkat_matpel')
+                    );
+
+                $exec = $this->m_matpel->tambahdata($array);
+                if ($exec) redirect(base_url("admin/datamaster/matpeltambah?msg=1"));
+                else redirect(base_url("admin/datamaster/matpeltambah?msg=0"));
+        } else {
+            $variabel ='';
+            $this->layout->render('back-end/datamaster/matpel/v_matpel_tambah',$variabel,'back-end/datamaster/matpel/v_matpel_js');
+        }
+    }
+
+    function matpeledit()
+    {
+        if ($this->input->post()) {
+            $kode = $this->input->post('kd_matpel');
+            $array=array(
+                'nama_matpel'=> $this->input->post('nama_matpel'),
+                'tingkat_matpel'=> $this->input->post('tingkat_matpel')
+                );
+                $exec = $this->m_matpel->editdata($kode,$array);
+                if ($exec)
+                  redirect(base_url("admin/datamaster/matpeledit?kd_matpel=".$kode."&msg=1"));
+                else
+                    redirect(base_url("admin/datamaster/matpeledit?kd_matpel=".$kode."&msg=0"));
+        }
+        else{
+            $kode = $this->input->get("kd_matpel");
+            $exec = $this->m_matpel->lihatdatasatu($kode);
+            if ($exec->num_rows()>0){
+                    $variabel['data'] = $exec ->row_array();
+                    $this->layout->render('back-end/datamaster/matpel/v_matpel_edit',$variabel,'back-end/datamaster/matpel/v_matpel_js');
+            } 
+            else
+                redirect(base_url("admin/datamaster/matpel"));
+        }
+    }
+    function matpelhapus()
+    {
+       $kode = $this->input->get("kd_matpel");
+       $exec = $this->m_matpel->hapus($kode);
+       redirect(base_url()."admin/datamaster/matpel?msg=1");
+    }
+//End CRUD Mata Pelajaran
+
 //CRUD KELAS
    function kelas(){
          $variabel['data'] = $this->m_kelas->lihatdata();
@@ -469,10 +538,8 @@ class Datamaster extends CI_Controller{
         if ($exec->num_rows()>0){
             $variabel['data'] = $exec ->row_array();
             $this->layout->render('back-end/datamaster/kelas/v_kelas_lihat',$variabel,'back-end/datamaster/kelas/v_kelas_js');
-        } else {
+        } else
             redirect(base_url("admin/datamaster/kelas"));
-        }
-
     }
     function kelastambah()
     {
@@ -495,7 +562,6 @@ class Datamaster extends CI_Controller{
 
     function kelasedit()
     {
-
         if ($this->input->post()) {
             $kode = $this->input->post('kd_kelas');
             $array=array(
@@ -505,21 +571,21 @@ class Datamaster extends CI_Controller{
                 );
 
                 $exec = $this->m_kelas->editdata($kode,$array);
-                if ($exec){
+                if ($exec)
                   redirect(base_url("admin/datamaster/kelasedit?kd_kelas=".$kode."&msg=1"));
-                }
                 else
                      redirect(base_url("admin/datamaster/kelasedit?kd_kelas=".$kode."&msg=0"));
-      }
-      else
-        $kode = $this->input->get("kd_kelas");
-        $exec = $this->m_kelas->lihatdatasatu($kode);
-        if ($exec->num_rows()>0){
-                $variabel['data'] = $exec ->row_array();
-                $this->layout->render('back-end/datamaster/kelas/v_kelas_edit',$variabel,'back-end/datamaster/kelas/v_kelas_js');
-            } else {
+        }
+        else{
+            $kode = $this->input->get("kd_kelas");
+            $exec = $this->m_kelas->lihatdatasatu($kode);
+            if ($exec->num_rows()>0){
+                    $variabel['data'] = $exec ->row_array();
+                    $this->layout->render('back-end/datamaster/kelas/v_kelas_edit',$variabel,'back-end/datamaster/kelas/v_kelas_js');
+            } 
+            else
                 redirect(base_url("admin/datamaster/kelas"));
-            }
+        }
     }
 
     function kelashapus()
