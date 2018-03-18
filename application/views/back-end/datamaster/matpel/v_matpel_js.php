@@ -11,7 +11,7 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/datamaster/matpelhapus?kd_matpel="+v_kd_matpel);
+                    window.location.assign("<?php echo base_url() ?>admin/datamaster/matpelhapus?id_matpel="+v_kd_matpel);
                 }
             },
             batal: function () {
