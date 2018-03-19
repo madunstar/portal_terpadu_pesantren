@@ -19,6 +19,8 @@
               <th width="130px">Aksi</th>
               <th>Mata Pelajaran</th>
               <th>Tingkat</th>
+              <th>Semester</th>
+              <th>Kelas</th>
             </tr>
           </thead>
           <tbody>
@@ -27,11 +29,14 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/matpeledit?kd_matpel='.$row['kd_matpel'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-                      <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['kd_matpel']."'><i class='fa fa-trash-o'></i></a>
+                      <a href='".base_url('admin/datamaster/matpellihat?id_matpel='.$row['id_mata_pelajaran'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
+                      <a href='".base_url('admin/datamaster/matpeledit?id_matpel='.$row['id_mata_pelajaran'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                      <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_mata_pelajaran']."'><i class='fa fa-trash-o'></i></a>
                       </td>
-                      <td>".$row['nama_matpel']."</td>
-                      <td>".$row['tingkat_matpel']."</td>
+                      <td>".$row['nama_mata_pelajaran']."</td>
+                      <td>".$row['tingkat_mata_pelajaran']."</td>
+                      <td>".$row['semester_mata_pelajaran']."</td>
+                      <td>".$row['kelas_mata_pelajaran']."</td>
                     </tr>
                   ";
                 }

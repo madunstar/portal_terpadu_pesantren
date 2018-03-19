@@ -1,8 +1,9 @@
 <script>
 
    $('#datatable').DataTable({});
+
    $(".hapus").click(function (e) {
-    var v_kd_matpel = this.id;
+    var v_id = this.id;
     $.confirm({
         title: 'Hapus!',
         content: 'Yakin ingin menghapus ?',
@@ -11,13 +12,13 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/datamaster/matpelhapus?id_matpel="+v_kd_matpel);
+                    window.location.assign("<?php echo base_url() ?>admin/datamaster/adminhapus?nama_akun="+v_id);
                 }
             },
             batal: function () {
 
             }
-            
+
         }
         });
     });
