@@ -516,7 +516,7 @@ class Datamaster extends CI_Controller{
             if ($exec->num_rows()>0){
                     $variabel['data'] = $exec ->row_array();
                     $this->layout->render('back-end/datamaster/matpel/v_matpel_edit',$variabel,'back-end/datamaster/matpel/v_matpel_js');
-            } 
+            }
             else
                 redirect(base_url("admin/datamaster/matpel"));
         }
@@ -586,7 +586,7 @@ class Datamaster extends CI_Controller{
             if ($exec->num_rows()>0){
                     $variabel['data'] = $exec ->row_array();
                     $this->layout->render('back-end/datamaster/kelas/v_kelas_edit',$variabel,'back-end/datamaster/kelas/v_kelas_js');
-            } 
+            }
             else
                 redirect(base_url("admin/datamaster/kelas"));
         }
@@ -1639,4 +1639,18 @@ function kecamatanhapus()
      $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_atur',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
    }
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////// pembayaran SPP ////////////////////////////////////////////////////
+  function databayarinfaq(){
+    $variabel='';
+    $this->layout->render('back-end/infaq/v_data_infaq',$variabel,'back-end/infaq/v_infaq_js');
+  }
+
+  function bayarinfaq(){
+    $variabel='';
+    $this->layout->render('back-end/infaq/v_bayar_infaq',$variabel,'back-end/infaq/v_infaq_js');
+  }
+
+  //////////////////////////////////////////akhir pembayaran spp/////////////////////////////////////////
 }
