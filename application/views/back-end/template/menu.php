@@ -137,16 +137,15 @@
                           <span>Data Denda</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="master.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Pembayaran Denda</span>
-                        </a>
-                      </li>
-
                     </ul>
                   </li>
+									<li  class="<?= (($menu == "datamaster") && ($submenu == 'databayarinfaq')|| ($submenu == 'bayarinfaq')) ? "active" : ""; ?>">
+										<a href="<?php echo base_url('admin/datamaster/databayarinfaq')?>" class="auto">
+											<i class="fa fa-money">
+											</i>
+											<span class="font-bold">Pembayaran Infaq (SPP)</span>
+										</a>
+									</li>
 									<li class="<?= (($menu == "datamaster") && ($submenu == 'provinsi')|| ($submenu == 'kota_kab') || ($submenu == 'kecamatan') || ($submenu == 'pendidikan') || ($submenu == 'pekerjaan') || ($submenu == 'alat_transportasi')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
