@@ -84,7 +84,7 @@
                         <a href="buttons.html" class="auto">
                           <i class="i i-dot"></i>
 
-                          <span>Jadwal Pelajaran</span>
+                          <span>Atur Pelajaran</span>
                         </a>
                       </li>
                       <li >
