@@ -22,6 +22,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_tahun_ajaran');
         $this->load->model('back-end/datamaster/m_kelas');
         $this->load->model('back-end/datamaster/m_matpel');
+        $this->load->model('back-end/datamaster/m_infaq');
         $this->load->library('layout');
         if ($this->session->userdata('nama_akun')=="") {
             redirect('admin/login/loginhalaman');
@@ -1639,9 +1640,22 @@ function kecamatanhapus()
 
 ////////////////////////////////////////////////// pembayaran SPP ////////////////////////////////////////////////////
   function databayarinfaq(){
-    $variabel='';
-    $this->layout->render('back-end/infaq/v_data_infaq',$variabel,'back-end/infaq/v_infaq_js');
-  }
+    if($this->input->post()){
+      $tahun = $this->input->post('tahun');
+      $bulan = $this->input->post('bulan');
+      $variabel['bulan'] = $bulan;
+      $varibel['tahun'] = $tahun;
+      $variabel['data'] = $this->m_infaq->lihatdata($tahun,$bulan);
+      $this->layout->render('back-end/infaq/v_data_infaq',$variabel,'back-end/infaq/v_infaq_js');}
+      else {
+        $tahun = date('Y');
+        $bulan = date('m');
+        $variabel['bulan'] = $bulan;
+        $varibel['tahun'] = $tahun;
+        $variabel['data'] = $this->m_infaq->lihatdata($tahun,$bulan);
+        $this->layout->render('back-end/infaq/v_data_infaq',$variabel,'back-end/infaq/v_infaq_js');
+      }
+    }
 
   function bayarinfaq(){
     $variabel='';

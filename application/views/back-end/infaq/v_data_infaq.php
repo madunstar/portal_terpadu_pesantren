@@ -16,22 +16,22 @@
             <div class="panel-body">
 
               <a href=""><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Data</button></a><br><br>
-              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/perizinan/kembalidenda" method="post">
+              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/databayarinfaq" method="post">
               <div class='form-group'>
                 <div class="col-sm-5">
                   <select type="text" class="form-control" name="bulan" >
-                    <option value="01">Januari</option>
-                    <option value="02">Februari</option>
-                    <option value="03">Maret</option>
-                    <option value="04">April</option>
-                    <option value="05">Mei</option>
-                    <option value="06">Juni</option>
-                    <option value="07">Juli</option>
-                    <option value="08">Agustus</option>
-                    <option value="09">September</option>
-                    <option value="10">Oktober</option>
-                    <option value="11">November</option>
-                    <option value="12">Desember</option>
+                    <option value="01" <?php $b='01'; if ($b == $bulan) echo 'selected' ?>>Januari</option>
+                    <option value="02" <?php $b='02'; if ($b == $bulan) echo 'selected' ?>>Februari</option>
+                    <option value="03" <?php $b='03'; if ($b == $bulan) echo 'selected' ?>>Maret</option>
+                    <option value="04" <?php $b='04'; if ($b == $bulan) echo 'selected' ?>>April</option>
+                    <option value="05" <?php $b='05'; if ($b == $bulan) echo 'selected' ?>>Mei</option>
+                    <option value="06" <?php $b='06'; if ($b == $bulan) echo 'selected' ?>>Juni</option>
+                    <option value="07" <?php $b='07'; if ($b == $bulan) echo 'selected' ?>>Juli</option>
+                    <option value="08" <?php $b='08'; if ($b == $bulan) echo 'selected' ?>>Agustus</option>
+                    <option value="09" <?php $b='09'; if ($b == $bulan) echo 'selected' ?>>September</option>
+                    <option value="10" <?php $b='10'; if ($b == $bulan) echo 'selected' ?>>Oktober</option>
+                    <option value="11" <?php $b='11'; if ($b == $bulan) echo 'selected' ?>>November</option>
+                    <option value="12" <?php $b='12'; if ($b == $bulan) echo 'selected' ?>>Desember</option>
                  </select>
                 </div>
                 <div class="col-sm-5">
@@ -45,7 +45,7 @@
                   </select>
                 </div>
                 <div class="col-sm-2">
-                  <button type="button" class="btn btn-primary btn-block" name="button">Tampilkan Data</button>
+                  <button type="submit" class="btn btn-primary btn-block" name="button">Tampilkan Data</button>
                 </div>
               </div>
             </form>
@@ -54,23 +54,31 @@
                   <thead>
                     <tr>
                       <th>NIS</th>
-                      <th >Nama</th>
-                      <th >Kelas</th>
-                      <th >Tanggal Bayar</th>
+                      <th>Nama</th>
+                      <th>Kelas</th>
+                      <th>Tanggal Bayar</th>
+                      <th>Petugas</th>
                       <th>Aksi</th>
-
                     </tr>
                   </thead>
                   <tbody>
-                    <td>111</td>
-                    <td>aloo</td>
-                    <td>SD</td>
-                    <td>11-11-1022</td>
-                    <td>
-                      <button class='btn btn-primary btn-xs' data-toggle='modal' data-target='#".$row['id_bayar']."' title="detil"><i class='fa fa-search'></i></button>
-                      <button class='btn btn-warning btn-xs' data-toggle='modal' data-target='#".$row['id_bayar']."' title="perbarui"><i class='fa fa-edit'></i></button>
-                      <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#".$row['id_bayar']."' title="hapus"><i class='fa fa-trash-o'></i></button>
-                    </td>
+                    <?php foreach($data->result_array() as $row){
+                      echo "
+                      <tr>
+                        <td>".$row['nis_lokal']."</td>
+                        <td>".$row['nama_lengkap']."</td>
+                        <td></td>
+                        <td>".$row['tanggal_bayar']."</td>
+                        <td>".$row['petugas']."</td>
+                        <td>
+                        <button class='btn btn-primary btn-xs' data-toggle='modal' data-target='#' title='detil'><i class='fa fa-search'></i></button>
+                        <button class='btn btn-warning btn-xs' data-toggle='modal' data-target='#' title='perbarui'><i class='fa fa-edit'></i></button>
+                        <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#' title='hapus'><i class='fa fa-trash-o'></i></button>
+                        </td>
+                      </tr>
+                      ";
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
