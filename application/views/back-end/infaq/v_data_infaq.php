@@ -38,7 +38,7 @@
                   <select class="form-control" name="tahun">
                     <?php
                       for($i = 2000 ; $i <= date('Y'); $i++){ ?>
-                       <option value='<?php echo $i ?>' <?php if ($i == date('Y')) echo 'selected' ?>><?php echo $i ?></option>
+                       <option value='<?php echo $i ?>' <?php if ($i == $tahun) echo 'selected' ?>><?php echo $i ?></option>
 
                      <?php } ?>
 
@@ -71,7 +71,7 @@
                         <td>".$row['tanggal_bayar']."</td>
                         <td>".$row['petugas']."</td>
                         <td>
-                        <button class='btn btn-primary btn-xs' data-toggle='modal' data-target='#' title='detil'><i class='fa fa-search'></i></button>
+                        <a href='".base_url('admin/datamaster/detilinfaq?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='detil'><i class='fa fa-eye'></i></a>
                         <button class='btn btn-warning btn-xs' data-toggle='modal' data-target='#' title='perbarui'><i class='fa fa-edit'></i></button>
                         <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#' title='hapus'><i class='fa fa-trash-o'></i></button>
                         </td>

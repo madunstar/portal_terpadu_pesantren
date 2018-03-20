@@ -20,6 +20,16 @@ class M_infaq extends CI_Model
         return $this->db->get();
     }
 
+    function detilinfaq($nis)
+    {
+      $this->db->select('*');
+      $this->db->from('tb_pembayaran_spp');
+      $this->db->join('tb_santri', 'tb_pembayaran_spp.nis_santri = tb_santri.nis_lokal');
+      $this->db->where('tb_pembayaran_spp.nis_santri', $nis);
+      $this->db->order_by("tb_pembayaran_spp.spp_tahun", "desc");
+      $this->db->order_by("tb_pembayaran_spp.spp_bulan", "asc");
+      return $this->db->get();
+    }
     // function lihatdatasatu($id_tahun)
     // {
     //     $this->db->where("id_tahun",$id_tahun);
