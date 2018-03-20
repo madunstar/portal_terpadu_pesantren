@@ -24,6 +24,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_matpel');
         $this->load->model('back-end/datamaster/m_infaq');
         $this->load->library('layout');
+        $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
             redirect('admin/login/loginhalaman');
         }
@@ -1648,18 +1649,24 @@ function kecamatanhapus()
       $tahun = $this->input->post('tahun');
       $bulan = $this->input->post('bulan');
       $variabel['bulan'] = $bulan;
-      $varibel['tahun'] = $tahun;
+      $variabel['tahun'] = $tahun;
       $variabel['data'] = $this->m_infaq->lihatdata($tahun,$bulan);
       $this->layout->render('back-end/infaq/v_data_infaq',$variabel,'back-end/infaq/v_infaq_js');}
       else {
         $tahun = date('Y');
         $bulan = date('m');
         $variabel['bulan'] = $bulan;
-        $varibel['tahun'] = $tahun;
+        $variabel['tahun'] = $tahun;
         $variabel['data'] = $this->m_infaq->lihatdata($tahun,$bulan);
         $this->layout->render('back-end/infaq/v_data_infaq',$variabel,'back-end/infaq/v_infaq_js');
       }
     }
+
+  function detilinfaq(){
+    $nis = $this->input->get('nis');
+    $variabel['data'] = $this->m_infaq->detilinfaq($nis);
+    $this->layout->render('back-end/infaq/v_detil_infaq',$variabel,'back-end/infaq/v_infaq_js');
+  }
 
   function bayarinfaq(){
     $variabel='';
