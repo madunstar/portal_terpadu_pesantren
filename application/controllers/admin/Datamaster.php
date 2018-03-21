@@ -1688,5 +1688,11 @@ function kecamatanhapus()
 
   }
 
+  function hapusinfaq(){
+    $id_infaq = $this->input->get("id_infaq");
+    $exec = $this->m_infaq->hapus($id_infaq);
+    redirect(base_url()."admin/datamaster/databayarinfaq?msg=1");
+  }
+
   //////////////////////////////////////////akhir pembayaran spp/////////////////////////////////////////
 }
