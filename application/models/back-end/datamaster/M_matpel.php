@@ -9,7 +9,7 @@ Class M_matpel extends CI_Model {
 
     function lihatdatasatu($kode)
     {
-        $this->db->where("kd_matpel",$kode);
+        $this->db->where("id_mata_pelajaran",$kode);
         return $this->db->get('tb_mata_pelajaran');
     }
 
@@ -20,12 +20,12 @@ Class M_matpel extends CI_Model {
 
     function editdata($kode,$array)
     {
-        $this->db->where("kd_matpel",$kode);
+        $this->db->where("id_mata_pelajaran",$kode);
         return $this->db->update('tb_mata_pelajaran',$array);
     }
     function hapus($kode)
     {
-        $this->db->where("kd_matpel",$kode);
+        $this->db->where("id_mata_pelajaran",$kode);
         return $this->db->delete('tb_mata_pelajaran');
     }
 }

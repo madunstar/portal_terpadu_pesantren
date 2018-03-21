@@ -16,7 +16,7 @@
         <table class="table table-striped " id="datatable">
           <thead>
             <tr>
-              <th width="130px">Aksi</th>
+              <th width="135px">Aksi</th>
               <th>Nama</th>
               <th>NIS</th>
               <th>NISN</th>
