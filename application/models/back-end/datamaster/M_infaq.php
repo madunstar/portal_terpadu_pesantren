@@ -26,15 +26,25 @@ class M_infaq extends CI_Model
       $this->db->from('tb_pembayaran_spp');
       $this->db->join('tb_santri', 'tb_pembayaran_spp.nis_santri = tb_santri.nis_lokal');
       $this->db->where('tb_pembayaran_spp.nis_santri', $nis);
-      $this->db->order_by("tb_pembayaran_spp.spp_tahun", "desc");
-      $this->db->order_by("tb_pembayaran_spp.spp_bulan", "asc");
+      
       return $this->db->get();
     }
-    // function lihatdatasatu($id_tahun)
-    // {
-    //     $this->db->where("id_tahun",$id_tahun);
-    //     return $this->db->get('tb_tahun_ajaran');
-    // }
+
+    function datasantri(){
+      $this->db->select('nis_lokal, nama_lengkap');
+      $this->db->from('tb_santri');
+      return $this->db->get();
+    }
+    function lihatsantrisatu($nis)
+    {
+        $this->db->select('nama_lengkap');
+        $this->db->from('tb_santri');
+        $this->db->where("nis_lokal",$nis);
+        $query = $this->db->get();
+        $data = $query->row_array();
+        $value = $data['nama_lengkap'];
+        return $value;
+    }
     //
     // function cekdata($id_tahun)
     // {
@@ -42,10 +52,10 @@ class M_infaq extends CI_Model
     //     return $this->db->get('tb_tahun_ajaran')->num_rows();
     // }
     //
-    // function tambahdata($array)
-    // {
-    //     return $this->db->insert('tb_tahun_ajaran',$array);
-    // }
+    function tambahdata($array)
+    {
+        return $this->db->insert('tb_pembayaran_spp',$array);
+    }
     //
     // function editdata($id_tahun,$array)
     // {
