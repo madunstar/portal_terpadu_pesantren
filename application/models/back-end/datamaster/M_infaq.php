@@ -26,7 +26,7 @@ class M_infaq extends CI_Model
       $this->db->from('tb_pembayaran_spp');
       $this->db->join('tb_santri', 'tb_pembayaran_spp.nis_santri = tb_santri.nis_lokal');
       $this->db->where('tb_pembayaran_spp.nis_santri', $nis);
-      
+
       return $this->db->get();
     }
 
@@ -62,9 +62,9 @@ class M_infaq extends CI_Model
     //     $this->db->where("id_tahun",$id_tahun);
     //     return $this->db->update('tb_tahun_ajaran',$array);
     // }
-    // function hapus($id_tahun)
-    // {
-    //     $this->db->where("id_tahun",$id_tahun);
-    //     return $this->db->delete('tb_tahun_ajaran');
-    // }
+    function hapus($id_infaq)
+    {
+        $this->db->where("id_pembayaran",$id_infaq);
+        return $this->db->delete('tb_pembayaran_spp');
+    }
 }

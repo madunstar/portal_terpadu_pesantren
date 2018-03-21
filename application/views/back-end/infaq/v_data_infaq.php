@@ -14,7 +14,7 @@
               <h4 class="font-bold">Data Infaq Bulanan Santri</h4>
             </header>
             <div class="panel-body">
-
+              <?php pesan_get('msg',"Berhasil Menghapus Pembayaran","Gagal Menghapus Pembayaran") ?>
               <a href="<?php echo base_url() ?>admin/datamaster/bayarinfaq"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Data</button></a><br><br>
               <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/databayarinfaq" method="post">
               <div class='form-group'>
@@ -37,7 +37,7 @@
                 <div class="col-sm-5">
                   <select class="form-control" name="tahun">
                     <?php
-                      for($i = 2000 ; $i <= date('Y'); $i++){ ?>
+                      for($i = 2010 ; $i <= date('Y')+5; $i++){ ?>
                        <option value='<?php echo $i ?>' <?php if ($i == $tahun) echo 'selected' ?>><?php echo $i ?></option>
 
                      <?php } ?>
@@ -72,10 +72,26 @@
                         <td>".$row['petugas']."</td>
                         <td>
                         <a href='".base_url('admin/datamaster/detilinfaq?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='detil'><i class='fa fa-eye'></i></a>
-                        <button class='btn btn-warning btn-xs' data-toggle='modal' data-target='#' title='perbarui'><i class='fa fa-edit'></i></button>
-                        <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#' title='hapus'><i class='fa fa-trash-o'></i></button>
+                        <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#".$row['id_pembayaran']."' title='hapus'><i class='fa fa-trash-o'></i></button>
                         </td>
                       </tr>
+                      <div class='modal' id='".$row['id_pembayaran']."' tabindex='-1' role='dialog'>
+                       <div class='modal-dialog' role='document'>
+                         <div class='modal-content'>
+                           <div class='modal-header bg-danger'>
+                             <h4 class='modal-title'>Konfirmasi Hapus Data</h4>
+                           </div>
+                           <div class='modal-body'>
+                             <b>Apakah yakin menghapus data?</b>
+                           </div>
+                           <div class='modal-footer'>
+                             <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusinfaq?id_infaq='.$row['id_pembayaran'].'')."'>
+                             <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
+                             <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
                       ";
                     }
                     ?>
