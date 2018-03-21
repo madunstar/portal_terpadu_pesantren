@@ -1660,13 +1660,32 @@ function kecamatanhapus()
 
   function detilinfaq(){
     $nis = $this->input->get('nis');
+    $variabel['nama_santri'] = $this->m_infaq->lihatsantrisatu($nis);
     $variabel['data'] = $this->m_infaq->detilinfaq($nis);
     $this->layout->render('back-end/infaq/v_detil_infaq',$variabel,'back-end/infaq/v_infaq_js');
   }
 
   function bayarinfaq(){
-    $variabel='';
-    $this->layout->render('back-end/infaq/v_bayar_infaq',$variabel,'back-end/infaq/v_infaq_js');
+    if($this->input->post()){
+      $array = array(
+        'nis_santri' => $this->input->post('id_santri'),
+        'tanggal_bayar' => date('Y-m-d'),
+        'spp_bulan' => $this->input->post('bulan'),
+        'spp_tahun' => $this->input->post('tahun'),
+        'status_bayar' => 'lunas',
+        'petugas' => $this->session->userdata('nama_akun')
+      );
+      $exec = $this->m_infaq->tambahdata($array);
+      if($exec){
+        redirect(base_url("admin/datamaster/bayarinfaq?msg=1"));
+      } else{
+        redirect(base_url("admin/datamaster/bayarinfaq?msg=0"));
+      }
+    }else{
+      $variabel['daftarsantri'] = $this->m_infaq->datasantri();
+      $this->layout->render('back-end/infaq/v_bayar_infaq',$variabel,'back-end/infaq/v_infaq_js');
+    }
+
   }
 
   //////////////////////////////////////////akhir pembayaran spp/////////////////////////////////////////

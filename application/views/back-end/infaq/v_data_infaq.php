@@ -15,7 +15,7 @@
             </header>
             <div class="panel-body">
 
-              <a href=""><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Data</button></a><br><br>
+              <a href="<?php echo base_url() ?>admin/datamaster/bayarinfaq"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Data</button></a><br><br>
               <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/databayarinfaq" method="post">
               <div class='form-group'>
                 <div class="col-sm-5">
