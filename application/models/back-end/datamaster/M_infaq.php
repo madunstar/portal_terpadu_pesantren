@@ -35,6 +35,7 @@ class M_infaq extends CI_Model
       $this->db->from('tb_santri');
       return $this->db->get();
     }
+
     function lihatsantrisatu($nis)
     {
         $this->db->select('nama_lengkap');
@@ -45,17 +46,21 @@ class M_infaq extends CI_Model
         $value = $data['nama_lengkap'];
         return $value;
     }
-    //
-    // function cekdata($id_tahun)
-    // {
-    //     $this->db->where("id_tahun",$id_tahun);
-    //     return $this->db->get('tb_tahun_ajaran')->num_rows();
-    // }
-    //
+
     function tambahdata($array)
     {
         return $this->db->insert('tb_pembayaran_spp',$array);
     }
+
+    function santribayar($tahun,$bulan){
+      $this->db->select('count(*) as total')
+        ->from('tb_pembayaran_spp')
+        ->where('tb_pembayaran_spp.spp_tahun', $tahun)
+        ->where('tb_pembayaran_spp.spp_bulan', $bulan);
+        return $this->db->get()
+          ->row_array();
+    }
+
     //
     // function editdata($id_tahun,$array)
     // {
