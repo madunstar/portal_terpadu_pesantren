@@ -1697,6 +1697,14 @@ function kecamatanhapus()
     $exec = $this->m_infaq->hapus($id_infaq);
     redirect(base_url()."admin/datamaster/databayarinfaq?msg=1");
   }
-
+  function laporaninfaq(){
+    $tahun = $this->input->post('tahun_lap');
+    $bulan = $this->input->post('bulan_lap');
+    $variabel['bulan'] = $bulan;
+    $variabel['tahun'] = $tahun;
+    $variabel['santribayar'] = $this->m_infaq->santribayar($tahun,$bulan);
+    $variabel['data'] = $this->m_infaq->lihatdata($tahun,$bulan);
+    $this->layout->renderlaporan('back-end/infaq/v_lap_infaq',$variabel,'back-end/infaq/v_infaq_js');
+  }
   //////////////////////////////////////////akhir pembayaran spp/////////////////////////////////////////
 }

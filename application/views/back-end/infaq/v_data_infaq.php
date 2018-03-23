@@ -100,6 +100,14 @@
               </div>
 
             </div>
+            <div class="panel-footer">
+              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/laporaninfaq" method="post">
+              <input type="hidden" name="tahun_lap" value="<?php echo $tahun ?>">
+              <input type="hidden" name="bulan_lap" value="<?php echo $bulan ?>">  
+              <button type="submit" name="button" class="btn btn-primary">Cetak Laporan <i class="fa fa-print"></i></button>
+
+              </form>
+            </div>
 
           </div>
             </div>
