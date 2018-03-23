@@ -30,8 +30,8 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/adminedit?nama_akun='.$row['nama_akun'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-                      <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['nama_akun']."'><i class='fa fa-trash-o'></i></a>
+                      <a href='".base_url('admin/datamaster/adminedit?nama_akun='.$row['nama_akun'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                      <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['nama_akun']."'><i class='fa fa-trash-o'></i></a>
                       </td>
                       <td>".$row['nama_lengkap']."</td>
                       <td>".$row['nama_akun']."</td>
