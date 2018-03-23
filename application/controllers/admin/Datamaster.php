@@ -21,7 +21,10 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_kel_desa');
         $this->load->model('back-end/datamaster/m_tahun_ajaran');
         $this->load->model('back-end/datamaster/m_kelas');
+        $this->load->model('back-end/datamaster/m_matpel');
+        $this->load->model('back-end/datamaster/m_infaq');
         $this->load->library('layout');
+        $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
             redirect('admin/login/loginhalaman');
         }
@@ -456,6 +459,78 @@ class Datamaster extends CI_Controller{
 
     // End CRUD Santri
 
+//CRUD Mata Pelajaran
+    function matpel(){
+         $variabel['data'] = $this->m_matpel->lihatdata();
+        $this->layout->render('back-end/datamaster/matpel/v_matpel',$variabel,'back-end/datamaster/matpel/v_matpel_js');
+    }
+
+    function matpellihat()
+    {
+        $id_mata_pelajaran = $this->input->get("id_matpel");
+        $exec = $this->m_matpel->lihatdatasatu($id_mata_pelajaran);
+        if ($exec->num_rows()>0){
+            $variabel['data'] = $exec ->row_array();
+            $this->layout->render('back-end/datamaster/matpel/v_matpel_lihat',$variabel,'back-end/datamaster/matpel/v_matpel_js');
+        } else {
+            redirect(base_url("admin/datamaster/matpel"));
+        }
+    }
+    function matpeltambah()
+    {
+        if ($this->input->post()){
+                $array=array(
+                    'id_mata_pelajaran'=> NULL,
+                    'nama_mata_pelajaran'=> $this->input->post('nama_matpel'),
+                    'tingkat_mata_pelajaran'=> $this->input->post('tingkat_matpel'),
+                    'semester_mata_pelajaran'=> $this->input->post('semester_matpel'),
+                    'kelas_mata_pelajaran'=> $this->input->post('kelas_matpel')
+                    );
+
+                $exec = $this->m_matpel->tambahdata($array);
+                if ($exec) redirect(base_url("admin/datamaster/matpeltambah?msg=1"));
+                else redirect(base_url("admin/datamaster/matpeltambah?msg=0"));
+        } else {
+            $variabel ='';
+            $this->layout->render('back-end/datamaster/matpel/v_matpel_tambah',$variabel,'back-end/datamaster/matpel/v_matpel_js');
+        }
+    }
+
+    function matpeledit()
+    {
+        if ($this->input->post()) {
+            $kode = $this->input->post('id_matpel');
+            $array=array(
+                'nama_mata_pelajaran'=> $this->input->post('nama_matpel'),
+                'tingkat_mata_pelajaran'=> $this->input->post('tingkat_matpel'),
+                'semester_mata_pelajaran'=> $this->input->post('semester_matpel'),
+                'kelas_mata_pelajaran'=> $this->input->post('kelas_matpel')
+                );
+                $exec = $this->m_matpel->editdata($kode,$array);
+                if ($exec)
+                  redirect(base_url("admin/datamaster/matpeledit?id_matpel=".$kode."&msg=1"));
+                else
+                    redirect(base_url("admin/datamaster/matpeledit?id_matpel=".$kode."&msg=0"));
+        }
+        else{
+            $kode = $this->input->get("id_matpel");
+            $exec = $this->m_matpel->lihatdatasatu($kode);
+            if ($exec->num_rows()>0){
+                    $variabel['data'] = $exec ->row_array();
+                    $this->layout->render('back-end/datamaster/matpel/v_matpel_edit',$variabel,'back-end/datamaster/matpel/v_matpel_js');
+            }
+            else
+                redirect(base_url("admin/datamaster/matpel"));
+        }
+    }
+    function matpelhapus()
+    {
+       $kode = $this->input->get("id_matpel");
+       $exec = $this->m_matpel->hapus($kode);
+       redirect(base_url()."admin/datamaster/matpel?msg=1");
+    }
+//End CRUD Mata Pelajaran
+
 //CRUD KELAS
    function kelas(){
          $variabel['data'] = $this->m_kelas->lihatdata();
@@ -469,10 +544,8 @@ class Datamaster extends CI_Controller{
         if ($exec->num_rows()>0){
             $variabel['data'] = $exec ->row_array();
             $this->layout->render('back-end/datamaster/kelas/v_kelas_lihat',$variabel,'back-end/datamaster/kelas/v_kelas_js');
-        } else {
+        } else
             redirect(base_url("admin/datamaster/kelas"));
-        }
-
     }
     function kelastambah()
     {
@@ -495,7 +568,6 @@ class Datamaster extends CI_Controller{
 
     function kelasedit()
     {
-
         if ($this->input->post()) {
             $kode = $this->input->post('kd_kelas');
             $array=array(
@@ -505,21 +577,21 @@ class Datamaster extends CI_Controller{
                 );
 
                 $exec = $this->m_kelas->editdata($kode,$array);
-                if ($exec){
+                if ($exec)
                   redirect(base_url("admin/datamaster/kelasedit?kd_kelas=".$kode."&msg=1"));
-                }
                 else
                      redirect(base_url("admin/datamaster/kelasedit?kd_kelas=".$kode."&msg=0"));
-      }
-      else
-        $kode = $this->input->get("kd_kelas");
-        $exec = $this->m_kelas->lihatdatasatu($kode);
-        if ($exec->num_rows()>0){
-                $variabel['data'] = $exec ->row_array();
-                $this->layout->render('back-end/datamaster/kelas/v_kelas_edit',$variabel,'back-end/datamaster/kelas/v_kelas_js');
-            } else {
-                redirect(base_url("admin/datamaster/kelas"));
+        }
+        else{
+            $kode = $this->input->get("kd_kelas");
+            $exec = $this->m_kelas->lihatdatasatu($kode);
+            if ($exec->num_rows()>0){
+                    $variabel['data'] = $exec ->row_array();
+                    $this->layout->render('back-end/datamaster/kelas/v_kelas_edit',$variabel,'back-end/datamaster/kelas/v_kelas_js');
             }
+            else
+                redirect(base_url("admin/datamaster/kelas"));
+        }
     }
 
     function kelashapus()
@@ -1569,4 +1641,70 @@ function kecamatanhapus()
      $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_atur',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
    }
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////// pembayaran SPP ////////////////////////////////////////////////////
+  function databayarinfaq(){
+    if($this->input->post()){
+      $tahun = $this->input->post('tahun');
+      $bulan = $this->input->post('bulan');
+      $variabel['bulan'] = $bulan;
+      $variabel['tahun'] = $tahun;
+      $variabel['data'] = $this->m_infaq->lihatdata($tahun,$bulan);
+      $this->layout->render('back-end/infaq/v_data_infaq',$variabel,'back-end/infaq/v_infaq_js');}
+      else {
+        $tahun = date('Y');
+        $bulan = date('m');
+        $variabel['bulan'] = $bulan;
+        $variabel['tahun'] = $tahun;
+        $variabel['data'] = $this->m_infaq->lihatdata($tahun,$bulan);
+        $this->layout->render('back-end/infaq/v_data_infaq',$variabel,'back-end/infaq/v_infaq_js');
+      }
+    }
+
+  function detilinfaq(){
+    $nis = $this->input->get('nis');
+    $variabel['nama_santri'] = $this->m_infaq->lihatsantrisatu($nis);
+    $variabel['data'] = $this->m_infaq->detilinfaq($nis);
+    $this->layout->render('back-end/infaq/v_detil_infaq',$variabel,'back-end/infaq/v_infaq_js');
+  }
+
+  function bayarinfaq(){
+    if($this->input->post()){
+      $array = array(
+        'nis_santri' => $this->input->post('id_santri'),
+        'tanggal_bayar' => date('Y-m-d'),
+        'spp_bulan' => $this->input->post('bulan'),
+        'spp_tahun' => $this->input->post('tahun'),
+        'status_bayar' => 'lunas',
+        'petugas' => $this->session->userdata('nama_akun')
+      );
+      $exec = $this->m_infaq->tambahdata($array);
+      if($exec){
+        redirect(base_url("admin/datamaster/bayarinfaq?msg=1"));
+      } else{
+        redirect(base_url("admin/datamaster/bayarinfaq?msg=0"));
+      }
+    }else{
+      $variabel['daftarsantri'] = $this->m_infaq->datasantri();
+      $this->layout->render('back-end/infaq/v_bayar_infaq',$variabel,'back-end/infaq/v_infaq_js');
+    }
+
+  }
+
+  function hapusinfaq(){
+    $id_infaq = $this->input->get("id_infaq");
+    $exec = $this->m_infaq->hapus($id_infaq);
+    redirect(base_url()."admin/datamaster/databayarinfaq?msg=1");
+  }
+  function laporaninfaq(){
+    $tahun = $this->input->post('tahun_lap');
+    $bulan = $this->input->post('bulan_lap');
+    $variabel['bulan'] = $bulan;
+    $variabel['tahun'] = $tahun;
+    $variabel['santribayar'] = $this->m_infaq->santribayar($tahun,$bulan);
+    $variabel['data'] = $this->m_infaq->lihatdata($tahun,$bulan);
+    $this->layout->renderlaporan('back-end/infaq/v_lap_infaq',$variabel,'back-end/infaq/v_infaq_js');
+  }
+  //////////////////////////////////////////akhir pembayaran spp/////////////////////////////////////////
 }

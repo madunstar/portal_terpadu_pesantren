@@ -92,7 +92,7 @@
                       <?php echo $statussantri['status_biodata']?></button></div>
                   </div>
                 </div>
-              </div>
+
               <div class="col-md-3 col-sm-6">
                 <div class="panel b-a">
                   <div class="panel-heading no-border
@@ -116,7 +116,7 @@
                             <?php echo $statussantri['status_berkas']?></button></div>
                   </div>
                 </div>
-              </div>
+
               <div class="col-md-3 col-sm-6">
                 <div class="panel b-a">
                   <div class="panel-heading no-border
@@ -139,7 +139,7 @@
                             {echo "btn-success";} ?> font-bold disabled"><?php echo $statussantri['status_pembayaran']?></button></div>
                   </div>
                 </div>
-              </div>
+
               <div class="col-md-3 col-sm-6">
                 <div class="panel b-a">
                   <div class="panel-heading no-border <?php echo $datastatusbg;?> lt text-center">
@@ -152,7 +152,7 @@
                 </div>
               </div>
 
-            </div>
+            
 
           </div>
           <div class="col-sm-6">

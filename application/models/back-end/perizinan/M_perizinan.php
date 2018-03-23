@@ -64,4 +64,51 @@ class M_perizinan extends CI_Model
         $this->db->order_by("nama_lengkap","ASC");
         return $this->db->get('tb_staff');
     }
+
+    ///anis zone///
+
+    function datasantrikembali(){
+      $this->db->select('nama_lengkap, tanggal_kembali, status_denda ');
+      $this->db->from('tb_perizinan_kembali');
+      $this->db->join('tb_perizinan_keluar','tb_perizinan_keluar.id_keluar=tb_perizinan_kembali.id_keluar');
+      $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri=tb_santri.nis_lokal');
+      return $this->db->get();
+    }
+
+    function datasantrikeluar(){
+      $this->db->select('id_keluar, nis_santri, nama_lengkap');
+      $this->db->from('tb_perizinan_keluar');
+      $this->db->join('tb_santri', 'nis_santri =nis_lokal');
+      $this->db->where('status_keluar',"keluar");
+      return $this->db->get();
+    }
+
+    function datasantrikeluarsatu($nis_lokal){
+      $this->db->select('id_keluar, nis_santri, nama_lengkap, tanggal_keluar, keperluan, nama_penjemput ');
+      $this->db->from('tb_perizinan_keluar');
+      $this->db->join('tb_santri','tb_santri.nis_lokal='.$nis_lokal.'');
+      $this->db->join('tb_perizinan_penjemput','tb_perizinan_penjemput.id_penjemput = tb_perizinan_keluar.id_penjemput');
+      $this->db->where("tb_perizinan_keluar.nis_santri",$nis_lokal);
+      return $this->db->get();
+    }
+
+    function tambahdatakembali($array){
+      return $this->db->insert('tb_perizinan_kembali',$array);
+    }
+
+    function ambilidkembaliterakhir(){
+      return $query = $this->db->query('select id_kembali from tb_perizinan_kembali order by id_kembali DESC LIMIT 1');
+
+    }
+
+    function tambahdatadenda($array){
+      return $this->db->insert('tb_perizinan_denda',$array);
+    }
+
+    function updatedatakeluar($id_keluar){
+      $this->db->set("status_keluar","kembali");
+      $this->db->where("id_keluar",$id_keluar);
+      return $this->db->update('tb_perizinan_keluar');
+    }
+    ///end anis zone///
 }

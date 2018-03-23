@@ -20,7 +20,7 @@
                       <span class="font-bold">Dashboard</span>
                     </a>
                   </li>
-                  <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'guru') || ($submenu == 'staff')) ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'guru') || ($submenu == 'staff') || ($submenu == 'kelas') || ($submenu == 'matpel')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -60,14 +60,13 @@
                           <span>Data Kelas</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="layout-fluid.html" class="auto">
+                      <li class="<?= (($menu == "datamaster") &&  ($submenu == 'matpel')) ? "active" : ""; ?>">
+                      <a href="<?php echo base_url() ?>admin/datamaster/matpel" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Mata Pelajaran</span>
                         </a>
                       </li>
-
                     </ul>
                   </li>
                   <li >
@@ -85,7 +84,7 @@
                         <a href="buttons.html" class="auto">
                           <i class="i i-dot"></i>
 
-                          <span>Jadwal Pelajaran</span>
+                          <span>Atur Pelajaran</span>
                         </a>
                       </li>
                       <li >
@@ -138,16 +137,15 @@
                           <span>Data Denda</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="master.html" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Pembayaran Denda</span>
-                        </a>
-                      </li>
-
                     </ul>
                   </li>
+									<li  class="<?= (($menu == "datamaster") && ($submenu == 'databayarinfaq')|| ($submenu == 'bayarinfaq')) ? "active" : ""; ?>">
+										<a href="<?php echo base_url('admin/datamaster/databayarinfaq')?>" class="auto">
+											<i class="fa fa-money">
+											</i>
+											<span class="font-bold">Pembayaran Infaq (SPP)</span>
+										</a>
+									</li>
 									<li class="<?= (($menu == "datamaster") && ($submenu == 'provinsi')|| ($submenu == 'kota_kab') || ($submenu == 'kecamatan') || ($submenu == 'pendidikan') || ($submenu == 'pekerjaan') || ($submenu == 'alat_transportasi')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
