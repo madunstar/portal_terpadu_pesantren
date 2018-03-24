@@ -86,12 +86,94 @@ class Perizinan extends CI_Controller
       $variabel['data'] = $this->m_perizinan->lihatdata();
       $this->layout->renderizin('back-end/perizinan/data_keluar',$variabel,'back-end/perizinan/denda_js');
   }
+//Bagian Utak Atik By Ilyas
+  function datasantritampil()
+  {
+      $id=$this->input->post('id');
+      $data=$this->m_perizinan->tampildatasantri($id)->result();
+      echo json_encode($data);
+  }
+
+  function datapenjemputtampil()
+  {
+      $id=$this->input->post('id');
+      $data=$this->m_perizinan->tampildatapenjemput($id)->result();
+      //$dataresult = $data->result();
+      echo json_encode($data);
+  }
 
   function keluar()
   {
-      $variabel = '';
-      $this->layout->renderizin('back-end/perizinan/keluarpondok',$variabel);
+      $nip_admin = $this->session->userdata('nip_staff_admin');
+      date_default_timezone_set('Asia/Makassar');
+      //global $tanggal_keluar;
+      if ($this->input->post()){
+          $izinkeluar=array(
+              'nis_santri'=> $this->input->post('nis_santri'),
+              'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
+              'keperluan'=> $this->input->post('keperluan'),
+              'id_penjemput'=> $this->input->post('id_penjemput'),
+              'petugas'=> $nip_admin,
+          );
+          $penjemput=array(
+              'no_identitas'=> $this->input->post('no_identitas'),
+              'nama_penjemput'=> $this->input->post('nama_penjemput'),
+              'no_telp'=> $this->input->post('no_telp'),
+              'alamat_penjemput'=> $this->input->post('alamat_penjemput'),
+              'hubungan_penjemput'=> $this->input->post('hubungan_penjemput')
+          );
+          $nis = $this->input->post('nis_santri');
+          //if ($this->m_perizinan->cekdatasantri($nis)==0) {
+          // if($this->input->post('id_penjemput')==0){
+          //   $this->no_identitas->ReadOnly = TRUE;
+          // }
+          ////////////////////////////////////////////////////////////////
+          // if($this->input->post('button') == 'Lanjutkan') {
+          //     $exectampildata = $this->m_perizinan->tampildatasantri($nis);
+          //     $variabel['data_santri'] = $exectampildata->row_array();
+          //     $variabel['tanggal_keluar'] = date('Y-m-d H:i:s');
+          //     $tanggal_keluar = $variabel['tanggal_keluar'];
+          //     //$this->session->set_userdata('tanggal_keluar') = $tanggal_keluar;
+          //     $a = $this->session->userdata('tanggal_keluar');
+          //     $b = $this->session->userdata('nama_akun');
+          //     echo $tanggal_keluar;
+          //     echo $b;
+          //     echo $a;
+          //     echo "-+-+";
+          //     $variabel['no_identitas'] = $this->m_perizinan->ambildatapenjemput();
+          //     $this->layout->renderizin('back-end/perizinan/keluarpondok',$variabel,'back-end/perizinan/keluar_js');
+          //} 
+          if($this->input->post('button') == 'Proses Perizinan'){
+              //$exectambahizin = $this->m_perizinan->tambahizinkeluar($izinkeluar);
+              ////$execsuratizin = $this->m_perizinan->tampilsuratizin($nis);
+              //$exec2 = $this->m_perizinan->tambahdatapenjemput($penjemput);
+              echo "aa";
+              echo $tanggal_keluar;
+              echo "bb";
+              //$variabel['no_identitas'] = $this->m_perizinan->ambildatapenjemput();
+              ////$variabelsurat = $execsuratizin->row_array();
+              //$this->layout->renderizin('back-end/perizinan/keluarpondok',$variabel,'back-end/perizinan/keluar_js');
+              //$this->session->set_flashdata('tanggal_keluar', $variabel);
+              //redirect('admin/perizinan/suratizin');
+              //$this->layout->renderizin('back-end/perizinan/v_suratizin',$variabelsurat);
+          }
+
+      }
+      else{
+          $exec = $this->m_perizinan->tampildatasantri("");
+          $variabel['data_santri'] = $exec->row_array();
+          //$id_penjemput = $this->input->post('id_penjemput');
+          $no_identitas = $this->input->post('no_identitas');
+          $exec1 = $this->m_perizinan->tampildatapenjemput($no_identitas);
+          $variabel['data_penjemput'] = $exec1->row_array();
+          $variabel['tanggal_keluar'] = "";
+          $variabel['no_identitas']=$this->m_perizinan->ambildatapenjemput();
+          //echo json_encode($penjemput);
+          $this->layout->renderizin('back-end/perizinan/keluarpondok',$variabel,'back-end/perizinan/keluar_js');
+          //$this->abell = "2018-03-20 00:52:16";
+      }
   }
+//Sampai Sini Bagian Utak Atik By Ilyas
 
   function datakembali()
   {

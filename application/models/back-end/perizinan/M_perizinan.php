@@ -9,19 +9,84 @@ class M_perizinan extends CI_Model
 
     function lihatdata()
     {
-        $this->db->select('nama_lengkap, jenis_sekolah_asal, tanggal_keluar, nama_penjemput');
+        $this->db->select('nama_lengkap, jenis_sekolah_asal, DATE_FORMAT(tanggal_keluar, "%d-%m-%Y %H:%i:%s") AS tanggal_keluar, nama_penjemput');
         $this->db->from('tb_perizinan_keluar');
         $this->db->join('tb_santri', 'nis_santri = nis_lokal');
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
         return $this->db->get();
     }
 
-    function lihatdatasantri($nis)
+    function cekdatasantri($nis)
     {
-        $this->db->select('nama_lengkap, jenis_sekolah_asal, nama_lengkap_ayah, nama_lengkap_ibu');
-        $this->db->from('tb_akun_admin');
-        $this->db->where('nis_lokal',$nis);
+        $this->db->where("nis_lokal",$nis);
+        return $this->db->get('tb_santri')->num_rows();
+    }
+
+    function tampildatasantri($id)
+    {
+        $this->db->select('nis_lokal, nama_lengkap, jenis_sekolah_asal, nama_lengkap_ayah, nama_lengkap_ibu');
+        $this->db->from('tb_santri');
+        $this->db->where('nis_lokal',$id);
         return $this->db->get();
+        // return $query = $this->db->get();
+        // if ($query->num_rows() == 1){
+        //   return $query->result();
+        // } else{
+        //   return false;
+        // }
+    }
+
+    function tambahizinkeluar($izinkeluar)
+    {
+        return $this->db->insert('tb_perizinan_keluar',$izinkeluar);
+    }
+
+    function cekdatapenjemput($no_identitas)
+    {
+      $this->db->where('no_identitas',$no_identitas);
+      return $this->db->get('tb_perizinan_penjemput')->num_rows();
+
+    }
+
+    function tampildatapenjemput($no_identitas)
+    {
+        $this->db->select('no_identitas, nama_penjemput, no_telp, alamat_penjemput, hubungan_penjemput');
+        $this->db->from('tb_perizinan_penjemput');
+        $this->db->where('id_penjemput',$no_identitas);
+        return $this->db->get();
+    }
+
+    function tambahdatapenjemput($penjemput)
+    {
+        return $this->db->insert('tb_perizinan_penjemput',$penjemput);
+    }
+
+    function ambildatapenjemput(){
+        $this->db->order_by("nama_penjemput","ASC");
+        return $this->db->get('tb_perizinan_penjemput');
+    }
+
+    function ambilidsurat($tanggal_keluar)
+    {
+        $this->db->select('id_keluar');
+        $this->db->from('tb_perizinan_keluar');
+        $this->db->where('tanggal_keluar',$tanggal_keluar);
+        return $this->db->get();
+
+    }
+
+    function tampilsuratizin($tanggal_keluar)
+    {
+        $this->db->select('tb_santri.nama_lengkap AS nama_santri, tb_santri.jenis_sekolah_asal AS sekolah, tb_santri.hp AS hp, DATE_FORMAT(tb_perizinan_keluar.tanggal_keluar, "%d-%m-%Y %H:%i:%s") AS tanggal_keluar,
+                          tb_perizinan_keluar.keperluan AS keperluan, tb_perizinan_penjemput.nama_penjemput AS nama_penjemput, tb_perizinan_penjemput.hubungan_penjemput AS hubungan,
+                          DATE_FORMAT(tb_perizinan_keluar.tanggal_keluar, "%d-%m-%Y") AS tanggal_surat, tb_staff.nama_lengkap AS nama_petugas');
+        $this->db->from('tb_perizinan_keluar');
+        $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
+        $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+        $this->db->join('tb_staff', 'tb_perizinan_keluar.petugas = tb_staff.nip_staff');
+        $this->db->where('tb_perizinan_keluar.tanggal_keluar',$tanggal_keluar);
+        return $this->db->get();
+
     }
 ///Sampai Sini Dulu yang Digawi///
     function cekdata($nama_akun)

@@ -13,12 +13,12 @@
 
 </script>-->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
     function cek_database(){
         var id_penjemput = $("#id_penjemput").val();
         $.ajax({
-            url: "<?php echo base_url('admin/perizinan/keluar') ?>",
+            url: "</?php echo base_url('admin/perizinan/keluar') ?>",
             data:"id_penjemput="+id_penjemput ,
         }).success(function (data) {
 
@@ -38,4 +38,48 @@
 		// }
         });
     }
+</script>-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#Lanjutkan').click(function(){
+    //$('#tanggal_keluar').val(date('Y-m-d H:i:s'));
+    var id=$('#nis_santri').val();
+    $.ajax({
+      url : "<?php echo base_url();?>admin/perizinan/datasantritampil",
+      method : "POST",
+      data : {id: id},
+      async : false,
+      dataType : 'json',
+      success: function(data){
+        $('#nama_lengkap').val(data[0].nama_lengkap);
+        $('#kelas').val(data[0].jenis_sekolah_asal);
+        $('#nama_lengkap_ayah').val(data[0].nama_lengkap_ayah);
+        $('#nama_lengkap_ibu').val(data[0].nama_lengkap_ibu);
+      }
+    });
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#id_penjemput').change(function(){
+    var id=$(this).val();
+    $.ajax({
+      url : "<?php echo base_url();?>admin/perizinan/datapenjemputtampil",
+      method : "POST",
+      data : {id: id},
+      async : false,
+      dataType : 'json',
+      success: function(data){
+        $('#no_identitas').val(data[0].no_identitas);
+        $('#nama_penjemput').val(data[0].nama_penjemput);
+        $('#no_telp').val(data[0].no_telp);
+        $('#alamat_penjemput').val(data[0].alamat_penjemput);
+        $('#hubungan_penjemput').val(data[0].hubungan_penjemput);
+      }
+    });
+  });
+});
 </script>
