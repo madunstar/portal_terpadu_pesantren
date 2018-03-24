@@ -27,16 +27,6 @@ Class M_pelajaran extends CI_Model {
         return $this->db->get();
     }
 
-		// function lihatedit($kode)
-		// {
-		// 		$this->db->select('id_pelajaran, tb_guru.nip_guru, tb_mata_pelajaran.id_mata_pelajaran');
-		// 		$this->db->from('tb_pelajaran');
-		// 		$this->db->join('tb_guru', 'tb_pelajaran.nip_guru = tb_guru.nip_guru');
-		// 		$this->db->join('tb_mata_pelajaran', 'tb_pelajaran.id_mata_pelajaran = tb_mata_pelajaran.id_mata_pelajaran');
-		// 		$this->db->where("tb_pelajaran.id_pelajaran",$kode);
-		// 		return $this->db->get();
-		// }
-
     function tambahdata($array)
     {
         return $this->db->insert('tb_pelajaran',$array);
