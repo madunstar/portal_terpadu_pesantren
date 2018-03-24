@@ -148,11 +148,7 @@ class M_denda extends CI_Model
           ->row_array();
     }
 
-<<<<<<< HEAD
->>>>>>> menambah-ci
-=======
 
->>>>>>> 832e2a70927a36f14e6881e9c8465cf0d9a44064
 }
 
 ?>
