@@ -67,13 +67,6 @@
                           <span>Data Mata Pelajaran</span>
                         </a>
                       </li>
-											<li class="<?= (($menu == "datamaster") &&  ($submenu == 'pelajaran')) ? "active" : ""; ?>">
-                      <a href="<?php echo base_url() ?>admin/datamaster/pelajaran" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Pelajaran</span>
-                        </a>
-                      </li>
                     </ul>
                   </li>
                   <li >
@@ -87,8 +80,8 @@
                       <span class="font-bold">Presensi</span>
                     </a>
                     <ul class="nav dk">
-                      <li >
-                        <a href="buttons.html" class="auto">
+											<li>
+                      <a href="<?php echo base_url() ?>admin/datamaster/pelajaran" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Atur Pelajaran</span>
