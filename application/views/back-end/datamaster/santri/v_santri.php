@@ -21,7 +21,7 @@
               <th>NIS</th>
               <th>NISN</th>
               <th>Gender</th>
-              <th width="90px">Berkas</th>
+              <th>Ekstra</th>
             </tr>
           </thead>
           <tbody>
@@ -38,7 +38,11 @@
                       <td>".$row['nis_lokal']."</td>
                       <td>".$row['nisn']."</td>
                       <td>".($row['jenis_kelamin']=="L"?"Laki-laki":"Perempuan")."</td>
-                      <td><a href='".base_url('admin/datamaster/santriberkas?nis='.$row['nis_lokal'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-file-text-o'></i> Berkas</a></td>
+                      <td>
+                        <a href='".base_url('admin/datamaster/santriberkas?nis='.$row['nis_lokal'].'')."' class='btn btn-success btn-xs' title='Berkas'><i class='fa fa-file-text-o'></i></a>
+                        <a href='".base_url('admin/datamaster/prestasi')."' class='btn btn-primary btn-xs' title='Prestasi'><i class='fa fa-trophy'></i></a>
+                        <a href='".base_url('admin/datamaster/pelanggaran')."' class='btn btn-danger btn-xs' title='Pelanggaran'><i class='fa fa-ban'></i></a>
+                      </td>
                     </tr>
                   ";
                 }
