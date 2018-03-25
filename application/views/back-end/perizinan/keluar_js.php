@@ -43,7 +43,14 @@
 <script type="text/javascript">
 $(document).ready(function(){
   $('#Lanjutkan').click(function(){
-    //$('#tanggal_keluar').val(date('Y-m-d H:i:s'));
+    var tgl = new Date();
+    var tahun = tgl.getFullYear();
+    var bulan = tgl.getMonth()+1;
+    var tanggal = tgl.getDate();
+    var jam = tgl.getHours();
+    var menit = tgl.getMinutes();
+    var detik = tgl.getSeconds();
+    $('#tanggal_keluar').val(tahun+'-'+bulan+'-'+tanggal+' '+jam+':'+menit+':'+detik);
     var id=$('#nis_santri').val();
     $.ajax({
       url : "<?php echo base_url();?>admin/perizinan/datasantritampil",
@@ -59,11 +66,7 @@ $(document).ready(function(){
       }
     });
   });
-});
-</script>
 
-<script type="text/javascript">
-$(document).ready(function(){
   $('#id_penjemput').change(function(){
     var id=$(this).val();
     $.ajax({

@@ -18,7 +18,7 @@
               <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/perizinan/keluar')?>" method="post">
                 <div class="form-group">
                       <div class="col-sm-10">
-                        <input type="text"  class="form-control" name="nis_santri" id="nis_santri" placeholder="Nomor Induk Santri"  data-required="true" value="<?php echo $data_santri['nis_lokal']; ?>">
+                        <input type="text"  class="form-control" name="nis_santri" id="nis_santri" placeholder="Nomor Induk Santri"  data-required="true">
                       </div>
                       <div class="col-sm-2">
 
@@ -29,33 +29,33 @@
                 <div class="form-group">
                     <label class="col-sm-1 control-label">Nama</label>
                       <div class="col-sm-5">
-                        <input type="text"  class="form-control" name="nama_lengkap" id="nama_lengkap" placeholder="Nama" value="<?php echo $data_santri['nama_lengkap']; ?>" readonly/>
+                        <input type="text"  class="form-control" name="nama_lengkap" id="nama_lengkap" placeholder="Nama" readonly/>
                       </div>
                       <label class="col-sm-1 control-label">Kelas</label>
                       <div class="col-sm-5">
-                        <input type="text"  class="form-control" name="kelas" id="kelas" placeholder="Kelas" value="<?php echo $data_santri['jenis_sekolah_asal']; ?>" readonly/>
+                        <input type="text"  class="form-control" name="kelas" id="kelas" placeholder="Kelas" readonly/>
                       </div>
                 </div>
                 <div class="form-group">
                       <label class="col-sm-1 control-label">Nama Ayah</label>
                       <div class="col-sm-5">
-                        <input type="text"  class="form-control" name="nama_lengkap_ayah" id="nama_lengkap_ayah" placeholder="Nama Ayah" value="<?php echo $data_santri['nama_lengkap_ayah']; ?>" readonly/>
+                        <input type="text"  class="form-control" name="nama_lengkap_ayah" id="nama_lengkap_ayah" placeholder="Nama Ayah" readonly/>
                       </div>
                       <label class="col-sm-1 control-label">Nama Ibu</label>
                       <div class="col-sm-5">
-                        <input type="text"  class="form-control" name="nama_lengkap_ibu" id="nama_lengkap_ibu" placeholder="Nama Ibu" value="<?php echo $data_santri['nama_lengkap_ibu']; ?>" readonly/>
+                        <input type="text"  class="form-control" name="nama_lengkap_ibu" id="nama_lengkap_ibu" placeholder="Nama Ibu" readonly/>
                       </div>
                 </div>
                 <div class="form-group">
                       <label class="col-sm-1 control-label">Tanggal keluar</label>
                       <div class="col-sm-10">
-                        <input class="input-sm input-s form-control" name="tanggal_keluar" id="tanggal_keluar" type="text" value="<?php echo $tanggal_keluar; ?>" readonly/>
+                        <input type="text" class="input-sm input-s form-control" name="tanggal_keluar" id="tanggal_keluar" placeholder="Tanggal Keluar" readonly/>
                       </div>
                 </div>
                 <div class="form-group">
                       <label class="col-sm-1 control-label" for="input-id-1">Keperluan</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="keperluan" id="input-id-1">
+                        <input type="text" class="form-control" name="keperluan" id="input-id-1" data-required="true">
                       </div>
                 </div>
                   <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -66,8 +66,9 @@
                                 <div class="col-sm-10">
                                   <select name="id_penjemput" id="id_penjemput" class="form-control m-b">
                                     <option value="" disabled <?php if (set_value('id_penjemput')=="") echo "selected" ?>>Pilih Penjemput</option>
+                                    <option value="Baru">Memasukkan Data Penjemput Baru</option>
                                     <?php
-                                      foreach($no_identitas->result_array() as $row) {
+                                      foreach($id_penjemput->result_array() as $row) {
                                         echo "<option value='".$row['id_penjemput']."' ".(set_value('id_penjemput')==$row['id_penjemput']?"selected":"").">".$row['no_identitas'].' - '.$row['nama_penjemput']."</option>";
                                       }
                                     ?>
