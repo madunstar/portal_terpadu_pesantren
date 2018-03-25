@@ -1644,7 +1644,7 @@ function kecamatanhapus()
    //CRUD Pelajaran
       function pelajaran(){
            $variabel['data'] = $this->m_pelajaran->lihatdata();
-           $this->layout->render('back-end/datamaster/pelajaran/v_pelajaran',$variabel,'back-end/datamaster/pelajaran/v_pelajaran_js');
+           $this->layout->render('back-end/presensi/presensi_pelajaran/v_pelajaran',$variabel,'back-end/presensi/presensi_pelajaran/v_pelajaran_js');
       }
 
        function pelajaranlihat()
@@ -1653,7 +1653,7 @@ function kecamatanhapus()
            $exec = $this->m_pelajaran->lihatdatasatu($id_pelajaran);
            if ($exec->num_rows()>0){
                $variabel['data'] = $exec ->row_array();
-               $this->layout->render('back-end/datamaster/pelajaran/v_pelajaran_lihat',$variabel,'back-end/datamaster/pelajaran/v_pelajaran_js');
+               $this->layout->render('back-end/presensi/presensi_pelajaran/v_pelajaran_lihat',$variabel,'back-end/presensi/presensi_pelajaran/v_pelajaran_js');
            } else
                redirect(base_url("admin/datamaster/pelajaran"));
        }
@@ -1673,7 +1673,7 @@ function kecamatanhapus()
                //$variabel ='';
                $variabel['nip_guru']=$this->m_pelajaran->ambilguru();
                $variabel['id_mata_pelajaran']=$this->m_pelajaran->ambilmatpel();
-               $this->layout->render('back-end/datamaster/pelajaran/v_pelajaran_tambah',$variabel,'back-end/datamaster/pelajaran/v_pelajaran_js');
+               $this->layout->render('back-end/presensi/presensi_pelajaran/v_pelajaran_tambah',$variabel,'back-end/presensi/presensi_pelajaran/v_pelajaran_js');
            }
        }
 
@@ -1699,7 +1699,7 @@ function kecamatanhapus()
                $variabel['id_mata_pelajaran']=$this->m_pelajaran->ambilmatpel();
                if ($exec->num_rows()>0){
                        $variabel['data'] = $exec ->row_array();
-                       $this->layout->render('back-end/datamaster/pelajaran/v_pelajaran_edit',$variabel,'back-end/datamaster/pelajaran/v_pelajaran_js');
+                       $this->layout->render('back-end/presensi/presensi_pelajaran/v_pelajaran_edit',$variabel,'back-end/presensi/presensi_pelajaran/v_pelajaran_js');
                }
                else
                    redirect(base_url("admin/datamaster/pelajaran"));
