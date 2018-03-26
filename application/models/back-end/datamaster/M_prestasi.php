@@ -21,5 +21,9 @@ class M_prestasi extends CI_Model
 
       return $this->db->get();
     }
-    
+
+    function tambahdata($array)
+    {
+        return $this->db->insert('tb_prestasi',$array);
+    }
 }

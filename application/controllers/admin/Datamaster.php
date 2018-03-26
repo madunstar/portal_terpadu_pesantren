@@ -1783,6 +1783,7 @@ function kecamatanhapus()
   //////////////////////////////////////////akhir pembayaran spp/////////////////////////////////////////
 
   ////////////////////////////////////////////////prestasi dan pelanggaran/////////////////////////////////////
+  /////////////////prestasi///////////////////
   function prestasisantri(){
     $nis = $this->input->get('nis');
     $exec = $this->m_santri->lihatdatasatu($nis);
@@ -1795,6 +1796,33 @@ function kecamatanhapus()
     }
   }
 
+  function tambahprestasi(){
+    if($this->input->post()){
+      $nis = $this->input->post('nis_santri');
+      $array = array(
+        'nis_santri' => $this->input->post('nis_santri'),
+        'tanggal_prestasi' =>  $this->input->post('tanggal_prestasi'),
+        'jenis_prestasi' => $this->input->post('jenis_prestasi'),
+        'prestasi' => $this->input->post('nama_prestasi'),
+
+        'keterangan' => $this->input->post('keterangan')
+      );
+      $exec = $this->m_prestasi->tambahdata($array);
+      if($exec){
+        redirect(base_url("admin/datamaster/tambahprestasi?nis=$nis&msg=1"));
+      } else{
+        redirect(base_url("admin/datamaster/tambahprestasi?nis=$nis&msg=0"));
+      }
+    } else {
+        $nis = $this->input->get('nis');
+        $exec = $this->m_santri->lihatdatasatu($nis);
+        $variabel['santri'] = $exec->row_array();
+        $variabel['nis_santri'] = $nis;
+        $this->layout->render('back-end/prestasi_pelanggaran/v_prestasi_tambah',$variabel,'back-end/prestasi_pelanggaran/prestasi_pelanggaran_js');
+    }
+  }
+
+//////////////////pelanggaran////////////////////////
   function pelanggaran(){
     $variabel ='';
     $this->layout->render('back-end/prestasi_pelanggaran/v_data_pelanggaran',$variabel,'back-end/prestasi_pelanggaran/prestasi_pelanggaran_js');
