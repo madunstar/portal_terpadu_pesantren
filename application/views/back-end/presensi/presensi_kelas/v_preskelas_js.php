@@ -12,7 +12,7 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/datamaster/adminhapus?nama_akun="+v_id);
+                    window.location.assign("<?php echo base_url() ?>admin/datamaster/hapuskelasbelajar?id="+v_id);
                 }
             },
             batal: function () {

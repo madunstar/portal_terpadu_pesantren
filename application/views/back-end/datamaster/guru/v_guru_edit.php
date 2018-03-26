@@ -21,11 +21,11 @@
 									<div class="col-lg-8">
 										<input type="text" class="form-control" name="nip_guru" data-required="true" value="<?php echo $data['nip_guru']; ?>" />
 										<input type="hidden" class="form-control" name="nip_guru2" data-required="true" value="<?php
-                if (isset($nip_guru2)) echo $nip_guru2; else echo $data['nip_guru']; ?>" />
+             					   if (isset($nip_guru2)) echo $nip_guru2; else echo $data['nip_guru']; ?>" />
 										<?php if(isset($nip_guru)) {
-                         echo '<label style="color:red;font-size:10px">NIP ada yang sama ! NIP asal "'.$nip_guru2.'"</label>';
-                       } 
-                ?>
+													echo '<label style="color:red;font-size:10px">NIP ada yang sama ! NIP asal "'.$nip_guru2.'"</label>';
+												} 
+											?>
 									</div>
 								</div>
 								<div class="form-group">

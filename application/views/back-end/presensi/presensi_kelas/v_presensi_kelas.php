@@ -14,52 +14,46 @@
               <h4 class="font-bold">Data Presensi Kelas</h4>
             </header>
             <div class="panel-body">
-              <a href="<?php echo base_url() ?>admin/perizinan/kembali"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Atur Kelas Baru</button></a>
               <div class="table-responsive">
+              <?php pesan_get('msg',"Berhasil Menghapus Data Kelas Belajar","Gagal Menghapus Data Kelas Belajar") ?>
+              <a href="<?php echo base_url() ?>admin/datamaster/aturkelasbelajar"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Atur Kelas Baru</button></a>
                 <table class="table table-striped m-b-none" id="datatable">
                   <thead>
                     <tr>
-                      <th >Nama Kelas</th>
-                      <th >Tahun Ajaran</th>
-                      <th >Wali Kelas</th>
-                      <th>Status Kelas</th>
                       <th>Aksi</th>
+                      <th>#</th>
+                      <th>Tahun Ajaran</th>
+                      <th>Nama Kelas</th>
+                      <th>Ruang Kelas</th>
+                      <th>Wali Kelas</th>
+                      <th>Status Kelas</th>
+                      <th>Santri</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>aktif</td>
-                      <td>
-                        <button type="button" class="btn btn-xs btn-warning" name="button" title="atur kelas"><i class="fa fa-edit"></i></button>
-                        <button type="button" class="btn btn-xs btn-primary" name="button" title="lihat kelas"><i class="fa fa-search"></i></button>
-                        <button type="button" class="btn btn-xs btn-danger" name="button" title="hapus kelas"><i class="fa fa-trash-o"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>tidak aktif</td>
-                      <td>
-                        <button type="button" class="btn btn-xs btn-warning" name="button" title="atur kelas"><i class="fa fa-edit"></i></button>
-                        <button type="button" class="btn btn-xs btn-primary" name="button" title="lihat kelas"><i class="fa fa-search"></i></button>
-                        <button type="button" class="btn btn-xs btn-danger" name="button" title="hapus kelas"><i class="fa fa-trash-o"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                      <td>
-                        <button type="button" class="btn btn-xs btn-warning" name="button" title="atur kelas"><i class="fa fa-edit"></i></button>
-                        <button type="button" class="btn btn-xs btn-primary" name="button" title="lihat kelas"><i class="fa fa-search"></i></button>
-                        <button type="button" class="btn btn-xs btn-danger" name="button" title="hapus kelas"><i class="fa fa-trash-o"></i></button>
-                      </td>
-                    </tr>
+                  <?php
+                    $i=0;
+                    foreach($data->result_array() as $row){
+                      $i++;
+                      echo "
+                        <tr>
+                         
+                          <td>
+                          <a href='".base_url('admin/datamaster/lihatkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
+                          <a href='".base_url('admin/datamaster/editkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                          <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
+                          </td>
+                          <td>".$i."</td>
+                          <td>".$row['tahun_ajaran']."</td>
+                          <td>".$row['nama_kelas_belajar']."</td>
+                          <td>".$row['nama_kelas']."</td>
+                          <td>".$row['nama_lengkap']."</td>
+                          <td><a href='".base_url('admin/datamaster/lihatkelasbelajarsantri?nip='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-check'></i> ".$row['status_kelas']."</a></td>
+                          <td><a href='".base_url('admin/datamaster/lihatkelasbelajarsantri?nip='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-list'></i> Santri</a></td>
+                        </tr>
+                      ";
+                    }
+                ?>
                   </tbody>
                 </table>
               </div>

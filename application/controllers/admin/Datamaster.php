@@ -23,6 +23,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_kelas');
         $this->load->model('back-end/datamaster/m_matpel');
         $this->load->model('back-end/datamaster/m_infaq');
+        $this->load->model('back-end/datamaster/m_presensi');
         $this->load->library('layout');
         $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
@@ -1632,14 +1633,67 @@ function kecamatanhapus()
 ///////////////////////////////////////////memulai presensi////////////////////////////////////////////////
    function datakelasbelajar()
    {
-     $variabel='';
+      $variabel['data']=$this->m_presensi->lihatdata();
       $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_kelas',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
    }
 
    function aturkelasbelajar(){
-     $variabel='';
-     $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_atur',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
+        if ($this->input->post()){
+            $array=array(
+                'nip_guru'=> $this->input->post('nip_guru'),
+                'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+                'kd_kelas'=> $this->input->post('kd_kelas'),
+                'status_kelas'=>$this->input->post('status_kelas'),
+                'id_tahun'=>$this->input->post('id_tahun')
+                );
+            $exec = $this->m_presensi->tambahdata($array);
+            if ($exec) redirect(base_url("admin/datamaster/aturkelasbelajar?msg=1"));
+            else redirect(base_url("admin/datamaster/aturkelasbelajar?msg=0"));
+        } else {
+            $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+            $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+            $variabel['guru']=$this->m_guru->lihatdata();
+            $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_atur',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
+        }
    }
+
+   function hapuskelasbelajar()
+    {
+       $id = $this->input->get("id");
+       $exec = $this->m_presensi->hapus($id);
+       redirect(base_url()."admin/datamaster/datakelasbelajar?msg=1");
+    }
+
+    function editkelasbelajar()
+    {
+        if ($this->input->post()) {
+            $array=array(
+                'nip_guru'=> $this->input->post('nip_guru'),
+                'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+                'kd_kelas'=> $this->input->post('kd_kelas'),
+                'status_kelas'=>$this->input->post('status_kelas'),
+                'id_tahun'=>$this->input->post('id_tahun')
+                );
+            $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+            $exec = $this->m_presensi->editdata($id_kelas_belajar,$array);
+            if ($exec){
+                redirect(base_url("admin/datamaster/editkelasbelajar?id=".$id_kelas_belajar."&msg=1"));
+            }
+      } else {
+            $id_kelas_belajar = $this->input->get("id");
+            $exec = $this->m_presensi->lihatdatasatu($id_kelas_belajar);
+            if ($exec->num_rows()>0){
+                $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+                $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+                $variabel['guru']=$this->m_guru->lihatdata();
+                $variabel['data'] = $exec->row_array();
+                $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_edit',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
+            } else {
+                redirect(base_url("admin/datamaster/datakelasbelajar"));
+            }
+      }
+
+    }
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
 
 

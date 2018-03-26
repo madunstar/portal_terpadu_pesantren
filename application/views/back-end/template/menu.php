@@ -69,7 +69,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li >
+                  <li  class="<?= (($menu == "datamaster") && ($submenu == 'datakelasbelajar') || ($submenu == 'aturkelasbelajar')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -87,7 +87,7 @@
                           <span>Atur Pelajaran</span>
                         </a>
                       </li>
-                      <li >
+                      <li  class="<?= (($menu == "datamaster") &&  ($submenu == 'datakelasbelajar')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/datakelasbelajar" class="auto">
 
                           <i class="i i-dot"></i>
