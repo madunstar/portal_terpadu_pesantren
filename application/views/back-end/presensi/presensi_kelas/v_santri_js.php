@@ -1,0 +1,79 @@
+<script>
+
+   $('#datatable').DataTable({});
+
+   $(".hapus").click(function (e) {
+    var v_id = this.id;
+    var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
+    $.confirm({
+        title: 'Hapus!',
+        content: 'Yakin ingin menghapus ?',
+        buttons: {
+            hapus: {
+                text: 'Hapus',
+                btnClass: 'btn-green',
+                action: function(){
+                    window.location.assign("<?php echo base_url() ?>admin/datamaster/hapuskelassantri?id="+v_id+"&idkelas="+v_idkelasbelajar);
+                }
+            },
+            batal: function () {
+
+            }
+        }
+        });
+    });
+
+    // Form Tambah Stock
+    $("#tambahsantri").click(function(e) {
+        var v_url = "<?php echo base_url() ?>admin/datamaster/kelastambahsantri";
+        var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
+        $.ajax({
+				type: 'POST',
+				url: v_url,
+				data: {id_kelas_belajar : v_idkelasbelajar},
+				beforeSend: function () {
+					$("#loading").show();
+				},
+				success: function (response) {
+					$("#loading").hide();
+					$('#modal-tambah').html(response)
+				},
+                complete: function () {
+                    $('#tambahsantriproses').click(function (e) {
+                        var v_url = "<?php echo base_url() ?>admin/datamaster/tambahsantriproses";
+                        var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
+                        var v_nis = $('#nis_lokal').val();
+                        $.ajax({
+                            type: 'POST',
+                            url: v_url,
+                            data: {
+                                idkelasbelajar: v_idkelasbelajar,
+                                nis: v_nis
+                            },
+                            beforeSend: function () {
+                                $("#loading").show();
+                            },
+                            error: function (xhr, status, error) {
+                                $("#loading").hide();
+                                //pesanpop('Pesan !', 'Gagal menambah data gudang.', 'error')
+                            },
+                            success: function (response) {
+                                $("#loading").hide();   
+                                $("#myModal").removeClass("in");
+                                $(".modal-backdrop").remove();
+                                $('body').removeClass('modal-open');
+                                $('body').css('padding-right', '');
+                                $("#myModal").hide();
+                                window.location.assign("<?php echo base_url() ?>admin/datamaster/lihatkelasbelajarsantri?id=<?php echo $santri['id_kelas_belajar'] ?>&msg=1")
+                                //isidata();
+                                //pesanpop('Pesan !', 'Berhasil menambah data Gudang.', 'success')
+                            }
+                        });
+
+					});
+                }
+            });
+       
+    });
+
+</script>

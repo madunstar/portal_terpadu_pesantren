@@ -21,6 +21,16 @@ class M_presensi extends CI_Model
         return $this->db->get();
     }
 
+    function lihatdatasatulengkap($id_kelas_belajar)
+    {
+        $this->db->from("tb_presensi_kelas");
+        $this->db->join("tb_guru","tb_guru.nip_guru=tb_presensi_kelas.nip_guru");
+        $this->db->join("tb_kelas","tb_kelas.kd_kelas=tb_presensi_kelas.kd_kelas");
+        $this->db->join("tb_tahun_ajaran","tb_tahun_ajaran.id_tahun=tb_presensi_kelas.id_tahun");
+        $this->db->where("tb_presensi_kelas.id_kelas_belajar",$id_kelas_belajar);
+        return $this->db->get();
+    }
+
     function lihatdatasatu($id_kelas_belajar)
     {
         $this->db->where("id_kelas_belajar",$id_kelas_belajar);
@@ -50,20 +60,27 @@ class M_presensi extends CI_Model
     }
    /////////////////////////////////////////
 
-   function lihatdataberkas($nip)
+   function lihatdatasantri($id_kelas_belajar)
    {
-        $this->db->where("nip_guru",$nip);
-        return $this->db->get('tb_berkas_guru');
+        $this->db->from("tb_kelas_santri");
+        $this->db->join("tb_santri","tb_santri.nis_lokal=tb_kelas_santri.nis_lokal");
+        $this->db->where("tb_kelas_santri.id_kelas_belajar",$id_kelas_belajar);
+        return $this->db->get();
    }
 
-   function tambahdataberkas($array)
+   function lissantri($id_kelas_belajar)
    {
-       return $this->db->insert('tb_berkas_guru',$array);
+        return $this->db->query("SELECT * FROM tb_santri WHERE NOT EXISTS (SELECT * FROM tb_kelas_santri WHERE tb_santri.nis_lokal=tb_kelas_santri.nis_lokal and tb_kelas_santri.id_kelas_belajar='$id_kelas_belajar')");
+   }
+
+   function tambahdatasantri($array)
+   {
+       return $this->db->insert('tb_kelas_santri',$array);
    }
 
    function lihatdatasatuberkas($id_berkas)
    {
-       $this->db->where("id_berkas",$id_berkas);
+       $this->db->where("id_kelas_santri",$id_berkas);
        return $this->db->get('tb_berkas_guru');
    }
 
@@ -78,10 +95,10 @@ class M_presensi extends CI_Model
         $this->db->where("id_berkas",$id_berkas);
         return $this->db->update('tb_berkas_guru',$array);
     }
-    function hapusberkas($id_berkas)
+    function hapussantri($id_kelas_santri)
     {
-        $this->db->where("id_berkas",$id_berkas);
-        return $this->db->delete('tb_berkas_guru');
+        $this->db->where("id_kelas_santri",$id_kelas_santri);
+        return $this->db->delete('tb_kelas_santri');
     }
 
 }

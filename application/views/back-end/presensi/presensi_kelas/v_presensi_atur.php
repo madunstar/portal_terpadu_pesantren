@@ -54,7 +54,7 @@
 									<label class="col-sm-3 control-label">Status Kelas</label>
 									<div class="col-sm-6">
 										<select name="status_kelas" id="status_kelas" class="form-control  m-b  chosen-select"  data-required="true">
-                      <option value="" selected disabled>.: Pilih Status Kelas :.</option>
+                     					 <option value="" selected disabled>.: Pilih Status Kelas :.</option>
 											<option value="Aktif">Aktif</option>
 											<option value="Tidak Aktif">Tidak Aktif</option>
 										</select>
@@ -73,10 +73,6 @@
 										</select>
 									</div>
 								</div>
-
-
-
-
 						</div>
 						<footer class="panel-footer text-right bg-light lter">
 							<button type="submit" class="btn btn-success btn-s-xs">

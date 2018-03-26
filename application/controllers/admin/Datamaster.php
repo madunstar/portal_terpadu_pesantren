@@ -828,6 +828,8 @@ class Datamaster extends CI_Controller{
 
     }
 
+
+
     // End CRUD Guru
 
     // CRUD Staff
@@ -1693,7 +1695,51 @@ function kecamatanhapus()
             }
       }
 
+      
     }
+    
+    function hapuskelassantri()
+    {
+       $id = $this->input->get("id");
+       $idkelas = $this->input->get("idkelas");
+       $exec = $this->m_presensi->hapussantri($id);
+       redirect(base_url()."admin/datamaster/lihatkelasbelajarsantri?id=".$idkelas."&h=1");
+    }
+
+    function lihatkelasbelajarsantri()
+    {
+        $id = $this->input->get("id");
+        $exec = $this->m_presensi->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0){
+            $variabel['santri'] = $exec->row_array();
+            $variabel['data'] = $this->m_presensi->lihatdatasantri($id);
+            $this->layout->render('back-end/presensi/presensi_kelas/v_santri',$variabel,'back-end/presensi/presensi_kelas/v_santri_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelasbelajar"));
+        }
+
+    }
+
+    function kelastambahsantri()
+    {
+        $idkelasbelajar = $this->input->post("id_kelas_belajar");
+        $variabel['lissantri'] = $this->m_presensi->lissantri($idkelasbelajar);
+        $this->load->view("back-end/presensi/presensi_kelas/v_santri_tambah",$variabel);
+
+    }
+    function tambahsantriproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $nis = $this->input->post("nis");
+        $array = array (
+            "id_kelas_belajar"=>$idkelasbelajar,
+            "nis_lokal"=>$nis
+        );
+        $exec = $this->m_presensi->tambahdatasantri($array);
+       
+    }
+
+
    //CRUD Pelajaran
       function pelajaran(){
            $variabel['data'] = $this->m_pelajaran->lihatdata();

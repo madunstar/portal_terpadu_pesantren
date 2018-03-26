@@ -39,7 +39,6 @@
                         <tr>
                          
                           <td>
-                          <a href='".base_url('admin/datamaster/lihatkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
                           <a href='".base_url('admin/datamaster/editkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
                           <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
                           </td>
@@ -48,8 +47,8 @@
                           <td>".$row['nama_kelas_belajar']."</td>
                           <td>".$row['nama_kelas']."</td>
                           <td>".$row['nama_lengkap']."</td>
-                          <td><a href='".base_url('admin/datamaster/lihatkelasbelajarsantri?nip='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-check'></i> ".$row['status_kelas']."</a></td>
-                          <td><a href='".base_url('admin/datamaster/lihatkelasbelajarsantri?nip='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-list'></i> Santri</a></td>
+                          <td><a href='".base_url('admin/datamaster/lihatkelasbelajarsantri?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-check'></i> ".$row['status_kelas']."</a></td>
+                          <td><a href='".base_url('admin/datamaster/lihatkelasbelajarsantri?id='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-list'></i> Santri</a></td>
                         </tr>
                       ";
                     }
