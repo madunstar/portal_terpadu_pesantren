@@ -42,9 +42,9 @@
           </div>
           <div class="col-xs-7">
             <p>
-              :  <br><br>
-              :  <br><br>
-              :  <br><br>
+              :  <?php echo $datasurat['nama_santri'];?><br><br>
+              :  <?php echo $datasurat['sekolah'];?><br><br>
+              :  <?php echo $datasurat['hp'];?><br><br>
             </p>
           </div>
           <div class="col-xs-12">
@@ -60,10 +60,10 @@
           </div>
           <div class="col-xs-7">
             <p>
-              :  <br><br>
-              :  <br><br>
-              :  <br><br>
-              :  <br><br>
+              :  <?php echo $datasurat['tanggal_keluar'];?><br><br>
+              :  <?php echo $datasurat['keperluan'];?><br><br>
+              :  <?php echo $datasurat['nama_penjemput'];?><br><br>
+              :  <?php echo $datasurat['hubungan'];?><br><br>
             </p>
           </div>
         </div>
@@ -80,16 +80,16 @@
         <br>
         <br>
         <br>
-        nama<br><br>
+        <?php echo $datasurat['nama_santri'];?><br><br>
       </div>
       <div class="col-xs-5">
-        Tanggal <br>
+        Banjarbaru, <?php echo $datasurat['tanggal_surat'];?><br>
         Petugas <br><br>
         <br>
         <br>
         <br>
         <br>
-        nama<br><br>
+        <?php echo $datasurat['nama_petugas'];?><br><br>
       </div>
 
 
