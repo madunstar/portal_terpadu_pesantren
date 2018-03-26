@@ -40,8 +40,8 @@
                       <td>".($row['jenis_kelamin']=="L"?"Laki-laki":"Perempuan")."</td>
                       <td>
                         <a href='".base_url('admin/datamaster/santriberkas?nis='.$row['nis_lokal'].'')."' class='btn btn-success btn-xs' title='Berkas'><i class='fa fa-file-text-o'></i></a>
-                        <a href='".base_url('admin/datamaster/prestasi')."' class='btn btn-primary btn-xs' title='Prestasi'><i class='fa fa-trophy'></i></a>
-                        <a href='".base_url('admin/datamaster/pelanggaran')."' class='btn btn-danger btn-xs' title='Pelanggaran'><i class='fa fa-ban'></i></a>
+                        <a href='".base_url('admin/datamaster/prestasisantri?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Prestasi'><i class='fa fa-trophy'></i></a>
+                        <a href='".base_url('admin/datamaster/pelanggaran?nis='.$row['nis_lokal'].'')."' class='btn btn-danger btn-xs' title='Pelanggaran'><i class='fa fa-ban'></i></a>
                       </td>
                     </tr>
                   ";
