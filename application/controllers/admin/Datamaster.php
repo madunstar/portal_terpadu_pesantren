@@ -1738,7 +1738,44 @@ function kecamatanhapus()
         $exec = $this->m_presensi->tambahdatasantri($array);
        
     }
+    function kelaseditsantri()
+    {
+        $idkelasbelajar = $this->input->post("id_kelas_belajar");
+        $variabel['lissantri'] = $this->m_presensi->lissantri($idkelasbelajar);
+        $id_kelas_santri = $this->input->post("id");
+        $variabel['data'] = $this->m_presensi->lihatdatasatusantri($id_kelas_santri)->row_array();
+        $this->load->view("back-end/presensi/presensi_kelas/v_santri_edit",$variabel);
 
+    }
+
+    function editsantriproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $nis = $this->input->post("nis");
+        $id_kelas_santri = $this->input->post("id_kelas_santri");
+        $array = array (
+            "nis_lokal"=>$nis
+        );
+        $exec = $this->m_presensi->editdatasantri($id_kelas_santri,$array);
+    }
+
+    function kelaseditbelajar()
+    {
+        $idkelasbelajar = $this->input->post("id");
+        $variabel['data'] = $this->m_presensi->lihatdatasatu($idkelasbelajar)->row_array();
+        $this->load->view("back-end/presensi/presensi_kelas/v_presensi_editstatus",$variabel);
+
+    }
+
+    function editkelasproses()
+    {
+        $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+        $status_kelas = $this->input->post("status_kelas");
+        $array = array (
+            "status_kelas"=>$status_kelas
+        );
+        $exec = $this->m_presensi->editdata($id_kelas_belajar,$array);
+    }
 
    //CRUD Pelajaran
       function pelajaran(){

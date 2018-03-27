@@ -78,11 +78,14 @@ class M_presensi extends CI_Model
        return $this->db->insert('tb_kelas_santri',$array);
    }
 
-   function lihatdatasatuberkas($id_berkas)
+   function lihatdatasatusantri($id_kelas_santri)
    {
-       $this->db->where("id_kelas_santri",$id_berkas);
-       return $this->db->get('tb_berkas_guru');
+        $this->db->from("tb_kelas_santri");
+        $this->db->join("tb_santri","tb_santri.nis_lokal=tb_kelas_santri.nis_lokal");
+        $this->db->where("tb_kelas_santri.id_kelas_santri",$id_kelas_santri);
+        return $this->db->get();
    }
+   
 
    function cekdataberkas($id_berkas)
     {
@@ -90,10 +93,10 @@ class M_presensi extends CI_Model
         return $this->db->get('tb_berkas_guru')->num_rows();
     }
 
-    function editdataaberkas($id_berkas,$array)
+    function editdatasantri($id_kelas_santri,$array)
     {
-        $this->db->where("id_berkas",$id_berkas);
-        return $this->db->update('tb_berkas_guru',$array);
+        $this->db->where("id_kelas_santri",$id_kelas_santri);
+        return $this->db->update('tb_kelas_santri',$array);
     }
     function hapussantri($id_kelas_santri)
     {

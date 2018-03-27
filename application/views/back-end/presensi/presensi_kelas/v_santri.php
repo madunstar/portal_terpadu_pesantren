@@ -12,6 +12,7 @@
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menambah Santri","Gagal Menambah Santri") ?>
       <?php pesan_get('h',"Berhasil Menghapus Santri","Gagal Menghapus Santri") ?>
+      <?php pesan_get('ed',"Berhasil Mengedit Santri","Gagal Mengedit Santri") ?>
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="margin: 10px 0 10px 10px" id="tambahsantri">
       <i class="fa fa-plus"></i> Tambah Santri</button> &nbsp
       <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/lihatkelasbelajarsantri" class="btn btn-s-md btn-default" ><i class="fa fa-arrow-left"></i> Kembali</a>
@@ -33,8 +34,8 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/editkelasbelajarsantri?id='.$row['id_kelas_santri'].'&idkelas='.$santri['id_kelas_belajar'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-                      <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_kelas_santri']."'><i class='fa fa-trash-o'></i></a>
+                      <button class='btn btn-success btn-xs editsantri' title='Edit' id='".$row['id_kelas_santri']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
+                      <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_kelas_santri']."'><i class='fa fa-trash-o'></i></a>
                       </td>
                       <td>".$row['nis_lokal']."</td>
                       <td>".$row['nisn']."</td>
@@ -65,4 +66,13 @@
     </div>
   </div>
 </div>
- 
+
+<div id="myModaledit" class="modal fade" role="dialog">
+  <div class="modal-dialog" id="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content" id="modal-edit">
+	<div class="modal-body">
+	</div>
+    </div>
+  </div>
+</div>
