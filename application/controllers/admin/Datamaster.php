@@ -25,6 +25,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_pelajaran');
         $this->load->model('back-end/datamaster/m_infaq');
         $this->load->model('back-end/datamaster/m_prestasi');
+        $this->load->model('back-end/datamaster/m_pelanggaran');
         $this->load->library('layout');
         $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
@@ -1863,9 +1864,16 @@ function kecamatanhapus()
   }
 
 //////////////////pelanggaran////////////////////////
-  function pelanggaran(){
-    $variabel ='';
+function pelanggaransantri(){
+  $nis = $this->input->get('nis');
+  $exec = $this->m_santri->lihatdatasatu($nis);
+  if ($exec->num_rows()>0){
+    $variabel['santri'] = $exec->row_array();
+    $variabel['data'] = $this->m_pelanggaran->lihatdata($nis);
     $this->layout->render('back-end/prestasi_pelanggaran/v_data_pelanggaran',$variabel,'back-end/prestasi_pelanggaran/prestasi_pelanggaran_js');
+  } else {
+    redirect(base_url("admin/datamaster/santri"));
   }
+}
   /////////////////////////////akhir prestasi dan pelanggaran/////////////////////////////////////////////////////////
 }
