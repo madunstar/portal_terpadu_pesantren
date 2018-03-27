@@ -9,13 +9,13 @@
 					Input Prestasi  <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?>
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Menambahkan Mata Pelajaran","Gagal Menambahkan Mata Pelajaran") ?>
+					<?php pesan_get('msg',"Berhasil Menambahkan Prestasi","Gagal Menambahkan Prestasi") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/tambahprestasi"
 					method="post">
 						<a href="<?php echo base_url('admin/datamaster/prestasisantri?nis='.$nis_santri.'') ?>" style="color:#3b994a;margin-left:10px">
 							<i class="fa fa-chevron-left"></i> Kembali</a>
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-8">
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Prestasi</label>
 									<div class="col-lg-8">

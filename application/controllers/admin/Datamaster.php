@@ -1822,6 +1822,46 @@ function kecamatanhapus()
     }
   }
 
+  function ubahprestasi(){
+    if($this->input->post()){
+      $id = $this->input->post('id_prestasi');
+      $nis = $this->input->post('nis_santri');
+      $array = array(
+        'tanggal_prestasi' =>  $this->input->post('tanggal_prestasi'),
+        'jenis_prestasi' => $this->input->post('jenis_prestasi'),
+        'prestasi' => $this->input->post('nama_prestasi'),
+
+        'keterangan' => $this->input->post('keterangan')
+      );
+      $exec = $this->m_prestasi->editdata($id,$array);
+      if($exec){
+        redirect(base_url("admin/datamaster/ubahprestasi?nis=$nis&id=$id&msg=1"));
+      } else{
+        redirect(base_url("admin/datamaster/ubahprestasi?nis=$nis&id=$id&msg=0"));
+      }
+    } else {
+      $id = $this->input->get('id');
+      $nis = $this->input->get('nis');
+      $exec = $this->m_santri->lihatdatasatu($nis);
+        if ($exec->num_rows()>0){
+      $exec2 = $this->m_prestasi->ambildata($id);
+      $variabel['santri'] = $exec->row_array();
+      $variabel['data'] = $exec2->row_array();
+      $this->layout->render('back-end/prestasi_pelanggaran/v_prestasi_ubah',$variabel,'back-end/prestasi_pelanggaran/prestasi_pelanggaran_js');
+    } else{
+      redirect(base_url("admin/datamaster/santri"));
+    }
+    }
+
+  }
+
+  function hapusprestasi(){
+    $id = $this->input->get("id");
+    $nis = $this->input->get('nis');
+    $exec = $this->m_prestasi->hapus($id);
+    redirect(base_url()."admin/datamaster/prestasisantri?nis=$nis&msg=1");
+  }
+
 //////////////////pelanggaran////////////////////////
   function pelanggaran(){
     $variabel ='';
