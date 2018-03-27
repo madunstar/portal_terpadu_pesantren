@@ -178,7 +178,7 @@
               <label class="col-lg-4 control-label">Alat Transportasi</label>
               <div class="col-lg-8">
                 <select class="form-control"  name="alat_transportasi" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
-                <option value="" disabled <?php if ($data['alat_transportasi']=="") echo "selected" ?> <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>Pilih Alat Transportasi</option>
+                <option value="" disabled <?php if ($data['alat_transportasi']=="") echo "selected" ?> >Pilih Alat Transportasi</option>
                 <?php 
                      foreach($transportasi->result_array() as $row) {
                        echo "<option value='".$row['nama_alat_transportasi']."' ".($data['alat_transportasi']==$row['nama_alat_transportasi']?"selected":"").">".$row['nama_alat_transportasi']."</option>";

@@ -84,29 +84,58 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">Provinsi</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control"  name="provinsi" value="<?php echo $data['provinsi']; ?>" />
-              </div>
+            <label class="col-lg-4 control-label">Provinsi</label>
+            <div class="col-lg-8">
+              <select class="form-control"  name="provinsi" id="provinsi" data-required="true">
+              <option value="" disabled <?php if ($data['provinsi']=="") echo "selected" ?>>Pilih Provinsi</option>
+              <?php 
+                   foreach($provinsi->result_array() as $row) {
+                     echo "<option value='".$row['nama_provinsi']."' ".($data['provinsi']==$row['nama_provinsi']?"selected":"").">".$row['nama_provinsi']."</option>";
+                  }
+              ?> 
+              </select>
             </div>
-            <div class="form-group">
-              <label class="col-lg-4 control-label">Kabupaten/Kota</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control"  name="kabupaten_kota" value="<?php echo $data['kabupaten_kota']; ?>" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-lg-4 control-label">Kecamatan</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control"  name="kecamatan" value="<?php echo $data['kecamatan']; ?>" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-lg-4 control-label">Desa/Kelurahan</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control"  name="desa_kelurahan" value="<?php echo $data['desa_kelurahan']; ?>" />
-              </div>
-            </div>
+          </div>
+          <div class="form-group">
+          <label class="col-lg-4 control-label">Kabupaten/Kota</label>
+          <div class="col-lg-8">
+          <select class="form-control id_kota_kab"  name="kabupaten_kota"  id="kabupaten_kota" data-required="true">
+          <option value="" disabled <?php if ($data['kabupaten_kota']=="") echo "selected" ?>>Pilih Kabupaten/Kota</option>
+            <?php 
+                 foreach($kabupaten->result_array() as $row) {
+                   echo "<option value='".$row['nama_kota_kab']."' ".($data['kabupaten_kota']==$row['nama_kota_kab']?"selected":"").">".$row['nama_kota_kab']."</option>";
+                }
+            ?>
+              
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+        <label class="col-lg-4 control-label">Kecamatan</label>
+        <div class="col-lg-8">
+        <select class="form-control id_kota_kab"  name="kecamatan"  id="kecamatan" data-required="true" >
+        <option value="" disabled  <?php if ($data['kecamatan']=="") echo "selected" ?>>Pilih Kecamatan</option>
+          <?php 
+               foreach($kecamatan->result_array() as $row) {
+                 echo "<option value='".$row['nama_kecamatan']."' ".($data['kecamatan']==$row['nama_kecamatan']?"selected":"").">".$row['nama_kecamatan']."</option>";
+              }
+          ?>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+      <label class="col-lg-4 control-label">Desa/Kelurahan</label>
+      <div class="col-lg-8">
+        <select class="form-control"  name="desa_kelurahan" id="desa_kelurahan" data-required="true">
+        <option value="" disabled <?php if ($data['desa_kelurahan']=="") echo "selected" ?>>Pilih Desa/Kelurahan</option>
+        <?php 
+             foreach($desa->result_array() as $row) {
+               echo "<option value='".$row['nama_kel_desa']."' ".($data['desa_kelurahan']==$row['nama_kel_desa']?"selected":"").">".$row['nama_kel_desa']."</option>";
+            }
+        ?>
+        </select>
+      </div>
+    </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Kode Pos</label>
               <div class="col-lg-8">
@@ -152,7 +181,14 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Alat Transportasi</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="alat_transportasi" value="<?php echo $data['alat_transportasi']; ?>" />
+                <select class="form-control"  name="alat_transportasi">
+                <option value="" disabled <?php if ($data['alat_transportasi']=="") echo "selected" ?> >Pilih Alat Transportasi</option>
+                <?php 
+                     foreach($transportasi->result_array() as $row) {
+                       echo "<option value='".$row['nama_alat_transportasi']."' ".($data['alat_transportasi']==$row['nama_alat_transportasi']?"selected":"").">".$row['nama_alat_transportasi']."</option>";
+                    }
+                ?> 
+                </select>
               </div>
             </div>
             <div class="form-group">
@@ -185,15 +221,29 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pendidikan_terakhir_ayah" value="<?php echo $data['pendidikan_terakhir_ayah']; ?>" />
+                <select type="text" class="form-control"  name="pendidikan_terakhir_ayah">
+                <option value="" disabled <?php if ($data['pendidikan_terakhir_ayah']=="") echo "selected" ?>>Pilih Pendidikan</option>
+                <?php 
+                     foreach($pendidikan->result_array() as $row) {
+                       echo "<option value='".$row['nama_pendidikan']."' ".($data['pendidikan_terakhir_ayah']==$row['nama_pendidikan']?"selected":"").">".$row['nama_pendidikan']."</option>";
+                    }
+                ?> 
+                </select>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">Pekerjaan Ayah</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pekerjaan_ayah" value="<?php echo $data['pekerjaan_ayah']; ?>" />
-              </div>
+            <label class="col-lg-4 control-label">Pekerjaan Ayah</label>
+            <div class="col-lg-8">
+              <select class="form-control"  name="pekerjaan_ayah">
+              <option value="" disabled <?php if ($data['pekerjaan_ayah']=="") echo "selected" ?>>Pilih  Pekerjaan</option>
+              <?php 
+                   foreach($pekerjaan->result_array() as $row) {
+                     echo "<option value='".$row['nama_pekerjaan']."' ".($data['pekerjaan_ayah']==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
+                  }
+              ?> 
+              </select>
             </div>
+          </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nomor HP Ayah</label>
               <div class="col-lg-8">
@@ -213,17 +263,31 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">Pendidikan Terakhir Ibu</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pendidikan_terakhir_ibu" value="<?php echo $data['pendidikan_terakhir_ibu']; ?>" />
-              </div>
+            <label class="col-lg-4 control-label">Pendidikan Terakhir Ibu</label>
+            <div class="col-lg-8">
+              <select  class="form-control"  name="pendidikan_terakhir_ibu">
+              <option value="" disabled <?php if ($data['pendidikan_terakhir_ibu']=="") echo "selected" ?>>Pilih Pendidikan</option>
+              <?php 
+                   foreach($pendidikan->result_array() as $row) {
+                     echo "<option value='".$row['nama_pendidikan']."' ".($data['pendidikan_terakhir_ibu']==$row['nama_pendidikan']?"selected":"").">".$row['nama_pendidikan']."</option>";
+                  }
+              ?> 
+              </select>
             </div>
-            <div class="form-group">
-              <label class="col-lg-4 control-label">Pekerjaan Ibu</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pekerjaan_ibu" value="<?php echo $data['pekerjaan_ibu']; ?>" />
-              </div>
-            </div>
+          </div>
+          <div class="form-group">
+          <label class="col-lg-4 control-label">Pekerjaan Ibu</label>
+          <div class="col-lg-8">
+            <select class="form-control"  name="pekerjaan_ibu">
+            <option value="" disabled <?php if ($data['pekerjaan_ibu']=="") echo "selected" ?>>Pilih Pekerjaan</option>
+            <?php 
+                 foreach($pekerjaan->result_array() as $row) {
+                   echo "<option value='".$row['nama_pekerjaan']."' ".($data['pekerjaan_ibu']==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
+                }
+            ?> 
+            </select>
+          </div>
+        </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nomor HP Ibu</label>
               <div class="col-lg-8">
@@ -251,15 +315,30 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Wali</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pendidikan_terakhir_wali" value="<?php echo $data['pendidikan_terakhir_wali']; ?>" />
+                <select class="form-control"  name="pendidikan_terakhir_wali">
+                <option value="" disabled <?php if ($data['pendidikan_terakhir_wali']=="") echo "selected" ?>>Pilih Pendidikan</option>
+                <?php 
+                     foreach($pendidikan->result_array() as $row) {
+                       echo "<option value='".$row['nama_pendidikan']."' ".($data['pendidikan_terakhir_wali']==$row['nama_pendidikan']?"selected":"").">".$row['nama_pendidikan']."</option>";
+                    }
+                ?> 
+                </select>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">Pekerjaan Wali</label>
-              <div class="col-lg-8">
-                <input type="text" class="form-control"  name="pekerjaan_wali" value="<?php echo $data['pekerjaan_wali']; ?>" />
-              </div>
+            <label class="col-lg-4 control-label">Pekerjaan Wali</label>
+            <div class="col-lg-8">
+              <select class="form-control"  name="pekerjaan_wali">
+              <option value="" disabled <?php if ($data['pekerjaan_wali']=="") echo "selected" ?>>Pilih Pekerjaan</option>
+              <?php 
+                   foreach($pekerjaan->result_array() as $row) {
+                     echo "<option value='".$row['nama_pekerjaan']."' ".($data['pekerjaan_wali']==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
+                  }
+              ?> 
+              </select>
+              
             </div>
+          </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nomor HP Wali</label>
               <div class="col-lg-8">
@@ -276,6 +355,18 @@
               <label class="col-lg-4 control-label">Jumlah Saudara Kandung</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control"  name="jumlah_saudara_kandung" value="<?php echo $data['jumlah_saudara_kandung']; ?>" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">Kelas</label>
+              <div class="col-lg-8">
+              <select class="form-control"  name="kelas"  data-required="true">
+                <option value="" disabled <?php if (set_value('kelas')=="") echo "selected" ?>>Pilih Kelas</option>
+                <option value="Mualimin" <?php if ($data['kelas']=="Mualimin") echo "selected" ?>>Mualimin</option>
+                <option value="Mualimat" <?php if ($data['kelas']=="Mualimat") echo "selected" ?>>Mualimat</option>
+                <option value="MTS" <?php if ($data['kelas']=="MTS") echo "selected" ?>>MTS</option>
+                <option value="MA" <?php if ($data['kelas']=="MA") echo "selected" ?>>MA</option>
+              </select>
               </div>
             </div>
           </div>

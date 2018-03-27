@@ -230,7 +230,8 @@ class Datamaster extends CI_Controller{
                     'hp'=>$this->input->post('hp'),
                     'hpayah'=>$this->input->post('hpayah'),
                     'hpibu'=>$this->input->post('hpibu'),
-                    'hpwali'=>$this->input->post('hpwali')
+                    'hpwali'=>$this->input->post('hpwali'),
+                    'kelas'=>$this->input->post('kelas')
                     );
             if ($this->m_santri->cekdata($this->input->post('nis_lokal'))==0) {
                 $exec = $this->m_santri->tambahdata($array);
@@ -241,9 +242,9 @@ class Datamaster extends CI_Controller{
                 $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
                 $variabel['kecamatan']=$this->m_santri->ambilkecamatan($this->input->post('kabupaten_kota'));
                 $variabel['desa']=$this->m_santri->ambildesa($this->input->post('kecamatan'));
-            $variabel['transportasi']=$this->m_santri->ambiltransportasi();
-             $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
-             $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
+                $variabel['transportasi']=$this->m_santri->ambiltransportasi();
+                $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
+                $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
                 $variabel['nis_lokal'] =$this->input->post('nis_lokal');
                 $this->layout->render('back-end/datamaster/santri/v_santri_tambah',$variabel,'back-end/datamaster/santri/v_santri_js');
             }
@@ -307,7 +308,8 @@ class Datamaster extends CI_Controller{
                 'hp'=>$this->input->post('hp'),
                 'hpayah'=>$this->input->post('hpayah'),
                 'hpibu'=>$this->input->post('hpibu'),
-                'hpwali'=>$this->input->post('hpwali')
+                'hpwali'=>$this->input->post('hpwali'),
+                'kelas'=>$this->input->post('kelas')
                 );
             $nis2 = $this->input->post("nis_lokal2");
             $nis = $this->input->post("nis_lokal");
@@ -326,7 +328,19 @@ class Datamaster extends CI_Controller{
             $nis = $this->input->get("nis");
             $exec = $this->m_santri->lihatdatasatu($nis);
             if ($exec->num_rows()>0){
-                $variabel['data'] = $exec ->row_array();
+                $data =  $exec ->row_array();
+                $variabel['data'] = $data;
+
+                $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+                $variabel['transportasi']=$this->m_santri->ambiltransportasi();
+                 $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
+                 $variabel['pendidikan']
+                 =$this->m_santri->ambilpendidikan();
+
+                 $variabel['kabupaten']=$this->m_santri->ambilkabupaten($data['provinsi']);
+                 $variabel['kecamatan']=$this->m_santri->ambilkecamatan($data['kabupaten_kota']);
+                 $variabel['desa']=$this->m_santri->ambildesa($data['kecamatan']);
+    
                 $this->layout->render('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
             } else {
                 redirect(base_url("admin/datamaster/santri"));

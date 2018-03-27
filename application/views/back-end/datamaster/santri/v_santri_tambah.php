@@ -354,6 +354,19 @@
                 <input type="text" class="form-control"  name="jumlah_saudara_kandung" value="<?php echo set_value('jumlah_saudara_kandung'); ?>"/>
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">Kelas</label>
+              <div class="col-lg-8">
+              <select class="form-control"  name="kelas"  data-required="true">
+                <option value="" disabled <?php if (set_value('kelas')=="") echo "selected" ?>>Pilih Kelas</option>
+                <option value="Mualimin">Mualimin</option>
+                <option value="Mualimat">Mualimat</option>
+                <option value="MTS">MTS</option>
+                <option value="MA">MA</option>
+              </select>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

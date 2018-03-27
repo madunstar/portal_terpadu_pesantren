@@ -272,6 +272,12 @@
                 <input type="text" class="form-control"  name="jumlah_saudara_kandung" value="<?php echo $data['jumlah_saudara_kandung']; ?>" readonly/>
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">Kelas</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control"  name="kelas" value="<?php echo $data['kelas']; ?>" readonly/>
+              </div>
+            </div>
           </div>
         </div>
       </div>
