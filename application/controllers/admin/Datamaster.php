@@ -27,6 +27,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_presensi');
         $this->load->model('back-end/datamaster/m_prestasi');
         $this->load->model('back-end/datamaster/m_pelanggaran');
+        $this->load->model('back-end/datamaster/m_jenjang');
         $this->load->library('layout');
         $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
@@ -260,6 +261,7 @@ class Datamaster extends CI_Controller{
              $variabel['kabupaten']=$this->m_santri->ambilkabupaten("");
              $variabel['kecamatan']=$this->m_santri->ambilkecamatan("");
              $variabel['desa']=$this->m_santri->ambildesa("");
+             $variabel['jenjang']=$this->m_jenjang->lihatdata();
 
             $this->layout->render('back-end/datamaster/santri/v_santri_tambah',$variabel,'back-end/datamaster/santri/v_santri_js');
         }
@@ -342,7 +344,7 @@ class Datamaster extends CI_Controller{
                  $variabel['kabupaten']=$this->m_santri->ambilkabupaten($data['provinsi']);
                  $variabel['kecamatan']=$this->m_santri->ambilkecamatan($data['kabupaten_kota']);
                  $variabel['desa']=$this->m_santri->ambildesa($data['kecamatan']);
-    
+                 $variabel['jenjang']=$this->m_jenjang->lihatdata();
                 $this->layout->render('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
             } else {
                 redirect(base_url("admin/datamaster/santri"));
@@ -1662,7 +1664,9 @@ function kecamatanhapus()
                 'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
                 'kd_kelas'=> $this->input->post('kd_kelas'),
                 'status_kelas'=>$this->input->post('status_kelas'),
-                'id_tahun'=>$this->input->post('id_tahun')
+                'id_tahun'=>$this->input->post('id_tahun'),
+                'jenjang'=>$this->input->post('jenjang'),
+                'tingkat'=>$this->input->post('tingkatan')
                 );
             $exec = $this->m_presensi->tambahdata($array);
             if ($exec) redirect(base_url("admin/datamaster/aturkelasbelajar?msg=1"));
@@ -1671,6 +1675,7 @@ function kecamatanhapus()
             $variabel['ruangkelas']=$this->m_kelas->lihatdata();
             $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
             $variabel['guru']=$this->m_guru->lihatdata();
+            $variabel['jenjang']=$this->m_jenjang->lihatdata();
             $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_atur',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
         }
    }
@@ -1690,7 +1695,9 @@ function kecamatanhapus()
                 'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
                 'kd_kelas'=> $this->input->post('kd_kelas'),
                 'status_kelas'=>$this->input->post('status_kelas'),
-                'id_tahun'=>$this->input->post('id_tahun')
+                'id_tahun'=>$this->input->post('id_tahun'),
+                'jenjang'=>$this->input->post('jenjang'),
+                'tingkat'=>$this->input->post('tingkatan')
                 );
             $id_kelas_belajar = $this->input->post("id_kelas_belajar");
             $exec = $this->m_presensi->editdata($id_kelas_belajar,$array);
@@ -1705,6 +1712,8 @@ function kecamatanhapus()
                 $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
                 $variabel['guru']=$this->m_guru->lihatdata();
                 $variabel['data'] = $exec->row_array();
+                $variabel['jenjang']=$this->m_jenjang->lihatdata();
+                $variabel['tingkatan']=$this->m_jenjang->lihatdatatingkatan($variabel['data']['jenjang']);
                 $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_edit',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
             } else {
                 redirect(base_url("admin/datamaster/datakelasbelajar"));
@@ -2052,4 +2061,161 @@ function tambahpelanggaran(){
   }
 }
   /////////////////////////////akhir prestasi dan pelanggaran/////////////////////////////////////////////////////////
+
+
+  function jenjang()
+  {
+      $variabel['data'] = $this->m_jenjang->lihatdata();
+      $this->layout->render('back-end/datamaster/jenjang/v_jenjang',$variabel,'back-end/datamaster/jenjang/v_jenjang_js');
+  }
+
+function jenjangtambah()
+{
+    if ($this->input->post()){
+            $array=array(
+                'jenjang'=> $this->input->post('jenjang'),
+                'namajenjang'=> $this->input->post('namajenjang')
+                );
+        if ($this->m_jenjang->cekdata($this->input->post('jenjang'))==0) {
+            $exec = $this->m_jenjang->tambahdata($array);
+            if ($exec) redirect(base_url("admin/datamaster/jenjangtambah?msg=1"));
+            else redirect(base_url("admin/datamaster/jenjangtambah?msg=0"));
+        } else {
+            $variabel['jenjang'] =$this->input->post('jenjang');
+            $this->layout->render('back-end/datamaster/jenjang/v_jenjang_tambah',$variabel,'back-end/datamaster/jenjang/v_jenjang_js');
+        }
+
+    } else {
+        $variabel ='';
+        $this->layout->render('back-end/datamaster/jenjang/v_jenjang_tambah',$variabel,'back-end/datamaster/jenjang/v_jenjang_js');
+    }
+}
+
+function jenjangedit()
+    {
+        if ($this->input->post()) {
+            $array=array(
+                'jenjang'=> $this->input->post('jenjang'),
+                'namajenjang'=> $this->input->post('namajenjang')
+                );
+            $jenjang2 = $this->input->post("jenjang2");
+            $jenjang = $this->input->post("jenjang");
+            if (($this->m_jenjang->cekdata($jenjang)>0) && ($jenjang2!=$jenjang)) {
+                $variabel['jenjang'] =$this->input->post('jenjang');
+                $variabel['jenjang2'] =$this->input->post('jenjang2');
+                $variabel['data'] = $array;
+                $this->layout->render('back-end/datamaster/jenjang/v_jenjang_edit',$variabel,'back-end/datamaster/jenjang/v_jenjang_js');
+            } else {
+                $exec = $this->m_jenjang->editdata($jenjang2,$array);
+                if ($exec){
+                  redirect(base_url("admin/datamaster/jenjangedit?jenjang=".$jenjang."&msg=1"));
+                }
+            }
+      } else {
+            $jenjang = $this->input->get("jenjang");
+            $exec = $this->m_jenjang->lihatdatasatu($jenjang);
+            if ($exec->num_rows()>0){
+                $variabel['data'] = $exec ->row_array();
+                $this->layout->render('back-end/datamaster/jenjang/v_jenjang_edit',$variabel,'back-end/datamaster/jenjang/v_jenjang_js');
+            } else {
+                redirect(base_url("admin/datamaster/jenjang"));
+            }
+      }
+
+    }
+
+    function jenjanghapus()
+    {
+       $jenjang = $this->input->get("jenjang");
+       $exec = $this->m_jenjang->hapus($jenjang);
+       redirect(base_url()."admin/datamaster/jenjang?msg=1");
+    }
+
+
+    function jenjangtingkat()
+    {
+        $jenjang = $this->input->get("jenjang");
+        $exec = $this->m_jenjang->lihatdatasatu($jenjang);
+        if ($exec->num_rows()>0){
+            $variabel['jenjang'] = $exec->row_array();
+            $variabel['data'] = $this->m_jenjang->lihatdatatingkat($jenjang);
+            $this->layout->render('back-end/datamaster/jenjang/v_jenjangtingkat',$variabel,'back-end/datamaster/jenjang/v_jenjangtingkat_js');
+        } else {
+            redirect(base_url("admin/datamaster/jenjang"));
+        }
+
+    }
+
+    function jenjangtambahtingkat()
+    {
+        $jenjang = $this->input->get("jenjang");
+        $exec = $this->m_jenjang->lihatdatasatu($jenjang);
+        if ($exec->num_rows()>0){
+            $variabel['jenjang'] = $exec->row_array();
+            if ($this->input->post()){
+                $jenjang = $this->input->post('jenjang');
+                $tingkat = $this->input->post('tingkat');
+                $array=array(
+                    'jenjang'=>  $jenjang,
+                    'tingkat'=> $tingkat
+                );
+                $exec = $this->m_jenjang->tambahdatatingkat($array);
+                if ($exec) redirect(base_url("admin/datamaster/jenjangtambahtingkat?jenjang=".$jenjang."&msg=1"));
+                else redirect(base_url("admin/datamaster/jenjangtambahtingkat?jenjang=".$jenjang."&msg=0"));
+            } else {
+                $this->layout->render('back-end/datamaster/jenjang/v_jenjangtingkat_tambah',$variabel,'back-end/datamaster/jenjang/v_jenjangtingkat_js');
+            }
+        } else {
+            redirect(base_url("admin/datamaster/jenjang"));
+        }
+    }
+
+    function jenjanghapustingkat()
+    {
+        $idtingkatjenjang = $this->input->get("idtingkatjenjang");
+        $jenjang = $this->input->get("jenjang");
+        $exec = $this->m_jenjang->hapustingkat($idtingkatjenjang);
+        redirect(base_url()."admin/datamaster/jenjangtingkat?msg=1&jenjang=".$jenjang."");
+    }
+
+    function jenjangedittingkat()
+    {
+        if ($this->input->post()) {
+            $idtingkatjenjang = $this->input->post('idtingkatjenjang');
+            $jenjang = $this->input->post('jenjang');
+            $tingkat = $this->input->post('tingkat');
+            $array=array(
+                'tingkat'=> $tingkat
+            );
+            $exec = $this->m_jenjang->editdatatingkat($idtingkatjenjang,$array);
+            if ($exec) redirect(base_url("admin/datamaster/jenjangedittingkat?id=".$idtingkatjenjang."&jenjang=".$jenjang."&msg=1"));
+            else redirect(base_url("admin/datamaster/jenjangedittingkat?id=".$idtingkatjenjang."&jenjang=".$jenjang."&msg=0"));
+        } else {
+            $jenjang = $this->input->get("jenjang");
+            $id = $this->input->get("id");
+            $exec = $this->m_jenjang->lihatdatasatu($jenjang);
+            if ($exec->num_rows()>0){
+                $variabel['jenjang'] = $exec ->row_array();
+                $exec2 = $this->m_jenjang->lihatdatasatutingkat($id);
+                if ($exec2->num_rows()>0){
+                    $variabel['data'] = $exec2->row_array();
+                    $this->layout->render('back-end/datamaster/jenjang/v_jenjangtingkat_edit',$variabel,'back-end/datamaster/jenjang/v_jenjangtingkat_js');
+                } else {
+                    redirect(base_url("admin/datamaster/jenjangtingkat?jenjang=$jenjang"));
+                }
+            } else {
+                redirect(base_url("admin/datamaster/jenjang"));
+            }
+        }
+
+    }
+
+    function datatingkatjenjang()
+    {
+      $jenjang=$this->input->post('jenjang');
+      $data=$this->m_jenjang->datatingkatajax($jenjang);
+      echo json_encode($data);
+    }
+
+
 }

@@ -358,17 +358,19 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">Kelas</label>
-              <div class="col-lg-8">
-              <select class="form-control"  name="kelas"  data-required="true">
-                <option value="" disabled <?php if (set_value('kelas')=="") echo "selected" ?>>Pilih Kelas</option>
-                <option value="Mualimin" <?php if ($data['kelas']=="Mualimin") echo "selected" ?>>Mualimin</option>
-                <option value="Mualimat" <?php if ($data['kelas']=="Mualimat") echo "selected" ?>>Mualimat</option>
-                <option value="MTS" <?php if ($data['kelas']=="MTS") echo "selected" ?>>MTS</option>
-                <option value="MA" <?php if ($data['kelas']=="MA") echo "selected" ?>>MA</option>
-              </select>
+									<label class="col-sm-4 control-label">Jenjang</label>
+									<div class="col-sm-8">
+										<select class="form-control m-b" name="kelas" id="kelas" data-required="true">
+											<option value="" selected disabled>.: Pilih Jenjang:.</option>
+											<?php
+												foreach($jenjang->result_array() as $row){
+													echo "<option value='".$row['jenjang']."'".(($row['jenjang']==$data['kelas'])?"selected":"").">".$row['jenjang']." </option>";
+												}
+											?>
+                  </select>
+                </div>
               </div>
-            </div>
+            
           </div>
         </div>
       </div>

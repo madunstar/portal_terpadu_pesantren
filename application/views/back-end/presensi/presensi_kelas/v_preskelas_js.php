@@ -70,4 +70,24 @@
        
     });
 
+    $('#jenjang').change(function(){
+        var id=$(this).val();
+        $.ajax({
+            url : "<?php echo base_url();?>admin/datamaster/datatingkatjenjang",
+            method : "POST",
+            data : {jenjang: id},
+            async : false,
+            dataType : 'json',
+            success: function(data){
+                var html ='<option value="" disabled selected>.: Pilih Tingkatan :.</option>';
+                    var i;
+                    for(i=0; i<data.length; i++){
+                        html += '<option value="'+data[i].tingkat+'">'+data[i].tingkat+'</option>';
+                    }
+                    $('#tingkatan').html(html);
+
+            }
+        });
+    });
+
 </script>

@@ -232,7 +232,7 @@
               <label class="col-lg-4 control-label">Pekerjaan Ayah</label>
               <div class="col-lg-8">
               <select class="form-control"  name="pekerjaan_ayah">
-              <option value="" disabled <?php if (set_value('pekerjaan_ayah')=="") echo "selected" ?>>Pilih  Pekerjaan</option>
+              <option value="" <?php if (set_value('pekerjaan_ayah')=="") echo "selected" ?>>Pilih  Pekerjaan</option>
               <?php
                    foreach($pekerjaan->result_array() as $row) {
                      echo "<option value='".$row['nama_pekerjaan']."' ".(set_value('pekerjaan_ayah')==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
@@ -276,7 +276,7 @@
               <label class="col-lg-4 control-label">Pekerjaan Ibu</label>
               <div class="col-lg-8">
               <select class="form-control"  name="pekerjaan_ibu">
-              <option value="" disabled <?php if (set_value('pekerjaan_ibu')=="") echo "selected" ?>>Pilih Pekerjaan</option>
+              <option value=""  <?php if (set_value('pekerjaan_ibu')=="") echo "selected" ?>>Pilih Pekerjaan</option>
               <?php
                    foreach($pekerjaan->result_array() as $row) {
                      echo "<option value='".$row['nama_pekerjaan']."' ".(set_value('pekerjaan_ibu')==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
@@ -314,7 +314,7 @@
               <label class="col-lg-4 control-label">Pendidikan Terakhir Wali</label>
               <div class="col-lg-8">
               <select class="form-control"  name="pendidikan_terakhir_wali">
-              <option value="" disabled <?php if (set_value('pendidikan_terakhir_wali')=="") echo "selected" ?>>Pilih Pendidikan</option>
+              <option value=""  <?php if (set_value('pendidikan_terakhir_wali')=="") echo "selected" ?>>Pilih Pendidikan</option>
               <?php
                    foreach($pendidikan->result_array() as $row) {
                      echo "<option value='".$row['nama_pendidikan']."' ".(set_value('pendidikan_terakhir_wali')==$row['nama_pendidikan']?"selected":"").">".$row['nama_pendidikan']."</option>";
@@ -327,7 +327,7 @@
               <label class="col-lg-4 control-label">Pekerjaan Wali</label>
               <div class="col-lg-8">
               <select class="form-control"  name="pekerjaan_wali">
-              <option value="" disabled <?php if (set_value('pekerjaan_wali')=="") echo "selected" ?>>Pilih Pekerjaan</option>
+              <option value=""  <?php if (set_value('pekerjaan_wali')=="") echo "selected" ?>>Pilih Pekerjaan</option>
               <?php
                    foreach($pekerjaan->result_array() as $row) {
                      echo "<option value='".$row['nama_pekerjaan']."' ".(set_value('pekerjaan_wali')==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
@@ -355,18 +355,19 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">Kelas</label>
-              <div class="col-lg-8">
-              <select class="form-control"  name="kelas"  data-required="true">
-                <option value="" disabled <?php if (set_value('kelas')=="") echo "selected" ?>>Pilih Kelas</option>
-                <option value="Mualimin">Mualimin</option>
-                <option value="Mualimat">Mualimat</option>
-                <option value="MTS">MTS</option>
-                <option value="MA">MA</option>
-              </select>
+									<label class="col-sm-4 control-label">Jenjang</label>
+									<div class="col-sm-8">
+										<select class="form-control m-b" name="kelas" id="kelas" data-required="true">
+											<option value="" selected disabled>.: Pilih Jenjang:.</option>
+											<?php
+												foreach($jenjang->result_array() as $row){
+													echo "<option value='".$row['jenjang']."'>".$row['jenjang']." </option>";
+												}
+											?>
+                  </select>
+                </div>
               </div>
-            </div>
-
+           
           </div>
         </div>
       </div>

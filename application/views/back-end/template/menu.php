@@ -20,7 +20,7 @@
                       <span class="font-bold">Dashboard</span>
                     </a>
                   </li>
-                  <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'guru') || ($submenu == 'staff') || ($submenu == 'kelas') || ($submenu == 'matpel')) ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'guru') || ($submenu == 'staff') || ($submenu == 'kelas') || ($submenu == 'matpel') || ($submenu == 'jenjang') || ($submenu == 'jenjangtingkat')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -58,9 +58,9 @@
                           <i class="i i-dot"></i>
 
                           <span>Data Kelas</span>
-                        </a>
+                        </a> 
                       </li>
-                      <li class="<?= (($menu == "datamaster") &&  ($submenu == 'jenjang')) ? "active" : ""; ?>">
+                      <li class="<?= ((($menu == "datamaster") &&  ($submenu == 'jenjang')) || (($submenu == 'jenjangtingkat')) ) ? "active" : ""; ?>">
                       <a href="<?php echo base_url() ?>admin/datamaster/jenjang" class="auto">
                           <i class="i i-dot"></i>
 

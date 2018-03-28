@@ -47,9 +47,37 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label class="col-sm-3 control-label">Jenjang</label>
+									<div class="col-sm-6">
+										<select class="form-control m-b" name="jenjang" id="jenjang" data-required="true">
+											<option value="" selected disabled>.: Pilih Jenjang:.</option>
+											<?php
+												foreach($jenjang->result_array() as $row){
+													echo "<option value='".$row['jenjang']."'".($row['jenjang']==$data['jenjang']?"selected":"").">".$row['jenjang']." </option>";
+												}
+											?>
+										</select>
+
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Tingkatan</label>
+									<div class="col-sm-6">
+										<select class="form-control m-b" name="tingkatan" id="tingkatan" data-required="true">
+											<option value="" selected disabled>.: Pilih Tingkatan:.</option>
+											<?php
+												foreach($tingkatan->result_array() as $row){
+													echo "<option value='".$row['tingkat']."'".($row['tingkat']==$data['tingkat']?"selected":"").">".$row['tingkat']." </option>";
+												}
+											?>
+										</select>
+
+									</div>
+								</div>
+								<div class="form-group">
 									<label class="col-sm-3 control-label">Status Kelas</label>
 									<div class="col-sm-6">
-										<select name="status_kelas" id="status_kelas" class="form-control  m-b  chosen-select">
+										<select name="status_kelas" id="status_kelas" class="form-control  m-b">
 											<option value="Aktif" <?php echo ("Aktif"==$data['kd_kelas']? "selected":"") ?>>Aktif</option>
 											<option value="Tidak Aktif" <?php echo ("Tidak Aktif"==$data['status_kelas']? "selected":"") ?> >Tidak Aktif</option>
 										</select>
