@@ -2060,6 +2060,13 @@ function tambahpelanggaran(){
       $this->layout->render('back-end/prestasi_pelanggaran/v_pelanggaran_tambah',$variabel,'back-end/prestasi_pelanggaran/prestasi_pelanggaran_js');
   }
 }
+
+function hapuspelanggaran(){
+  $id = $this->input->get("id");
+  $nis = $this->input->get('nis');
+  $exec = $this->m_pelanggaran->hapus($id);
+  redirect(base_url()."admin/datamaster/pelanggaransantri?nis=$nis&msg=1");
+}
   /////////////////////////////akhir prestasi dan pelanggaran/////////////////////////////////////////////////////////
 
 

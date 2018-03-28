@@ -55,7 +55,7 @@
                                    <b>Apakah yakin menghapus data?</b>
                                  </div>
                                  <div class='modal-footer'>
-                                   <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusprestasi?id='.$row['id_pelanggaran'].'&nis='.$row['nis_santri'].'')."'>
+                                   <a style='margin-left:5px' href='".base_url('admin/datamaster/hapuspelanggaran?id='.$row['id_pelanggaran'].'&nis='.$row['nis_santri'].'')."'>
                                    <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
                                    <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                                  </div>
