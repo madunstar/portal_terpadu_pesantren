@@ -2061,6 +2061,39 @@ function tambahpelanggaran(){
   }
 }
 
+function ubahpelanggaran(){
+  if($this->input->post()){
+    $id = $this->input->post('id_pelanggaran');
+    $nis = $this->input->post('nis_santri');
+    $array = array(
+      'tanggal_pelanggaran' =>  $this->input->post('tanggal_pelanggaran'),
+      'jenis_pelanggaran' => $this->input->post('jenis_pelanggaran'),
+      'pelanggaran' => $this->input->post('nama_pelanggaran'),
+
+      'keterangan' => $this->input->post('keterangan')
+    );
+    $exec = $this->m_pelanggaran->editdata($id,$array);
+    if($exec){
+      redirect(base_url("admin/datamaster/ubahpelanggaran?nis=$nis&id=$id&msg=1"));
+    } else{
+      redirect(base_url("admin/datamaster/ubahpelanggaran?nis=$nis&id=$id&msg=0"));
+    }
+  } else {
+    $id = $this->input->get('id');
+    $nis = $this->input->get('nis');
+    $exec = $this->m_santri->lihatdatasatu($nis);
+      if ($exec->num_rows()>0){
+    $exec2 = $this->m_pelanggaran->ambildata($id);
+    $variabel['santri'] = $exec->row_array();
+    $variabel['data'] = $exec2->row_array();
+    $this->layout->render('back-end/prestasi_pelanggaran/v_pelanggaran_ubah',$variabel,'back-end/prestasi_pelanggaran/prestasi_pelanggaran_js');
+  } else{
+    redirect(base_url("admin/datamaster/santri"));
+  }
+  }
+
+}
+
 function hapuspelanggaran(){
   $id = $this->input->get("id");
   $nis = $this->input->get('nis');
