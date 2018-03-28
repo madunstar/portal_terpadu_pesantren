@@ -1875,5 +1875,31 @@ function pelanggaransantri(){
     redirect(base_url("admin/datamaster/santri"));
   }
 }
+
+function tambahpelanggaran(){
+  if($this->input->post()){
+    $nis = $this->input->post('nis_santri');
+    $array = array(
+      'nis_santri' => $this->input->post('nis_santri'),
+      'tanggal_pelanggaran' =>  $this->input->post('tanggal_pelanggaran'),
+      'jenis_pelanggaran' => $this->input->post('jenis_pelanggaran'),
+      'pelanggaran' => $this->input->post('nama_pelanggaran'),
+
+      'keterangan' => $this->input->post('keterangan')
+    );
+    $exec = $this->m_pelanggaran->tambahdata($array);
+    if($exec){
+      redirect(base_url("admin/datamaster/tambahpelanggaran?nis=$nis&msg=1"));
+    } else{
+      redirect(base_url("admin/datamaster/tambahpelanggaran?nis=$nis&msg=0"));
+    }
+  } else {
+      $nis = $this->input->get('nis');
+      $exec = $this->m_santri->lihatdatasatu($nis);
+      $variabel['santri'] = $exec->row_array();
+      $variabel['nis_santri'] = $nis;
+      $this->layout->render('back-end/prestasi_pelanggaran/v_pelanggaran_tambah',$variabel,'back-end/prestasi_pelanggaran/prestasi_pelanggaran_js');
+  }
+}
   /////////////////////////////akhir prestasi dan pelanggaran/////////////////////////////////////////////////////////
 }
