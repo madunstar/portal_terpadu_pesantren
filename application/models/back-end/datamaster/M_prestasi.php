@@ -10,8 +10,6 @@ class M_prestasi extends CI_Model
         parent::__construct();
     }
 
-
-
     function lihatdata($nis)
     {
       $this->db->select('*');
@@ -25,5 +23,25 @@ class M_prestasi extends CI_Model
     function tambahdata($array)
     {
         return $this->db->insert('tb_prestasi',$array);
+    }
+
+    function ambildata($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_prestasi');
+        $this->db->where('id_prestasi', $id);
+          return $this->db->get();
+    }
+
+    function editdata($id,$array)
+    {
+        $this->db->where("id_prestasi",$id);
+        return $this->db->update('tb_prestasi',$array);
+    }
+
+    function hapus($id)
+    {
+        $this->db->where("id_prestasi",$id);
+        return $this->db->delete('tb_prestasi');
     }
 }

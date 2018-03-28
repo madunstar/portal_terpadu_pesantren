@@ -60,6 +60,13 @@
                           <span>Data Kelas</span>
                         </a>
                       </li>
+                      <li class="<?= (($menu == "datamaster") &&  ($submenu == 'jenjang')) ? "active" : ""; ?>">
+                      <a href="<?php echo base_url() ?>admin/datamaster/jenjang" class="auto">
+                          <i class="i i-dot"></i>
+
+                          <span>Data Jenjang</span>
+                        </a>
+                      </li>
                       <li class="<?= (($menu == "datamaster") &&  ($submenu == 'matpel')) ? "active" : ""; ?>">
                       <a href="<?php echo base_url() ?>admin/datamaster/matpel" class="auto">
                           <i class="i i-dot"></i>

@@ -2,38 +2,38 @@
 	<section class="vbox">
 		<section class="scrollable padder">
 			<div class="m-b-md">
-				<h3 class="m-b-none">Prestasi Santri</h3>
+				<h3 class="m-b-none">pelanggaran Santri</h3>
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input Prestasi  <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?>
+					Input pelanggaran  <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?>
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Menambahkan Prestasi","Gagal Menambahkan Prestasi") ?>
-					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/tambahprestasi"
+					<?php pesan_get('msg',"Berhasil Menambahkan pelanggaran","Gagal Menambahkan pelanggaran") ?>
+					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/tambahpelanggaran"
 					method="post">
-						<a href="<?php echo base_url('admin/datamaster/prestasisantri?nis='.$nis_santri.'') ?>" style="color:#3b994a;margin-left:10px">
+						<a href="<?php echo base_url('admin/datamaster/pelanggaransantri?nis='.$nis_santri.'') ?>" style="color:#3b994a;margin-left:10px">
 							<i class="fa fa-chevron-left"></i> Kembali</a>
 						<div class="row">
 							<div class="col-md-8">
 								<div class="form-group">
-									<label class="col-lg-4 control-label">Prestasi</label>
+									<label class="col-lg-4 control-label">pelanggaran</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" name="nama_prestasi" data-required="true" placeholder="" value=""
+										<input type="text" class="form-control" name="nama_pelanggaran" data-required="true" placeholder="" value=""
 										/>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-lg-4 control-label">Jenis prestasi</label>
+									<label class="col-lg-4 control-label">Jenis pelanggaran</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" name="jenis_prestasi" data-required="true" placeholder="" value=""
+										<input type="text" class="form-control" name="jenis_pelanggaran" data-required="true" placeholder="" value=""
 										/>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-lg-4 control-label">Tanggal Diperoleh</label>
+									<label class="col-lg-4 control-label">Tanggal Pelanggaran</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control datepicker-input" data-date-format="yyyy-mm-dd" readonly name="tanggal_prestasi" data-required="true" placeholder="." value=""
+										<input type="text" class="form-control datepicker-input" data-date-format="yyyy-mm-dd" readonly name="tanggal_pelanggaran" data-required="true" placeholder="." value=""
 										/>
 									</div>
 								</div>
@@ -52,8 +52,8 @@
 					<button type="submit" class="btn btn-success btn-s-xs">
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
-					<a href="<?php echo base_url('admin/datamaster/prestasisantri?nis='.$nis_santri.'') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Prestasi</a>
+					<a href="<?php echo base_url('admin/datamaster/pelanggaransantri?nis='.$nis_santri.'') ?>" class="btn btn-default btn-s-xs">
+						<i class="fa fa-list"></i> List pelanggaran</a>
 				</footer>
 				</form>
 				</div>
