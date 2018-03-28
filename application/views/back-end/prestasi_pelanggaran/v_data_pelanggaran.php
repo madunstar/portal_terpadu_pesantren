@@ -16,7 +16,7 @@
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Data Pelanggaran","Gagal Menghapus Data Pelanggaran") ?>
-            <a href="<?php echo base_url() ?>admin/datamaster/tambahprestasi?nis=<?php echo $santri['nis_lokal']?>"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Prestasi</button></a>
+            <a href="<?php echo base_url() ?>admin/datamaster/tambahpelanggaran?nis=<?php echo $santri['nis_lokal']?>"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Prestasi</button></a>
             <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/santri" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> List Santri</a>
 
               <div class="table-responsive">
@@ -26,7 +26,7 @@
                       <th>Aksi</th>
                       <th >Pelanggaran</th>
                       <th >Tanggal Pelanggaran</th>
-                      <th >Jenis Prestasi</th>
+                      <th >Jenis Pelanggaran</th>
                       <th>Keterangan</th>
                     </tr>
                   </thead>
