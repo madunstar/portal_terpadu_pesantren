@@ -70,7 +70,10 @@ class M_presensi extends CI_Model
 
    function lissantri($id_kelas_belajar)
    {
-        return $this->db->query("SELECT * FROM tb_santri WHERE NOT EXISTS (SELECT * FROM tb_kelas_santri WHERE tb_santri.nis_lokal=tb_kelas_santri.nis_lokal and tb_kelas_santri.id_kelas_belajar='$id_kelas_belajar')");
+        $exec = $this->lihatdatasatu($id_kelas_belajar)->row_array();
+        $id_tahun = $exec['id_tahun'];
+        $jenjang = $exec['jenjang'];
+        return $this->db->query("SELECT * FROM tb_santri WHERE NOT EXISTS (SELECT * FROM tb_kelas_santri inner join tb_presensi_kelas on tb_kelas_santri.id_kelas_belajar = tb_presensi_kelas.id_kelas_belajar  WHERE tb_santri.nis_lokal=tb_kelas_santri.nis_lokal and tb_presensi_kelas.id_tahun='$id_tahun') AND tb_santri.kelas='$jenjang' ");
    }
 
    function tambahdatasantri($array)

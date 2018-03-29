@@ -158,11 +158,19 @@ class Datamaster extends CI_Controller{
         $exec = $this->m_santri->lihatdatasatu($nis);
         if ($exec->num_rows()>0){
             $variabel['data'] = $exec ->row_array();
+            $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
             $this->layout->render('back-end/datamaster/santri/v_santri_lihat',$variabel,'back-end/datamaster/santri/v_santri_js');
         } else {
             redirect(base_url("admin/datamaster/santri"));
         }
 
+    }
+
+    function santritingkat()
+    {
+        $nis = $this->input->post("nis");
+        $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); 
+        $this->load->view('back-end/datamaster/santri/v_santri_tingkat',$variabel);
     }
 
     function datakotakab2()
@@ -1722,6 +1730,20 @@ function kecamatanhapus()
 
       
     }
+
+ 
+    function lihatkelasbelajar()
+    {
+        $id_kelas_belajar = $this->input->get("id");
+        $exec = $this->m_presensi->lihatdatasatulengkap($id_kelas_belajar);
+        if ($exec->num_rows()>0){
+            $variabel['data'] = $exec->row_array();
+            $variabel['santri'] = $this->m_presensi->lihatdatasantri($id_kelas_belajar);
+            $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_lihat',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelasbelajar"));
+        }
+    }
     
     function hapuskelassantri()
     {
@@ -1742,7 +1764,6 @@ function kecamatanhapus()
         } else {
             redirect(base_url("admin/datamaster/datakelasbelajar"));
         }
-
     }
 
     function kelastambahsantri()

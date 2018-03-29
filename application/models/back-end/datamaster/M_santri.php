@@ -174,6 +174,10 @@ class M_santri extends CI_Model
         return $this->db->get('tb_pendidikan');
       }
 
+      function lihattingkatan($nis_lokal){
+        return $this->db->query("SELECT `tb_kelas_santri`.nis_lokal,`tb_presensi_kelas`.`id_kelas_belajar`, `tb_presensi_kelas`.`nama_kelas_belajar`, `tb_presensi_kelas`.`jenjang`, `tb_presensi_kelas`.`tingkat`, `tb_tahun_ajaran`.`tahun_ajaran` FROM `tb_kelas_santri` inner join `tb_presensi_kelas` on `tb_presensi_kelas`.`id_kelas_belajar`=`tb_kelas_santri`.`id_kelas_belajar` inner join `tb_tahun_ajaran` on `tb_tahun_ajaran`.`id_tahun`=`tb_presensi_kelas`.`id_tahun` where `nis_lokal` = '$nis_lokal' order by `tb_presensi_kelas`.`tingkat` asc ");
+      }
+
       //////////////////////////////////
 
 }

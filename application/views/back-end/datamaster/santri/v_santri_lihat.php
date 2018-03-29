@@ -280,6 +280,42 @@
             </div>
           </div>
         </div>
+
+        <div class="row" style="margin:20px">
+          <div class="col-md-12">
+          
+            <div class="tingkatanjenjang">
+            <fieldset>
+            <legend>Tingkat Kelas</legend>
+                <table class="table table-striped ">
+                <thead>
+                  <tr>
+                    <th>Kelas</th>
+                    <th>Jenjang</th>
+                    <th>Tingkat</th>
+                    <th>Tahun Ajaran</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                      foreach($tingkat->result_array() as $row){
+                        {
+                          echo "<tr>
+                                  <td>".$row['nama_kelas_belajar']."</td>
+                                  <td>".$row['jenjang']."</td>
+                                  <td>".$row['tingkat']."</td>
+                                  <td>".$row['tahun_ajaran']."</td>
+                                </tr>";
+                        }
+                      }
+                  ?>
+              </tbody>
+              </table>
+               </fieldset>
+              </div>
+          </div>
+        </div>
+
       </div>
       <footer class="panel-footer text-right bg-light lter">
       <a href="<?php echo base_url('admin/datamaster/santriedit?nis=1') ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
