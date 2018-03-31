@@ -262,5 +262,27 @@ class M_perizinan extends CI_Model
       $this->db->where("id_keluar",$id_keluar);
       return $this->db->update('tb_perizinan_keluar');
     }
+
+    function laporankembali($tahun,$bulan){
+      $this->db->select('*');
+      $this->db->from('tb_perizinan_denda');
+      $this->db->join('tb_perizinan_kembali', 'tb_perizinan_denda.id_kembali = tb_perizinan_kembali.id_kembali');
+      $this->db->join('tb_perizinan_keluar', 'tb_perizinan_kembali.id_keluar = tb_perizinan_keluar.id_keluar');
+      $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
+      $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+      $this->db->where('year(tb_perizinan_kembali.tanggal_kembali)',$tahun);
+      $this->db->where('month(tb_perizinan_kembali.tanggal_kembali)',$bulan);
+      return $this->db->get();
+    }
+
+    function kenadenda($tahun,$bulan){
+      $this->db->select('count(*) as total')
+        ->from('tb_perizinan_kembali')
+        ->where('year(tb_perizinan_kembali.tanggal_kembali)',$tahun)
+        ->where('month(tb_perizinan_kembali.tanggal_kembali)',$bulan)
+        ->where('tb_perizinan_kembali.status_denda',1);
+        return $this->db->get()
+          ->row_array();
+    }
     ///end anis zone///
 }

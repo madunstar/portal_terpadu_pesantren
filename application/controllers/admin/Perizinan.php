@@ -240,6 +240,19 @@ class Perizinan extends CI_Controller
       redirect(base_url("admin/perizinan/datakembali"));
 
   }
+
+  function laporankembali(){
+
+    $tahun = $this->input->post('tahun');
+    $bulan = $this->input->post('bulan');
+    $variabel['bulan'] = $bulan;
+    $variabel['tahun'] = $tahun;
+    $variabel['semuadenda'] = $this->m_denda->semuadenda($tahun,$bulan);
+    $variabel['kenadenda'] = $this->m_perizinan->kenadenda($tahun,$bulan);
+    $variabel['data'] = $this->m_perizinan->laporankembali($tahun,$bulan);
+    $this->layout->renderlaporan('back-end/perizinan/v_lap_kembali',$variabel,'back-end/perizinan/denda_js');
+  }
+
 ///////////////////denda ini denda//////////////////////////
 
   function datadenda()
