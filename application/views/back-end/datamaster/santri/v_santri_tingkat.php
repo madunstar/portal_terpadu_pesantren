@@ -4,7 +4,7 @@
   <h4 class="modal-title">Daftar Kelas</h4>
 </div>
 <div class="modal-body">
-<table class="table" style="border:none">
+<table class="" style="border:none; width:100%">
 <thead>
   <tr>
     <th>Kelas</th>
