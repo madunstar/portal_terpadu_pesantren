@@ -30,6 +30,12 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label class="col-lg-4 control-label">NIK</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="nik" value="<?php echo $data['nik']; ?>" readonly/>
+									</div>
+								</div>
+								<div class="form-group">
 									<label class="col-lg-4 control-label">Tempat Lahir</label>
 									<div class="col-lg-8">
 										<input type="text" class="form-control" name="tempat_lahir" data-required="true" value="<?php echo $data['tempat_lahir']; ?>"
@@ -62,6 +68,12 @@
 									<label class="col-lg-4 control-label">Nomor HP</label>
 									<div class="col-lg-8">
 										<input type="text" class="form-control" name="hp_staff" value="<?php echo $data['hp_staff']; ?>" readonly/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Pendidikan Terakhir</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="pendidikan_terakhir" value="<?php echo $data['pendidikan_terakhir']; ?>" readonly/>
 									</div>
 								</div>
 
