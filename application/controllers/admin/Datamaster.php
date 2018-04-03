@@ -689,7 +689,7 @@ class Datamaster extends CI_Controller{
                     'tahun_masuk'=>$this->input->post('tahun_masuk'),
                     'tahun_lulus'=>$this->input->post('tahun_lulus')
 
-                    
+
 
                     );
             if ($this->m_guru->cekdata($this->input->post('nip_guru'))==0) {
@@ -698,7 +698,7 @@ class Datamaster extends CI_Controller{
                 else redirect(base_url("admin/datamaster/gurutambah?msg=0"));
             } else {
 
-                
+
 
                 $variabel['provinsi']=$this->m_santri->ambilprovinsi();
                 $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
@@ -1980,6 +1980,14 @@ function kecamatanhapus()
    function pelajaranrekap(){
      $variabel['data'] = $this->m_rekap_santri->datapelajaran();
      $this->layout->render('back-end/presensi/rekap_presensi/v_data_pelajaran',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
+   }
+
+   function datarekapsantri(){
+     $tgl = date('Y-m-d');
+     $kel = $this->input->get('kelas');
+     $pel = $this->input->get('pelajaran');
+     $variabel['data'] = $this->m_rekap_santri->datakelas($kel,$pel,$tgl);
+     $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
    }
    //akhir rekap presensi//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
