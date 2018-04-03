@@ -17,10 +17,10 @@
           <thead>
             <tr>
               <th width="130px">Aksi</th>
-              <th>Kelas</th>
+              <th>Nama</th>
               <th>Mata Pelajaran</th>
-              <th>Pengajar</th>
-              <th>Hari</th>
+              <th>Nama Kelas</th>
+              <th>Status Presensi</th>
               <th>Jam Pelajaran</th>
             </tr>
           </thead>
@@ -30,14 +30,14 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/datarekapsantri?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat Rekap'><i class='fa fa-file-text-o'></i></a>
+                      <a href='".base_url('admin/datamaster/pelajaranlihat?id_pelajaran='.$row['id_pelajaran'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
                       <a href='".base_url('admin/datamaster/pelajaranedit?id_pelajaran='.$row['id_pelajaran'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
                       <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_pelajaran']."'><i class='fa fa-trash-o'></i></a>
                       </td>
-                      <td>".$row['nama_kelas_belajar']."</td>
-                      <td>".$row['nama_mata_pelajaran']."</td>
                       <td>".$row['nama_lengkap']."</td>
-                      <td></td>
+                      <td>".$row['nama_mata_pelajaran']."</td>
+                      <td>".$row['nama_kelas_belajar']."</td>
+                      <td>".$row['status_presensi']."</td>
                       <td></td>
                     </tr>
                   ";

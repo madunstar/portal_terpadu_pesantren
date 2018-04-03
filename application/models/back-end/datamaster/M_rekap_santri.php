@@ -21,13 +21,17 @@ class m_rekap_santri extends CI_Model
         return $this->db->get();
     }
 
-    function detilinfaq($nis)
+    function datakelas($kel,$pel,$tgl)
     {
       $this->db->select('*');
-      $this->db->from('tb_pembayaran_spp');
-      $this->db->join('tb_santri', 'tb_pembayaran_spp.nis_santri = tb_santri.nis_lokal');
-      $this->db->where('tb_pembayaran_spp.nis_santri', $nis);
-
+      $this->db->from('tb_presensi_rekap_santri');
+      $this->db->join('tb_santri', 'tb_presensi_rekap_santri.id_santri = tb_santri.nis_lokal');
+      $this->db->join('tb_presensi_kelas', 'tb_presensi_rekap_santri.id_kelas = tb_presensi_kelas.id_kelas_belajar');
+      $this->db->join('tb_pelajaran', 'tb_presensi_rekap_santri.id_pelajaran = tb_pelajaran.id_pelajaran');
+      $this->db->join('tb_mata_pelajaran', 'tb_pelajaran.id_mata_pelajaran = tb_mata_pelajaran.id_mata_pelajaran');
+      $this->db->where('tb_presensi_rekap_santri.id_pelajaran', $pel);
+      $this->db->where('tb_presensi_rekap_santri.id_kelas', $kel);
+      $this->db->where('tb_presensi_rekap_santri.tanggal_rekap', $tgl);
       return $this->db->get();
     }
 
