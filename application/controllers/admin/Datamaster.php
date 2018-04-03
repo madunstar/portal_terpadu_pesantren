@@ -28,6 +28,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_prestasi');
         $this->load->model('back-end/datamaster/m_pelanggaran');
         $this->load->model('back-end/datamaster/m_jenjang');
+        $this->load->model('back-end/datamaster/m_rekap_santri');
         $this->load->library('layout');
         $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
@@ -169,7 +170,7 @@ class Datamaster extends CI_Controller{
     function santritingkat()
     {
         $nis = $this->input->post("nis");
-        $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); 
+        $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis);
         $this->load->view('back-end/datamaster/santri/v_santri_tingkat',$variabel);
     }
 
@@ -687,14 +688,18 @@ class Datamaster extends CI_Controller{
                     'bidang_ilmu'=>$this->input->post('bidang_ilmu'),
                     'tahun_masuk'=>$this->input->post('tahun_masuk'),
                     'tahun_lulus'=>$this->input->post('tahun_lulus')
+
                     
+
                     );
             if ($this->m_guru->cekdata($this->input->post('nip_guru'))==0) {
                 $exec = $this->m_guru->tambahdata($array);
                 if ($exec) redirect(base_url("admin/datamaster/gurutambah?msg=1"));
                 else redirect(base_url("admin/datamaster/gurutambah?msg=0"));
             } else {
+
                 
+
                 $variabel['provinsi']=$this->m_santri->ambilprovinsi();
                 $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
                 $variabel['kecamatan']=$this->m_santri->ambilkecamatan($this->input->post('kabupaten_kota'));
@@ -1803,10 +1808,10 @@ function kecamatanhapus()
             }
       }
 
-      
+
     }
 
- 
+
     function lihatkelasbelajar()
     {
         $id_kelas_belajar = $this->input->get("id");
@@ -1819,7 +1824,7 @@ function kecamatanhapus()
             redirect(base_url("admin/datamaster/datakelasbelajar"));
         }
     }
-    
+
     function hapuskelassantri()
     {
        $id = $this->input->get("id");
@@ -1857,7 +1862,7 @@ function kecamatanhapus()
             "nis_lokal"=>$nis
         );
         $exec = $this->m_presensi->tambahdatasantri($array);
-       
+
     }
     function kelaseditsantri()
     {
@@ -1970,6 +1975,13 @@ function kecamatanhapus()
           redirect(base_url()."admin/datamaster/pelajaran?msg=1");
        }
    //end CRUD pelajaran
+
+   //mulai rekap presensi//
+   function pelajaranrekap(){
+     $variabel['data'] = $this->m_rekap_santri->datapelajaran();
+     $this->layout->render('back-end/presensi/rekap_presensi/v_data_pelajaran',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
+   }
+   //akhir rekap presensi//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
 
 
