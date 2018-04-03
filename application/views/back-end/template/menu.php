@@ -58,7 +58,7 @@
                           <i class="i i-dot"></i>
 
                           <span>Data Kelas</span>
-                        </a> 
+                        </a>
                       </li>
                       <li class="<?= ((($menu == "datamaster") &&  ($submenu == 'jenjang')) || (($submenu == 'jenjangtingkat')) ) ? "active" : ""; ?>">
                       <a href="<?php echo base_url() ?>admin/datamaster/jenjang" class="auto">
@@ -102,11 +102,10 @@
                           <span>Atur Kelas Belajar</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="grid.html" class="auto">
+                      <li class="<?= (($menu == "datamaster") &&  ($submenu == 'pelajaranrekap')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekap" class="auto">
                           <i class="i i-dot"></i>
-
-                          <span>Rekap Presensi Siswa</span>
+                          <span>Rekap Presensi Santri</span>
                         </a>
                       </li>
 
