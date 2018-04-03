@@ -689,12 +689,16 @@ class Datamaster extends CI_Controller{
                     'tahun_masuk'=>$this->input->post('tahun_masuk'),
                     'tahun_lulus'=>$this->input->post('tahun_lulus')
 
+                    
+
                     );
             if ($this->m_guru->cekdata($this->input->post('nip_guru'))==0) {
                 $exec = $this->m_guru->tambahdata($array);
                 if ($exec) redirect(base_url("admin/datamaster/gurutambah?msg=1"));
                 else redirect(base_url("admin/datamaster/gurutambah?msg=0"));
             } else {
+
+                
 
                 $variabel['provinsi']=$this->m_santri->ambilprovinsi();
                 $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
