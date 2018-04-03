@@ -261,8 +261,8 @@ class Datamaster extends CI_Controller{
             }
 
         } else {
-            $variabel['provinsi']=$this->m_santri->ambilprovinsi();
-            $variabel['transportasi']=$this->m_santri->ambiltransportasi();
+             $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+             $variabel['transportasi']=$this->m_santri->ambiltransportasi();
              $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
              $variabel['pendidikan']
              =$this->m_santri->ambilpendidikan();
@@ -329,6 +329,17 @@ class Datamaster extends CI_Controller{
                 $variabel['nis_lokal'] =$this->input->post('nis_lokal');
                 $variabel['nis_lokal2'] =$this->input->post('nis_lokal2');
                 $variabel['data'] = $array;
+
+                $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+                $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
+                $variabel['kecamatan']=$this->m_santri->ambilkecamatan($this->input->post('kabupaten_kota'));
+                $variabel['desa']=$this->m_santri->ambildesa($this->input->post('kecamatan'));
+
+                $variabel['transportasi']=$this->m_santri->ambiltransportasi();
+                $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
+                $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
+                $variabel['jenjang']=$this->m_jenjang->lihatdata();
+
                 $this->layout->render('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
             } else {
                 $exec = $this->m_santri->editdata($nis2,$array);
@@ -658,6 +669,7 @@ class Datamaster extends CI_Controller{
 
                 $array=array(
                     'nip_guru'=> $this->input->post('nip_guru'),
+                    'nik'=> $this->input->post('nik'),
                     'email_guru'=> $this->input->post('email_guru'),
                     'hp_guru'=> $this->input->post('hp_guru'),
                     'nama_lengkap'=>$this->input->post('nama_lengkap'),
@@ -669,19 +681,37 @@ class Datamaster extends CI_Controller{
                     'kabupaten_kota'=>$this->input->post('kabupaten_kota'),
                     'kecamatan'=>$this->input->post('kecamatan'),
                     'desa_kelurahan'=>$this->input->post('desa_kelurahan'),
-                    'kode_pos'=>$this->input->post('kode_pos')
+                    'kode_pos'=>$this->input->post('kode_pos'),
+                    'pendidikan_terakhir'=>$this->input->post('pendidikan_terakhir'),
+                    'perguruan_tinggi'=>$this->input->post('perguruan_tinggi'),
+                    'bidang_ilmu'=>$this->input->post('bidang_ilmu'),
+                    'tahun_masuk'=>$this->input->post('tahun_masuk'),
+                    'tahun_lulus'=>$this->input->post('tahun_lulus')
+                    
                     );
             if ($this->m_guru->cekdata($this->input->post('nip_guru'))==0) {
                 $exec = $this->m_guru->tambahdata($array);
                 if ($exec) redirect(base_url("admin/datamaster/gurutambah?msg=1"));
                 else redirect(base_url("admin/datamaster/gurutambah?msg=0"));
             } else {
+                
+                $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+                $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
+                $variabel['kecamatan']=$this->m_santri->ambilkecamatan($this->input->post('kabupaten_kota'));
+                $variabel['desa']=$this->m_santri->ambildesa($this->input->post('kecamatan'));
+                $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
+
                 $variabel['nip_guru'] =$this->input->post('nip_guru');
                 $this->layout->render('back-end/datamaster/guru/v_guru_tambah',$variabel,'back-end/datamaster/guru/v_guru_js');
             }
 
         } else {
-            $variabel ='';
+             $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+             $variabel['pendidikan']
+             =$this->m_santri->ambilpendidikan();
+             $variabel['kabupaten']=$this->m_santri->ambilkabupaten("");
+             $variabel['kecamatan']=$this->m_santri->ambilkecamatan("");
+             $variabel['desa']=$this->m_santri->ambildesa("");
             $this->layout->render('back-end/datamaster/guru/v_guru_tambah',$variabel,'back-end/datamaster/guru/v_guru_js');
         }
     }
@@ -691,6 +721,7 @@ class Datamaster extends CI_Controller{
         if ($this->input->post()) {
             $array=array(
                 'nip_guru'=> $this->input->post('nip_guru'),
+                'nik'=> $this->input->post('nik'),
                 'email_guru'=> $this->input->post('email_guru'),
                 'hp_guru'=> $this->input->post('hp_guru'),
                 'nama_lengkap'=>$this->input->post('nama_lengkap'),
@@ -702,7 +733,12 @@ class Datamaster extends CI_Controller{
                 'kabupaten_kota'=>$this->input->post('kabupaten_kota'),
                 'kecamatan'=>$this->input->post('kecamatan'),
                 'desa_kelurahan'=>$this->input->post('desa_kelurahan'),
-                'kode_pos'=>$this->input->post('kode_pos')
+                'kode_pos'=>$this->input->post('kode_pos'),
+                'pendidikan_terakhir'=>$this->input->post('pendidikan_terakhir'),
+                'perguruan_tinggi'=>$this->input->post('perguruan_tinggi'),
+                'bidang_ilmu'=>$this->input->post('bidang_ilmu'),
+                'tahun_masuk'=>$this->input->post('tahun_masuk'),
+                'tahun_lulus'=>$this->input->post('tahun_lulus')
                 );
             $nip2 = $this->input->post("nip_guru2");
             $nip = $this->input->post("nip_guru");
@@ -710,6 +746,13 @@ class Datamaster extends CI_Controller{
                 $variabel['nip_guru'] =$this->input->post('nip_guru');
                 $variabel['nip_guru2'] =$this->input->post('nip_guru2');
                 $variabel['data'] = $array;
+
+                $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+                $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
+                $variabel['kecamatan']=$this->m_santri->ambilkecamatan($this->input->post('kabupaten_kota'));
+                $variabel['desa']=$this->m_santri->ambildesa($this->input->post('kecamatan'));
+                $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
+
                 $this->layout->render('back-end/datamaster/guru/v_guru_edit',$variabel,'back-end/datamaster/guru/v_guru_js');
             } else {
                 $exec = $this->m_guru->editdata($nip2,$array);
@@ -721,7 +764,13 @@ class Datamaster extends CI_Controller{
             $nip = $this->input->get("nip");
             $exec = $this->m_guru->lihatdatasatu($nip);
             if ($exec->num_rows()>0){
-                $variabel['data'] = $exec ->row_array();
+                 $variabel['data'] = $exec ->row_array();
+                 $data = $variabel['data'];
+                 $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+                 $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
+                 $variabel['kabupaten']=$this->m_santri->ambilkabupaten($data['provinsi']);
+                 $variabel['kecamatan']=$this->m_santri->ambilkecamatan($data['kabupaten_kota']);
+                 $variabel['desa']=$this->m_santri->ambildesa($data['kecamatan']);
                 $this->layout->render('back-end/datamaster/guru/v_guru_edit',$variabel,'back-end/datamaster/guru/v_guru_js');
             } else {
                 redirect(base_url("admin/datamaster/guru"));
@@ -884,6 +933,7 @@ class Datamaster extends CI_Controller{
 
                 $array=array(
                     'nip_staff'=> $this->input->post('nip_staff'),
+                    'nik'=> $this->input->post('nik'),
                     'email_staff'=> $this->input->post('email_staff'),
                     'hp_staff'=> $this->input->post('hp_staff'),
                     'nama_lengkap'=>$this->input->post('nama_lengkap'),
@@ -895,7 +945,8 @@ class Datamaster extends CI_Controller{
                     'kabupaten_kota'=>$this->input->post('kabupaten_kota'),
                     'kecamatan'=>$this->input->post('kecamatan'),
                     'desa_kelurahan'=>$this->input->post('desa_kelurahan'),
-                    'kode_pos'=>$this->input->post('kode_pos')
+                    'kode_pos'=>$this->input->post('kode_pos'),
+                    'pendidikan_terakhir'=>$this->input->post('pendidikan_terakhir')
                     );
             if ($this->m_staff->cekdata($this->input->post('nip_staff'))==0) {
                 $exec = $this->m_staff->tambahdata($array);
@@ -903,11 +954,22 @@ class Datamaster extends CI_Controller{
                 else redirect(base_url("admin/datamaster/stafftambah?msg=0"));
             } else {
                 $variabel['nip_staff'] =$this->input->post('nip_staff');
+                $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+                $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
+                $variabel['kecamatan']=$this->m_santri->ambilkecamatan($this->input->post('kabupaten_kota'));
+                $variabel['desa']=$this->m_santri->ambildesa($this->input->post('kecamatan'));
+                $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
+
+                $variabel['nip_guru'] =$this->input->post('nip_guru');
                 $this->layout->render('back-end/datamaster/staff/v_staff_tambah',$variabel,'back-end/datamaster/staff/v_staff_js');
             }
 
         } else {
-            $variabel ='';
+            $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+            $variabel['pendidikan'] =$this->m_santri->ambilpendidikan();
+            $variabel['kabupaten']=$this->m_santri->ambilkabupaten("");
+            $variabel['kecamatan']=$this->m_santri->ambilkecamatan("");
+            $variabel['desa']=$this->m_santri->ambildesa("");
             $this->layout->render('back-end/datamaster/staff/v_staff_tambah',$variabel,'back-end/datamaster/staff/v_staff_js');
         }
     }
@@ -917,6 +979,7 @@ class Datamaster extends CI_Controller{
         if ($this->input->post()) {
             $array=array(
                 'nip_staff'=> $this->input->post('nip_staff'),
+                'nik'=> $this->input->post('nik'),
                 'email_staff'=> $this->input->post('email_staff'),
                 'hp_staff'=> $this->input->post('hp_staff'),
                 'nama_lengkap'=>$this->input->post('nama_lengkap'),
@@ -928,7 +991,8 @@ class Datamaster extends CI_Controller{
                 'kabupaten_kota'=>$this->input->post('kabupaten_kota'),
                 'kecamatan'=>$this->input->post('kecamatan'),
                 'desa_kelurahan'=>$this->input->post('desa_kelurahan'),
-                'kode_pos'=>$this->input->post('kode_pos')
+                'kode_pos'=>$this->input->post('kode_pos'),
+                'pendidikan_terakhir'=>$this->input->post('pendidikan_terakhir')
                 );
             $nip2 = $this->input->post("nip_staff2");
             $nip = $this->input->post("nip_staff");
@@ -936,6 +1000,11 @@ class Datamaster extends CI_Controller{
                 $variabel['nip_staff'] =$this->input->post('nip_staff');
                 $variabel['nip_staff2'] =$this->input->post('nip_staff2');
                 $variabel['data'] = $array;
+                $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+                $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
+                $variabel['kecamatan']=$this->m_santri->ambilkecamatan($this->input->post('kabupaten_kota'));
+                $variabel['desa']=$this->m_santri->ambildesa($this->input->post('kecamatan'));
+                $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
                 $this->layout->render('back-end/datamaster/staff/v_staff_edit',$variabel,'back-end/datamaster/staff/v_staff_js');
             } else {
                 $exec = $this->m_staff->editdata($nip2,$array);
@@ -948,6 +1017,12 @@ class Datamaster extends CI_Controller{
             $exec = $this->m_staff->lihatdatasatu($nip);
             if ($exec->num_rows()>0){
                 $variabel['data'] = $exec ->row_array();
+                $data = $variabel['data'] ;
+                $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+                $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
+                $variabel['kabupaten']=$this->m_santri->ambilkabupaten($data['provinsi']);
+                $variabel['kecamatan']=$this->m_santri->ambilkecamatan($data['kabupaten_kota']);
+                $variabel['desa']=$this->m_santri->ambildesa($data['kecamatan']);
                 $this->layout->render('back-end/datamaster/staff/v_staff_edit',$variabel,'back-end/datamaster/staff/v_staff_js');
             } else {
                 redirect(base_url("admin/datamaster/staff"));

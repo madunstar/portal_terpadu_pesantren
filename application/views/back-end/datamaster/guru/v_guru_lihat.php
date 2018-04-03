@@ -30,6 +30,12 @@
 									</div>
 								</div>
 								<div class="form-group">
+									<label class="col-lg-4 control-label">NIK</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="nik"  value="<?php echo $data['nik']; ?>" readonly/>
+									</div>
+								</div>
+								<div class="form-group">
 									<label class="col-lg-4 control-label">Tempat Lahir</label>
 									<div class="col-lg-8">
 										<input type="text" class="form-control" name="tempat_lahir" data-required="true" value="<?php echo $data['tempat_lahir']; ?>"
@@ -62,6 +68,37 @@
 									<label class="col-lg-4 control-label">Nomor HP</label>
 									<div class="col-lg-8">
 										<input type="text" class="form-control" name="hp_guru" value="<?php echo $data['hp_guru']; ?>" readonly/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Pendidikan Terakhir</label>
+									<div class="col-lg-8">
+									<input type="text" class="form-control" name="pendidikan_terakhir" value="<?php echo $data['pendidikan_terakhir']; ?>" readonly />
+									
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Nama Perguruan Tinggi</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="perguruan_tinggi" value="<?php echo $data['perguruan_tinggi']; ?>" readonly/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Bidang Ilmu/Keahlian</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="bidang_ilmu" value="<?php echo $data['bidang_ilmu']; ?>" readonly />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Tahun Masuk</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="tahun_masuk" value="<?php echo $data['tahun_masuk']; ?>" readonly/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Tahun Lulus</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="tahun_lulus" value="<?php echo $data['tahun_lulus']; ?>" readonly/>
 									</div>
 								</div>
 

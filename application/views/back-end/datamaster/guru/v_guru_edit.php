@@ -21,7 +21,7 @@
 									<div class="col-lg-8">
 										<input type="text" class="form-control" name="nip_guru" data-required="true" value="<?php echo $data['nip_guru']; ?>" />
 										<input type="hidden" class="form-control" name="nip_guru2" data-required="true" value="<?php
-             					   if (isset($nip_guru2)) echo $nip_guru2; else echo $data['nip_guru']; ?>" />
+             						   if (isset($nip_guru2)) echo $nip_guru2; else echo $data['nip_guru']; ?>" />
 										<?php if(isset($nip_guru)) {
 													echo '<label style="color:red;font-size:10px">NIP ada yang sama ! NIP asal "'.$nip_guru2.'"</label>';
 												} 
@@ -33,6 +33,12 @@
 									<div class="col-lg-8">
 										<input type="text" class="form-control" name="nama_lengkap" data-required="true" value="<?php echo $data['nama_lengkap']; ?>"
 										/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">NIK</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="nik"  value="<?php echo $data['nik']; ?>" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -64,10 +70,51 @@
 										<input type="text" class="form-control" name="email_guru" value="<?php echo $data['email_guru']; ?>" data-type="email" />
 									</div>
 								</div>
+
+											
+
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Nomor HP</label>
 									<div class="col-lg-8">
 										<input type="text" class="form-control" name="hp_guru" value="<?php echo $data['hp_guru']; ?>" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Pendidikan Terakhir</label>
+									<div class="col-lg-8">
+									<select type="text" class="form-control"  name="pendidikan_terakhir">
+									<option value="" disabled <?php if ($data['pendidikan_terakhir']=="") echo "selected" ?>>Pilih Pendidikan</option>
+									<?php 
+										foreach($pendidikan->result_array() as $row) {
+										echo "<option value='".$row['nama_pendidikan']."' ".($data['pendidikan_terakhir']==$row['nama_pendidikan']?"selected":"").">".$row['nama_pendidikan']."</option>";
+										}
+									?> 
+									</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Nama Perguruan Tinggi</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="perguruan_tinggi" value="<?php echo $data['perguruan_tinggi']; ?>" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Bidang Ilmu/Keahlian</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="bidang_ilmu" value="<?php echo $data['bidang_ilmu']; ?>" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Tahun Masuk</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="tahun_masuk" value="<?php echo $data['tahun_masuk']; ?>" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-4 control-label">Tahun Lulus</label>
+									<div class="col-lg-8">
+										<input type="text" class="form-control" name="tahun_lulus" value="<?php echo $data['tahun_lulus']; ?>" />
 									</div>
 								</div>
 
@@ -82,25 +129,54 @@
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Provinsi</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" name="provinsi" value="<?php echo $data['provinsi']; ?>" />
+									<select class="form-control"  name="provinsi" id="provinsi" data-required="true">
+									<option value="" disabled <?php if ($data['provinsi']=="") echo "selected" ?>>Pilih Provinsi</option>
+									<?php 
+										foreach($provinsi->result_array() as $row) {
+											echo "<option value='".$row['nama_provinsi']."' ".($data['provinsi']==$row['nama_provinsi']?"selected":"").">".$row['nama_provinsi']."</option>";
+										}
+									?> 
+									</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Kabupaten/Kota</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" name="kabupaten_kota" value="<?php echo $data['kabupaten_kota']; ?>" />
+									<select class="form-control id_kota_kab"  name="kabupaten_kota"  id="kabupaten_kota" data-required="true">
+									<option value="" disabled <?php if ($data['kabupaten_kota']=="") echo "selected" ?>>Pilih Kabupaten/Kota</option>
+										<?php 
+											foreach($kabupaten->result_array() as $row) {
+											echo "<option value='".$row['nama_kota_kab']."' ".($data['kabupaten_kota']==$row['nama_kota_kab']?"selected":"").">".$row['nama_kota_kab']."</option>";
+											}
+										?>
+										
+										</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Kecamatan</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" name="kecamatan" value="<?php echo $data['kecamatan']; ?>" />
+									<select class="form-control id_kota_kab"  name="kecamatan"  id="kecamatan" data-required="true" >
+									<option value="" disabled  <?php if ($data['kecamatan']=="") echo "selected" ?>>Pilih Kecamatan</option>
+									<?php 
+										foreach($kecamatan->result_array() as $row) {
+											echo "<option value='".$row['nama_kecamatan']."' ".($data['kecamatan']==$row['nama_kecamatan']?"selected":"").">".$row['nama_kecamatan']."</option>";
+										}
+									?>
+									</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Desa/Kelurahan</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" name="desa_kelurahan" value="<?php echo $data['desa_kelurahan']; ?>" />
+									<select class="form-control"  name="desa_kelurahan" id="desa_kelurahan" data-required="true">
+									<option value="" disabled <?php if ($data['desa_kelurahan']=="") echo "selected" ?>>Pilih Desa/Kelurahan</option>
+									<?php 
+										foreach($desa->result_array() as $row) {
+										echo "<option value='".$row['nama_kel_desa']."' ".($data['desa_kelurahan']==$row['nama_kel_desa']?"selected":"").">".$row['nama_kel_desa']."</option>";
+										}
+									?>
+									</select>
 									</div>
 								</div>
 								<div class="form-group">
