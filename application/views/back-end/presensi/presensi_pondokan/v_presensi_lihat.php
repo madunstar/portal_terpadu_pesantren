@@ -10,10 +10,10 @@
 				<div class="col-sm-12">
 					<section class="panel panel-default">
 						<header class="panel-heading">
-							<h4 class="font-bold">Edit Data Presensi Kelas Afilasi</h4>
+							<h4 class="font-bold">Lihat Data Presensi Kelas Pondokan</h4>
 						</header>
 						<div class="panel-body">
-							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/editkelasbelajar?id=<?php echo $data['id_kelas_belajar'] ?>"
+							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>"
 							method="post">
 								<div class="row">
 									<div class="col-sm-12">
@@ -63,10 +63,10 @@
 											</div>
 											<div class="col-sm-5">
 												<div class="form-group" style="margin-bottom: 0px">
-													<label class="col-sm-4 control-label">Jenjang :</label>
+													<label class="col-sm-4 control-label">Kelas Pondokan :</label>
 													<div class="col-sm-6">
 														<p class="form-control" style="border:0">
-															<?php echo $data['jenjang'] ?>
+															<?php echo $data['pondokan'] ?>
 														</p>
 													</div>
 												</div>
@@ -100,7 +100,7 @@
 									<div class="col-sm-12">
 											<hr/>
 											<div class="text-center" style="margin-bottom:10px">
-												<a href="<?php echo base_url() ?>admin/datamaster/lihatkelasbelajarsantri?id=<?php echo $data['id_kelas_belajar'] ?>" class="btn btn-default" margin="auto"><i class="fa fa-edit"></i> Edit Daftar Santri</a>
+												<a href="<?php echo base_url() ?>admin/datamaster/lihatkelaspondokansantri?id=<?php echo $data['id_kelas_belajar'] ?>" class="btn btn-default" margin="auto"><i class="fa fa-edit"></i> Edit Daftar Santri</a>
 											</div>
 											<table class="table" style="width:80%" align="center">
 												<thead>
@@ -131,10 +131,10 @@
 									</div>
 								</div>
 								<footer class="panel-footer text-right bg-light lter">
-									<a href="<?php echo base_url() ?>admin/datamaster/editkelasbelajar?id=<?php echo $data['id_kelas_belajar'] ?>" type="submit" class="btn btn-success btn-s-xs">
+									<a href="<?php echo base_url() ?>admin/datamaster/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>" type="submit" class="btn btn-success btn-s-xs">
 										<i class="fa fa-save"></i> Edit</a>
 									&nbsp
-									<a href="<?php echo base_url('admin/datamaster/datakelasbelajar') ?>" class="btn btn-default btn-s-xs">
+									<a href="<?php echo base_url('admin/datamaster/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
 										<i class="fa fa-list"></i> List Kelas Belajar</a>
 							</form>
 							</footer>

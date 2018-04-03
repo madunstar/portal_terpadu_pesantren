@@ -273,7 +273,13 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">Kelas</label>
+              <label class="col-lg-4 control-label">Kelas Pondokan</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control"  name="pondokan" value="<?php echo $data['pondokan']; ?>" readonly/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">Kelas Afilasi</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control"  name="kelas" value="<?php echo $data['kelas']; ?>" readonly/>
               </div>

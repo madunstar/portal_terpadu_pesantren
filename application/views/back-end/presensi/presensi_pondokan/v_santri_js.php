@@ -13,7 +13,7 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/datamaster/hapuskelassantri?id="+v_id+"&idkelas="+v_idkelasbelajar);
+                    window.location.assign("<?php echo base_url() ?>admin/datamaster/hapuskelassantripondokan?id="+v_id+"&idkelas="+v_idkelasbelajar);
                 }
             },
             batal: function () {
@@ -25,7 +25,7 @@
 
     // Form Tambah Stock
     $("#tambahsantri").click(function(e) {
-        var v_url = "<?php echo base_url() ?>admin/datamaster/kelastambahsantri";
+        var v_url = "<?php echo base_url() ?>admin/datamaster/kelastambahsantripondokan";
         var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
         $.ajax({
 				type: 'POST',
@@ -42,7 +42,7 @@
                 complete: function () {
                     $('.chosen-select').chosen({width: "inherit"}) 
                     $('#tambahsantriproses').click(function (e) {
-                        var v_url = "<?php echo base_url() ?>admin/datamaster/tambahsantriproses";
+                        var v_url = "<?php echo base_url() ?>admin/datamaster/tambahsantripondokproses";
                         var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
                         var v_nis = $('#nis_lokal').val();
                         $.ajax({
@@ -66,7 +66,7 @@
                                 $('body').removeClass('modal-open');
                                 $('body').css('padding-right', '');
                                 $("#myModal").hide();
-                                window.location.assign("<?php echo base_url() ?>admin/datamaster/lihatkelasbelajarsantri?id=<?php echo $santri['id_kelas_belajar'] ?>&msg=1")
+                                window.location.assign("<?php echo base_url() ?>admin/datamaster/lihatkelaspondokansantri?id=<?php echo $santri['id_kelas_belajar'] ?>&msg=1")
                                 //isidata();
                                 //pesanpop('Pesan !', 'Berhasil menambah data Gudang.', 'success')
                             }
@@ -80,7 +80,7 @@
 
 
     $(".editsantri").click(function(e) {
-        var v_url = "<?php echo base_url() ?>admin/datamaster/kelaseditsantri";
+        var v_url = "<?php echo base_url() ?>admin/datamaster/kelaseditsantripondokan";
         var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
         var v_id = this.id;
         $.ajax({
@@ -99,7 +99,7 @@
 				},
                 complete: function () {
                     $('#editsantriproses').click(function (e) {
-                        var v_url = "<?php echo base_url() ?>admin/datamaster/editsantriproses";
+                        var v_url = "<?php echo base_url() ?>admin/datamaster/editsantripondokanproses";
                         var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
                         var v_nis = $('#nis_lokal').val();
                         var v_id_kelas_santri = $('#id_kelas_santri').val();
@@ -125,7 +125,7 @@
                                 $('body').removeClass('modal-open');
                                 $('body').css('padding-right', '');
                                 $("#myModal").hide();
-                                window.location.assign("<?php echo base_url() ?>admin/datamaster/lihatkelasbelajarsantri?id=<?php echo $santri['id_kelas_belajar'] ?>&ed=1")
+                                window.location.assign("<?php echo base_url() ?>admin/datamaster/lihatkelaspondokansantri?id=<?php echo $santri['id_kelas_belajar'] ?>&ed=1")
                                 //isidata();
                                 //pesanpop('Pesan !', 'Berhasil menambah data Gudang.', 'success')
                             }

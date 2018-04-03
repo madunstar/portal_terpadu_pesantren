@@ -178,11 +178,11 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Alat Transportasi</label>
               <div class="col-lg-8">
-              <select class="form-control"  name="alat_transportasi">
+              <select class="form-control"  name="alat_transportasi"  data-required="true">
                 <option value="" disabled selected>Pilih Alat Transportasi</option>
                 <?php
                      foreach($transportasi->result_array() as $row) {
-                       echo "<option value='".$row['nama_alat_transportasi']."' >".$row['nama_alat_transportasi']."</option>";
+                       echo "<option value='".$row['nama_alat_transportasi']."' ".(set_value('alat_transportasi')==$row['alat_transportasi']?"selected":"")." >".$row['nama_alat_transportasi']."</option>";
                     }
                 ?>
                 </select>
@@ -355,18 +355,32 @@
               </div>
             </div>
             <div class="form-group">
-									<label class="col-sm-4 control-label">Jenjang</label>
+									<label class="col-sm-4 control-label">Kelas Pondokan</label>
 									<div class="col-sm-8">
-										<select class="form-control m-b" name="kelas" id="kelas" data-required="true">
-											<option value="" selected disabled>.: Pilih Jenjang:.</option>
+										<select class="form-control m-b" name="pondokan" id="pondokan" data-required="true">
+											<option value="" selected disabled>.: Pilih Kelas Pondokan:.</option>
 											<?php
-												foreach($jenjang->result_array() as $row){
-													echo "<option value='".$row['jenjang']."'>".$row['jenjang']." </option>";
+												foreach($pondokan->result_array() as $row){
+													echo "<option value='".$row['pondokan']."' ".(set_value('pondokan')==$row['pondokan']?"selected":"").">".$row['pondokan']." </option>";
 												}
 											?>
                   </select>
                 </div>
               </div>
+            <div class="form-group">
+									<label class="col-sm-4 control-label">Kelas Afilasi</label>
+									<div class="col-sm-8">
+										<select class="form-control m-b" name="kelas" id="kelas">
+											<option value="" selected disabled>.: Pilih Kelas Afilasi:.</option>
+											<?php
+												foreach($jenjang->result_array() as $row){
+													echo "<option value='".$row['jenjang']."' ".(set_value('kelas')==$row['jenjang']?"selected":"").">".$row['jenjang']." </option>";
+												}
+											?>
+                  </select>
+                </div>
+              </div>
+              
            
           </div>
         </div>
