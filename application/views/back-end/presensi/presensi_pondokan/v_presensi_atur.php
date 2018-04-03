@@ -4,18 +4,18 @@
 		<section class="scrollable padder">
 			<div class="row m-b-md">
 				<div class="col-sm-6">
-					<h3 class="m-b-xs text-black">Presensi</h3>
+					<h3 class="m-b-xs text-black">Presensi </h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
 					<section class="panel panel-default">
 						<header class="panel-heading">
-							<h4 class="font-bold">Data Presensi Kelas Afilasi</h4>
+							<h4 class="font-bold">Data Presensi Kelas Pondokan</h4>
 						</header>
 						<div class="panel-body">
 							<?php pesan_get('msg',"Berhasil Menambahkan  Data Kelas Belajar","Gagal Menambah Data Kelas Belajar") ?>
-							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/aturkelasbelajar"
+							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/aturkelaspondokan"
 							method="post">
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Nama Kelas</label>
@@ -52,13 +52,13 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Jenjang</label>
+									<label class="col-sm-3 control-label">Kelas Pondokan</label>
 									<div class="col-sm-6">
-										<select class="form-control m-b" name="jenjang" id="jenjang" data-required="true">
-											<option value="" selected disabled>.: Pilih Jenjang:.</option>
+										<select class="form-control m-b" name="pondokan" id="pondokan" data-required="true">
+											<option value="" selected disabled>.: Pilih Kelas Pondokan:.</option>
 											<?php
-												foreach($jenjang->result_array() as $row){
-													echo "<option value='".$row['jenjang']."'>".$row['jenjang']." </option>";
+												foreach($pondokan->result_array() as $row){
+													echo "<option value='".$row['pondokan']."'>".$row['pondokan']." </option>";
 												}
 											?>
 										</select>
@@ -102,7 +102,7 @@
 							<button type="submit" class="btn btn-success btn-s-xs">
 								<i class="fa fa-save"></i> Simpan</button>
 							&nbsp
-							<a href="<?php echo base_url('admin/datamaster/datakelasbelajar') ?>" class="btn btn-default btn-s-xs">
+							<a href="<?php echo base_url('admin/datamaster/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
 								<i class="fa fa-list"></i> List Kelas Belajar</a>
 							</form>
 

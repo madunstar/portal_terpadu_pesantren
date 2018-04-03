@@ -28,6 +28,8 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_prestasi');
         $this->load->model('back-end/datamaster/m_pelanggaran');
         $this->load->model('back-end/datamaster/m_jenjang');
+        $this->load->model('back-end/datamaster/m_pondokan');
+        $this->load->model('back-end/datamaster/m_presensipondokan');
         $this->load->model('back-end/datamaster/m_rekap_santri');
         $this->load->library('layout');
         $this->load->helper('indo_helper');
@@ -243,7 +245,8 @@ class Datamaster extends CI_Controller{
                     'hpayah'=>$this->input->post('hpayah'),
                     'hpibu'=>$this->input->post('hpibu'),
                     'hpwali'=>$this->input->post('hpwali'),
-                    'kelas'=>$this->input->post('kelas')
+                    'kelas'=>$this->input->post('kelas'),
+                    'pondokan'=>$this->input->post('pondokan')
                     );
             if ($this->m_santri->cekdata($this->input->post('nis_lokal'))==0) {
                 $exec = $this->m_santri->tambahdata($array);
@@ -258,6 +261,8 @@ class Datamaster extends CI_Controller{
                 $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
                 $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
                 $variabel['nis_lokal'] =$this->input->post('nis_lokal');
+                $variabel['jenjang']=$this->m_jenjang->lihatdata();
+                $variabel['pondokan']=$this->m_pondokan->lihatdata();
                 $this->layout->render('back-end/datamaster/santri/v_santri_tambah',$variabel,'back-end/datamaster/santri/v_santri_js');
             }
 
@@ -271,6 +276,7 @@ class Datamaster extends CI_Controller{
              $variabel['kecamatan']=$this->m_santri->ambilkecamatan("");
              $variabel['desa']=$this->m_santri->ambildesa("");
              $variabel['jenjang']=$this->m_jenjang->lihatdata();
+             $variabel['pondokan']=$this->m_pondokan->lihatdata();
 
             $this->layout->render('back-end/datamaster/santri/v_santri_tambah',$variabel,'back-end/datamaster/santri/v_santri_js');
         }
@@ -322,7 +328,8 @@ class Datamaster extends CI_Controller{
                 'hpayah'=>$this->input->post('hpayah'),
                 'hpibu'=>$this->input->post('hpibu'),
                 'hpwali'=>$this->input->post('hpwali'),
-                'kelas'=>$this->input->post('kelas')
+                'kelas'=>$this->input->post('kelas'),
+                'pondokan'=>$this->input->post('pondokan')
                 );
             $nis2 = $this->input->post("nis_lokal2");
             $nis = $this->input->post("nis_lokal");
@@ -340,6 +347,7 @@ class Datamaster extends CI_Controller{
                 $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
                 $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
                 $variabel['jenjang']=$this->m_jenjang->lihatdata();
+                $variabel['pondokan']=$this->m_pondokan->lihatdata();
 
                 $this->layout->render('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
             } else {
@@ -365,6 +373,7 @@ class Datamaster extends CI_Controller{
                  $variabel['kecamatan']=$this->m_santri->ambilkecamatan($data['kabupaten_kota']);
                  $variabel['desa']=$this->m_santri->ambildesa($data['kecamatan']);
                  $variabel['jenjang']=$this->m_jenjang->lihatdata();
+                 $variabel['pondokan']=$this->m_pondokan->lihatdata();
                 $this->layout->render('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
             } else {
                 redirect(base_url("admin/datamaster/santri"));
@@ -2371,6 +2380,327 @@ function jenjangedit()
       $jenjang=$this->input->post('jenjang');
       $data=$this->m_jenjang->datatingkatajax($jenjang);
       echo json_encode($data);
+    }
+
+  function pondokan()
+  {
+      $variabel['data'] = $this->m_pondokan->lihatdata();
+      $this->layout->render('back-end/datamaster/pondokan/v_pondokan',$variabel,'back-end/datamaster/pondokan/v_pondokan_js');
+  }
+
+function pondokantambah()
+{
+    if ($this->input->post()){
+            $array=array(
+                'pondokan'=> $this->input->post('pondokan'),
+                'namapondokan'=> $this->input->post('namapondokan')
+                );
+        if ($this->m_pondokan->cekdata($this->input->post('pondokan'))==0) {
+            $exec = $this->m_pondokan->tambahdata($array);
+            if ($exec) redirect(base_url("admin/datamaster/pondokantambah?msg=1"));
+            else redirect(base_url("admin/datamaster/pondokantambah?msg=0"));
+        } else {
+            $variabel['pondokan'] =$this->input->post('pondokan');
+            $this->layout->render('back-end/datamaster/pondokan/v_pondokan_tambah',$variabel,'back-end/datamaster/pondokan/v_pondokan_js');
+        }
+
+    } else {
+        $variabel ='';
+        $this->layout->render('back-end/datamaster/pondokan/v_pondokan_tambah',$variabel,'back-end/datamaster/pondokan/v_pondokan_js');
+    }
+}
+
+function pondokanedit()
+    {
+        if ($this->input->post()) {
+            $array=array(
+                'pondokan'=> $this->input->post('pondokan'),
+                'namapondokan'=> $this->input->post('namapondokan')
+                );
+            $pondokan2 = $this->input->post("pondokan2");
+            $pondokan = $this->input->post("pondokan");
+            if (($this->m_pondokan->cekdata($pondokan)>0) && ($pondokan2!=$pondokan)) {
+                $variabel['pondokan'] =$this->input->post('pondokan');
+                $variabel['pondokan2'] =$this->input->post('pondokan2');
+                $variabel['data'] = $array;
+                $this->layout->render('back-end/datamaster/pondokan/v_pondokan_edit',$variabel,'back-end/datamaster/pondokan/v_pondokan_js');
+            } else {
+                $exec = $this->m_pondokan->editdata($pondokan2,$array);
+                if ($exec){
+                  redirect(base_url("admin/datamaster/pondokanedit?pondokan=".$pondokan."&msg=1"));
+                }
+            }
+      } else {
+            $pondokan = $this->input->get("pondokan");
+            $exec = $this->m_pondokan->lihatdatasatu($pondokan);
+            if ($exec->num_rows()>0){
+                $variabel['data'] = $exec ->row_array();
+                $this->layout->render('back-end/datamaster/pondokan/v_pondokan_edit',$variabel,'back-end/datamaster/pondokan/v_pondokan_js');
+            } else {
+                redirect(base_url("admin/datamaster/pondokan"));
+            }
+      }
+
+    }
+
+    function pondokanhapus()
+    {
+       $pondokan = $this->input->get("pondokan");
+       $exec = $this->m_pondokan->hapus($pondokan);
+       redirect(base_url()."admin/datamaster/pondokan?msg=1");
+    }
+
+
+    function pondokantingkat()
+    {
+        $pondokan = $this->input->get("pondokan");
+        $exec = $this->m_pondokan->lihatdatasatu($pondokan);
+        if ($exec->num_rows()>0){
+            $variabel['pondokan'] = $exec->row_array();
+            $variabel['data'] = $this->m_pondokan->lihatdatatingkat($pondokan);
+            $this->layout->render('back-end/datamaster/pondokan/v_pondokantingkat',$variabel,'back-end/datamaster/pondokan/v_pondokantingkat_js');
+        } else {
+            redirect(base_url("admin/datamaster/pondokan"));
+        }
+
+    }
+
+    function pondokantambahtingkat()
+    {
+        $pondokan = $this->input->get("pondokan");
+        $exec = $this->m_pondokan->lihatdatasatu($pondokan);
+        if ($exec->num_rows()>0){
+            $variabel['pondokan'] = $exec->row_array();
+            if ($this->input->post()){
+                $pondokan = $this->input->post('pondokan');
+                $tingkat = $this->input->post('tingkat');
+                $array=array(
+                    'pondokan'=>  $pondokan,
+                    'tingkat'=> $tingkat
+                );
+                $exec = $this->m_pondokan->tambahdatatingkat($array);
+                if ($exec) redirect(base_url("admin/datamaster/pondokantambahtingkat?pondokan=".$pondokan."&msg=1"));
+                else redirect(base_url("admin/datamaster/pondokantambahtingkat?pondokan=".$pondokan."&msg=0"));
+            } else {
+                $this->layout->render('back-end/datamaster/pondokan/v_pondokantingkat_tambah',$variabel,'back-end/datamaster/pondokan/v_pondokantingkat_js');
+            }
+        } else {
+            redirect(base_url("admin/datamaster/pondokan"));
+        }
+    }
+
+    function pondokanhapustingkat()
+    {
+        $idtingkatpondokan = $this->input->get("idtingkatpondokan");
+        $pondokan = $this->input->get("pondokan");
+        $exec = $this->m_pondokan->hapustingkat($idtingkatpondokan);
+        redirect(base_url()."admin/datamaster/pondokantingkat?msg=1&pondokan=".$pondokan."");
+    }
+
+    function pondokanedittingkat()
+    {
+        if ($this->input->post()) {
+            $idtingkatpondokan = $this->input->post('idtingkatpondokan');
+            $pondokan = $this->input->post('pondokan');
+            $tingkat = $this->input->post('tingkat');
+            $array=array(
+                'tingkat'=> $tingkat
+            );
+            $exec = $this->m_pondokan->editdatatingkat($idtingkatpondokan,$array);
+            if ($exec) redirect(base_url("admin/datamaster/pondokanedittingkat?id=".$idtingkatpondokan."&pondokan=".$pondokan."&msg=1"));
+            else redirect(base_url("admin/datamaster/pondokanedittingkat?id=".$idtingkatpondokan."&pondokan=".$pondokan."&msg=0"));
+        } else {
+            $pondokan = $this->input->get("pondokan");
+            $id = $this->input->get("id");
+            $exec = $this->m_pondokan->lihatdatasatu($pondokan);
+            if ($exec->num_rows()>0){
+                $variabel['pondokan'] = $exec ->row_array();
+                $exec2 = $this->m_pondokan->lihatdatasatutingkat($id);
+                if ($exec2->num_rows()>0){
+                    $variabel['data'] = $exec2->row_array();
+                    $this->layout->render('back-end/datamaster/pondokan/v_pondokantingkat_edit',$variabel,'back-end/datamaster/pondokan/v_pondokantingkat_js');
+                } else {
+                    redirect(base_url("admin/datamaster/pondokantingkat?pondokan=$pondokan"));
+                }
+            } else {
+                redirect(base_url("admin/datamaster/pondokan"));
+            }
+        }
+
+    }
+
+    function datatingkatpondokan()
+    {
+      $pondokan=$this->input->post('pondokan');
+      $data=$this->m_pondokan->datatingkatajax($pondokan);
+      echo json_encode($data);
+    }
+
+
+
+    function datakelaspondokan()
+   {
+      $variabel['data']=$this->m_presensipondokan->lihatdata();
+      $this->layout->render('back-end/presensi/presensi_pondokan/v_presensi_pondokan',$variabel,'back-end/presensi/presensi_pondokan/v_preskelas_js');
+   }
+
+   function aturkelaspondokan(){
+    if ($this->input->post()){
+        $array=array(
+            'nip_guru'=> $this->input->post('nip_guru'),
+            'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+            'kd_kelas'=> $this->input->post('kd_kelas'),
+            'status_kelas'=>$this->input->post('status_kelas'),
+            'id_tahun'=>$this->input->post('id_tahun'),
+            'pondokan'=>$this->input->post('pondokan'),
+            'tingkat'=>$this->input->post('tingkatan')
+            );
+        $exec = $this->m_presensipondokan->tambahdata($array);
+        if ($exec) redirect(base_url("admin/datamaster/aturkelaspondokan?msg=1"));
+        else redirect(base_url("admin/datamaster/aturkelaspondokan?msg=0"));
+    } else {
+        $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+        $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+        $variabel['guru']=$this->m_guru->lihatdata();
+        $variabel['pondokan']=$this->m_pondokan->lihatdata();
+        $this->layout->render('back-end/presensi/presensi_pondokan/v_presensi_atur',$variabel,'back-end/presensi/presensi_pondokan/v_preskelas_js');
+    }
+}
+
+function editkelaspondokan()
+    {
+        if ($this->input->post()) {
+            $array=array(
+                'nip_guru'=> $this->input->post('nip_guru'),
+                'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+                'kd_kelas'=> $this->input->post('kd_kelas'),
+                'status_kelas'=>$this->input->post('status_kelas'),
+                'id_tahun'=>$this->input->post('id_tahun'),
+                'pondokan'=>$this->input->post('pondokan'),
+                'tingkat'=>$this->input->post('tingkatan')
+                );
+            $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+            $exec = $this->m_presensipondokan->editdata($id_kelas_belajar,$array);
+            if ($exec){
+                redirect(base_url("admin/datamaster/editkelaspondokan?id=".$id_kelas_belajar."&msg=1"));
+            }
+      } else {
+            $id_kelas_belajar = $this->input->get("id");
+            $exec = $this->m_presensipondokan->lihatdatasatu($id_kelas_belajar);
+            if ($exec->num_rows()>0){
+                $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+                $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+                $variabel['guru']=$this->m_guru->lihatdata();
+                $variabel['data'] = $exec->row_array();
+                $variabel['pondokan']=$this->m_pondokan->lihatdata();
+                $variabel['tingkatan']=$this->m_pondokan->lihatdatatingkatan($variabel['data']['pondokan']);
+                $this->layout->render('back-end/presensi/presensi_pondokan/v_presensi_edit',$variabel,'back-end/presensi/presensi_pondokan/v_preskelas_js');
+            } else {
+                redirect(base_url("admin/datamaster/datakelaspondokan"));
+            }
+      }
+
+      
+    }
+
+    function hapuskelaspondokan()
+    {
+       $id = $this->input->get("id");
+       $exec = $this->m_presensipondokan->hapus($id);
+       redirect(base_url()."admin/datamaster/datakelaspondokan?msg=1");
+    }
+
+    function lihatkelaspondokan()
+    {
+        $id_kelas_belajar = $this->input->get("id");
+        $exec = $this->m_presensipondokan->lihatdatasatulengkap($id_kelas_belajar);
+        if ($exec->num_rows()>0){
+            $variabel['data'] = $exec->row_array();
+            $variabel['santri'] = $this->m_presensipondokan->lihatdatasantri($id_kelas_belajar);
+            $this->layout->render('back-end/presensi/presensi_pondokan/v_presensi_lihat',$variabel,'back-end/presensi/presensi_pondokan/v_preskelas_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelaspondokan"));
+        }
+    }
+
+    function kelaseditpondokan()
+    {
+        $idkelaspondokan = $this->input->post("id");
+        $variabel['data'] = $this->m_presensipondokan->lihatdatasatu($idkelaspondokan)->row_array();
+        $this->load->view("back-end/presensi/presensi_pondokan/v_presensi_editstatus",$variabel);
+
+    }
+
+    function editpondokanproses()
+    {
+        $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+        $status_kelas = $this->input->post("status_kelas");
+        $array = array (
+            "status_kelas"=>$status_kelas
+        );
+        $exec = $this->m_presensipondokan->editdata($id_kelas_belajar,$array);
+    }
+
+    function lihatkelaspondokansantri()
+    {
+        $id = $this->input->get("id");
+        $exec = $this->m_presensipondokan->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0){
+            $variabel['santri'] = $exec->row_array();
+            $variabel['data'] = $this->m_presensipondokan->lihatdatasantri($id);
+            $this->layout->render('back-end/presensi/presensi_pondokan/v_santri',$variabel,'back-end/presensi/presensi_pondokan/v_santri_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelaspondokan"));
+        }
+    }
+
+
+    function kelastambahsantripondokan()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $variabel['lissantri'] = $this->m_presensipondokan->lissantri($idkelaspondokan);
+        $this->load->view("back-end/presensi/presensi_pondokan/v_santri_tambah",$variabel);
+    }
+
+    function tambahsantripondokproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $nis = $this->input->post("nis");
+        $array = array (
+            "id_kelas_belajar"=>$idkelasbelajar,
+            "nis_lokal"=>$nis
+        );
+        $exec = $this->m_presensipondokan->tambahdatasantri($array);
+       
+    }
+
+    function hapuskelassantripondokan()
+    {
+       $id = $this->input->get("id");
+       $idkelas = $this->input->get("idkelas");
+       $exec = $this->m_presensipondokan->hapussantri($id);
+       redirect(base_url()."admin/datamaster/lihatkelaspondokansantri?id=".$idkelas."&h=1");
+    }
+
+    function kelaseditsantripondokan()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $variabel['lissantri'] = $this->m_presensipondokan->lissantri($idkelaspondokan);
+        $id_kelas_santri = $this->input->post("id");
+        $variabel['data'] = $this->m_presensipondokan->lihatdatasatusantri($id_kelas_santri)->row_array();
+        $this->load->view("back-end/presensi/presensi_pondokan/v_santri_edit",$variabel);
+
+    }
+
+    function editsantripondokanproses()
+    {
+        $idkelaspondokan = $this->input->post("idkelaspondokan");
+        $nis = $this->input->post("nis");
+        $id_kelas_santri = $this->input->post("id_kelas_santri");
+        $array = array (
+            "nis_lokal"=>$nis
+        );
+        $exec = $this->m_presensipondokan->editdatasantri($id_kelas_santri,$array);
     }
 
 

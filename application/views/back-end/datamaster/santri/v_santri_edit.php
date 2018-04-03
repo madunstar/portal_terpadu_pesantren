@@ -358,10 +358,23 @@
               </div>
             </div>
             <div class="form-group">
-									<label class="col-sm-4 control-label">Jenjang</label>
+									<label class="col-sm-4 control-label">Kelas Pondokan</label>
+									<div class="col-sm-8">
+										<select class="form-control m-b" name="pondokan" id="pondokan" data-required="true">
+											<option value="" selected disabled>.: Pilih Kelas Pondokan:.</option>
+											<?php
+												foreach($pondokan->result_array() as $row){
+													echo "<option value='".$row['pondokan']."' ".($data['pondokan']==$row['pondokan']?"selected":"").">".$row['pondokan']." </option>";
+												}
+											?>
+                  </select>
+                </div>
+              </div>
+            <div class="form-group">
+									<label class="col-sm-4 control-label">Kelas Afilasi</label>
 									<div class="col-sm-8">
 										<select class="form-control m-b" name="kelas" id="kelas" data-required="true">
-											<option value="" selected disabled>.: Pilih Jenjang:.</option>
+											<option value="" selected disabled>.: Pilih Kelas Afilasi:.</option>
 											<?php
 												foreach($jenjang->result_array() as $row){
 													echo "<option value='".$row['jenjang']."'".(($row['jenjang']==$data['kelas'])?"selected":"").">".$row['jenjang']." </option>";

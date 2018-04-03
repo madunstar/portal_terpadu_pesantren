@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        List Santri Kelas Afilasi
+        List Santri  Kelas Pondokan
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
@@ -15,7 +15,7 @@
       <?php pesan_get('ed',"Berhasil Mengedit Santri","Gagal Mengedit Santri") ?>
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="margin: 10px 0 10px 10px" id="tambahsantri">
       <i class="fa fa-plus"></i> Tambah Santri</button> &nbsp
-      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/lihatkelasbelajarsantri" class="btn btn-s-md btn-default" ><i class="fa fa-arrow-left"></i> Kembali</a>
+      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/lihatkelaspondokansantri" class="btn btn-s-md btn-default" ><i class="fa fa-arrow-left"></i> Kembali</a>
 
         <table class="table table-striped " id="datatable">
           <thead>
