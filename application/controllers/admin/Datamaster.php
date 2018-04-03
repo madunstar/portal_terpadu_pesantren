@@ -1992,11 +1992,24 @@ function kecamatanhapus()
    }
 
    function datarekapsantri(){
+     if ($this->input->post()){
+       $tgl = $this->input->post('tanggal_rekap');
+       $kel = $this->input->post('kelas');
+       $pel = $this->input->post('pelajaran');
+       $variabel['data'] = $this->m_rekap_santri->datakelas($kel,$pel,$tgl);
+       $variabel['tanggal'] = $tgl;
+       $variabel['kelas'] = $kel;
+       $variabel['pelajaran'] = $pel;
+       $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
+     } else {
      $tgl = date('Y-m-d');
      $kel = $this->input->get('kelas');
      $pel = $this->input->get('pelajaran');
      $variabel['data'] = $this->m_rekap_santri->datakelas($kel,$pel,$tgl);
-     $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
+     $variabel['tanggal'] = $tgl;
+     $variabel['kelas'] = $kel;
+     $variabel['pelajaran'] = $pel;
+     $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');}
    }
    //akhir rekap presensi//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
@@ -2600,6 +2613,7 @@ function editkelaspondokan()
             }
       }
 
+
       
     }
 
@@ -2671,7 +2685,7 @@ function editkelaspondokan()
             "nis_lokal"=>$nis
         );
         $exec = $this->m_presensipondokan->tambahdatasantri($array);
-       
+
     }
 
     function hapuskelassantripondokan()
