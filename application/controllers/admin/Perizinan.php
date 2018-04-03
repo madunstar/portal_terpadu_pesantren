@@ -134,6 +134,7 @@ class Perizinan extends CI_Controller
           //$this->layout->renderizin('back-end/perizinan/keluarpondok',$variabel,'back-end/perizinan/keluar_js');
           //redirect('admin/perizinan/suratizin');
           $this->layout->renderizin('back-end/perizinan/v_suratizin',$variabel,'back-end/perizinan/keluar_js');
+
       }
 
       else{
