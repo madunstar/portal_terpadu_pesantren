@@ -6,12 +6,12 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Daftar Pelajaran
-        <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
+        Data Rekap Santri
+
       </header>
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus Data Pelajaran","Gagal Menghapus Data Pelajaran") ?>
-      <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/datarekapsantri" class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah data</a>
+      <button style="margin: 10px 0 10px 10px" class="btn btn-s-md btn-success btn-rounded" data-toggle='modal' data-target='#tambahdata'><i class="fa fa-plus"></i> Tambah data</button>
       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/datarekapsantri" method="post">
         <div class="form-group">
           <label class="col-lg-4 control-label">Tanggal Rekap</label>
@@ -60,6 +60,31 @@
         </table>
       </div>
     </section>
+    <div class='modal' id='tambahdata' tabindex='-1' role='dialog'>
+     <div class='modal-dialog' role='document'>
+       <div class='modal-content'>
+         <div class='modal-header bg-default'>
+           <h4 class='modal-title'>Konfirmasi Hapus Data</h4>
+         </div>
+         <div class='modal-body'>
+           <form class="" action="index.html" method="post">
+             <select class="" name="santri">
+               <?php
+                foreach ($santri->result_array() as $rsantri){
+                  echo "<option value='".$rsantri['nis_lokal']."'>".$rsantri['nis_lokal']." (".$rsantri['nama_lengkap'].")</option>";
+                }
+               ?>
+             </select>
+
+         </div>
+         <div class='modal-footer'>
+            <button type='submit' class='btn btn-sm btn-success'>Konfirmasi</button></a>
+           </form>
+           <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
+         </div>
+       </div>
+     </div>
+   </div>
   </section>
 </section>
 </section>
