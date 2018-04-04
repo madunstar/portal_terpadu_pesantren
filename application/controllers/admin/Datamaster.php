@@ -2000,6 +2000,7 @@ function kecamatanhapus()
        $variabel['tanggal'] = $tgl;
        $variabel['kelas'] = $kel;
        $variabel['pelajaran'] = $pel;
+       $variabel['santri'] = $this->m_rekap_santri->datasantri($kel,$tgl);
        $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
      } else {
      $tgl = date('Y-m-d');
@@ -2009,6 +2010,7 @@ function kecamatanhapus()
      $variabel['tanggal'] = $tgl;
      $variabel['kelas'] = $kel;
      $variabel['pelajaran'] = $pel;
+     $variabel['santri'] = $this->m_rekap_santri->datasantri($kel,$tgl);
      $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');}
    }
    //akhir rekap presensi//
@@ -2614,7 +2616,7 @@ function editkelaspondokan()
       }
 
 
-      
+
     }
 
     function hapuskelaspondokan()
