@@ -88,7 +88,7 @@ class M_presensi extends CI_Model
         $this->db->where("tb_kelas_santri.id_kelas_santri",$id_kelas_santri);
         return $this->db->get();
    }
-   
+
 
    function cekdataberkas($id_berkas)
     {
