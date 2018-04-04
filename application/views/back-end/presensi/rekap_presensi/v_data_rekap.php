@@ -68,34 +68,27 @@
            <h4 class='modal-title'>Konfirmasi Hapus Data</h4>
          </div>
          <div class='modal-body'>
-           <table class="table table-bordered">
-             <tr>
-               <th>nama</th>
-               <th>status</th>
-             </tr>
-
-           <?php
-            foreach ($santri->result_array() as $rsantri){?>
-              <tr>
-                <td><?php echo $rsantri['nama_lengkap']?></td>
-                <td>
                   <form class="" action="<?php echo base_url() ?>admin/datamaster/tambahrekap" method="post">
+                    <select class="form-control" name="nis">
+                      <?php
+                       foreach ($santri->result_array() as $rsantri){
+                         echo "<option value='".$rsantri['nis_lokal']."'>".$rsantri['nis_lokal']." (".$rsantri['nama_lengkap'].")</option>";
+                       }
+                      ?>
+                    </select>
                     <select name="status">
                       <option value="hadir">hadir</option>
                       <option value="izin">izin</option>
                       <option value="sakit">sakit</option>
                       <option value="alfa">alfa</option>
                     </select>
-                    <input type="text" name="nis" value="<?php echo $rsantri['nis_lokal']?>">
-                    <input type="text" name="pel" value="<?php echo $pelajaran ?>">
-                    <input type="text" name="kel" value="<?php echo $kelas ?>">
-                    <input type="text" name="tgl" value="<?php echo $tanggal ?>">
+                    <input type="hidden" name="pel" value="<?php echo $pelajaran ?>">
+                    <input type="hidden" name="kel" value="<?php echo $kelas ?>">
+                    <input type="hidden" name="tgl" value="<?php echo $tanggal ?>">
                     <button type='submit' class='btn btn-sm btn-success'>Konfirmasi</button>
                   </form>
-                </td>
-              </tr>
-           <?php } ?>
-          </table>
+
+
 
          </div>
          <div class='modal-footer'>

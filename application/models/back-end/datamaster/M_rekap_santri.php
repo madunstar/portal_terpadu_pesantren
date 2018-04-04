@@ -36,11 +36,8 @@ class m_rekap_santri extends CI_Model
     }
 
     function datasantri($kel,$tgl){
-      $this->db->select('*');
-      $this->db->from('tb_kelas_santri');
-      $this->db->join('tb_santri', 'tb_kelas_santri.nis_lokal = tb_santri.nis_lokal');
-      $this->db->where('tb_kelas_santri.id_kelas_belajar', $kel);
-      return $this->db->get();
+
+      return $this->db->query('select * from tb_santri where not exists (select * from tb_presensi_rekap_santri inner join tb_kelas_santri on tb_presensi_rekap_santri.id_santri = tb_kelas_santri.nis_lokal where tb_presensi_rekap_santri.id_kelas = '.$kel.' and tb_presensi_rekap_santri.tanggal_rekap ='.$tgl.' and tb_santri.nis_lokal=tb_presensi_rekap_santri.id_santri)');
     }
 
     function cekdata($nis,$pel,$kel,$tgl){
