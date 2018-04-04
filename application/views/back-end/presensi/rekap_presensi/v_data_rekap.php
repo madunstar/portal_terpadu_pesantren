@@ -61,25 +61,46 @@
       </div>
     </section>
     <div class='modal' id='tambahdata' tabindex='-1' role='dialog'>
+      <link rel="stylesheet" href="<?php echo base_url('assets/js/chosen/chosen.css');?>" type="text/css" />
      <div class='modal-dialog' role='document'>
        <div class='modal-content'>
          <div class='modal-header bg-default'>
            <h4 class='modal-title'>Konfirmasi Hapus Data</h4>
          </div>
          <div class='modal-body'>
-           <form class="" action="index.html" method="post">
-             <select class="" name="santri">
-               <?php
-                foreach ($santri->result_array() as $rsantri){
-                  echo "<option value='".$rsantri['nis_lokal']."'>".$rsantri['nis_lokal']." (".$rsantri['nama_lengkap'].")</option>";
-                }
-               ?>
-             </select>
+           <table class="table table-bordered">
+             <tr>
+               <th>nama</th>
+               <th>status</th>
+             </tr>
+
+           <?php
+            foreach ($santri->result_array() as $rsantri){?>
+              <tr>
+                <td><?php echo $rsantri['nama_lengkap']?></td>
+                <td>
+                  <form class="" action="<?php echo base_url() ?>admin/datamaster/tambahrekap" method="post">
+                    <select name="status">
+                      <option value="hadir">hadir</option>
+                      <option value="izin">izin</option>
+                      <option value="sakit">sakit</option>
+                      <option value="alfa">alfa</option>
+                    </select>
+                    <input type="text" name="nis" value="<?php echo $rsantri['nis_lokal']?>">
+                    <input type="text" name="pel" value="<?php echo $pelajaran ?>">
+                    <input type="text" name="kel" value="<?php echo $kelas ?>">
+                    <input type="text" name="tgl" value="<?php echo $tanggal ?>">
+                    <button type='submit' class='btn btn-sm btn-success'>Konfirmasi</button>
+                  </form>
+                </td>
+              </tr>
+           <?php } ?>
+          </table>
 
          </div>
          <div class='modal-footer'>
-            <button type='submit' class='btn btn-sm btn-success'>Konfirmasi</button></a>
-           </form>
+            <button type='button' class='btn btn-sm btn-success'>Konfirmasi</button></a>
+
            <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
          </div>
        </div>

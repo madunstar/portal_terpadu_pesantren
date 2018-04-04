@@ -2013,6 +2013,20 @@ function kecamatanhapus()
      $variabel['santri'] = $this->m_rekap_santri->datasantri($kel,$tgl);
      $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');}
    }
+
+   function tambahrekap(){
+     if ($this->input->post()){
+     $tgl = $this->input->post('tgl');
+     $kel = $this->input->post('kel');
+     $pel = $this->input->post('pel');
+     $nis = $this->input->post('nis');
+     $periksa = $this->m_rekap_santri->cekdata($nis,$pel,$kel,$tgl);
+     if ($nis == $periksa){
+       redirect(base_url("admin/datamaster/pelajaran"));
+     } else {
+       redirect(base_url("admin/datamaster/datarekapsantri"));
+     }}
+   }
    //akhir rekap presensi//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
 
