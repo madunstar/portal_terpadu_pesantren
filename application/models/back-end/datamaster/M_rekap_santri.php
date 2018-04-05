@@ -86,9 +86,9 @@ class m_rekap_santri extends CI_Model
     //     $this->db->where("id_tahun",$id_tahun);
     //     return $this->db->update('tb_tahun_ajaran',$array);
     // }
-    function hapus($id_infaq)
+    function hapus($id_rekap)
     {
-        $this->db->where("id_pembayaran",$id_infaq);
-        return $this->db->delete('tb_pembayaran_spp');
+        $this->db->where("id_rekap",$id_rekap);
+        return $this->db->delete('tb_presensi_rekap_santri');
     }
 }

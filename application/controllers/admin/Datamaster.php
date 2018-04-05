@@ -2043,6 +2043,15 @@ function kecamatanhapus()
      }
      }
    }
+
+   function hapusrekap(){
+     $id_rekap = $this->input->get('id');
+     $tgl = $this->input->get('tanggal');
+     $kel = $this->input->get('kelas');
+     $pel = $this->input->get('pelajaran');
+     $exec = $this->m_rekap_santri->hapus($id_rekap);
+     redirect(base_url("admin/datamaster/datarekapsantri?kelas=$kel&pelajaran=$pel&tanggal=$tgl&psn=1"));
+   }
    //akhir rekap presensi//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
 

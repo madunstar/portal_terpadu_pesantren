@@ -10,7 +10,7 @@
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
-      
+
       <?php pesan_get('msg',"Berhasil Menghapus Data Pelajaran","Gagal Menghapus Data Pelajaran") ?>
 
         <table class="table table-striped " id="datatable">
@@ -38,6 +38,7 @@
                       <td></td>
                       <td></td>
                     </tr>
+                    
                   ";
                 }
             ?>
