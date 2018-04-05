@@ -10,8 +10,8 @@
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
+      
       <?php pesan_get('msg',"Berhasil Menghapus Data Pelajaran","Gagal Menghapus Data Pelajaran") ?>
-      <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/pelajarantambah" class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah data</a>
 
         <table class="table table-striped " id="datatable">
           <thead>
@@ -30,9 +30,7 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/datarekapsantri?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat Rekap'><i class='fa fa-file-text-o'></i></a>
-                      <a href='".base_url('admin/datamaster/pelajaranedit?id_pelajaran='.$row['id_pelajaran'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-                      <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_pelajaran']."'><i class='fa fa-trash-o'></i></a>
+                      <a href='".base_url('admin/datamaster/datarekapsantri?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'')."' class='btn btn-primary btn-xs' title='Lihat Rekap'><i class='fa fa-file-text-o'></i></a>
                       </td>
                       <td>".$row['nama_kelas_belajar']."</td>
                       <td>".$row['nama_mata_pelajaran']."</td>

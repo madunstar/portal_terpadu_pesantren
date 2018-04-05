@@ -6,11 +6,12 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Data Rekap Santri
+        Data Rekap Presensi Mata Pelajaran <b><?php echo $matpel ?></b>
 
       </header>
       <div class="table-responsive">
-      <?php pesan_get('msg',"Berhasil Menghapus Data Pelajaran","Gagal Menghapus Data Pelajaran") ?>
+        <?php pesan_get('psn',"Pelajaran Belum Berlangsung","Pelajaran Belum Berlangsung") ?>
+      <?php pesan_get('msg',"Berhasil Menambah Rekap","Gagal Menambah Rekap") ?>
       <button style="margin: 10px 0 10px 10px" class="btn btn-s-md btn-success btn-rounded" data-toggle='modal' data-target='#tambahdata'><i class="fa fa-plus"></i> Tambah data</button>
       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/datarekapsantri" method="post">
         <div class="form-group">
@@ -65,37 +66,58 @@
      <div class='modal-dialog' role='document'>
        <div class='modal-content'>
          <div class='modal-header bg-default'>
-           <h4 class='modal-title'>Konfirmasi Hapus Data</h4>
+           <h4 class='modal-title'>Tambah Rekap Santri</h4>
          </div>
          <div class='modal-body'>
-                  <form class="" action="<?php echo base_url() ?>admin/datamaster/tambahrekap" method="post">
-                    <select class="form-control" name="nis">
-                      <?php
-                       foreach ($santri->result_array() as $rsantri){
-                         echo "<option value='".$rsantri['nis_lokal']."'>".$rsantri['nis_lokal']." (".$rsantri['nama_lengkap'].")</option>";
-                       }
-                      ?>
-                    </select>
-                    <select name="status">
-                      <option value="hadir">hadir</option>
-                      <option value="izin">izin</option>
-                      <option value="sakit">sakit</option>
-                      <option value="alfa">alfa</option>
-                    </select>
+           <?php
+             if ($santri->num_rows()>0) {
+           ?>
+
+                  <form class="form-horizontal mb-lg" action="<?php echo base_url() ?>admin/datamaster/tambahrekap" method="post">
+                    <div class="form-group">
+                      <select class="form-control data-validate" name="nis">
+                        <?php
+                         foreach ($santri->result_array() as $rsantri){
+                           echo "<option value='".$rsantri['nis_lokal']."'>".$rsantri['nis_lokal']." (".$rsantri['nama_lengkap'].")</option>";
+                         }
+                        ?>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <select class="form-control" name="status">
+                        <option value="hadir">hadir</option>
+                        <option value="izin">izin</option>
+                        <option value="sakit">sakit</option>
+                        <option value="alfa">alfa</option>
+                      </select>
+                    </div>
+
                     <input type="hidden" name="pel" value="<?php echo $pelajaran ?>">
                     <input type="hidden" name="kel" value="<?php echo $kelas ?>">
                     <input type="hidden" name="tgl" value="<?php echo $tanggal ?>">
-                    <button type='submit' class='btn btn-sm btn-success'>Konfirmasi</button>
-                  </form>
-
 
 
          </div>
          <div class='modal-footer'>
-            <button type='button' class='btn btn-sm btn-success'>Konfirmasi</button></a>
-
+            <button type='submit' class='btn btn-sm btn-success'>Tambah Data</button></a>
+              </form>
            <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
          </div>
+         <?php
+           } else {
+         ?>
+          <p align="center">Tidak Ada Santri</p>
+         </div>
+         <div class="modal-footer">
+           <div class="row">
+             <div class="col-md-12 text-right">
+               <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Batal</button>
+             </div>
+           </div>
+         </div>
+         <?php
+           }
+           ?>
        </div>
      </div>
    </div>
