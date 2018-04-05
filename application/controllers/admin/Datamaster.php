@@ -1987,12 +1987,15 @@ function kecamatanhapus()
 
    //mulai rekap presensi//
    function pelajaranrekap(){
+     $tgl = date('Y-m-d');
+     $variabel['tanggal'] = $tgl;
      $variabel['data'] = $this->m_rekap_santri->datapelajaran();
      $this->layout->render('back-end/presensi/rekap_presensi/v_data_pelajaran',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
    }
 
    function datarekapsantri(){
      if ($this->input->post()){
+       $today = date('Y-m-d');
        $tgl = $this->input->post('tanggal_rekap');
        $kel = $this->input->post('kelas');
        $pel = $this->input->post('pelajaran');
@@ -2001,9 +2004,13 @@ function kecamatanhapus()
        $variabel['kelas'] = $kel;
        $variabel['pelajaran'] = $pel;
        $variabel['santri'] = $this->m_rekap_santri->datasantri($kel,$tgl,$pel);
-       $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
+       $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
+       if ($tgl > $today){
+         redirect(base_url("admin/datamaster/datarekapsantri?kelas=$kel&pelajaran=$pel&tanggal=$today&psn=0"));
+       } else{
+       $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');}
      } else {
-     $tgl = date('Y-m-d');
+     $tgl = $this->input->get('tanggal');
      $kel = $this->input->get('kelas');
      $pel = $this->input->get('pelajaran');
      $variabel['data'] = $this->m_rekap_santri->datakelas($kel,$pel,$tgl);
@@ -2011,21 +2018,30 @@ function kecamatanhapus()
      $variabel['kelas'] = $kel;
      $variabel['pelajaran'] = $pel;
      $variabel['santri'] = $this->m_rekap_santri->datasantri($kel,$tgl,$pel);
+     $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
      $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');}
    }
 
    function tambahrekap(){
      if ($this->input->post()){
+       $array = array(
+         'id_santri' => $this->input->post('nis'),
+         'id_pelajaran' => $this->input->post('pel'),
+         'id_kelas' => $this->input->post('kel'),
+         'status_presensi' => $this->input->post('status'),
+         'tanggal_rekap' => $this->input->post('tgl')
+       );
      $tgl = $this->input->post('tgl');
      $kel = $this->input->post('kel');
      $pel = $this->input->post('pel');
      $nis = $this->input->post('nis');
-     $periksa = $this->m_rekap_santri->cekdata($nis,$pel,$kel,$tgl);
-     if ($nis == $periksa){
-       redirect(base_url("admin/datamaster/pelajaran"));
-     } else {
-       redirect(base_url("admin/datamaster/datarekapsantri"));
-     }}
+     $exec = $this->m_rekap_santri->tambahdata($array);
+     if ($exec){
+       redirect(base_url("admin/datamaster/datarekapsantri?kelas=$kel&pelajaran=$pel&tanggal=$tgl&msg=1"));
+     } else{
+       redirect(base_url("admin/datamaster/datarekapsantri?kelas=$kel&pelajaran=$pel&tanggal=$tgl&msg=2"));
+     }
+     }
    }
    //akhir rekap presensi//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////

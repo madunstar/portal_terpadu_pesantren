@@ -66,16 +66,18 @@ class m_rekap_santri extends CI_Model
 
     function tambahdata($array)
     {
-        return $this->db->insert('tb_pembayaran_spp',$array);
+        return $this->db->insert('tb_presensi_rekap_santri',$array);
     }
 
-    function santribayar($tahun,$bulan){
-      $this->db->select('count(*) as total')
-        ->from('tb_pembayaran_spp')
-        ->where('tb_pembayaran_spp.spp_tahun', $tahun)
-        ->where('tb_pembayaran_spp.spp_bulan', $bulan);
-        return $this->db->get()
-          ->row_array();
+    function pelajaran($pel){
+      $this->db->select('nama_mata_pelajaran');
+      $this->db->from('tb_mata_pelajaran');
+      $this->db->join('tb_pelajaran', 'tb_pelajaran.id_mata_pelajaran = tb_mata_pelajaran.id_mata_pelajaran');
+      $this->db->where('tb_pelajaran.id_pelajaran', $pel);
+      $query = $this->db->get();
+      $data = $query->row_array();
+      $value = $data['nama_mata_pelajaran'];
+      return $value;
     }
 
     //
