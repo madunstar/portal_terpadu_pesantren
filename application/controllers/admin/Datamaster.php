@@ -2052,6 +2052,19 @@ function kecamatanhapus()
      $exec = $this->m_rekap_santri->hapus($id_rekap);
      redirect(base_url("admin/datamaster/datarekapsantri?kelas=$kel&pelajaran=$pel&tanggal=$tgl&psn=1"));
    }
+
+   function laporanrekapharian(){
+     $tgl = $this->input->get('tanggal');
+     $kel = $this->input->get('kelas');
+     $pel = $this->input->get('pelajaran');
+     $variabel['data'] = $this->m_rekap_santri->datakelas($kel,$pel,$tgl);
+     $variabel['tanggal'] = $tgl;
+     $variabel['kelas'] = $kel;
+     $variabel['pelajaran'] = $pel;
+     $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
+     $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
+       $this->layout->renderlaporan('back-end/presensi/rekap_presensi/v_lap_rekap_harian',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
+   }
    //akhir rekap presensi//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
 
