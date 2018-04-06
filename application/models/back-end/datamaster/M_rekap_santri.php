@@ -80,6 +80,16 @@ class m_rekap_santri extends CI_Model
       return $value;
     }
 
+    function kelas($kel){
+      $this->db->select('nama_kelas_belajar');
+      $this->db->from('tb_presensi_kelas');
+      $this->db->where('tb_presensi_kelas.id_kelas_belajar', $kel);
+      $query = $this->db->get();
+      $data = $query->row_array();
+      $value = $data['nama_kelas_belajar'];
+      return $value;
+    }
+
     //
     // function editdata($id_tahun,$array)
     // {
