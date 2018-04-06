@@ -3,7 +3,8 @@
 
   <section class="vbox bg-white">
     <header class="header b-b b-light hidden-print">
-      <a href="<?php echo base_url() ?>admin/datamaster/databayarinfaq" class="btn btn-sm btn-warning pull-right">Kembali</a>
+      <a href="<?php echo base_url() ?>admin/datamaster/datarekapsantri?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?> &tanggal=<?php echo $tanggal ?>" class="btn btn-sm btn-warning pull-right">Kembali</a>
+
       <p class="pull-right"></p>
       <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>&nbsp;&nbsp;
       <p>Laporan Rekap Presensi Harian</p>
@@ -58,12 +59,12 @@
         <div class="row">
           <div class="col-xs-3">
             <p>
-              Total Santri Bayar <br><br>
+              Total Santri Hadir <br><br>
             </p>
           </div>
           <div class="col-xs-3">
             <p>
-              :
+              : <?php echo $santrihadir['total'] ?>
             </p>
           </div>
         </div>
