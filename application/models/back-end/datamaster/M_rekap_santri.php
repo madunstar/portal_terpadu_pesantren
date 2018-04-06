@@ -90,15 +90,20 @@ class m_rekap_santri extends CI_Model
       return $value;
     }
 
-    //
-    // function editdata($id_tahun,$array)
-    // {
-    //     $this->db->where("id_tahun",$id_tahun);
-    //     return $this->db->update('tb_tahun_ajaran',$array);
-    // }
     function hapus($id_rekap)
     {
         $this->db->where("id_rekap",$id_rekap);
         return $this->db->delete('tb_presensi_rekap_santri');
+    }
+
+    function totalhadir($kel,$pel,$tgl){
+      $this->db->select('count(*) as total')
+        ->from('tb_presensi_rekap_santri')
+        ->where('id_pelajaran', $pel)
+        ->where('id_kelas', $kel)
+        ->where('tanggal_rekap', $tgl)
+        ->where('status_presensi', 'hadir');
+        return $this->db->get()
+          ->row_array();
     }
 }

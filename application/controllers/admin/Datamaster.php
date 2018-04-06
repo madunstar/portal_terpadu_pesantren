@@ -2063,6 +2063,7 @@ function kecamatanhapus()
      $variabel['pelajaran'] = $pel;
      $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
      $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
+     $variabel['santrihadir'] = $this->m_rekap_santri->totalhadir($kel,$pel,$tgl);
        $this->layout->renderlaporan('back-end/presensi/rekap_presensi/v_lap_rekap_harian',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
    }
    //akhir rekap presensi//
