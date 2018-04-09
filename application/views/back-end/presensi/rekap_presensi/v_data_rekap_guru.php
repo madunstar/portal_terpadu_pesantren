@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Data Rekap Presensi Guru Kelas <?php echo $namakelas ?>
+        Data Rekap Presensi Guru Mata Pelajaran Pelajaran <?php echo $matpel ?> Kelas <?php echo $namakelas ?>
 
       </header>
       <div class="table-responsive">

@@ -32,7 +32,6 @@ class m_rekap_guru extends CI_Model
       $this->db->join('tb_guru', 'tb_pelajaran.nip_guru = tb_guru.nip_guru');
       $this->db->where('tb_presensi_jadwal.id_kelas_belajar',$kel);
       $this->db->where('tb_presensi_jadwal.id_pelajaran',$pel);
-      $this->db->where('tb_presensi_rekap_guru.tanggal_rekap',$tgl);
       return $this->db->get();
     }
 
