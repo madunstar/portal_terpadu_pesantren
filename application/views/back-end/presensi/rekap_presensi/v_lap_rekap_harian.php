@@ -60,11 +60,17 @@
           <div class="col-xs-3">
             <p>
               Total Santri Hadir <br><br>
+              Total Santri Izin  <br><br>
+              Total Santri Sakit  <br><br>
+              Total Santri Alfa  <br><br>
             </p>
           </div>
           <div class="col-xs-3">
             <p>
-              : <?php echo $santrihadir['total'] ?>
+              : <?php echo $santrihadir['total'] ?> <br><br>
+              : <?php echo $santriizin['total'] ?> <br><br>
+              : <?php echo $santrisakit['total'] ?> <br><br>
+              : <?php echo $santrialfa['total'] ?> <br><br>
             </p>
           </div>
         </div>

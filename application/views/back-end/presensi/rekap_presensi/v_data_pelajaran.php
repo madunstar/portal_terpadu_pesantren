@@ -2,7 +2,7 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Rekap Presensi Santri</h3>
+      <h3 class="m-b-none">Rekap Presensi Kelas Afiliasi</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
@@ -22,6 +22,7 @@
               <th>Pengajar</th>
               <th>Hari</th>
               <th>Jam Pelajaran</th>
+              <th>Tahun Ajaran</th>
             </tr>
           </thead>
           <tbody>
@@ -30,15 +31,17 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/datarekapsantri?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'')."' class='btn btn-primary btn-xs' title='Lihat Rekap'><i class='fa fa-file-text-o'></i></a>
+                      <a href='".base_url('admin/datamaster/datarekapsantri?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'')."' class='btn btn-primary btn-xs' title='Lihat Rekap Santri'><i class='fa fa-users'></i></a>
+                      <a href='".base_url('admin/datamaster/datarekapguru?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'')."' class='btn btn-success btn-xs' title='Lihat Rekap Guru'><i class='fa fa-user'></i></a>
                       </td>
                       <td>".$row['nama_kelas_belajar']."</td>
                       <td>".$row['nama_mata_pelajaran']."</td>
                       <td>".$row['nama_lengkap']."</td>
                       <td></td>
                       <td></td>
+                      <td>".$row['tahun_ajaran']."</td>
                     </tr>
-                    
+
                   ";
                 }
             ?>
