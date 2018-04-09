@@ -31,6 +31,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_pondokan');
         $this->load->model('back-end/datamaster/m_presensipondokan');
         $this->load->model('back-end/datamaster/m_rekap_santri');
+        $this->load->model('back-end/datamaster/m_rekap_guru');
         $this->load->library('layout');
         $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
@@ -1985,7 +1986,7 @@ function kecamatanhapus()
        }
    //end CRUD pelajaran
 
-   //mulai rekap presensi//
+   //mulai rekap presensi santri//
    function pelajaranrekap(){
      $tgl = date('Y-m-d');
      $variabel['tanggal'] = $tgl;
@@ -2064,9 +2065,27 @@ function kecamatanhapus()
      $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
      $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
      $variabel['santrihadir'] = $this->m_rekap_santri->totalhadir($kel,$pel,$tgl);
+     $variabel['santriizin'] = $this->m_rekap_santri->totalizin($kel,$pel,$tgl);
+     $variabel['santrisakit'] = $this->m_rekap_santri->totalsakit($kel,$pel,$tgl);
+     $variabel['santrialfa'] = $this->m_rekap_santri->totalalfa($kel,$pel,$tgl);
        $this->layout->renderlaporan('back-end/presensi/rekap_presensi/v_lap_rekap_harian',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
    }
-   //akhir rekap presensi//
+   //akhir rekap presensi santri//
+
+   //mulai rekap guru//
+   function datarekapguru(){
+     $tgl = $this->input->get('tanggal');
+     $kel = $this->input->get('kelas');
+     $pel = $this->input->get('pelajaran');
+      $variabel['data'] = $this->m_rekap_guru->rekapguru($kel,$pel,$tgl);
+      $variabel['tanggal'] = $tgl;
+      $variabel['kelas'] = $kel;
+      $variabel['pelajaran'] = $pel;
+      $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
+      $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
+      $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap_guru',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
+   }
+   //akhir rekap guru//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
 
 

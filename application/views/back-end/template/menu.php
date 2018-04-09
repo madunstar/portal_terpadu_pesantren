@@ -120,7 +120,7 @@
                       <li class="<?= (($menu == "datamaster") &&  ($submenu == 'pelajaranrekap') || ($submenu == 'datarekapsantri')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekap" class="auto">
                           <i class="i i-dot"></i>
-                          <span>Rekap Presensi Santri</span>
+                          <span>Rekap Presensi Kelas Afiliasi</span>
                         </a>
                       </li>
 
