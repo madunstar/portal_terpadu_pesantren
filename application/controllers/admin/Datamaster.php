@@ -2074,10 +2074,11 @@ function kecamatanhapus()
 
    //mulai rekap guru//
    function datarekapguru(){
+     $jdw = $this->input->get('jadwal');
      $tgl = $this->input->get('tanggal');
      $kel = $this->input->get('kelas');
      $pel = $this->input->get('pelajaran');
-      $variabel['data'] = $this->m_rekap_guru->rekapguru($kel,$pel,$tgl);
+      $variabel['data'] = $this->m_rekap_guru->rekapguru($jdw);
       $variabel['tanggal'] = $tgl;
       $variabel['kelas'] = $kel;
       $variabel['pelajaran'] = $pel;
