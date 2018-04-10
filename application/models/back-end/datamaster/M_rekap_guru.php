@@ -34,9 +34,14 @@ class m_rekap_guru extends CI_Model
       return $this->db->get();
     }
 
-    function datasantri($kel,$tgl,$pel){
-
-      return $this->db->query('select * from tb_kelas_santri inner join tb_santri on tb_kelas_santri.nis_lokal = tb_santri.nis_lokal where tb_kelas_santri.id_kelas_belajar ='.$kel.' and not exists (select * from tb_presensi_rekap_santri where tb_presensi_rekap_santri.id_santri = tb_santri.nis_lokal and id_kelas = '.$kel.' and tanggal_rekap ="'.$tgl.'" and id_pelajaran ='.$pel.')');
+    function dataguru($nip){
+      $this->db->select('nama_lengkap');
+      $this->db->from('tb_guru');
+      $this->db->where("nip_guru",$nip);
+      $query = $this->db->get();
+      $data = $query->row_array();
+      $value = $data['nama_lengkap'];
+      return $value;
     }
 
     function cekdata($nis,$pel,$kel,$tgl){
@@ -65,7 +70,7 @@ class m_rekap_guru extends CI_Model
 
     function tambahdata($array)
     {
-        return $this->db->insert('tb_presensi_rekap_santri',$array);
+        return $this->db->insert('tb_presensi_rekap_guru',$array);
     }
 
     function pelajaran($pel){

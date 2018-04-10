@@ -69,7 +69,69 @@
       </footer>
     </section>
     <!-- ini tambah data -->
+    <div class='modal' id='tambahdata' tabindex='-1' role='dialog'>
+      <style >
+        .datepicker{
+          z-index:1151 !important;
+        }
+      </style>
+     <div class='modal-dialog' role='document'>
+       <div class='modal-content'>
+         <div class='modal-header bg-default'>
+           <h4 class='modal-title'>Tambah Rekap Santri</h4>
+         </div>
+         <div class='modal-body'>
+                  <form class="form-horizontal mb-lg" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/tambahrekapguru" method="post">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label" for="input-id-1">Guru</label>
+                      <div class="col-sm-8">
+                        <input type="text" name=""  class="form-control parsley-validated" data-required="true" readonly value="<?php echo $guru ?>">
 
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label" for="input-id-1">Mata Pelajaran</label>
+                      <div class="col-sm-8">
+
+                        <input type="text" name=""  class="form-control" readonly value="<?php echo $matpel ?>">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label" for="input-id-1">Tanggal</label>
+                      <div class="col-sm-8">
+                          <input  type="text" class="form-control datepicker-input" data-date-format="yyyy-mm-dd" readonly name="tanggal_rekap" data-required="true" placeholder="." value="<?php echo $tanggal ?>">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label" for="input-id-1">Keterangan</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" name="status">
+                          <option value="hadir">hadir</option>
+                          <option value="izin">izin</option>
+                          <option value="sakit">sakit</option>
+                          <option value="alfa">alfa</option>
+                        </select>
+                      </div>
+                    </div>
+                    <input type="hidden" name="jdw" value="<?php echo $jadwal ?>">
+                    <input type="hidden" name="pel" value="<?php echo $pelajaran ?>">
+                    <input type="hidden" name="kel" value="<?php echo $kelas ?>">
+                    <input type="hidden" name="tgl" value="<?php echo $tanggal ?>">
+                    <input type="hidden" name="nip" value="<?php echo $nip_guru ?>">
+
+         </div>
+         <div class='modal-footer'>
+            <button type='submit' class='btn btn-sm btn-success'>Tambah Data</button></a>
+              </form>
+           <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
+         </div>
+
+
+
+
+       </div>
+       <!-- <script src="<?php echo base_url('assets/js/datepicker/bootstrap-datepicker.js');?>"></script> -->
+     </div>
 
   </section>
 </section>
