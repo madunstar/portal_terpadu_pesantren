@@ -23,17 +23,19 @@
                       <th >Kelas</th>
                       <th >Tanggal Keluar</th>
                       <th>Penjemput</th>
+                      <th>Status Keluar</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
                       foreach($data->result_array() as $row){
                         echo "
-                          <tr>
+                          <tr class='rowData'>
                             <td>".$row['nama_lengkap']."</td>
                             <td>".$row['jenis_sekolah_asal']."</td>
                             <td>".$row['tanggal_keluar']."</td>
                             <td>".$row['nama_penjemput']."</td>
+                            <td>".$row['status_keluar']."</td>
                             </tr>
                         ";
                       }

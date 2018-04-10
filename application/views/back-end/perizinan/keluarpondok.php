@@ -14,7 +14,7 @@
               <h4 class="font-bold">Input Data Santri Keluar Pondok</h4>
             </header>
             <div class="panel-body">
-
+              <?php pesan_get('msg',"Berhasil Menghapus Data Penjemput","Gagal Menghapus Data Penjemput") ?>
               <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/perizinan/keluar')?>" method="post">
                 <div class="form-group">
                       <div class="col-sm-10">
@@ -64,7 +64,7 @@
                           <div class="form-group">
                                 <label class="col-sm-1 control-label" for="input-id-1">Pilih Penjemput</label>
                                 <div class="col-sm-10">
-                                  <select name="id_penjemput" id="id_penjemput" class="form-control m-b">
+                                  <select name="id_penjemput" id="id_penjemput" class="chosen-select form-control">
                                     <option value="" disabled <?php if (set_value('id_penjemput')=="") echo "selected" ?>>Pilih Penjemput</option>
                                     <option value="Baru">Memasukkan Data Penjemput Baru</option>
                                     <?php
@@ -73,6 +73,8 @@
                                       }
                                     ?>
                                   </select>
+                                  <br><br>
+                                  <a href='#' class='btn btn-danger btn-xs hapus' name='hapus' title='Hapus' id='hapus'><i class='fa fa-trash-o'></i> Hapus Penjemput</a>
                                 </div>
                           </div>
                           <div class="form-group">
