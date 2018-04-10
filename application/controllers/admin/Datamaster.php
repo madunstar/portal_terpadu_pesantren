@@ -2096,20 +2096,37 @@ function kecamatanhapus()
        $array = array(
          'id_jadwal' => $this->input->post('jdw'),
          'status_presensi' => $this->input->post('status'),
-         'tanggal_rekap' => $this->input->post('tgl')
+         'tanggal_rekap' => $this->input->post('tanggal_rekap')
        );
+      $today = date('Y-m-d');
+      $tglr = $this->input->post('tanggal_rekap');
      $tgl = $this->input->post('tgl');
      $kel = $this->input->post('kel');
      $pel = $this->input->post('pel');
      $jdw = $this->input->post('jdw');
      $nip = $this->input->post('nip');
-     $exec = $this->m_rekap_guru->tambahdata($array);
-     if ($exec){
-       redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&msg=1"));
+     if ($tglr > $today) {
+       redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&psn=0"));
      } else{
-       redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&msg=2"));
+       $exec = $this->m_rekap_guru->tambahdata($array);
+       if ($exec){
+         redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&msg=1"));
+       } else{
+         redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&msg=0"));
+       }
+      }
      }
-     }
+   }
+
+   function hapusrekapguru(){
+     $id_rekap = $this->input->get('id');
+     $jdw = $this->input->get('jadwal');
+     $tgl = $this->input->get('tanggal');
+     $kel = $this->input->get('kelas');
+     $pel = $this->input->get('pelajaran');
+     $nip = $this->input->get('guru');
+     $exec = $this->m_rekap_guru->hapus($id_rekap);
+     redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&psn=1"));
    }
    //akhir rekap guru//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////

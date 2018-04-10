@@ -97,7 +97,7 @@ class m_rekap_guru extends CI_Model
     function hapus($id_rekap)
     {
         $this->db->where("id_rekap",$id_rekap);
-        return $this->db->delete('tb_presensi_rekap_santri');
+        return $this->db->delete('tb_presensi_rekap_guru');
     }
 
     function totalhadir($kel,$pel,$tgl){

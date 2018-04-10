@@ -50,7 +50,7 @@
                            <b>Apakah yakin menghapus data?</b>
                          </div>
                          <div class='modal-footer'>
-                           <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusrekap?id='.$row['id_rekap'].'&kelas='.$kelas.'&pelajaran='.$pelajaran.'&tanggal='.$tanggal.'')."'>
+                           <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusrekapguru?id='.$row['id_rekap'].'&kelas='.$kelas.'&pelajaran='.$pelajaran.'&tanggal='.$tanggal.'&jadwal='.$jadwal.'&guru='.$nip_guru.'')."'>
                            <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
                            <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                          </div>
