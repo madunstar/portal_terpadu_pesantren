@@ -2078,13 +2078,38 @@ function kecamatanhapus()
      $tgl = $this->input->get('tanggal');
      $kel = $this->input->get('kelas');
      $pel = $this->input->get('pelajaran');
+     $nip = $this->input->get('guru');
       $variabel['data'] = $this->m_rekap_guru->rekapguru($jdw);
       $variabel['tanggal'] = $tgl;
       $variabel['kelas'] = $kel;
       $variabel['pelajaran'] = $pel;
-      $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
-      $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
+      $variabel['jadwal'] = $jdw;
+      $variabel['nip_guru'] =$nip;
+      $variabel['namakelas'] = $this->m_rekap_guru->kelas($kel);
+      $variabel['matpel'] = $this->m_rekap_guru->pelajaran($pel);
+      $variabel['guru'] = $this->m_rekap_guru->dataguru($nip);
       $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap_guru',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
+   }
+
+   function tambahrekapguru(){
+     if ($this->input->post()){
+       $array = array(
+         'id_jadwal' => $this->input->post('jdw'),
+         'status_presensi' => $this->input->post('status'),
+         'tanggal_rekap' => $this->input->post('tgl')
+       );
+     $tgl = $this->input->post('tgl');
+     $kel = $this->input->post('kel');
+     $pel = $this->input->post('pel');
+     $jdw = $this->input->post('jdw');
+     $nip = $this->input->post('nip');
+     $exec = $this->m_rekap_guru->tambahdata($array);
+     if ($exec){
+       redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&msg=1"));
+     } else{
+       redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&msg=2"));
+     }
+     }
    }
    //akhir rekap guru//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
