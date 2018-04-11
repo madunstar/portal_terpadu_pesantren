@@ -2,14 +2,12 @@
 
 class M_perizinan extends CI_Model
 {
-    function __construct()
-    {
+    function __construct(){
         parent::__construct();
     }
 
-    function lihatdata()
-    {
-        $this->db->select('nama_lengkap, jenis_sekolah_asal,
+    function lihatdata(){
+        $this->db->select('nis_santri, nama_lengkap, jenis_sekolah_asal,
         CONCAT(
             CASE DAYOFWEEK(tanggal_keluar)
               WHEN 1 THEN "Minggu"
@@ -39,11 +37,11 @@ class M_perizinan extends CI_Model
             HOUR(tanggal_keluar),":",
             MINUTE(tanggal_keluar),":",
             SECOND(tanggal_keluar)
-        ) AS tanggal_keluar, nama_penjemput, status_keluar');
+        ) AS tanggal_keluar, keperluan, nama_penjemput, status_keluar');
         $this->db->from('tb_perizinan_keluar');
         $this->db->join('tb_santri', 'nis_santri = nis_lokal');
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
-        $this->db->order_by("tanggal_keluar","ASC");
+        //$this->db->order_by("tanggal_keluar","DESC");
         return $this->db->get();
     }
 
@@ -52,8 +50,7 @@ class M_perizinan extends CI_Model
         return $this->db->get('tb_perizinan_penjemput');
     }
 
-    function tampildatasantri($id)
-    {
+    function tampildatasantri($id){
         $this->db->select('nis_lokal, nama_lengkap, jenis_sekolah_asal, nama_lengkap_ayah, nama_lengkap_ibu');
         $this->db->from('tb_santri');
         $this->db->where('nis_lokal',$id);
@@ -66,47 +63,40 @@ class M_perizinan extends CI_Model
         // }
     }
 
-    function tampildatapenjemput($id_penjemput)
-    {
+    function tampildatapenjemput($id_penjemput){
         $this->db->select('no_identitas, nama_penjemput, no_telp, alamat_penjemput, hubungan_penjemput');
         $this->db->from('tb_perizinan_penjemput');
         $this->db->where('id_penjemput',$id_penjemput);
         return $this->db->get();
     }
 
-    function cekdatasantri($nis)
-    {
+    function cekdatasantri($nis){
         $this->db->where("nis_lokal",$nis);
         return $this->db->get('tb_santri')->num_rows();
     }
 
-    function tambahdatapenjemput($penjemput)
-    {
+    function tambahdatapenjemput($penjemput){
         return $this->db->insert('tb_perizinan_penjemput',$penjemput);
     }
 
-    function ambilidpenjemput($no_identitas)
-    {
+    function ambilidpenjemput($no_identitas){
         $this->db->select('id_penjemput');
         $this->db->from('tb_perizinan_penjemput');
         $this->db->where('no_identitas',$no_identitas);
         return $this->db->get()->row();
     }
 
-    function tambahizinkeluar($izinkeluar)
-    {
+    function tambahizinkeluar($izinkeluar){
         return $this->db->insert('tb_perizinan_keluar',$izinkeluar);
     }
 
-    function cekdatapenjemput($no_identitas)
-    {
+    function cekdatapenjemput($no_identitas){
       $this->db->where('no_identitas',$no_identitas);
       return $this->db->get('tb_perizinan_penjemput')->num_rows();
 
     }
 
-    function tampilsuratizin()
-    {
+    function tampilsuratizin(){
         $this->db->select('tb_santri.nama_lengkap AS nama_santri, tb_santri.jenis_sekolah_asal AS sekolah, tb_santri.hp AS hp,
         CONCAT(
             CASE DAYOFWEEK(tanggal_keluar)
@@ -164,7 +154,7 @@ class M_perizinan extends CI_Model
               WHEN 12 THEN "Desember"
             END," ",
             YEAR(tanggal_keluar)
-          ) AS tanggal_surat, tb_staff.nama_lengkap AS nama_petugas');
+          ) AS tanggal_surat, keperluan, tb_staff.nama_lengkap AS nama_petugas');
         $this->db->from('tb_perizinan_keluar');
         $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
@@ -174,12 +164,59 @@ class M_perizinan extends CI_Model
         return $this->db->get();
     }
 
-    function jemputhapus($id_penjemput)
-    {
+    function totalkeluar($tahun,$bulan){
+      $this->db->select('count(*) as total');
+      $this->db->from('tb_perizinan_keluar');
+      $this->db->where('year(tb_perizinan_keluar.tanggal_keluar)',$tahun);
+      $this->db->where('month(tb_perizinan_keluar.tanggal_keluar)',$bulan);
+      //$this->db->where('tb_perizinan_keluar.status_keluar','keluar');
+      return $this->db->get()->row_array();
+    }
+
+    function jemputhapus($id_penjemput){
         $this->db->where("id_penjemput",$id_penjemput);
         return $this->db->delete('tb_perizinan_penjemput');
     }
 
+    function laporankeluar($tahun,$bulan){
+      $this->db->select('nis_santri, nama_lengkap, jenis_sekolah_asal,
+      CONCAT(
+          CASE DAYOFWEEK(tanggal_keluar)
+            WHEN 1 THEN "Minggu"
+            WHEN 2 THEN "Senin"
+            WHEN 3 THEN "Selasa"
+            WHEN 4 THEN "Rabu"
+            WHEN 5 THEN "Kamis"
+            WHEN 6 THEN "Jumat"
+            WHEN 7 THEN "Sabtu"
+          END,", ",
+          DAY(tanggal_keluar)," ",
+          CASE MONTH(tanggal_keluar)
+            WHEN 1 THEN "Januari"
+            WHEN 2 THEN "Februari"
+            WHEN 3 THEN "Maret"
+            WHEN 4 THEN "April"
+            WHEN 5 THEN "Mei"
+            WHEN 6 THEN "Juni"
+            WHEN 7 THEN "Juli"
+            WHEN 8 THEN "Agustus"
+            WHEN 9 THEN "September"
+            WHEN 10 THEN "Oktober"
+            WHEN 11 THEN "November"
+            WHEN 12 THEN "Desember"
+          END," ",
+          YEAR(tanggal_keluar)," Pukul ",
+          HOUR(tanggal_keluar),":",
+          MINUTE(tanggal_keluar),":",
+          SECOND(tanggal_keluar)
+      ) AS tgl_keluar, keperluan, nama_penjemput, status_keluar');
+      $this->db->from('tb_perizinan_keluar');
+      $this->db->join('tb_santri', 'nis_santri = nis_lokal');
+      $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+      $this->db->where('year(tb_perizinan_keluar.tanggal_keluar)',$tahun);
+      $this->db->where('month(tb_perizinan_keluar.tanggal_keluar)',$bulan);
+      return $this->db->get();
+    }
 ///Sampai Sini Dulu yang Digawi///
 
     ///anis zone///

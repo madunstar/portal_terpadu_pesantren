@@ -70,7 +70,7 @@ class Perizinan extends CI_Controller
               $variabel['data'] = $exec ->row_array();
               $this->layout->render('back-end/perizinan/v_ubah_sandi',$variabel);
           } else {
-              redirect(base_url("admin/perizinan/dashboard"));
+              redirect(base_url("admin/perizinan"));
           }
       }
   }
@@ -78,32 +78,28 @@ class Perizinan extends CI_Controller
   function index()
   {
       $variabel['nama_akun'] = $this->session->userdata('nama_akun');
-      $this->layout->renderizin('back-end/perizinan/dashboard',$variabel);
+      $this->layout->renderizin('back-end/perizinan/v_dashboard',$variabel);
   }
 
 //Bagian Utak Atik By Ilyas
-  function datakeluar()
-  {
+  function datakeluar(){
       $variabel['data'] = $this->m_perizinan->lihatdata();
-      $this->layout->renderizin('back-end/perizinan/data_keluar',$variabel,'back-end/perizinan/denda_js');
+      $this->layout->renderizin('back-end/perizinan/v_data_keluar',$variabel,'back-end/perizinan/denda_js');
   }
 
-  function datasantritampil()
-  {
+  function datasantritampil(){
       $id=$this->input->post('id');
       $data=$this->m_perizinan->tampildatasantri($id)->result();
       echo json_encode($data);
   }
 
-  function datapenjemputtampil()
-  {
+  function datapenjemputtampil(){
       $id=$this->input->post('id');
       $data=$this->m_perizinan->tampildatapenjemput($id)->result();
       echo json_encode($data);
   }
 
-  function keluar()
-  {
+  function keluar(){
       $nip_admin = $this->session->userdata('nip_staff_admin');
       $id_penjemput = $this->input->post('id_penjemput');
       $no_identitas = $this->input->post('no_identitas');
@@ -156,29 +152,37 @@ class Perizinan extends CI_Controller
               $exectambahizin = $this->m_perizinan->tambahizinkeluar($izinkeluar);
 
               //$exec2 = $this->m_perizinan->tambahdatapenjemput($penjemput);
-              //$this->layout->renderizin('back-end/perizinan/keluarpondok','back-end/perizinan/keluar_js');
+              //$this->layout->renderizin('back-end/perizinan/v_keluarpondok','back-end/perizinan/keluar_js');
               redirect('admin/perizinan/suratizin');
           }
       }
 
       else{
           $variabel['id_penjemput']=$this->m_perizinan->ambildatapenjemput();
-          $this->layout->renderizin('back-end/perizinan/keluarpondok',$variabel,'back-end/perizinan/keluar_js');
+          $this->layout->renderizin('back-end/perizinan/v_keluarpondok',$variabel,'back-end/perizinan/keluar_js');
       }
   }
 
-  function suratizin()
-  {
+  function suratizin(){
       $execsuratizin = $this->m_perizinan->tampilsuratizin();
       $variabel['datasurat'] = $execsuratizin->row_array();
       $this->layout->renderizin('back-end/perizinan/v_suratizin',$variabel,'back-end/perizinan/keluar_js');
   }
 
-  function penjemputhapus()
-  {
+  function penjemputhapus(){
       $id_penjemput = $this->input->get("id_penjemput");
       $exec = $this->m_perizinan->jemputhapus($id_penjemput);
       redirect(base_url()."admin/perizinan/keluar?msg=1");
+  }
+
+  function laporankeluar(){
+    $tahun = $this->input->post('tahun');
+    $bulan = $this->input->post('bulan');
+    $variabel['tahun'] = $tahun;
+    $variabel['bulan'] = $bulan;
+    $variabel['totkeluar'] = $this->m_perizinan->totalkeluar($tahun,$bulan);;
+    $variabel['data'] = $this->m_perizinan->laporankeluar($tahun,$bulan);
+    $this->layout->renderlaporan('back-end/perizinan/v_lap_keluar',$variabel);
   }
 //Sampai Sini Bagian Utak Atik By Ilyas
 
