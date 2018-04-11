@@ -68,7 +68,26 @@ $(document).ready(function(){
       alert("NIS hanya berupa angka !");
       return false;
     }
-
+    $.ajax({
+      url: "<?php echo base_url();?>admin/perizinan/ceknissantri",
+      type: "POST",
+      data: "nis_santri="+nis_santri,
+      dataType: "text",
+      success: function(data){
+        //if (data != 0){ //pada file check email.php, apabila email sudah ada di database makan akan mengembalikan nilai 0
+          //$('#nis_santri').parent().find('.text-warning').text("");
+          //$('#nis_santri').parent().find('.text-warning').text("email sudah ada");
+          $('#nama_lengkap').val("");
+          $('#kelas').val("");
+          $('#nama_lengkap_ayah').val("");
+          $('#nama_lengkap_ibu').val("");
+          $('#tanggal_keluar').val("");
+          //   alert("NIS yang dimasukkan tidak ditemukan!");
+          alert(data);
+          return false;
+        //}
+      }
+		});
 
     // else if(!nis_santri.value.length<=13){
     //   nama_lengkap.value = "";
@@ -79,17 +98,6 @@ $(document).ready(function(){
     //   alert("NIS terdiri dari 13 digit !");
     //   return false;
     // }
-    // else if(nis_santri.value!=0){
-    //   nama_lengkap.value = "";
-    //   kelas.value = "";
-    //   nama_lengkap_ayah.value = "";
-    //   nama_lengkap_ibu.value = "";
-    //   tanggal_keluar.value = "";
-    //   alert("NIS yang dimasukkan tidak ditemukan!");
-    //   return false;
-    // }
-
-
 
     // mysql.query("SELECT * FROM tb_santri WHERE nis_lokal = 'a'", function(error, result, field) {
     //   if(error) {

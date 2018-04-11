@@ -99,6 +99,16 @@ class Perizinan extends CI_Controller
       echo json_encode($data);
   }
 
+  function ceknissantri(){
+    $nis_santri = $this->input->post('nis_santri');
+    if ($this->m_perizinan->cekdatasantri($nis_santri) == 1){
+      echo 'Ada';
+    }
+    else{
+      echo 'Tidak Ada';
+    }
+  }
+
   function keluar(){
       $nip_admin = $this->session->userdata('nip_staff_admin');
       $id_penjemput = $this->input->post('id_penjemput');
