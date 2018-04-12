@@ -57,16 +57,16 @@ class m_rekap_guru extends CI_Model
       return $value;
     }
 
-    function lihatsantrisatu($nis)
-    {
-        $this->db->select('nama_lengkap');
-        $this->db->from('tb_santri');
-        $this->db->where("nis_lokal",$nis);
-        $query = $this->db->get();
-        $data = $query->row_array();
-        $value = $data['nama_lengkap'];
-        return $value;
-    }
+    // function lihatsantrisatu($nis)
+    // {
+    //     $this->db->select('nama_lengkap');
+    //     $this->db->from('tb_santri');
+    //     $this->db->where("nis_lokal",$nis);
+    //     $query = $this->db->get();
+    //     $data = $query->row_array();
+    //     $value = $data['nama_lengkap'];
+    //     return $value;
+    // }
 
     function tambahdata($array)
     {
@@ -100,45 +100,40 @@ class m_rekap_guru extends CI_Model
         return $this->db->delete('tb_presensi_rekap_guru');
     }
 
-    function totalhadir($kel,$pel,$tgl){
+    function totalhadir($jdw){
       $this->db->select('count(*) as total')
-        ->from('tb_presensi_rekap_santri')
-        ->where('id_pelajaran', $pel)
-        ->where('id_kelas', $kel)
-        ->where('tanggal_rekap', $tgl)
+        ->from('tb_presensi_rekap_guru')
+        ->where('id_jadwal', $jdw)
+
+
         ->where('status_presensi', 'hadir');
         return $this->db->get()
           ->row_array();
     }
 
-    function totalizin($kel,$pel,$tgl){
+    function totalizin($jdw){
       $this->db->select('count(*) as total')
-        ->from('tb_presensi_rekap_santri')
-        ->where('id_pelajaran', $pel)
-        ->where('id_kelas', $kel)
-        ->where('tanggal_rekap', $tgl)
+        ->from('tb_presensi_rekap_guru')
+        ->where('id_jadwal', $jdw)
+
         ->where('status_presensi', 'izin');
         return $this->db->get()
           ->row_array();
     }
 
-    function totalsakit($kel,$pel,$tgl){
+    function totalsakit($jdw){
       $this->db->select('count(*) as total')
-        ->from('tb_presensi_rekap_santri')
-        ->where('id_pelajaran', $pel)
-        ->where('id_kelas', $kel)
-        ->where('tanggal_rekap', $tgl)
+        ->from('tb_presensi_rekap_guru')
+      ->where('id_jadwal', $jdw)
         ->where('status_presensi', 'sakit');
         return $this->db->get()
           ->row_array();
     }
 
-    function totalalfa($kel,$pel,$tgl){
+    function totalalfa($jdw){
       $this->db->select('count(*) as total')
-        ->from('tb_presensi_rekap_santri')
-        ->where('id_pelajaran', $pel)
-        ->where('id_kelas', $kel)
-        ->where('tanggal_rekap', $tgl)
+        ->from('tb_presensi_rekap_guru')
+        ->where('id_jadwal', $jdw)
         ->where('status_presensi', 'alfa');
         return $this->db->get()
           ->row_array();

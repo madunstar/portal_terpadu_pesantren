@@ -2128,6 +2128,28 @@ function kecamatanhapus()
      $exec = $this->m_rekap_guru->hapus($id_rekap);
      redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&psn=1"));
    }
+
+   function laporanrekapguru(){
+     $jdw = $this->input->get('jadwal');
+     $tgl = $this->input->get('tanggal');
+     $kel = $this->input->get('kelas');
+     $pel = $this->input->get('pelajaran');
+     $nip = $this->input->get('guru');
+      $variabel['data'] = $this->m_rekap_guru->rekapguru($jdw);
+      $variabel['tanggal'] = $tgl;
+      $variabel['kelas'] = $kel;
+      $variabel['pelajaran'] = $pel;
+      $variabel['jadwal'] = $jdw;
+      $variabel['nip_guru'] =$nip;
+      $variabel['namakelas'] = $this->m_rekap_guru->kelas($kel);
+      $variabel['matpel'] = $this->m_rekap_guru->pelajaran($pel);
+      $variabel['guru'] = $this->m_rekap_guru->dataguru($nip);
+      $variabel['guruhadir'] = $this->m_rekap_guru->totalhadir($jdw);
+      $variabel['guruizin'] = $this->m_rekap_guru->totalizin($jdw);
+      $variabel['gurusakit'] = $this->m_rekap_guru->totalsakit($jdw);
+      $variabel['gurualfa'] = $this->m_rekap_guru->totalalfa($jdw);
+      $this->layout->renderlaporan('back-end/presensi/rekap_presensi/v_lap_rekap_guru',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
+   }
    //akhir rekap guru//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
 
