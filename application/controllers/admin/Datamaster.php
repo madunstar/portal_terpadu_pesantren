@@ -32,6 +32,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_presensipondokan');
         $this->load->model('back-end/datamaster/m_rekap_santri');
         $this->load->model('back-end/datamaster/m_rekap_guru');
+        $this->load->model('back-end/datamaster/m_akun_ortu');
         $this->load->library('layout');
         $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
@@ -2856,5 +2857,11 @@ function editkelaspondokan()
         $exec = $this->m_presensipondokan->editdatasantri($id_kelas_santri,$array);
     }
 
+/////akun ortu santri/////////////
+
+function dataakunortu(){
+  $variabel['data'] = $this->m_akun_ortu->lihatdata();
+    $this->layout->render('back-end/datamaster/ortu/v_akun_ortu',$variabel,'back-end//datamaster/ortu/v_akun_ortu_js');
+}
 
 }
