@@ -65,7 +65,7 @@
       </div>
       <footer class="panel-footer text-right">
         <a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekap" type="button" class="btn btn-default" name="button"><i class="fa fa-list"></i> Daftar Pelajaran</a>
-        <a href="<?php echo base_url() ?>admin/datamaster/laporanrekapharian?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>" type="button" class="btn btn-primary" name="button"><i class="fa fa-print"></i> Cetak Rekap Harian</a>
+        <a href="<?php echo base_url() ?>admin/datamaster/laporanrekapguru?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>&jadwal=<?php echo $jadwal ?>&guru=<?php echo $nip_guru ?>" type="button" class="btn btn-primary" name="button"><i class="fa fa-print"></i> Cetak Rekap Harian</a>
       </footer>
     </section>
     <!-- ini tambah data -->
