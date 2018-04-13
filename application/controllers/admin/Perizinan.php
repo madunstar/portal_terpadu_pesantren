@@ -132,10 +132,6 @@ class Perizinan extends CI_Controller
           );
           $nis = $this->input->post('nis_santri');
           $tanggal_keluar = $this->input->post('tanggal_keluar');
-          //if ($this->m_perizinan->cekdatasantri($nis)==0) {
-          // if($this->input->post('id_penjemput')==0){
-          //   $this->no_identitas->ReadOnly = TRUE;
-          // }
           if ($id_penjemput=='Baru'){
               $exectambahpenjemput = $this->m_perizinan->tambahdatapenjemput($penjemput);
               $ambilidpenjemput = $this->m_perizinan->ambilidpenjemput($no_identitas);
@@ -151,14 +147,6 @@ class Perizinan extends CI_Controller
               redirect('admin/perizinan/suratizin');
           }
           else{
-              // $cek = $this->m_perizinan->cekdatasantri($nis);
-              // $json_array = json_encode($cek);
-
-
-              //if ($this->m_perizinan->cekdatasantri($nis)==0) {
-              // if($this->input->post('id_penjemput')==0){
-              //   $this->no_identitas->ReadOnly = TRUE;
-              // }
               $exectambahizin = $this->m_perizinan->tambahizinkeluar($izinkeluar);
 
               //$exec2 = $this->m_perizinan->tambahdatapenjemput($penjemput);

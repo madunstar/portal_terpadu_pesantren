@@ -7,11 +7,20 @@ $(document).ready(function(){
   $('#no_telp').attr('readonly', true);
   $('#alamat_penjemput').attr('readonly', true);
   $('#hubungan_penjemput').attr('readonly', true);
+
+  $("#no_identitas").attr("data-required", "false");
+  $("#nama_penjemput").attr("data-required", "false");
+  $("#no_telp").attr("data-required", "false");
+  $("#alamat_penjemput").attr("data-required", "false");
+  $("#hubungan_penjemput").attr("data-required", "false");
+
   $('#hapus').attr('disabled','disabled');
+  $('#proses').attr('disabled','disabled');
   $('#Lanjutkan').click(function(){
     var angka = /^[0-9]+$/;
     var nis=$('#nis_santri').val();
     if(nis_santri.value == null || nis_santri.value == ""){
+      $('#proses').attr('disabled','disabled');
       $('#nis_santri').parent().find('.text-success').text("");
       $('#nis_santri').parent().find('.text-danger').text("NIS tidak boleh kosong !");
       nama_lengkap.value = "";
@@ -22,6 +31,7 @@ $(document).ready(function(){
       return false;
     }
     else if(!nis_santri.value.match(angka)){
+      $('#proses').attr('disabled','disabled');
       $('#nis_santri').parent().find('.text-success').text("");
       $('#nis_santri').parent().find('.text-danger').text("NIS hanya berupa angka !");
       nama_lengkap.value = "";
@@ -47,6 +57,7 @@ $(document).ready(function(){
       dataType: "text",
       success: function(data){
         if (data == 0){
+          $('#proses').attr('disabled','disabled');
           $('#nis_santri').parent().find('.text-success').text("");
           $('#nis_santri').parent().find('.text-danger').text("NIS Tidak Ditemukan!");
           $('#nama_lengkap').val("");
@@ -75,6 +86,7 @@ $(document).ready(function(){
       async : false,
       dataType : 'json',
       success: function(data){
+        $('#proses').removeAttr('disabled');
         $('#nis_santri').parent().find('.text-danger').text("");
         $('#nis_santri').parent().find('.text-success').text("Data ditemukan!");
         nama_lengkap.value = data[0].nama_lengkap;
@@ -111,6 +123,12 @@ $(document).ready(function(){
           $('#no_telp').attr('readonly', false);
           $('#alamat_penjemput').attr('readonly', false);
           $('#hubungan_penjemput').attr('readonly', false);
+
+          $("#no_identitas").attr("data-required", "true");
+          $("#nama_penjemput").attr("data-required", 'true');
+          $("#no_telp").attr("data-required", true);
+          $("#alamat_penjemput").attr("data-required", "true");
+          $("#hubungan_penjemput").attr("data-required", "true");
           $('#hapus').attr('disabled','disabled');
         }
         else if($('#id_penjemput').val() == "0"){

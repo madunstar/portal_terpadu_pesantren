@@ -66,7 +66,7 @@
                           <div class="form-group">
                                 <label class="col-sm-1 control-label" for="input-id-1">Pilih Penjemput</label>
                                 <div class="col-sm-10">
-                                  <select name="id_penjemput" id="id_penjemput" class="chosen-select form-control">
+                                  <select name="id_penjemput" id="id_penjemput" class="chosen-select form-control" data-required="true">
                                     <option value="" disabled <?php if (set_value('id_penjemput')=="") echo "selected" ?>>Pilih Penjemput</option>
                                     <option value="Baru">Memasukkan Data Penjemput Baru</option>
                                     <?php
@@ -110,7 +110,7 @@
                                 </div>
                           </div>
                   <footer class="panel-footer text-right">
-                    <input class="btn btn-sm btn-info" type="submit" name="button" value="Proses Perizinan">
+                    <input class="btn btn-sm btn-info" type="submit" name="button" value="Proses Perizinan" id="proses">
                   </footer>
             </form>
           </div>
