@@ -2864,4 +2864,15 @@ function dataakunortu(){
     $this->layout->render('back-end/datamaster/ortu/v_akun_ortu',$variabel,'back-end//datamaster/ortu/v_akun_ortu_js');
 }
 
+function buatakunortu(){
+  $array= array(
+    'id_ortu' => $this->input->post('id'),
+    'kata_sandi' => $this->input->post('sandi'),
+    'email_ortu' => $this->input->post('email'),
+    'status_akun' => 'aktif'
+  );
+  $exec = $this->m_akun_ortu->tambahdata($array);
+  redirect(base_url()."admin/datamaster/dataakunortu?msg=1");
+}
+
 }

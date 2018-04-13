@@ -121,18 +121,14 @@
 
          </div>
          <div class='modal-footer'>
-            <button type='submit' class='btn btn-sm btn-success'>Tambah Data</button></a>
+            <button type='submit' class='btn btn-sm btn-success'>Tambah Data</button>
               </form>
            <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
          </div>
-
-
-
-
        </div>
        <!-- <script src="<?php echo base_url('assets/js/datepicker/bootstrap-datepicker.js');?>"></script> -->
      </div>
-
+   </div>
   </section>
 </section>
 </section>
