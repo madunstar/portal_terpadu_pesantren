@@ -108,6 +108,7 @@
           
           
         </div>
+        <hr />
         <div class="row">
           <div class="col-md-4">
           <table class="table table-bordered" style="width:80%">
@@ -198,6 +199,7 @@
           
           
         </div>
+        <hr />
         <div class="row" >
         <div class="col-md-4"  style="margin:0 auto">
            <table class="table table-bordered" style="width:80%">
