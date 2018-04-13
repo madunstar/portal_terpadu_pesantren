@@ -18,34 +18,34 @@ class M_akun_ortu extends CI_Model
         return $this->db->get();
     }
 
-    function lihatdatasatu($nama_akun)
-    {
-        $this->db->select('nip_staff_admin, nama_akun, kata_sandi, kode_role_admin, nama_role, nama_lengkap');
-        $this->db->from('tb_akun_admin');
-        $this->db->join('tb_role_admin', 'kode_role_admin = kode_role');
-        $this->db->join('tb_staff', 'nip_staff_admin = nip_staff');
-        $this->db->where("nama_akun",$nama_akun);
-        return $this->db->get();
-    }
-
-    function cekdata($nama_akun)
-    {
-        $this->db->where("nama_akun",$nama_akun);
-        return $this->db->get('tb_akun_admin')->num_rows();
-    }
-
-    function cekdataedit($nama_akun)
-    {
-        $query = $this->db->where(['nama_akun'=>$nama_akun])
-                          ->get('tb_akun_admin');
-        if($query->num_rows() > 0){
-          return $query->row();
-        }
-    }
+    // function lihatdatasatu($nama_akun)
+    // {
+    //     $this->db->select('nip_staff_admin, nama_akun, kata_sandi, kode_role_admin, nama_role, nama_lengkap');
+    //     $this->db->from('tb_akun_admin');
+    //     $this->db->join('tb_role_admin', 'kode_role_admin = kode_role');
+    //     $this->db->join('tb_staff', 'nip_staff_admin = nip_staff');
+    //     $this->db->where("nama_akun",$nama_akun);
+    //     return $this->db->get();
+    // }
+    //
+    // function cekdata($nama_akun)
+    // {
+    //     $this->db->where("nama_akun",$nama_akun);
+    //     return $this->db->get('tb_akun_admin')->num_rows();
+    // }
+    //
+    // function cekdataedit($nama_akun)
+    // {
+    //     $query = $this->db->where(['nama_akun'=>$nama_akun])
+    //                       ->get('tb_akun_admin');
+    //     if($query->num_rows() > 0){
+    //       return $query->row();
+    //     }
+    // }
 
     function tambahdata($array)
     {
-        return $this->db->insert('tb_akun_admin',$array);
+        return $this->db->insert('tb_akun_ortu',$array);
     }
 
     function editdata($nama_akun, $kata_sandi, $kata_sandibr)
