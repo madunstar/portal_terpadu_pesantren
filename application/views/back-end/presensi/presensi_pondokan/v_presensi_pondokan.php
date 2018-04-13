@@ -30,6 +30,7 @@
 										<th>Wali</th>
 										<th>Kelas Pondokan</th>
 										<th>Tingkat</th>
+										<th>jadwal Pelajaran</th>
 
 										<th>Status</th>
 										<th>Santri</th>
@@ -54,7 +55,8 @@
                           <td>".$row['nama_kelas']."</td>
                           <td>".$row['nama_lengkap']."</td>
                           <td>".$row['pondokan']."</td>
-                          <td>".$row['tingkat']."</td>
+						  <td>".$row['tingkat']."</td>
+						  <td><a href='".base_url('admin/datamaster/jadwalpondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-clock-o'></i> Jadwal</a></td>
                           <td><button class='btn ".($row['status_kelas']=="Aktif"?"btn-success":"btn-warning")." btn-xs edit'  title='Edit' id='".$row['id_kelas_belajar']."' data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i> ".$row['status_kelas']."</button></td>
                           <td><a href='".base_url('admin/datamaster/lihatkelaspondokansantri?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-list'></i> Santri</a></td>
                         </tr>

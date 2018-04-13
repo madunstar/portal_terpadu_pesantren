@@ -107,4 +107,38 @@ class M_presensipondokan extends CI_Model
         return $this->db->delete('tb_pondokan_santri');
     }
 
+    ///////////////////////////////////////////////////////
+    function lihatdatajadwal($id_kelas_belajar,$hari)
+    {
+        $this->db->from("tb_presensi_jadwal");
+        $this->db->where("id_kelas_belajar",$id_kelas_belajar);
+        $this->db->where("hari",$hari);
+        $this->db->order_by("jam","asc");
+        return $this->db->get();
+    }
+
+    function tambahdatajadwal($array)
+   {
+       return $this->db->insert('tb_presensi_jadwal',$array);
+   }
+
+   function hapusjadwal($id_jadwal)
+    {
+        $this->db->where("id_jadwal",$id_jadwal);
+        return $this->db->delete('tb_presensi_jadwal');
+    }
+
+    function lihatdatasatujadwal($id_jadwal)
+    {
+         $this->db->from("tb_presensi_jadwal");
+         $this->db->where("id_jadwal",$id_jadwal);
+         return $this->db->get();
+    }
+
+    function editdatajadwal($id_jadwal,$array)
+    {
+        $this->db->where("id_jadwal",$id_jadwal);
+        return $this->db->update('tb_presensi_jadwal',$array);
+    }
+
 }

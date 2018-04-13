@@ -51,15 +51,3 @@
 
 </form>
 
-<script type="text/javascript" src="<?php echo base_url().'assets/js/jquery-2.2.3.min.js'?>"></script>
-<script src="<?php echo base_url('assets/js/jquery.min.js');?>"></script>
-  <!-- Bootstrap -->
-  <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
-  <!-- App -->
-  <script src="<?php echo base_url('assets/js/slimscroll/jquery.slimscroll.min.js');?>"></script>
-  <script src="<?php echo base_url('assets/js/confirm/jquery-confirm.min.js');?>"></script>
-  <script src="<?php echo base_url('assets/js/calendar/bootstrap_calendar.js');?>"></script>
-  <script src="<?php echo base_url('assets/js/calendar/demo.js');?>"></script>
-  <script src="<?php echo base_url('assets/js/chosen/chosen.jquery.min.js');?>"></script>
-  <script src="<?php echo base_url('assets/js/app.plugin.js');?>"></script>
-  <script src="<?php echo base_url('assets/js/file-input/bootstrap-filestyle.min.js');?>"></script>
