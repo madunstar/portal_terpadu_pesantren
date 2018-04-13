@@ -102,10 +102,10 @@ class Perizinan extends CI_Controller
   function ceknissantri(){
     $nis_santri = $this->input->post('nis_santri');
     if ($this->m_perizinan->cekdatasantri($nis_santri) == 1){
-      echo 'Ada';
+      echo 1;
     }
     else{
-      echo 'Tidak Ada';
+      echo 0;
     }
   }
 

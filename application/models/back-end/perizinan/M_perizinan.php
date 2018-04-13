@@ -70,8 +70,8 @@ class M_perizinan extends CI_Model
         return $this->db->get();
     }
 
-    function cekdatasantri($nis){
-        $this->db->where("nis_lokal",$nis);
+    function cekdatasantri($nis_santri){
+        $this->db->where("nis_lokal",$nis_santri);
         return $this->db->get('tb_santri')->num_rows();
     }
 

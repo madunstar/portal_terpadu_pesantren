@@ -19,6 +19,8 @@
                 <div class="form-group">
                       <div class="col-sm-10">
                         <input type="text"  class="form-control" name="nis_santri" id="nis_santri" placeholder="Nomor Induk Santri"  data-required="true">
+                        <span class="text-danger" ></span>
+                        <span class="text-success" ></span>
                       </div>
                       <div class="col-sm-2">
 

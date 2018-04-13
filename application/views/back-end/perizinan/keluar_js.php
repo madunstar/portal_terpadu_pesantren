@@ -1,47 +1,7 @@
-<!--<script>
-
-    document.onload = disable_enable();
-    function disable_enable(pilihan) {
-
-        if(pilihan==0 || document.forms[0].id_penjemput.value==0) {
-
-            document.forms[0].no_identitas.disabled=true;
-
-        } else document.forms[0].no_identitas.disabled=false;
-
-    }
-
-</script>-->
-
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript">
-    function cek_database(){
-        var id_penjemput = $("#id_penjemput").val();
-        $.ajax({
-            url: "</?php echo base_url('admin/perizinan/keluar') ?>",
-            data:"id_penjemput="+id_penjemput ,
-        }).success(function (data) {
-
-            var json = data,
-            obj = JSON.parse(json);
-            $('#no_identitas').val(obj.no_identitas);
-            $('#nama_penjemput').val(obj.nama_penjemput);
-            $('#no_telp').val(obj.no_telp);
-            $('#alamat_penjemput').val(obj.alamat_penjemput);
-            $('#hubungan_penjemput').val(obj.hubungan_penjemput);
-
-            //var $jenis_kelamin = $('input:radio[name=jenis_kelamin]');
-		// if(obj.jenis_kelamin == 'laki-laki'){
-		// 	$jenis_kelamin.filter('[value=laki-laki]').prop('checked', true);
-		// }else{
-		// 	$jenis_kelamin.filter('[value=perempuan]').prop('checked', true);
-		// }
-        });
-    }
-</script>-->
-
 <script type="text/javascript">
 $(document).ready(function(){
+  $('.text-danger').text("");
+  $('.text-success').text("");
   $('#no_identitas').attr('readonly', true);
   $('#nama_penjemput').attr('readonly', true);
   $('#no_telp').attr('readonly', true);
@@ -50,45 +10,27 @@ $(document).ready(function(){
   $('#hapus').attr('disabled','disabled');
   $('#Lanjutkan').click(function(){
     var angka = /^[0-9]+$/;
+    var nis=$('#nis_santri').val();
     if(nis_santri.value == null || nis_santri.value == ""){
+      $('#nis_santri').parent().find('.text-success').text("");
+      $('#nis_santri').parent().find('.text-danger').text("NIS tidak boleh kosong !");
       nama_lengkap.value = "";
       kelas.value = "";
       nama_lengkap_ayah.value = "";
       nama_lengkap_ibu.value = "";
       tanggal_keluar.value = "";
-      alert("NIS tidak boleh kosong !");
       return false;
     }
     else if(!nis_santri.value.match(angka)){
+      $('#nis_santri').parent().find('.text-success').text("");
+      $('#nis_santri').parent().find('.text-danger').text("NIS hanya berupa angka !");
       nama_lengkap.value = "";
       kelas.value = "";
       nama_lengkap_ayah.value = "";
       nama_lengkap_ibu.value = "";
       tanggal_keluar.value = "";
-      alert("NIS hanya berupa angka !");
       return false;
     }
-    $.ajax({
-      url: "<?php echo base_url();?>admin/perizinan/ceknissantri",
-      type: "POST",
-      data: "nis_santri="+nis_santri,
-      dataType: "text",
-      success: function(data){
-        //if (data != 0){ //pada file check email.php, apabila email sudah ada di database makan akan mengembalikan nilai 0
-          //$('#nis_santri').parent().find('.text-warning').text("");
-          //$('#nis_santri').parent().find('.text-warning').text("email sudah ada");
-          $('#nama_lengkap').val("");
-          $('#kelas').val("");
-          $('#nama_lengkap_ayah').val("");
-          $('#nama_lengkap_ibu').val("");
-          $('#tanggal_keluar').val("");
-          //   alert("NIS yang dimasukkan tidak ditemukan!");
-          alert(data);
-          return false;
-        //}
-      }
-		});
-
     // else if(!nis_santri.value.length<=13){
     //   nama_lengkap.value = "";
     //   kelas.value = "";
@@ -98,18 +40,25 @@ $(document).ready(function(){
     //   alert("NIS terdiri dari 13 digit !");
     //   return false;
     // }
+    $.ajax({
+      url: "<?php echo base_url();?>admin/perizinan/ceknissantri",
+      type: "POST",
+      data: "nis_santri="+nis,
+      dataType: "text",
+      success: function(data){
+        if (data == 0){
+          $('#nis_santri').parent().find('.text-success').text("");
+          $('#nis_santri').parent().find('.text-danger').text("NIS Tidak Ditemukan!");
+          $('#nama_lengkap').val("");
+          $('#kelas').val("");
+          $('#nama_lengkap_ayah').val("");
+          $('#nama_lengkap_ibu').val("");
+          $('#tanggal_keluar').val("");
+          return false;
+        }
+      }
+		});
 
-    // mysql.query("SELECT * FROM tb_santri WHERE nis_lokal = 'a'", function(error, result, field) {
-    //   if(error) {
-    //       exist(error); //No error
-    //   } else if(result.length > 0) {
-    //     if (result)
-    //       $('#kelas').val('Mancing Mania Mangkap');
-    //       console.log("Test:" + result);
-    //   } else {
-    //       exist(null, null); //It is never execute
-    //   }
-    // });
     var tgl = new Date();
     var tahun = tgl.getFullYear();
     var bulan = tgl.getMonth()+1;
@@ -118,14 +67,16 @@ $(document).ready(function(){
     var menit = tgl.getMinutes();
     var detik = tgl.getSeconds();
     $('#tanggal_keluar').val(tahun+'-'+bulan+'-'+tanggal+' '+jam+':'+menit+':'+detik);
-    var id=$('#nis_santri').val();
+    //var id=$('#nis_santri').val();
     $.ajax({
       url : "<?php echo base_url();?>admin/perizinan/datasantritampil",
       method : "POST",
-      data : {id: id},
+      data : {id: nis},
       async : false,
       dataType : 'json',
       success: function(data){
+        $('#nis_santri').parent().find('.text-danger').text("");
+        $('#nis_santri').parent().find('.text-success').text("Data ditemukan!");
         nama_lengkap.value = data[0].nama_lengkap;
         kelas.value = data[0].jenis_sekolah_asal;
         nama_lengkap_ayah.value = data[0].nama_lengkap_ayah;
