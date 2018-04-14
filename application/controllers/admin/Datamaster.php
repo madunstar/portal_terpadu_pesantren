@@ -2872,7 +2872,7 @@ function editkelaspondokan()
             $variabel['datajumat'] = $this->m_presensipondokan->lihatdatajadwal($id,"Jum'at");
             $variabel['datasabtu'] = $this->m_presensipondokan->lihatdatajadwal($id,'Sabtu');
             $variabel['dataahad'] = $this->m_presensipondokan->lihatdatajadwal($id,'Ahad');
-            
+
             $this->layout->render('back-end/presensi/presensi_pondokan/v_jadwal',$variabel,'back-end/presensi/presensi_pondokan/v_jadwal_js');
         } else {
             redirect(base_url("admin/datamaster/datakelaspondokan"));
@@ -2902,7 +2902,7 @@ function editkelaspondokan()
             "mata_pelajaran"=>$mata_pelajaran,
             "hari"=>$hari,
             "jam"=>$jam,
-            "nip"=>$nip,  
+            "nip"=>$nip,
             "guru"=>$guru['nama_lengkap']
         );
         $exec = $this->m_presensipondokan->tambahdatajadwal($array);
@@ -2916,7 +2916,7 @@ function editkelaspondokan()
         $variabel['guru'] = $this->m_guru->lihatdata();
         $variabel['pelajaran'] = $this->m_matpel->lihatdata();
         $variabel['jam'] = $this->m_pak_pondokan->lihatdata();
-        
+
         $variabel['data'] = $this->m_presensipondokan->lihatdatasatujadwal($id_jadwal)->row_array();
         $this->load->view("back-end/presensi/presensi_pondokan/v_jadwal_edit",$variabel);
 
@@ -2935,7 +2935,7 @@ function editkelaspondokan()
         $array = array (
             "mata_pelajaran"=>$mata_pelajaran,
             "jam"=>$jam,
-            "nip"=>$nip,  
+            "nip"=>$nip,
             "guru"=>$guru['nama_lengkap']
         );
         $exec = $this->m_presensipondokan->editdatajadwal($id_jadwal,$array);
@@ -2954,8 +2954,8 @@ function editkelaspondokan()
         $variabel['data'] = $this->m_pak_pondokan->lihatdata();
         $this->layout->render('back-end/datamaster/pakpondokan/v_pak',$variabel,'back-end/datamaster/pakpondokan/v_pak_js');
     }
-     
-    
+
+
 
      function pakpondokantambah()
     {
@@ -3007,19 +3007,14 @@ function editkelaspondokan()
        redirect(base_url()."admin/datamaster/pakpondokan?msg=1");
     }
 
-/////akun ortu santri/////////////
 
-    function dataakunortu(){
-        $variabel['data'] = $this->m_akun_ortu->lihatdata();
-        $this->layout->render('back-end/datamaster/ortu/v_akun_ortu',$variabel,'back-end//datamaster/ortu/v_akun_ortu_js');
-    }
-    
-    
+
+
 function pakafilasi(){
     $variabel['data'] = $this->m_pak_afilasi->lihatdata();
     $this->layout->render('back-end/datamaster/pakafilasi/v_pak',$variabel,'back-end/datamaster/pakafilasi/v_pak_js');
 }
- 
+
  function pakafilasitambah()
 {
     if ($this->input->post()){
@@ -3070,6 +3065,14 @@ function pakafilasiedit()
     redirect(base_url()."admin/datamaster/pakafilasi?msg=1");
     }
 
+
+/////akun ortu santri/////////////
+
+function dataakunortu(){
+  $variabel['data'] = $this->m_akun_ortu->lihatdata();
+  $this->layout->render('back-end/datamaster/ortu/v_akun_ortu',$variabel,'back-end//datamaster/ortu/v_akun_ortu_js');
+}
+
 function buatakunortu(){
   $array= array(
     'id_ortu' => $this->input->post('id'),
@@ -3080,5 +3083,27 @@ function buatakunortu(){
   $exec = $this->m_akun_ortu->tambahdata($array);
   redirect(base_url()."admin/datamaster/dataakunortu?msg=1");
 }
+
+function akunortuaktif(){
+  $array = array(
+    'status_akun' => 'aktif'
+  );
+  $id = $this->input->get('id');
+  $exec = $this->m_akun_ortu->editdata($id,$array);
+  redirect(base_url()."admin/datamaster/dataakunortu?aktif=1");
+
+}
+
+function akunortunonaktif(){
+  $array = array(
+    'status_akun' => 'tidak aktif'
+  );
+  $id = $this->input->get('id');
+  $exec = $this->m_akun_ortu->editdata($id,$array);
+  redirect(base_url()."admin/datamaster/dataakunortu?aktif=0");
+
+}
+////////////akhir akun ortu///////////////
+
 
 }

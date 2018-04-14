@@ -48,13 +48,13 @@ class M_akun_ortu extends CI_Model
         return $this->db->insert('tb_akun_ortu',$array);
     }
 
-    function editdata($nama_akun, $kata_sandi, $kata_sandibr)
+    function editdata($id,$array)
     {
-        $this->db->set("kata_sandi",$kata_sandibr);
-        $this->db->where("nama_akun",$nama_akun);
-        $this->db->where("kata_sandi",$kata_sandi);
-        return $this->db->update('tb_akun_admin');
+        $this->db->where("id_ortu",$id);
+        return $this->db->update('tb_akun_ortu',$array);
     }
+
+
     function hapus($nama_akun)
     {
         $this->db->where("nama_akun",$nama_akun);
