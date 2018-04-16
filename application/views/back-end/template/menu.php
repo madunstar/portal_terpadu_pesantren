@@ -181,7 +181,7 @@
 											<span class="font-bold">Pembayaran Infaq (SPP)</span>
 										</a>
 									</li>
-									<li class="<?= (($menu == "datamaster") && ($submenu == 'provinsi')|| ($submenu == 'kota_kab') || ($submenu == 'kecamatan') || ($submenu == 'pendidikan') || ($submenu == 'pekerjaan') || ($submenu == 'alat_transportasi')) ? "active" : ""; ?>">
+									<li class="<?= (($menu == "datamaster") && ($submenu == 'dataakunortu')|| ($submenu == 'provinsi')|| ($submenu == 'kota_kab') || ($submenu == 'kecamatan') || ($submenu == 'pendidikan') || ($submenu == 'pekerjaan') || ($submenu == 'alat_transportasi')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -192,6 +192,13 @@
                       <span class="font-bold">Lain lain</span>
                     </a>
                     <ul class="nav dk">
+											<li class="<?= (($menu == "datamaster") &&  ($submenu == 'dataakunortu')) ? "active" : ""; ?>">
+												<a href="<?php echo base_url() ?>admin/datamaster/dataakunortu" class="auto">
+													<i class="i i-dot"></i>
+
+													<span>Data Akun Orang Tua Santri</span>
+												</a>
+											</li>
                       <li class="<?= (($menu == "datamaster") &&  ($submenu == 'admin') || ($submenu == 'adminedit') || ($submenu == 'admintambah')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/admin" class="auto">
                           <i class="i i-dot"></i>

@@ -3103,6 +3103,17 @@ function akunortunonaktif(){
   redirect(base_url()."admin/datamaster/dataakunortu?aktif=0");
 
 }
+
+function resetsandiortu(){
+  $id = $this->input->get('id');
+  $array = array(
+    'kata_sandi' => $id
+  );
+
+  $exec = $this->m_akun_ortu->editdata($id,$array);
+  redirect(base_url()."admin/datamaster/dataakunortu?reset=1");
+
+}
 ////////////akhir akun ortu///////////////
 
 
