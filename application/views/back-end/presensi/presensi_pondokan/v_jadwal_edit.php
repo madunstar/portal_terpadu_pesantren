@@ -10,6 +10,7 @@
         <div class="col-sm-8">
         <input type="hidden" name="id_jadwal" id="id_jadwal" value="<?php echo $data['id_jadwal'] ?>" />
           <select id="mata_pelajaran" name="mata_pelajaran" class="form-control chosen-select">
+          <option value="Istirahat" <?php echo $data['mata_pelajaran']=="Istirahat"?"selected":""  ?>>Istirahat</option>
           <?php
             foreach ($pelajaran->result_array() as $row){
               echo "<option value='".$row['nama_mata_pelajaran']."' ".($data['mata_pelajaran']==$row['nama_mata_pelajaran']?"selected":"")."  >".$row['nama_mata_pelajaran']."</option>";

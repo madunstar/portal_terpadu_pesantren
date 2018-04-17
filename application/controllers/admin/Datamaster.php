@@ -2949,6 +2949,95 @@ function editkelaspondokan()
        redirect(base_url()."admin/datamaster/jadwalpondokan?id=".$idkelas."&h=1");
     }
 
+    ////////////////////////////////////////////////
+    function jadwalafilasi()
+    {
+        $id = $this->input->get("id");
+        $exec = $this->m_presensi->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0) {
+            $variabel['jadwal'] = $exec->row_array();
+            $variabel['datasenin'] = $this->m_presensi->lihatdatajadwal($id,'Senin');
+            $variabel['dataselasa'] = $this->m_presensi->lihatdatajadwal($id,'Selasa');
+            $variabel['datarabu'] = $this->m_presensi->lihatdatajadwal($id,'Rabu');
+            $variabel['datakamis'] = $this->m_presensi->lihatdatajadwal($id,'Kamis');
+            $variabel['datajumat'] = $this->m_presensi->lihatdatajadwal($id,"Jum'at");
+            $variabel['datasabtu'] = $this->m_presensi->lihatdatajadwal($id,'Sabtu');
+            $variabel['dataahad'] = $this->m_presensi->lihatdatajadwal($id,'Ahad');
+            $this->layout->render('back-end/presensi/presensi_kelas/v_jadwal',$variabel,'back-end/presensi/presensi_kelas/v_jadwal_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelasafilasi"));
+        }
+    }
+
+    function tambahjadwalafilasi()
+    {
+        $idkelasafilasi = $this->input->post("id_kelas_belajar");
+        $variabel['guru'] = $this->m_guru->lihatdata();
+        $variabel['pelajaran'] = $this->m_matpel->lihatdata();
+        $variabel['jam'] = $this->m_pak_afilasi->lihatdata();
+        $this->load->view("back-end/presensi/presensi_kelas/v_jadwal_tambah",$variabel);
+    }
+
+    function tambahjadwalafilasiproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $mata_pelajaran = $this->input->post("mata_pelajaran");
+        $hari = $this->input->post("hari");
+        $jam = $this->input->post("jam");
+        $nip = $this->input->post("guru");
+        $guru = $this->m_guru->lihatdatasatu($nip)->row_array();
+
+        $array = array (
+            "id_kelas_belajar"=>$idkelasbelajar,
+            "mata_pelajaran"=>$mata_pelajaran,
+            "hari"=>$hari,
+            "jam"=>$jam,
+            "nip"=>$nip,
+            "guru"=>$guru['nama_lengkap']
+        );
+        $exec = $this->m_presensi->tambahdatajadwal($array);
+
+    }
+    function editjadwalafilasi()
+    {
+        $idkelasafilasi = $this->input->post("id_kelas_belajar");
+        $id_jadwal = $this->input->post("id");
+
+        $variabel['guru'] = $this->m_guru->lihatdata();
+        $variabel['pelajaran'] = $this->m_matpel->lihatdata();
+        $variabel['jam'] = $this->m_pak_afilasi->lihatdata();
+
+        $variabel['data'] = $this->m_presensi->lihatdatasatujadwal($id_jadwal)->row_array();
+        $this->load->view("back-end/presensi/presensi_kelas/v_jadwal_edit",$variabel);
+
+    }
+
+    function editjadwalafilasiproses()
+    {
+        $id_jadwal = $this->input->post("idjadwal");
+
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $mata_pelajaran = $this->input->post("mata_pelajaran");
+        $jam = $this->input->post("jam");
+        $nip = $this->input->post("guru");
+        $guru = $this->m_guru->lihatdatasatu($nip)->row_array();
+
+        $array = array (
+            "mata_pelajaran"=>$mata_pelajaran,
+            "jam"=>$jam,
+            "nip"=>$nip,
+            "guru"=>$guru['nama_lengkap']
+        );
+        $exec = $this->m_presensi->editdatajadwal($id_jadwal,$array);
+    }
+    
+    function hapusjadwalafilasi()
+    {
+       $id = $this->input->get("id");
+       $idkelas = $this->input->get("idkelas");
+       $exec = $this->m_presensi->hapusjadwal($id);
+       redirect(base_url()."admin/datamaster/jadwalafilasi?id=".$idkelas."&h=1");
+    }
 
     function pakpondokan(){
         $variabel['data'] = $this->m_pak_pondokan->lihatdata();
