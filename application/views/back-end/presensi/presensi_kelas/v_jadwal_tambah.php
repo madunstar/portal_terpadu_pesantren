@@ -12,7 +12,7 @@
           <option value="Istirahat" >Istirahat</option>
           <?php
             foreach ($pelajaran->result_array() as $row){
-              echo "<option value='".$row['nama_mata_pelajaran']."'>".$row['nama_mata_pelajaran']."</option>";
+              echo "<option value='".$row['id_mata_pelajaran']."'>".$row['nama_mata_pelajaran']."</option>";
             }
           ?>
           </select>

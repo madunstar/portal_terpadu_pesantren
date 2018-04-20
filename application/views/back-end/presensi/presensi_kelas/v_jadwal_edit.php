@@ -13,7 +13,7 @@
           <option value="Istirahat" <?php echo $data['mata_pelajaran']=="Istirahat"?"selected":""  ?>>Istirahat</option>
           <?php
             foreach ($pelajaran->result_array() as $row){
-              echo "<option value='".$row['nama_mata_pelajaran']."' ".($data['mata_pelajaran']==$row['nama_mata_pelajaran']?"selected":"")."  >".$row['nama_mata_pelajaran']."</option>";
+              echo "<option value='".$row['id_mata_pelajaran']."' ".($data['id_mata_pelajaran']==$row['id_mata_pelajaran']?"selected":"")."  >".$row['nama_mata_pelajaran']."</option>";
             }
           ?>
           </select>

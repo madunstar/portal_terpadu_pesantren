@@ -288,7 +288,7 @@
         </div>
 
         <div class="row" style="margin:20px">
-          <div class="col-md-12">
+          <div class="col-md-6">
           
             <div class="tingkatanjenjang">
             <fieldset>
@@ -320,6 +320,39 @@
                </fieldset>
               </div>
           </div>
+
+          <div class="col-md-6">
+          
+          <div class="tingkatanjenjang">
+          <fieldset>
+          <legend>Tingkat Kelas Pondokan</legend>
+              <table class="table table-striped ">
+              <thead>
+                <tr>
+                  <th>Kelas</th>
+                  <th>Pondokan</th>
+                  <th>Tingkat</th>
+                  <th>Tahun Ajaran</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                    foreach($tingkatpondokan->result_array() as $row){
+                      {
+                        echo "<tr>
+                                <td>".$row['nama_kelas_belajar']."</td>
+                                <td>".$row['pondokan']."</td>
+                                <td>".$row['tingkat']."</td>
+                                <td>".$row['tahun_ajaran']."</td>
+                              </tr>";
+                      }
+                    }
+                ?>
+            </tbody>
+            </table>
+             </fieldset>
+            </div>
+        </div>
         </div>
 
       </div>
