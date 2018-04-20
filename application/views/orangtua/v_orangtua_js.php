@@ -1,6 +1,7 @@
 <script>
 
    $('#datatable').DataTable({});
+   $('#datatable2').DataTable({});
 
    $(".hapus").click(function (e) {
     var v_id = this.id;
@@ -23,6 +24,6 @@
         });
     });
 
-    
+
 
 </script>
