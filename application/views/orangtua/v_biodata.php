@@ -287,11 +287,11 @@
           </div>
         </div>
 
-        <div class="row" style="margin:20px">
+        <div class="row" >
           <div class="col-md-6">
           
             <div class="tingkatanjenjang">
-            <fieldset>
+            <fieldset class="table-responsive">
             <legend>Tingkat Kelas</legend>
                 <table class="table table-striped ">
                 <thead>
@@ -324,9 +324,9 @@
           <div class="col-md-6">
           
           <div class="tingkatanjenjang">
-          <fieldset>
+          <fieldset class="table-responsive">
           <legend>Tingkat Kelas Pondokan</legend>
-              <table class="table table-striped ">
+              <table class="table table-striped">
               <thead>
                 <tr>
                   <th>Kelas</th>
@@ -356,11 +356,7 @@
         </div>
 
       </div>
-      <footer class="panel-footer text-right bg-light lter">
-      <a href="<?php echo base_url('admin/datamaster/santriedit?nis=1') ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
-        &nbsp
-        <a href="<?php echo base_url('admin/datamaster/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
-      </footer>
+    
       </form>
 
 

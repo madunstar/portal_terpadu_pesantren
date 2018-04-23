@@ -166,6 +166,7 @@ class Datamaster extends CI_Controller{
         if ($exec->num_rows()>0){
             $variabel['data'] = $exec ->row_array();
             $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
+            $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); ;
             $this->layout->render('back-end/datamaster/santri/v_santri_lihat',$variabel,'back-end/datamaster/santri/v_santri_js');
         } else {
             redirect(base_url("admin/datamaster/santri"));
@@ -178,6 +179,13 @@ class Datamaster extends CI_Controller{
         $nis = $this->input->post("nis");
         $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis);
         $this->load->view('back-end/datamaster/santri/v_santri_tingkat',$variabel);
+    }
+
+    function santritingkatpondokan()
+    {
+        $nis = $this->input->post("nis");
+        $variabel['tingkat'] = $this->m_santri->lihattingkatanpondokan($nis);
+        $this->load->view('back-end/datamaster/santri/v_santri_tingkatpondokan',$variabel);
     }
 
     function datakotakab2()
@@ -2891,22 +2899,26 @@ function editkelaspondokan()
     function tambahjadwalpondokanproses()
     {
         $idkelasbelajar = $this->input->post("idkelasbelajar");
-        $mata_pelajaran = $this->input->post("mata_pelajaran");
+        $id_mata_pelajaran = $this->input->post("mata_pelajaran");
         $hari = $this->input->post("hari");
         $jam = $this->input->post("jam");
         $nip = $this->input->post("guru");
         $guru = $this->m_guru->lihatdatasatu($nip)->row_array();
-
         $array = array (
             "id_kelas_belajar"=>$idkelasbelajar,
-            "mata_pelajaran"=>$mata_pelajaran,
+            "id_mata_pelajaran"=>$id_mata_pelajaran,
             "hari"=>$hari,
             "jam"=>$jam,
             "nip"=>$nip,
             "guru"=>$guru['nama_lengkap']
         );
+        if ($id_mata_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]=$id_mata_pelajaran;
+        } else {
+            $mapel = $this->m_matpel->lihatdatasatu($id_mata_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$mapel['nama_mata_pelajaran'];
+        }
         $exec = $this->m_presensipondokan->tambahdatajadwal($array);
-
     }
     function editjadwalpondokan()
     {
@@ -2927,17 +2939,23 @@ function editkelaspondokan()
         $id_jadwal = $this->input->post("idjadwal");
 
         $idkelasbelajar = $this->input->post("idkelasbelajar");
-        $mata_pelajaran = $this->input->post("mata_pelajaran");
+        $id_mata_pelajaran = $this->input->post("mata_pelajaran");
         $jam = $this->input->post("jam");
         $nip = $this->input->post("guru");
         $guru = $this->m_guru->lihatdatasatu($nip)->row_array();
 
         $array = array (
-            "mata_pelajaran"=>$mata_pelajaran,
+            "id_mata_pelajaran"=>$id_mata_pelajaran,
             "jam"=>$jam,
             "nip"=>$nip,
             "guru"=>$guru['nama_lengkap']
         );
+        if ($id_mata_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]=$id_mata_pelajaran;
+        } else {
+            $mapel = $this->m_matpel->lihatdatasatu($id_mata_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$mapel['nama_mata_pelajaran'];
+        }
         $exec = $this->m_presensipondokan->editdatajadwal($id_jadwal,$array);
     }
 
@@ -2981,7 +2999,7 @@ function editkelaspondokan()
     function tambahjadwalafilasiproses()
     {
         $idkelasbelajar = $this->input->post("idkelasbelajar");
-        $mata_pelajaran = $this->input->post("mata_pelajaran");
+        $id_mata_pelajaran = $this->input->post("mata_pelajaran");
         $hari = $this->input->post("hari");
         $jam = $this->input->post("jam");
         $nip = $this->input->post("guru");
@@ -2989,12 +3007,20 @@ function editkelaspondokan()
 
         $array = array (
             "id_kelas_belajar"=>$idkelasbelajar,
-            "mata_pelajaran"=>$mata_pelajaran,
+            "id_mata_pelajaran"=>$id_mata_pelajaran,
             "hari"=>$hari,
             "jam"=>$jam,
             "nip"=>$nip,
             "guru"=>$guru['nama_lengkap']
         );
+
+        if ($id_mata_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]=$id_mata_pelajaran;
+        } else {
+            $mapel = $this->m_matpel->lihatdatasatu($id_mata_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$mapel['nama_mata_pelajaran'];
+        }
+
         $exec = $this->m_presensi->tambahdatajadwal($array);
 
     }
@@ -3017,17 +3043,23 @@ function editkelaspondokan()
         $id_jadwal = $this->input->post("idjadwal");
 
         $idkelasbelajar = $this->input->post("idkelasbelajar");
-        $mata_pelajaran = $this->input->post("mata_pelajaran");
+        $id_mata_pelajaran = $this->input->post("mata_pelajaran");
         $jam = $this->input->post("jam");
         $nip = $this->input->post("guru");
         $guru = $this->m_guru->lihatdatasatu($nip)->row_array();
 
         $array = array (
-            "mata_pelajaran"=>$mata_pelajaran,
+            "id_mata_pelajaran"=>$id_mata_pelajaran,
             "jam"=>$jam,
             "nip"=>$nip,
             "guru"=>$guru['nama_lengkap']
         );
+        if ($id_mata_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]=$id_mata_pelajaran;
+        } else {
+            $mapel = $this->m_matpel->lihatdatasatu($id_mata_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$mapel['nama_mata_pelajaran'];
+        }
         $exec = $this->m_presensi->editdatajadwal($id_jadwal,$array);
     }
     
