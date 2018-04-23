@@ -18,7 +18,7 @@
                     </a>
                   </li>
                   <li class="<?= (($menu == "orangtua") && ($submenu == 'biodata'))  ? "active" : ""; ?>">
-                    <a href="<?php echo base_url() ?>santri/pendaftaran/biodata" class="auto">
+                    <a href="<?php echo base_url() ?>santri/orangtua/biodata" class="auto">
                       <i class="fa fa-user">
                       </i>
                       <span class="font-bold">Biodata Santri</span>
@@ -43,8 +43,8 @@
                       <span class="font-bold">Status Perizinan Santri</span>
                     </a>
                   </li>
-                  <li class="<?= (($menu == "orangtua") && ($submenu == 'pembayaran'))  ? "active" : ""; ?>">
-                    <a href="<?php echo base_url() ?>santri/pendaftaran/pembayaran" class="auto">
+                  <li class="<?= (($menu == "orangtua") && ($submenu == 'databayarinfaq'))  ? "active" : ""; ?>">
+                    <a href="<?php echo base_url() ?>santri/orangtua/databayarinfaq" class="auto">
                       <span class="pull-right text-muted">
                       </span>
                       <i class="fa fa-money">
@@ -52,9 +52,9 @@
                       <span class="font-bold">Pembayaran Infaq Santri</span>
                     </a>
 
-                  </li>
-                  <li class="<?= (($menu == "orangtua") && ($submenu == 'pengumuman'))  ? "active" : ""; ?>" >
-                    <a href="<?php echo base_url() ?>santri/pendaftaran/pengumuman" class="auto">
+                  </li> 
+                  <li class="<?= (($menu == "orangtua") && ($submenu == 'informasi'))  ? "active" : ""; ?>" >
+                    <a href="<?php echo base_url() ?>santri/orangtua/databayarinfaq" class="auto">
                       <span class="pull-right text-muted">
 
                       </span>
