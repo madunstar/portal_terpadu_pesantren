@@ -14,7 +14,7 @@
               <ol class="carousel-indicators out">
                 <li data-target="#c-fade" data-slide-to="0" class="active"></li>
                 <li data-target="#c-fade" data-slide-to="1" class=""></li>
-                <li data-target="#c-fade" data-slide-to="2" class=""></li>
+
               </ol>
               <div class="carousel-inner">
                 <div class="item active">
@@ -25,14 +25,8 @@
                 </div>
                 <div class="item ">
                   <p class="text-center">
-                    <em class="h4 text-mute">Periksa Biodata dan Berkas</em><br>
-                    <small class="text-muted">Sebelum Melakukan Verifikasi</small>
-                  </p>
-                </div>
-                <div class="item">
-                  <p class="text-center">
-                    <em class="h4 text-mute">Periksa Bukti Pembayaran</em><br>
-                    <small class="text-muted">Sebelum Melakukan Verifikasi</small>
+                    <em class="h4 text-mute">Apabila Terdapat Kesalahan</em><br>
+                    <small class="text-muted">Silahkan Hubungi Kontak Pesantren Darul Ilmi</small>
                   </p>
                 </div>
               </div>
@@ -46,7 +40,64 @@
           </section>
           </div>
           <div class="col-sm-6">
+            <section class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Informasi Terbaru</h3>
+              </div>
+              <div class="panel-body">
+                ajdkahsdjkaksda
+              </div>
+              <div class="panel-footer">
+                <button type="button" class="btn btn-sm btn-info">
+                  Selengkapnya
+                </button>
+              </div>
+            </section>
+          </div>
+          <div class="col-sm-6">
+            <section class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Status perizinan Terakhir</h3>
+              </div>
+              <div class="panel-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <th>Tanggal Izin</th>
+                    <th>keperluan</th>
+                    <th>Penjemput</th>
+                    <th>Status izin</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>a</td>
+                      <td>a</td>
+                      <td>a</td>
+                      <td>a</td>
+                    </tr>
+                    <tr>
+                      <td>a</td>
+                      <td>a</td>
+                      <td>a</td>
+                      <td>a</td>
+                    </tr>
+                    <tr>
+                      <td>a</td>
+                      <td>a</td>
+                      <td>a</td>
+                      <td>a</td>
+                    </tr>
 
+                  </tbody>
+                </table>
+              </div>
+              <div class="panel-footer">
+                <button type="button" class="btn btn-sm btn-info">
+                  Selengkapnya
+                </button>
+              </div>
+
+
+            </section>
             </div>
             <div class="col-sm-6">
 

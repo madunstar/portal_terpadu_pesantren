@@ -35,6 +35,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_akun_ortu');
         $this->load->model('back-end/datamaster/m_pak_pondokan');
         $this->load->model('back-end/datamaster/m_pak_afilasi');
+        $this->load->model('back-end/datamaster/m_informasi');
         $this->load->library('layout');
         $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
@@ -3062,7 +3063,7 @@ function editkelaspondokan()
         }
         $exec = $this->m_presensi->editdatajadwal($id_jadwal,$array);
     }
-    
+
     function hapusjadwalafilasi()
     {
        $id = $this->input->get("id");
@@ -3237,5 +3238,61 @@ function resetsandiortu(){
 }
 ////////////akhir akun ortu///////////////
 
+////////////////////////informasi ortu///////////////////////////////
+
+function informasi()
+{
+  $variabel['data'] = $this->m_informasi->lihatpengumuman();
+  $this->layout->render('back-end/informasi/v_informasi',$variabel,'back-end/informasi/informasi_js');
+}
+
+function tambahinformasi()
+{
+  if ($this->input->post()){
+
+          $array=array(
+              'judul_pengumuman'=> $this->input->post('judul_pengumuman'),
+              'isi_pengumuman'=> $this->input->post('isi_pengumuman'),
+              'link_pengumuman'=> $this->input->post('link_pengumuman'),
+              'tanggal_pengumuman'=>$this->input->post('tanggal_pengumuman')
+              );
+          $exec = $this->m_informasi->tambahdata($array);
+          if ($exec) redirect(base_url("admin/datamaster/tambahinformasi?msg=1"));
+          else redirect(base_url("admin/datamaster/tambahinformasi?msg=0"));
+  } else {
+    $variabel= '';
+    $this->layout->render('back-end/informasi/v_tambahinformasi',$variabel,'back-end/informasi/informasi_js');
+  }
+}
+
+
+function editinformasi()
+{
+$id_pengumuman = $this->input->get("idpengumuman");
+  if ($this->input->post()){
+          $array=array(
+              'isi_pengumuman'=> $this->input->post('isi_pengumuman'),
+              'judul_pengumuman'=> $this->input->post('judul_pengumuman'),
+              'link_pengumuman'=> $this->input->post('link_pengumuman'),
+              'tanggal_pengumuman'=>$this->input->post('tanggal_pengumuman')
+              );
+          $exec = $this->m_informasi->editdata($id_pengumuman,$array);
+          if ($exec)redirect(base_url("admin/datamaster/editinformasi?idpengumuman=".$id_pengumuman."&msg=1"));
+          else redirect(base_url("admin/datamaster/editinformasi?idpengumuman=".$id_pengumuman."&msg=0"));
+  } else {
+    $exec =$this->m_informasi->data($id_pengumuman);
+    if ($exec->num_rows()>0){
+        $variabel['data'] = $exec ->row_array();
+        $this->layout->render('back-end/informasi/v_editinformasi',$variabel,'back-end/informasi/informasi_js');
+  }
+}
+}
+
+function deleteinformasi()
+{
+  $id_pengumuman = $this->input->get("idpengumuman");
+  $exec = $this->m_informasi->hapus($id_pengumuman);
+  redirect(base_url()."admin/datamaster/informasi?msg=1");
+}
 
 }

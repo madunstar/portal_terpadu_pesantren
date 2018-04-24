@@ -14,10 +14,10 @@
               <h4 class="font-bold">Data Infaq  Santri</h4>
             </header>
             <div class="panel-body">
-            
-              
+
+
               <div class="table-responsive">
-                <table class="table table-striped " id="datatable4">
+                <table class="table table-striped " id="datatable">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -28,7 +28,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php 
+                    <?php
                       $i =0;
                     foreach($data->result_array() as $row){
                       $i++;
@@ -48,7 +48,7 @@
               </div>
 
             </div>
-          
+
 
           </div>
             </div>

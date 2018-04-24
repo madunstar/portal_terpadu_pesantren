@@ -268,11 +268,11 @@
 											</li>
                     </ul>
                   </li>
-                  <li  class="">
-                    <a href="<?php echo base_url('admin/pendaftaran')?>" class="auto">
+                  <li  class="<?= (($menu == "datamaster") && ($submenu == 'informasi')) ? "active" : ""; ?>">
+                    <a href="<?php echo base_url('admin/datamaster/informasi')?>" class="auto">
                       <i class="fa fa-folder-open-o">
                       </i>
-                      <span class="font-bold">Pendaftaran</span>
+                      <span class="font-bold">Informasi</span>
                     </a>
                   </li>
                 </ul>
