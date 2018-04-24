@@ -11,7 +11,7 @@
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
                   <li  class="<?= (($menu == "orangtua") && ($submenu == 'dashboard')) ? "active" : ""; ?>">
-                    <a href="<?php echo base_url() ?>santri/pendaftaran/dashboard" class="auto">
+                    <a href="<?php echo base_url() ?>santri/orangtua/dashboard" class="auto">
                       <i class="fa fa-dashboard">
                       </i>
                       <span class="font-bold">Dashboard</span>
@@ -24,8 +24,8 @@
                       <span class="font-bold">Biodata Santri</span>
                     </a>
                   </li>
-									<li class="<?= (($menu == "orangtua") && ($submenu == 'prestasipelanggaran'))  ? "active" : ""; ?>">
-										<a href="<?php echo base_url() ?>santri/pendaftaran/pembayaran" class="auto">
+									<li class="<?= (($menu == "orangtua") && ($submenu == 'prestasidanpelanggaran'))  ? "active" : ""; ?>">
+										<a href="<?php echo base_url() ?>santri/orangtua/prestasidanpelanggaran" class="auto">
 											<span class="pull-right text-muted">
 											</span>
 											<i class="fa fa-money">
@@ -34,8 +34,8 @@
 										</a>
 
 									</li>
-                  <li class="<?= (($menu == "orangtua") && ($submenu == 'perizinan'))  ? "active" : ""; ?>">
-                    <a href="<?php echo base_url() ?>santri/pendaftaran/berkas" class="auto">
+                  <li class="<?= (($menu == "orangtua") && ($submenu == 'statusperizinan'))  ? "active" : ""; ?>">
+                    <a href="<?php echo base_url() ?>santri/orangtua/statusperizinan" class="auto">
                       <span class="pull-right text-muted">
                       </span>
                       <i class="fa fa-folder-open">
@@ -52,7 +52,7 @@
                       <span class="font-bold">Pembayaran Infaq Santri</span>
                     </a>
 
-                  </li> 
+                  </li>
                   <li class="<?= (($menu == "orangtua") && ($submenu == 'informasi'))  ? "active" : ""; ?>" >
                     <a href="<?php echo base_url() ?>santri/orangtua/databayarinfaq" class="auto">
                       <span class="pull-right text-muted">

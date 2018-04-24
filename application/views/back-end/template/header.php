@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/js/confirm/jquery-confirm.min.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/datepicker/datepicker.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/chosen/chosen.css');?>" type="text/css" />
-
+  <link rel="stylesheet" href="<?php echo base_url('assets/js/summernote/summernote.css');?>" type="text/css" />
 </head>
 <body class="" >
   <section class="vbox">
