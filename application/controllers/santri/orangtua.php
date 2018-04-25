@@ -9,6 +9,7 @@ class Orangtua extends CI_Controller {
     $this->load->model('back-end/orangtua/m_biodatasantri');
     $this->load->model('back-end/orangtua/m_infaq');
     $this->load->model('back-end/orangtua/m_perizinan');
+    $this->load->model('back-end/datamaster/m_informasi');
     $this->load->library('layout_ortu');
   }
 
@@ -60,6 +61,12 @@ class Orangtua extends CI_Controller {
       $variabel['dataizin'] = $this->m_perizinan->lihatperizinan($nis);
       $variabel['datadenda'] = $this->m_perizinan->lihatdenda($nis);
         $this->layout_ortu->render('orangtua/v_status_izin',$variabel,'orangtua/v_orangtua_js');
+    }
+
+    function informasi()
+    {
+      $variabel['data'] = $this->m_informasi->lihatpengumuman();
+      $this->layout_ortu->render('orangtua/v_pengumuman',$variabel,'orangtua/v_orangtua_js');
     }
 
 }
