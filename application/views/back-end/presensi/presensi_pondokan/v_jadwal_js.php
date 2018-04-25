@@ -47,7 +47,6 @@
                         var v_mata_pelajaran = $('#mata_pelajaran').val();
                         var v_hari = $('#hari').val();
                         var v_jam = $('#jam').val();
-                        var v_guru = $('#guru').val();
                         $.ajax({
                             type: 'POST',
                             url: v_url,
@@ -55,8 +54,7 @@
                                 idkelasbelajar: v_idkelasbelajar,
                                 mata_pelajaran: v_mata_pelajaran,
                                 hari: v_hari,
-                                jam: v_jam,
-                                guru: v_guru
+                                jam: v_jam
                             },
                             beforeSend: function () {
                                 $("#loading").show();
@@ -110,7 +108,6 @@
                         var v_idkelasbelajar = "<?php echo $jadwal['id_kelas_belajar'] ?>";
                         var v_mata_pelajaran = $('#mata_pelajaran').val();
                         var v_jam = $('#jam').val();
-                        var v_guru = $('#guru').val();
                         var v_id_jadwal = $('#id_jadwal').val()
                         $.ajax({
                             type: 'POST',
@@ -119,7 +116,6 @@
                                 idkelasbelajar: v_idkelasbelajar,
                                 mata_pelajaran: v_mata_pelajaran,
                                 jam: v_jam,
-                                guru: v_guru,
                                 idjadwal : v_id_jadwal 
                             },
                             beforeSend: function () {

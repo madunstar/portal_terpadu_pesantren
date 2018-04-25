@@ -12,7 +12,7 @@
           <option value="Istirahat" >Istirahat</option>
           <?php
             foreach ($pelajaran->result_array() as $row){
-              echo "<option value='".$row['id_mata_pelajaran']."'>".$row['nama_mata_pelajaran']."</option>";
+              echo "<option value='".$row['id_pelajaran']."'>".$row['nama_mata_pelajaran']." | ".$row['nama_lengkap']."</option>";
             }
           ?>
           </select>
@@ -44,18 +44,7 @@
           </select>
         </div>
       </div>
-      <div class="form-group mt-lg">
-        <label class="col-sm-3 control-label">Guru</label>
-        <div class="col-sm-8">
-          <select id="guru" name="guru" class="form-control chosen-select">
-          <?php
-            foreach ($guru->result_array() as $row){
-              echo "<option value='".$row['nip_guru']."'>".$row['nama_lengkap']."</option>";
-            }
-          ?>
-          </select>
-        </div>
-      </div>
+      
       </div>
     <div class="modal-footer">
       <div class="row">

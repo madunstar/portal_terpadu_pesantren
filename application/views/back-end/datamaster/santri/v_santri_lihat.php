@@ -284,6 +284,17 @@
                 <input type="text" class="form-control"  name="kelas" value="<?php echo $data['kelas']; ?>" readonly/>
               </div>
             </div>
+            <div class="form-group">
+					  	<label class="col-sm-4 control-label"></label>
+              <div class="col-sm-8">
+                <?php if ($data['foto']=='') { ?>
+                  <img src="<?php echo base_url()."assets/images/foto/"; ?>default.png" class="thumbnail" width="200px"/>
+                <?php } else { ?>
+                  <img src="<?php echo base_url()."assets/images/foto/".$data['foto']; ?>" class="thumbnail" width="200px"/>
+                <?php } ?>
+              </div>
+			  	</div> 
+
           </div>
         </div>
 

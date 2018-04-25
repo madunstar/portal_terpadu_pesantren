@@ -11,7 +11,7 @@
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Mengedit Data Guru","Gagal Mengedit Data Guru") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/guruedit?nip=<?php if (isset($nip_guru2)) echo $nip_guru2; else echo $data['nip_guru']; ?>"
-					method="post">
+					method="post" enctype="multipart/form-data">
 						<a href="<?php echo base_url('admin/datamaster/guru') ?>" style="color:#3b994a;margin-left:10px">
 							<i class="fa fa-chevron-left"></i> Kembali</a>
 						<div class="row">
@@ -185,7 +185,22 @@
 										<input type="text" class="form-control" name="kode_pos" value="<?php echo $data['kode_pos']; ?>" />
 									</div>
 								</div>
-
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Foto</label>
+									<div class="col-sm-8">
+									<input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="foto">
+									</div>
+								</div>	
+								<div class="form-group">
+					  	<label class="col-sm-4 control-label"></label>
+              <div class="col-sm-8">
+                <?php if ($data['foto']=='') { ?>
+                  <img src="<?php echo base_url()."assets/images/foto/"; ?>default.png" class="thumbnail" width="200px"/>
+                <?php } else { ?>
+                  <img src="<?php echo base_url()."assets/images/foto/".$data['foto']; ?>" class="thumbnail" width="200px"/>
+                <?php } ?>
+              </div>
+			  	</div>			
 							</div>
 						</div>
 				</div>

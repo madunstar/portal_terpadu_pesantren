@@ -11,7 +11,7 @@
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Menambahkan Guru","Gagal Menambahkan Guru") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/gurutambah"
-					method="post">
+					method="post" enctype="multipart/form-data">
 						<a href="<?php echo base_url('admin/datamaster/guru') ?>" style="color:#3b994a;margin-left:10px">
 							<i class="fa fa-chevron-left"></i> Kembali</a>
 						<div class="row">
@@ -79,7 +79,7 @@
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Pendidikan Terakhir</label>
 									<div class="col-lg-8">
-									<select type="text" class="form-control"  name="pendidikan_terakhir">
+									<select type="text" class="form-control"  name="pendidikan_terakhir" data-required="true" >
 										<option value="" disabled <?php if (set_value('pendidikan_terakhir')=="") echo "selected" ?>>Pilih Pendidikan</option>
 										<?php
 											foreach($pendidikan->result_array() as $row) {
@@ -179,6 +179,12 @@
 										<input type="text" class="form-control" name="kode_pos" value="<?php echo set_value('kode_pos'); ?>" />
 									</div>
 								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label">Foto</label>
+									<div class="col-sm-8">
+										<input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="foto">
+									</div>
+              					</div>
 							</div>
 						</div>
 				</div>
