@@ -10,9 +10,9 @@
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
+        <?php pesan_get('reset',"Berhasil Reset Kata Sandi (Kata Sandi Baru adalah NIS)","Berhasil Menonaktifkan Akun") ?>
+        <?php pesan_get('aktif',"Berhasil Mengaktifkan Akun","Berhasil Menonaktifkan Akun") ?>
       <?php pesan_get('msg',"Berhasil Menambah Akun","Gagal Menambah Akun") ?>
-
-
         <table class="table table-striped " id="datatable">
           <thead>
             <tr>
@@ -30,8 +30,8 @@
                       <td><?php echo $row['nis_lokal'] ?></td>
                       <td><?php echo $row['email_ortu'] ?></td>
                       <td><?php echo
-                          (($row['status_akun'] == 'aktif' ) ? '<a href="#" class="btn btn-success btn-xs" >Aktif</a> <a href="#" class="btn btn-warning btn-xs" >Reset Sandi</a>'
-                          : (($row['status_akun'] == 'tidak aktif') ? '<a href="#" class="btn btn-warning btn-xs" >Tidak Aktif</a>'
+                          (($row['status_akun'] == 'aktif' ) ? '<a href="'.base_url("admin/datamaster/akunortunonaktif?id=".$row["nis_lokal"]."").'" class="btn btn-success btn-xs" >Aktif</a> <a href="'.base_url("admin/datamaster/resetsandiortu?id=".$row["nis_lokal"]."").'" class="btn btn-warning btn-xs" >Reset Sandi</a>'
+                          : (($row['status_akun'] == 'tidak aktif') ? '<a href="'.base_url("admin/datamaster/akunortuaktif?id=".$row["nis_lokal"]."").'" class="btn btn-warning btn-xs" >Tidak Aktif</a>'
                           : '<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#'.$row['nis_lokal'].'" >Belum Ada</button>'))
                       ?>
                       </td>

@@ -10,9 +10,10 @@
         <div class="col-sm-8">
         <input type="hidden" name="id_jadwal" id="id_jadwal" value="<?php echo $data['id_jadwal'] ?>" />
           <select id="mata_pelajaran" name="mata_pelajaran" class="form-control chosen-select">
+          <option value="Istirahat" <?php echo $data['mata_pelajaran']=="Istirahat"?"selected":""  ?>>Istirahat</option>
           <?php
             foreach ($pelajaran->result_array() as $row){
-              echo "<option value='".$row['nama_mata_pelajaran']."' ".($data['mata_pelajaran']==$row['nama_mata_pelajaran']?"selected":"")."  >".$row['nama_mata_pelajaran']."</option>";
+              echo "<option value='".$row['id_pelajaran']."' ".($data['id_mata_pelajaran']==$row['id_pelajaran']?"selected":"")."  >".$row['nama_mata_pelajaran']." | ".$row['nama_lengkap']."</option>";
             }
           ?>
           </select>
@@ -33,18 +34,7 @@
           </select>
         </div>
       </div>
-      <div class="form-group mt-lg">
-        <label class="col-sm-3 control-label">Guru</label>
-        <div class="col-sm-8">
-          <select id="guru" name="guru" class="form-control chosen-select">
-          <?php
-            foreach ($guru->result_array() as $row){
-              echo "<option value='".$row['nip_guru']."'  ".($data['nip']==$row['nip_guru']?"selected":"")."  >".$row['nama_lengkap']."</option>";
-            }
-          ?>
-          </select>
-        </div>
-      </div>
+      
       </div>
     <div class="modal-footer">
       <div class="row">

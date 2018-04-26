@@ -35,6 +35,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_akun_ortu');
         $this->load->model('back-end/datamaster/m_pak_pondokan');
         $this->load->model('back-end/datamaster/m_pak_afilasi');
+        $this->load->model('back-end/datamaster/m_informasi');
         $this->load->library('layout');
         $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
@@ -166,6 +167,7 @@ class Datamaster extends CI_Controller{
         if ($exec->num_rows()>0){
             $variabel['data'] = $exec ->row_array();
             $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
+            $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); ;
             $this->layout->render('back-end/datamaster/santri/v_santri_lihat',$variabel,'back-end/datamaster/santri/v_santri_js');
         } else {
             redirect(base_url("admin/datamaster/santri"));
@@ -178,6 +180,13 @@ class Datamaster extends CI_Controller{
         $nis = $this->input->post("nis");
         $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis);
         $this->load->view('back-end/datamaster/santri/v_santri_tingkat',$variabel);
+    }
+
+    function santritingkatpondokan()
+    {
+        $nis = $this->input->post("nis");
+        $variabel['tingkat'] = $this->m_santri->lihattingkatanpondokan($nis);
+        $this->load->view('back-end/datamaster/santri/v_santri_tingkatpondokan',$variabel);
     }
 
     function datakotakab2()
@@ -205,7 +214,6 @@ class Datamaster extends CI_Controller{
     function santritambah()
     {
         if ($this->input->post()){
-
                 $array=array(
                     'nis_lokal'=> $this->input->post('nis_lokal'),
                     'email_santri'=> $this->input->post('email_santri'),
@@ -253,6 +261,13 @@ class Datamaster extends CI_Controller{
                     'pondokan'=>$this->input->post('pondokan')
                     );
             if ($this->m_santri->cekdata($this->input->post('nis_lokal'))==0) {
+                $config['upload_path'] = './assets/images/foto';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|PNG|png';
+                $this->load->library('upload', $config);
+                $this->upload->do_upload("foto");
+                $upload = $this->upload->data();
+                $foto = $upload["raw_name"].$upload["file_ext"];
+                $array['foto']=$foto;
                 $exec = $this->m_santri->tambahdata($array);
                 if ($exec) redirect(base_url("admin/datamaster/santritambah?msg=1"));
                 else redirect(base_url("admin/datamaster/santritambah?msg=0"));
@@ -355,6 +370,24 @@ class Datamaster extends CI_Controller{
 
                 $this->layout->render('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
             } else {
+                $config['upload_path'] = './assets/images/foto';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|PNG|png';
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload("foto"))
+                {
+                    $upload = $this->upload->data();
+                    $foto = $upload["raw_name"].$upload["file_ext"];
+                    $array['foto']=$foto;
+
+                    $query2 = $this->m_santri->lihatdatasatu($nis2);
+                    $row2 = $query2->row();
+                    $berkas1temp = $row2->foto;
+                    $path1 ='./assets/images/foto/'.$berkas1temp.'';
+                    echo "$path1";
+                    if(is_file($path1)) {
+                        unlink($path1); //menghapus gambar di folder produk
+                    }
+                }
                 $exec = $this->m_santri->editdata($nis2,$array);
                 if ($exec){
                   redirect(base_url("admin/datamaster/santriedit?nis=".$nis."&msg=1"));
@@ -706,6 +739,13 @@ class Datamaster extends CI_Controller{
 
                     );
             if ($this->m_guru->cekdata($this->input->post('nip_guru'))==0) {
+                $config['upload_path'] = './assets/images/foto';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|PNG|png';
+                $this->load->library('upload', $config);
+                $this->upload->do_upload("foto");
+                $upload = $this->upload->data();
+                $foto = $upload["raw_name"].$upload["file_ext"];
+                $array['foto']=$foto;
                 $exec = $this->m_guru->tambahdata($array);
                 if ($exec) redirect(base_url("admin/datamaster/gurutambah?msg=1"));
                 else redirect(base_url("admin/datamaster/gurutambah?msg=0"));
@@ -773,6 +813,24 @@ class Datamaster extends CI_Controller{
 
                 $this->layout->render('back-end/datamaster/guru/v_guru_edit',$variabel,'back-end/datamaster/guru/v_guru_js');
             } else {
+                $config['upload_path'] = './assets/images/foto';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|PNG|png';
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload("foto"))
+                {
+                    $upload = $this->upload->data();
+                    $foto = $upload["raw_name"].$upload["file_ext"];
+                    $array['foto']=$foto;
+
+                    $query2 = $this->m_guru->lihatdatasatu($nip2);
+                    $row2 = $query2->row();
+                    $berkas1temp = $row2->foto;
+                    $path1 ='./assets/images/foto/'.$berkas1temp.'';
+                    echo "$path1";
+                    if(is_file($path1)) {
+                        unlink($path1); //menghapus gambar di folder produk
+                    }
+                }
                 $exec = $this->m_guru->editdata($nip2,$array);
                 if ($exec){
                   redirect(base_url("admin/datamaster/guruedit?nip=".$nip."&msg=1"));
@@ -2872,7 +2930,7 @@ function editkelaspondokan()
             $variabel['datajumat'] = $this->m_presensipondokan->lihatdatajadwal($id,"Jum'at");
             $variabel['datasabtu'] = $this->m_presensipondokan->lihatdatajadwal($id,'Sabtu');
             $variabel['dataahad'] = $this->m_presensipondokan->lihatdatajadwal($id,'Ahad');
-            
+
             $this->layout->render('back-end/presensi/presensi_pondokan/v_jadwal',$variabel,'back-end/presensi/presensi_pondokan/v_jadwal_js');
         } else {
             redirect(base_url("admin/datamaster/datakelaspondokan"));
@@ -2882,8 +2940,7 @@ function editkelaspondokan()
     function tambahjadwalpondokan()
     {
         $idkelaspondokan = $this->input->post("id_kelas_belajar");
-        $variabel['guru'] = $this->m_guru->lihatdata();
-        $variabel['pelajaran'] = $this->m_matpel->lihatdata();
+        $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
         $variabel['jam'] = $this->m_pak_pondokan->lihatdata();
         $this->load->view("back-end/presensi/presensi_pondokan/v_jadwal_tambah",$variabel);
     }
@@ -2891,32 +2948,37 @@ function editkelaspondokan()
     function tambahjadwalpondokanproses()
     {
         $idkelasbelajar = $this->input->post("idkelasbelajar");
-        $mata_pelajaran = $this->input->post("mata_pelajaran");
+        $id_pelajaran = $this->input->post("mata_pelajaran");
         $hari = $this->input->post("hari");
         $jam = $this->input->post("jam");
-        $nip = $this->input->post("guru");
-        $guru = $this->m_guru->lihatdatasatu($nip)->row_array();
 
+        
         $array = array (
             "id_kelas_belajar"=>$idkelasbelajar,
-            "mata_pelajaran"=>$mata_pelajaran,
+            "id_mata_pelajaran"=>$id_pelajaran,
             "hari"=>$hari,
-            "jam"=>$jam,
-            "nip"=>$nip,  
-            "guru"=>$guru['nama_lengkap']
+            "jam"=>$jam
         );
+        if ($id_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]="Istirahat";
+            $array["nip"]="Istirahat";
+            $array["guru"]="Istirahat";
+        } else {
+            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+            $array["nip"]=$data['nip_guru'];
+            $array["guru"]=$data['nama_lengkap'];
+        }
         $exec = $this->m_presensipondokan->tambahdatajadwal($array);
-
     }
     function editjadwalpondokan()
     {
         $idkelaspondokan = $this->input->post("id_kelas_belajar");
         $id_jadwal = $this->input->post("id");
 
-        $variabel['guru'] = $this->m_guru->lihatdata();
-        $variabel['pelajaran'] = $this->m_matpel->lihatdata();
+        $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
         $variabel['jam'] = $this->m_pak_pondokan->lihatdata();
-        
+
         $variabel['data'] = $this->m_presensipondokan->lihatdatasatujadwal($id_jadwal)->row_array();
         $this->load->view("back-end/presensi/presensi_pondokan/v_jadwal_edit",$variabel);
 
@@ -2927,17 +2989,24 @@ function editkelaspondokan()
         $id_jadwal = $this->input->post("idjadwal");
 
         $idkelasbelajar = $this->input->post("idkelasbelajar");
-        $mata_pelajaran = $this->input->post("mata_pelajaran");
+        $id_pelajaran = $this->input->post("mata_pelajaran");
+        $hari = $this->input->post("hari");
         $jam = $this->input->post("jam");
-        $nip = $this->input->post("guru");
-        $guru = $this->m_guru->lihatdatasatu($nip)->row_array();
 
         $array = array (
-            "mata_pelajaran"=>$mata_pelajaran,
-            "jam"=>$jam,
-            "nip"=>$nip,  
-            "guru"=>$guru['nama_lengkap']
+            "id_mata_pelajaran"=>$id_pelajaran,
+            "jam"=>$jam
         );
+        if ($id_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]="Istirahat";
+            $array["nip"]="Istirahat";
+            $array["guru"]="Istirahat";
+        } else {
+            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+            $array["nip"]=$data['nip_guru'];
+            $array["guru"]=$data['nama_lengkap'];
+        }
         $exec = $this->m_presensipondokan->editdatajadwal($id_jadwal,$array);
     }
 
@@ -2949,13 +3018,114 @@ function editkelaspondokan()
        redirect(base_url()."admin/datamaster/jadwalpondokan?id=".$idkelas."&h=1");
     }
 
+    ////////////////////////////////////////////////
+    function jadwalafilasi()
+    {
+        $id = $this->input->get("id");
+        $exec = $this->m_presensi->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0) {
+            $variabel['jadwal'] = $exec->row_array();
+            $variabel['datasenin'] = $this->m_presensi->lihatdatajadwal($id,'Senin');
+            $variabel['dataselasa'] = $this->m_presensi->lihatdatajadwal($id,'Selasa');
+            $variabel['datarabu'] = $this->m_presensi->lihatdatajadwal($id,'Rabu');
+            $variabel['datakamis'] = $this->m_presensi->lihatdatajadwal($id,'Kamis');
+            $variabel['datajumat'] = $this->m_presensi->lihatdatajadwal($id,"Jum'at");
+            $variabel['datasabtu'] = $this->m_presensi->lihatdatajadwal($id,'Sabtu');
+            $variabel['dataahad'] = $this->m_presensi->lihatdatajadwal($id,'Ahad');
+            $this->layout->render('back-end/presensi/presensi_kelas/v_jadwal',$variabel,'back-end/presensi/presensi_kelas/v_jadwal_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelasafilasi"));
+        }
+    }
+
+    function tambahjadwalafilasi()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
+        $variabel['jam'] = $this->m_pak_afilasi->lihatdata();
+        $this->load->view("back-end/presensi/presensi_kelas/v_jadwal_tambah",$variabel);
+    }
+
+    function tambahjadwalafilasiproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $id_pelajaran = $this->input->post("mata_pelajaran");
+        $hari = $this->input->post("hari");
+        $jam = $this->input->post("jam");
+
+        $array = array (
+            "id_kelas_belajar"=>$idkelasbelajar,
+            "id_mata_pelajaran"=>$id_pelajaran,
+            "hari"=>$hari,
+            "jam"=>$jam
+        );
+
+        if ($id_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]="Istirahat";
+            $array["nip"]="Istirahat";
+            $array["guru"]="Istirahat";
+        } else {
+            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+            $array["nip"]=$data['nip_guru'];
+            $array["guru"]=$data['nama_lengkap'];
+        }
+        $exec = $this->m_presensi->tambahdatajadwal($array);
+
+    }
+    function editjadwalafilasi()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $id_jadwal = $this->input->post("id");
+
+         $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
+        $variabel['jam'] = $this->m_pak_afilasi->lihatdata();
+
+        $variabel['data'] = $this->m_presensi->lihatdatasatujadwal($id_jadwal)->row_array();
+        $this->load->view("back-end/presensi/presensi_kelas/v_jadwal_edit",$variabel);
+
+    }
+
+    function editjadwalafilasiproses()
+    {
+        $id_jadwal = $this->input->post("idjadwal");
+
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $id_pelajaran = $this->input->post("mata_pelajaran");
+        $hari = $this->input->post("hari");
+        $jam = $this->input->post("jam");
+
+        $array = array (
+            "id_mata_pelajaran"=>$id_pelajaran,
+            "jam"=>$jam
+        );
+        if ($id_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]="Istirahat";
+            $array["nip"]="Istirahat";
+            $array["guru"]="Istirahat";
+        } else {
+            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+            $array["nip"]=$data['nip_guru'];
+            $array["guru"]=$data['nama_lengkap'];
+        }
+        $exec = $this->m_presensi->editdatajadwal($id_jadwal,$array);
+    }
+
+    function hapusjadwalafilasi()
+    {
+       $id = $this->input->get("id");
+       $idkelas = $this->input->get("idkelas");
+       $exec = $this->m_presensi->hapusjadwal($id);
+       redirect(base_url()."admin/datamaster/jadwalafilasi?id=".$idkelas."&h=1");
+    }
 
     function pakpondokan(){
         $variabel['data'] = $this->m_pak_pondokan->lihatdata();
         $this->layout->render('back-end/datamaster/pakpondokan/v_pak',$variabel,'back-end/datamaster/pakpondokan/v_pak_js');
     }
-     
-    
+
+
 
      function pakpondokantambah()
     {
@@ -3007,19 +3177,14 @@ function editkelaspondokan()
        redirect(base_url()."admin/datamaster/pakpondokan?msg=1");
     }
 
-/////akun ortu santri/////////////
 
-    function dataakunortu(){
-        $variabel['data'] = $this->m_akun_ortu->lihatdata();
-        $this->layout->render('back-end/datamaster/ortu/v_akun_ortu',$variabel,'back-end//datamaster/ortu/v_akun_ortu_js');
-    }
-    
-    
+
+
 function pakafilasi(){
     $variabel['data'] = $this->m_pak_afilasi->lihatdata();
     $this->layout->render('back-end/datamaster/pakafilasi/v_pak',$variabel,'back-end/datamaster/pakafilasi/v_pak_js');
 }
- 
+
  function pakafilasitambah()
 {
     if ($this->input->post()){
@@ -3070,6 +3235,14 @@ function pakafilasiedit()
     redirect(base_url()."admin/datamaster/pakafilasi?msg=1");
     }
 
+
+/////akun ortu santri/////////////
+
+function dataakunortu(){
+  $variabel['data'] = $this->m_akun_ortu->lihatdata();
+  $this->layout->render('back-end/datamaster/ortu/v_akun_ortu',$variabel,'back-end//datamaster/ortu/v_akun_ortu_js');
+}
+
 function buatakunortu(){
   $array= array(
     'id_ortu' => $this->input->post('id'),
@@ -3079,6 +3252,95 @@ function buatakunortu(){
   );
   $exec = $this->m_akun_ortu->tambahdata($array);
   redirect(base_url()."admin/datamaster/dataakunortu?msg=1");
+}
+
+function akunortuaktif(){
+  $array = array(
+    'status_akun' => 'aktif'
+  );
+  $id = $this->input->get('id');
+  $exec = $this->m_akun_ortu->editdata($id,$array);
+  redirect(base_url()."admin/datamaster/dataakunortu?aktif=1");
+
+}
+
+function akunortunonaktif(){
+  $array = array(
+    'status_akun' => 'tidak aktif'
+  );
+  $id = $this->input->get('id');
+  $exec = $this->m_akun_ortu->editdata($id,$array);
+  redirect(base_url()."admin/datamaster/dataakunortu?aktif=0");
+
+}
+
+function resetsandiortu(){
+  $id = $this->input->get('id');
+  $array = array(
+    'kata_sandi' => $id
+  );
+
+  $exec = $this->m_akun_ortu->editdata($id,$array);
+  redirect(base_url()."admin/datamaster/dataakunortu?reset=1");
+
+}
+////////////akhir akun ortu///////////////
+
+////////////////////////informasi ortu///////////////////////////////
+
+function informasi()
+{
+  $variabel['data'] = $this->m_informasi->lihatpengumuman();
+  $this->layout->render('back-end/informasi/v_informasi',$variabel,'back-end/informasi/informasi_js');
+}
+
+function tambahinformasi()
+{
+  if ($this->input->post()){
+
+          $array=array(
+              'judul_pengumuman'=> $this->input->post('judul_pengumuman'),
+              'isi_pengumuman'=> $this->input->post('isi_pengumuman'),
+              'link_pengumuman'=> $this->input->post('link_pengumuman'),
+              'tanggal_pengumuman'=>$this->input->post('tanggal_pengumuman')
+              );
+          $exec = $this->m_informasi->tambahdata($array);
+          if ($exec) redirect(base_url("admin/datamaster/tambahinformasi?msg=1"));
+          else redirect(base_url("admin/datamaster/tambahinformasi?msg=0"));
+  } else {
+    $variabel= '';
+    $this->layout->render('back-end/informasi/v_tambahinformasi',$variabel,'back-end/informasi/informasi_js');
+  }
+}
+
+
+function editinformasi()
+{
+$id_pengumuman = $this->input->get("idpengumuman");
+  if ($this->input->post()){
+          $array=array(
+              'isi_pengumuman'=> $this->input->post('isi_pengumuman'),
+              'judul_pengumuman'=> $this->input->post('judul_pengumuman'),
+              'link_pengumuman'=> $this->input->post('link_pengumuman'),
+              'tanggal_pengumuman'=>$this->input->post('tanggal_pengumuman')
+              );
+          $exec = $this->m_informasi->editdata($id_pengumuman,$array);
+          if ($exec)redirect(base_url("admin/datamaster/editinformasi?idpengumuman=".$id_pengumuman."&msg=1"));
+          else redirect(base_url("admin/datamaster/editinformasi?idpengumuman=".$id_pengumuman."&msg=0"));
+  } else {
+    $exec =$this->m_informasi->data($id_pengumuman);
+    if ($exec->num_rows()>0){
+        $variabel['data'] = $exec ->row_array();
+        $this->layout->render('back-end/informasi/v_editinformasi',$variabel,'back-end/informasi/informasi_js');
+  }
+}
+}
+
+function deleteinformasi()
+{
+  $id_pengumuman = $this->input->get("idpengumuman");
+  $exec = $this->m_informasi->hapus($id_pengumuman);
+  redirect(base_url()."admin/datamaster/informasi?msg=1");
 }
 
 }

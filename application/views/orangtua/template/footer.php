@@ -1,7 +1,6 @@
 
 </section>
 </section>
-<script type="text/javascript" src="<?php echo base_url().'assets/js/jquery-2.2.3.min.js'?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.min.js');?>"></script>
   <!-- Bootstrap -->
   <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
@@ -24,8 +23,6 @@
   <script src="<?php echo base_url('assets/js/parsley/parsley.extend.js') ?>"></script>
   <script src="<?php echo base_url('assets/js/datatable/jquery.dataTables.js');?>"></script>
   <script src="<?php echo base_url('assets/js/datatable/dataTables.bootstrap.js');?>"></script>
-  <script src="<?php echo base_url('assets/js/chosen/chosen.jquery.min.js');?>"></script>
   <script src="<?php echo base_url('assets/js/app.plugin.js');?>"></script>
   <script src="<?php echo base_url('assets/js/datepicker/bootstrap-datepicker.js');?>"></script>
   <script src="<?php echo base_url('assets/js/file-input/bootstrap-filestyle.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/js/summernote/summernote.js');?>"></script>

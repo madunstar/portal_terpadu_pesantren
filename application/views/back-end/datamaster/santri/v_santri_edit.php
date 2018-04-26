@@ -10,7 +10,7 @@
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Mengedit Data Santri","Gagal Mengedit Data Santri") ?>
-       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santriedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" method="post">
+       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santriedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" method="post"   enctype="multipart/form-data">
        <a href="<?php echo base_url('admin/datamaster/santri') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
           <div class="col-md-6">
@@ -383,6 +383,23 @@
                   </select>
                 </div>
               </div>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Foto</label>
+                <div class="col-sm-8">
+                  <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="foto">
+                </div>
+            </div>
+          <div class="form-group">
+					  	<label class="col-sm-4 control-label"></label>
+              <div class="col-sm-8">
+                <?php if ($data['foto']=='') { ?>
+                  <img src="<?php echo base_url()."assets/images/foto/"; ?>default.png" class="thumbnail" width="200px"/>
+                <?php } else { ?>
+                  <img src="<?php echo base_url()."assets/images/foto/".$data['foto']; ?>" class="thumbnail" width="200px"/>
+                <?php } ?>
+              </div>
+			  	</div>
             
           </div>
         </div>

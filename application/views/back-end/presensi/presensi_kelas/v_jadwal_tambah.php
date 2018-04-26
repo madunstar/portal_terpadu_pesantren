@@ -2,10 +2,10 @@
 <form id="formtambahjadwal" class="form-horizontal mb-lg">
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal">&times;</button>
-  <h4 class="modal-title">Tambah Jadwal Pelajaran Kelas Pondokan</h4>
+  <h4 class="modal-title">Tambah Jadwal Pelajaran Kelas Afilasi</h4>
 </div>
 <div class="modal-body">
-      <div class="form-group mt-lg">
+<div class="form-group mt-lg">
         <label class="col-sm-3 control-label">Mata Pelajaran</label>
         <div class="col-sm-8">
           <select id="mata_pelajaran" name="mata_pelajaran" class="form-control chosen-select">
@@ -44,7 +44,6 @@
           </select>
         </div>
       </div>
-      
       </div>
     <div class="modal-footer">
       <div class="row">

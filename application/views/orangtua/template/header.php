@@ -21,17 +21,16 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/js/calendar/bootstrap_calendar.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/confirm/jquery-confirm.min.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/datepicker/datepicker.css');?>" type="text/css" />
-  <link rel="stylesheet" href="<?php echo base_url('assets/js/chosen/chosen.css');?>" type="text/css" />
-  <link rel="stylesheet" href="<?php echo base_url('assets/js/summernote/summernote.css');?>" type="text/css" />
+
 </head>
-<body class="" >
+<body class=""  >
   <section class="vbox">
   <header class="bg-dark header header-md navbar navbar-fixed-top-xs box-shadow">
     <div class="navbar-header aside-md dk">
       <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
         <i class="fa fa-bars"></i>
       </a>
-      <a href="<?php echo base_url() ?>admin/datamaster" class="navbar-brand">
+      <a href="index.html" class="navbar-brand">
         <img src="<?php echo base_url('assets/images/logo.png'); ?>" class="m-r-sm" alt="scale">
         <span class="hidden-nav-xs" style="font-size:15px">Pesantren Darul Ilmi</span>
       </a>
@@ -45,21 +44,24 @@
 
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="thumb-sm avatar pull-left">
-            <img src="<?php echo base_url('assets/images/a0.png'); ?>" alt="...">
+          <span class="pull-left avatar" >
+            <img class="" src="<?php
+            $foto = $this->session->userdata('foto');
+
+            echo base_url("$foto"); ?>" alt="...">
           </span>
-          <?php $nama_akun = $this->session->userdata('nama_akun');
-          echo $nama_akun;?> <b class="caret"></b>
+          <?php $user = $this->session->userdata('user');
+          echo $user;?> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu animated fadeInRight">
 
           <li>
             <span class="arrow top"></span>
-            <a href="<?php echo base_url('admin/datamaster/adminedit?nama_akun='.$nama_akun);?>">Ubah Kata Sandi </a>
+            <a href="docs.html">Ubah Kata Sandi </a>
           </li>
           <li class="divider"></li>
           <li>
-            <a href="<?php echo base_url() ?>admin/datamaster/logout"><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
+            <a href="<?php echo base_url()?>santri/login/logout"  ><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
           </li>
         </ul>
       </li>
@@ -68,5 +70,5 @@
   <section>
     <section class="hbox stretch">
   <?php
-   $this->load->view("back-end/template/menu");
+   $this->load->view("orangtua/template/menu");
    ?>

@@ -10,7 +10,7 @@
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Santri","Gagal Menambahkan Santri") ?>
-       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santritambah" method="post">
+       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santritambah" method="post"  enctype="multipart/form-data">
        <a href="<?php echo base_url('admin/datamaster/santri') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
           <div class="col-md-6">
@@ -380,7 +380,12 @@
                   </select>
                 </div>
               </div>
-              
+              <div class="form-group">
+									<label class="col-sm-4 control-label">Foto</label>
+									<div class="col-sm-8">
+										<input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="foto">
+									</div>
+              </div>
            
           </div>
         </div>
