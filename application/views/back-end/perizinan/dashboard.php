@@ -82,38 +82,34 @@
                   <thead>
                     <tr>
                       <th width="20%">Nama</th>
-                      <th width="25%">Kelas</th>
                       <th width="25%">Keperluan izin</th>
                       <th>tanggal izin</th>
-
+                      <th>Penjemput</th>
+                      <th>Status Izin</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>b</td>
-                      <td>c</td>
-                      <td>c</td>
-                    </tr>
+                    <?php
+                    foreach($data->result_array() as $row){
+                      echo "
+                        <tr>
+                          <td>".$row['nama_lengkap']."</td>
+                          <td>".$row['keperluan']."</td>
+                          <td>".$row['tanggal_keluar']."</td>
+                          <td>".$row['nama_penjemput']."</td>
+                          <td>".$row['status_keluar']."</td>
+                          <td></td>
+                        </tr>
+                      ";
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
 
             </div>
             <div class="panel-footer text-right">
-              <button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button>
+            <a href="<?php echo base_url() ?>admin/perizinan/datakeluar"><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
             </div>
           </div>
           <div class="col-sm-6">
@@ -121,14 +117,14 @@
               <header class="panel-heading bg-light no-border">
                 <div class="clearfix">
                   <a href="#" class="block padder-v hover"><span class="i-s i-s-2x pull-left m-r-sm"><i class="i i-hexagon2 i-s-base text-danger hover-rotate"></i><i class="fa fa-briefcase fa-briefcase i-sm text-white"></i></span><span class="clear">
-                    <span class="h3 block m-t-xs text-danger">Total Santri Izin Keluar Pondok</span><small class="text-muted text-u-c">3 Bulan Terakhir</small></span></a>
+                    <span class="h3 block m-t-xs text-danger">Total Santri Izin Keluar Pondok</span><small class="text-muted text-u-c">3 Tahun Terakhir</small></span></a>
                   </div>
                 </header>
                 <div class="list-group no-radius alt">
                   <a class="list-group-item accordion-toggle" data-toggle="collapse" href="#detil1">
-                    <span class="badge bg-info">50</span>
+                    <span class="badge bg-info"><?php echo $datatahunini['total'] ?></span>
                     <i class="fa fa-calendar icon-muted"></i>
-                    Februari
+                    <?php echo $tahunsekarang ?>
                   </a>
                   <div class="panel-body clearfix collapse" id='detil1'>
                     <div class="dropdown m-r">
@@ -138,20 +134,17 @@
                         <table class="table table-hover table-striped">
                           <tr>
                             <td>Stantri izin</td>
-                            <td>50</td>
+                            <td><?php echo $datatahunini['total'] ?></td>
                           </tr>
                           <tr>
                             <td>Total Denda</td>
-                            <td>Rp. 500000,-</td>
+                            <td>Rp. <?php echo $dendatahunini['total'] ?>,-</td>
                           </tr>
                           <tr>
                             <td>Denda Dibayar</td>
-                            <td>Rp. 500000,-</td>
+                            <td>Rp. <?php echo $bayartahunini['total'] ?>,-</td>
                           </tr>
-                          <tr>
-                            <td> Denda</td>
-                            <td>Rp. 500000,-</td>
-                          </tr>
+
                         </table>
 
                       </div>
