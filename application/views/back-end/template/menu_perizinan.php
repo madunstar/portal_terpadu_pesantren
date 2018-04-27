@@ -24,6 +24,13 @@
                       <span class="font-bold">Perizinan</span>
                     </a>
                     <ul class="nav dk">
+											<li class="<?= (($menu == "perizinan") & ($submenu == "index")) ? "active" : ""; ?>">
+												<a href="<?php echo base_url() ?>admin/perizinan" class="auto">
+													<i class="i i-dot"></i>
+
+													<span>Dashboard</span>
+												</a>
+											</li>
                       <li class="<?= (($menu == "perizinan") && ($submenu == 'datakeluar') || ($submenu == 'keluar')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/perizinan/datakeluar" class="auto">
                           <i class="i i-dot"></i>
@@ -38,21 +45,15 @@
                           <span>Kembali ke Pondok</span>
                         </a>
                       </li>
-											<li class="<?= (($menu == "perizinan") && ($submenu == 'datadenda')) ? "active" : ""; ?>">
+											<li class="<?= (($menu == "perizinan") && ($submenu == 'datadenda') || ($submenu == 'riwayatbayardenda')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/perizinan/datadenda" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Denda</span>
                         </a>
                       </li>
-											<li class="<?= (($menu == "perizinan") && ($submenu == 'pembayarandenda')) ? "active" : ""; ?>">
-                        <a href="<?php echo base_url() ?>admin/perizinan/pembayarandenda" class="auto">
-                          <i class="i i-dot"></i>
 
-                          <span>Data Pembayaran Denda</span>
-                        </a>
-                      </li>
-											<li class="<?= (($menu == "perizinan") && ($submenu == 'aturdenda')) ? "active" : ""; ?>">
+											<li class="<?= (($menu == "perizinan") && ($submenu == 'aturdenda')  ) ? "active" : ""; ?>">
 												<a href="<?php echo base_url() ?>admin/perizinan/aturdenda" class="auto">
 													<i class="i i-dot"></i>
 

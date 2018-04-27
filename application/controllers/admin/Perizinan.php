@@ -70,15 +70,24 @@ class Perizinan extends CI_Controller
               $variabel['data'] = $exec ->row_array();
               $this->layout->render('back-end/perizinan/v_ubah_sandi',$variabel);
           } else {
-              redirect(base_url("admin/perizinan/dashboard"));
+              redirect(base_url("admin/perizinan"));
           }
       }
   }
 
   function index()
   {
+      $tahunini = date('Y');
+      $tahunsemalam = $tahunini - 1;
+      $tahunbelakang = $tahunsemalam - 1;
+
       $variabel['nama_akun'] = $this->session->userdata('nama_akun');
-      $this->layout->renderizin('back-end/perizinan/dashboard',$variabel);
+      $variabel['data'] = $this->m_dashboard->datakeluarterakhir();
+      $variabel['tahunsekarang'] = $tahunini;
+      $variabel['datatahunini'] = $this->m_dashboard->datatahunini($tahunini);
+      $variabel['bayartahunini'] = $this->m_dashboard->bayartahunini($tahunini);
+      $variabel['dendatahunini'] = $this->m_dashboard->dendatahunini($tahunini);
+      $this->layout->renderizin('back-end/perizinan/dashboard',$variabel,'back-end/perizinan/denda_js');
   }
 
 //Bagian Utak Atik By Ilyas
