@@ -83,10 +83,21 @@ class Perizinan extends CI_Controller
 
       $variabel['nama_akun'] = $this->session->userdata('nama_akun');
       $variabel['data'] = $this->m_dashboard->datakeluarterakhir();
+      $variabel['datadenda'] = $this->m_dashboard->datadendaterakhir();
       $variabel['tahunsekarang'] = $tahunini;
       $variabel['datatahunini'] = $this->m_dashboard->datatahunini($tahunini);
       $variabel['bayartahunini'] = $this->m_dashboard->bayartahunini($tahunini);
       $variabel['dendatahunini'] = $this->m_dashboard->dendatahunini($tahunini);
+
+      $variabel['tahunlalu'] = $tahunsemalam;
+      $variabel['datatahunlalu'] = $this->m_dashboard->datatahunlalu($tahunsemalam);
+      $variabel['bayartahunlalu'] = $this->m_dashboard->bayartahunlalu($tahunsemalam);
+      $variabel['dendatahunlalu'] = $this->m_dashboard->dendatahunlalu($tahunsemalam);
+
+      $variabel['tahunbelakang'] = $tahunbelakang;
+      $variabel['datatahunbelakang'] = $this->m_dashboard->datatahunbelakang($tahunbelakang);
+      $variabel['bayartahunbelakang'] = $this->m_dashboard->bayartahunbelakang($tahunbelakang);
+      $variabel['dendatahunbelakang'] = $this->m_dashboard->dendatahunbelakang($tahunbelakang);
       $this->layout->renderizin('back-end/perizinan/dashboard',$variabel,'back-end/perizinan/denda_js');
   }
 

@@ -151,9 +151,9 @@
                     </div>
                   </div>
                   <a class="list-group-item accordion-toggle" data-toggle="collapse" href="#detil2">
-                    <span class="badge bg-info">50</span>
+                    <span class="badge bg-info"><?php echo $datatahunlalu['total'] ?></span>
                     <i class="fa fa-calendar icon-muted"></i>
-                    Januari
+                    <?php echo $tahunlalu ?>
                   </a>
                   <div class="panel-body clearfix collapse" id='detil2'>
                     <div class="dropdown m-r">
@@ -163,30 +163,49 @@
                         <table class="table table-hover table-striped">
                           <tr>
                             <td>Stantri izin</td>
-                            <td>50</td>
+                            <td><?php echo $datatahunlalu['total'] ?></td>
                           </tr>
                           <tr>
                             <td>Total Denda</td>
-                            <td>Rp. 500000,-</td>
+                            <td>Rp. <?php echo $dendatahunlalu['total'] ?>,-</td>
                           </tr>
                           <tr>
                             <td>Denda Dibayar</td>
-                            <td>Rp. 500000,-</td>
-                          </tr>
-                          <tr>
-                            <td> Denda</td>
-                            <td>Rp. 500000,-</td>
+                            <td>Rp. <?php echo $bayartahunlalu['total'] ?>,-</td>
                           </tr>
                         </table>
 
                       </div>
                     </div>
                   </div>
-                  <a class="list-group-item" href="#">
-                    <span class="badge bg-warning">50</span>
+                  <a class="list-group-item accordion-toggle" data-toggle="collapse" href="#detil3">
+                    <span class="badge bg-info"><?php echo $datatahunbelakang['total'] ?></span>
                     <i class="fa fa-calendar icon-muted"></i>
-                    Desember
+                    <?php echo $tahunbelakang ?>
                   </a>
+                  <div class="panel-body clearfix collapse" id='detil3'>
+                    <div class="dropdown m-r">
+                      <div class="well b bg-light m-t">
+                        <div class="h5 font-bold">Detil</div>
+                      <div class="line pull-in line-dashed b-b"></div>
+                        <table class="table table-hover table-striped">
+                          <tr>
+                            <td>Stantri izin</td>
+                            <td><?php echo $datatahunbelakang['total'] ?></td>
+                          </tr>
+                          <tr>
+                            <td>Total Denda</td>
+                            <td>Rp. <?php echo $dendatahunbelakang['total'] ?>,-</td>
+                          </tr>
+                          <tr>
+                            <td>Denda Dibayar</td>
+                            <td>Rp. <?php echo $bayartahunbelakang['total'] ?>,-</td>
+                          </tr>
+                        </table>
+
+                      </div>
+                    </div>
+                  </div>
 
 
                 </div>
@@ -204,38 +223,25 @@
                     <table class="table table-striped m-b-none" id="datacontoh">
                       <thead>
                         <tr>
-                          <th width="20%">Nama</th>
-                          <th width="25%">Kelas</th>
-                          <th width="25%">Banyak Bayar</th>
-                          <th>tanggal Bayar</th>
-
+                          <th >tanggal Bayar</th>
+                          <th width="30%">Nama</th>
+                          <th >Besar Bayar</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>a</td>
-                          <td>b</td>
-                          <td>c</td>
-                          <td>c</td>
-                        </tr>
-                        <tr>
-                          <td>a</td>
-                          <td>b</td>
-                          <td>c</td>
-                          <td>c</td>
-                        </tr>
-                        <tr>
-                          <td>a</td>
-                          <td>b</td>
-                          <td>c</td>
-                          <td>c</td>
-                        </tr>
-                        <tr>
-                          <td>a</td>
-                          <td>b</td>
-                          <td>c</td>
-                          <td>c</td>
-                        </tr>
+                        <?php
+                        foreach($datadenda->result_array() as $row){
+                          echo "
+                            <tr>
+                              <td>".$row['tanggal_bayar']."</td>
+                              <td>".$row['nama_lengkap']."</td>
+                              
+                              <td>".$row['besar_bayar']."</td>
+                              <td></td>
+                            </tr>
+                          ";
+                        }
+                        ?>
                       </tbody>
                     </table>
                   </div>
