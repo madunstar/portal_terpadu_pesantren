@@ -12,61 +12,49 @@
 
             <section class="panel panel-default">
               <header class="panel-heading">
-                <h4 class="font-bold">Maret Dalam Angka</h4>
+                <h4 class="font-bold"><?php echo bulan($bulanini) ?> Dalam Angka</h4>
               </header>
               <div class="panel-body">
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-4 col-sm-6">
                   <div class="panel b-a">
                     <div class="panel-heading no-border bg-primary  lt text-center">
+                      <a href="#"><i class="fa fa-users fa-3x m-t m-b text-white"></i></a>
+                      <div class=" h4 font-bold">Total Santri Izin</div>
+                    </div>
+                    <div class="padder-v text-center clearfix">
+
+                      <div class="h5 font-bold"><?php echo $databulanini['total'] ?> Orang</div>
+
+                  </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                  <div class="panel b-a">
+                    <div class="panel-heading no-border bg-success  lt text-center">
                       <a href="#"><i class="fa fa-money fa-3x m-t m-b text-white"></i></a>
                       <div class=" h4 font-bold">Total Denda</div>
                     </div>
                     <div class="padder-v text-center clearfix">
 
-                      <div class="h5 font-bold">Rp. 2000000,-</div>
+                      <div class="h5 font-bold">Rp. <?php echo $dendabulanini['total'] ?>,-</div>
 
                   </div>
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-4 col-sm-6">
                   <div class="panel b-a">
-                    <div class="panel-heading no-border bg-primary  lt text-center">
+                    <div class="panel-heading no-border bg-warning  lt text-center">
                       <a href="#"><i class="fa fa-money fa-3x m-t m-b text-white"></i></a>
-                      <div class=" h4 font-bold">Total Denda</div>
+                      <div class=" h4 font-bold">Denda Dibayar</div>
                     </div>
                     <div class="padder-v text-center clearfix">
 
-                      <div class="h5 font-bold">Rp. 2000000,-</div>
+                      <div class="h5 font-bold">Rp. <?php echo $bayarbulanini['total'] ?>,-</div>
 
                   </div>
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="panel b-a">
-                    <div class="panel-heading no-border bg-primary  lt text-center">
-                      <a href="#"><i class="fa fa-money fa-3x m-t m-b text-white"></i></a>
-                      <div class=" h4 font-bold">Total Denda</div>
-                    </div>
-                    <div class="padder-v text-center clearfix">
 
-                      <div class="h5 font-bold">Rp. 2000000,-</div>
-
-                  </div>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="panel b-a">
-                    <div class="panel-heading no-border bg-primary  lt text-center">
-                      <a href="#"><i class="fa fa-money fa-3x m-t m-b text-white"></i></a>
-                      <div class=" h4 font-bold">Total Denda</div>
-                    </div>
-                    <div class="padder-v text-center clearfix">
-
-                      <div class="h5 font-bold">Rp. 2000000,-</div>
-
-                  </div>
-                  </div>
-                </div>
               </div>
                   </section>
 
@@ -235,7 +223,7 @@
                             <tr>
                               <td>".$row['tanggal_bayar']."</td>
                               <td>".$row['nama_lengkap']."</td>
-                              
+
                               <td>".$row['besar_bayar']."</td>
                               <td></td>
                             </tr>
