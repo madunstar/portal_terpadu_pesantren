@@ -77,8 +77,44 @@ class Perizinan extends CI_Controller
 
   function index()
   {
+      $tahunini = date('Y');
+      $bulanini = date('m');
+      $tahunsemalam = $tahunini - 1;
+      $tahunbelakang = $tahunsemalam - 1;
+
       $variabel['nama_akun'] = $this->session->userdata('nama_akun');
+<<<<<<< HEAD
       $this->layout->renderizin('back-end/perizinan/v_dashboard',$variabel);
+=======
+      $variabel['data'] = $this->m_dashboard->datakeluarterakhir();
+      $variabel['datadenda'] = $this->m_dashboard->datadendaterakhir();
+
+      $variabel['tahunsekarang'] = $tahunini;
+      $variabel['datatahunini'] = $this->m_dashboard->datatahunini($tahunini);
+      $variabel['bayartahunini'] = $this->m_dashboard->bayartahunini($tahunini);
+      $variabel['dendatahunini'] = $this->m_dashboard->dendatahunini($tahunini);
+
+      $variabel['tahunlalu'] = $tahunsemalam;
+      $variabel['datatahunlalu'] = $this->m_dashboard->datatahunlalu($tahunsemalam);
+      $variabel['bayartahunlalu'] = $this->m_dashboard->bayartahunlalu($tahunsemalam);
+      $variabel['dendatahunlalu'] = $this->m_dashboard->dendatahunlalu($tahunsemalam);
+
+      $variabel['tahunbelakang'] = $tahunbelakang;
+      $variabel['datatahunbelakang'] = $this->m_dashboard->datatahunbelakang($tahunbelakang);
+      $variabel['bayartahunbelakang'] = $this->m_dashboard->bayartahunbelakang($tahunbelakang);
+      $variabel['dendatahunbelakang'] = $this->m_dashboard->dendatahunbelakang($tahunbelakang);
+
+      $variabel['bulanini'] = $bulanini;
+      // $exec = $this->m_dashboard->dendabulanini($tahunini,$bulanini)->row_array();
+      // $exec2 = $this->m_dashboard->bayarbulanini($tahunini,$bulanini)->row_array();
+      // $besardendabulanini = $exec['total'];
+      // $besarhutangbulanini = $besardendabulanini - $besarbayarbulanini;
+      $variabel['databulanini'] = $this->m_dashboard->databulanini($tahunini,$bulanini);
+      $variabel['bayarbulanini'] = $this->m_dashboard->bayarbulanini($tahunini,$bulanini);
+      $variabel['dendabulanini'] = $this->m_dashboard->dendabulanini($tahunini,$bulanini);
+      //$variabel['hutangbulanini'] = $besarhutangbulanini;
+      $this->layout->renderizin('back-end/perizinan/dashboard',$variabel,'back-end/perizinan/denda_js');
+>>>>>>> menambah-ci
   }
 
 //Bagian Utak Atik By Ilyas
