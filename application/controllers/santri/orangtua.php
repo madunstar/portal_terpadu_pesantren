@@ -9,8 +9,10 @@ class Orangtua extends CI_Controller {
     $this->load->model('back-end/orangtua/m_biodatasantri');
     $this->load->model('back-end/orangtua/m_infaq');
     $this->load->model('back-end/orangtua/m_perizinan');
-    $this->load->model('back-end/datamaster/m_informasi');
+    $this->load->model('back-end/orangtua/m_informasi');
+    $this->load->model('back-end/orangtua/m_dashboard');
     $this->load->library('layout_ortu');
+    $this->load->helper('indo_helper');
   }
 
   public function index()
@@ -19,12 +21,19 @@ class Orangtua extends CI_Controller {
   }
 
   function dashboard(){
-    $variabel = "";
+    $nis = 1;
+    $exec = $this->m_santri->lihatdatasatu($nis);
+    $bulanini = date('m');
+    $tahunini = date('Y');
+    $variabel['santri'] = $exec->row_array();
+    $variabel['dataspp'] = $this->m_dashboard->bayarspp($nis,$bulanini,$tahunini);
+    $variabel['datainfo'] = $this->m_dashboard->lihatinfo();
     $this->layout_ortu->render('orangtua/v_dashboard',$variabel,'orangtua/v_orangtua_js');
   }
 
   function prestasidanpelanggaran(){
     $nis = 1;
+
     $exec = $this->m_santri->lihatdatasatu($nis);
     $variabel['santri'] = $exec->row_array();
     $variabel['dataprestasi'] = $this->m_prestasi_pelanggaran->lihatprestasi($nis);

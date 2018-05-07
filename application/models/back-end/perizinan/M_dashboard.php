@@ -39,7 +39,7 @@ class M_dashboard extends CI_Model {
     $this->db->from('tb_perizinan_keluar');
     $this->db->join('tb_santri', 'nis_santri = nis_lokal');
     $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
-    $this->db->order_by("tanggal_keluar","ASC");
+    $this->db->order_by("tanggal_keluar","desc");
     $this->db->limit(3);
     return $this->db->get();
   }
@@ -52,7 +52,7 @@ class M_dashboard extends CI_Model {
     $this->db->join('tb_perizinan_keluar', 'tb_perizinan_kembali.id_keluar = tb_perizinan_keluar.id_keluar');
     $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
     $this->db->join('tb_akun_admin', 'tb_akun_admin.nama_akun = tb_perizinan_bayar.petugas');
-    $this->db->order_by("tanggal_bayar","ASC");
+    $this->db->order_by("tanggal_bayar","desc");
     $this->db->limit(5);
     return $this->db->get();
   }
