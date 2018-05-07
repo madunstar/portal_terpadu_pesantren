@@ -54,7 +54,7 @@
 
                   </li>
                   <li class="<?= (($menu == "orangtua") && ($submenu == 'informasi'))  ? "active" : ""; ?>" >
-                    <a href="<?php echo base_url() ?>santri/orangtua/databayarinfaq" class="auto">
+                    <a href="<?php echo base_url() ?>santri/orangtua/informasi" class="auto">
                       <span class="pull-right text-muted">
 
                       </span>
