@@ -2047,7 +2047,7 @@ function kecamatanhapus()
        }
    //end CRUD pelajaran
 
-   //mulai rekap presensi santri//
+   //mulai rekap presensi santri kelas afilasi//
    function pelajaranrekap(){
      $tgl = date('Y-m-d');
      $variabel['tanggal'] = $tgl;
@@ -2952,7 +2952,7 @@ function editkelaspondokan()
         $hari = $this->input->post("hari");
         $jam = $this->input->post("jam");
 
-        
+
         $array = array (
             "id_kelas_belajar"=>$idkelasbelajar,
             "id_mata_pelajaran"=>$id_pelajaran,

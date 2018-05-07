@@ -45,25 +45,21 @@
                 <h4 class="panel-title">Informasi Terbaru</4>
               </div>
               <section class="panel-body slim-scroll">
+                <?php foreach ($datainfo->result_array() as $rowinfo) {?>
                 <article class="media">
                   <div class="media-body">
-                    <div class='pull-right'><small>xx-xx-xxxx</small> </div>
-                    <div class="h4 font-bold">judul</div>
+                    <div class='pull-right'><small><?php echo $rowinfo['tanggal_pengumuman']?></small> </div>
+                    <div class="h4 font-bold text-primary"><?php echo $rowinfo['judul_pengumuman'] ?></div>
                     <div class='line line-dashed b-b line-lg pull-in'></div>
-                    <div><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</small></div>
-                    <div class='line line-dashed b-b line-lg pull-in'></div>
+                    <div><small><?php echo $rowinfo['isi_pengumuman'] ?></small></div>
+                    <div class="line pull-in"></div>
+                    <div class='line b-b line-dashed line-lg pull-in'></div>
                   </div>
                 </article>
+
                 <div class="line pull-in"></div>
-                <article class="media">
-                  <div class="media-body">
-                    <div class='pull-right'><small>xx-xx-xxxx</small> </div>
-                    <div class="h4 font-bold">judul</div>
-                    <div class='line line-dashed b-b line-lg pull-in'></div>
-                    <div><small>".$row['isi_pengumuman']."</small></div>
-                    <div class='line line-dashed b-b line-lg pull-in'></div>
-                  </div>
-                </article>
+
+              <?php } ?>
               </section>
               <div class="panel-footer">
                 <button type="button" class="btn btn-sm btn-info">
@@ -74,14 +70,14 @@
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="panel b-a">
-              <div class="panel-heading no-border bg-primary  lt text-center">
-                <a href="#"><i class="fa fa-check fa-3x m-t m-b text-white"></i></a>
+              <div class="panel-heading no-border <?php echo (($dataspp['status_bayar'] == 'lunas') ? 'bg-primary' : 'bg-danger')  ?>  lt text-center">
+                <a href="#"><i class="fa <?php echo (($dataspp['status_bayar'] == 'lunas') ? 'fa-check' : 'fa-ban')  ?> fa-3x m-t m-b text-white"></i></a>
                 <div class=" h4 font-bold">Pembayaran Infaq</div>
-                <div class="small">Bulan Skarang</div>
+                <div class="small">Bulan <?php echo bulan(date('m')); ?> <?php echo date('Y') ?></div>
               </div>
               <div class="padder-v text-center clearfix">
 
-                <div class="h5 font-bold">LUNAS </div>
+                <div class="h5 font-bold"><?php echo (($dataspp['status_bayar'] == 'lunas') ? 'LUNAS' : 'BELUM BAYAR')  ?></div>
 
             </div>
             </div>
