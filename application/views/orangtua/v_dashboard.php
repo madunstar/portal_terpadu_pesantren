@@ -96,24 +96,20 @@
                     <th>Status izin</th>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>a</td>
-                      <td>a</td>
-                      <td>a</td>
-                      <td>a</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>a</td>
-                      <td>a</td>
-                      <td>a</td>
-                    </tr>
-                    <tr>
-                      <td>a</td>
-                      <td>a</td>
-                      <td>a</td>
-                      <td>a</td>
-                    </tr>
+                    <?php
+                        foreach($dataizin->result_array() as $rowizin){
+                          echo "
+                            <tr>
+
+                              <td>".$rowizin['tanggal_keluar']."</td>
+                              <td>".$rowizin['keperluan']."</td>
+                              <td>".$rowizin['nama_penjemput']."</td>
+                              <td>".$rowizin['status_keluar']."</td>
+                            </tr>
+
+                          ";
+                        }
+                    ?>
 
                   </tbody>
                 </table>
