@@ -3343,4 +3343,27 @@ function deleteinformasi()
   redirect(base_url()."admin/datamaster/informasi?msg=1");
 }
 
+
+function printkelaspondokan(){
+    $id = $this->input->get("id");
+    $exec = $this->m_presensipondokan->lihatdatasatulengkap($id);
+    if ($exec->num_rows()>0) {
+        $variabel['jadwal'] = $exec->row_array();
+        $variabel['listjadwal'] = $this->m_presensipondokan->lihatjadwal($id);
+        $this->layout->render('back-end/presensi/presensi_pondokan/v_presensi_print',$variabel,'back-end/presensi/presensi_pondokan/v_presensi_printjs');
+    } else {
+        redirect(base_url("admin/datamaster/datakelaspondokan"));
+    }
+}
+
+
+function printjadwalpondokan(){
+    $id = $this->input->get("id");
+    $data = $this->m_presensipondokan->lihatdatasatujadwal($id)->row_array();
+    $variabel['data'] = $data;
+    $variabel['santri'] = $this->m_presensipondokan->lihatdatasantri($data['id_kelas_belajar']);
+    $this->layout->renderlaporan('back-end/presensi/presensi_pondokan/v_presensi_printjadwal',$variabel,'back-end/presensi/presensi_pondokan/v_presensi_printjadwal_js');
+  }
+
+
 }
