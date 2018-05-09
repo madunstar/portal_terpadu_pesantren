@@ -13,7 +13,7 @@
               <nav class="nav-primary hidden-xs">
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
-                  <li class="<?= (($menu == "perizinan") && ($submenu == 'keluar') || ($submenu == 'aturdenda')|| ($submenu == 'kembali') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'index')) ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "perizinan") && ($submenu == 'keluar') || ($submenu == 'aturdenda')|| ($submenu == 'kembali') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'index') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -31,7 +31,7 @@
 													<span>Dashboard</span>
 												</a>
 											</li>
-                      <li class="<?= (($menu == "perizinan") && ($submenu == 'datakeluar') || ($submenu == 'keluar')) ? "active" : ""; ?>">
+                      <li class="<?= (($menu == "perizinan") && ($submenu == 'datakeluar') || ($submenu == 'keluar') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/perizinan/datakeluar" class="auto">
                           <i class="i i-dot"></i>
 
