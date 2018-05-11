@@ -32,6 +32,7 @@
       <tr><td>Ustadz/Ustadzah  </td><td>&nbsp : &nbsp</td><td> <?php echo $data['guru'] ?> </td> </tr>
       <tr><td>Nama Kelas  </td><td>&nbsp : &nbsp</td><td> <?php echo $data2['nama_kelas_belajar'] ?></td> 
       <tr><td>Tingkat  </td><td>&nbsp : &nbsp</td><td> <?php echo $data2['tingkat'] ?> <?php echo $data2['jenjang'] ?> </td> </tr>
+      <tr><td>Tahun Ajaran  </td><td>&nbsp : &nbsp</td><td> <?php echo $data2['tahun_ajaran'] ?> </td> </tr>
      </tr>
       </table>
       <table class="table table-bordered">

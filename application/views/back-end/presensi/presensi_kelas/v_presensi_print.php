@@ -4,14 +4,14 @@
 		<section class="scrollable padder">
 			<div class="row m-b-md">
 				<div class="col-sm-6">
-					<h3 class="m-b-xs text-black">Jadwal Presensi </h3>
+					<h3 class="m-b-xs text-black">Daftar Presensi </h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
 					<section class="panel panel-default">
 						<header class="panel-heading">
-							<h4 class="font-bold">Print Jadwal</h4>
+							<h4 class="font-bold">Print Presensi</h4>
 						</header>
 						<div class="panel-body">
 							<?php pesan_get('msg',"Berhasil Menambahkan  Data Kelas Belajar","Gagal Menambah Data Kelas Belajar") ?>
