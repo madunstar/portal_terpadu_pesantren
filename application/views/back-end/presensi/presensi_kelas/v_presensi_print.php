@@ -35,7 +35,7 @@
 							<button id="print" class="btn btn-success btn-s-xs">
 								<i class="fa fa-save"></i> Print</button>
 							&nbsp
-							<a href="<?php echo base_url('admin/datamaster/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
+							<a href="<?php echo base_url('admin/datamaster/datakelasbelajar') ?>" class="btn btn-default btn-s-xs">
 								<i class="fa fa-list"></i> List Kelas Belajar</a>
 
 						</footer>

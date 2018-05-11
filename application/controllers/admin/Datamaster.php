@@ -3361,9 +3361,36 @@ function printjadwalpondokan(){
     $id = $this->input->get("id");
     $data = $this->m_presensipondokan->lihatdatasatujadwal($id)->row_array();
     $variabel['data'] = $data;
+    $variabel['data2'] =  $this->m_presensipondokan->lihatdatasatu($data['id_kelas_belajar'])->row_array();
     $variabel['santri'] = $this->m_presensipondokan->lihatdatasantri($data['id_kelas_belajar']);
     $this->layout->renderlaporan('back-end/presensi/presensi_pondokan/v_presensi_printjadwal',$variabel,'back-end/presensi/presensi_pondokan/v_presensi_printjadwal_js');
   }
+
+  
+function printkelasafilasi(){
+    $id = $this->input->get("id");
+    $exec = $this->m_presensi->lihatdatasatulengkap($id);
+    if ($exec->num_rows()>0) {
+        $variabel['jadwal'] = $exec->row_array();
+        $variabel['listjadwal'] = $this->m_presensi->lihatjadwal($id);
+        $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_print',$variabel,'back-end/presensi/presensi_kelas/v_presensi_printjs');
+    } else {
+        redirect(base_url("admin/datamaster/datakelasbelajar"));
+    }
+}
+
+
+function printjadwalafilasi(){
+    $id = $this->input->get("id");
+    $data = $this->m_presensi->lihatdatasatujadwal($id)->row_array();
+    $variabel['data'] = $data;
+    $variabel['data2'] =  $this->m_presensi->lihatdatasatu($data['id_kelas_belajar'])->row_array();
+    $variabel['santri'] = $this->m_presensi->lihatdatasantri($data['id_kelas_belajar']);
+    $this->layout->renderlaporan('back-end/presensi/presensi_kelas/v_presensi_printjadwal',$variabel,'back-end/presensi/presensi_kelas/v_presensi_printjadwal_js');
+  }
+
+
+
 
 
 }
