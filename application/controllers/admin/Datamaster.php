@@ -3390,7 +3390,19 @@ function printjadwalafilasi(){
   }
 
   function cetakkartu(){
-   $a =  $this->_generate_barcode('321','BCGcode39');
+    $nis = $this->input->get("nis");
+ 
+    $exec = $this->m_santri->lihatdatasatu($nis);
+    if ($exec->num_rows()>0){
+        $this->_generate_barcode($nis,'BCGcode39');
+        $variabel['data'] = $exec ->row_array();
+        // $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
+        // $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); ;
+        $this->load->view('back-end/datamaster/santri/v_santri_kartu',$variabel);
+    } else {
+        redirect(base_url("admin/datamaster/santri"));
+    }
+   
   }
   private function _generate_barcode($sparepart_code, $barcode_type, $scale=6, $fontsize=18, $thickness=30,$dpi=72) {
     // CREATE BARCODE GENERATOR
