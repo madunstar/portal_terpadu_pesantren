@@ -18,8 +18,7 @@ BANJARBARU - KALIMANTAN SELATAN 70722
         <td></td>
         </tr>
       </table>
-      <br/>
-      <table border="0px" style="font-size:11px;font-family:arial">
+      <table border="0px" style="font-size:11px;font-family:arial;margin-top:5px">
  
         <tr>
         <td rowspan="5" style="padding-right:10px;padding-left:5px">
@@ -30,7 +29,7 @@ BANJARBARU - KALIMANTAN SELATAN 70722
                 <?php } ?>
         </td>
         <td>Nama</td>  <td style="width:120px"> : <?php echo $data['nama_lengkap']; ?></td>
-        <td rowspan="5"> <img src="<?php echo base_url()."assets/barcode/".$data['nis_lokal']."_BCGcode39.png"; ?>" class="thumbnail" width="70px"/></td>
+        <td rowspan="5"> <img src="<?php echo base_url()."assets/barcode/".$data['nis_lokal']."_BCGcode39.png"; ?>" class="thumbnail" width="80px"/></td>
         </tr>
         <tr>
         <td>NIS</td> 
@@ -50,7 +49,7 @@ BANJARBARU - KALIMANTAN SELATAN 70722
        
 
       </table>
-      <table  style="font-size:7px;font-family:arial">
+      <table  style="font-size:7px;font-family:arial;line-height:4px">
             <tr>
             <td style="width:225px"></td>
             <td>Banjarbaru, <?php echo date("d-m-Y") ?></td>
