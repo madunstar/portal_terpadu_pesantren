@@ -1,3 +1,16 @@
+<html>
+<header>
+<style type="text/css" media="print">
+ @page
+   {
+    size: 85mm 53mm;
+    size: landscape;
+    margin : 0;
+  }
+
+</style>
+</header>
+<body>
 
 
       <div style="width:85mm;height:53mm;border:1px solid #cecece;border-radius:10px;padding:5px; background-image:url('<?php echo base_url()."assets/images/1.jpg')"; ?>;background-repeat: no-repeat;background-size:cover" >
@@ -72,3 +85,9 @@ BANJARBARU - KALIMANTAN SELATAN 70722
             </tr>
       </table>
       </div>
+
+      <script>
+window.print();
+</script>
+      </body>
+</html>
