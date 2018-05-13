@@ -14,7 +14,7 @@
         </div>
           <a class="navbar-brand block" href="index.html">LOGIN ADMIN PORTAL PESANTREN DARUL ILMI</a>
           <?php pesan_get('msg',"Sukses","Nama Akun tidak terdaftar","Nama Akun dan Kata Sandi tidak cocok") ?>
-          <form  action="<?php echo base_url()?>admin/login/loginhalaman" method="post" data-validate="parsley">
+          <form  action="<?php echo base_url()?>admin/login/ceklogin" method="post" data-validate="parsley">
             <div class="list-group">
               <div class="list-group-item">
                 <input name="nama_akun" data-required="true" type="text" placeholder="Nama Akun" value="<?php echo set_value('nama_akun'); ?>" class="form-control no-border">
