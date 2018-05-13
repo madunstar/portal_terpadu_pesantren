@@ -77,6 +77,7 @@ class portal_ortu extends CI_Controller {
     $variabel['santri'] = $exec->row_array();
     $variabel['dataspp'] = $this->m_dashboard->bayarspp($this->nis,$bulanini,$tahunini);
     $variabel['datainfo'] = $this->m_dashboard->lihatinfo();
+    $variabel['dataizin'] = $this->m_dashboard->datakeluarterakhir($this->nis);
     $this->layout_ortu->render('orangtua/v_dashboard',$variabel,'orangtua/v_orangtua_js');
   }
 
