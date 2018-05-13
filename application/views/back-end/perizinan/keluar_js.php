@@ -152,6 +152,27 @@ $(document).ready(function(){
   });
 
   $('#datatable').DataTable({});
+  $(".hapusizin").click(function (e) {
+   var v_id = this.id;
+   $.confirm({
+       title: 'Hapus!',
+       content: 'Yakin ingin menghapus ?',
+       buttons: {
+           hapus: {
+               text: 'Hapus',
+               btnClass: 'btn-green',
+               action: function(){
+                   window.location.assign("<?php echo base_url() ?>admin/perizinan/izinhapus?id="+v_id);
+               }
+           },
+           batal: function () {
+
+           }
+
+       }
+       });
+   });
+
   $('#hapus').click(function (e) {
    var v_id = $('#id_penjemput').val();
    $.confirm({
@@ -162,7 +183,7 @@ $(document).ready(function(){
                text: 'Hapus',
                btnClass: 'btn-green',
                action: function(){
-                   window.location.assign("<?php echo base_url() ?>admin/perizinan/penjemputhapus?id_penjemput="+v_id);
+                   window.location.assign("<?php echo base_url() ?>admin/perizinan/penjemputhapus?id="+v_id);
                }
            },
            batal: function () {

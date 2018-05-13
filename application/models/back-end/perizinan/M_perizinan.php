@@ -1,13 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class M_perizinan extends CI_Model
-{
+class M_perizinan extends CI_Model{
     function __construct(){
         parent::__construct();
     }
 
     function lihatdata(){
-        $this->db->select('nis_santri, nama_lengkap, jenis_sekolah_asal,
+        $this->db->select('id_keluar, nis_santri, nama_lengkap, jenis_sekolah_asal,
         CONCAT(
             CASE DAYOFWEEK(tanggal_keluar)
               WHEN 1 THEN "Minggu"
@@ -41,7 +40,7 @@ class M_perizinan extends CI_Model
         $this->db->from('tb_perizinan_keluar');
         $this->db->join('tb_santri', 'nis_santri = nis_lokal');
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
-        //$this->db->order_by("tanggal_keluar","DESC");
+        $this->db->order_by('id_keluar','ASC');
         return $this->db->get();
     }
 
@@ -164,6 +163,75 @@ class M_perizinan extends CI_Model
         return $this->db->get();
     }
 
+    function tampilsuratizinsatuan($id_keluar){
+        $this->db->select('tb_santri.nama_lengkap AS nama_santri, tb_santri.jenis_sekolah_asal AS sekolah, tb_santri.hp AS hp,
+        CONCAT(
+            CASE DAYOFWEEK(tanggal_keluar)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(tanggal_keluar)," ",
+            CASE MONTH(tanggal_keluar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(tanggal_keluar)," Pukul ",
+            HOUR(tanggal_keluar),":",
+            MINUTE(tanggal_keluar),":",
+            SECOND(tanggal_keluar)
+        ) AS tanggal_keluar, tb_perizinan_keluar.keperluan AS keperluan, tb_perizinan_penjemput.nama_penjemput AS nama_penjemput, tb_perizinan_penjemput.hubungan_penjemput AS hubungan,
+        CONCAT(
+            CASE DAYOFWEEK(tanggal_keluar)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END," ",
+            DAY(tanggal_keluar)," ",
+            CASE MONTH(tanggal_keluar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(tanggal_keluar)
+          ) AS tanggal_surat, keperluan, tb_staff.nama_lengkap AS nama_petugas');
+        $this->db->from('tb_perizinan_keluar');
+        $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
+        $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+        $this->db->join('tb_staff', 'tb_perizinan_keluar.petugas = tb_staff.nip_staff');
+        // $this->db->order_by('id_keluar','DESC');
+        // $this->db->limit(1);
+        $this->db->where('tb_perizinan_keluar.id_keluar', $id_keluar);
+        return $this->db->get();
+    }
+
     function totalkeluar($tahun,$bulan){
       $this->db->select('count(*) as total');
       $this->db->from('tb_perizinan_keluar');
@@ -171,6 +239,11 @@ class M_perizinan extends CI_Model
       $this->db->where('month(tb_perizinan_keluar.tanggal_keluar)',$bulan);
       //$this->db->where('tb_perizinan_keluar.status_keluar','keluar');
       return $this->db->get()->row_array();
+    }
+
+    function hapus($id_keluar){
+        $this->db->where("id_keluar",$id_keluar);
+        return $this->db->delete('tb_perizinan_keluar');
     }
 
     function jemputhapus($id_penjemput){

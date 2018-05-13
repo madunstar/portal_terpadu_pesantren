@@ -16,6 +16,7 @@
             <div class="panel-body">
             <a href="<?php echo base_url() ?>admin/perizinan/keluar"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Buat Perizinan Keluar</button></a>
               <div class="table-responsive">
+                <?php pesan_get('msg',"Berhasil Menghapus Izin Keluar","Gagal Menghapus Izin Keluar") ?>
                 <table class="table table-striped m-b-none" id="datatable">
                   <thead>
                     <tr>
@@ -27,6 +28,7 @@
                       <th>Keperluan</th>
                       <th>Penjemput</th>
                       <th>Status Keluar</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -43,6 +45,10 @@
                             <td>".$row['keperluan']."</td>
                             <td>".$row['nama_penjemput']."</td>
                             <td>".$row['status_keluar']."</td>
+                            <td>
+                              <a href='".base_url('admin/perizinan/cetak_suratizin?id='.$row['id_keluar'].'')."' class='btn btn-primary btn-xs' title='Cetak Surat Izin'><i class='fa fa-print'></i></a>
+                              <a href='#' class='btn btn-danger btn-xs hapusizin' title='Hapus' name='hapusizin' id='".$row['id_keluar']."'><i class='fa fa-trash-o'></i></a>
+                            </td>
                             </tr>
                         ";$i++;
                       }

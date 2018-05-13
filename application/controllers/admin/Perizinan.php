@@ -15,7 +15,7 @@ class Perizinan extends CI_Controller
     $this->load->library('layout_pendaftaran');
     $this->load->helper('indo_helper');
     if ($this->session->userdata('nama_akun')=="") {
-        redirect('admin/login/loginhalaman');
+        redirect('admin/login');
     }
     else if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
         redirect('admin/pendaftaran');
@@ -32,7 +32,7 @@ class Perizinan extends CI_Controller
       $this->session->unset_userdata('nama_akun');
       $this->session->unset_userdata('kode_role_admin');
       session_destroy();
-      redirect('admin/login/loginhalaman');
+      redirect('admin/login');
   }
 
   function ubahsandiadmin(){
@@ -83,7 +83,6 @@ class Perizinan extends CI_Controller
       $tahunbelakang = $tahunsemalam - 1;
 
       $variabel['nama_akun'] = $this->session->userdata('nama_akun');
-      $this->layout->renderizin('back-end/perizinan/v_dashboard',$variabel);
       $variabel['data'] = $this->m_dashboard->datakeluarterakhir();
       $variabel['datadenda'] = $this->m_dashboard->datadendaterakhir();
 
@@ -111,13 +110,14 @@ class Perizinan extends CI_Controller
       $variabel['bayarbulanini'] = $this->m_dashboard->bayarbulanini($tahunini,$bulanini);
       $variabel['dendabulanini'] = $this->m_dashboard->dendabulanini($tahunini,$bulanini);
       //$variabel['hutangbulanini'] = $besarhutangbulanini;
-      $this->layout->renderizin('back-end/perizinan/dashboard',$variabel,'back-end/perizinan/denda_js');
+      $this->layout->renderizin('back-end/perizinan/v_dashboard',$variabel,'back-end/perizinan/denda_js');
   }
 
 //Bagian Utak Atik By Ilyas
   function datakeluar(){
       $variabel['data'] = $this->m_perizinan->lihatdata();
-      $this->layout->renderizin('back-end/perizinan/v_data_keluar',$variabel,'back-end/perizinan/denda_js');
+      //$variabel['id'] = $id_keluar;
+      $this->layout->renderizin('back-end/perizinan/v_data_keluar',$variabel,'back-end/perizinan/keluar_js');
   }
 
   function datasantritampil(){
@@ -200,8 +200,21 @@ class Perizinan extends CI_Controller
       $this->layout->renderizin('back-end/perizinan/v_suratizin',$variabel,'back-end/perizinan/keluar_js');
   }
 
+  function cetak_suratizin(){
+      $id_keluar = $this->input->get("id");
+      $execsuratizin = $this->m_perizinan->tampilsuratizinsatuan($id_keluar);
+      $variabel['datasurat'] = $execsuratizin->row_array();
+      $this->layout->renderizin('back-end/perizinan/v_suratizin',$variabel,'back-end/perizinan/keluar_js');
+  }
+
+  function izinhapus(){
+      $id_keluar = $this->input->get("id");
+      $exec = $this->m_perizinan->hapus($id_keluar);
+      redirect(base_url()."admin/perizinan/datakeluar?msg=1");
+  }
+
   function penjemputhapus(){
-      $id_penjemput = $this->input->get("id_penjemput");
+      $id_penjemput = $this->input->get("id");
       $exec = $this->m_perizinan->jemputhapus($id_penjemput);
       redirect(base_url()."admin/perizinan/keluar?msg=1");
   }
