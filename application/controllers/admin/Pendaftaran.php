@@ -16,7 +16,7 @@ class Pendaftaran extends CI_Controller
     $this->load->model('back-end/pendaftaran/m_berkas');
     $this->load->library('layout_pendaftaran');
     if ($this->session->userdata('nama_akun')=="") {
-        redirect('admin/login/loginhalaman');
+        redirect('admin/login');
     }
     else if ($this->session->userdata('kode_role_admin') == 'akd') {
         redirect('admin/datamaster');
@@ -58,7 +58,7 @@ class Pendaftaran extends CI_Controller
       $this->session->unset_userdata('nama_akun');
       $this->session->unset_userdata('kode_role_admin');
       session_destroy();
-      redirect('admin/login/loginhalaman');
+      redirect('admin/login');
   }
 
   function ubahsandiadmin(){

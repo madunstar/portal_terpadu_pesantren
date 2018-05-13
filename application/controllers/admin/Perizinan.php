@@ -83,9 +83,7 @@ class Perizinan extends CI_Controller
       $tahunbelakang = $tahunsemalam - 1;
 
       $variabel['nama_akun'] = $this->session->userdata('nama_akun');
-<<<<<<< HEAD
       $this->layout->renderizin('back-end/perizinan/v_dashboard',$variabel);
-=======
       $variabel['data'] = $this->m_dashboard->datakeluarterakhir();
       $variabel['datadenda'] = $this->m_dashboard->datadendaterakhir();
 
@@ -114,7 +112,6 @@ class Perizinan extends CI_Controller
       $variabel['dendabulanini'] = $this->m_dashboard->dendabulanini($tahunini,$bulanini);
       //$variabel['hutangbulanini'] = $besarhutangbulanini;
       $this->layout->renderizin('back-end/perizinan/dashboard',$variabel,'back-end/perizinan/denda_js');
->>>>>>> menambah-ci
   }
 
 //Bagian Utak Atik By Ilyas

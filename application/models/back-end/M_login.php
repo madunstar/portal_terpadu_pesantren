@@ -4,20 +4,35 @@
  * www.crudigniter.com
  */
 class M_login extends CI_Model{
-    function __construct()
-    {
-        parent::__construct();
-        $this->load->database();
-    }
+  function __construct()
+  {
+      parent::__construct();
+      $this->load->database();
+  }
 
-    function mloginaksi($data)
-    {
-        $query = $this->db->get_where('tb_akun_admin', $data);
-        return $query;
-        // $username = $data['username'];
-        // $password = $data['password'];
-        // $this->db->query('WHERE BINARY username = BINARY $username AND BINARY password = BINARY $data');
-    }
+  // function mloginaksi($data)
+  // {
+  //     $query = $this->db->get_where('tb_akun_admin', $data);
+  //     return $query;
+  //     // $username = $data['username'];
+  //     // $password = $data['password'];
+  //     // $this->db->query('WHERE BINARY username = BINARY $username AND BINARY password = BINARY $data');
+  // }
+
+  function cekakun($nama_akun){
+    $this->db->select('*');
+    $this->db->from('tb_akun_admin');
+    $this->db->where('nama_akun',$nama_akun);
+    return $this->db->get();
+  }
+
+  function ceklogin($nama_akun,$kata_sandi){
+    $this->db->select('*');
+    $this->db->from('tb_akun_admin');
+    $this->db->where('nama_akun',$nama_akun);
+    $this->db->where('kata_sandi',$kata_sandi);
+    return $this->db->get();
+  }
 
 }
 ?>

@@ -39,7 +39,7 @@ class Datamaster extends CI_Controller{
         $this->load->library('layout');
         $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
-            redirect('admin/login/loginhalaman');
+            redirect('admin/login');
         }
         else if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
             redirect('admin/pendaftaran');
@@ -62,7 +62,7 @@ class Datamaster extends CI_Controller{
         $this->session->unset_userdata('nama_akun');
         $this->session->unset_userdata('kode_role_admin');
         session_destroy();
-        redirect('admin/login/loginhalaman');
+        redirect('admin/login');
     }
 
     // CRUD Admin
