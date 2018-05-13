@@ -27,6 +27,7 @@ class Orangtua extends CI_Controller {
     $variabel['santri'] = $exec->row_array();
     $variabel['dataspp'] = $this->m_dashboard->bayarspp($nis,$bulanini,$tahunini);
     $variabel['datainfo'] = $this->m_dashboard->lihatinfo();
+    $variabel['dataizin'] = $this->m_dashboard->datakeluarterakhir($nis);
     $this->layout_ortu->render('orangtua/v_dashboard',$variabel,'orangtua/v_orangtua_js');
   }
 

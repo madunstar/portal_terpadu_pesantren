@@ -3343,4 +3343,124 @@ function deleteinformasi()
   redirect(base_url()."admin/datamaster/informasi?msg=1");
 }
 
+
+function printkelaspondokan(){
+    $id = $this->input->get("id");
+    $exec = $this->m_presensipondokan->lihatdatasatulengkap($id);
+    if ($exec->num_rows()>0) {
+        $variabel['jadwal'] = $exec->row_array();
+        $variabel['listjadwal'] = $this->m_presensipondokan->lihatjadwal($id);
+        $this->layout->render('back-end/presensi/presensi_pondokan/v_presensi_print',$variabel,'back-end/presensi/presensi_pondokan/v_presensi_printjs');
+    } else {
+        redirect(base_url("admin/datamaster/datakelaspondokan"));
+    }
+}
+
+
+function printjadwalpondokan(){
+    $id = $this->input->get("id");
+    $data = $this->m_presensipondokan->lihatdatasatujadwal($id)->row_array();
+    $variabel['data'] = $data;
+    $variabel['data2'] =  $this->m_presensipondokan->lihatdatasatulengkap($data['id_kelas_belajar'])->row_array();
+    $variabel['santri'] = $this->m_presensipondokan->lihatdatasantri($data['id_kelas_belajar']);
+    $this->layout->renderlaporan('back-end/presensi/presensi_pondokan/v_presensi_printjadwal',$variabel,'back-end/presensi/presensi_pondokan/v_presensi_printjadwal_js');
+  }
+
+  
+function printkelasafilasi(){
+    $id = $this->input->get("id");
+    $exec = $this->m_presensi->lihatdatasatulengkap($id);
+    if ($exec->num_rows()>0) {
+        $variabel['jadwal'] = $exec->row_array();
+        $variabel['listjadwal'] = $this->m_presensi->lihatjadwal($id);
+        $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_print',$variabel,'back-end/presensi/presensi_kelas/v_presensi_printjs');
+    } else {
+        redirect(base_url("admin/datamaster/datakelasbelajar"));
+    }
+}
+
+
+function printjadwalafilasi(){
+    $id = $this->input->get("id");
+    $data = $this->m_presensi->lihatdatasatujadwal($id)->row_array();
+    $variabel['data'] = $data;
+    $variabel['data2'] =  $this->m_presensi->lihatdatasatulengkap($data['id_kelas_belajar'])->row_array();
+    $variabel['santri'] = $this->m_presensi->lihatdatasantri($data['id_kelas_belajar']);
+    $this->layout->renderlaporan('back-end/presensi/presensi_kelas/v_presensi_printjadwal',$variabel,'back-end/presensi/presensi_kelas/v_presensi_printjadwal_js');
+  }
+
+  function cetakkartu(){
+    $nis = $this->input->get("nis");
+ 
+    $exec = $this->m_santri->lihatdatasatu($nis);
+    if ($exec->num_rows()>0){
+        $this->_generate_barcode($nis,'BCGcode39');
+        $variabel['data'] = $exec ->row_array();
+        // $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
+        // $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); ;
+        $this->load->view('back-end/datamaster/santri/v_santri_kartu',$variabel);
+    } else {
+        redirect(base_url("admin/datamaster/santri"));
+    }
+   
+  }
+  private function _generate_barcode($sparepart_code, $barcode_type, $scale=6, $fontsize=18, $thickness=30,$dpi=72) {
+    // CREATE BARCODE GENERATOR
+    // Including all required classes
+    require_once( APPPATH . 'libraries/barcodegen/BCGFontFile.php');
+    require_once( APPPATH . 'libraries/barcodegen/BCGColor.php');
+    require_once( APPPATH . 'libraries/barcodegen/BCGDrawing.php');
+
+    // Including the barcode technology
+    // Ini bisa diganti-ganti mau yang 39, ato 128, dll, liat di folder barcodegen
+    require_once( APPPATH . 'libraries/barcodegen/BCGcode39.barcode.php');
+
+    // Loading Font
+    // kalo mau ganti font, jangan lupa tambahin dulu ke folder font, baru loadnya di sini
+    $font = new BCGFontFile(APPPATH . 'libraries/font/Arial.ttf', $fontsize);
+    
+    // Text apa yang mau dijadiin barcode, biasanya kode produk
+    $text = $sparepart_code;
+
+    // The arguments are R, G, B for color.
+    $color_black = new BCGColor(0, 0, 0);
+    $color_white = new BCGColor(255, 255, 255);
+
+    $drawException = null;
+    try {
+        $code = new BCGcode39(); // kalo pake yg code39, klo yg lain mesti disesuaikan
+        $code->setScale($scale); // Resolution
+        $code->setThickness($thickness); // Thickness
+        $code->setForegroundColor($color_black); // Color of bars
+        $code->setBackgroundColor($color_white); // Color of spaces
+        $code->setFont($font); // Font (or 0)
+        $code->parse($text); // Text
+    } catch(Exception $exception) {
+        $drawException = $exception;
+    }
+
+    /* Here is the list of the arguments
+    1 - Filename (empty : display on screen)
+    2 - Background color */
+    $drawing = new BCGDrawing('', $color_white);
+    if($drawException) {
+        $drawing->drawException($drawException);
+    } else {
+        $drawing->setDPI($dpi);
+        $drawing->setBarcode($code);
+        $drawing->draw();
+    }
+    // ini cuma labeling dari sisi aplikasi saya, penamaan file menjadi png barcode.
+    $filename_img_barcode = $sparepart_code .'_'.$barcode_type.'.png';
+    // folder untuk menyimpan barcode
+    $drawing->setFilename('assets/barcode/'. $filename_img_barcode);
+    // proses penyimpanan barcode hasil generate
+    $drawing->finish(BCGDrawing::IMG_FORMAT_PNG);
+
+    return $filename_img_barcode;
+}
+
+
+
+
 }

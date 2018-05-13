@@ -116,6 +116,14 @@ class M_presensi extends CI_Model
          $this->db->order_by("jam","asc");
          return $this->db->get();
      }
+     function lihatjadwal($id_kelas_belajar)
+     {
+         $this->db->from("tb_presensi_jadwal_afilasi");
+         $this->db->where("id_kelas_belajar",$id_kelas_belajar);
+         $this->db->where("id_mata_pelajaran !=",'Istirahat');
+         $this->db->group_by('id_mata_pelajaran');
+         return $this->db->get();
+     }
  
      function tambahdatajadwal($array)
     {

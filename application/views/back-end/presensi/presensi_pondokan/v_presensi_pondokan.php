@@ -22,7 +22,7 @@
 							<table class="table table-striped m-b-none" id="datatable">
 								<thead>
 									<tr>
-										<th style="width:130px">Aksi</th>
+										<th style="width:140px">Aksi</th>
 										<th>#</th>
 										<th>Tahun Ajaran</th>
 										<th>Kelas</th>
@@ -31,13 +31,12 @@
 										<th>Kelas Pondokan</th>
 										<th>Tingkat</th>
 										<th>jadwal Pelajaran</th>
-
 										<th>Status</th>
 										<th>Santri</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php
+				<?php
                     $i=0;
                     foreach($data->result_array() as $row){
                       $i++;
@@ -47,7 +46,8 @@
                           <td>
                           <a href='".base_url('admin/datamaster/lihatkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
                           <a href='".base_url('admin/datamaster/editkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-                          <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
+						  <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
+						  <a href='".base_url('admin/datamaster/printkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs print' title='print' id='".$row['id_kelas_belajar']."'><i class='fa fa-print'></i></a>
                           </td>
                           <td>".$i."</td>
                           <td>".$row['tahun_ajaran']."</td>
@@ -66,7 +66,6 @@
 								</tbody>
 							</table>
 						</div>
-
 					</section>
 					<div>
 					</div>

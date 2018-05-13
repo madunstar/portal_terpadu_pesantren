@@ -53,6 +53,15 @@ class M_dashboard extends CI_Model{
 
     }
 
+    function datakeluarterakhir($nis){
+      $this->db->from('tb_perizinan_keluar');
+      $this->db->join('tb_santri', 'nis_santri = nis_lokal');
+      $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+      $this->db->where('tb_santri.nis_lokal', $nis);
+      $this->db->order_by("tanggal_keluar","desc");
+      $this->db->limit(3);
+      return $this->db->get();
+    }
 
       //////////////////////////////////
 

@@ -22,7 +22,7 @@
 							<table class="table table-striped m-b-none" id="datatable">
 								<thead>
 									<tr>
-										<th style="width:120px">Aksi</th>
+										<th style="width:150px">Aksi</th>
 										<th>#</th>
 										<th>Tahun Ajaran</th>
 										<th>Kelas</th>
@@ -46,7 +46,8 @@
                           <td>
                           <a href='".base_url('admin/datamaster/lihatkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Hapus'><i class='fa fa-eye'></i></a>
                           <a href='".base_url('admin/datamaster/editkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-                          <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
+						  <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
+						  <a href='".base_url('admin/datamaster/printkelasafilasi?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs print' title='print' id='".$row['id_kelas_belajar']."'><i class='fa fa-print'></i></a>
                           </td>
                           <td>".$i."</td>
                           <td>".$row['tahun_ajaran']."</td>

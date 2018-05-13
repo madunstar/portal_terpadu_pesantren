@@ -117,6 +117,15 @@ class M_presensipondokan extends CI_Model
         return $this->db->get();
     }
 
+    function lihatjadwal($id_kelas_belajar)
+    {
+        $this->db->from("tb_presensi_jadwal");
+        $this->db->where("id_kelas_belajar",$id_kelas_belajar);
+        $this->db->where("id_mata_pelajaran !=",'Istirahat');
+        $this->db->group_by('id_mata_pelajaran');
+        return $this->db->get();
+    }
+
     function tambahdatajadwal($array)
    {
        return $this->db->insert('tb_presensi_jadwal',$array);
