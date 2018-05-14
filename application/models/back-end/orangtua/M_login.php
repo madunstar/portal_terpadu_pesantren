@@ -11,17 +11,17 @@ class M_login extends CI_Model{
   //   return $query;
   // }
 
-  function ceknis($nis){
+  function cekid($id_ortu){
     $this->db->select('*');
     $this->db->from('tb_akun_ortu');
-    $this->db->where('nis_lokal',$nis);
+    $this->db->where('id_ortu',$id_ortu);
     return $this->db->get();
   }
 
-  function ceklogin($nis,$kata_sandi){
+  function ceklogin($id_ortu,$kata_sandi){
     $this->db->select('*');
     $this->db->from('tb_akun_ortu');
-    $this->db->where('nis_lokal',$nis);
+    $this->db->where('id_ortu',$id_ortu);
     $this->db->where('kata_sandi',$kata_sandi);
     return $this->db->get();
   }

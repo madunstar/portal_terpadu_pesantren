@@ -12,10 +12,11 @@
               </div>
               <a class="navbar-brand block" href="index.html">LOGIN PORTAL ORANGTUA PESANTREN DARUL ILMI</a>
               <?php pesan_get('msg',"Sukses","Akun Portal Orangtua Tidak Terdaftar! Silahkan Masuk ke Halaman Pendaftaran","NIS dan Kata Sandi tidak cocok") ?>
+              <?php pesan_get('msgid',"Sukses","Akun Portal Orangtua Tidak Aktif! Silahkan Hubungi Staff Administrasi","Error") ?>
               <form  action="<?php echo base_url()?>orangtua/login/ceklogin" method="post" data-validate="parsley">
                 <div class="list-group">
                   <div class="list-group-item">
-                    <input name="nis_lokal" data-required="true" type="text" placeholder="Nomor Induk Santri" value="<?php echo set_value('nis_lokal'); ?>" class="form-control no-border">
+                    <input name="id_ortu" data-required="true" type="text" placeholder="ID Orangtua atau Wali" value="<?php echo set_value('id_ortu'); ?>" class="form-control no-border">
                   </div>
                   <div class="list-group-item">
                     <input name="kata_sandi" data-required="true" type="password" placeholder="Kata Sandi" value="<?php echo set_value('kata_sandi'); ?>" class="form-control no-border" id="pwd">

@@ -3366,7 +3366,7 @@ function printjadwalpondokan(){
     $this->layout->renderlaporan('back-end/presensi/presensi_pondokan/v_presensi_printjadwal',$variabel,'back-end/presensi/presensi_pondokan/v_presensi_printjadwal_js');
   }
 
-  
+
 function printkelasafilasi(){
     $id = $this->input->get("id");
     $exec = $this->m_presensi->lihatdatasatulengkap($id);
@@ -3391,7 +3391,7 @@ function printjadwalafilasi(){
 
   function cetakkartu(){
     $nis = $this->input->get("nis");
- 
+
     $exec = $this->m_santri->lihatdatasatu($nis);
     if ($exec->num_rows()>0){
         $this->_generate_barcode($nis,'BCGcode39');
@@ -3402,7 +3402,7 @@ function printjadwalafilasi(){
     } else {
         redirect(base_url("admin/datamaster/santri"));
     }
-   
+
   }
   private function _generate_barcode($sparepart_code, $barcode_type, $scale=6, $fontsize=18, $thickness=30,$dpi=72) {
     // CREATE BARCODE GENERATOR
@@ -3418,7 +3418,7 @@ function printjadwalafilasi(){
     // Loading Font
     // kalo mau ganti font, jangan lupa tambahin dulu ke folder font, baru loadnya di sini
     $font = new BCGFontFile(APPPATH . 'libraries/font/Arial.ttf', $fontsize);
-    
+
     // Text apa yang mau dijadiin barcode, biasanya kode produk
     $text = $sparepart_code;
 

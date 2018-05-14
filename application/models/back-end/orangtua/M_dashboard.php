@@ -8,25 +8,25 @@ class M_dashboard extends CI_Model{
         parent::__construct();
     }
 
-    function lihatubahsandi($nis_lokal){
-        $this->db->select('nis_lokal, nama_ortu, kata_sandi');
+    function lihatubahsandi($id_ortu){
+        $this->db->select('id_ortu, nama_ortu, email_ortu, kata_sandi');
         $this->db->from('tb_akun_ortu');
-        $this->db->where("nis_lokal",$nis_lokal);
+        $this->db->where('id_ortu',$id_ortu);
         return $this->db->get();
     }
 
-    function cekubahsandi($nis_lokal){
-        $query = $this->db->where(['nis_lokal'=>$nis_lokal])
+    function cekubahsandi($id_ortu){
+        $query = $this->db->where(['id_ortu'=>$id_ortu])
                           ->get('tb_akun_ortu');
         if($query->num_rows() > 0){
           return $query->row();
         }
     }
 
-    function ubahsandi($nis_lokal, $kata_sandi, $kata_sandibr)
+    function ubahsandi($id_ortu, $kata_sandi, $kata_sandibr)
     {
         $this->db->set("kata_sandi",$kata_sandibr);
-        $this->db->where("nis_lokal",$nis_lokal);
+        $this->db->where("id_ortu",$id_ortu);
         $this->db->where("kata_sandi",$kata_sandi);
         return $this->db->update('tb_akun_ortu');
     }
