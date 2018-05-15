@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Data Rekap Presensi Guru Mata Pelajaran Pelajaran <?php echo $matpel ?> Kelas <?php echo $namakelas ?>
+        Data Rekap Presensi Guru Mata Pelajaran <b><?php echo $matpel ?></b> Kelas <b><?php echo $namakelas ?></b>
 
       </header>
       <div class="table-responsive">
@@ -23,7 +23,7 @@
               <th>Mata Pelajaran</th>
               <th>Tanggal</th>
               <th>Status Presensi</th>
-              <th>Jam Pelajaran</th>
+
             </tr>
           </thead>
           <tbody>
@@ -38,7 +38,7 @@
                       <td>".$row['nama_mata_pelajaran']."</td>
                       <td>".$row['tanggal_rekap']."</td>
                       <td>".$row['status_presensi']."</td>
-                      <td></td>
+
                     </tr>
                     <div class='modal' id='".$row['id_rekap']."' tabindex='-1' role='dialog'>
                      <div class='modal-dialog' role='document'>
@@ -113,7 +113,7 @@
                         </select>
                       </div>
                     </div>
-                    <input type="hidden" name="jdw" value="<?php echo $jadwal ?>">
+
                     <input type="hidden" name="pel" value="<?php echo $pelajaran ?>">
                     <input type="hidden" name="kel" value="<?php echo $kelas ?>">
                     <input type="hidden" name="tgl" value="<?php echo $tanggal ?>">

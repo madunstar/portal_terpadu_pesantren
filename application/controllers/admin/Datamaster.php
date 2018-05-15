@@ -2155,8 +2155,10 @@ function kecamatanhapus()
    function tambahrekapguru(){
      if ($this->input->post()){
        $array = array(
-         'id_jadwal' => $this->input->post('jdw'),
+         'id_pelajaran' => $this->input->post('pel'),
+         'id_kelas' => $this->input->post('kel'),
          'status_presensi' => $this->input->post('status'),
+         'nip_guru' => $this->input->post('nip'),
          'tanggal_rekap' => $this->input->post('tanggal_rekap')
        );
       $today = date('Y-m-d');
@@ -2167,13 +2169,13 @@ function kecamatanhapus()
      $jdw = $this->input->post('jdw');
      $nip = $this->input->post('nip');
      if ($tglr > $today) {
-       redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&psn=0"));
+       redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&psn=0"));
      } else{
        $exec = $this->m_rekap_guru->tambahdata($array);
        if ($exec){
-         redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&msg=1"));
+         redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&msg=1"));
        } else{
-         redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&msg=0"));
+         redirect(base_url("admin/datamaster/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&msg=0"));
        }
       }
      }
