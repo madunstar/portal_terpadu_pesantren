@@ -50,7 +50,7 @@
                            <b>Apakah yakin menghapus data?</b>
                          </div>
                          <div class='modal-footer'>
-                           <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusrekapguru?id='.$row['id_rekap'].'&kelas='.$kelas.'&pelajaran='.$pelajaran.'&tanggal='.$tanggal.'&guru='.$nip_guru.'')."'>
+                           <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusrekapguru?id='.$row['id_rekap'].'&kelas='.$kelas.'&pelajaran='.$pelajaran.'&tanggal='.$tanggal.'&jadwal='.$jadwal.'&guru='.$nip_guru.'')."'>
                            <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
                            <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                          </div>
@@ -65,7 +65,7 @@
       </div>
       <footer class="panel-footer text-right">
         <a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekap" type="button" class="btn btn-default" name="button"><i class="fa fa-list"></i> Daftar Pelajaran</a>
-        <a href="<?php echo base_url() ?>admin/datamaster/laporanrekapguru?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>&guru=<?php echo $nip_guru ?>" type="button" class="btn btn-primary" name="button"><i class="fa fa-print"></i> Cetak Rekap Harian</a>
+        <a href="<?php echo base_url() ?>admin/datamaster/laporanrekapguru?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>&jadwal=<?php echo $jadwal ?>&guru=<?php echo $nip_guru ?>" type="button" class="btn btn-primary" name="button"><i class="fa fa-print"></i> Cetak Rekap Harian</a>
       </footer>
     </section>
     <!-- ini tambah data -->
