@@ -10,27 +10,27 @@ class m_rekap_guru extends CI_Model
         parent::__construct();
     }
 
-    function datapelajaran()
-    {
-        $this->db->select('*');
-        $this->db->from('tb_presensi_jadwal');
-        $this->db->join('tb_pelajaran', 'tb_presensi_jadwal.id_pelajaran = tb_pelajaran.id_pelajaran');
-        $this->db->join('tb_presensi_kelas', 'tb_presensi_jadwal.id_kelas_belajar = tb_presensi_kelas.id_kelas_belajar');
-        $this->db->join('tb_mata_pelajaran', 'tb_pelajaran.id_mata_pelajaran = tb_mata_pelajaran.id_mata_pelajaran');
-        $this->db->join('tb_guru', 'tb_pelajaran.nip_guru = tb_guru.nip_guru');
-        return $this->db->get();
-    }
+    // function datapelajaran()
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('tb_presensi_jadwal_afilasi');
+    //     $this->db->join('tb_pelajaran', 'tb_presensi_jadwal_afilasi.id_mata_pelajaran = tb_pelajaran.id_mata_pelajaran');
+    //     $this->db->join('tb_presensi_kelas', 'tb_presensi_jadwal_afilasi.id_kelas_belajar = tb_presensi_kelas.id_kelas_belajar');
+    //     $this->db->join('tb_mata_pelajaran', 'tb_pelajaran.id_mata_pelajaran = tb_mata_pelajaran.id_mata_pelajaran');
+    //     $this->db->join('tb_guru', 'tb_pelajaran.nip_guru = tb_guru.nip_guru');
+    //     return $this->db->get();
+    // }
 
-    function rekapguru($jdw)
+    function rekapguru($pel,$kel)
     {
       $this->db->select('*');
-      $this->db->from('tb_presensi_rekap_guru');
-      $this->db->join('tb_presensi_jadwal', 'tb_presensi_rekap_guru.id_jadwal = tb_presensi_jadwal.id_jadwal');
-      $this->db->join('tb_pelajaran', 'tb_presensi_jadwal.id_pelajaran = tb_pelajaran.id_pelajaran');
-      $this->db->join('tb_presensi_kelas', 'tb_presensi_jadwal.id_kelas_belajar = tb_presensi_kelas.id_kelas_belajar');
+      $this->db->from('tb_presensi_rekap_guru_afilasi');
+      $this->db->join('tb_pelajaran', 'tb_presensi_rekap_guru_afilasi.id_pelajaran = tb_pelajaran.id_pelajaran');
+      $this->db->join('tb_presensi_kelas', 'tb_presensi_rekap_guru_afilasi.id_kelas = tb_presensi_kelas.id_kelas_belajar');
       $this->db->join('tb_mata_pelajaran', 'tb_pelajaran.id_mata_pelajaran = tb_mata_pelajaran.id_mata_pelajaran');
       $this->db->join('tb_guru', 'tb_pelajaran.nip_guru = tb_guru.nip_guru');
-      $this->db->where('tb_presensi_jadwal.id_jadwal',$jdw);
+      $this->db->where('tb_presensi_rekap_guru_afilasi.id_pelajaran',$pel);
+      $this->db->where('tb_presensi_rekap_guru_afilasi.id_kelas',$kel);
       return $this->db->get();
     }
 
@@ -48,7 +48,7 @@ class m_rekap_guru extends CI_Model
       $this->db->select('id_santri');
       $this->db->from('tb_presensi_rekap_santri');
       $this->db->where('id_santri', $nis);
-      $this->db->where('id_pelajaran', $pel);
+      $this->db->where('id_mata_pelajaran', $pel);
       $this->db->where('id_kelas', $kel);
       $this->db->where('tanggal_rekap', $tgl);
       $query = $this->db->get();
@@ -70,7 +70,7 @@ class m_rekap_guru extends CI_Model
 
     function tambahdata($array)
     {
-        return $this->db->insert('tb_presensi_rekap_guru',$array);
+        return $this->db->insert('tb_presensi_rekap_guru_afilasi',$array);
     }
 
     function pelajaran($pel){
@@ -97,12 +97,12 @@ class m_rekap_guru extends CI_Model
     function hapus($id_rekap)
     {
         $this->db->where("id_rekap",$id_rekap);
-        return $this->db->delete('tb_presensi_rekap_guru');
+        return $this->db->delete('tb_presensi_rekap_guru_afilasi');
     }
 
     function totalhadir($jdw){
       $this->db->select('count(*) as total')
-        ->from('tb_presensi_rekap_guru')
+        ->from('tb_presensi_rekap_guru_afilasi')
         ->where('id_jadwal', $jdw)
 
 
@@ -113,7 +113,7 @@ class m_rekap_guru extends CI_Model
 
     function totalizin($jdw){
       $this->db->select('count(*) as total')
-        ->from('tb_presensi_rekap_guru')
+        ->from('tb_presensi_rekap_guru_afilasi')
         ->where('id_jadwal', $jdw)
 
         ->where('status_presensi', 'izin');
@@ -123,7 +123,7 @@ class m_rekap_guru extends CI_Model
 
     function totalsakit($jdw){
       $this->db->select('count(*) as total')
-        ->from('tb_presensi_rekap_guru')
+        ->from('tb_presensi_rekap_guru_afilasi')
       ->where('id_jadwal', $jdw)
         ->where('status_presensi', 'sakit');
         return $this->db->get()
@@ -132,7 +132,7 @@ class m_rekap_guru extends CI_Model
 
     function totalalfa($jdw){
       $this->db->select('count(*) as total')
-        ->from('tb_presensi_rekap_guru')
+        ->from('tb_presensi_rekap_guru_afilasi')
         ->where('id_jadwal', $jdw)
         ->where('status_presensi', 'alfa');
         return $this->db->get()

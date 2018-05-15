@@ -2067,6 +2067,7 @@ function kecamatanhapus()
        $variabel['pelajaran'] = $pel;
        $variabel['santri'] = $this->m_rekap_santri->datasantri($kel,$tgl,$pel);
        $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
+       $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
        if ($tgl > $today){
          redirect(base_url("admin/datamaster/datarekapsantri?kelas=$kel&pelajaran=$pel&tanggal=$today&psn=0"));
        } else{
@@ -2081,6 +2082,7 @@ function kecamatanhapus()
      $variabel['pelajaran'] = $pel;
      $variabel['santri'] = $this->m_rekap_santri->datasantri($kel,$tgl,$pel);
      $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
+     $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
      $this->layout->render('back-end/presensi/rekap_presensi/v_data_rekap',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');}
    }
 
@@ -2135,16 +2137,14 @@ function kecamatanhapus()
 
    //mulai rekap guru//
    function datarekapguru(){
-     $jdw = $this->input->get('jadwal');
-     $tgl = $this->input->get('tanggal');
-     $kel = $this->input->get('kelas');
      $pel = $this->input->get('pelajaran');
+     $kel = $this->input->get('kelas');
+     $tgl = $this->input->get('tanggal');
      $nip = $this->input->get('guru');
-      $variabel['data'] = $this->m_rekap_guru->rekapguru($jdw);
+      $variabel['data'] = $this->m_rekap_guru->rekapguru($pel,$kel);
       $variabel['tanggal'] = $tgl;
       $variabel['kelas'] = $kel;
       $variabel['pelajaran'] = $pel;
-      $variabel['jadwal'] = $jdw;
       $variabel['nip_guru'] =$nip;
       $variabel['namakelas'] = $this->m_rekap_guru->kelas($kel);
       $variabel['matpel'] = $this->m_rekap_guru->pelajaran($pel);
@@ -3366,7 +3366,7 @@ function printjadwalpondokan(){
     $this->layout->renderlaporan('back-end/presensi/presensi_pondokan/v_presensi_printjadwal',$variabel,'back-end/presensi/presensi_pondokan/v_presensi_printjadwal_js');
   }
 
-  
+
 function printkelasafilasi(){
     $id = $this->input->get("id");
     $exec = $this->m_presensi->lihatdatasatulengkap($id);
@@ -3391,7 +3391,7 @@ function printjadwalafilasi(){
 
   function cetakkartu(){
     $nis = $this->input->get("nis");
- 
+
     $exec = $this->m_santri->lihatdatasatu($nis);
     if ($exec->num_rows()>0){
         $this->_generate_barcode($nis,'BCGcode39');
@@ -3402,7 +3402,7 @@ function printjadwalafilasi(){
     } else {
         redirect(base_url("admin/datamaster/santri"));
     }
-   
+
   }
   private function _generate_barcode($sparepart_code, $barcode_type, $scale=6, $fontsize=18, $thickness=30,$dpi=72) {
     // CREATE BARCODE GENERATOR
@@ -3418,7 +3418,7 @@ function printjadwalafilasi(){
     // Loading Font
     // kalo mau ganti font, jangan lupa tambahin dulu ke folder font, baru loadnya di sini
     $font = new BCGFontFile(APPPATH . 'libraries/font/Arial.ttf', $fontsize);
-    
+
     // Text apa yang mau dijadiin barcode, biasanya kode produk
     $text = $sparepart_code;
 
