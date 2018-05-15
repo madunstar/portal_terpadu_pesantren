@@ -17,7 +17,7 @@
           <thead>
             <tr>
 
-              <th>ID Orangtua atau Wali (NIS Santri)</th>
+              <th>ID Orangtua atau Wali</th>
               <th>Alamat Email</th>
               <th>Status Akun</th>
 
