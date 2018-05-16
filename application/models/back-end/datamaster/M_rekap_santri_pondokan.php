@@ -40,7 +40,7 @@ class m_rekap_santri_pondokan extends CI_Model
 
     function datasantri($kel,$tgl,$pel){
 
-      return $this->db->query('select * from tb_kelas_santri inner join tb_santri on tb_kelas_santri.nis_lokal = tb_santri.nis_lokal where tb_kelas_santri.id_kelas_belajar ='.$kel.' and not exists (select * from tb_presensi_rekap_santri where tb_presensi_rekap_santri.id_santri = tb_santri.nis_lokal and id_kelas = '.$kel.' and tanggal_rekap ="'.$tgl.'" and id_pelajaran ='.$pel.')');
+      return $this->db->query('select * from tb_pondokan_santri inner join tb_santri on tb_pondokan_santri.nis_lokal = tb_santri.nis_lokal where tb_pondokan_santri.id_kelas_belajar ='.$kel.' and not exists (select * from tb_presensi_rekap_santri where tb_presensi_rekap_santri.id_santri = tb_santri.nis_lokal and id_kelas = '.$kel.' and tanggal_rekap ="'.$tgl.'" and id_pelajaran ='.$pel.')');
     }
 
     function cekdata($nis,$pel,$kel,$tgl){
