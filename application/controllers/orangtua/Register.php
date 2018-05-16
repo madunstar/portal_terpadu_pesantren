@@ -16,23 +16,24 @@ class Register extends CI_Controller {
   function addakun(){
     $kata_sandi = $this->input->post('kata_sandi');
     $encrypt_sandi = md5($kata_sandi);
-    $tgl_daftar = date('Ymd').'0000';
-    $cur_row = $this->m_akunortu->get_count_akun();
-    if($cur_row > 0){
-      $last_akun = $this->m_akunortu->get_last_akun();
-      $next = $last_akun + 1;
-      $id_ortu = $tgl_daftar + $next;
-    } else {
-      $id_ortu = $tgl_daftar + 1;
-    }
+    // $tgl_daftar = date('Ymd').'0000';
+    // $cur_row = $this->m_akunortu->get_count_akun();
+    // if($cur_row > 0){
+    //   $last_akun = $this->m_akunortu->get_last_akun();
+    //   $next = $last_akun + 1;
+    //   $id_ortu = $tgl_daftar + $next;
+    // } else {
+    //   $id_ortu = $tgl_daftar + 1;
+    // }
     if ($this->input->post()){
       $array=array(
-        'id_ortu' => $id_ortu,
-        'nis_lokal' => $this->input->post('nis_lokal'),
+        'id_ortu' => $this->input->post('id_ortu'),
         'nama_ortu' => $this->input->post('nama_ortu'),
-        'kata_sandi' => $encrypt_sandi
+        'kata_sandi' => $encrypt_sandi,
+        'email_ortu' => $this->input->post('email_ortu'),
+        'status_akun' => 'aktif'
       );
-      if ($this->m_akunortu->cekdata($this->input->post('nis_lokal'))==1){
+      if ($this->m_akunortu->cekdata($this->input->post('id_ortu'))==1){
         $exec = $this->m_akunortu->tambahakun($array);
         redirect(base_url("orangtua/login"));
       } else{

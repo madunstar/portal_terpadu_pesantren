@@ -18,7 +18,10 @@
               <form  action="<?php echo base_url() ?>orangtua/register/addakun" method="post" data-validate="parsley">
                 <div class="list-group">
                   <div class="list-group-item">
-                    <input name="nis_lokal" data-required="true" type="text" placeholder="Nomor Induk Santri" value="<?php echo set_value('nis_lokal'); ?>" class="form-control no-border">
+                    <input name="id_ortu" data-required="true" type="text" placeholder="ID Orangtua atau Wali" value="<?php echo set_value('id_ortu'); ?>" class="form-control no-border">
+                  </div>
+                  <div class="list-group-item">
+                    <input name="email_ortu" data-required="true" type="email" placeholder="Email Orang Tua atau Wali" value="<?php echo set_value('email_ortu'); ?>" class="form-control no-border">
                   </div>
                   <div class="list-group-item">
                     <input name="nama_ortu" data-required="true" type="text" placeholder="Nama Orang Tua atau Wali" value="<?php echo set_value('nama_ortu'); ?>" class="form-control no-border">

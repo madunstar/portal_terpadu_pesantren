@@ -19,18 +19,27 @@ Class Login extends CI_Controller{
     if ($this->input->post()){
       $kata_sandi = $this->input->post('kata_sandi', TRUE);
       $encrypt_sandi = md5($kata_sandi);
-      $nis = $this->input->post('nis_lokal', TRUE);
-      $ceknis = $this->m_login->ceknis($nis)->num_rows();
-      if ($ceknis > 0){
-        $cek = $this->m_login->ceklogin($nis, $encrypt_sandi);
-        if ($cek->num_rows() > 0) {
-          foreach ($cek->result_array() as $datauser) {
-            $sess_data['nis_lokal'] = $datauser['nis_lokal'];
-            $sess_data['nama_ortu'] = $datauser['nama_ortu'];
-            $this->session->set_userdata($sess_data);
+      $id_ortu = $this->input->post('id_ortu', TRUE);
+      $cekid = $this->m_login->cekid($id_ortu)->num_rows();
+      if ($cekid > 0){
+        $cekstatusakun =$this->m_login->cekid($id_ortu);
+        foreach ($cekstatusakun->result_array() as $akun) {
+            $statusakun = $akun['status_akun'];
           }
-          redirect(base_url("orangtua/portal_ortu/dashboard"));
-        } else { redirect(base_url("orangtua/login?msg=2"));}
+        if ($statusakun == "tidak aktif"){
+          redirect(base_url("orangtua/login?msgid=0"));
+        }
+        elseif ($statusakun == "aktif"){
+          $cek = $this->m_login->ceklogin($id_ortu, $encrypt_sandi);
+          if ($cek->num_rows() > 0) {
+            foreach ($cek->result_array() as $datauser) {
+              $sess_data['id_ortu'] = $datauser['id_ortu'];
+              $sess_data['nama_ortu'] = $datauser['nama_ortu'];
+              $this->session->set_userdata($sess_data);
+            }
+            redirect(base_url("orangtua/portal_ortu/dashboard"));
+          } else { redirect(base_url("orangtua/login?msg=2"));}
+        }
       }
       else {
         redirect(base_url("orangtua/login?msg=0"));

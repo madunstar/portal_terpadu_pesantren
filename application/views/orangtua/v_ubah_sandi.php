@@ -15,13 +15,19 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label class="col-lg-4 control-label">Nomor Induk Santri</label>
+              <label class="col-lg-4 control-label">ID Orangtua atau Wali</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" name="nis_lokal" data-required="true" value="<?php echo $data['nis_lokal']; ?>" readonly/>
+                <input type="text" class="form-control" name="id_ortu" data-required="true" value="<?php echo $data['id_ortu']; ?>" readonly/>
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">Nama Orangtua</label>
+              <label class="col-lg-4 control-label">Email Orangtua atau Wali</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" name="email_ortu" data-required="true" value="<?php echo $data['email_ortu']; ?>" readonly/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4 control-label">Nama Orangtua atau Wali</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control" name="nama_ortu" data-required="true" value="<?php echo $data['nama_ortu']; ?>" readonly/>
               </div>
@@ -58,7 +64,7 @@
       <footer class="panel-footer text-right bg-light lter">
       <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
       &nbsp
-      <a href="<?php echo base_url() ?>orangtua/portal_ortu/ubahsandi?nis=<?php echo $data['nis_lokal']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
+      <a href="<?php echo base_url() ?>orangtua/portal_ortu/ubahsandi?id=<?php echo $data['id_ortu']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
       </footer>
       </form>
 
