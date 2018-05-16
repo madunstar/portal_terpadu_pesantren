@@ -131,6 +131,12 @@
                           <span>Atur Kelas Afilasi</span>
                         </a>
                       </li>
+											<li class="<?= (($menu == "datamaster") &&  ($submenu == 'pondokanrekap') || ($submenu == 'datarekapsantripondokan')) ? "active" : ""; ?>">
+												<a href="<?php echo base_url() ?>admin/datamaster/pondokanrekap" class="auto">
+													<i class="i i-dot"></i>
+													<span>Rekap Presensi Pondokan</span>
+												</a>
+											</li>
                       <li class="<?= (($menu == "datamaster") &&  ($submenu == 'pelajaranrekap') || ($submenu == 'datarekapsantri')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekap" class="auto">
                           <i class="i i-dot"></i>
