@@ -2,7 +2,7 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Rekap Presensi Kelas Afiliasi</h3>
+      <h3 class="m-b-none">Rekap Presensi Kelas Pondokan</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
@@ -51,7 +51,7 @@
                       <td>".$row['nama_mata_pelajaran']."</td>
                       <td>".$row['nama_kelas_belajar']."</td>
                       <td>".$row['status_presensi']."</td>
-                      
+
                     </tr>
                     <div class='modal' id='".$row['id_rekap']."' tabindex='-1' role='dialog'>
                      <div class='modal-dialog' role='document'>

@@ -2144,6 +2144,36 @@ function kecamatanhapus()
      $this->layout->render('back-end/presensi/rekap_presensi_pondokan/v_data_pondokan',$variabel,'back-end/presensi/rekap_presensi_pondokan/v_rekap_js');
    }
 
+   function datarekapsantripondokan(){
+     if ($this->input->post()){
+       $today = date('Y-m-d');
+       $tgl = $this->input->post('tanggal_rekap');
+       $kel = $this->input->post('kelas');
+       $pel = $this->input->post('pelajaran');
+       $variabel['data'] = $this->m_rekap_santri_pondokan->datakelas($kel,$pel,$tgl);
+       $variabel['tanggal'] = $tgl;
+       $variabel['kelas'] = $kel;
+       $variabel['pelajaran'] = $pel;
+       $variabel['santri'] = $this->m_rekap_santri_pondokan->datasantri($kel,$tgl,$pel);
+       $variabel['matpel'] = $this->m_rekap_santri_pondokan->pelajaran($pel);
+       $variabel['namakelas'] = $this->m_rekap_santri_pondokan->kelas($kel);
+       if ($tgl > $today){
+         redirect(base_url("admin/datamaster/datarekapsantripondokan?kelas=$kel&pelajaran=$pel&tanggal=$today&psn=0"));
+       } else{
+       $this->layout->render('back-end/presensi/rekap_presensi_pondokan/v_data_rekap_pondokan',$variabel,'back-end/presensi/rekap_presensi_pondokan/v_rekap_js');}
+     } else {
+     $tgl = $this->input->get('tanggal');
+     $kel = $this->input->get('kelas');
+     $pel = $this->input->get('pelajaran');
+     $variabel['data'] = $this->m_rekap_santri_pondokan->datakelas($kel,$pel,$tgl);
+     $variabel['tanggal'] = $tgl;
+     $variabel['kelas'] = $kel;
+     $variabel['pelajaran'] = $pel;
+     $variabel['santri'] = $this->m_rekap_santri_pondokan->datasantri($kel,$tgl,$pel);
+     $variabel['matpel'] = $this->m_rekap_santri_pondokan->pelajaran($pel);
+     $variabel['namakelas'] = $this->m_rekap_santri_pondokan->kelas($kel);
+     $this->layout->render('back-end/presensi/rekap_presensi_pondokan/v_data_rekap_pondokan',$variabel,'back-end/presensi/rekap_presensi_pondokan/v_rekap_js');}
+   }
    //akhir rekap presensi santri//
 
    //mulai rekap guru//
