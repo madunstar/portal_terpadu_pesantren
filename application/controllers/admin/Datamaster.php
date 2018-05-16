@@ -31,6 +31,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_pondokan');
         $this->load->model('back-end/datamaster/m_presensipondokan');
         $this->load->model('back-end/datamaster/m_rekap_santri');
+        $this->load->model('back-end/datamaster/m_rekap_santri_pondokan');
         $this->load->model('back-end/datamaster/m_rekap_guru');
         $this->load->model('back-end/datamaster/m_akun_ortu');
         $this->load->model('back-end/datamaster/m_pak_pondokan');
@@ -2047,7 +2048,9 @@ function kecamatanhapus()
        }
    //end CRUD pelajaran
 
-   //mulai rekap presensi santri kelas afilasi//
+   //mulai rekap presensi//
+
+   ///////////////////////////mulai rekap presensi santri kelas afilasi//
    function pelajaranrekap(){
      $tgl = date('Y-m-d');
      $variabel['tanggal'] = $tgl;
@@ -2133,6 +2136,14 @@ function kecamatanhapus()
      $variabel['santrialfa'] = $this->m_rekap_santri->totalalfa($kel,$pel,$tgl);
        $this->layout->renderlaporan('back-end/presensi/rekap_presensi/v_lap_rekap_harian',$variabel,'back-end/presensi/rekap_presensi/v_rekap_js');
    }
+   /////////////////////////////////////////rekap pondokan///////////////////////////////////
+   function pondokanrekap(){
+     $tgl = date('Y-m-d');
+     $variabel['tanggal'] = $tgl;
+     $variabel['data'] = $this->m_rekap_santri_pondokan->datapelajaran();
+     $this->layout->render('back-end/presensi/rekap_presensi_pondokan/v_data_pondokan',$variabel,'back-end/presensi/rekap_presensi_pondokan/v_rekap_js');
+   }
+
    //akhir rekap presensi santri//
 
    //mulai rekap guru//
