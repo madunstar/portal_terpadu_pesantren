@@ -283,6 +283,130 @@ class Datamaster extends CI_Controller{
         }
     }
 
+    function santriwatihapus()
+    {
+       $nis = $this->input->get("nis");
+       $exec = $this->m_santriwati->hapus($nis);
+       redirect(base_url()."admin/datamaster/santriwati?msg=1");
+    }
+
+    function santriwatiedit()
+    {
+        if ($this->input->post()) {
+            $array=array(
+                'nis_lokal'=> $this->input->post('nis_lokal'),
+                'email_santri'=> $this->input->post('email_santri'),
+                'nisn'=> $this->input->post('nisn'),
+                'nik'=> $this->input->post('nik'),
+                'nama_lengkap'=>$this->input->post('nama_lengkap'),
+                'tempat_lahir'=>$this->input->post('tempat_lahir'),
+                'tgl_lahir'=>tanggalawal($this->input->post('tgl_lahir')),
+                'jenis_kelamin'=>$this->input->post('jenis_kelamin'),
+                'alamat_lengkap'=>$this->input->post('alamat_lengkap'),
+                'provinsi'=>$this->input->post('provinsi'),
+                'kabupaten_kota'=>$this->input->post('kabupaten_kota'),
+                'kecamatan'=>$this->input->post('kecamatan'),
+                'desa_kelurahan'=>$this->input->post('desa_kelurahan'),
+                'kode_pos'=>$this->input->post('kode_pos'),
+                'hobi'=>$this->input->post('hobi'),
+                'cita_cita'=>$this->input->post('cita_cita'),
+                'jenis_sekolah_asal'=>$this->input->post('jenis_sekolah_asal'),
+                'status_sekolah_asal'=>$this->input->post('status_sekolah_asal'),
+                'nomor_peserta_ujian'=>$this->input->post('nomor_peserta_ujian'),
+                'jarak_ke_sekolah'=>$this->input->post('jarak_ke_sekolah'),
+                'alat_transportasi'=>$this->input->post('alat_transportasi'),
+                'status_tempat_tinggal'=>$this->input->post('status_tempat_tinggal'),
+                'no_kk'=>$this->input->post('no_kk'),
+                'nik_ayah'=>$this->input->post('nik_ayah'),
+                'nama_lengkap_ayah'=>$this->input->post('nama_lengkap_ayah'),
+                'pendidikan_terakhir_ayah'=>$this->input->post('pendidikan_terakhir_ayah'),
+                'pekerjaan_ayah'=>$this->input->post('pekerjaan_ayah'),
+                'nik_ibu'=>$this->input->post('nik_ibu'),
+                'nama_lengkap_ibu'=>$this->input->post('nama_lengkap_ibu'),
+                'pendidikan_terakhir_ibu'=>$this->input->post('pendidikan_terakhir_ibu'),
+                'pekerjaan_ibu'=>$this->input->post('pekerjaan_ibu'),
+                'penghasilan_orang_tua'=>$this->input->post('penghasilan_orang_tua'),
+                'nik_wali'=>$this->input->post('nik_wali'),
+                'nama_lengkap_wali'=>$this->input->post('nama_lengkap_wali'),
+                'pendidikan_terakhir_wali'=>$this->input->post('pendidikan_terakhir_wali'),
+                'pekerjaan_wali'=>$this->input->post('pekerjaan_wali'),
+                'penghasilan_wali'=>$this->input->post('penghasilan_wali'),
+                'jumlah_saudara_kandung'=>$this->input->post('jumlah_saudara_kandung'),
+                'hp'=>$this->input->post('hp'),
+                'hpayah'=>$this->input->post('hpayah'),
+                'hpibu'=>$this->input->post('hpibu'),
+                'hpwali'=>$this->input->post('hpwali'),
+                'kelas'=>$this->input->post('kelas'),
+                'pondokan'=>$this->input->post('pondokan')
+                );
+            $nis2 = $this->input->post("nis_lokal2");
+            $nis = $this->input->post("nis_lokal");
+            if (($this->m_santriwati->cekdata($nis)>0) && ($nis2!=$nis)) {
+                $variabel['nis_lokal'] =$this->input->post('nis_lokal');
+                $variabel['nis_lokal2'] =$this->input->post('nis_lokal2');
+                $variabel['data'] = $array;
+
+                $variabel['provinsi']=$this->m_santriwati->ambilprovinsi();
+                $variabel['kabupaten']=$this->m_santriwati->ambilkabupaten($this->input->post('provinsi'));
+                $variabel['kecamatan']=$this->m_santriwati->ambilkecamatan($this->input->post('kabupaten_kota'));
+                $variabel['desa']=$this->m_santriwati->ambildesa($this->input->post('kecamatan'));
+
+                $variabel['transportasi']=$this->m_santriwati->ambiltransportasi();
+                $variabel['pekerjaan']=$this->m_santriwati->ambilpekerjaan();
+                $variabel['pendidikan']=$this->m_santriwati->ambilpendidikan();
+                $variabel['jenjang']=$this->m_jenjang->lihatdata();
+                $variabel['pondokan']=$this->m_pondokan->lihatdata();
+
+                $this->layout->render('back-end/datamaster/santriwati/v_santri_edit',$variabel,'back-end/datamaster/santriwati/v_santri_js');
+            } else {
+                $config['upload_path'] = './assets/images/foto';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|PNG|png';
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload("foto"))
+                {
+                    $upload = $this->upload->data();
+                    $foto = $upload["raw_name"].$upload["file_ext"];
+                    $array['foto']=$foto;
+
+                    $query2 = $this->m_santriwati->lihatdatasatu($nis2);
+                    $row2 = $query2->row();
+                    $berkas1temp = $row2->foto;
+                    $path1 ='./assets/images/foto/'.$berkas1temp.'';
+                    echo "$path1";
+                    if(is_file($path1)) {
+                        unlink($path1); //menghapus gambar di folder produk
+                    }
+                }
+                $exec = $this->m_santriwati->editdata($nis2,$array);
+                if ($exec){
+                  redirect(base_url("admin/datamaster/santriwatiedit?nis=".$nis."&msg=1"));
+                }
+            }
+      } else {
+            $nis = $this->input->get("nis");
+            $exec = $this->m_santriwati->lihatdatasatu($nis);
+            if ($exec->num_rows()>0){
+                $data =  $exec ->row_array();
+                $variabel['data'] = $data;
+
+                $variabel['provinsi']=$this->m_santriwati->ambilprovinsi();
+                $variabel['transportasi']=$this->m_santriwati->ambiltransportasi();
+                 $variabel['pekerjaan']=$this->m_santriwati->ambilpekerjaan();
+                 $variabel['pendidikan']
+                 =$this->m_santriwati->ambilpendidikan();
+
+                 $variabel['kabupaten']=$this->m_santriwati->ambilkabupaten($data['provinsi']);
+                 $variabel['kecamatan']=$this->m_santriwati->ambilkecamatan($data['kabupaten_kota']);
+                 $variabel['desa']=$this->m_santriwati->ambildesa($data['kecamatan']);
+                 $variabel['jenjang']=$this->m_jenjang->lihatdata();
+                 $variabel['pondokan']=$this->m_pondokan->lihatdata();
+                $this->layout->render('back-end/datamaster/santriwati/v_santri_edit',$variabel,'back-end/datamaster/santriwati/v_santri_js');
+            } else {
+                redirect(base_url("admin/datamaster/santriwati"));
+            }
+      }
+
+    }
     //
 
     // CRUD Santri

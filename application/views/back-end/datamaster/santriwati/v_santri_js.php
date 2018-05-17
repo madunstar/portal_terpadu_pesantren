@@ -12,13 +12,13 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/datamaster/santrihapus?nis="+v_nis);
+                    window.location.assign("<?php echo base_url() ?>admin/datamaster/santriwatihapus?nis="+v_nis);
                 }
             },
             batal: function () {
 
             }
-            
+
         }
         });
     });
@@ -101,7 +101,7 @@
 					$('#modal-edit').html(response)
 				}
             });
-       
+
     });
 
     $(".edit2").click(function(e) {
@@ -121,7 +121,7 @@
 					$('#modal-edit').html(response)
 				}
             });
-       
+
     });
 
 });
