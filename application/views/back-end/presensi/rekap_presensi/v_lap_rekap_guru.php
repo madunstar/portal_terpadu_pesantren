@@ -28,7 +28,7 @@
       </div>
       <div class="line pull-in line-dashed b-b"></div>
       <br>
-      <h5>Laporan Presensi <b><?php echo $matpel ?></b> Kelas <b><?php echo $namakelas ?></b></h5>
+      <h5>Laporan Presensi Guru <b><?php echo $matpel ?></b> Kelas <b><?php echo $namakelas ?></b></h5>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -37,7 +37,7 @@
             <th>Mata Pelajaran</th>
             <th>Tanggal</th>
             <th>Status Presensi</th>
-            <th>Jam Pelajaran</th>
+
           </tr>
         </thead>
         <tbody>
@@ -52,7 +52,7 @@
                 <td>".$row['nama_mata_pelajaran']."</td>
                 <td>".$row['tanggal_rekap']."</td>
                 <td>".$row['status_presensi']."</td>
-                <td></td>
+                
               </tr>
             "; $i++;
           }
