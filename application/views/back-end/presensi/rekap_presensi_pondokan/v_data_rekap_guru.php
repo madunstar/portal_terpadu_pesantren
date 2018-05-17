@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Data Rekap Presensi Guru Mata Pelajaran Pelajaran <?php echo $matpel ?> Kelas <?php echo $namakelas ?>
+        Data Rekap Presensi Guru Mata Pelajaran <b><?php echo $matpel ?></b> Kelas <b><?php echo $namakelas ?></b>
 
       </header>
       <div class="table-responsive">
@@ -23,7 +23,7 @@
               <th>Mata Pelajaran</th>
               <th>Tanggal</th>
               <th>Status Presensi</th>
-              <th>Jam Pelajaran</th>
+
             </tr>
           </thead>
           <tbody>
@@ -38,7 +38,7 @@
                       <td>".$row['nama_mata_pelajaran']."</td>
                       <td>".$row['tanggal_rekap']."</td>
                       <td>".$row['status_presensi']."</td>
-                      <td></td>
+
                     </tr>
                     <div class='modal' id='".$row['id_rekap']."' tabindex='-1' role='dialog'>
                      <div class='modal-dialog' role='document'>
@@ -50,7 +50,7 @@
                            <b>Apakah yakin menghapus data?</b>
                          </div>
                          <div class='modal-footer'>
-                           <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusrekapguru?id='.$row['id_rekap'].'&kelas='.$kelas.'&pelajaran='.$pelajaran.'&tanggal='.$tanggal.'&jadwal='.$jadwal.'&guru='.$nip_guru.'')."'>
+                           <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusrekapgurupondokan?id='.$row['id_rekap'].'&kelas='.$kelas.'&pelajaran='.$pelajaran.'&tanggal='.$tanggal.'&guru='.$nip_guru.'')."'>
                            <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
                            <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                          </div>
@@ -64,8 +64,8 @@
         </table>
       </div>
       <footer class="panel-footer text-right">
-        <a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekap" type="button" class="btn btn-default" name="button"><i class="fa fa-list"></i> Daftar Pelajaran</a>
-        <a href="<?php echo base_url() ?>admin/datamaster/laporanrekapguru?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>&jadwal=<?php echo $jadwal ?>&guru=<?php echo $nip_guru ?>" type="button" class="btn btn-primary" name="button"><i class="fa fa-print"></i> Cetak Rekap Harian</a>
+        <a href="<?php echo base_url() ?>admin/datamaster/pondokanrekap" type="button" class="btn btn-default" name="button"><i class="fa fa-list"></i> Daftar Pelajaran</a>
+        <a href="<?php echo base_url() ?>admin/datamaster/laporanrekapguru?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>&guru=<?php echo $nip_guru ?>" type="button" class="btn btn-primary" name="button"><i class="fa fa-print"></i> Cetak Rekap Kehadiran</a>
       </footer>
     </section>
     <!-- ini tambah data -->
@@ -81,7 +81,7 @@
            <h4 class='modal-title'>Tambah Rekap Santri</h4>
          </div>
          <div class='modal-body'>
-                  <form class="form-horizontal mb-lg" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/tambahrekapguru" method="post">
+                  <form class="form-horizontal mb-lg" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/tambahrekapgurupondokan" method="post">
                     <div class="form-group">
                       <label class="col-sm-3 control-label" for="input-id-1">Guru</label>
                       <div class="col-sm-8">
@@ -113,7 +113,7 @@
                         </select>
                       </div>
                     </div>
-                    <input type="hidden" name="jdw" value="<?php echo $jadwal ?>">
+
                     <input type="hidden" name="pel" value="<?php echo $pelajaran ?>">
                     <input type="hidden" name="kel" value="<?php echo $kelas ?>">
                     <input type="hidden" name="tgl" value="<?php echo $tanggal ?>">
