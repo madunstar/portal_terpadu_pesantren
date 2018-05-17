@@ -34,7 +34,7 @@
                     <tr>
                       <td>
                       <a href='".base_url('admin/datamaster/santriwatilihat?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
-                      <a href='".base_url('admin/datamaster/santriedit?nis='.$row['nis_lokal'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                      <a href='".base_url('admin/datamaster/santriwatiedit?nis='.$row['nis_lokal'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
 											<a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['nis_lokal']."'><i class='fa fa-trash-o'></i></a>
 											<a href='".base_url('admin/datamaster/cetakkartu?nis='.$row['nis_lokal'].'')."' class='btn btn-info btn-xs' title='cetak' id='".$row['nis_lokal']."' target='_blank'><i class='fa fa-print'></i></a>
                       </td>
