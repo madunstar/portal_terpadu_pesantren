@@ -20,7 +20,7 @@
                       <span class="font-bold">Dashboard</span>
                     </a>
                   </li>
-                  <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'guru') || ($submenu == 'staff') || ($submenu == 'kelas') || ($submenu == 'matpel') || ($submenu == 'jenjang') || ($submenu == 'jenjangtingkat') || ($submenu == 'pondokan') || ($submenu == 'pakpondokan') || ($submenu == 'pakafilasi')) ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'santriwati') || ($submenu == 'guru') || ($submenu == 'staff') || ($submenu == 'kelas') || ($submenu == 'matpel') || ($submenu == 'jenjang') || ($submenu == 'jenjangtingkat') || ($submenu == 'pondokan') || ($submenu == 'pakpondokan') || ($submenu == 'pakafilasi')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -37,6 +37,13 @@
                           <i class="i i-dot"></i>
 
                           <span>Data Santri</span>
+                        </a>
+                      </li>
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'santriwati')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/santriwati" class="auto">
+                          <i class="i i-dot"></i>
+
+                          <span>Data Santriwati</span>
                         </a>
                       </li>
                       <li class="<?= (($menu == "datamaster") &&  ($submenu == 'guru')) ? "active" : ""; ?>">
