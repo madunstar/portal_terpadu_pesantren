@@ -2362,6 +2362,28 @@ function kecamatanhapus()
      $exec = $this->m_rekap_guru_pondokan->hapus($id_rekap);
      redirect(base_url("admin/datamaster/datarekapgurupondokan?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&psn=1"));
    }
+
+   function laporanrekapgurupondokan(){
+     $jdw = $this->input->get('jadwal');
+     $tgl = $this->input->get('tanggal');
+     $kel = $this->input->get('kelas');
+     $pel = $this->input->get('pelajaran');
+     $nip = $this->input->get('guru');
+      $variabel['data'] = $this->m_rekap_guru_pondokan->rekapguru($pel,$kel);
+      $variabel['tanggal'] = $tgl;
+      $variabel['kelas'] = $kel;
+      $variabel['pelajaran'] = $pel;
+      $variabel['jadwal'] = $jdw;
+      $variabel['nip_guru'] =$nip;
+      $variabel['namakelas'] = $this->m_rekap_guru_pondokan->kelas($kel);
+      $variabel['matpel'] = $this->m_rekap_guru_pondokan->pelajaran($pel);
+      $variabel['guru'] = $this->m_rekap_guru_pondokan->dataguru($nip);
+      $variabel['guruhadir'] = $this->m_rekap_guru_pondokan->totalhadir($pel,$kel);
+      $variabel['guruizin'] = $this->m_rekap_guru_pondokan->totalizin($pel,$kel);
+      $variabel['gurusakit'] = $this->m_rekap_guru_pondokan->totalsakit($pel,$kel);
+      $variabel['gurualfa'] = $this->m_rekap_guru_pondokan->totalalfa($pel,$kel);
+      $this->layout->renderlaporan('back-end/presensi/rekap_presensi_pondokan/v_lap_rekap_guru',$variabel,'back-end/presensi/rekap_presensi_pondokan/v_rekap_js');
+   }
    //akhir rekap guru//
 /////////////////////////////////akhir presensi/////////////////////////////////////////////////////
 
