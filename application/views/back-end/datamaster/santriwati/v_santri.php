@@ -47,7 +47,7 @@
                       <td>
                         <a href='".base_url('admin/datamaster/santriberkas?nis='.$row['nis_lokal'].'')."' class='btn btn-success btn-xs' title='Berkas'><i class='fa fa-file-text-o'></i></a>
                         <a href='".base_url('admin/datamaster/prestasisantriwati?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Prestasi'><i class='fa fa-trophy'></i></a>
-                        <a href='".base_url('admin/datamaster/pelanggaransantri?nis='.$row['nis_lokal'].'')."' class='btn btn-danger btn-xs' title='Pelanggaran'><i class='fa fa-ban'></i></a>
+                        <a href='".base_url('admin/datamaster/pelanggaransantriwati?nis='.$row['nis_lokal'].'')."' class='btn btn-danger btn-xs' title='Pelanggaran'><i class='fa fa-ban'></i></a>
                       </td>
                     </tr>
                   ";

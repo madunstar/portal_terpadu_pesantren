@@ -29,6 +29,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_prestasi');
         $this->load->model('back-end/datamaster/m_prestasi_p');
         $this->load->model('back-end/datamaster/m_pelanggaran');
+        $this->load->model('back-end/datamaster/m_pelanggaran_p');
         $this->load->model('back-end/datamaster/m_jenjang');
         $this->load->model('back-end/datamaster/m_pondokan');
         $this->load->model('back-end/datamaster/m_presensipondokan');
@@ -2866,7 +2867,7 @@ function kecamatanhapus()
     $exec = $this->m_prestasi_p->hapus($id);
     redirect(base_url()."admin/datamaster/prestasisantriwati?nis=$nis&msg=1");
   }
-  ////////////end/////////
+  ////////////end prestasi/////////
 //////////////////pelanggaran////////////////////////
 function pelanggaransantri(){
   $nis = $this->input->get('nis');
@@ -2945,6 +2946,84 @@ function hapuspelanggaran(){
   $exec = $this->m_pelanggaran->hapus($id);
   redirect(base_url()."admin/datamaster/pelanggaransantri?nis=$nis&msg=1");
 }
+///////////pelanggaran ce////
+function pelanggaransantriwati(){
+  $nis = $this->input->get('nis');
+  $exec = $this->m_santriwati->lihatdatasatu($nis);
+  if ($exec->num_rows()>0){
+    $variabel['santri'] = $exec->row_array();
+    $variabel['data'] = $this->m_pelanggaran_p->lihatdata($nis);
+    $this->layout->render('back-end/prestasi_pelanggaran/v_data_pelanggaran_p',$variabel,'back-end/prestasi_pelanggaran/prestasi_pelanggaran_js');
+  } else {
+    redirect(base_url("admin/datamaster/santriwati"));
+    }
+  }
+
+  function tambahpelanggaranp(){
+    if($this->input->post()){
+      $nis = $this->input->post('nis_santri');
+      $array = array(
+        'nis_santri' => $this->input->post('nis_santri'),
+        'tanggal_pelanggaran' =>  $this->input->post('tanggal_pelanggaran'),
+        'jenis_pelanggaran' => $this->input->post('jenis_pelanggaran'),
+        'pelanggaran' => $this->input->post('nama_pelanggaran'),
+
+        'keterangan' => $this->input->post('keterangan')
+      );
+      $exec = $this->m_pelanggaran_p->tambahdata($array);
+      if($exec){
+        redirect(base_url("admin/datamaster/tambahpelanggaranp?nis=$nis&msg=1"));
+      } else{
+        redirect(base_url("admin/datamaster/tambahpelanggaranp?nis=$nis&msg=0"));
+      }
+    } else {
+        $nis = $this->input->get('nis');
+        $exec = $this->m_santriwati->lihatdatasatu($nis);
+        $variabel['santri'] = $exec->row_array();
+        $variabel['nis_santri'] = $nis;
+        $this->layout->render('back-end/prestasi_pelanggaran/v_pelanggaran_tambah_p',$variabel,'back-end/prestasi_pelanggaran/prestasi_pelanggaran_js');
+    }
+  }
+
+  function ubahpelanggaranp(){
+    if($this->input->post()){
+      $id = $this->input->post('id_pelanggaran');
+      $nis = $this->input->post('nis_santri');
+      $array = array(
+        'tanggal_pelanggaran' =>  $this->input->post('tanggal_pelanggaran'),
+        'jenis_pelanggaran' => $this->input->post('jenis_pelanggaran'),
+        'pelanggaran' => $this->input->post('nama_pelanggaran'),
+
+        'keterangan' => $this->input->post('keterangan')
+      );
+      $exec = $this->m_pelanggaran_p->editdata($id,$array);
+      if($exec){
+        redirect(base_url("admin/datamaster/ubahpelanggaranp?nis=$nis&id=$id&msg=1"));
+      } else{
+        redirect(base_url("admin/datamaster/ubahpelanggaranp?nis=$nis&id=$id&msg=0"));
+      }
+    } else {
+      $id = $this->input->get('id');
+      $nis = $this->input->get('nis');
+      $exec = $this->m_santriwati->lihatdatasatu($nis);
+        if ($exec->num_rows()>0){
+      $exec2 = $this->m_pelanggaran_p->ambildata($id);
+      $variabel['santri'] = $exec->row_array();
+      $variabel['data'] = $exec2->row_array();
+      $this->layout->render('back-end/prestasi_pelanggaran/v_pelanggaran_ubah_p',$variabel,'back-end/prestasi_pelanggaran/prestasi_pelanggaran_js');
+    } else{
+      redirect(base_url("admin/datamaster/santri"));
+    }
+    }
+
+  }
+
+  function hapuspelanggaranp(){
+    $id = $this->input->get("id");
+    $nis = $this->input->get('nis');
+    $exec = $this->m_pelanggaran_p->hapus($id);
+    redirect(base_url()."admin/datamaster/pelanggaransantriwati?nis=$nis&msg=1");
+  }
   /////////////////////////////akhir prestasi dan pelanggaran/////////////////////////////////////////////////////////
 
 
