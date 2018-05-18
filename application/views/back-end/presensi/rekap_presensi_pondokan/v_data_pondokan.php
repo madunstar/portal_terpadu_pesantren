@@ -2,7 +2,7 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Rekap Presensi Kelas Afiliasi</h3>
+      <h3 class="m-b-none">Rekap Presensi Kelas Pondokan</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
@@ -29,8 +29,8 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/datarekapsantri?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'')."' class='btn btn-primary btn-xs' title='Lihat Rekap Santri'><i class='fa fa-users'></i></a>
-                      <a href='".base_url('admin/datamaster/datarekapguru?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'&guru='.$row['nip_guru'].'')."' class='btn btn-success btn-xs' title='Lihat Rekap Guru'><i class='fa fa-user'></i></a>
+                      <a href='".base_url('admin/datamaster/datarekapsantripondokan?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'')."' class='btn btn-primary btn-xs' title='Lihat Rekap Santri'><i class='fa fa-users'></i></a>
+                      <a href='".base_url('admin/datamaster/datarekapgurupondokan?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'&jadwal='.$row['id_jadwal'].'&guru='.$row['nip_guru'].'')."' class='btn btn-success btn-xs' title='Lihat Rekap Guru'><i class='fa fa-user'></i></a>
                       </td>
                       <td>".$row['nama_kelas_belajar']."</td>
                       <td>".$row['nama_mata_pelajaran']."</td>

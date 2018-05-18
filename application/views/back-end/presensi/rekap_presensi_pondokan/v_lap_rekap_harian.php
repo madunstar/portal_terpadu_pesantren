@@ -3,11 +3,11 @@
 
   <section class="vbox bg-white">
     <header class="header b-b b-light hidden-print">
-      <a href="<?php echo base_url() ?>admin/datamaster/datarekapguru?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>&jadwal=<?php echo $jadwal ?>&guru=<?php echo $nip_guru ?>" class="btn btn-sm btn-warning pull-right">Kembali</a>
+      <a href="<?php echo base_url() ?>admin/datamaster/datarekapsantripondokan?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>" class="btn btn-sm btn-warning pull-right">Kembali</a>
 
       <p class="pull-right"></p>
       <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>&nbsp;&nbsp;
-      <p>Laporan Rekap Presensi Guru</p>
+      <p>Laporan Rekap Presensi Harian</p>
     </header>
 
     <section class="scrollable wrapper">
@@ -28,16 +28,14 @@
       </div>
       <div class="line pull-in line-dashed b-b"></div>
       <br>
-      <h5>Laporan Presensi Guru <b><?php echo $matpel ?></b> Kelas <b><?php echo $namakelas ?></b></h5>
+      <h5>Laporan Presensi <b><?php echo $matpel ?></b> Kelas <b><?php echo $namakelas ?></b> tanggal <b><?php echo tgl_indo($tanggal) ?></b></h5>
       <table class="table table-bordered">
         <thead>
           <tr>
             <th width="5%">no</th>
-            <th>Nama</th>
-            <th>Mata Pelajaran</th>
-            <th>Tanggal</th>
+            <th>NIS</th>
+            <th width="50%">Nama</th>
             <th>Status Presensi</th>
-
           </tr>
         </thead>
         <tbody>
@@ -48,11 +46,9 @@
             echo "
               <tr>
                 <td>".$i."</td>
+                <td>".$row['nis_lokal']."</td>
                 <td>".$row['nama_lengkap']."</td>
-                <td>".$row['nama_mata_pelajaran']."</td>
-                <td>".$row['tanggal_rekap']."</td>
                 <td>".$row['status_presensi']."</td>
-                
               </tr>
             "; $i++;
           }
@@ -63,18 +59,18 @@
         <div class="row">
           <div class="col-xs-3">
             <p>
-              Total Guru Hadir <br><br>
-              Total Guru Izin  <br><br>
-              Total Guru Sakit  <br><br>
-              Total Guru Alfa  <br><br>
+              Total Santri Hadir <br><br>
+              Total Santri Izin  <br><br>
+              Total Santri Sakit  <br><br>
+              Total Santri Alfa  <br><br>
             </p>
           </div>
           <div class="col-xs-3">
             <p>
-              : <?php echo $guruhadir['total'] ?> <br><br>
-              : <?php echo $guruizin['total'] ?> <br><br>
-              : <?php echo $gurusakit['total'] ?> <br><br>
-              : <?php echo $gurualfa['total'] ?> <br><br>
+              : <?php echo $santrihadir['total'] ?> <br><br>
+              : <?php echo $santriizin['total'] ?> <br><br>
+              : <?php echo $santrisakit['total'] ?> <br><br>
+              : <?php echo $santrialfa['total'] ?> <br><br>
             </p>
           </div>
         </div>
