@@ -6,11 +6,11 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Edit Data Santri 
+        Edit Data Santri
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Mengedit Data Santri","Gagal Mengedit Data Santri") ?>
-       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santriedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" method="post"   enctype="multipart/form-data">
+       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santriwatiedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" method="post"   enctype="multipart/form-data">
        <a href="<?php echo base_url('admin/datamaster/santri') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
           <div class="col-md-6">
@@ -22,7 +22,7 @@
                 if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" />
                 <?php if(isset($nis_lokal)) {
                          echo '<label style="color:red;font-size:10px">NIS ada yang sama ! NIS asal "'.$nis_lokal2.'"</label>';
-                       } 
+                       }
                 ?>
               </div>
             </div>
@@ -88,11 +88,11 @@
             <div class="col-lg-8">
               <select class="form-control"  name="provinsi" id="provinsi" data-required="true">
               <option value="" disabled <?php if ($data['provinsi']=="") echo "selected" ?>>Pilih Provinsi</option>
-              <?php 
+              <?php
                    foreach($provinsi->result_array() as $row) {
                      echo "<option value='".$row['nama_provinsi']."' ".($data['provinsi']==$row['nama_provinsi']?"selected":"").">".$row['nama_provinsi']."</option>";
                   }
-              ?> 
+              ?>
               </select>
             </div>
           </div>
@@ -101,12 +101,12 @@
           <div class="col-lg-8">
           <select class="form-control id_kota_kab"  name="kabupaten_kota"  id="kabupaten_kota" data-required="true">
           <option value="" disabled <?php if ($data['kabupaten_kota']=="") echo "selected" ?>>Pilih Kabupaten/Kota</option>
-            <?php 
+            <?php
                  foreach($kabupaten->result_array() as $row) {
                    echo "<option value='".$row['nama_kota_kab']."' ".($data['kabupaten_kota']==$row['nama_kota_kab']?"selected":"").">".$row['nama_kota_kab']."</option>";
                 }
             ?>
-              
+
             </select>
           </div>
         </div>
@@ -115,7 +115,7 @@
         <div class="col-lg-8">
         <select class="form-control id_kota_kab"  name="kecamatan"  id="kecamatan" data-required="true" >
         <option value="" disabled  <?php if ($data['kecamatan']=="") echo "selected" ?>>Pilih Kecamatan</option>
-          <?php 
+          <?php
                foreach($kecamatan->result_array() as $row) {
                  echo "<option value='".$row['nama_kecamatan']."' ".($data['kecamatan']==$row['nama_kecamatan']?"selected":"").">".$row['nama_kecamatan']."</option>";
               }
@@ -128,7 +128,7 @@
       <div class="col-lg-8">
         <select class="form-control"  name="desa_kelurahan" id="desa_kelurahan" data-required="true">
         <option value="" disabled <?php if ($data['desa_kelurahan']=="") echo "selected" ?>>Pilih Desa/Kelurahan</option>
-        <?php 
+        <?php
              foreach($desa->result_array() as $row) {
                echo "<option value='".$row['nama_kel_desa']."' ".($data['desa_kelurahan']==$row['nama_kel_desa']?"selected":"").">".$row['nama_kel_desa']."</option>";
             }
@@ -183,11 +183,11 @@
               <div class="col-lg-8">
                 <select class="form-control"  name="alat_transportasi">
                 <option value="" disabled <?php if ($data['alat_transportasi']=="") echo "selected" ?> >Pilih Alat Transportasi</option>
-                <?php 
+                <?php
                      foreach($transportasi->result_array() as $row) {
                        echo "<option value='".$row['nama_alat_transportasi']."' ".($data['alat_transportasi']==$row['nama_alat_transportasi']?"selected":"").">".$row['nama_alat_transportasi']."</option>";
                     }
-                ?> 
+                ?>
                 </select>
               </div>
             </div>
@@ -197,7 +197,7 @@
                 <input type="text" class="form-control"  name="status_tempat_tinggal" value="<?php echo $data['status_tempat_tinggal']; ?>" />
               </div>
             </div>
-            
+
           </div>
           <div class="col-md-6">
           <div class="form-group">
@@ -223,11 +223,11 @@
               <div class="col-lg-8">
                 <select type="text" class="form-control"  name="pendidikan_terakhir_ayah">
                 <option value="" disabled <?php if ($data['pendidikan_terakhir_ayah']=="") echo "selected" ?>>Pilih Pendidikan</option>
-                <?php 
+                <?php
                      foreach($pendidikan->result_array() as $row) {
                        echo "<option value='".$row['nama_pendidikan']."' ".($data['pendidikan_terakhir_ayah']==$row['nama_pendidikan']?"selected":"").">".$row['nama_pendidikan']."</option>";
                     }
-                ?> 
+                ?>
                 </select>
               </div>
             </div>
@@ -236,11 +236,11 @@
             <div class="col-lg-8">
               <select class="form-control"  name="pekerjaan_ayah">
               <option value="" disabled <?php if ($data['pekerjaan_ayah']=="") echo "selected" ?>>Pilih  Pekerjaan</option>
-              <?php 
+              <?php
                    foreach($pekerjaan->result_array() as $row) {
                      echo "<option value='".$row['nama_pekerjaan']."' ".($data['pekerjaan_ayah']==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
                   }
-              ?> 
+              ?>
               </select>
             </div>
           </div>
@@ -267,11 +267,11 @@
             <div class="col-lg-8">
               <select  class="form-control"  name="pendidikan_terakhir_ibu">
               <option value="" disabled <?php if ($data['pendidikan_terakhir_ibu']=="") echo "selected" ?>>Pilih Pendidikan</option>
-              <?php 
+              <?php
                    foreach($pendidikan->result_array() as $row) {
                      echo "<option value='".$row['nama_pendidikan']."' ".($data['pendidikan_terakhir_ibu']==$row['nama_pendidikan']?"selected":"").">".$row['nama_pendidikan']."</option>";
                   }
-              ?> 
+              ?>
               </select>
             </div>
           </div>
@@ -280,11 +280,11 @@
           <div class="col-lg-8">
             <select class="form-control"  name="pekerjaan_ibu">
             <option value="" disabled <?php if ($data['pekerjaan_ibu']=="") echo "selected" ?>>Pilih Pekerjaan</option>
-            <?php 
+            <?php
                  foreach($pekerjaan->result_array() as $row) {
                    echo "<option value='".$row['nama_pekerjaan']."' ".($data['pekerjaan_ibu']==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
                 }
-            ?> 
+            ?>
             </select>
           </div>
         </div>
@@ -317,11 +317,11 @@
               <div class="col-lg-8">
                 <select class="form-control"  name="pendidikan_terakhir_wali">
                 <option value="" disabled <?php if ($data['pendidikan_terakhir_wali']=="") echo "selected" ?>>Pilih Pendidikan</option>
-                <?php 
+                <?php
                      foreach($pendidikan->result_array() as $row) {
                        echo "<option value='".$row['nama_pendidikan']."' ".($data['pendidikan_terakhir_wali']==$row['nama_pendidikan']?"selected":"").">".$row['nama_pendidikan']."</option>";
                     }
-                ?> 
+                ?>
                 </select>
               </div>
             </div>
@@ -330,13 +330,13 @@
             <div class="col-lg-8">
               <select class="form-control"  name="pekerjaan_wali">
               <option value="" disabled <?php if ($data['pekerjaan_wali']=="") echo "selected" ?>>Pilih Pekerjaan</option>
-              <?php 
+              <?php
                    foreach($pekerjaan->result_array() as $row) {
                      echo "<option value='".$row['nama_pekerjaan']."' ".($data['pekerjaan_wali']==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
                   }
-              ?> 
+              ?>
               </select>
-              
+
             </div>
           </div>
             <div class="form-group">
@@ -400,16 +400,16 @@
                 <?php } ?>
               </div>
 			  	</div>
-            
+
           </div>
         </div>
       </div>
       <footer class="panel-footer text-right bg-light lter">
       <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
       &nbsp
-      <a href="<?php echo base_url() ?>admin/datamaster/santriedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
+      <a href="<?php echo base_url() ?>admin/datamaster/santriwatiedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
       &nbsp
-      <a href="<?php echo base_url('admin/datamaster/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
+      <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
       </footer>
       </form>
 
