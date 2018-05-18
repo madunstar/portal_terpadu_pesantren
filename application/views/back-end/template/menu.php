@@ -187,12 +187,32 @@
                       </li>
                     </ul>
                   </li>
-									<li  class="<?= (($menu == "datamaster") && ($submenu == 'databayarinfaq')|| ($submenu == 'bayarinfaq')) ? "active" : ""; ?>">
-										<a href="<?php echo base_url('admin/datamaster/databayarinfaq')?>" class="auto">
+									<li  class="<?= (($menu == "datamaster") && ($submenu == 'databayarinfaq')|| ($submenu == 'bayarinfaq') || ($submenu == 'databayarinfaqp')|| ($submenu == 'bayarinfaqp')) ? "active" : ""; ?>">
+										<a href="#" class="auto">
+											<span class="pull-right text-muted">
+												<i class="i i-circle-sm-o text"></i>
+												<i class="i i-circle-sm text-active"></i>
+											</span>
 											<i class="fa fa-money">
 											</i>
 											<span class="font-bold">Pembayaran Infaq (SPP)</span>
 										</a>
+										<ul class="nav dk">
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'databayarinfaq')|| ($submenu == 'bayarinfaq')) ? "active" : ""; ?>">
+												<a href="<?php echo base_url('admin/datamaster/databayarinfaq')?>" class="auto">
+													<i class="i i-dot"></i>
+
+													<span>Infaq (SPP) Santri</span>
+												</a>
+											</li>
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'databayarinfaqp')|| ($submenu == 'bayarinfaqp')) ? "active" : ""; ?>">
+												<a href="<?php echo base_url('admin/datamaster/databayarinfaqp')?>" class="auto">
+													<i class="i i-dot"></i>
+
+													<span>Infaq (SPP) Santriwati</span>
+												</a>
+											</li>
+										</ul>
 									</li>
 									<li class="<?= (($menu == "datamaster") && ($submenu == 'dataakunortu')|| ($submenu == 'provinsi')|| ($submenu == 'kota_kab') || ($submenu == 'kecamatan') || ($submenu == 'pendidikan') || ($submenu == 'pekerjaan') || ($submenu == 'alat_transportasi')) ? "active" : ""; ?>">
                     <a href="#" class="auto">

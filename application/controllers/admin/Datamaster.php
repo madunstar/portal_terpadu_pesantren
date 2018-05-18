@@ -25,6 +25,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_matpel');
         $this->load->model('back-end/datamaster/m_pelajaran');
         $this->load->model('back-end/datamaster/m_infaq');
+        $this->load->model('back-end/datamaster/m_infaq_p');
         $this->load->model('back-end/datamaster/m_presensi');
         $this->load->model('back-end/datamaster/m_prestasi');
         $this->load->model('back-end/datamaster/m_prestasi_p');
@@ -2645,6 +2646,25 @@ function kecamatanhapus()
 
 
 ////////////////////////////////////////////////// pembayaran SPP ////////////////////////////////////////////////////
+///////////cewek/////////////////
+function databayarinfaqp(){
+  if($this->input->post()){
+    $tahun = $this->input->post('tahun');
+    $bulan = $this->input->post('bulan');
+    $variabel['bulan'] = $bulan;
+    $variabel['tahun'] = $tahun;
+    $variabel['data'] = $this->m_infaq_p->lihatdata($tahun,$bulan);
+    $this->layout->render('back-end/infaq/v_data_infaq_p',$variabel,'back-end/infaq/v_infaq_js');}
+    else {
+      $tahun = date('Y');
+      $bulan = date('m');
+      $variabel['bulan'] = $bulan;
+      $variabel['tahun'] = $tahun;
+      $variabel['data'] = $this->m_infaq_p->lihatdata($tahun,$bulan);
+      $this->layout->render('back-end/infaq/v_data_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
+    }
+  }
+/////////////cowok///////////////
   function databayarinfaq(){
     if($this->input->post()){
       $tahun = $this->input->post('tahun');
