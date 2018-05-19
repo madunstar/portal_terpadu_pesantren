@@ -24,7 +24,6 @@
                       <th>Infaq Tahun</th>
                       <th>Status Infaq</th>
                       <th>Besar Bayar</th>
-
                     </tr>
                   </thead>
                   <tbody>
@@ -47,7 +46,7 @@
 
             </div>
             <div class="panel-footer text-right bg-light lter">
-              <a href="<?php echo base_url('admin/datamaster/databayarinfaq') ?>"><button type="button" name="button" class="btn btn-default">Kembali</button></a>
+              <a href="<?php echo base_url('admin/datamaster/databayarinfaqp') ?>"><button type="button" name="button" class="btn btn-default">Kembali</button></a>
           </div>
 
           </section>

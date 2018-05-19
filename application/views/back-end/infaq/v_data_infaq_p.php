@@ -55,7 +55,7 @@
                     <tr>
                       <th>NIS</th>
                       <th>Nama</th>
-                      <th>Kelas</th>
+                      <th>Besar Bayar</th>
                       <th>Tanggal Bayar</th>
                       <th>Petugas</th>
                       <th>Aksi</th>
@@ -67,11 +67,11 @@
                       <tr>
                         <td>".$row['nis_lokal']."</td>
                         <td>".$row['nama_lengkap']."</td>
-                        <td></td>
+                        <td>".$row['besar_bayar']."</td>
                         <td>".$row['tanggal_bayar']."</td>
                         <td>".$row['petugas']."</td>
                         <td>
-                        <a href='".base_url('admin/datamaster/detilinfaq?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='detil'><i class='fa fa-eye'></i></a>
+                        <a href='".base_url('admin/datamaster/detilinfaqp?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='detil'><i class='fa fa-eye'></i></a>
                         <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#".$row['id_pembayaran']."' title='hapus'><i class='fa fa-trash-o'></i></button>
                         </td>
                       </tr>
@@ -85,7 +85,7 @@
                              <b>Apakah yakin menghapus data?</b>
                            </div>
                            <div class='modal-footer'>
-                             <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusinfaq?id_infaq='.$row['id_pembayaran'].'')."'>
+                             <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusinfaqp?id_infaq='.$row['id_pembayaran'].'')."'>
                              <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
                              <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                            </div>
@@ -101,7 +101,7 @@
 
             </div>
             <div class="panel-footer">
-              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/laporaninfaq" method="post">
+              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/laporaninfaqp" method="post">
               <input type="hidden" name="tahun_lap" value="<?php echo $tahun ?>">
               <input type="hidden" name="bulan_lap" value="<?php echo $bulan ?>">
               <button type="submit" name="button" class="btn btn-primary">Cetak Laporan <i class="fa fa-print"></i></button>

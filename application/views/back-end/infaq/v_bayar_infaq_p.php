@@ -15,7 +15,7 @@
             </header>
             <div class="panel-body">
                 <?php pesan_get('msg',"Berhasil Menambahkan Pembayaran","Gagal Menambahkan Pembayaran") ?>
-                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/bayarinfaq" method="post">
+                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/bayarinfaqp" method="post">
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-id-1">Pilih Santri</label>
                     <div class="col-sm-8">
@@ -59,25 +59,24 @@
                     <div class="col-sm-2">
 
                     </div>
-                    </div>
-                    <div class='form-group'>
-                    <label class="col-sm-2 control-label" for="input-id-1">Besar Bayar</label>
-                    <div class="col-sm-5">
-                      <select class="form-control" name="besarbayar" data-required="true">
-                        <?php $d = 150000;
-                              while($d <= 600000){?>
-                           <option value='<?php echo $d; ?>' >Rp. <?php echo $d; ?></option>
-
-                         <?php $d = $d + 50000; } ?>
-
-                      </select>
-                    </div>
                   </div>
+                  <div class='form-group'>
+                  <label class="col-sm-2 control-label" for="input-id-1">Besar Bayar</label>
+                  <div class="col-sm-5">
+                    <select class="form-control" name="besarbayar" data-required="true">
+                      <?php $d = 150000;
+                            while($d <= 600000){?>
+                         <option value='<?php echo $d; ?>' >Rp. <?php echo $d; ?></option>
+
+                       <?php $d = $d + 50000; } ?>
+
+                    </select>
                   </div>
+                </div>
                   </div>
 
                   <footer class="panel-footer text-right">
-                    <a href="<?php echo base_url() ?>admin/datamaster/databayarinfaq"><button type="button" class="btn btn-s-xs btn-default"><i class="fa fa-list"></i> Data Pembayaran</button></a>
+                    <a href="<?php echo base_url() ?>admin/datamaster/databayarinfaqp"><button type="button" class="btn btn-s-xs btn-default"><i class="fa fa-list"></i> Data Pembayaran</button></a>
                     <button type="submit" class="btn btn-s-xs btn-info"><i class="fa fa-save"></i> Proses Pembayaran</button>
                   </footer>
 
