@@ -3,7 +3,7 @@
 
   <section class="vbox bg-white">
     <header class="header b-b b-light hidden-print">
-      <a href="<?php echo base_url() ?>admin/datamaster/databayarinfaq" class="btn btn-sm btn-warning pull-right">Kembali</a>
+      <a href="<?php echo base_url() ?>admin/datamaster/databayarinfaqp" class="btn btn-sm btn-warning pull-right">Kembali</a>
       <p class="pull-right"></p>
       <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>&nbsp;&nbsp;
       <p>Laporan Pembayran Infaq</p>
@@ -72,6 +72,7 @@
               : Rp. <?php echo $totalbayar['total']?><br>
             </p>
           </div>
+
         </div>
       </div>
 </div>

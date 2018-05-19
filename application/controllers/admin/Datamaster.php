@@ -2664,6 +2664,53 @@ function databayarinfaqp(){
       $this->layout->render('back-end/infaq/v_data_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
     }
   }
+
+  function detilinfaqp(){
+    $nis = $this->input->get('nis');
+    $variabel['nama_santri'] = $this->m_infaq_p->lihatsantrisatu($nis);
+    $variabel['data'] = $this->m_infaq_p->detilinfaq($nis);
+    $this->layout->render('back-end/infaq/v_detil_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
+  }
+
+  function bayarinfaqp(){
+    if($this->input->post()){
+      $array = array(
+        'nis_santri' => $this->input->post('id_santri'),
+        'tanggal_bayar' => date('Y-m-d'),
+        'spp_bulan' => $this->input->post('bulan'),
+        'spp_tahun' => $this->input->post('tahun'),
+        'besar_bayar' => $this->input->post('besarbayar'),
+        'status_bayar' => 'lunas',
+        'petugas' => $this->session->userdata('nama_akun')
+      );
+      $exec = $this->m_infaq_p->tambahdata($array);
+      if($exec){
+        redirect(base_url("admin/datamaster/bayarinfaqp?msg=1"));
+      } else{
+        redirect(base_url("admin/datamaster/bayarinfaqp?msg=0"));
+      }
+    }else{
+      $variabel['daftarsantri'] = $this->m_infaq_p->datasantri();
+      $this->layout->render('back-end/infaq/v_bayar_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
+    }
+
+  }
+  function hapusinfaqp(){
+    $id_infaq = $this->input->get("id_infaq");
+    $exec = $this->m_infaq_p->hapus($id_infaq);
+    redirect(base_url()."admin/datamaster/databayarinfaqp?msg=1");
+  }
+  function laporaninfaqp(){
+    $tahun = $this->input->post('tahun_lap');
+    $bulan = $this->input->post('bulan_lap');
+    $variabel['bulan'] = $bulan;
+    $variabel['tahun'] = $tahun;
+    $variabel['santribayar'] = $this->m_infaq_p->santribayar($tahun,$bulan);
+    $variabel['totalbayar'] = $this->m_infaq_p->totalbayar($tahun,$bulan);
+    $variabel['data'] = $this->m_infaq_p->lihatdata($tahun,$bulan);
+    $this->layout->renderlaporan('back-end/infaq/v_lap_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
+  }
+
 /////////////cowok///////////////
   function databayarinfaq(){
     if($this->input->post()){
@@ -2697,6 +2744,7 @@ function databayarinfaqp(){
         'tanggal_bayar' => date('Y-m-d'),
         'spp_bulan' => $this->input->post('bulan'),
         'spp_tahun' => $this->input->post('tahun'),
+        'besar_bayar' => $this->input->post('besarbayar'),
         'status_bayar' => 'lunas',
         'petugas' => $this->session->userdata('nama_akun')
       );
@@ -2724,6 +2772,7 @@ function databayarinfaqp(){
     $variabel['bulan'] = $bulan;
     $variabel['tahun'] = $tahun;
     $variabel['santribayar'] = $this->m_infaq->santribayar($tahun,$bulan);
+    $variabel['totalbayar'] = $this->m_infaq->totalbayar($tahun,$bulan);
     $variabel['data'] = $this->m_infaq->lihatdata($tahun,$bulan);
     $this->layout->renderlaporan('back-end/infaq/v_lap_infaq',$variabel,'back-end/infaq/v_infaq_js');
   }
