@@ -12,13 +12,13 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/datamaster/santrihapus?nis="+v_nis);
+                    window.location.assign("<?php echo base_url() ?>admin/santriakd/santrihapus?nis="+v_nis);
                 }
             },
             batal: function () {
 
             }
-            
+
         }
         });
     });
@@ -26,7 +26,7 @@
     $('#provinsi').change(function(){
         var id=$(this).val();
         $.ajax({
-        url : "<?php echo base_url();?>admin/datamaster/datakotakab2",
+        url : "<?php echo base_url();?>admin/santriakd/datakotakab2",
         method : "POST",
         data : {provinsi: id},
         async : false,
@@ -46,7 +46,7 @@
     $('#kabupaten_kota').change(function(){
         var id=$(this).val();
         $.ajax({
-        url : "<?php echo base_url();?>admin/datamaster/datakecamatan2",
+        url : "<?php echo base_url();?>admin/santriakd/datakecamatan2",
         method : "POST",
         data : {kecamatan: id},
         async : false,
@@ -66,7 +66,7 @@
     $('#kecamatan').change(function(){
         var id=$(this).val();
         $.ajax({
-        url : "<?php echo base_url();?>admin/datamaster/datadesa2",
+        url : "<?php echo base_url();?>admin/santriakd/datadesa2",
         method : "POST",
         data : {desa: id},
         async : false,
@@ -85,7 +85,7 @@
 
 
     $(".edit").click(function(e) {
-        var v_url = "<?php echo base_url() ?>admin/datamaster/santritingkat";
+        var v_url = "<?php echo base_url() ?>admin/santriakd/santritingkat";
         var v_id = this.id;
         $.ajax({
 				type: 'POST',
@@ -101,11 +101,11 @@
 					$('#modal-edit').html(response)
 				}
             });
-       
+
     });
 
     $(".edit2").click(function(e) {
-        var v_url = "<?php echo base_url() ?>admin/datamaster/santritingkatpondokan";
+        var v_url = "<?php echo base_url() ?>admin/santriakd/santritingkatpondokan";
         var v_id = this.id;
         $.ajax({
 				type: 'POST',
@@ -121,7 +121,7 @@
 					$('#modal-edit').html(response)
 				}
             });
-       
+
     });
 
 });

@@ -10,8 +10,8 @@
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Santri","Gagal Menambahkan Santri") ?>
-       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santritambah" method="post"  enctype="multipart/form-data">
-       <a href="<?php echo base_url('admin/datamaster/santri') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
+       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriakd/santritambah" method="post"  enctype="multipart/form-data">
+       <a href="<?php echo base_url('admin/santriakd/santri') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -57,9 +57,9 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Jenis Kelamin</label>
               <div class="col-lg-8">
-                <select class="form-control"  name="jenis_kelamin"/>
+                <select class="form-control"  name="jenis_kelamin" readonly/>
                   <option value="L" <?php if (set_value('jenis_kelamin')=="L")  echo "selected" ?> >Laki-laki</option>
-                  <option value="P" <?php if (set_value('jenis_kelamin')=="P")  echo "selected" ?> >Perempuan</option>
+
                 </select>
               </div>
             </div>
@@ -200,25 +200,25 @@
           <div class="form-group">
               <label class="col-lg-4 control-label">No Kartu Keluarga</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="no_kk" value="<?php echo set_value('no_kk'); ?>"/>
+                <input type="text" class="form-control" data-required="true"  name="no_kk" value="<?php echo set_value('no_kk'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nik_ayah" value="<?php echo set_value('nik_ayah'); ?>"/>
+                <input type="text" class="form-control" data-required="true"  name="nik_ayah" value="<?php echo set_value('nik_ayah'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nama_lengkap_ayah" value="<?php echo set_value('nama_lengkap_ayah'); ?>"/>
+                <input type="text" class="form-control" data-required="true"  name="nama_lengkap_ayah" value="<?php echo set_value('nama_lengkap_ayah'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Ayah</label>
               <div class="col-lg-8">
-              <select type="text" class="form-control"  name="pendidikan_terakhir_ayah">
+              <select type="text" class="form-control" data-required="true" name="pendidikan_terakhir_ayah">
               <option value="" disabled <?php if (set_value('pendidikan_terakhir_ayah')=="") echo "selected" ?>>Pilih Pendidikan</option>
               <?php
                    foreach($pendidikan->result_array() as $row) {
@@ -250,19 +250,19 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Ibu</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nik_ibu" value="<?php echo set_value('nik_ibu'); ?>"/>
+                <input type="text" class="form-control" data-required="true"  name="nik_ibu" value="<?php echo set_value('nik_ibu'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama Ibu</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nama_lengkap_ibu" value="<?php echo set_value('nama_lengkap_ibu'); ?>"/>
+                <input type="text" class="form-control" data-required="true" name="nama_lengkap_ibu" value="<?php echo set_value('nama_lengkap_ibu'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Ibu</label>
               <div class="col-lg-8">
-              <select  class="form-control"  name="pendidikan_terakhir_ibu">
+              <select  class="form-control" data-required="true" name="pendidikan_terakhir_ibu">
               <option value="" disabled <?php if (set_value('pendidikan_terakhir_ibu')=="") echo "selected" ?>>Pilih Pendidikan</option>
               <?php
                    foreach($pendidikan->result_array() as $row) {
@@ -358,12 +358,7 @@
 									<label class="col-sm-4 control-label">Kelas Pondokan</label>
 									<div class="col-sm-8">
 										<select class="form-control m-b" name="pondokan" id="pondokan" data-required="true">
-											<option value="" selected disabled>.: Pilih Kelas Pondokan:.</option>
-											<?php
-												foreach($pondokan->result_array() as $row){
-													echo "<option value='".$row['pondokan']."' ".(set_value('pondokan')==$row['pondokan']?"selected":"").">".$row['pondokan']." </option>";
-												}
-											?>
+											<option value="Mualimin" selected>Mualimin</option>
                   </select>
                 </div>
               </div>
@@ -386,14 +381,14 @@
 										<input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="foto">
 									</div>
               </div>
-           
+
           </div>
         </div>
       </div>
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
-        <a href="<?php echo base_url('admin/datamaster/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
+        <a href="<?php echo base_url('admin/santriakd/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
       </footer>
       </form>
 
