@@ -664,5 +664,294 @@ class Santriakd extends CI_Controller
     redirect(base_url()."admin/santriakd/pelanggaransantri?nis=$nis&msg=1");
   }
   //akhir prestasi pelanggaran//
+
+  //crud guru//
+  function guru()
+  {
+      $variabel['data'] = $this->m_guru->lihatdata();
+      $this->layout->renderakd('back-end/akademik/guru/v_guru',$variabel,'back-end/akademik/guru/v_guru_js');
+  }
+
+  function gurulihat()
+  {
+      $nip = $this->input->get("nip");
+      $exec = $this->m_guru->lihatdatasatu($nip);
+      if ($exec->num_rows()>0){
+          $variabel['data'] = $exec ->row_array();
+          $this->layout->renderakd('back-end/akademik/guru/v_guru_lihat',$variabel,'back-end/akademik/guru/v_guru_js');
+      } else {
+          redirect(base_url("admin/santriakd/guru"));
+      }
+
+  }
+
+  function gurutambah()
+  {
+      if ($this->input->post()){
+
+              $array=array(
+                  'nip_guru'=> $this->input->post('nip_guru'),
+                  'nik'=> $this->input->post('nik'),
+                  'email_guru'=> $this->input->post('email_guru'),
+                  'hp_guru'=> $this->input->post('hp_guru'),
+                  'nama_lengkap'=>$this->input->post('nama_lengkap'),
+                  'tempat_lahir'=>$this->input->post('tempat_lahir'),
+                  'tgl_lahir'=>tanggalawal($this->input->post('tgl_lahir')),
+                  'jenis_kelamin'=>$this->input->post('jenis_kelamin'),
+                  'alamat_lengkap'=>$this->input->post('alamat_lengkap'),
+                  'provinsi'=>$this->input->post('provinsi'),
+                  'kabupaten_kota'=>$this->input->post('kabupaten_kota'),
+                  'kecamatan'=>$this->input->post('kecamatan'),
+                  'desa_kelurahan'=>$this->input->post('desa_kelurahan'),
+                  'kode_pos'=>$this->input->post('kode_pos'),
+                  'pendidikan_terakhir'=>$this->input->post('pendidikan_terakhir'),
+                  'perguruan_tinggi'=>$this->input->post('perguruan_tinggi'),
+                  'bidang_ilmu'=>$this->input->post('bidang_ilmu'),
+                  'tahun_masuk'=>$this->input->post('tahun_masuk'),
+                  'tahun_lulus'=>$this->input->post('tahun_lulus')
+
+
+
+                  );
+          if ($this->m_guru->cekdata($this->input->post('nip_guru'))==0) {
+              $config['upload_path'] = './assets/images/foto';
+              $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|PNG|png';
+              $this->load->library('upload', $config);
+              $this->upload->do_upload("foto");
+              $upload = $this->upload->data();
+              $foto = $upload["raw_name"].$upload["file_ext"];
+              $array['foto']=$foto;
+              $exec = $this->m_guru->tambahdata($array);
+              if ($exec) redirect(base_url("admin/santriakd/gurutambah?msg=1"));
+              else redirect(base_url("admin/santriakd/gurutambah?msg=0"));
+          } else {
+
+
+
+              $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+              $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
+              $variabel['kecamatan']=$this->m_santri->ambilkecamatan($this->input->post('kabupaten_kota'));
+              $variabel['desa']=$this->m_santri->ambildesa($this->input->post('kecamatan'));
+              $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
+
+              $variabel['nip_guru'] =$this->input->post('nip_guru');
+              $this->layout->renderakd('back-end/akademik/guru/v_guru_tambah',$variabel,'back-end/akademik/guru/v_guru_js');
+          }
+
+      } else {
+           $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+           $variabel['pendidikan']
+           =$this->m_santri->ambilpendidikan();
+           $variabel['kabupaten']=$this->m_santri->ambilkabupaten("");
+           $variabel['kecamatan']=$this->m_santri->ambilkecamatan("");
+           $variabel['desa']=$this->m_santri->ambildesa("");
+          $this->layout->renderakd('back-end/akademik/guru/v_guru_tambah',$variabel,'back-end/datamaster/guru/v_guru_js');
+      }
+  }
+
+  function guruedit()
+  {
+      if ($this->input->post()) {
+          $array=array(
+              'nip_guru'=> $this->input->post('nip_guru'),
+              'nik'=> $this->input->post('nik'),
+              'email_guru'=> $this->input->post('email_guru'),
+              'hp_guru'=> $this->input->post('hp_guru'),
+              'nama_lengkap'=>$this->input->post('nama_lengkap'),
+              'tempat_lahir'=>$this->input->post('tempat_lahir'),
+              'tgl_lahir'=>tanggalawal($this->input->post('tgl_lahir')),
+              'jenis_kelamin'=>$this->input->post('jenis_kelamin'),
+              'alamat_lengkap'=>$this->input->post('alamat_lengkap'),
+              'provinsi'=>$this->input->post('provinsi'),
+              'kabupaten_kota'=>$this->input->post('kabupaten_kota'),
+              'kecamatan'=>$this->input->post('kecamatan'),
+              'desa_kelurahan'=>$this->input->post('desa_kelurahan'),
+              'kode_pos'=>$this->input->post('kode_pos'),
+              'pendidikan_terakhir'=>$this->input->post('pendidikan_terakhir'),
+              'perguruan_tinggi'=>$this->input->post('perguruan_tinggi'),
+              'bidang_ilmu'=>$this->input->post('bidang_ilmu'),
+              'tahun_masuk'=>$this->input->post('tahun_masuk'),
+              'tahun_lulus'=>$this->input->post('tahun_lulus')
+              );
+          $nip2 = $this->input->post("nip_guru2");
+          $nip = $this->input->post("nip_guru");
+          if (($this->m_guru->cekdata($nip)>0) && ($nip2!=$nip)) {
+              $variabel['nip_guru'] =$this->input->post('nip_guru');
+              $variabel['nip_guru2'] =$this->input->post('nip_guru2');
+              $variabel['data'] = $array;
+
+              $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+              $variabel['kabupaten']=$this->m_santri->ambilkabupaten($this->input->post('provinsi'));
+              $variabel['kecamatan']=$this->m_santri->ambilkecamatan($this->input->post('kabupaten_kota'));
+              $variabel['desa']=$this->m_santri->ambildesa($this->input->post('kecamatan'));
+              $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
+
+              $this->layout->renderakd('back-end/akademik/guru/v_guru_edit',$variabel,'back-end/akademik/guru/v_guru_js');
+          } else {
+              $config['upload_path'] = './assets/images/foto';
+              $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|PNG|png';
+              $this->load->library('upload', $config);
+              if ($this->upload->do_upload("foto"))
+              {
+                  $upload = $this->upload->data();
+                  $foto = $upload["raw_name"].$upload["file_ext"];
+                  $array['foto']=$foto;
+
+                  $query2 = $this->m_guru->lihatdatasatu($nip2);
+                  $row2 = $query2->row();
+                  $berkas1temp = $row2->foto;
+                  $path1 ='./assets/images/foto/'.$berkas1temp.'';
+                  echo "$path1";
+                  if(is_file($path1)) {
+                      unlink($path1); //menghapus gambar di folder produk
+                  }
+              }
+              $exec = $this->m_guru->editdata($nip2,$array);
+              if ($exec){
+                redirect(base_url("admin/santriakd/guruedit?nip=".$nip."&msg=1"));
+              }
+          }
+    } else {
+          $nip = $this->input->get("nip");
+          $exec = $this->m_guru->lihatdatasatu($nip);
+          if ($exec->num_rows()>0){
+               $variabel['data'] = $exec ->row_array();
+               $data = $variabel['data'];
+               $variabel['provinsi']=$this->m_santri->ambilprovinsi();
+               $variabel['pendidikan']=$this->m_santri->ambilpendidikan();
+               $variabel['kabupaten']=$this->m_santri->ambilkabupaten($data['provinsi']);
+               $variabel['kecamatan']=$this->m_santri->ambilkecamatan($data['kabupaten_kota']);
+               $variabel['desa']=$this->m_santri->ambildesa($data['kecamatan']);
+              $this->layout->renderakd('back-end/akademik/guru/v_guru_edit',$variabel,'back-end/akademik/guru/v_guru_js');
+          } else {
+              redirect(base_url("admin/santriakd/guru"));
+          }
+    }
+
+  }
+
+  function guruhapus()
+  {
+     $nip = $this->input->get("nip");
+     $exec = $this->m_guru->hapus($nip);
+     redirect(base_url()."admin/santriakd/guru?msg=1");
+  }
+
+  function guruberkas()
+  {
+      $nip = $this->input->get("nip");
+      $exec = $this->m_guru->lihatdatasatu($nip);
+      if ($exec->num_rows()>0){
+          $variabel['guru'] = $exec->row_array();
+          $variabel['data'] = $this->m_guru->lihatdataberkas($nip);
+          $this->layout->renderakd('back-end/akademik/guru/v_guruberkas',$variabel,'back-end/akademik/guru/v_guruberkas_js');
+      } else {
+          redirect(base_url("admin/santriakd/guru"));
+      }
+
+  }
+
+  function gurutambahberkas()
+  {
+      $nip = $this->input->get("nip");
+      $exec = $this->m_guru->lihatdatasatu($nip);
+      if ($exec->num_rows()>0){
+          $variabel['guru'] = $exec->row_array();
+          if ($this->input->post()){
+              $config['upload_path'] = './assets/berkas/berkasguru';
+              $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
+              $this->load->library('upload', $config);
+              $this->upload->do_upload("file_berkas");
+              $upload = $this->upload->data();
+              $file_berkas = $upload["raw_name"].$upload["file_ext"];
+
+              $nip_guru = $this->input->post('nip_guru');
+              $nama_berkas = $this->input->post('nama_berkas');
+              $array=array(
+                  'nip_guru'=>  $nip_guru,
+                  'nama_berkas'=> $nama_berkas,
+                  'file_berkas' => $file_berkas
+                  );
+
+              $exec = $this->m_guru->tambahdataberkas($array);
+              if ($exec) redirect(base_url("admin/santriakd/gurutambahberkas?nip=".$nip_guru."&msg=1"));
+              else redirect(base_url("admin/santriakd/guruberkastambah?nip=".$nip_guru."&msg=0"));
+          } else {
+
+              $this->layout->renderakd('back-end/akademik/guru/v_guruberkas_tambah',$variabel,'back-end/akademik/guru/v_guruberkas_js');
+          }
+      } else {
+          redirect(base_url("admin/santriakd/guru"));
+      }
+  }
+  function guruhapusberkas()
+  {
+      $id_berkas = $this->input->get("id_berkas");
+      $nip = $this->input->get("nip");
+
+      $query2 = $this->m_guru->lihatdatasatuberkas($id_berkas);
+      $row2 = $query2->row();
+      $berkas1temp = $row2->file_berkas;
+      $path1 ="./assets/berkas/berkasguru/".$berkas1temp."";
+      if(is_file($path1)) {
+          unlink($path1);
+      }
+
+      $exec = $this->m_guru->hapusberkas($id_berkas);
+      redirect(base_url()."admin/santriakd/guruberkas?msg=1&nip=".$nip."");
+  }
+
+  function gurueditberkas()
+  {
+      if ($this->input->post()) {
+          $id_berkas = $this->input->post('id_berkas');
+          $nama_berkas = $this->input->post('nama_berkas');
+          $nip_guru = $this->input->post('nip_guru');
+          $array=array(
+              'nama_berkas'=> $nama_berkas
+              );
+
+          $config['upload_path'] = './assets/berkas/berkasguru';
+          $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
+          $this->load->library('upload', $config);
+          if ( $this->upload->do_upload("file_berkas"))
+          {
+              $upload = $this->upload->data();
+              $file_berkas = $upload["raw_name"].$upload["file_ext"];
+              $array['file_berkas']=$file_berkas;
+
+              $query2 = $this->m_guru->lihatdatasatuberkas($id_berkas);
+              $row2 = $query2->row();
+              $berkas1temp = $row2->file_berkas;
+              $path1 ="./assets/berkas/berkasguru/".$berkas1temp."";
+              if(is_file($path1)) {
+                  unlink($path1); //menghapus gambar di folder produk
+              }
+          }
+          $exec = $this->m_guru->editdataaberkas($id_berkas,$array);
+          if ($exec) redirect(base_url("admin/santriakd/gurueditberkas?id=".$id_berkas."&nip=".$nip_guru."&msg=1"));
+          else redirect(base_url("admin/santriakd/gurueditberkas?id=".$id_berkas."&nip=".$nip_guru."&msg=0"));
+
+      } else {
+          $nip = $this->input->get("nip");
+          $id = $this->input->get("id");
+          $exec = $this->m_guru->lihatdatasatu($nip);
+          if ($exec->num_rows()>0){
+              $variabel['guru'] = $exec ->row_array();
+              $exec2 = $this->m_guru->lihatdatasatuberkas($id);
+              if ($exec2->num_rows()>0){
+
+                  $variabel['data'] = $exec2->row_array();
+                  $this->layout->renderakd('back-end/akademik/guru/v_guruberkas_edit',$variabel,'back-end/akademik/guru/v_guruberkas_js');
+              } else {
+                  redirect(base_url("admin/santriakd/guruberkas?nip=$nip"));
+              }
+          } else {
+              redirect(base_url("admin/santriakd/guru"));
+          }
+      }
+
+  }
+  //akhir crud guru//
 }
 ?>
