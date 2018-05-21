@@ -13,7 +13,7 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/datamaster/santrihapusberkas?id_berkas="+v_id+"&nis="+v_nis);
+                    window.location.assign("<?php echo base_url() ?>admin/datamaster/santriwatihapusberkas?id_berkas="+v_id+"&nis="+v_nis);
                 }
             },
             batal: function () {

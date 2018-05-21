@@ -410,7 +410,142 @@ class Datamaster extends CI_Controller{
       }
 
     }
-    //
+    
+    function santriwatiberkas()
+    {
+        $nis = $this->input->get("nis");
+        $exec = $this->m_santriwati->lihatdatasatu($nis);
+        if ($exec->num_rows()>0){
+            $variabel['santri'] = $exec->row_array();
+            $variabel['data'] = $this->m_santriwati->lihatdataberkas($nis);
+            $this->layout->render('back-end/datamaster/santriwati/v_santriberkas',$variabel,'back-end/datamaster/santriwati/v_santriberkas_js');
+        } else {
+            redirect(base_url("admin/datamaster/santriwati"));
+        }
+
+    }
+
+    function santriwatitambahberkas()
+    {
+        $nis = $this->input->get("nis");
+        $exec = $this->m_santriwati->lihatdatasatu($nis);
+        if ($exec->num_rows()>0){
+            $variabel['santri'] = $exec->row_array();
+            if ($this->input->post()){
+                $config['upload_path'] = './assets/berkas/berkassantri';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
+                $this->load->library('upload', $config);
+                $this->upload->do_upload("file_berkas");
+                $upload = $this->upload->data();
+                $file_berkas = $upload["raw_name"].$upload["file_ext"];
+
+                $nis_lokal = $this->input->post('nis_lokal');
+                $nama_berkas = $this->input->post('nama_berkas');
+                $array=array(
+                    'nis_lokal'=>  $nis_lokal,
+                    'nama_berkas'=> $nama_berkas,
+                    'file_berkas' => $file_berkas
+                    );
+
+                $exec = $this->m_santriwati->tambahdataberkas($array);
+                if ($exec) redirect(base_url("admin/datamaster/santriwatitambahberkas?nis=".$nis_lokal."&msg=1"));
+                else redirect(base_url("admin/datamaster/santriwatiberkastambah?nis=".$nis_lokal."&msg=0"));
+            } else {
+
+                $this->layout->render('back-end/datamaster/santriwati/v_santriberkas_tambah',$variabel,'back-end/datamaster/santriwati/v_santriberkas_js');
+            }
+        } else {
+            redirect(base_url("admin/datamaster/santriwati"));
+        }
+    }
+
+    function santriwatihapusberkas()
+    {
+        $id_berkas = $this->input->get("id_berkas");
+        $nis = $this->input->get("nis");
+
+        $query2 = $this->m_santriwati->lihatdatasatuberkas($id_berkas);
+        $row2 = $query2->row();
+        $berkas1temp = $row2->file_berkas;
+        $path1 ="./assets/berkas/berkassantri/".$berkas1temp."";
+        if(is_file($path1)) {
+            unlink($path1);
+        }
+
+        $exec = $this->m_santriwati->hapusberkas($id_berkas);
+        redirect(base_url()."admin/datamaster/santriwatiberkas?msg=1&nis=".$nis."");
+    }
+
+    function santriwatieditberkas()
+    {
+        if ($this->input->post()) {
+            $id_berkas = $this->input->post('id_berkas');
+            $nama_berkas = $this->input->post('nama_berkas');
+            $nis_lokal = $this->input->post('nis_lokal');
+            $array=array(
+                'nama_berkas'=> $nama_berkas
+                );
+
+            $config['upload_path'] = './assets/berkas/berkassantri';
+            $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
+            $this->load->library('upload', $config);
+            if ( $this->upload->do_upload("file_berkas"))
+            {
+                $upload = $this->upload->data();
+                $file_berkas = $upload["raw_name"].$upload["file_ext"];
+                $array['file_berkas']=$file_berkas;
+
+                $query2 = $this->m_santriwati->lihatdatasatuberkas($id_berkas);
+                $row2 = $query2->row();
+                $berkas1temp = $row2->file_berkas;
+                $path1 ="./assets/berkas/berkassantri/".$berkas1temp."";
+                if(is_file($path1)) {
+                    unlink($path1); //menghapus gambar di folder produk
+                }
+            }
+            $exec = $this->m_santriwati->editdataaberkas($id_berkas,$array);
+            if ($exec) redirect(base_url("admin/datamaster/santriwatieditberkas?id=".$id_berkas."&nis=".$nis_lokal."&msg=1"));
+            else redirect(base_url("admin/datamaster/santriwatieditberkas?id=".$id_berkas."&nis=".$nis_lokal."&msg=0"));
+
+        } else {
+            $nis = $this->input->get("nis");
+            $id = $this->input->get("id");
+            $exec = $this->m_santriwati->lihatdatasatu($nis);
+            if ($exec->num_rows()>0){
+                $variabel['santri'] = $exec ->row_array();
+                $exec2 = $this->m_santriwati->lihatdatasatuberkas($id);
+                if ($exec2->num_rows()>0){
+
+                    $variabel['data'] = $exec2->row_array();
+                    $this->layout->render('back-end/datamaster/santriwati/v_santriberkas_edit',$variabel,'back-end/datamaster/santriwati/v_santriberkas_js');
+                } else {
+                    redirect(base_url("admin/datamaster/santriwatiberkas?nis=$nis"));
+                }
+            } else {
+                redirect(base_url("admin/datamaster/santriwati"));
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // CRUD Santri
     function santri()
