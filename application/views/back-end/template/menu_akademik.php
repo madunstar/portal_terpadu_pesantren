@@ -20,7 +20,7 @@
                       <span class="font-bold">Dashboard</span>
                     </a>
                   </li>
-                  <li class="<?= (($menu == "santriakd") && ($submenu == 'santri') || ($submenu == 'santriberkas') || ($submenu == 'santritambahberkas') || ($submenu == 'santrieditberkas') || ($submenu == 'santrilihat') || ($submenu == 'ubahpelanggaran') || ($submenu == 'tambahpelanggaran') || ($submenu == 'pelanggaransantri') || ($submenu == 'prestasisantri') || ($submenu == 'ubahprestasi') || ($submenu == 'tambahprestasi') || ($submenu == 'guru') || ($submenu == 'staff') || ($submenu == 'kelas') || ($submenu == 'matpel') || ($submenu == 'jenjang') || ($submenu == 'jenjangtingkat') || ($submenu == 'pondokan') || ($submenu == 'pakpondokan') || ($submenu == 'pakafilasi')) ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "santriakd") && ($submenu == 'santri') || ($submenu == 'santriberkas') || ($submenu == 'santritambahberkas') || ($submenu == 'santrieditberkas') || ($submenu == 'santrilihat') || ($submenu == 'ubahpelanggaran') || ($submenu == 'tambahpelanggaran') || ($submenu == 'pelanggaransantri') || ($submenu == 'prestasisantri') || ($submenu == 'ubahprestasi') || ($submenu == 'tambahprestasi') || ($submenu == 'guru') || ($submenu == 'gurutambah') || ($submenu == 'guruedit') || ($submenu == 'gurulihat') || ($submenu == 'guruberkas') || ($submenu == 'gurutambahberkas') || ($submenu == 'gurueditberkas')  || ($submenu == 'staff') || ($submenu == 'kelas') || ($submenu == 'matpel') || ($submenu == 'jenjang') || ($submenu == 'jenjangtingkat') || ($submenu == 'pondokan') || ($submenu == 'pakpondokan') || ($submenu == 'pakafilasi')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -39,7 +39,7 @@
                           <span>Data Santri</span>
                         </a>
                       </li>
-                      <li class="<?= (($menu == "santriakd") &&  ($submenu == 'guru')) ? "active" : ""; ?>">
+                      <li class="<?= (($menu == "santriakd") &&  ($submenu == 'guru') || ($submenu == 'gurutambah') || ($submenu == 'gurulihat') || ($submenu == 'guruedit') || ($submenu == 'guruberkas') || ($submenu == 'gurutambahberkas') || ($submenu == 'gurueditberkas') ) ? "active" : ""; ?>">
                       <a href="<?php echo base_url() ?>admin/santriakd/guru" class="auto">
                           <i class="i i-dot"></i>
 
@@ -51,34 +51,6 @@
                           <i class="i i-dot"></i>
 
                           <span>Data Kelas</span>
-                        </a>
-                      </li>
-                      <li class="<?= ((($menu == "santriakd") &&  ($submenu == 'jenjang')) || (($submenu == 'jenjangtingkat')) ) ? "active" : ""; ?>">
-                      <a href="<?php echo base_url() ?>admin/santriakd/jenjang" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Jenjang</span>
-                        </a>
-                      </li>
-                      <li class="<?= ((($menu == "santriakd") &&  ($submenu == 'pondokan')) || (($submenu == 'pondokantingkat')) ) ? "active" : ""; ?>">
-                      <a href="<?php echo base_url() ?>admin/santriakd/pondokan" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Pondokan</span>
-                        </a>
-                      </li>
-                      <li class="<?= ((($menu == "santriakd") &&  ($submenu == 'pakpondokan')) ) ? "active" : ""; ?>">
-                      <a href="<?php echo base_url() ?>admin/santriakd/pakpondokan" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Jam Kelas Pondokan</span>
-                        </a>
-                      </li>
-                      <li class="<?= ((($menu == "santriakd") &&  ($submenu == 'pakafilasi')) ) ? "active" : ""; ?>">
-                      <a href="<?php echo base_url() ?>admin/santriakd/pakafilasi" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Jam Kelas Afilasi</span>
                         </a>
                       </li>
                       <li class="<?= (($menu == "santriakd") &&  ($submenu == 'matpel')) ? "active" : ""; ?>">
