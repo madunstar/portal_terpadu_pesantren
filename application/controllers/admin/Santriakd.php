@@ -241,7 +241,7 @@ class Santriakd extends CI_Controller
               $variabel['nis_lokal'] =$this->input->post('nis_lokal');
               $variabel['jenjang']=$this->m_jenjang->lihatdata();
               $variabel['pondokan']=$this->m_pondokan->lihatdata();
-              $this->layout->render('back-end/akademik/santri/v_santri_tambah',$variabel,'back-end/akademik/santri/v_santri_js');
+              $this->layout->renderakd('back-end/akademik/santri/v_santri_tambah',$variabel,'back-end/akademik/santri/v_santri_js');
           }
 
       } else {
@@ -256,7 +256,7 @@ class Santriakd extends CI_Controller
            $variabel['jenjang']=$this->m_jenjang->lihatdata();
            $variabel['pondokan']=$this->m_pondokan->lihatdata();
 
-          $this->layout->render('back-end/akademik/santri/v_santri_tambah',$variabel,'back-end/akademik/santri/v_santri_js');
+          $this->layout->renderakd('back-end/akademik/santri/v_santri_tambah',$variabel,'back-end/akademik/santri/v_santri_js');
       }
   }
 
@@ -327,7 +327,7 @@ class Santriakd extends CI_Controller
               $variabel['jenjang']=$this->m_jenjang->lihatdata();
               $variabel['pondokan']=$this->m_pondokan->lihatdata();
 
-              $this->layout->render('back-end/akademik/santri/v_santri_edit',$variabel,'back-end/akademik/santri/v_santri_js');
+              $this->layout->renderakd('back-end/akademik/santri/v_santri_edit',$variabel,'back-end/akademik/santri/v_santri_js');
           } else {
               $config['upload_path'] = './assets/images/foto';
               $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|PNG|png';
@@ -370,7 +370,7 @@ class Santriakd extends CI_Controller
                $variabel['desa']=$this->m_santri->ambildesa($data['kecamatan']);
                $variabel['jenjang']=$this->m_jenjang->lihatdata();
                $variabel['pondokan']=$this->m_pondokan->lihatdata();
-              $this->layout->render('back-end/akademik/santri/v_santri_edit',$variabel,'back-end/akademik/santri/v_santri_js');
+              $this->layout->renderakd('back-end/akademik/santri/v_santri_edit',$variabel,'back-end/akademik/santri/v_santri_js');
           } else {
               redirect(base_url("admin/santriakd/santri"));
           }
@@ -385,7 +385,125 @@ class Santriakd extends CI_Controller
      redirect(base_url()."admin/santriakd/santri?msg=1");
   }
 
+  //berkas//
 
-  //akhir//
+  function santriberkas()
+  {
+      $nis = $this->input->get("nis");
+      $exec = $this->m_santri->lihatdatasatu($nis);
+      if ($exec->num_rows()>0){
+          $variabel['santri'] = $exec->row_array();
+          $variabel['data'] = $this->m_santri->lihatdataberkas($nis);
+          $this->layout->renderakd('back-end/akademik/santri/v_santriberkas',$variabel,'back-end/akademik/santri/v_santriberkas_js');
+      } else {
+          redirect(base_url("admin/santriakd/santri"));
+      }
+
+  }
+
+  function santritambahberkas()
+  {
+      $nis = $this->input->get("nis");
+      $exec = $this->m_santri->lihatdatasatu($nis);
+      if ($exec->num_rows()>0){
+          $variabel['santri'] = $exec->row_array();
+          if ($this->input->post()){
+              $config['upload_path'] = './assets/berkas/berkassantri';
+              $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|png';
+              $this->load->library('upload', $config);
+              $this->upload->do_upload("file_berkas");
+              $upload = $this->upload->data();
+              $file_berkas = $upload["raw_name"].$upload["file_ext"];
+
+              $nis_lokal = $this->input->post('nis_lokal');
+              $nama_berkas = $this->input->post('nama_berkas');
+              $array=array(
+                  'nis_lokal'=>  $nis_lokal,
+                  'nama_berkas'=> $nama_berkas,
+                  'file_berkas' => $file_berkas
+                  );
+
+              $exec = $this->m_santri->tambahdataberkas($array);
+              if ($exec) redirect(base_url("admin/santriakd/santritambahberkas?nis=".$nis_lokal."&msg=1"));
+              else redirect(base_url("admin/santriakd/santriberkastambah?nis=".$nis_lokal."&msg=0"));
+          } else {
+
+              $this->layout->renderakd('back-end/akademik/santri/v_santriberkas_tambah',$variabel,'back-end/akademik/santri/v_santriberkas_js');
+          }
+      } else {
+          redirect(base_url("admin/datamaster/santri"));
+      }
+  }
+
+  function santrihapusberkas()
+  {
+      $id_berkas = $this->input->get("id_berkas");
+      $nis = $this->input->get("nis");
+
+      $query2 = $this->m_santri->lihatdatasatuberkas($id_berkas);
+      $row2 = $query2->row();
+      $berkas1temp = $row2->file_berkas;
+      $path1 ="./assets/berkas/berkassantri/".$berkas1temp."";
+      if(is_file($path1)) {
+          unlink($path1);
+      }
+
+      $exec = $this->m_santri->hapusberkas($id_berkas);
+      redirect(base_url()."admin/santriakd/santriberkas?msg=1&nis=".$nis."");
+  }
+
+  function santrieditberkas()
+  {
+      if ($this->input->post()) {
+          $id_berkas = $this->input->post('id_berkas');
+          $nama_berkas = $this->input->post('nama_berkas');
+          $nis_lokal = $this->input->post('nis_lokal');
+          $array=array(
+              'nama_berkas'=> $nama_berkas
+              );
+
+          $config['upload_path'] = './assets/berkas/berkassantri';
+          $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
+          $this->load->library('upload', $config);
+          if ( $this->upload->do_upload("file_berkas"))
+          {
+              $upload = $this->upload->data();
+              $file_berkas = $upload["raw_name"].$upload["file_ext"];
+              $array['file_berkas']=$file_berkas;
+
+              $query2 = $this->m_santri->lihatdatasatuberkas($id_berkas);
+              $row2 = $query2->row();
+              $berkas1temp = $row2->file_berkas;
+              $path1 ="./assets/berkas/berkassantri/".$berkas1temp."";
+              if(is_file($path1)) {
+                  unlink($path1); //menghapus gambar di folder produk
+              }
+          }
+          $exec = $this->m_santri->editdataaberkas($id_berkas,$array);
+          if ($exec) redirect(base_url("admin/santriakd/santrieditberkas?id=".$id_berkas."&nis=".$nis_lokal."&msg=1"));
+          else redirect(base_url("admin/santriakd/santrieditberkas?id=".$id_berkas."&nis=".$nis_lokal."&msg=0"));
+
+      } else {
+          $nis = $this->input->get("nis");
+          $id = $this->input->get("id");
+          $exec = $this->m_santri->lihatdatasatu($nis);
+          if ($exec->num_rows()>0){
+              $variabel['santri'] = $exec ->row_array();
+              $exec2 = $this->m_santri->lihatdatasatuberkas($id);
+              if ($exec2->num_rows()>0){
+
+                  $variabel['data'] = $exec2->row_array();
+                  $this->layout->renderakd('back-end/akademik/santri/v_santriberkas_edit',$variabel,'back-end/datamaster/santri/v_santriberkas_js');
+              } else {
+                  redirect(base_url("admin/santriakd/santriberkas?nis=$nis"));
+              }
+          } else {
+              redirect(base_url("admin/santriakd/santri"));
+          }
+      }
+
+  }
+
+  //akhir CRUD santri dan berkas//
 }
 ?>
