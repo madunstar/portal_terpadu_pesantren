@@ -505,5 +505,164 @@ class Santriakd extends CI_Controller
   }
 
   //akhir CRUD santri dan berkas//
+//prestasi pelanggaran//
+//prestasi//
+  function prestasisantri(){
+    $nis = $this->input->get('nis');
+    $exec = $this->m_santri->lihatdatasatu($nis);
+    if ($exec->num_rows()>0){
+      $variabel['santri'] = $exec->row_array();
+      $variabel['data'] = $this->m_prestasi->lihatdata($nis);
+      $this->layout->renderakd('back-end/akademik/prestasi_pelanggaran/v_data_prestasi',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+    } else {
+      redirect(base_url("admin/santriakd/santri"));
+    }
+  }
+
+  function tambahprestasi(){
+    if($this->input->post()){
+      $nis = $this->input->post('nis_santri');
+      $array = array(
+        'nis_santri' => $this->input->post('nis_santri'),
+        'tanggal_prestasi' =>  $this->input->post('tanggal_prestasi'),
+        'jenis_prestasi' => $this->input->post('jenis_prestasi'),
+        'prestasi' => $this->input->post('nama_prestasi'),
+
+        'keterangan' => $this->input->post('keterangan')
+      );
+      $exec = $this->m_prestasi->tambahdata($array);
+      if($exec){
+        redirect(base_url("admin/santriakd/tambahprestasi?nis=$nis&msg=1"));
+      } else{
+        redirect(base_url("admin/santriakd/tambahprestasi?nis=$nis&msg=0"));
+      }
+    } else {
+        $nis = $this->input->get('nis');
+        $exec = $this->m_santri->lihatdatasatu($nis);
+        $variabel['santri'] = $exec->row_array();
+        $variabel['nis_santri'] = $nis;
+        $this->layout->renderakd('back-end/akademik/prestasi_pelanggaran/v_prestasi_tambah',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+    }
+  }
+
+  function ubahprestasi(){
+    if($this->input->post()){
+      $id = $this->input->post('id_prestasi');
+      $nis = $this->input->post('nis_santri');
+      $array = array(
+        'tanggal_prestasi' =>  $this->input->post('tanggal_prestasi'),
+        'jenis_prestasi' => $this->input->post('jenis_prestasi'),
+        'prestasi' => $this->input->post('nama_prestasi'),
+
+        'keterangan' => $this->input->post('keterangan')
+      );
+      $exec = $this->m_prestasi->editdata($id,$array);
+      if($exec){
+        redirect(base_url("admin/santriakd/ubahprestasi?nis=$nis&id=$id&msg=1"));
+      } else{
+        redirect(base_url("admin/santriakd/ubahprestasi?nis=$nis&id=$id&msg=0"));
+      }
+    } else {
+      $id = $this->input->get('id');
+      $nis = $this->input->get('nis');
+      $exec = $this->m_santri->lihatdatasatu($nis);
+        if ($exec->num_rows()>0){
+      $exec2 = $this->m_prestasi->ambildata($id);
+      $variabel['santri'] = $exec->row_array();
+      $variabel['data'] = $exec2->row_array();
+      $this->layout->renderakd('back-end/akademik/prestasi_pelanggaran/v_prestasi_ubah',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+    } else{
+      redirect(base_url("admin/santriakd/santri"));
+    }
+    }
+
+  }
+
+  function hapusprestasi(){
+    $id = $this->input->get("id");
+    $nis = $this->input->get('nis');
+    $exec = $this->m_prestasi->hapus($id);
+    redirect(base_url()."admin/santriakd/prestasisantri?nis=$nis&msg=1");
+  }
+
+  //pelanggaran//
+  function pelanggaransantri(){
+    $nis = $this->input->get('nis');
+    $exec = $this->m_santri->lihatdatasatu($nis);
+    if ($exec->num_rows()>0){
+      $variabel['santri'] = $exec->row_array();
+      $variabel['data'] = $this->m_pelanggaran->lihatdata($nis);
+      $this->layout->renderakd('back-end/akademik/prestasi_pelanggaran/v_data_pelanggaran',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+    } else {
+      redirect(base_url("santriakd/datamaster/santri"));
+    }
+  }
+
+  function tambahpelanggaran(){
+    if($this->input->post()){
+      $nis = $this->input->post('nis_santri');
+      $array = array(
+        'nis_santri' => $this->input->post('nis_santri'),
+        'tanggal_pelanggaran' =>  $this->input->post('tanggal_pelanggaran'),
+        'jenis_pelanggaran' => $this->input->post('jenis_pelanggaran'),
+        'pelanggaran' => $this->input->post('nama_pelanggaran'),
+
+        'keterangan' => $this->input->post('keterangan')
+      );
+      $exec = $this->m_pelanggaran->tambahdata($array);
+      if($exec){
+        redirect(base_url("admin/santriakd/tambahpelanggaran?nis=$nis&msg=1"));
+      } else{
+        redirect(base_url("admin/santriakd/tambahpelanggaran?nis=$nis&msg=0"));
+      }
+    } else {
+        $nis = $this->input->get('nis');
+        $exec = $this->m_santri->lihatdatasatu($nis);
+        $variabel['santri'] = $exec->row_array();
+        $variabel['nis_santri'] = $nis;
+        $this->layout->renderakd('back-end/akademik/prestasi_pelanggaran/v_pelanggaran_tambah',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+    }
+  }
+
+  function ubahpelanggaran(){
+    if($this->input->post()){
+      $id = $this->input->post('id_pelanggaran');
+      $nis = $this->input->post('nis_santri');
+      $array = array(
+        'tanggal_pelanggaran' =>  $this->input->post('tanggal_pelanggaran'),
+        'jenis_pelanggaran' => $this->input->post('jenis_pelanggaran'),
+        'pelanggaran' => $this->input->post('nama_pelanggaran'),
+
+        'keterangan' => $this->input->post('keterangan')
+      );
+      $exec = $this->m_pelanggaran->editdata($id,$array);
+      if($exec){
+        redirect(base_url("admin/santriakd/ubahpelanggaran?nis=$nis&id=$id&msg=1"));
+      } else{
+        redirect(base_url("admin/santriakd/ubahpelanggaran?nis=$nis&id=$id&msg=0"));
+      }
+    } else {
+      $id = $this->input->get('id');
+      $nis = $this->input->get('nis');
+      $exec = $this->m_santri->lihatdatasatu($nis);
+        if ($exec->num_rows()>0){
+      $exec2 = $this->m_pelanggaran->ambildata($id);
+      $variabel['santri'] = $exec->row_array();
+      $variabel['data'] = $exec2->row_array();
+      $this->layout->renderakd('back-end/akademik/prestasi_pelanggaran/v_pelanggaran_ubah',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+    } else{
+      redirect(base_url("admin/santriakd/santri"));
+    }
+    }
+
+  }
+
+  function hapuspelanggaran(){
+    $id = $this->input->get("id");
+    $nis = $this->input->get('nis');
+    $exec = $this->m_pelanggaran->hapus($id);
+    redirect(base_url()."admin/santriakd/pelanggaransantri?nis=$nis&msg=1");
+  }
+  //akhir prestasi pelanggaran//
 }
 ?>
