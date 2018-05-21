@@ -10,9 +10,9 @@
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Menambahkan pelanggaran","Gagal Menambahkan pelanggaran") ?>
-					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/tambahpelanggaran"
+					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriakd/tambahpelanggaran"
 					method="post">
-						<a href="<?php echo base_url('admin/datamaster/pelanggaransantri?nis='.$nis_santri.'') ?>" style="color:#3b994a;margin-left:10px">
+						<a href="<?php echo base_url('admin/santriakd/pelanggaransantri?nis='.$nis_santri.'') ?>" style="color:#3b994a;margin-left:10px">
 							<i class="fa fa-chevron-left"></i> Kembali</a>
 						<div class="row">
 							<div class="col-md-8">
@@ -52,7 +52,7 @@
 					<button type="submit" class="btn btn-success btn-s-xs">
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
-					<a href="<?php echo base_url('admin/datamaster/pelanggaransantri?nis='.$nis_santri.'') ?>" class="btn btn-default btn-s-xs">
+					<a href="<?php echo base_url('admin/santriakd/pelanggaransantri?nis='.$nis_santri.'') ?>" class="btn btn-default btn-s-xs">
 						<i class="fa fa-list"></i> List pelanggaran</a>
 				</footer>
 				</form>

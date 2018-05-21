@@ -16,8 +16,8 @@
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Data Pelanggaran","Gagal Menghapus Data Pelanggaran") ?>
-            <a href="<?php echo base_url() ?>admin/datamaster/tambahpelanggaran?nis=<?php echo $santri['nis_lokal']?>"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Prestasi</button></a>
-            <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/santri" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> List Santri</a>
+            <a href="<?php echo base_url() ?>admin/santriakd/tambahpelanggaran?nis=<?php echo $santri['nis_lokal']?>"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Pelanggaran</button></a>
+            <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/santriakd/santri" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> List Santri</a>
 
               <div class="table-responsive">
                 <table class="table table-striped m-b-none" id="datatable">
@@ -37,7 +37,7 @@
                             <tr>
                               <td>
 
-                              <a href='".base_url('admin/datamaster/ubahpelanggaran?nis='.$row['nis_santri'].'&id='.$row['id_pelanggaran'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                              <a href='".base_url('admin/santriakd/ubahpelanggaran?nis='.$row['nis_santri'].'&id='.$row['id_pelanggaran'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
                               <button class='btn btn-danger btn-xs' title='Hapus' data-toggle='modal' data-target='#".$row['id_pelanggaran']."'><i class='fa fa-trash-o'></i></button>
                               </td>
                               <td>".$row['pelanggaran']."</td>
@@ -55,7 +55,7 @@
                                    <b>Apakah yakin menghapus data?</b>
                                  </div>
                                  <div class='modal-footer'>
-                                   <a style='margin-left:5px' href='".base_url('admin/datamaster/hapuspelanggaran?id='.$row['id_pelanggaran'].'&nis='.$row['nis_santri'].'')."'>
+                                   <a style='margin-left:5px' href='".base_url('admin/santriakd/hapuspelanggaran?id='.$row['id_pelanggaran'].'&nis='.$row['nis_santri'].'')."'>
                                    <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
                                    <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                                  </div>
