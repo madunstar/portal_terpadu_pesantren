@@ -1024,5 +1024,150 @@ class Santriakd extends CI_Controller
      redirect(base_url()."admin/santriakd/kelas?msg=1");
   }
   //akhir ruang kelas//
+
+  //crud pelajaran (guru + matpel)//
+  function pelajaran(){
+       $variabel['data'] = $this->m_pelajaran->lihatdata();
+       $this->layout->renderakd('back-end/akademik/presensi_pelajaran/v_pelajaran',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+  }
+
+   function pelajaranlihat()
+   {
+       $id_pelajaran = $this->input->get("id_pelajaran");
+       $exec = $this->m_pelajaran->lihatdatasatu($id_pelajaran);
+       if ($exec->num_rows()>0){
+           $variabel['data'] = $exec ->row_array();
+           $this->layout->renderakd('back-end/akademik/presensi_pelajaran/v_pelajaran_lihat',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+       } else
+           redirect(base_url("admin/santriakd/pelajaran"));
+   }
+   function pelajarantambah()
+   {
+       if ($this->input->post()){
+             $array=array(
+                 'id_pelajaran'=> NULL,
+                 'nip_guru'=> $this->input->post('nip_guru'),
+                 'id_mata_pelajaran'=> $this->input->post('id_mata_pelajaran')
+                 );
+
+               $exec = $this->m_pelajaran->tambahdata($array);
+               if ($exec) redirect(base_url("admin/santriakd/pelajarantambah?msg=1"));
+               else redirect(base_url("admin/santriakd/pelajarantambah?msg=0"));
+       } else {
+           //$variabel ='';
+           $variabel['nip_guru']=$this->m_pelajaran->ambilguru();
+           $variabel['id_mata_pelajaran']=$this->m_pelajaran->ambilmatpel();
+           $this->layout->renderakd('back-end/akademik/presensi_pelajaran/v_pelajaran_tambah',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+       }
+   }
+
+   function pelajaranedit()
+   {
+       if ($this->input->post()) {
+           $kode = $this->input->post('id_pelajaran');
+           $array=array(
+             'nip_guru'=> $this->input->post('nip_guru'),
+             'id_mata_pelajaran'=> $this->input->post('id_mata_pelajaran')
+               );
+
+               $exec = $this->m_pelajaran->editdata($kode,$array);
+               if ($exec)
+                 redirect(base_url("admin/santriakd/pelajaranedit?id_pelajaran=".$kode."&msg=1"));
+               else
+                 redirect(base_url("admin/santriakd/pelajaranedit?id_pelajaran=".$kode."&msg=0"));
+       }
+       else{
+           $kode = $this->input->get("id_pelajaran");
+           $exec = $this->m_pelajaran->lihatdatasatu($kode);
+           $variabel['nip_guru']=$this->m_pelajaran->ambilguru();
+           $variabel['id_mata_pelajaran']=$this->m_pelajaran->ambilmatpel();
+           if ($exec->num_rows()>0){
+                   $variabel['data'] = $exec ->row_array();
+                   $this->layout->renderakd('back-end/akademik/presensi_pelajaran/v_pelajaran_edit',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+           }
+           else
+               redirect(base_url("admin/santriakd/pelajaran"));
+       }
+   }
+
+   function pelajaranhapus()
+   {
+      $kode = $this->input->get("id_pelajaran");
+      $exec = $this->m_pelajaran->hapus($kode);
+      redirect(base_url()."admin/santriakd/pelajaran?msg=1");
+   }
+   //akhir pelajaran (matpel + guru)//
+
+   //crud mata pelajaran//
+  function matpel(){
+       $variabel['data'] = $this->m_matpel->lihatdata();
+      $this->layout->renderakd('back-end/akademik/matpel/v_matpel',$variabel,'back-end/akademik/matpel/v_matpel_js');
+  }
+
+  function matpellihat()
+  {
+      $id_mata_pelajaran = $this->input->get("id_matpel");
+      $exec = $this->m_matpel->lihatdatasatu($id_mata_pelajaran);
+      if ($exec->num_rows()>0){
+          $variabel['data'] = $exec ->row_array();
+          $this->layout->renderakd('back-end/akademik/matpel/v_matpel_lihat',$variabel,'back-end/akademik/matpel/v_matpel_js');
+      } else {
+          redirect(base_url("admin/santriakd/matpel"));
+      }
+  }
+  function matpeltambah()
+  {
+      if ($this->input->post()){
+              $array=array(
+                  'id_mata_pelajaran'=> NULL,
+                  'nama_mata_pelajaran'=> $this->input->post('nama_matpel'),
+                  'tingkat_mata_pelajaran'=> $this->input->post('tingkat_matpel'),
+                  'semester_mata_pelajaran'=> $this->input->post('semester_matpel'),
+                  'kelas_mata_pelajaran'=> $this->input->post('kelas_matpel')
+                  );
+
+              $exec = $this->m_matpel->tambahdata($array);
+              if ($exec) redirect(base_url("admin/santriakd/matpeltambah?msg=1"));
+              else redirect(base_url("admin/santriakd/matpeltambah?msg=0"));
+      } else {
+          $variabel ='';
+          $this->layout->renderakd('back-end/akademik/matpel/v_matpel_tambah',$variabel,'back-end/akademik/matpel/v_matpel_js');
+      }
+  }
+
+  function matpeledit()
+  {
+      if ($this->input->post()) {
+          $kode = $this->input->post('id_matpel');
+          $array=array(
+              'nama_mata_pelajaran'=> $this->input->post('nama_matpel'),
+              'tingkat_mata_pelajaran'=> $this->input->post('tingkat_matpel'),
+              'semester_mata_pelajaran'=> $this->input->post('semester_matpel'),
+              'kelas_mata_pelajaran'=> $this->input->post('kelas_matpel')
+              );
+              $exec = $this->m_matpel->editdata($kode,$array);
+              if ($exec)
+                redirect(base_url("admin/santriakd/matpeledit?id_matpel=".$kode."&msg=1"));
+              else
+                  redirect(base_url("admin/santriakd/matpeledit?id_matpel=".$kode."&msg=0"));
+      }
+      else{
+          $kode = $this->input->get("id_matpel");
+          $exec = $this->m_matpel->lihatdatasatu($kode);
+          if ($exec->num_rows()>0){
+                  $variabel['data'] = $exec ->row_array();
+                  $this->layout->renderakd('back-end/akademik/matpel/v_matpel_edit',$variabel,'back-end/akademik/matpel/v_matpel_js');
+          }
+          else
+              redirect(base_url("admin/santriakd/matpel"));
+      }
+  }
+  function matpelhapus()
+  {
+     $kode = $this->input->get("id_matpel");
+     $exec = $this->m_matpel->hapus($kode);
+     redirect(base_url()."admin/santriakd/matpel?msg=1");
+  }
+  //akhir pelajaran//
 }
 ?>
