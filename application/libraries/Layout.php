@@ -9,6 +9,7 @@ class Layout {
     public $headerizin = 'back-end/template/header_perizinan';
     public $headerlaporan = 'back-end/template/header_laporan';
     public $headerakd = 'back-end/template/header_akademik';
+    public $headerakdp = 'back-end/template/header_akademik_p';
 	//public $menu = 'template/menu';
     public $footer = 'back-end/template/footer';
     public $endhtml = 'back-end/template/endhtml';
@@ -69,6 +70,16 @@ class Layout {
 
     function renderakd($view,$data = null,$js = null){
         $this->ci->load->view($this->headerakd);
+        $this->ci->load->view($view,$data);
+        $this->ci->load->view($this->footer);
+        if ($js!=NULL) {
+            $this->ci->load->view($js,$data);
+        }
+        $this->ci->load->view($this->endhtml);
+    }
+
+    function renderakdp($view,$data = null,$js = null){
+        $this->ci->load->view($this->headerakdp);
         $this->ci->load->view($view,$data);
         $this->ci->load->view($this->footer);
         if ($js!=NULL) {
