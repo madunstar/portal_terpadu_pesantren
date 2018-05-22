@@ -1169,5 +1169,591 @@ class Santriakd extends CI_Controller
      redirect(base_url()."admin/santriakd/matpel?msg=1");
   }
   //akhir pelajaran//
+  //afiliasi//
+  function datakelasbelajar()
+  {
+     $variabel['data']=$this->m_presensi->lihatdata();
+     $this->layout->renderakd('back-end/akademik/presensi_kelas/v_presensi_kelas',$variabel,'back-end/akademik/presensi_kelas/v_preskelas_js');
+  }
+
+  function aturkelasbelajar(){
+       if ($this->input->post()){
+           $array=array(
+               'nip_guru'=> $this->input->post('nip_guru'),
+               'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+               'kd_kelas'=> $this->input->post('kd_kelas'),
+               'status_kelas'=>$this->input->post('status_kelas'),
+               'id_tahun'=>$this->input->post('id_tahun'),
+               'jenjang'=>$this->input->post('jenjang'),
+               'tingkat'=>$this->input->post('tingkatan')
+               );
+           $exec = $this->m_presensi->tambahdata($array);
+           if ($exec) redirect(base_url("admin/santriakd/aturkelasbelajar?msg=1"));
+           else redirect(base_url("admin/santriakd/aturkelasbelajar?msg=0"));
+       } else {
+           $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+           $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+           $variabel['guru']=$this->m_guru->lihatdata();
+           $variabel['jenjang']=$this->m_jenjang->lihatdata();
+           $this->layout->renderakd('back-end/akademik/presensi_kelas/v_presensi_atur',$variabel,'back-end/akademik/presensi_kelas/v_preskelas_js');
+       }
+  }
+
+  function hapuskelasbelajar()
+   {
+      $id = $this->input->get("id");
+      $exec = $this->m_presensi->hapus($id);
+      redirect(base_url()."admin/santriakd/datakelasbelajar?msg=1");
+   }
+
+   function editkelasbelajar()
+   {
+       if ($this->input->post()) {
+           $array=array(
+               'nip_guru'=> $this->input->post('nip_guru'),
+               'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+               'kd_kelas'=> $this->input->post('kd_kelas'),
+               'status_kelas'=>$this->input->post('status_kelas'),
+               'id_tahun'=>$this->input->post('id_tahun'),
+               'jenjang'=>$this->input->post('jenjang'),
+               'tingkat'=>$this->input->post('tingkatan')
+               );
+           $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+           $exec = $this->m_presensi->editdata($id_kelas_belajar,$array);
+           if ($exec){
+               redirect(base_url("admin/santriakd/editkelasbelajar?id=".$id_kelas_belajar."&msg=1"));
+           }
+     } else {
+           $id_kelas_belajar = $this->input->get("id");
+           $exec = $this->m_presensi->lihatdatasatu($id_kelas_belajar);
+           if ($exec->num_rows()>0){
+               $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+               $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+               $variabel['guru']=$this->m_guru->lihatdata();
+               $variabel['data'] = $exec->row_array();
+               $variabel['jenjang']=$this->m_jenjang->lihatdata();
+               $variabel['tingkatan']=$this->m_jenjang->lihatdatatingkatan($variabel['data']['jenjang']);
+               $this->layout->renderakd('back-end/akademik/presensi_kelas/v_presensi_edit',$variabel,'back-end/akademik/presensi_kelas/v_preskelas_js');
+           } else {
+               redirect(base_url("admin/santriakd/datakelasbelajar"));
+           }
+     }
+
+
+   }
+
+   function lihatkelasbelajar()
+   {
+       $id_kelas_belajar = $this->input->get("id");
+       $exec = $this->m_presensi->lihatdatasatulengkap($id_kelas_belajar);
+       if ($exec->num_rows()>0){
+           $variabel['data'] = $exec->row_array();
+           $variabel['santri'] = $this->m_presensi->lihatdatasantri($id_kelas_belajar);
+           $this->layout->renderakd('back-end/akademik/presensi_kelas/v_presensi_lihat',$variabel,'back-end/akademik/presensi_kelas/v_preskelas_js');
+       } else {
+           redirect(base_url("admin/santriakd/datakelasbelajar"));
+       }
+   }
+
+   function hapuskelassantri()
+   {
+      $id = $this->input->get("id");
+      $idkelas = $this->input->get("idkelas");
+      $exec = $this->m_presensi->hapussantri($id);
+      redirect(base_url()."admin/santriakd/lihatkelasbelajarsantri?id=".$idkelas."&h=1");
+   }
+
+   function lihatkelasbelajarsantri()
+   {
+       $id = $this->input->get("id");
+       $exec = $this->m_presensi->lihatdatasatulengkap($id);
+       if ($exec->num_rows()>0){
+           $variabel['santri'] = $exec->row_array();
+           $variabel['data'] = $this->m_presensi->lihatdatasantri($id);
+           $this->layout->renderakd('back-end/akademik/presensi_kelas/v_santri',$variabel,'back-end/akademik/presensi_kelas/v_santri_js');
+       } else {
+           redirect(base_url("admin/santriakd/datakelasbelajar"));
+       }
+   }
+
+   function kelastambahsantri()
+   {
+       $idkelasbelajar = $this->input->post("id_kelas_belajar");
+       $variabel['lissantri'] = $this->m_presensi->lissantri($idkelasbelajar);
+       $this->load->view("back-end/akademik/presensi_kelas/v_santri_tambah",$variabel);
+
+   }
+
+   function tambahsantriproses()
+   {
+       $idkelasbelajar = $this->input->post("idkelasbelajar");
+       $nis = $this->input->post("nis");
+       $array = array (
+           "id_kelas_belajar"=>$idkelasbelajar,
+           "nis_lokal"=>$nis
+       );
+       $exec = $this->m_presensi->tambahdatasantri($array);
+
+   }
+
+   function kelaseditsantri()
+   {
+       $idkelasbelajar = $this->input->post("id_kelas_belajar");
+       $variabel['lissantri'] = $this->m_presensi->lissantri($idkelasbelajar);
+       $id_kelas_santri = $this->input->post("id");
+       $variabel['data'] = $this->m_presensi->lihatdatasatusantri($id_kelas_santri)->row_array();
+       $this->load->view("back-end/akdemik/presensi_kelas/v_santri_edit",$variabel);
+
+   }
+
+   function editsantriproses()
+   {
+       $idkelasbelajar = $this->input->post("idkelasbelajar");
+       $nis = $this->input->post("nis");
+       $id_kelas_santri = $this->input->post("id_kelas_santri");
+       $array = array (
+           "nis_lokal"=>$nis
+       );
+       $exec = $this->m_presensi->editdatasantri($id_kelas_santri,$array);
+   }
+
+   function kelaseditbelajar()
+   {
+       $idkelasbelajar = $this->input->post("id");
+       $variabel['data'] = $this->m_presensi->lihatdatasatu($idkelasbelajar)->row_array();
+       $this->load->view("back-end/akademik/presensi_kelas/v_presensi_editstatus",$variabel);
+
+   }
+
+   function editkelasproses()
+   {
+       $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+       $status_kelas = $this->input->post("status_kelas");
+       $array = array (
+           "status_kelas"=>$status_kelas
+       );
+       $exec = $this->m_presensi->editdata($id_kelas_belajar,$array);
+   }
+
+   function jadwalafilasi()
+   {
+       $id = $this->input->get("id");
+       $exec = $this->m_presensi->lihatdatasatulengkap($id);
+       if ($exec->num_rows()>0) {
+           $variabel['jadwal'] = $exec->row_array();
+           $variabel['datasenin'] = $this->m_presensi->lihatdatajadwal($id,'Senin');
+           $variabel['dataselasa'] = $this->m_presensi->lihatdatajadwal($id,'Selasa');
+           $variabel['datarabu'] = $this->m_presensi->lihatdatajadwal($id,'Rabu');
+           $variabel['datakamis'] = $this->m_presensi->lihatdatajadwal($id,'Kamis');
+           $variabel['datajumat'] = $this->m_presensi->lihatdatajadwal($id,"Jum'at");
+           $variabel['datasabtu'] = $this->m_presensi->lihatdatajadwal($id,'Sabtu');
+           $variabel['dataahad'] = $this->m_presensi->lihatdatajadwal($id,'Ahad');
+           $this->layout->renderakd('back-end/akademik/presensi_kelas/v_jadwal',$variabel,'back-end/akademik/presensi_kelas/v_jadwal_js');
+       } else {
+           redirect(base_url("admin/santriakd/datakelasafilasi"));
+       }
+   }
+
+   function tambahjadwalafilasi()
+   {
+       $idkelaspondokan = $this->input->post("id_kelas_belajar");
+       $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
+       $variabel['jam'] = $this->m_pak_afilasi->lihatdata();
+       $this->load->view("back-end/akademik/presensi_kelas/v_jadwal_tambah",$variabel);
+   }
+
+   function tambahjadwalafilasiproses()
+   {
+       $idkelasbelajar = $this->input->post("idkelasbelajar");
+       $id_pelajaran = $this->input->post("mata_pelajaran");
+       $hari = $this->input->post("hari");
+       $jam = $this->input->post("jam");
+
+       $array = array (
+           "id_kelas_belajar"=>$idkelasbelajar,
+           "id_mata_pelajaran"=>$id_pelajaran,
+           "hari"=>$hari,
+           "jam"=>$jam
+       );
+
+       if ($id_pelajaran=="Istirahat"){
+           $array["mata_pelajaran"]="Istirahat";
+           $array["nip"]="Istirahat";
+           $array["guru"]="Istirahat";
+       } else {
+           $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+           $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+           $array["nip"]=$data['nip_guru'];
+           $array["guru"]=$data['nama_lengkap'];
+       }
+       $exec = $this->m_presensi->tambahdatajadwal($array);
+
+   }
+
+   function editjadwalafilasi()
+   {
+       $idkelaspondokan = $this->input->post("id_kelas_belajar");
+       $id_jadwal = $this->input->post("id");
+
+        $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
+       $variabel['jam'] = $this->m_pak_afilasi->lihatdata();
+
+       $variabel['data'] = $this->m_presensi->lihatdatasatujadwal($id_jadwal)->row_array();
+       $this->load->view("back-end/akademik/presensi_kelas/v_jadwal_edit",$variabel);
+
+   }
+
+   function editjadwalafilasiproses()
+   {
+       $id_jadwal = $this->input->post("idjadwal");
+
+       $idkelasbelajar = $this->input->post("idkelasbelajar");
+       $id_pelajaran = $this->input->post("mata_pelajaran");
+       $hari = $this->input->post("hari");
+       $jam = $this->input->post("jam");
+
+       $array = array (
+           "id_mata_pelajaran"=>$id_pelajaran,
+           "jam"=>$jam
+       );
+       if ($id_pelajaran=="Istirahat"){
+           $array["mata_pelajaran"]="Istirahat";
+           $array["nip"]="Istirahat";
+           $array["guru"]="Istirahat";
+       } else {
+           $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+           $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+           $array["nip"]=$data['nip_guru'];
+           $array["guru"]=$data['nama_lengkap'];
+       }
+       $exec = $this->m_presensi->editdatajadwal($id_jadwal,$array);
+   }
+
+   function hapusjadwalafilasi()
+   {
+      $id = $this->input->get("id");
+      $idkelas = $this->input->get("idkelas");
+      $exec = $this->m_presensi->hapusjadwal($id);
+      redirect(base_url()."admin/santriakd/jadwalafilasi?id=".$idkelas."&h=1");
+   }
+
+   function printkelasafilasi(){
+       $id = $this->input->get("id");
+       $exec = $this->m_presensi->lihatdatasatulengkap($id);
+       if ($exec->num_rows()>0) {
+           $variabel['jadwal'] = $exec->row_array();
+           $variabel['listjadwal'] = $this->m_presensi->lihatjadwal($id);
+           $this->layout->renderakd('back-end/akademik/presensi_kelas/v_presensi_print',$variabel,'back-end/akademik/presensi_kelas/v_presensi_printjs');
+       } else {
+           redirect(base_url("admin/santriakd/datakelasbelajar"));
+       }
+   }
+
+   function printjadwalafilasi(){
+       $id = $this->input->get("id");
+       $data = $this->m_presensi->lihatdatasatujadwal($id)->row_array();
+       $variabel['data'] = $data;
+       $variabel['data2'] =  $this->m_presensi->lihatdatasatulengkap($data['id_kelas_belajar'])->row_array();
+       $variabel['santri'] = $this->m_presensi->lihatdatasantri($data['id_kelas_belajar']);
+       $this->layout->renderlaporan('back-end/akademik/presensi_kelas/v_presensi_printjadwal',$variabel,'back-end/akademik/presensi_kelas/v_presensi_printjadwal_js');
+     }
+  //akhir afiliasi//
+  //pondokan//
+  function datatingkatpondokan()
+  {
+    $pondokan=$this->input->post('pondokan');
+    $data=$this->m_pondokan->datatingkatajax($pondokan);
+    echo json_encode($data);
+  }
+
+  function datakelaspondokan()
+ {
+    $variabel['data']=$this->m_presensipondokan->lihatdata();
+    $this->layout->renderakd('back-end/akademik/presensi_pondokan/v_presensi_pondokan',$variabel,'back-end/akademik/presensi_pondokan/v_preskelas_js');
+ }
+
+ function aturkelaspondokan(){
+  if ($this->input->post()){
+      $array=array(
+          'nip_guru'=> $this->input->post('nip_guru'),
+          'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+          'kd_kelas'=> $this->input->post('kd_kelas'),
+          'status_kelas'=>$this->input->post('status_kelas'),
+          'id_tahun'=>$this->input->post('id_tahun'),
+          'pondokan'=>$this->input->post('pondokan'),
+          'tingkat'=>$this->input->post('tingkatan')
+          );
+      $exec = $this->m_presensipondokan->tambahdata($array);
+      if ($exec) redirect(base_url("admin/santriakd/aturkelaspondokan?msg=1"));
+      else redirect(base_url("admin/santriakd/aturkelaspondokan?msg=0"));
+  } else {
+      $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+      $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+      $variabel['guru']=$this->m_guru->lihatdata();
+      $variabel['pondokan']=$this->m_pondokan->lihatdata();
+      $this->layout->renderakd('back-end/akademik/presensi_pondokan/v_presensi_atur',$variabel,'back-end/akademik/presensi_pondokan/v_preskelas_js');
+  }
+}
+
+function editkelaspondokan()
+    {
+        if ($this->input->post()) {
+            $array=array(
+                'nip_guru'=> $this->input->post('nip_guru'),
+                'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+                'kd_kelas'=> $this->input->post('kd_kelas'),
+                'status_kelas'=>$this->input->post('status_kelas'),
+                'id_tahun'=>$this->input->post('id_tahun'),
+                'pondokan'=>$this->input->post('pondokan'),
+                'tingkat'=>$this->input->post('tingkatan')
+                );
+            $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+            $exec = $this->m_presensipondokan->editdata($id_kelas_belajar,$array);
+            if ($exec){
+                redirect(base_url("admin/santriakd/editkelaspondokan?id=".$id_kelas_belajar."&msg=1"));
+            }
+      } else {
+            $id_kelas_belajar = $this->input->get("id");
+            $exec = $this->m_presensipondokan->lihatdatasatu($id_kelas_belajar);
+            if ($exec->num_rows()>0){
+                $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+                $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+                $variabel['guru']=$this->m_guru->lihatdata();
+                $variabel['data'] = $exec->row_array();
+                $variabel['pondokan']=$this->m_pondokan->lihatdata();
+                $variabel['tingkatan']=$this->m_pondokan->lihatdatatingkatan($variabel['data']['pondokan']);
+                $this->layout->renderakd('back-end/akademik/presensi_pondokan/v_presensi_edit',$variabel,'back-end/akademik/presensi_pondokan/v_preskelas_js');
+            } else {
+                redirect(base_url("admin/santriakd/datakelaspondokan"));
+            }
+      }
+
+
+
+    }
+
+    function hapuskelaspondokan()
+    {
+       $id = $this->input->get("id");
+       $exec = $this->m_presensipondokan->hapus($id);
+       redirect(base_url()."admin/santriakd/datakelaspondokan?msg=1");
+    }
+
+    function lihatkelaspondokan()
+    {
+        $id_kelas_belajar = $this->input->get("id");
+        $exec = $this->m_presensipondokan->lihatdatasatulengkap($id_kelas_belajar);
+        if ($exec->num_rows()>0){
+            $variabel['data'] = $exec->row_array();
+            $variabel['santri'] = $this->m_presensipondokan->lihatdatasantri($id_kelas_belajar);
+            $this->layout->renderakd('back-end/akademik/presensi_pondokan/v_presensi_lihat',$variabel,'back-end/akademik/presensi_pondokan/v_preskelas_js');
+        } else {
+            redirect(base_url("admin/santriakd/datakelaspondokan"));
+        }
+    }
+
+    function kelaseditpondokan()
+    {
+        $idkelaspondokan = $this->input->post("id");
+        $variabel['data'] = $this->m_presensipondokan->lihatdatasatu($idkelaspondokan)->row_array();
+        $this->load->view("back-end/akademik/presensi_pondokan/v_presensi_editstatus",$variabel);
+
+    }
+
+    function editpondokanproses()
+    {
+        $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+        $status_kelas = $this->input->post("status_kelas");
+        $array = array (
+            "status_kelas"=>$status_kelas
+        );
+        $exec = $this->m_presensipondokan->editdata($id_kelas_belajar,$array);
+    }
+
+    function lihatkelaspondokansantri()
+    {
+        $id = $this->input->get("id");
+        $exec = $this->m_presensipondokan->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0){
+            $variabel['santri'] = $exec->row_array();
+            $variabel['data'] = $this->m_presensipondokan->lihatdatasantri($id);
+            $this->layout->renderakd('back-end/akademik/presensi_pondokan/v_santri',$variabel,'back-end/akademik/presensi_pondokan/v_santri_js');
+        } else {
+            redirect(base_url("admin/santriakd/datakelaspondokan"));
+        }
+    }
+
+    function kelastambahsantripondokan()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $variabel['lissantri'] = $this->m_presensipondokan->lissantri($idkelaspondokan);
+        $this->load->view("back-end/akademik/presensi_pondokan/v_santri_tambah",$variabel);
+    }
+
+    function tambahsantripondokproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $nis = $this->input->post("nis");
+        $array = array (
+            "id_kelas_belajar"=>$idkelasbelajar,
+            "nis_lokal"=>$nis
+        );
+        $exec = $this->m_presensipondokan->tambahdatasantri($array);
+
+    }
+
+    function hapuskelassantripondokan()
+    {
+       $id = $this->input->get("id");
+       $idkelas = $this->input->get("idkelas");
+       $exec = $this->m_presensipondokan->hapussantri($id);
+       redirect(base_url()."admin/santriakd/lihatkelaspondokansantri?id=".$idkelas."&h=1");
+    }
+
+    function kelaseditsantripondokan()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $variabel['lissantri'] = $this->m_presensipondokan->lissantri($idkelaspondokan);
+        $id_kelas_santri = $this->input->post("id");
+        $variabel['data'] = $this->m_presensipondokan->lihatdatasatusantri($id_kelas_santri)->row_array();
+        $this->load->view("back-end/akademik/presensi_pondokan/v_santri_edit",$variabel);
+
+    }
+
+    function editsantripondokanproses()
+    {
+        $idkelaspondokan = $this->input->post("idkelaspondokan");
+        $nis = $this->input->post("nis");
+        $id_kelas_santri = $this->input->post("id_kelas_santri");
+        $array = array (
+            "nis_lokal"=>$nis
+        );
+        $exec = $this->m_presensipondokan->editdatasantri($id_kelas_santri,$array);
+    }
+
+    function jadwalpondokan()
+    {
+        $id = $this->input->get("id");
+        $exec = $this->m_presensipondokan->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0) {
+            $variabel['jadwal'] = $exec->row_array();
+            $variabel['datasenin'] = $this->m_presensipondokan->lihatdatajadwal($id,'Senin');
+            $variabel['dataselasa'] = $this->m_presensipondokan->lihatdatajadwal($id,'Selasa');
+            $variabel['datarabu'] = $this->m_presensipondokan->lihatdatajadwal($id,'Rabu');
+            $variabel['datakamis'] = $this->m_presensipondokan->lihatdatajadwal($id,'Kamis');
+            $variabel['datajumat'] = $this->m_presensipondokan->lihatdatajadwal($id,"Jum'at");
+            $variabel['datasabtu'] = $this->m_presensipondokan->lihatdatajadwal($id,'Sabtu');
+            $variabel['dataahad'] = $this->m_presensipondokan->lihatdatajadwal($id,'Ahad');
+
+            $this->layout->renderakd('back-end/akademik/presensi_pondokan/v_jadwal',$variabel,'back-end/akademik/presensi_pondokan/v_jadwal_js');
+        } else {
+            redirect(base_url("admin/santriakd/datakelaspondokan"));
+        }
+    }
+
+    function tambahjadwalpondokan()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
+        $variabel['jam'] = $this->m_pak_pondokan->lihatdata();
+        $this->load->view("back-end/akademik/presensi_pondokan/v_jadwal_tambah",$variabel);
+    }
+
+    function tambahjadwalpondokanproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $id_pelajaran = $this->input->post("mata_pelajaran");
+        $hari = $this->input->post("hari");
+        $jam = $this->input->post("jam");
+
+
+        $array = array (
+            "id_kelas_belajar"=>$idkelasbelajar,
+            "id_mata_pelajaran"=>$id_pelajaran,
+            "hari"=>$hari,
+            "jam"=>$jam
+        );
+        if ($id_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]="Istirahat";
+            $array["nip"]="Istirahat";
+            $array["guru"]="Istirahat";
+        } else {
+            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+            $array["nip"]=$data['nip_guru'];
+            $array["guru"]=$data['nama_lengkap'];
+        }
+        $exec = $this->m_presensipondokan->tambahdatajadwal($array);
+    }
+
+    function editjadwalpondokan()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $id_jadwal = $this->input->post("id");
+
+        $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
+        $variabel['jam'] = $this->m_pak_pondokan->lihatdata();
+
+        $variabel['data'] = $this->m_presensipondokan->lihatdatasatujadwal($id_jadwal)->row_array();
+        $this->load->view("back-end/akademik/presensi_pondokan/v_jadwal_edit",$variabel);
+
+    }
+
+    function editjadwalpondokanproses()
+    {
+        $id_jadwal = $this->input->post("idjadwal");
+
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $id_pelajaran = $this->input->post("mata_pelajaran");
+        $hari = $this->input->post("hari");
+        $jam = $this->input->post("jam");
+
+        $array = array (
+            "id_mata_pelajaran"=>$id_pelajaran,
+            "jam"=>$jam
+        );
+        if ($id_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]="Istirahat";
+            $array["nip"]="Istirahat";
+            $array["guru"]="Istirahat";
+        } else {
+            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+            $array["nip"]=$data['nip_guru'];
+            $array["guru"]=$data['nama_lengkap'];
+        }
+        $exec = $this->m_presensipondokan->editdatajadwal($id_jadwal,$array);
+    }
+
+    function hapusjadwalpondokan()
+    {
+       $id = $this->input->get("id");
+       $idkelas = $this->input->get("idkelas");
+       $exec = $this->m_presensipondokan->hapusjadwal($id);
+       redirect(base_url()."admin/santriakd/jadwalpondokan?id=".$idkelas."&h=1");
+    }
+
+    function printkelaspondokan(){
+        $id = $this->input->get("id");
+        $exec = $this->m_presensipondokan->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0) {
+            $variabel['jadwal'] = $exec->row_array();
+            $variabel['listjadwal'] = $this->m_presensipondokan->lihatjadwal($id);
+            $this->layout->renderakd('back-end/akademik/presensi_pondokan/v_presensi_print',$variabel,'back-end/akademik/presensi_pondokan/v_presensi_printjs');
+        } else {
+            redirect(base_url("admin/santriakd/datakelaspondokan"));
+        }
+    }
+
+
+    function printjadwalpondokan(){
+        $id = $this->input->get("id");
+        $data = $this->m_presensipondokan->lihatdatasatujadwal($id)->row_array();
+        $variabel['data'] = $data;
+        $variabel['data2'] =  $this->m_presensipondokan->lihatdatasatulengkap($data['id_kelas_belajar'])->row_array();
+        $variabel['santri'] = $this->m_presensipondokan->lihatdatasantri($data['id_kelas_belajar']);
+        $this->layout->renderlaporan('back-end/akademik/presensi_pondokan/v_presensi_printjadwal',$variabel,'back-end/akademik/presensi_pondokan/v_presensi_printjadwal_js');
+      }
+  //akhir pondokan//
 }
 ?>
