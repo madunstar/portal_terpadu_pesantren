@@ -1031,7 +1031,7 @@ class Santriwatiakd extends CI_Controller
   //crud pelajaran (guru_p + matpel_p)//
   function pelajaran(){
        $variabel['data'] = $this->m_pelajaran->lihatdata();
-       $this->layout->renderakdp('back-end/akademik/presensi_pelajaran/v_pelajaran',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+       $this->layout->renderakdp('back-end/akademik/presensi_pelajaran_p/v_pelajaran',$variabel,'back-end/akademik/presensi_pelajaran_p/v_pelajaran_js');
   }
 
    function pelajaranlihat()
@@ -1040,7 +1040,7 @@ class Santriwatiakd extends CI_Controller
        $exec = $this->m_pelajaran->lihatdatasatu($id_pelajaran);
        if ($exec->num_rows()>0){
            $variabel['data'] = $exec ->row_array();
-           $this->layout->renderakdp('back-end/akademik/presensi_pelajaran/v_pelajaran_lihat',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+           $this->layout->renderakdp('back-end/akademik/presensi_pelajaran_p/v_pelajaran_lihat',$variabel,'back-end/akademik/presensi_pelajaran_p/v_pelajaran_js');
        } else
            redirect(base_url("admin/santriwatiakd/pelajaran"));
    }
@@ -1060,7 +1060,7 @@ class Santriwatiakd extends CI_Controller
            //$variabel ='';
            $variabel['nip_guru']=$this->m_pelajaran->ambilguru();
            $variabel['id_mata_pelajaran']=$this->m_pelajaran->ambilmatpel();
-           $this->layout->renderakdp('back-end/akademik/presensi_pelajaran/v_pelajaran_tambah',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+           $this->layout->renderakdp('back-end/akademik/presensi_pelajaran_p/v_pelajaran_tambah',$variabel,'back-end/akademik/presensi_pelajaran_p/v_pelajaran_js');
        }
    }
 
@@ -1086,7 +1086,7 @@ class Santriwatiakd extends CI_Controller
            $variabel['id_mata_pelajaran']=$this->m_pelajaran->ambilmatpel();
            if ($exec->num_rows()>0){
                    $variabel['data'] = $exec ->row_array();
-                   $this->layout->renderakdp('back-end/akademik/presensi_pelajaran/v_pelajaran_edit',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+                   $this->layout->renderakdp('back-end/akademik/presensi_pelajaran_p/v_pelajaran_edit',$variabel,'back-end/akademik/presensi_pelajaran_p/v_pelajaran_js');
            }
            else
                redirect(base_url("admin/santriwatiakd/pelajaran"));
