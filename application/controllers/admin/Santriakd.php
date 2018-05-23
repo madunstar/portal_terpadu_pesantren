@@ -745,7 +745,7 @@ class Santriakd extends CI_Controller
            $variabel['kabupaten']=$this->m_santri->ambilkabupaten("");
            $variabel['kecamatan']=$this->m_santri->ambilkecamatan("");
            $variabel['desa']=$this->m_santri->ambildesa("");
-          $this->layout->renderakd('back-end/akademik/guru/v_guru_tambah',$variabel,'back-end/datamaster/guru/v_guru_js');
+          $this->layout->renderakd('back-end/akademik/guru/v_guru_tambah',$variabel,'back-end/akdemik/guru/v_guru_js');
       }
   }
 

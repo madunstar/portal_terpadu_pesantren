@@ -12,9 +12,9 @@
 				<div class="panel-body">
 
 					<?php pesan_get('msg',"Berhasil Menambahkan Guru","Gagal Menambahkan Guru") ?>
-					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriakd/gurutambahberkas?nip=<?php echo $guru['nip_guru'] ?>"
+					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriwatiakd/gurutambahberkas?nip=<?php echo $guru['nip_guru'] ?>"
 					method="post" enctype="multipart/form-data">
-					<a href="<?php echo base_url('admin/santriakd/guruberkas?nip='.$guru['nip_guru'].'') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
+					<a href="<?php echo base_url('admin/santriwatiakd/guruberkas?nip='.$guru['nip_guru'].'') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
@@ -37,7 +37,7 @@
 					<button type="submit" class="btn btn-success btn-s-xs">
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
-					<a href="<?php echo base_url('admin/santriakd/guruberkas?nip='.$guru['nip_guru'].'') ?>" class="btn btn-default btn-s-xs">
+					<a href="<?php echo base_url('admin/santriwatiakd/guruberkas?nip='.$guru['nip_guru'].'') ?>" class="btn btn-default btn-s-xs">
 						<i class="fa fa-list"></i> List Berkas</a>
 				</footer>
 				</form>
