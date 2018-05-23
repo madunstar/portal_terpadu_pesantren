@@ -12,12 +12,12 @@
           <section class="panel panel-default">
 
             <header class="panel-heading">
-              <h4 class="font-bold">Data Prestasi <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?></h4>
+              <h4 class="font-bold">Data Prestasi <?php echo $santriwati['nama_lengkap']?> / <?php echo $santriwati['nis_lokal']?></h4>
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Data Prestasi","Gagal Menghapus Data Prestasi") ?>
-            <a href="<?php echo base_url() ?>admin/datamaster/tambahprestasip?nis=<?php echo $santri['nis_lokal']?>"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Prestasi</button></a>
-            <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/santriwati" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> List Santriwati</a>
+            <a href="<?php echo base_url() ?>admin/santriwatiakd/tambahprestasip?nis=<?php echo $santriwati['nis_lokal']?>"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Prestasi</button></a>
+            <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/santriwatiakd/santriwati" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> List Santriwati</a>
 
               <div class="table-responsive">
                 <table class="table table-striped m-b-none" id="datatable">
@@ -37,7 +37,7 @@
                             <tr>
                               <td>
 
-                              <a href='".base_url('admin/datamaster/ubahprestasip?nis='.$row['nis_santri'].'&id='.$row['id_prestasi'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                              <a href='".base_url('admin/santriwatiakd/ubahprestasip?nis='.$row['nis_santri'].'&id='.$row['id_prestasi'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
                               <button class='btn btn-danger btn-xs' title='Hapus' data-toggle='modal' data-target='#".$row['id_prestasi']."'><i class='fa fa-trash-o'></i></button>
                               </td>
                               <td>".$row['prestasi']."</td>
@@ -55,7 +55,7 @@
                                    <b>Apakah yakin menghapus data?</b>
                                  </div>
                                  <div class='modal-footer'>
-                                   <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusprestasip?id='.$row['id_prestasi'].'&nis='.$row['nis_santri'].'')."'>
+                                   <a style='margin-left:5px' href='".base_url('admin/santriwatiakd/hapusprestasip?id='.$row['id_prestasi'].'&nis='.$row['nis_santri'].'')."'>
                                    <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
                                    <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                                  </div>
