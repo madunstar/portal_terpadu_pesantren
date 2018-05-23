@@ -116,14 +116,14 @@ class Santriwatiakd extends CI_Controller
     $this->layout->renderakdp('back-end/akademik/dashboard_p',$variabel);
   }
 
-  //CRUD santri
-  function santri()
+  //CRUD santriwati
+  function santriwati()
   {
       $variabel['data'] = $this->m_santriwati->lihatdata();
-      $this->layout->renderakdp('back-end/akademik/santri/v_santri',$variabel,'back-end/akademik/santri/v_santri_js');
+      $this->layout->renderakdp('back-end/akademik/santriwati/v_santri',$variabel,'back-end/akademik/santriwati/v_santri_js');
   }
 
-  function santrilihat()
+  function santriwatilihat()
   {
       $nis = $this->input->get("nis");
       $exec = $this->m_santriwati->lihatdatasatu($nis);
@@ -131,25 +131,25 @@ class Santriwatiakd extends CI_Controller
           $variabel['data'] = $exec ->row_array();
           $variabel['tingkat'] = $this->m_santriwati->lihattingkatan($nis); ;
           $variabel['tingkatpondokan'] = $this->m_santriwati->lihattingkatanpondokan($nis); ;
-          $this->layout->renderakdp('back-end/akademik/santri/v_santri_lihat',$variabel,'back-end/akademik/santri/v_santri_js');
+          $this->layout->renderakdp('back-end/akademik/santriwati/v_santri_lihat',$variabel,'back-end/akademik/santriwati/v_santri_js');
       } else {
-          redirect(base_url("admin/santriwatiakd/santri"));
+          redirect(base_url("admin/santriwatiakd/santriwati"));
       }
 
   }
 
-  function santritingkat()
+  function santriwatitingkat()
   {
       $nis = $this->input->post("nis");
       $variabel['tingkat'] = $this->m_santriwati->lihattingkatan($nis);
-      $this->load->view('back-end/akademik/santri/v_santri_tingkat',$variabel);
+      $this->load->view('back-end/akademik/santriwati/v_santri_tingkat',$variabel);
   }
 
-  function santritingkatpondokan()
+  function santriwatitingkatpondokan()
   {
       $nis = $this->input->post("nis");
       $variabel['tingkat'] = $this->m_santriwati->lihattingkatanpondokan($nis);
-      $this->load->view('back-end/akademik/santri/v_santri_tingkatpondokan',$variabel);
+      $this->load->view('back-end/akademik/santriwati/v_santri_tingkatpondokan',$variabel);
   }
 
   function datakotakab2()
@@ -173,7 +173,7 @@ class Santriwatiakd extends CI_Controller
     echo json_encode($data);
   }
 
-  function santritambah()
+  function santriwatitambah()
   {
       if ($this->input->post()){
               $array=array(
@@ -231,8 +231,8 @@ class Santriwatiakd extends CI_Controller
               $foto = $upload["raw_name"].$upload["file_ext"];
               $array['foto']=$foto;
               $exec = $this->m_santriwati->tambahdata($array);
-              if ($exec) redirect(base_url("admin/santriwatiakd/santritambah?msg=1"));
-              else redirect(base_url("admin/santriwatiakd/santritambah?msg=0"));
+              if ($exec) redirect(base_url("admin/santriwatiakd/santriwatitambah?msg=1"));
+              else redirect(base_url("admin/santriwatiakd/santriwatitambah?msg=0"));
           } else {
               $variabel['provinsi']=$this->m_santriwati->ambilprovinsi();
               $variabel['kabupaten']=$this->m_santriwati->ambilkabupaten($this->input->post('provinsi'));
@@ -244,7 +244,7 @@ class Santriwatiakd extends CI_Controller
               $variabel['nis_lokal'] =$this->input->post('nis_lokal');
               $variabel['jenjang']=$this->m_jenjang->lihatdata();
               $variabel['pondokan']=$this->m_pondokan->lihatdata();
-              $this->layout->renderakdp('back-end/akademik/santri/v_santri_tambah',$variabel,'back-end/akademik/santri/v_santri_js');
+              $this->layout->renderakdp('back-end/akademik/santriwati/v_santri_tambah',$variabel,'back-end/akademik/santriwati/v_santri_js');
           }
 
       } else {
@@ -259,11 +259,11 @@ class Santriwatiakd extends CI_Controller
            $variabel['jenjang']=$this->m_jenjang->lihatdata();
            $variabel['pondokan']=$this->m_pondokan->lihatdata();
 
-          $this->layout->renderakdp('back-end/akademik/santri/v_santri_tambah',$variabel,'back-end/akademik/santri/v_santri_js');
+          $this->layout->renderakdp('back-end/akademik/santriwati/v_santri_tambah',$variabel,'back-end/akademik/santriwati/v_santri_js');
       }
   }
 
-  function santriedit()
+  function santriwatiedit()
   {
       if ($this->input->post()) {
           $array=array(
@@ -330,7 +330,7 @@ class Santriwatiakd extends CI_Controller
               $variabel['jenjang']=$this->m_jenjang->lihatdata();
               $variabel['pondokan']=$this->m_pondokan->lihatdata();
 
-              $this->layout->renderakdp('back-end/akademik/santri/v_santri_edit',$variabel,'back-end/akademik/santri/v_santri_js');
+              $this->layout->renderakdp('back-end/akademik/santriwati/v_santri_edit',$variabel,'back-end/akademik/santriwati/v_santri_js');
           } else {
               $config['upload_path'] = './assets/images/foto';
               $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|PNG|png';
@@ -352,7 +352,7 @@ class Santriwatiakd extends CI_Controller
               }
               $exec = $this->m_santriwati->editdata($nis2,$array);
               if ($exec){
-                redirect(base_url("admin/santriwatiakd/santriedit?nis=".$nis."&msg=1"));
+                redirect(base_url("admin/santriwatiakd/santriwatiedit?nis=".$nis."&msg=1"));
               }
           }
     } else {
@@ -373,43 +373,43 @@ class Santriwatiakd extends CI_Controller
                $variabel['desa']=$this->m_santriwati->ambildesa($data['kecamatan']);
                $variabel['jenjang']=$this->m_jenjang->lihatdata();
                $variabel['pondokan']=$this->m_pondokan->lihatdata();
-              $this->layout->renderakdp('back-end/akademik/santri/v_santri_edit',$variabel,'back-end/akademik/santri/v_santri_js');
+              $this->layout->renderakdp('back-end/akademik/santriwati/v_santri_edit',$variabel,'back-end/akademik/santriwati/v_santri_js');
           } else {
-              redirect(base_url("admin/santriwatiakd/santri"));
+              redirect(base_url("admin/santriwatiakd/santriwati"));
           }
     }
 
   }
 
-  function santrihapus()
+  function santriwatihapus()
   {
      $nis = $this->input->get("nis");
      $exec = $this->m_santriwati->hapus($nis);
-     redirect(base_url()."admin/santriwatiakd/santri?msg=1");
+     redirect(base_url()."admin/santriwatiakd/santriwati?msg=1");
   }
 
   //berkas//
 
-  function santriberkas()
+  function santriwatiberkas()
   {
       $nis = $this->input->get("nis");
       $exec = $this->m_santriwati->lihatdatasatu($nis);
       if ($exec->num_rows()>0){
-          $variabel['santri'] = $exec->row_array();
+          $variabel['santriwati'] = $exec->row_array();
           $variabel['data'] = $this->m_santriwati->lihatdataberkas($nis);
-          $this->layout->renderakdp('back-end/akademik/santri/v_santriberkas',$variabel,'back-end/akademik/santri/v_santriberkas_js');
+          $this->layout->renderakdp('back-end/akademik/santriwati/v_santriberkas',$variabel,'back-end/akademik/santriwati/v_santriberkas_js');
       } else {
-          redirect(base_url("admin/santriwatiakd/santri"));
+          redirect(base_url("admin/santriwatiakd/santriwati"));
       }
 
   }
 
-  function santritambahberkas()
+  function santriwatitambahberkas()
   {
       $nis = $this->input->get("nis");
       $exec = $this->m_santriwati->lihatdatasatu($nis);
       if ($exec->num_rows()>0){
-          $variabel['santri'] = $exec->row_array();
+          $variabel['santriwati'] = $exec->row_array();
           if ($this->input->post()){
               $config['upload_path'] = './assets/berkas/berkassantri';
               $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|png';
@@ -427,18 +427,18 @@ class Santriwatiakd extends CI_Controller
                   );
 
               $exec = $this->m_santriwati->tambahdataberkas($array);
-              if ($exec) redirect(base_url("admin/santriwatiakd/santritambahberkas?nis=".$nis_lokal."&msg=1"));
+              if ($exec) redirect(base_url("admin/santriwatiakd/santriwatitambahberkas?nis=".$nis_lokal."&msg=1"));
               else redirect(base_url("admin/santriwatiakd/santriberkastambah?nis=".$nis_lokal."&msg=0"));
           } else {
 
-              $this->layout->renderakdp('back-end/akademik/santri/v_santriberkas_tambah',$variabel,'back-end/akademik/santri/v_santriberkas_js');
+              $this->layout->renderakdp('back-end/akademik/santriwati/v_santriberkas_tambah',$variabel,'back-end/akademik/santriwati/v_santriberkas_js');
           }
       } else {
-          redirect(base_url("admin/datamaster/santri"));
+          redirect(base_url("admin/datamaster/santriwati"));
       }
   }
 
-  function santrihapusberkas()
+  function santriwatihapusberkas()
   {
       $id_berkas = $this->input->get("id_berkas");
       $nis = $this->input->get("nis");
@@ -452,10 +452,10 @@ class Santriwatiakd extends CI_Controller
       }
 
       $exec = $this->m_santriwati->hapusberkas($id_berkas);
-      redirect(base_url()."admin/santriwatiakd/santriberkas?msg=1&nis=".$nis."");
+      redirect(base_url()."admin/santriwatiakd/santriwatiberkas?msg=1&nis=".$nis."");
   }
 
-  function santrieditberkas()
+  function santriwatieditberkas()
   {
       if ($this->input->post()) {
           $id_berkas = $this->input->post('id_berkas');
@@ -483,46 +483,46 @@ class Santriwatiakd extends CI_Controller
               }
           }
           $exec = $this->m_santriwati->editdataaberkas($id_berkas,$array);
-          if ($exec) redirect(base_url("admin/santriwatiakd/santrieditberkas?id=".$id_berkas."&nis=".$nis_lokal."&msg=1"));
-          else redirect(base_url("admin/santriwatiakd/santrieditberkas?id=".$id_berkas."&nis=".$nis_lokal."&msg=0"));
+          if ($exec) redirect(base_url("admin/santriwatiakd/santriwatieditberkas?id=".$id_berkas."&nis=".$nis_lokal."&msg=1"));
+          else redirect(base_url("admin/santriwatiakd/santriwatieditberkas?id=".$id_berkas."&nis=".$nis_lokal."&msg=0"));
 
       } else {
           $nis = $this->input->get("nis");
           $id = $this->input->get("id");
           $exec = $this->m_santriwati->lihatdatasatu($nis);
           if ($exec->num_rows()>0){
-              $variabel['santri'] = $exec ->row_array();
+              $variabel['santriwati'] = $exec ->row_array();
               $exec2 = $this->m_santriwati->lihatdatasatuberkas($id);
               if ($exec2->num_rows()>0){
 
                   $variabel['data'] = $exec2->row_array();
-                  $this->layout->renderakdp('back-end/akademik/santri/v_santriberkas_edit',$variabel,'back-end/datamaster/santri/v_santriberkas_js');
+                  $this->layout->renderakdp('back-end/akademik/santriwati/v_santriberkas_edit',$variabel,'back-end/datamaster/santriwati/v_santriberkas_js');
               } else {
-                  redirect(base_url("admin/santriwatiakd/santriberkas?nis=$nis"));
+                  redirect(base_url("admin/santriwatiakd/santriwatiberkas?nis=$nis"));
               }
           } else {
-              redirect(base_url("admin/santriwatiakd/santri"));
+              redirect(base_url("admin/santriwatiakd/santriwati"));
           }
       }
 
   }
 
-  //akhir CRUD santri dan berkas//
+  //akhir CRUD santriwati dan berkas//
 //prestasi pelanggaran//
 //prestasi//
-  function prestasisantri(){
+  function prestasisantriwati(){
     $nis = $this->input->get('nis');
     $exec = $this->m_santriwati->lihatdatasatu($nis);
     if ($exec->num_rows()>0){
-      $variabel['santri'] = $exec->row_array();
+      $variabel['santriwati'] = $exec->row_array();
       $variabel['data'] = $this->m_prestasi->lihatdata($nis);
-      $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_data_prestasi',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+      $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_data_prestasi_p',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
     } else {
-      redirect(base_url("admin/santriwatiakd/santri"));
+      redirect(base_url("admin/santriwatiakd/santriwati"));
     }
   }
 
-  function tambahprestasi(){
+  function tambahprestasip(){
     if($this->input->post()){
       $nis = $this->input->post('nis_santri');
       $array = array(
@@ -535,20 +535,20 @@ class Santriwatiakd extends CI_Controller
       );
       $exec = $this->m_prestasi->tambahdata($array);
       if($exec){
-        redirect(base_url("admin/santriwatiakd/tambahprestasi?nis=$nis&msg=1"));
+        redirect(base_url("admin/santriwatiakd/tambahprestasip?nis=$nis&msg=1"));
       } else{
-        redirect(base_url("admin/santriwatiakd/tambahprestasi?nis=$nis&msg=0"));
+        redirect(base_url("admin/santriwatiakd/tambahprestasip?nis=$nis&msg=0"));
       }
     } else {
         $nis = $this->input->get('nis');
         $exec = $this->m_santriwati->lihatdatasatu($nis);
-        $variabel['santri'] = $exec->row_array();
+        $variabel['santriwati'] = $exec->row_array();
         $variabel['nis_santri'] = $nis;
-        $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_prestasi_tambah',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+        $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_prestasi_tambah_p',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
     }
   }
 
-  function ubahprestasi(){
+  function ubahprestasip(){
     if($this->input->post()){
       $id = $this->input->post('id_prestasi');
       $nis = $this->input->post('nis_santri');
@@ -561,9 +561,9 @@ class Santriwatiakd extends CI_Controller
       );
       $exec = $this->m_prestasi->editdata($id,$array);
       if($exec){
-        redirect(base_url("admin/santriwatiakd/ubahprestasi?nis=$nis&id=$id&msg=1"));
+        redirect(base_url("admin/santriwatiakd/ubahprestasip?nis=$nis&id=$id&msg=1"));
       } else{
-        redirect(base_url("admin/santriwatiakd/ubahprestasi?nis=$nis&id=$id&msg=0"));
+        redirect(base_url("admin/santriwatiakd/ubahprestasip?nis=$nis&id=$id&msg=0"));
       }
     } else {
       $id = $this->input->get('id');
@@ -571,37 +571,37 @@ class Santriwatiakd extends CI_Controller
       $exec = $this->m_santriwati->lihatdatasatu($nis);
         if ($exec->num_rows()>0){
       $exec2 = $this->m_prestasi->ambildata($id);
-      $variabel['santri'] = $exec->row_array();
+      $variabel['santriwati'] = $exec->row_array();
       $variabel['data'] = $exec2->row_array();
-      $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_prestasi_ubah',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+      $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_prestasi_ubah_p',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
     } else{
-      redirect(base_url("admin/santriwatiakd/santri"));
+      redirect(base_url("admin/santriwatiakd/santriwati"));
     }
     }
 
   }
 
-  function hapusprestasi(){
+  function hapusprestasip(){
     $id = $this->input->get("id");
     $nis = $this->input->get('nis');
     $exec = $this->m_prestasi->hapus($id);
-    redirect(base_url()."admin/santriwatiakd/prestasisantri?nis=$nis&msg=1");
+    redirect(base_url()."admin/santriwatiakd/prestasisantriwati?nis=$nis&msg=1");
   }
 
   //pelanggaran//
-  function pelanggaransantri(){
+  function pelanggaransantriwati(){
     $nis = $this->input->get('nis');
     $exec = $this->m_santriwati->lihatdatasatu($nis);
     if ($exec->num_rows()>0){
-      $variabel['santri'] = $exec->row_array();
+      $variabel['santriwati'] = $exec->row_array();
       $variabel['data'] = $this->m_pelanggaran->lihatdata($nis);
-      $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_data_pelanggaran',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+      $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_data_pelanggaran_p',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
     } else {
-      redirect(base_url("santriwatiakd/datamaster/santri"));
+      redirect(base_url("admin/santriwatiakd/santriwati"));
     }
   }
 
-  function tambahpelanggaran(){
+  function tambahpelanggaranp(){
     if($this->input->post()){
       $nis = $this->input->post('nis_santri');
       $array = array(
@@ -614,20 +614,20 @@ class Santriwatiakd extends CI_Controller
       );
       $exec = $this->m_pelanggaran->tambahdata($array);
       if($exec){
-        redirect(base_url("admin/santriwatiakd/tambahpelanggaran?nis=$nis&msg=1"));
+        redirect(base_url("admin/santriwatiakd/tambahpelanggaranp?nis=$nis&msg=1"));
       } else{
-        redirect(base_url("admin/santriwatiakd/tambahpelanggaran?nis=$nis&msg=0"));
+        redirect(base_url("admin/santriwatiakd/tambahpelanggaranp?nis=$nis&msg=0"));
       }
     } else {
         $nis = $this->input->get('nis');
         $exec = $this->m_santriwati->lihatdatasatu($nis);
-        $variabel['santri'] = $exec->row_array();
+        $variabel['santriwati'] = $exec->row_array();
         $variabel['nis_santri'] = $nis;
-        $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_pelanggaran_tambah',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+        $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_pelanggaran_tambah_p',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
     }
   }
 
-  function ubahpelanggaran(){
+  function ubahpelanggaranp(){
     if($this->input->post()){
       $id = $this->input->post('id_pelanggaran');
       $nis = $this->input->post('nis_santri');
@@ -640,9 +640,9 @@ class Santriwatiakd extends CI_Controller
       );
       $exec = $this->m_pelanggaran->editdata($id,$array);
       if($exec){
-        redirect(base_url("admin/santriwatiakd/ubahpelanggaran?nis=$nis&id=$id&msg=1"));
+        redirect(base_url("admin/santriwatiakd/ubahpelanggaranp?nis=$nis&id=$id&msg=1"));
       } else{
-        redirect(base_url("admin/santriwatiakd/ubahpelanggaran?nis=$nis&id=$id&msg=0"));
+        redirect(base_url("admin/santriwatiakd/ubahpelanggaranp?nis=$nis&id=$id&msg=0"));
       }
     } else {
       $id = $this->input->get('id');
@@ -650,29 +650,29 @@ class Santriwatiakd extends CI_Controller
       $exec = $this->m_santriwati->lihatdatasatu($nis);
         if ($exec->num_rows()>0){
       $exec2 = $this->m_pelanggaran->ambildata($id);
-      $variabel['santri'] = $exec->row_array();
+      $variabel['santriwati'] = $exec->row_array();
       $variabel['data'] = $exec2->row_array();
-      $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_pelanggaran_ubah',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
+      $this->layout->renderakdp('back-end/akademik/prestasi_pelanggaran/v_pelanggaran_ubah_p',$variabel,'back-end/akademik/prestasi_pelanggaran/prestasi_pelanggaran_js');
     } else{
-      redirect(base_url("admin/santriwatiakd/santri"));
+      redirect(base_url("admin/santriwatiakd/santriwati"));
     }
     }
 
   }
 
-  function hapuspelanggaran(){
+  function hapuspelanggaranp(){
     $id = $this->input->get("id");
     $nis = $this->input->get('nis');
     $exec = $this->m_pelanggaran->hapus($id);
-    redirect(base_url()."admin/santriwatiakd/pelanggaransantri?nis=$nis&msg=1");
+    redirect(base_url()."admin/santriwatiakd/pelanggaransantriwati?nis=$nis&msg=1");
   }
   //akhir prestasi pelanggaran//
 
-  //crud guru//
+  //crud guru_p//
   function guru()
   {
       $variabel['data'] = $this->m_guru->lihatdata();
-      $this->layout->renderakdp('back-end/akademik/guru/v_guru',$variabel,'back-end/akademik/guru/v_guru_js');
+      $this->layout->renderakdp('back-end/akademik/guru_p/v_guru',$variabel,'back-end/akademik/guru_p/v_guru_js');
   }
 
   function gurulihat()
@@ -681,9 +681,9 @@ class Santriwatiakd extends CI_Controller
       $exec = $this->m_guru->lihatdatasatu($nip);
       if ($exec->num_rows()>0){
           $variabel['data'] = $exec ->row_array();
-          $this->layout->renderakdp('back-end/akademik/guru/v_guru_lihat',$variabel,'back-end/akademik/guru/v_guru_js');
+          $this->layout->renderakdp('back-end/akademik/guru_p/v_guru_lihat',$variabel,'back-end/akademik/guru_p/v_guru_js');
       } else {
-          redirect(base_url("admin/santriwatiakd/guru"));
+          redirect(base_url("admin/santriwatiakd/guru_p"));
       }
 
   }
@@ -738,7 +738,7 @@ class Santriwatiakd extends CI_Controller
               $variabel['pendidikan']=$this->m_santriwati->ambilpendidikan();
 
               $variabel['nip_guru'] =$this->input->post('nip_guru');
-              $this->layout->renderakdp('back-end/akademik/guru/v_guru_tambah',$variabel,'back-end/akademik/guru/v_guru_js');
+              $this->layout->renderakdp('back-end/akademik/guru_p/v_guru_tambah',$variabel,'back-end/akademik/guru_p/v_guru_js');
           }
 
       } else {
@@ -748,7 +748,7 @@ class Santriwatiakd extends CI_Controller
            $variabel['kabupaten']=$this->m_santriwati->ambilkabupaten("");
            $variabel['kecamatan']=$this->m_santriwati->ambilkecamatan("");
            $variabel['desa']=$this->m_santriwati->ambildesa("");
-          $this->layout->renderakdp('back-end/akademik/guru/v_guru_tambah',$variabel,'back-end/datamaster/guru/v_guru_js');
+          $this->layout->renderakdp('back-end/akademik/guru_p/v_guru_tambah',$variabel,'back-end/datamaster/guru_p/v_guru_js');
       }
   }
 
@@ -789,7 +789,7 @@ class Santriwatiakd extends CI_Controller
               $variabel['desa']=$this->m_santriwati->ambildesa($this->input->post('kecamatan'));
               $variabel['pendidikan']=$this->m_santriwati->ambilpendidikan();
 
-              $this->layout->renderakdp('back-end/akademik/guru/v_guru_edit',$variabel,'back-end/akademik/guru/v_guru_js');
+              $this->layout->renderakdp('back-end/akademik/guru_p/v_guru_edit',$variabel,'back-end/akademik/guru_p/v_guru_js');
           } else {
               $config['upload_path'] = './assets/images/foto';
               $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|PNG|png';
@@ -825,9 +825,9 @@ class Santriwatiakd extends CI_Controller
                $variabel['kabupaten']=$this->m_santriwati->ambilkabupaten($data['provinsi']);
                $variabel['kecamatan']=$this->m_santriwati->ambilkecamatan($data['kabupaten_kota']);
                $variabel['desa']=$this->m_santriwati->ambildesa($data['kecamatan']);
-              $this->layout->renderakdp('back-end/akademik/guru/v_guru_edit',$variabel,'back-end/akademik/guru/v_guru_js');
+              $this->layout->renderakdp('back-end/akademik/guru_p/v_guru_edit',$variabel,'back-end/akademik/guru_p/v_guru_js');
           } else {
-              redirect(base_url("admin/santriwatiakd/guru"));
+              redirect(base_url("admin/santriwatiakd/guru_p"));
           }
     }
 
@@ -837,7 +837,7 @@ class Santriwatiakd extends CI_Controller
   {
      $nip = $this->input->get("nip");
      $exec = $this->m_guru->hapus($nip);
-     redirect(base_url()."admin/santriwatiakd/guru?msg=1");
+     redirect(base_url()."admin/santriwatiakd/guru_p?msg=1");
   }
 
   function guruberkas()
@@ -845,11 +845,11 @@ class Santriwatiakd extends CI_Controller
       $nip = $this->input->get("nip");
       $exec = $this->m_guru->lihatdatasatu($nip);
       if ($exec->num_rows()>0){
-          $variabel['guru'] = $exec->row_array();
+          $variabel['guru_p'] = $exec->row_array();
           $variabel['data'] = $this->m_guru->lihatdataberkas($nip);
-          $this->layout->renderakdp('back-end/akademik/guru/v_guruberkas',$variabel,'back-end/akademik/guru/v_guruberkas_js');
+          $this->layout->renderakdp('back-end/akademik/guru_p/v_guruberkas',$variabel,'back-end/akademik/guru_p/v_guruberkas_js');
       } else {
-          redirect(base_url("admin/santriwatiakd/guru"));
+          redirect(base_url("admin/santriwatiakd/guru_p"));
       }
 
   }
@@ -859,7 +859,7 @@ class Santriwatiakd extends CI_Controller
       $nip = $this->input->get("nip");
       $exec = $this->m_guru->lihatdatasatu($nip);
       if ($exec->num_rows()>0){
-          $variabel['guru'] = $exec->row_array();
+          $variabel['guru_p'] = $exec->row_array();
           if ($this->input->post()){
               $config['upload_path'] = './assets/berkas/berkasguru';
               $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
@@ -881,10 +881,10 @@ class Santriwatiakd extends CI_Controller
               else redirect(base_url("admin/santriwatiakd/guruberkastambah?nip=".$nip_guru."&msg=0"));
           } else {
 
-              $this->layout->renderakdp('back-end/akademik/guru/v_guruberkas_tambah',$variabel,'back-end/akademik/guru/v_guruberkas_js');
+              $this->layout->renderakdp('back-end/akademik/guru_p/v_guruberkas_tambah',$variabel,'back-end/akademik/guru_p/v_guruberkas_js');
           }
       } else {
-          redirect(base_url("admin/santriwatiakd/guru"));
+          redirect(base_url("admin/santriwatiakd/guru_p"));
       }
   }
   function guruhapusberkas()
@@ -940,22 +940,22 @@ class Santriwatiakd extends CI_Controller
           $id = $this->input->get("id");
           $exec = $this->m_guru->lihatdatasatu($nip);
           if ($exec->num_rows()>0){
-              $variabel['guru'] = $exec ->row_array();
+              $variabel['guru_p'] = $exec ->row_array();
               $exec2 = $this->m_guru->lihatdatasatuberkas($id);
               if ($exec2->num_rows()>0){
 
                   $variabel['data'] = $exec2->row_array();
-                  $this->layout->renderakdp('back-end/akademik/guru/v_guruberkas_edit',$variabel,'back-end/akademik/guru/v_guruberkas_js');
+                  $this->layout->renderakdp('back-end/akademik/guru_p/v_guruberkas_edit',$variabel,'back-end/akademik/guru_p/v_guruberkas_js');
               } else {
                   redirect(base_url("admin/santriwatiakd/guruberkas?nip=$nip"));
               }
           } else {
-              redirect(base_url("admin/santriwatiakd/guru"));
+              redirect(base_url("admin/santriwatiakd/guru_p"));
           }
       }
 
   }
-  //akhir crud guru//
+  //akhir crud guru_p//
 
   //crud ruang kelas//
   function kelas(){
@@ -1028,7 +1028,7 @@ class Santriwatiakd extends CI_Controller
   }
   //akhir ruang kelas//
 
-  //crud pelajaran (guru + matpel)//
+  //crud pelajaran (guru_p + matpel)//
   function pelajaran(){
        $variabel['data'] = $this->m_pelajaran->lihatdata();
        $this->layout->renderakdp('back-end/akademik/presensi_pelajaran/v_pelajaran',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
@@ -1099,7 +1099,7 @@ class Santriwatiakd extends CI_Controller
       $exec = $this->m_pelajaran->hapus($kode);
       redirect(base_url()."admin/santriwatiakd/pelajaran?msg=1");
    }
-   //akhir pelajaran (matpel + guru)//
+   //akhir pelajaran (matpel + guru_p)//
 
    //crud mata pelajaran//
   function matpel(){
@@ -1196,7 +1196,7 @@ class Santriwatiakd extends CI_Controller
        } else {
            $variabel['ruangkelas']=$this->m_kelas->lihatdata();
            $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
-           $variabel['guru']=$this->m_guru->lihatdata();
+           $variabel['guru_p']=$this->m_guru->lihatdata();
            $variabel['jenjang']=$this->m_jenjang->lihatdata();
            $this->layout->renderakdp('back-end/akademik/presensi_kelas/v_presensi_atur',$variabel,'back-end/akademik/presensi_kelas/v_preskelas_js');
        }
@@ -1232,7 +1232,7 @@ class Santriwatiakd extends CI_Controller
            if ($exec->num_rows()>0){
                $variabel['ruangkelas']=$this->m_kelas->lihatdata();
                $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
-               $variabel['guru']=$this->m_guru->lihatdata();
+               $variabel['guru_p']=$this->m_guru->lihatdata();
                $variabel['data'] = $exec->row_array();
                $variabel['jenjang']=$this->m_jenjang->lihatdata();
                $variabel['tingkatan']=$this->m_jenjang->lihatdatatingkatan($variabel['data']['jenjang']);
@@ -1251,7 +1251,7 @@ class Santriwatiakd extends CI_Controller
        $exec = $this->m_presensi->lihatdatasatulengkap($id_kelas_belajar);
        if ($exec->num_rows()>0){
            $variabel['data'] = $exec->row_array();
-           $variabel['santri'] = $this->m_presensi->lihatdatasantri($id_kelas_belajar);
+           $variabel['santriwati'] = $this->m_presensi->lihatdatasantri($id_kelas_belajar);
            $this->layout->renderakdp('back-end/akademik/presensi_kelas/v_presensi_lihat',$variabel,'back-end/akademik/presensi_kelas/v_preskelas_js');
        } else {
            redirect(base_url("admin/santriwatiakd/datakelasbelajar"));
@@ -1271,7 +1271,7 @@ class Santriwatiakd extends CI_Controller
        $id = $this->input->get("id");
        $exec = $this->m_presensi->lihatdatasatulengkap($id);
        if ($exec->num_rows()>0){
-           $variabel['santri'] = $exec->row_array();
+           $variabel['santriwati'] = $exec->row_array();
            $variabel['data'] = $this->m_presensi->lihatdatasantri($id);
            $this->layout->renderakdp('back-end/akademik/presensi_kelas/v_santri',$variabel,'back-end/akademik/presensi_kelas/v_santri_js');
        } else {
@@ -1382,12 +1382,12 @@ class Santriwatiakd extends CI_Controller
        if ($id_pelajaran=="Istirahat"){
            $array["mata_pelajaran"]="Istirahat";
            $array["nip"]="Istirahat";
-           $array["guru"]="Istirahat";
+           $array["guru_p"]="Istirahat";
        } else {
            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
            $array["nip"]=$data['nip_guru'];
-           $array["guru"]=$data['nama_lengkap'];
+           $array["guru_p"]=$data['nama_lengkap'];
        }
        $exec = $this->m_presensi->tambahdatajadwal($array);
 
@@ -1422,12 +1422,12 @@ class Santriwatiakd extends CI_Controller
        if ($id_pelajaran=="Istirahat"){
            $array["mata_pelajaran"]="Istirahat";
            $array["nip"]="Istirahat";
-           $array["guru"]="Istirahat";
+           $array["guru_p"]="Istirahat";
        } else {
            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
            $array["nip"]=$data['nip_guru'];
-           $array["guru"]=$data['nama_lengkap'];
+           $array["guru_p"]=$data['nama_lengkap'];
        }
        $exec = $this->m_presensi->editdatajadwal($id_jadwal,$array);
    }
@@ -1457,7 +1457,7 @@ class Santriwatiakd extends CI_Controller
        $data = $this->m_presensi->lihatdatasatujadwal($id)->row_array();
        $variabel['data'] = $data;
        $variabel['data2'] =  $this->m_presensi->lihatdatasatulengkap($data['id_kelas_belajar'])->row_array();
-       $variabel['santri'] = $this->m_presensi->lihatdatasantri($data['id_kelas_belajar']);
+       $variabel['santriwati'] = $this->m_presensi->lihatdatasantri($data['id_kelas_belajar']);
        $this->layout->renderlaporan('back-end/akademik/presensi_kelas/v_presensi_printjadwal',$variabel,'back-end/akademik/presensi_kelas/v_presensi_printjadwal_js');
      }
   //akhir afiliasi//
@@ -1480,7 +1480,7 @@ class Santriwatiakd extends CI_Controller
       $variabel['tanggal'] = $tgl;
       $variabel['kelas'] = $kel;
       $variabel['pelajaran'] = $pel;
-      $variabel['santri'] = $this->m_rekap_santri->datasantri($kel,$tgl,$pel);
+      $variabel['santriwati'] = $this->m_rekap_santri->datasantri($kel,$tgl,$pel);
       $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
       $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
       if ($tgl > $today){
@@ -1495,7 +1495,7 @@ class Santriwatiakd extends CI_Controller
     $variabel['tanggal'] = $tgl;
     $variabel['kelas'] = $kel;
     $variabel['pelajaran'] = $pel;
-    $variabel['santri'] = $this->m_rekap_santri->datasantri($kel,$tgl,$pel);
+    $variabel['santriwati'] = $this->m_rekap_santri->datasantri($kel,$tgl,$pel);
     $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
     $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
     $this->layout->renderakdp('back-end/akademik/rekap_presensi/v_data_rekap',$variabel,'back-end/akademik/rekap_presensi/v_rekap_js');}
@@ -1553,7 +1553,7 @@ class Santriwatiakd extends CI_Controller
     $pel = $this->input->get('pelajaran');
     $kel = $this->input->get('kelas');
     $tgl = $this->input->get('tanggal');
-    $nip = $this->input->get('guru');
+    $nip = $this->input->get('guru_p');
      $variabel['data'] = $this->m_rekap_guru->rekapguru($pel,$kel);
      $variabel['tanggal'] = $tgl;
      $variabel['kelas'] = $kel;
@@ -1561,7 +1561,7 @@ class Santriwatiakd extends CI_Controller
      $variabel['nip_guru'] =$nip;
      $variabel['namakelas'] = $this->m_rekap_guru->kelas($kel);
      $variabel['matpel'] = $this->m_rekap_guru->pelajaran($pel);
-     $variabel['guru'] = $this->m_rekap_guru->dataguru($nip);
+     $variabel['guru_p'] = $this->m_rekap_guru->dataguru($nip);
      $this->layout->renderakdp('back-end/akademik/rekap_presensi/v_data_rekap_guru',$variabel,'back-end/akademik/rekap_presensi/v_rekap_js');
   }
 
@@ -1582,13 +1582,13 @@ class Santriwatiakd extends CI_Controller
     $jdw = $this->input->post('jdw');
     $nip = $this->input->post('nip');
     if ($tglr > $today) {
-      redirect(base_url("admin/santriwatiakd/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&psn=0"));
+      redirect(base_url("admin/santriwatiakd/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru_p=$nip&psn=0"));
     } else{
       $exec = $this->m_rekap_guru->tambahdata($array);
       if ($exec){
-        redirect(base_url("admin/santriwatiakd/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&msg=1"));
+        redirect(base_url("admin/santriwatiakd/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru_p=$nip&msg=1"));
       } else{
-        redirect(base_url("admin/santriwatiakd/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&msg=0"));
+        redirect(base_url("admin/santriwatiakd/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru_p=$nip&msg=0"));
       }
      }
     }
@@ -1600,9 +1600,9 @@ class Santriwatiakd extends CI_Controller
     $tgl = $this->input->get('tanggal');
     $kel = $this->input->get('kelas');
     $pel = $this->input->get('pelajaran');
-    $nip = $this->input->get('guru');
+    $nip = $this->input->get('guru_p');
     $exec = $this->m_rekap_guru->hapus($id_rekap);
-    redirect(base_url("admin/santriwatiakd/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&psn=1"));
+    redirect(base_url("admin/santriwatiakd/datarekapguru?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru_p=$nip&psn=1"));
   }
 
   function laporanrekapguru(){
@@ -1610,7 +1610,7 @@ class Santriwatiakd extends CI_Controller
     $tgl = $this->input->get('tanggal');
     $kel = $this->input->get('kelas');
     $pel = $this->input->get('pelajaran');
-    $nip = $this->input->get('guru');
+    $nip = $this->input->get('guru_p');
      $variabel['data'] = $this->m_rekap_guru->rekapguru($pel,$kel);
      $variabel['tanggal'] = $tgl;
      $variabel['kelas'] = $kel;
@@ -1619,7 +1619,7 @@ class Santriwatiakd extends CI_Controller
      $variabel['nip_guru'] =$nip;
      $variabel['namakelas'] = $this->m_rekap_guru->kelas($kel);
      $variabel['matpel'] = $this->m_rekap_guru->pelajaran($pel);
-     $variabel['guru'] = $this->m_rekap_guru->dataguru($nip);
+     $variabel['guru_p'] = $this->m_rekap_guru->dataguru($nip);
      $variabel['guruhadir'] = $this->m_rekap_guru->totalhadir($pel,$kel);
      $variabel['guruizin'] = $this->m_rekap_guru->totalizin($pel,$kel);
      $variabel['gurusakit'] = $this->m_rekap_guru->totalsakit($pel,$kel);
@@ -1658,7 +1658,7 @@ class Santriwatiakd extends CI_Controller
   } else {
       $variabel['ruangkelas']=$this->m_kelas->lihatdata();
       $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
-      $variabel['guru']=$this->m_guru->lihatdata();
+      $variabel['guru_p']=$this->m_guru->lihatdata();
       $variabel['pondokan']=$this->m_pondokan->lihatdata();
       $this->layout->renderakdp('back-end/akademik/presensi_pondokan/v_presensi_atur',$variabel,'back-end/akademik/presensi_pondokan/v_preskelas_js');
   }
@@ -1687,7 +1687,7 @@ function editkelaspondokan()
             if ($exec->num_rows()>0){
                 $variabel['ruangkelas']=$this->m_kelas->lihatdata();
                 $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
-                $variabel['guru']=$this->m_guru->lihatdata();
+                $variabel['guru_p']=$this->m_guru->lihatdata();
                 $variabel['data'] = $exec->row_array();
                 $variabel['pondokan']=$this->m_pondokan->lihatdata();
                 $variabel['tingkatan']=$this->m_pondokan->lihatdatatingkatan($variabel['data']['pondokan']);
@@ -1714,7 +1714,7 @@ function editkelaspondokan()
         $exec = $this->m_presensipondokan->lihatdatasatulengkap($id_kelas_belajar);
         if ($exec->num_rows()>0){
             $variabel['data'] = $exec->row_array();
-            $variabel['santri'] = $this->m_presensipondokan->lihatdatasantri($id_kelas_belajar);
+            $variabel['santriwati'] = $this->m_presensipondokan->lihatdatasantri($id_kelas_belajar);
             $this->layout->renderakdp('back-end/akademik/presensi_pondokan/v_presensi_lihat',$variabel,'back-end/akademik/presensi_pondokan/v_preskelas_js');
         } else {
             redirect(base_url("admin/santriwatiakd/datakelaspondokan"));
@@ -1744,7 +1744,7 @@ function editkelaspondokan()
         $id = $this->input->get("id");
         $exec = $this->m_presensipondokan->lihatdatasatulengkap($id);
         if ($exec->num_rows()>0){
-            $variabel['santri'] = $exec->row_array();
+            $variabel['santriwati'] = $exec->row_array();
             $variabel['data'] = $this->m_presensipondokan->lihatdatasantri($id);
             $this->layout->renderakdp('back-end/akademik/presensi_pondokan/v_santri',$variabel,'back-end/akademik/presensi_pondokan/v_santri_js');
         } else {
@@ -1845,12 +1845,12 @@ function editkelaspondokan()
         if ($id_pelajaran=="Istirahat"){
             $array["mata_pelajaran"]="Istirahat";
             $array["nip"]="Istirahat";
-            $array["guru"]="Istirahat";
+            $array["guru_p"]="Istirahat";
         } else {
             $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
             $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
             $array["nip"]=$data['nip_guru'];
-            $array["guru"]=$data['nama_lengkap'];
+            $array["guru_p"]=$data['nama_lengkap'];
         }
         $exec = $this->m_presensipondokan->tambahdatajadwal($array);
     }
@@ -1884,12 +1884,12 @@ function editkelaspondokan()
         if ($id_pelajaran=="Istirahat"){
             $array["mata_pelajaran"]="Istirahat";
             $array["nip"]="Istirahat";
-            $array["guru"]="Istirahat";
+            $array["guru_p"]="Istirahat";
         } else {
             $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
             $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
             $array["nip"]=$data['nip_guru'];
-            $array["guru"]=$data['nama_lengkap'];
+            $array["guru_p"]=$data['nama_lengkap'];
         }
         $exec = $this->m_presensipondokan->editdatajadwal($id_jadwal,$array);
     }
@@ -1920,7 +1920,7 @@ function editkelaspondokan()
         $data = $this->m_presensipondokan->lihatdatasatujadwal($id)->row_array();
         $variabel['data'] = $data;
         $variabel['data2'] =  $this->m_presensipondokan->lihatdatasatulengkap($data['id_kelas_belajar'])->row_array();
-        $variabel['santri'] = $this->m_presensipondokan->lihatdatasantri($data['id_kelas_belajar']);
+        $variabel['santriwati'] = $this->m_presensipondokan->lihatdatasantri($data['id_kelas_belajar']);
         $this->layout->renderlaporan('back-end/akademik/presensi_pondokan/v_presensi_printjadwal',$variabel,'back-end/akademik/presensi_pondokan/v_presensi_printjadwal_js');
       }
   //akhir pondokan//
@@ -1943,7 +1943,7 @@ function editkelaspondokan()
       $variabel['tanggal'] = $tgl;
       $variabel['kelas'] = $kel;
       $variabel['pelajaran'] = $pel;
-      $variabel['santri'] = $this->m_rekap_santri_pondokan->datasantri($kel,$tgl,$pel);
+      $variabel['santriwati'] = $this->m_rekap_santri_pondokan->datasantri($kel,$tgl,$pel);
       $variabel['matpel'] = $this->m_rekap_santri_pondokan->pelajaran($pel);
       $variabel['namakelas'] = $this->m_rekap_santri_pondokan->kelas($kel);
       if ($tgl > $today){
@@ -1958,7 +1958,7 @@ function editkelaspondokan()
     $variabel['tanggal'] = $tgl;
     $variabel['kelas'] = $kel;
     $variabel['pelajaran'] = $pel;
-    $variabel['santri'] = $this->m_rekap_santri_pondokan->datasantri($kel,$tgl,$pel);
+    $variabel['santriwati'] = $this->m_rekap_santri_pondokan->datasantri($kel,$tgl,$pel);
     $variabel['matpel'] = $this->m_rekap_santri_pondokan->pelajaran($pel);
     $variabel['namakelas'] = $this->m_rekap_santri_pondokan->kelas($kel);
     $this->layout->renderakdp('back-end/akademik/rekap_presensi_pondokan/v_data_rekap_pondokan',$variabel,'back-end/akademik/rekap_presensi_pondokan/v_rekap_js');}
@@ -2016,7 +2016,7 @@ function editkelaspondokan()
     $pel = $this->input->get('pelajaran');
     $kel = $this->input->get('kelas');
     $tgl = $this->input->get('tanggal');
-    $nip = $this->input->get('guru');
+    $nip = $this->input->get('guru_p');
      $variabel['data'] = $this->m_rekap_guru_pondokan->rekapguru($pel,$kel);
      $variabel['tanggal'] = $tgl;
      $variabel['kelas'] = $kel;
@@ -2024,7 +2024,7 @@ function editkelaspondokan()
      $variabel['nip_guru'] =$nip;
      $variabel['namakelas'] = $this->m_rekap_guru_pondokan->kelas($kel);
      $variabel['matpel'] = $this->m_rekap_guru_pondokan->pelajaran($pel);
-     $variabel['guru'] = $this->m_rekap_guru_pondokan->dataguru($nip);
+     $variabel['guru_p'] = $this->m_rekap_guru_pondokan->dataguru($nip);
      $this->layout->renderakdp('back-end/akademik/rekap_presensi_pondokan/v_data_rekap_guru',$variabel,'back-end/akademik/rekap_presensi_pondokan/v_rekap_js');
   }
 
@@ -2045,13 +2045,13 @@ function editkelaspondokan()
     $jdw = $this->input->post('jdw');
     $nip = $this->input->post('nip');
     if ($tglr > $today) {
-      redirect(base_url("admin/santriwatiakd/datarekapgurupondokan?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&psn=0"));
+      redirect(base_url("admin/santriwatiakd/datarekapgurupondokan?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru_p=$nip&psn=0"));
     } else{
       $exec = $this->m_rekap_guru_pondokan->tambahdata($array);
       if ($exec){
-        redirect(base_url("admin/santriwatiakd/datarekapgurupondokan?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&msg=1"));
+        redirect(base_url("admin/santriwatiakd/datarekapgurupondokan?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru_p=$nip&msg=1"));
       } else{
-        redirect(base_url("admin/santriwatiakd/datarekapgurupondokan?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&msg=0"));
+        redirect(base_url("admin/santriwatiakd/datarekapgurupondokan?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru_p=$nip&msg=0"));
       }
      }
     }
@@ -2063,9 +2063,9 @@ function editkelaspondokan()
     $tgl = $this->input->get('tanggal');
     $kel = $this->input->get('kelas');
     $pel = $this->input->get('pelajaran');
-    $nip = $this->input->get('guru');
+    $nip = $this->input->get('guru_p');
     $exec = $this->m_rekap_guru_pondokan->hapus($id_rekap);
-    redirect(base_url("admin/santriwatiakd/datarekapgurupondokan?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&psn=1"));
+    redirect(base_url("admin/santriwatiakd/datarekapgurupondokan?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru_p=$nip&psn=1"));
   }
 
   function laporanrekapgurupondokan(){
@@ -2073,7 +2073,7 @@ function editkelaspondokan()
     $tgl = $this->input->get('tanggal');
     $kel = $this->input->get('kelas');
     $pel = $this->input->get('pelajaran');
-    $nip = $this->input->get('guru');
+    $nip = $this->input->get('guru_p');
      $variabel['data'] = $this->m_rekap_guru_pondokan->rekapguru($pel,$kel);
      $variabel['tanggal'] = $tgl;
      $variabel['kelas'] = $kel;
@@ -2082,7 +2082,7 @@ function editkelaspondokan()
      $variabel['nip_guru'] =$nip;
      $variabel['namakelas'] = $this->m_rekap_guru_pondokan->kelas($kel);
      $variabel['matpel'] = $this->m_rekap_guru_pondokan->pelajaran($pel);
-     $variabel['guru'] = $this->m_rekap_guru_pondokan->dataguru($nip);
+     $variabel['guru_p'] = $this->m_rekap_guru_pondokan->dataguru($nip);
      $variabel['guruhadir'] = $this->m_rekap_guru_pondokan->totalhadir($pel,$kel);
      $variabel['guruizin'] = $this->m_rekap_guru_pondokan->totalizin($pel,$kel);
      $variabel['gurusakit'] = $this->m_rekap_guru_pondokan->totalsakit($pel,$kel);

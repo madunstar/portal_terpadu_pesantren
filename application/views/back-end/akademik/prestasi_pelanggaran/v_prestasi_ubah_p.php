@@ -2,17 +2,17 @@
 	<section class="vbox">
 		<section class="scrollable padder">
 			<div class="m-b-md">
-				<h3 class="m-b-none">Prestasi Santri</h3>
+				<h3 class="m-b-none">Prestasi santriwati</h3>
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Ubah Prestasi  <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?>
+					Ubah Prestasi  <?php echo $santriwati['nama_lengkap']?> / <?php echo $santriwati['nis_lokal']?>
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Mengubah Prestasi","Gagal Mengubah Prestasi") ?>
-					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/ubahprestasip"
+					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriwatiakd/ubahprestasip"
 					method="post">
-						<a href="<?php echo base_url('admin/datamaster/prestasisantriwati?nis='.$data['nis_santri'].'') ?>" style="color:#3b994a;margin-left:10px">
+						<a href="<?php echo base_url('admin/santriwatiakd/prestasisantriwati?nis='.$data['nis_santri'].'') ?>" style="color:#3b994a;margin-left:10px">
 							<i class="fa fa-chevron-left"></i> Kembali</a>
 						<div class="row">
 							<div class="col-md-8">
@@ -54,10 +54,10 @@
 					<button type="submit" class="btn btn-success btn-s-xs">
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp;
-					<a href="<?php echo base_url() ?>admin/datamaster/ubahprestasip?id=<?php if (isset($id_prestasilama)) echo $id_prestasilama;
+					<a href="<?php echo base_url() ?>admin/santriwatiakd/ubahprestasip?id=<?php if (isset($id_prestasilama)) echo $id_prestasilama;
 		       else echo $data['id_prestasi']; ?>&nis=<?php echo $data['nis_santri'] ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
 						 &nbsp;
-					<a href="<?php echo base_url('admin/datamaster/prestasisantriwati?nis='.$data['nis_santri'].'') ?>" class="btn btn-default btn-s-xs">
+					<a href="<?php echo base_url('admin/santriwatiakd/prestasisantriwati?nis='.$data['nis_santri'].'') ?>" class="btn btn-default btn-s-xs">
 						<i class="fa fa-list"></i> List Prestasi</a>
 				</footer>
 				</form>
