@@ -960,7 +960,7 @@ class Santriwatiakd extends CI_Controller
   //crud ruang kelas//
   function kelas(){
         $variabel['data'] = $this->m_kelas->lihatdata();
-       $this->layout->renderakdp('back-end/akademik/kelas/v_kelas',$variabel,'back-end/akademik/kelas/v_kelas_js');
+       $this->layout->renderakdp('back-end/akademik/kelas_p/v_kelas',$variabel,'back-end/akademik/kelas_p/v_kelas_js');
   }
 
   function kelaslihat()
@@ -969,7 +969,7 @@ class Santriwatiakd extends CI_Controller
       $exec = $this->m_kelas->lihatdatasatu($kd_kelas);
       if ($exec->num_rows()>0){
           $variabel['data'] = $exec ->row_array();
-          $this->layout->renderakdp('back-end/akademik/kelas/v_kelas_lihat',$variabel,'back-end/akademik/kelas/v_kelas_js');
+          $this->layout->renderakdp('back-end/akademik/kelas_p/v_kelas_lihat',$variabel,'back-end/akademik/kelas_p/v_kelas_js');
       } else
           redirect(base_url("admin/santriwatiakd/kelas"));
   }
@@ -989,7 +989,7 @@ class Santriwatiakd extends CI_Controller
               else redirect(base_url("admin/santriwatiakd/kelastambah?msg=0"));
       } else {
           $variabel ='';
-          $this->layout->renderakdp('back-end/akademik/kelas/v_kelas_tambah',$variabel,'back-end/akademik/kelas/v_kelas_js');
+          $this->layout->renderakdp('back-end/akademik/kelas_p/v_kelas_tambah',$variabel,'back-end/akademik/kelas_p/v_kelas_js');
       }
   }
   function kelasedit()
@@ -1013,7 +1013,7 @@ class Santriwatiakd extends CI_Controller
           $exec = $this->m_kelas->lihatdatasatu($kode);
           if ($exec->num_rows()>0){
                   $variabel['data'] = $exec ->row_array();
-                  $this->layout->renderakdp('back-end/akademik/kelas/v_kelas_edit',$variabel,'back-end/akademik/kelas/v_kelas_js');
+                  $this->layout->renderakdp('back-end/akademik/kelas_p/v_kelas_edit',$variabel,'back-end/akademik/kelas_p/v_kelas_js');
           }
           else
               redirect(base_url("admin/santriwatiakd/kelas"));
@@ -1028,10 +1028,10 @@ class Santriwatiakd extends CI_Controller
   }
   //akhir ruang kelas//
 
-  //crud pelajaran (guru_p + matpel)//
+  //crud pelajaran (guru_p + matpel_p)//
   function pelajaran(){
        $variabel['data'] = $this->m_pelajaran->lihatdata();
-       $this->layout->renderakdp('back-end/akademik/presensi_pelajaran/v_pelajaran',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+       $this->layout->renderakdp('back-end/akademik/presensi_pelajaran_p/v_pelajaran',$variabel,'back-end/akademik/presensi_pelajaran_p/v_pelajaran_js');
   }
 
    function pelajaranlihat()
@@ -1040,7 +1040,7 @@ class Santriwatiakd extends CI_Controller
        $exec = $this->m_pelajaran->lihatdatasatu($id_pelajaran);
        if ($exec->num_rows()>0){
            $variabel['data'] = $exec ->row_array();
-           $this->layout->renderakdp('back-end/akademik/presensi_pelajaran/v_pelajaran_lihat',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+           $this->layout->renderakdp('back-end/akademik/presensi_pelajaran_p/v_pelajaran_lihat',$variabel,'back-end/akademik/presensi_pelajaran_p/v_pelajaran_js');
        } else
            redirect(base_url("admin/santriwatiakd/pelajaran"));
    }
@@ -1060,7 +1060,7 @@ class Santriwatiakd extends CI_Controller
            //$variabel ='';
            $variabel['nip_guru']=$this->m_pelajaran->ambilguru();
            $variabel['id_mata_pelajaran']=$this->m_pelajaran->ambilmatpel();
-           $this->layout->renderakdp('back-end/akademik/presensi_pelajaran/v_pelajaran_tambah',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+           $this->layout->renderakdp('back-end/akademik/presensi_pelajaran_p/v_pelajaran_tambah',$variabel,'back-end/akademik/presensi_pelajaran_p/v_pelajaran_js');
        }
    }
 
@@ -1086,7 +1086,7 @@ class Santriwatiakd extends CI_Controller
            $variabel['id_mata_pelajaran']=$this->m_pelajaran->ambilmatpel();
            if ($exec->num_rows()>0){
                    $variabel['data'] = $exec ->row_array();
-                   $this->layout->renderakdp('back-end/akademik/presensi_pelajaran/v_pelajaran_edit',$variabel,'back-end/akademik/presensi_pelajaran/v_pelajaran_js');
+                   $this->layout->renderakdp('back-end/akademik/presensi_pelajaran_p/v_pelajaran_edit',$variabel,'back-end/akademik/presensi_pelajaran_p/v_pelajaran_js');
            }
            else
                redirect(base_url("admin/santriwatiakd/pelajaran"));
@@ -1099,12 +1099,12 @@ class Santriwatiakd extends CI_Controller
       $exec = $this->m_pelajaran->hapus($kode);
       redirect(base_url()."admin/santriwatiakd/pelajaran?msg=1");
    }
-   //akhir pelajaran (matpel + guru_p)//
+   //akhir pelajaran (matpel_p + guru_p)//
 
    //crud mata pelajaran//
   function matpel(){
        $variabel['data'] = $this->m_matpel->lihatdata();
-      $this->layout->renderakdp('back-end/akademik/matpel/v_matpel',$variabel,'back-end/akademik/matpel/v_matpel_js');
+      $this->layout->renderakdp('back-end/akademik/matpel_p/v_matpel',$variabel,'back-end/akademik/matpel_p/v_matpel_js');
   }
 
   function matpellihat()
@@ -1113,7 +1113,7 @@ class Santriwatiakd extends CI_Controller
       $exec = $this->m_matpel->lihatdatasatu($id_mata_pelajaran);
       if ($exec->num_rows()>0){
           $variabel['data'] = $exec ->row_array();
-          $this->layout->renderakdp('back-end/akademik/matpel/v_matpel_lihat',$variabel,'back-end/akademik/matpel/v_matpel_js');
+          $this->layout->renderakdp('back-end/akademik/matpel_p/v_matpel_lihat',$variabel,'back-end/akademik/matpel_p/v_matpel_js');
       } else {
           redirect(base_url("admin/santriwatiakd/matpel"));
       }
@@ -1134,7 +1134,7 @@ class Santriwatiakd extends CI_Controller
               else redirect(base_url("admin/santriwatiakd/matpeltambah?msg=0"));
       } else {
           $variabel ='';
-          $this->layout->renderakdp('back-end/akademik/matpel/v_matpel_tambah',$variabel,'back-end/akademik/matpel/v_matpel_js');
+          $this->layout->renderakdp('back-end/akademik/matpel_p/v_matpel_tambah',$variabel,'back-end/akademik/matpel_p/v_matpel_js');
       }
   }
 
@@ -1159,7 +1159,7 @@ class Santriwatiakd extends CI_Controller
           $exec = $this->m_matpel->lihatdatasatu($kode);
           if ($exec->num_rows()>0){
                   $variabel['data'] = $exec ->row_array();
-                  $this->layout->renderakdp('back-end/akademik/matpel/v_matpel_edit',$variabel,'back-end/akademik/matpel/v_matpel_js');
+                  $this->layout->renderakdp('back-end/akademik/matpel_p/v_matpel_edit',$variabel,'back-end/akademik/matpel_p/v_matpel_js');
           }
           else
               redirect(base_url("admin/santriwatiakd/matpel"));
@@ -1481,7 +1481,7 @@ class Santriwatiakd extends CI_Controller
       $variabel['kelas'] = $kel;
       $variabel['pelajaran'] = $pel;
       $variabel['santriwati'] = $this->m_rekap_santri->datasantri($kel,$tgl,$pel);
-      $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
+      $variabel['matpel_p'] = $this->m_rekap_santri->pelajaran($pel);
       $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
       if ($tgl > $today){
         redirect(base_url("admin/santriwatiakd/datarekapsantri?kelas=$kel&pelajaran=$pel&tanggal=$today&psn=0"));
@@ -1496,7 +1496,7 @@ class Santriwatiakd extends CI_Controller
     $variabel['kelas'] = $kel;
     $variabel['pelajaran'] = $pel;
     $variabel['santriwati'] = $this->m_rekap_santri->datasantri($kel,$tgl,$pel);
-    $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
+    $variabel['matpel_p'] = $this->m_rekap_santri->pelajaran($pel);
     $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
     $this->layout->renderakdp('back-end/akademik/rekap_presensi/v_data_rekap',$variabel,'back-end/akademik/rekap_presensi/v_rekap_js');}
   }
@@ -1541,7 +1541,7 @@ class Santriwatiakd extends CI_Controller
     $variabel['kelas'] = $kel;
     $variabel['pelajaran'] = $pel;
     $variabel['namakelas'] = $this->m_rekap_santri->kelas($kel);
-    $variabel['matpel'] = $this->m_rekap_santri->pelajaran($pel);
+    $variabel['matpel_p'] = $this->m_rekap_santri->pelajaran($pel);
     $variabel['santrihadir'] = $this->m_rekap_santri->totalhadir($kel,$pel,$tgl);
     $variabel['santriizin'] = $this->m_rekap_santri->totalizin($kel,$pel,$tgl);
     $variabel['santrisakit'] = $this->m_rekap_santri->totalsakit($kel,$pel,$tgl);
@@ -1560,7 +1560,7 @@ class Santriwatiakd extends CI_Controller
      $variabel['pelajaran'] = $pel;
      $variabel['nip_guru'] =$nip;
      $variabel['namakelas'] = $this->m_rekap_guru->kelas($kel);
-     $variabel['matpel'] = $this->m_rekap_guru->pelajaran($pel);
+     $variabel['matpel_p'] = $this->m_rekap_guru->pelajaran($pel);
      $variabel['guru_p'] = $this->m_rekap_guru->dataguru($nip);
      $this->layout->renderakdp('back-end/akademik/rekap_presensi/v_data_rekap_guru',$variabel,'back-end/akademik/rekap_presensi/v_rekap_js');
   }
@@ -1618,7 +1618,7 @@ class Santriwatiakd extends CI_Controller
      $variabel['jadwal'] = $jdw;
      $variabel['nip_guru'] =$nip;
      $variabel['namakelas'] = $this->m_rekap_guru->kelas($kel);
-     $variabel['matpel'] = $this->m_rekap_guru->pelajaran($pel);
+     $variabel['matpel_p'] = $this->m_rekap_guru->pelajaran($pel);
      $variabel['guru_p'] = $this->m_rekap_guru->dataguru($nip);
      $variabel['guruhadir'] = $this->m_rekap_guru->totalhadir($pel,$kel);
      $variabel['guruizin'] = $this->m_rekap_guru->totalizin($pel,$kel);
@@ -1944,7 +1944,7 @@ function editkelaspondokan()
       $variabel['kelas'] = $kel;
       $variabel['pelajaran'] = $pel;
       $variabel['santriwati'] = $this->m_rekap_santri_pondokan->datasantri($kel,$tgl,$pel);
-      $variabel['matpel'] = $this->m_rekap_santri_pondokan->pelajaran($pel);
+      $variabel['matpel_p'] = $this->m_rekap_santri_pondokan->pelajaran($pel);
       $variabel['namakelas'] = $this->m_rekap_santri_pondokan->kelas($kel);
       if ($tgl > $today){
         redirect(base_url("admin/santriwatiakd/datarekapsantripondokan?kelas=$kel&pelajaran=$pel&tanggal=$today&psn=0"));
@@ -1959,7 +1959,7 @@ function editkelaspondokan()
     $variabel['kelas'] = $kel;
     $variabel['pelajaran'] = $pel;
     $variabel['santriwati'] = $this->m_rekap_santri_pondokan->datasantri($kel,$tgl,$pel);
-    $variabel['matpel'] = $this->m_rekap_santri_pondokan->pelajaran($pel);
+    $variabel['matpel_p'] = $this->m_rekap_santri_pondokan->pelajaran($pel);
     $variabel['namakelas'] = $this->m_rekap_santri_pondokan->kelas($kel);
     $this->layout->renderakdp('back-end/akademik/rekap_presensi_pondokan/v_data_rekap_pondokan',$variabel,'back-end/akademik/rekap_presensi_pondokan/v_rekap_js');}
   }
@@ -2004,7 +2004,7 @@ function editkelaspondokan()
     $variabel['kelas'] = $kel;
     $variabel['pelajaran'] = $pel;
     $variabel['namakelas'] = $this->m_rekap_santri_pondokan->kelas($kel);
-    $variabel['matpel'] = $this->m_rekap_santri_pondokan->pelajaran($pel);
+    $variabel['matpel_p'] = $this->m_rekap_santri_pondokan->pelajaran($pel);
     $variabel['santrihadir'] = $this->m_rekap_santri_pondokan->totalhadir($kel,$pel,$tgl);
     $variabel['santriizin'] = $this->m_rekap_santri_pondokan->totalizin($kel,$pel,$tgl);
     $variabel['santrisakit'] = $this->m_rekap_santri_pondokan->totalsakit($kel,$pel,$tgl);
@@ -2023,7 +2023,7 @@ function editkelaspondokan()
      $variabel['pelajaran'] = $pel;
      $variabel['nip_guru'] =$nip;
      $variabel['namakelas'] = $this->m_rekap_guru_pondokan->kelas($kel);
-     $variabel['matpel'] = $this->m_rekap_guru_pondokan->pelajaran($pel);
+     $variabel['matpel_p'] = $this->m_rekap_guru_pondokan->pelajaran($pel);
      $variabel['guru_p'] = $this->m_rekap_guru_pondokan->dataguru($nip);
      $this->layout->renderakdp('back-end/akademik/rekap_presensi_pondokan/v_data_rekap_guru',$variabel,'back-end/akademik/rekap_presensi_pondokan/v_rekap_js');
   }
@@ -2081,7 +2081,7 @@ function editkelaspondokan()
      $variabel['jadwal'] = $jdw;
      $variabel['nip_guru'] =$nip;
      $variabel['namakelas'] = $this->m_rekap_guru_pondokan->kelas($kel);
-     $variabel['matpel'] = $this->m_rekap_guru_pondokan->pelajaran($pel);
+     $variabel['matpel_p'] = $this->m_rekap_guru_pondokan->pelajaran($pel);
      $variabel['guru_p'] = $this->m_rekap_guru_pondokan->dataguru($nip);
      $variabel['guruhadir'] = $this->m_rekap_guru_pondokan->totalhadir($pel,$kel);
      $variabel['guruizin'] = $this->m_rekap_guru_pondokan->totalizin($pel,$kel);
