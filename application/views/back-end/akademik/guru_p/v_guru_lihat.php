@@ -10,9 +10,9 @@
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Menambahkan Guru","Gagal Menambahkan Guru") ?>
-					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriakd/gurutambah"
+					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriwatiakd/gurutambah"
 					method="post">
-						<a href="<?php echo base_url('admin/santriakd/guru') ?>" style="color:#3b994a;margin-left:10px">
+						<a href="<?php echo base_url('admin/santriwatiakd/guru') ?>" style="color:#3b994a;margin-left:10px">
 							<i class="fa fa-chevron-left"></i> Kembali</a>
 						<div class="row">
 							<div class="col-md-6">
@@ -155,10 +155,10 @@
 						</div>
 				</div>
 				<footer class="panel-footer text-right bg-light lter">
-					<a href="<?php echo base_url('admin/santriakd/guruedit?nip=1') ?>" class="btn btn-success btn-s-xs">
+					<a href="<?php echo base_url('admin/santriwatiakd/guruedit?nip=1') ?>" class="btn btn-success btn-s-xs">
 						<i class="fa fa-edit"></i> Edit </a>
 					&nbsp
-					<a href="<?php echo base_url('admin/santriakd/guru') ?>" class="btn btn-default btn-s-xs">
+					<a href="<?php echo base_url('admin/santriwatiakd/guru') ?>" class="btn btn-default btn-s-xs">
 						<i class="fa fa-list"></i> List Guru</a>
 				</footer>
 				</form>

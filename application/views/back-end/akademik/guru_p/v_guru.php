@@ -11,7 +11,7 @@
       </header>
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus Data Guru","Gagal Menghapus Data Guru") ?>
-      <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/santriakd/gurutambah" class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah data</a>
+      <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/santriwatiakd/gurutambah" class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah data</a>
 
         <table class="table table-striped " id="datatable">
           <thead>
@@ -29,14 +29,14 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/santriakd/gurulihat?nip='.$row['nip_guru'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
-                      <a href='".base_url('admin/santriakd/guruedit?nip='.$row['nip_guru'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                      <a href='".base_url('admin/santriwatiakd/gurulihat?nip='.$row['nip_guru'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
+                      <a href='".base_url('admin/santriwatiakd/guruedit?nip='.$row['nip_guru'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
                       <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['nip_guru']."'><i class='fa fa-trash-o'></i></a>
                       </td>
                       <td>".$row['nama_lengkap']."</td>
                       <td>".$row['nip_guru']."</td>
                       <td>".($row['jenis_kelamin']=="L"?"Laki-laki":"Perempuan")."</td>
-                      <td><a href='".base_url('admin/santriakd/guruberkas?nip='.$row['nip_guru'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-file-text-o'></i> Berkas</a></td>
+                      <td><a href='".base_url('admin/santriwatiakd/guruberkas?nip='.$row['nip_guru'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-file-text-o'></i> Berkas</a></td>
                     </tr>
                   ";
                 }

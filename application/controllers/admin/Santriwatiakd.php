@@ -683,7 +683,7 @@ class Santriwatiakd extends CI_Controller
           $variabel['data'] = $exec ->row_array();
           $this->layout->renderakdp('back-end/akademik/guru_p/v_guru_lihat',$variabel,'back-end/akademik/guru_p/v_guru_js');
       } else {
-          redirect(base_url("admin/santriwatiakd/guru_p"));
+          redirect(base_url("admin/santriwatiakd/guru"));
       }
 
   }
@@ -748,7 +748,7 @@ class Santriwatiakd extends CI_Controller
            $variabel['kabupaten']=$this->m_santriwati->ambilkabupaten("");
            $variabel['kecamatan']=$this->m_santriwati->ambilkecamatan("");
            $variabel['desa']=$this->m_santriwati->ambildesa("");
-          $this->layout->renderakdp('back-end/akademik/guru_p/v_guru_tambah',$variabel,'back-end/datamaster/guru_p/v_guru_js');
+          $this->layout->renderakdp('back-end/akademik/guru_p/v_guru_tambah',$variabel,'back-end/akademik/guru_p/v_guru_js');
       }
   }
 
@@ -827,7 +827,7 @@ class Santriwatiakd extends CI_Controller
                $variabel['desa']=$this->m_santriwati->ambildesa($data['kecamatan']);
               $this->layout->renderakdp('back-end/akademik/guru_p/v_guru_edit',$variabel,'back-end/akademik/guru_p/v_guru_js');
           } else {
-              redirect(base_url("admin/santriwatiakd/guru_p"));
+              redirect(base_url("admin/santriwatiakd/guru"));
           }
     }
 
@@ -837,7 +837,7 @@ class Santriwatiakd extends CI_Controller
   {
      $nip = $this->input->get("nip");
      $exec = $this->m_guru->hapus($nip);
-     redirect(base_url()."admin/santriwatiakd/guru_p?msg=1");
+     redirect(base_url()."admin/santriwatiakd/guru?msg=1");
   }
 
   function guruberkas()
@@ -845,11 +845,11 @@ class Santriwatiakd extends CI_Controller
       $nip = $this->input->get("nip");
       $exec = $this->m_guru->lihatdatasatu($nip);
       if ($exec->num_rows()>0){
-          $variabel['guru_p'] = $exec->row_array();
+          $variabel['guru'] = $exec->row_array();
           $variabel['data'] = $this->m_guru->lihatdataberkas($nip);
           $this->layout->renderakdp('back-end/akademik/guru_p/v_guruberkas',$variabel,'back-end/akademik/guru_p/v_guruberkas_js');
       } else {
-          redirect(base_url("admin/santriwatiakd/guru_p"));
+          redirect(base_url("admin/santriwatiakd/guru"));
       }
 
   }
@@ -859,7 +859,7 @@ class Santriwatiakd extends CI_Controller
       $nip = $this->input->get("nip");
       $exec = $this->m_guru->lihatdatasatu($nip);
       if ($exec->num_rows()>0){
-          $variabel['guru_p'] = $exec->row_array();
+          $variabel['guru'] = $exec->row_array();
           if ($this->input->post()){
               $config['upload_path'] = './assets/berkas/berkasguru';
               $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
@@ -884,7 +884,7 @@ class Santriwatiakd extends CI_Controller
               $this->layout->renderakdp('back-end/akademik/guru_p/v_guruberkas_tambah',$variabel,'back-end/akademik/guru_p/v_guruberkas_js');
           }
       } else {
-          redirect(base_url("admin/santriwatiakd/guru_p"));
+          redirect(base_url("admin/santriwatiakd/guru"));
       }
   }
   function guruhapusberkas()
@@ -940,7 +940,7 @@ class Santriwatiakd extends CI_Controller
           $id = $this->input->get("id");
           $exec = $this->m_guru->lihatdatasatu($nip);
           if ($exec->num_rows()>0){
-              $variabel['guru_p'] = $exec ->row_array();
+              $variabel['guru'] = $exec ->row_array();
               $exec2 = $this->m_guru->lihatdatasatuberkas($id);
               if ($exec2->num_rows()>0){
 
@@ -950,7 +950,7 @@ class Santriwatiakd extends CI_Controller
                   redirect(base_url("admin/santriwatiakd/guruberkas?nip=$nip"));
               }
           } else {
-              redirect(base_url("admin/santriwatiakd/guru_p"));
+              redirect(base_url("admin/santriwatiakd/guru"));
           }
       }
 

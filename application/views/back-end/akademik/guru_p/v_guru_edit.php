@@ -10,9 +10,9 @@
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Mengedit Data Guru","Gagal Mengedit Data Guru") ?>
-					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriakd/guruedit?nip=<?php if (isset($nip_guru2)) echo $nip_guru2; else echo $data['nip_guru']; ?>"
+					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriwatiakd/guruedit?nip=<?php if (isset($nip_guru2)) echo $nip_guru2; else echo $data['nip_guru']; ?>"
 					method="post" enctype="multipart/form-data">
-						<a href="<?php echo base_url('admin/santriakd/guru') ?>" style="color:#3b994a;margin-left:10px">
+						<a href="<?php echo base_url('admin/santriwatiakd/guru') ?>" style="color:#3b994a;margin-left:10px">
 							<i class="fa fa-chevron-left"></i> Kembali</a>
 						<div class="row">
 							<div class="col-md-6">
@@ -208,11 +208,11 @@
 					<button type="submit" class="btn btn-success btn-s-xs">
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
-					<a href="<?php echo base_url() ?>admin/santriakd/guruedit?nip=<?php if (isset($nip_guru2)) echo $nip_guru2; else echo $data['nip_guru']; ?>"
+					<a href="<?php echo base_url() ?>admin/santriwatiakd/guruedit?nip=<?php if (isset($nip_guru2)) echo $nip_guru2; else echo $data['nip_guru']; ?>"
 					class="btn btn-default btn-s-xs">
 						<i class="fa fa-refresh"></i> Reset</a>
 					&nbsp
-					<a href="<?php echo base_url('admin/santriakd/guru') ?>" class="btn btn-default btn-s-xs">
+					<a href="<?php echo base_url('admin/santriwatiakd/guru') ?>" class="btn btn-default btn-s-xs">
 						<i class="fa fa-list"></i> List Guru</a>
 				</footer>
 				</form>

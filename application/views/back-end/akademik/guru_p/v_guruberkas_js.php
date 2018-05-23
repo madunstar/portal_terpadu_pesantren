@@ -13,7 +13,7 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/santriakd/guruhapusberkas?id_berkas="+v_id+"&nip="+v_nip);
+                    window.location.assign("<?php echo base_url() ?>admin/santriwatiakd/guruhapusberkas?id_berkas="+v_id+"&nip="+v_nip);
                 }
             },
             batal: function () {
