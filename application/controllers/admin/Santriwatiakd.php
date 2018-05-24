@@ -408,11 +408,13 @@ class Santriwatiakd extends CI_Controller
   {
       $nis = $this->input->get("nis");
       $exec = $this->m_santriwati->lihatdatasatu($nis);
+      $new_name = $nis.date('YmdHis');
       if ($exec->num_rows()>0){
           $variabel['santriwati'] = $exec->row_array();
           if ($this->input->post()){
               $config['upload_path'] = './assets/berkas/berkassantri';
               $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|png';
+              $config['file_name'] = $new_name;
               $this->load->library('upload', $config);
               $this->upload->do_upload("file_berkas");
               $upload = $this->upload->data();
@@ -461,12 +463,14 @@ class Santriwatiakd extends CI_Controller
           $id_berkas = $this->input->post('id_berkas');
           $nama_berkas = $this->input->post('nama_berkas');
           $nis_lokal = $this->input->post('nis_lokal');
+          $new_name = $nis_lokal.date('YmdHis');
           $array=array(
               'nama_berkas'=> $nama_berkas
               );
 
           $config['upload_path'] = './assets/berkas/berkassantri';
           $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
+          $config['file_name'] = $new_name;
           $this->load->library('upload', $config);
           if ( $this->upload->do_upload("file_berkas"))
           {
@@ -858,11 +862,13 @@ class Santriwatiakd extends CI_Controller
   {
       $nip = $this->input->get("nip");
       $exec = $this->m_guru->lihatdatasatu($nip);
+      $new_name = $nip.date('YmdHis');
       if ($exec->num_rows()>0){
           $variabel['guru'] = $exec->row_array();
           if ($this->input->post()){
               $config['upload_path'] = './assets/berkas/berkasguru';
               $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
+              $config['file_name'] = $new_name;
               $this->load->library('upload', $config);
               $this->upload->do_upload("file_berkas");
               $upload = $this->upload->data();
@@ -910,12 +916,14 @@ class Santriwatiakd extends CI_Controller
           $id_berkas = $this->input->post('id_berkas');
           $nama_berkas = $this->input->post('nama_berkas');
           $nip_guru = $this->input->post('nip_guru');
+          $new_name = $nip_guru.date('YmdHis');
           $array=array(
               'nama_berkas'=> $nama_berkas
               );
 
           $config['upload_path'] = './assets/berkas/berkasguru';
           $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
+          $config['file_name'] = $new_name;
           $this->load->library('upload', $config);
           if ( $this->upload->do_upload("file_berkas"))
           {
