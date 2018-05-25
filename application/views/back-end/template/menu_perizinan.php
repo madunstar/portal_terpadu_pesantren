@@ -13,6 +13,35 @@
               <nav class="nav-primary hidden-xs">
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
+									<li  class="<?= (($menu == "perizinan") && ($submenu == 'index')) ? "active" : ""; ?>">
+										<a href="<?php echo base_url() ?>admin/perizinan" class="auto">
+											<i class="fa fa-dashboard">
+											</i>
+											<span class="font-bold">Dashboard</span>
+										</a>
+									</li>
+									<li class="<?= (($menu == "santriakd") && ($submenu == 'santri') || ($submenu == 'santriberkas') || ($submenu == 'santritambahberkas') || ($submenu == 'santrieditberkas') || ($submenu == 'santrilihat') || ($submenu == 'ubahpelanggaran') || ($submenu == 'tambahpelanggaran') || ($submenu == 'pelanggaransantri') || ($submenu == 'prestasisantri') || ($submenu == 'ubahprestasi') || ($submenu == 'tambahprestasi') || ($submenu == 'guru') || ($submenu == 'gurutambah') || ($submenu == 'guruedit') || ($submenu == 'gurulihat') || ($submenu == 'guruberkas') || ($submenu == 'gurutambahberkas') || ($submenu == 'gurueditberkas')  || ($submenu == 'staff') || ($submenu == 'kelas') || ($submenu == 'kelastambah') || ($submenu == 'kelasedit') || ($submenu == 'matpel') || ($submenu == 'matpellihat') || ($submenu == 'matpeltambah') || ($submenu == 'matpeledit') || ($submenu == 'jenjang') || ($submenu == 'jenjangtingkat') || ($submenu == 'pondokan') || ($submenu == 'pakpondokan') || ($submenu == 'pakafilasi')) ? "active" : ""; ?>">
+										<a href="#" class="auto">
+											<span class="pull-right text-muted">
+												<i class="i i-circle-sm-o text"></i>
+												<i class="i i-circle-sm text-active"></i>
+											</span>
+
+											<i class="fa fa-bars">
+											</i>
+											<span class="font-bold">Data Master</span>
+										</a>
+										<ul class="nav dk">
+											<li class="<?= (($menu == "santriakd") && ($submenu == 'santri') || ($submenu == 'santrilihat') || ($submenu == 'santriberkas') || ($submenu == 'santritambahberkas') || ($submenu == 'santrieditberkas') || ($submenu == 'ubahpelanggaran') || ($submenu == 'tambahpelanggaran') || ($submenu == 'pelanggaransantri') || ($submenu == 'prestasisantri') || ($submenu == 'ubahprestasi') || ($submenu == 'tambahprestasi')) ? "active" : ""; ?>">
+												<a href="<?php echo base_url() ?>admin/santriakd/santri" class="auto">
+													<i class="i i-dot"></i>
+
+													<span>Data Santri</span>
+												</a>
+											</li>
+
+										</ul>
+									</li>
                   <li class="<?= (($menu == "perizinan") && ($submenu == 'keluar') || ($submenu == 'aturdenda')|| ($submenu == 'kembali') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'index') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
@@ -24,13 +53,7 @@
                       <span class="font-bold">Perizinan</span>
                     </a>
                     <ul class="nav dk">
-											<li class="<?= (($menu == "perizinan") & ($submenu == "index")) ? "active" : ""; ?>">
-												<a href="<?php echo base_url() ?>admin/perizinan" class="auto">
-													<i class="i i-dot"></i>
 
-													<span>Dashboard</span>
-												</a>
-											</li>
                       <li class="<?= (($menu == "perizinan") && ($submenu == 'datakeluar') || ($submenu == 'keluar') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/perizinan/datakeluar" class="auto">
                           <i class="i i-dot"></i>
