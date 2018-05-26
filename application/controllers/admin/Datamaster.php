@@ -529,25 +529,6 @@ class Datamaster extends CI_Controller{
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // CRUD Santri
     function santri()
     {
@@ -819,6 +800,29 @@ class Datamaster extends CI_Controller{
        $nis = $this->input->get("nis");
        $exec = $this->m_santri->hapus($nis);
        redirect(base_url()."admin/datamaster/santri?msg=1");
+    }
+
+    function santriimport(){
+      $new_name = date('YmdHis');
+      if ($this->input->post()){
+      $config['upload_path'] = './assets/import/';
+      $config['allowed_types'] = 'xlsx|xls';
+      $config['file_name'] = $new_name;
+      $this->load->library('upload',$config);
+      if (! $this->upload->do_upload("excel_santri")){
+        redirect(base_url("admin/datamaster/santri?psn=0"));
+      } else {
+        $this->upload->do_upload("excel_santri");
+          $data = $this->upload->data();
+          $filename = $data['file_name'];
+          $this->m_santri->upload_santri($filename);
+          unlink('./assets/import/'.$filename);
+          redirect(base_url("admin/datamaster/santri?psn=1"));
+
+
+              }
+
+          }
     }
 
     function santriberkas()
