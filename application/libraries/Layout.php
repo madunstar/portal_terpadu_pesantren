@@ -8,6 +8,8 @@ class Layout {
     public $header_login = 'back-end/template/header_login';
     public $headerizin = 'back-end/template/header_perizinan';
     public $headerlaporan = 'back-end/template/header_laporan';
+    public $headerakd = 'back-end/template/header_akademik';
+    public $headerakdp = 'back-end/template/header_akademik_p';
 	//public $menu = 'template/menu';
     public $footer = 'back-end/template/footer';
     public $endhtml = 'back-end/template/endhtml';
@@ -15,7 +17,7 @@ class Layout {
     public $headerfront = 'front-end/template/header';
 	//public $menu = 'template/menu';
     public $footerfront = 'front-end/template/footer';
-	public $endhtmlfront= 'front-end/template/endhtml';
+	  public $endhtmlfront= 'front-end/template/endhtml';
 
     function render($view,$data = null,$js = null){
         $this->ci->load->view($this->header);
@@ -58,6 +60,26 @@ class Layout {
 
     function renderlaporan($view,$data = null,$js = null){
         $this->ci->load->view($this->headerlaporan);
+        $this->ci->load->view($view,$data);
+        $this->ci->load->view($this->footer);
+        if ($js!=NULL) {
+            $this->ci->load->view($js,$data);
+        }
+        $this->ci->load->view($this->endhtml);
+    }
+
+    function renderakd($view,$data = null,$js = null){
+        $this->ci->load->view($this->headerakd);
+        $this->ci->load->view($view,$data);
+        $this->ci->load->view($this->footer);
+        if ($js!=NULL) {
+            $this->ci->load->view($js,$data);
+        }
+        $this->ci->load->view($this->endhtml);
+    }
+
+    function renderakdp($view,$data = null,$js = null){
+        $this->ci->load->view($this->headerakdp);
         $this->ci->load->view($view,$data);
         $this->ci->load->view($this->footer);
         if ($js!=NULL) {

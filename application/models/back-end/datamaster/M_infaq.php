@@ -60,7 +60,14 @@ class M_infaq extends CI_Model
         return $this->db->get()
           ->row_array();
     }
-
+    function totalbayar($tahun,$bulan){
+      $this->db->select('sum(besar_bayar) as total')
+        ->from('tb_pembayaran_spp')
+        ->where('tb_pembayaran_spp.spp_tahun', $tahun)
+        ->where('tb_pembayaran_spp.spp_bulan', $bulan);
+        return $this->db->get()
+          ->row_array();
+    }
     //
     // function editdata($id_tahun,$array)
     // {

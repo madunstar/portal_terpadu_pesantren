@@ -36,6 +36,7 @@
             <th>Nama</th>
             <th>Tanggal Bayar</th>
             <th>Status Infaq</th>
+            <th>Besar Bayar</th>
           </tr>
         </thead>
         <tbody>
@@ -50,6 +51,7 @@
                 <td>".$row['nama_lengkap']."</td>
                 <td>".$row['tanggal_bayar']."</td>
                 <td>".$row['status_bayar']."</td>
+                <td>".$row['besar_bayar']."</td>
               </tr>
             "; $i++;
           }
@@ -61,11 +63,13 @@
           <div class="col-xs-3">
             <p>
               Total Santri Bayar <br><br>
+              Total Pembayaran Lunas <br><br>
             </p>
           </div>
           <div class="col-xs-3">
             <p>
-              : <?php echo $santribayar['total']?> orang<br>
+              : <?php echo $santribayar['total']?> orang<br><br>
+              : Rp. <?php echo $totalbayar['total']?><br>
             </p>
           </div>
         </div>

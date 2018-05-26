@@ -12,7 +12,6 @@
 </header>
 <body>
 
-
       <div style="width:85mm;height:53mm;border:1px solid #cecece;border-radius:10px;padding:5px; background-image:url('<?php echo base_url()."assets/images/1.jpg')"; ?>;background-repeat: no-repeat;background-size:cover" >
       <table> 
         <tr>

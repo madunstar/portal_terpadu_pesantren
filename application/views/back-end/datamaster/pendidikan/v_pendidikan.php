@@ -39,6 +39,10 @@
             ?>
           </tbody>
         </table>
+        <form class="" action="<?php echo base_url() ?>admin/datamaster/contohimport" method="post"  enctype="multipart/form-data">
+          <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="file_excel" data-required="true">
+          <button class="btn btn-primary" type="submit" name="button">upload</button>
+        </form>
       </div>
     </section>
   </section>

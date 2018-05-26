@@ -36,6 +36,12 @@ Class Login extends CI_Controller{
   				elseif ($this->session->userdata('kode_role_admin')=='adm_prz') {
   					redirect('admin/perizinan');
   				}
+          elseif ($this->session->userdata('kode_role_admin')=='akdputra') {
+  					redirect('admin/santriakd');
+  				}
+          elseif ($this->session->userdata('kode_role_admin')=='akdputri') {
+  					redirect('admin/santriwatiakd');
+  				}
         } else {
           redirect(base_url("admin/login?msg=2"));
         }

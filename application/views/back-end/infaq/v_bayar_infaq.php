@@ -59,6 +59,20 @@
                     <div class="col-sm-2">
 
                     </div>
+                    </div>
+                    <div class='form-group'>
+                    <label class="col-sm-2 control-label" for="input-id-1">Besar Bayar</label>
+                    <div class="col-sm-5">
+                      <select class="form-control" name="besarbayar" data-required="true">
+                        <?php $d = 150000;
+                              while($d <= 600000){?>
+                           <option value='<?php echo $d; ?>' >Rp. <?php echo $d; ?></option>
+
+                         <?php $d = $d + 50000; } ?>
+
+                      </select>
+                    </div>
+                  </div>
                   </div>
                   </div>
 

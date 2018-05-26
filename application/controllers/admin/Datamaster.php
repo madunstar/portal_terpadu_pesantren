@@ -25,6 +25,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_matpel');
         $this->load->model('back-end/datamaster/m_pelajaran');
         $this->load->model('back-end/datamaster/m_infaq');
+        $this->load->model('back-end/datamaster/m_infaq_p');
         $this->load->model('back-end/datamaster/m_presensi');
         $this->load->model('back-end/datamaster/m_prestasi');
         $this->load->model('back-end/datamaster/m_prestasi_p');
@@ -42,6 +43,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_pak_afilasi');
         $this->load->model('back-end/datamaster/m_informasi');
         $this->load->library('layout');
+        $this->load->library('PHPExcel');
         $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
             redirect('admin/login');
@@ -409,7 +411,142 @@ class Datamaster extends CI_Controller{
       }
 
     }
-    //
+
+    function santriwatiberkas()
+    {
+        $nis = $this->input->get("nis");
+        $exec = $this->m_santriwati->lihatdatasatu($nis);
+        if ($exec->num_rows()>0){
+            $variabel['santri'] = $exec->row_array();
+            $variabel['data'] = $this->m_santriwati->lihatdataberkas($nis);
+            $this->layout->render('back-end/datamaster/santriwati/v_santriberkas',$variabel,'back-end/datamaster/santriwati/v_santriberkas_js');
+        } else {
+            redirect(base_url("admin/datamaster/santriwati"));
+        }
+
+    }
+
+    function santriwatitambahberkas()
+    {
+        $nis = $this->input->get("nis");
+        $exec = $this->m_santriwati->lihatdatasatu($nis);
+        if ($exec->num_rows()>0){
+            $variabel['santri'] = $exec->row_array();
+            if ($this->input->post()){
+                $config['upload_path'] = './assets/berkas/berkassantri';
+                $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
+                $this->load->library('upload', $config);
+                $this->upload->do_upload("file_berkas");
+                $upload = $this->upload->data();
+                $file_berkas = $upload["raw_name"].$upload["file_ext"];
+
+                $nis_lokal = $this->input->post('nis_lokal');
+                $nama_berkas = $this->input->post('nama_berkas');
+                $array=array(
+                    'nis_lokal'=>  $nis_lokal,
+                    'nama_berkas'=> $nama_berkas,
+                    'file_berkas' => $file_berkas
+                    );
+
+                $exec = $this->m_santriwati->tambahdataberkas($array);
+                if ($exec) redirect(base_url("admin/datamaster/santriwatitambahberkas?nis=".$nis_lokal."&msg=1"));
+                else redirect(base_url("admin/datamaster/santriwatiberkastambah?nis=".$nis_lokal."&msg=0"));
+            } else {
+
+                $this->layout->render('back-end/datamaster/santriwati/v_santriberkas_tambah',$variabel,'back-end/datamaster/santriwati/v_santriberkas_js');
+            }
+        } else {
+            redirect(base_url("admin/datamaster/santriwati"));
+        }
+    }
+
+    function santriwatihapusberkas()
+    {
+        $id_berkas = $this->input->get("id_berkas");
+        $nis = $this->input->get("nis");
+
+        $query2 = $this->m_santriwati->lihatdatasatuberkas($id_berkas);
+        $row2 = $query2->row();
+        $berkas1temp = $row2->file_berkas;
+        $path1 ="./assets/berkas/berkassantri/".$berkas1temp."";
+        if(is_file($path1)) {
+            unlink($path1);
+        }
+
+        $exec = $this->m_santriwati->hapusberkas($id_berkas);
+        redirect(base_url()."admin/datamaster/santriwatiberkas?msg=1&nis=".$nis."");
+    }
+
+    function santriwatieditberkas()
+    {
+        if ($this->input->post()) {
+            $id_berkas = $this->input->post('id_berkas');
+            $nama_berkas = $this->input->post('nama_berkas');
+            $nis_lokal = $this->input->post('nis_lokal');
+            $array=array(
+                'nama_berkas'=> $nama_berkas
+                );
+
+            $config['upload_path'] = './assets/berkas/berkassantri';
+            $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf';
+            $this->load->library('upload', $config);
+            if ( $this->upload->do_upload("file_berkas"))
+            {
+                $upload = $this->upload->data();
+                $file_berkas = $upload["raw_name"].$upload["file_ext"];
+                $array['file_berkas']=$file_berkas;
+
+                $query2 = $this->m_santriwati->lihatdatasatuberkas($id_berkas);
+                $row2 = $query2->row();
+                $berkas1temp = $row2->file_berkas;
+                $path1 ="./assets/berkas/berkassantri/".$berkas1temp."";
+                if(is_file($path1)) {
+                    unlink($path1); //menghapus gambar di folder produk
+                }
+            }
+            $exec = $this->m_santriwati->editdataaberkas($id_berkas,$array);
+            if ($exec) redirect(base_url("admin/datamaster/santriwatieditberkas?id=".$id_berkas."&nis=".$nis_lokal."&msg=1"));
+            else redirect(base_url("admin/datamaster/santriwatieditberkas?id=".$id_berkas."&nis=".$nis_lokal."&msg=0"));
+
+        } else {
+            $nis = $this->input->get("nis");
+            $id = $this->input->get("id");
+            $exec = $this->m_santriwati->lihatdatasatu($nis);
+            if ($exec->num_rows()>0){
+                $variabel['santri'] = $exec ->row_array();
+                $exec2 = $this->m_santriwati->lihatdatasatuberkas($id);
+                if ($exec2->num_rows()>0){
+
+                    $variabel['data'] = $exec2->row_array();
+                    $this->layout->render('back-end/datamaster/santriwati/v_santriberkas_edit',$variabel,'back-end/datamaster/santriwati/v_santriberkas_js');
+                } else {
+                    redirect(base_url("admin/datamaster/santriwatiberkas?nis=$nis"));
+                }
+            } else {
+                redirect(base_url("admin/datamaster/santriwati"));
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // CRUD Santri
     function santri()
@@ -2645,6 +2782,72 @@ function kecamatanhapus()
 
 
 ////////////////////////////////////////////////// pembayaran SPP ////////////////////////////////////////////////////
+///////////cewek/////////////////
+function databayarinfaqp(){
+  if($this->input->post()){
+    $tahun = $this->input->post('tahun');
+    $bulan = $this->input->post('bulan');
+    $variabel['bulan'] = $bulan;
+    $variabel['tahun'] = $tahun;
+    $variabel['data'] = $this->m_infaq_p->lihatdata($tahun,$bulan);
+    $this->layout->render('back-end/infaq/v_data_infaq_p',$variabel,'back-end/infaq/v_infaq_js');}
+    else {
+      $tahun = date('Y');
+      $bulan = date('m');
+      $variabel['bulan'] = $bulan;
+      $variabel['tahun'] = $tahun;
+      $variabel['data'] = $this->m_infaq_p->lihatdata($tahun,$bulan);
+      $this->layout->render('back-end/infaq/v_data_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
+    }
+  }
+
+  function detilinfaqp(){
+    $nis = $this->input->get('nis');
+    $variabel['nama_santri'] = $this->m_infaq_p->lihatsantrisatu($nis);
+    $variabel['data'] = $this->m_infaq_p->detilinfaq($nis);
+    $this->layout->render('back-end/infaq/v_detil_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
+  }
+
+  function bayarinfaqp(){
+    if($this->input->post()){
+      $array = array(
+        'nis_santri' => $this->input->post('id_santri'),
+        'tanggal_bayar' => date('Y-m-d'),
+        'spp_bulan' => $this->input->post('bulan'),
+        'spp_tahun' => $this->input->post('tahun'),
+        'besar_bayar' => $this->input->post('besarbayar'),
+        'status_bayar' => 'lunas',
+        'petugas' => $this->session->userdata('nama_akun')
+      );
+      $exec = $this->m_infaq_p->tambahdata($array);
+      if($exec){
+        redirect(base_url("admin/datamaster/bayarinfaqp?msg=1"));
+      } else{
+        redirect(base_url("admin/datamaster/bayarinfaqp?msg=0"));
+      }
+    }else{
+      $variabel['daftarsantri'] = $this->m_infaq_p->datasantri();
+      $this->layout->render('back-end/infaq/v_bayar_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
+    }
+
+  }
+  function hapusinfaqp(){
+    $id_infaq = $this->input->get("id_infaq");
+    $exec = $this->m_infaq_p->hapus($id_infaq);
+    redirect(base_url()."admin/datamaster/databayarinfaqp?msg=1");
+  }
+  function laporaninfaqp(){
+    $tahun = $this->input->post('tahun_lap');
+    $bulan = $this->input->post('bulan_lap');
+    $variabel['bulan'] = $bulan;
+    $variabel['tahun'] = $tahun;
+    $variabel['santribayar'] = $this->m_infaq_p->santribayar($tahun,$bulan);
+    $variabel['totalbayar'] = $this->m_infaq_p->totalbayar($tahun,$bulan);
+    $variabel['data'] = $this->m_infaq_p->lihatdata($tahun,$bulan);
+    $this->layout->renderlaporan('back-end/infaq/v_lap_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
+  }
+
+/////////////cowok///////////////
   function databayarinfaq(){
     if($this->input->post()){
       $tahun = $this->input->post('tahun');
@@ -2677,6 +2880,7 @@ function kecamatanhapus()
         'tanggal_bayar' => date('Y-m-d'),
         'spp_bulan' => $this->input->post('bulan'),
         'spp_tahun' => $this->input->post('tahun'),
+        'besar_bayar' => $this->input->post('besarbayar'),
         'status_bayar' => 'lunas',
         'petugas' => $this->session->userdata('nama_akun')
       );
@@ -2704,6 +2908,7 @@ function kecamatanhapus()
     $variabel['bulan'] = $bulan;
     $variabel['tahun'] = $tahun;
     $variabel['santribayar'] = $this->m_infaq->santribayar($tahun,$bulan);
+    $variabel['totalbayar'] = $this->m_infaq->totalbayar($tahun,$bulan);
     $variabel['data'] = $this->m_infaq->lihatdata($tahun,$bulan);
     $this->layout->renderlaporan('back-end/infaq/v_lap_infaq',$variabel,'back-end/infaq/v_infaq_js');
   }
@@ -4044,6 +4249,24 @@ function printjadwalafilasi(){
     $drawing->finish(BCGDrawing::IMG_FORMAT_PNG);
 
     return $filename_img_barcode;
+}
+
+//contoh import//
+function contohimport(){
+  if ($this->input->post()){
+  $config['upload_path'] = './assets/import/';
+  $config['allowed_types'] = 'xlsx|xls';
+
+  $this->load->library('upload',$config);
+  $this->upload->do_upload("file_excel");
+            $data = $this->upload->data();
+
+            $filename = $data['file_name'];//Nama File
+            $this->m_pendidikan->upload_contoh($filename);
+            unlink('./assets/import/'.$filename);
+            redirect(base_url("admin/datamaster/pendidikan"));
+
+      }
 }
 
 

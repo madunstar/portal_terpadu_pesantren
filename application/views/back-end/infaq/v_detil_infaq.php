@@ -23,6 +23,8 @@
                       <th>Infaq Bulan</th>
                       <th>Infaq Tahun</th>
                       <th>Status Infaq</th>
+                      <th>Besar Bayar</th>
+
                     </tr>
                   </thead>
                   <tbody>
@@ -34,6 +36,7 @@
                         <td>".bulan($row['spp_bulan'])."</td>
                         <td>".$row['spp_tahun']."</td>
                         <td>".$row['status_bayar']."</td>
+                        <td>".$row['besar_bayar']."</td>
                       </tr>
                       ";
                     }
