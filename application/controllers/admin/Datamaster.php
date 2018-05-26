@@ -43,6 +43,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_pak_afilasi');
         $this->load->model('back-end/datamaster/m_informasi');
         $this->load->library('layout');
+        $this->load->library('PHPExcel');
         $this->load->helper('indo_helper');
         if ($this->session->userdata('nama_akun')=="") {
             redirect('admin/login');
@@ -410,7 +411,7 @@ class Datamaster extends CI_Controller{
       }
 
     }
-    
+
     function santriwatiberkas()
     {
         $nis = $this->input->get("nis");
@@ -4248,6 +4249,24 @@ function printjadwalafilasi(){
     $drawing->finish(BCGDrawing::IMG_FORMAT_PNG);
 
     return $filename_img_barcode;
+}
+
+//contoh import//
+function contohimport(){
+  if ($this->input->post()){
+  $config['upload_path'] = './assets/import/';
+  $config['allowed_types'] = 'xlsx|xls';
+
+  $this->load->library('upload',$config);
+  $this->upload->do_upload("file_excel");
+            $data = $this->upload->data();
+
+            $filename = $data['file_name'];//Nama File
+            $this->m_pendidikan->upload_contoh($filename);
+            unlink('./assets/import/'.$filename);
+            redirect(base_url("admin/datamaster/pendidikan"));
+
+      }
 }
 
 

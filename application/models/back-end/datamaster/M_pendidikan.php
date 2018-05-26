@@ -42,4 +42,28 @@ class M_pendidikan extends CI_Model
         $this->db->where("id_pendidikan",$id_pendidikan);
         return $this->db->delete('tb_pendidikan');
     }
+
+    public function upload_contoh($filename){
+      ini_set('memory_limit', '-1');
+      $inputFileName = './assets/import/'.$filename;
+        try {
+        $objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
+        } catch(Exception $e) {
+        die('Error loading file :' . $e->getMessage());
+        }
+
+        $worksheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+        $numRows = count($worksheet);
+
+        for ($i=1; $i < ($numRows+1) ; $i++) {
+
+
+            $ins = array(
+                    "id_pendidikan"          => $worksheet[$i]["A"],
+                    "nama_pendidikan"   => $worksheet[$i]["B"]
+                   );
+
+            $this->db->insert('tb_pendidikan', $ins);
+    }
+}
 }
