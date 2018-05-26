@@ -15,17 +15,27 @@
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Data Penjemput","Gagal Menghapus Data Penjemput") ?>
+              <?php pesan_get('msgnis',"Data Santri Ditemukan","Data Santri Tidak Ditemukan!","") ?>
               <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/perizinan/keluar')?>" method="post">
                 <div class="form-group">
-                      <div class="col-sm-10">
-                        <input type="text"  class="form-control" name="nis_santri" id="nis_santri" placeholder="Nomor Induk Santri"  data-required="true">
-                        <span class="text-danger" ></span>
-                        <span class="text-success" ></span>
-                      </div>
-                      <div class="col-sm-2">
-
-                        <input type="button" class="btn btn-sm btn-info" name="button" id="Lanjutkan" value="Lanjutkan"></a>
-                      </div>
+                  <label class="control-label col-sm-1">Izin Khusus</label>
+                  <div class="col-sm-1">
+                    <label class="switch">
+                      <input type="checkbox" name="izin_khusus" id="izin_khusus">
+                        <span class="slider round"></span>
+                      </label>
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <div class="col-sm-10">
+                    <input type="text"  class="form-control" name="nis_santri" id="nis_santri" placeholder="Nomor Induk Santri"  data-required="true">
+                    <span class="text-danger" ></span>
+                    <span class="text-success" ></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="button" class="btn btn-sm btn-info" name="button" id="Lanjutkan" value="Lanjutkan"></a>
+                  </div>
                 </div>
                 <div class="line line-dashed b-b line-lg pull-in"></div>
                 <div class="form-group">

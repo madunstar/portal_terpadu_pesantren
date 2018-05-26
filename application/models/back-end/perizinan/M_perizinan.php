@@ -54,12 +54,6 @@ class M_perizinan extends CI_Model{
         $this->db->from('tb_santri');
         $this->db->where('nis_lokal',$id);
         return $this->db->get();
-        // return $query = $this->db->get();
-        // if ($query->num_rows() == 1){
-        //   return $query->result();
-        // } else{
-        //   return false;
-        // }
     }
 
     function tampildatapenjemput($id_penjemput){
@@ -76,6 +70,15 @@ class M_perizinan extends CI_Model{
 
     function tambahdatapenjemput($penjemput){
         return $this->db->insert('tb_perizinan_penjemput',$penjemput);
+    }
+
+    function ambiltglkeluar($nis_santri){
+        $this->db->select('tanggal_keluar');
+        $this->db->from('tb_perizinan_keluar');
+        $this->db->where('nis_santri',$nis_santri);
+        $this->db->order_by('id_keluar','DESC');
+        $this->db->limit(1);
+        return $this->db->get()->row();
     }
 
     function ambilidpenjemput($no_identitas){

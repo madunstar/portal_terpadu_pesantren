@@ -70,6 +70,26 @@ $(document).ready(function(){
       }
 		});
 
+    $.ajax({
+      url: "<?php echo base_url();?>admin/perizinan/cekjatahizin",
+      type: "POST",
+      data: "nis_santri="+nis,
+      dataType: "text",
+      success: function(data){
+        if ($("#izin_khusus").attr('checked')){
+          $('#proses').attr('disabled','disabled');
+          $('#nis_santri').parent().find('.text-success').text("");
+          $('#nis_santri').parent().find('.text-danger').text("Rentang Waktu Izin Belum Mencapai 1 Bulan!");
+          $('#nama_lengkap').val("");
+          $('#kelas').val("");
+          $('#nama_lengkap_ayah').val("");
+          $('#nama_lengkap_ibu').val("");
+          $('#tanggal_keluar').val("");
+          return false;
+        }
+      }
+		});
+
     var tgl = new Date();
     var tahun = tgl.getFullYear();
     var bulan = tgl.getMonth()+1;
