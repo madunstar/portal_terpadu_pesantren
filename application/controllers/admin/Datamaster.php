@@ -812,7 +812,7 @@ class Datamaster extends CI_Controller{
       if (! $this->upload->do_upload("excel_santri")){
         redirect(base_url("admin/datamaster/santri?psn=0"));
       } else {
-        $this->upload->do_upload("excel_santri");
+
           $data = $this->upload->data();
           $filename = $data['file_name'];
           $this->m_santri->upload_santri($filename);

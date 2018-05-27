@@ -196,7 +196,9 @@ class M_santri extends CI_Model
           $numRows = count($worksheet);
 
           for ($i=2; $i < ($numRows+1) ; $i++) {
+              if (  $this->db->where("nis_lokal",$worksheet[$i]["A"])->get('tb_santri')->num_rows() > 0){
 
+                } else {
 
               $ins = array(
                       'nis_lokal'=>                   $worksheet[$i]["A"],
@@ -247,7 +249,9 @@ class M_santri extends CI_Model
                      );
 
               $this->db->insert('tb_santri', $ins);
-      }
+
+            }
+      } 
   }
       //////////////////////////////////
 
