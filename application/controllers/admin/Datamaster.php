@@ -412,6 +412,29 @@ class Datamaster extends CI_Controller{
 
     }
 
+    function santriwatiimport(){
+      $new_name = date('YmdHis');
+      if ($this->input->post()){
+      $config['upload_path'] = './assets/import/';
+      $config['allowed_types'] = 'xlsx|xls';
+      $config['file_name'] = $new_name;
+      $this->load->library('upload',$config);
+      if (! $this->upload->do_upload("excel_santri")){
+        redirect(base_url("admin/datamaster/santriwati?psn=0"));
+      } else {
+
+          $data = $this->upload->data();
+          $filename = $data['file_name'];
+          $this->m_santriwati->upload_santri($filename);
+          unlink('./assets/import/'.$filename);
+          redirect(base_url("admin/datamaster/santriwati?psn=1"));
+
+
+              }
+
+          }
+    }
+
     function santriwatiberkas()
     {
         $nis = $this->input->get("nis");
@@ -4273,6 +4296,10 @@ function contohimport(){
       }
 }
 
+function downloadcontohimport(){
+  $this->load->helper('download');
+  force_download('assets/import/contoh.xlsx',NULL);
+}
 
 
 

@@ -12,7 +12,7 @@
 				<div class="table-responsive">
 					<?php pesan_get('psn',"Berhasil Import Data Santri","Gagal Import Data Santri","Salah") ?>
 					<?php pesan_get('msg',"Berhasil Menghapus Data Santri","Gagal Menghapus Data Santri") ?>
-			
+
 					<a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/santritambah" class="btn btn-s-md btn-success btn-rounded">
 						<i class="fa fa-plus"></i> Tambah data</a>
 							<button class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#import" ><i class="fa fa-download"></i> Import Data</button>
@@ -64,6 +64,7 @@
 	</section>
 
 </section>
+<!-- modal import -->
 <div class='modal' id='import' tabindex='-1' role='dialog'>
  <div class='modal-dialog' role='document'>
 	 <div class='modal-content'>
@@ -75,6 +76,9 @@
 			 <form class="" action="<?php echo base_url() ?>admin/datamaster/santriimport" method="post"  enctype="multipart/form-data">
 				 <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="excel_santri" data-required="true">
 				 <button class="btn btn-primary" type="submit" name="button">upload</button>
+				 <br>
+
+				 <p><small>Pastikan Format Isian File Excel Data Santri Sesusai dengan <a class="text-info" href="<?php echo base_url() ?>admin/santriakd/downloadcontohimport"><b>Contoh Berikut</b></a></small></p>
 			 </form>
 		 </div>
 		 <div class='modal-footer'>
@@ -84,6 +88,7 @@
 	 </div>
  </div>
  </diV>
+ <!-- akhir -->
 <div id="myModaledit" class="modal fade" role="dialog">
 	<div class="modal-dialog" id="modal-dialog">
 		<!-- Modal content-->
