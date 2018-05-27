@@ -76,16 +76,21 @@ $(document).ready(function(){
       data: "nis_santri="+nis,
       dataType: "text",
       success: function(data){
-        if ($("#izin_khusus").attr('checked')){
-          $('#proses').attr('disabled','disabled');
-          $('#nis_santri').parent().find('.text-success').text("");
-          $('#nis_santri').parent().find('.text-danger').text("Rentang Waktu Izin Belum Mencapai 1 Bulan!");
-          $('#nama_lengkap').val("");
-          $('#kelas').val("");
-          $('#nama_lengkap_ayah').val("");
-          $('#nama_lengkap_ibu').val("");
-          $('#tanggal_keluar').val("");
-          return false;
+        if ($("#izin_khusus").is(":checked")){
+          return true;
+        }
+        else {
+          if (data == 0){
+            $('#proses').attr('disabled','disabled');
+            $('#nis_santri').parent().find('.text-success').text("");
+            $('#nis_santri').parent().find('.text-danger').text("Rentang Waktu Izin Belum Mencapai 1 Bulan!");
+            $('#nama_lengkap').val("");
+            $('#kelas').val("");
+            $('#nama_lengkap_ayah').val("");
+            $('#nama_lengkap_ibu').val("");
+            $('#tanggal_keluar').val("");
+            return false;
+          }
         }
       }
 		});
