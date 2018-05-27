@@ -182,6 +182,76 @@ class M_santriwati extends CI_Model
         return $this->db->query("SELECT `tb_pondokan_santriwati`.nis_lokal,`tb_presensi_pondokan`.`id_kelas_belajar`, `tb_presensi_pondokan`.`nama_kelas_belajar`, `tb_presensi_pondokan`.`pondokan`, `tb_presensi_pondokan`.`tingkat`, `tb_tahun_ajaran`.`tahun_ajaran` FROM `tb_pondokan_santriwati` inner join `tb_presensi_pondokan` on `tb_presensi_pondokan`.`id_kelas_belajar`=`tb_pondokan_santriwati`.`id_kelas_belajar` inner join `tb_tahun_ajaran` on `tb_tahun_ajaran`.`id_tahun`=`tb_presensi_pondokan`.`id_tahun` where `nis_lokal` = '$nis_lokal' order by `tb_presensi_pondokan`.`tingkat` asc ");
       }
 
+      public function upload_santri($filename){
+        ini_set('memory_limit', '-1');
+        $inputFileName = './assets/import/'.$filename;
+          try {
+          $objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
+          } catch(Exception $e) {
+          die('Error loading file :' . $e->getMessage());
+          }
+
+          $worksheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+          $numRows = count($worksheet);
+
+          for ($i=2; $i < ($numRows+1) ; $i++) {
+              if (  $this->db->where("nis_lokal",$worksheet[$i]["A"])->get('tb_santriwati')->num_rows() > 0){
+
+                } else {
+
+              $ins = array(
+                      'nis_lokal'=>                   $worksheet[$i]["A"],
+                      'email_santri'=>                $worksheet[$i]["B"],
+                      'nisn'=>                        $worksheet[$i]["C"],
+                      'nik'=>                         $worksheet[$i]["D"],
+                      'nama_lengkap'=>                $worksheet[$i]["E"],
+                      'tempat_lahir'=>                $worksheet[$i]["F"],
+                      'tgl_lahir'=>                   $worksheet[$i]["G"],
+                      'jenis_kelamin'=>               $worksheet[$i]["H"],
+                      'alamat_lengkap'=>              $worksheet[$i]["I"],
+                      'provinsi'=>                    $worksheet[$i]["J"],
+                      'kabupaten_kota'=>              $worksheet[$i]["K"],
+                      'kecamatan'=>                   $worksheet[$i]["L"],
+                      'desa_kelurahan'=>              $worksheet[$i]["M"],
+                      'kode_pos'=>                    $worksheet[$i]["N"],
+                      'hobi'=>                        $worksheet[$i]["O"],
+                      'cita_cita'=>                   $worksheet[$i]["P"],
+                      'jenis_sekolah_asal'=>          $worksheet[$i]["Q"],
+                      'status_sekolah_asal'=>         $worksheet[$i]["R"],
+                      'nomor_peserta_ujian'=>         $worksheet[$i]["S"],
+                      'jarak_ke_sekolah'=>            $worksheet[$i]["T"],
+                      'alat_transportasi'=>           $worksheet[$i]["U"],
+                      'status_tempat_tinggal'=>       $worksheet[$i]["V"],
+                      'no_kk'=>                       $worksheet[$i]["W"],
+                      'nik_ayah'=>                    $worksheet[$i]["X"],
+                      'nama_lengkap_ayah'=>           $worksheet[$i]["Y"],
+                      'pendidikan_terakhir_ayah'=>    $worksheet[$i]["Z"],
+                      'pekerjaan_ayah'=>              $worksheet[$i]["AA"],
+                      'nik_ibu'=>                     $worksheet[$i]["AB"],
+                      'nama_lengkap_ibu'=>            $worksheet[$i]["AC"],
+                      'pendidikan_terakhir_ibu'=>     $worksheet[$i]["AD"],
+                      'pekerjaan_ibu'=>               $worksheet[$i]["AE"],
+                      'penghasilan_orang_tua'=>       $worksheet[$i]["AF"],
+                      'nik_wali'=>                    $worksheet[$i]["AG"],
+                      'nama_lengkap_wali'=>           $worksheet[$i]["AH"],
+                      'pendidikan_terakhir_wali'=>    $worksheet[$i]["AI"],
+                      'pekerjaan_wali'=>              $worksheet[$i]["AJ"],
+                      'penghasilan_wali'=>            $worksheet[$i]["AK"],
+                      'jumlah_saudara_kandung'=>      $worksheet[$i]["AL"],
+                      'hp'=>                          $worksheet[$i]["AM"],
+                      'hpayah'=>                      $worksheet[$i]["AN"],
+                      'hpibu'=>                       $worksheet[$i]["AO"],
+                      'hpwali'=>                      $worksheet[$i]["AP"],
+                      'kelas'=>                       $worksheet[$i]["AQ"],
+                      'pondokan'=>                    $worksheet[$i]["AR"],
+                      'foto' => ''
+                     );
+
+              $this->db->insert('tb_santriwati', $ins);
+
+            }
+      }
+  }
       //////////////////////////////////
 
 }

@@ -42,6 +42,7 @@ class Santriwatiakd extends CI_Controller
     $this->load->model('back-end/datamaster/m_pak_afilasi');
     $this->load->model('back-end/datamaster/m_informasi');
     $this->load->library('layout');
+    $this->load->library('PHPExcel');
     $this->load->helper('indo_helper');
     $this->load->helper('text');
     if ($this->session->userdata('nama_akun')=="") {
@@ -386,6 +387,29 @@ class Santriwatiakd extends CI_Controller
      $nis = $this->input->get("nis");
      $exec = $this->m_santriwati->hapus($nis);
      redirect(base_url()."admin/santriwatiakd/santriwati?msg=1");
+  }
+
+  function santriwatiimport(){
+    $new_name = date('YmdHis');
+    if ($this->input->post()){
+    $config['upload_path'] = './assets/import/';
+    $config['allowed_types'] = 'xlsx|xls';
+    $config['file_name'] = $new_name;
+    $this->load->library('upload',$config);
+    if (! $this->upload->do_upload("excel_santri")){
+      redirect(base_url("admin/santriwatiakd/santriwati?psn=0"));
+    } else {
+
+        $data = $this->upload->data();
+        $filename = $data['file_name'];
+        $this->m_santriwati->upload_santri($filename);
+        unlink('./assets/import/'.$filename);
+        redirect(base_url("admin/santriwatiakd/santriwati?psn=1"));
+
+
+            }
+
+        }
   }
 
   //berkas//
@@ -2098,5 +2122,11 @@ function editkelaspondokan()
      $this->layout->renderlaporan('back-end/akademik/rekap_presensi_pondokan/v_lap_rekap_guru',$variabel,'back-end/akademik/rekap_presensi_pondokan/v_rekap_js');
   }
   //akhir rekap pondokan//
+
+  function downloadcontohimport(){
+    $this->load->helper('download');
+    force_download('assets/import/contoh.xlsx',NULL);
+  }
+  //end//
 }
 ?>
