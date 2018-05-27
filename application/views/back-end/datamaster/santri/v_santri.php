@@ -12,6 +12,7 @@
 				<div class="table-responsive">
 					<?php pesan_get('psn',"Berhasil Import Data Santri","Gagal Import Data Santri","Salah") ?>
 					<?php pesan_get('msg',"Berhasil Menghapus Data Santri","Gagal Menghapus Data Santri") ?>
+			
 					<a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/santritambah" class="btn btn-s-md btn-success btn-rounded">
 						<i class="fa fa-plus"></i> Tambah data</a>
 							<button class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#import" ><i class="fa fa-download"></i> Import Data</button>
