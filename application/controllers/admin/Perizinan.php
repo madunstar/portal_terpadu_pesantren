@@ -12,6 +12,7 @@ class Perizinan extends CI_Controller
     $this->load->model('back-end/perizinan/m_dashboard');
     $this->load->model('back-end/perizinan/m_perizinan');
     $this->load->model('back-end/perizinan/m_denda');
+    $this->load->model('back-end/datamaster/m_santri');
     $this->load->library('layout_pendaftaran');
     $this->load->helper('indo_helper');
     if ($this->session->userdata('nama_akun')=="") {
@@ -112,6 +113,57 @@ class Perizinan extends CI_Controller
       //$variabel['hutangbulanini'] = $besarhutangbulanini;
       $this->layout->renderizin('back-end/perizinan/v_dashboard',$variabel,'back-end/perizinan/denda_js');
   }
+
+  //santri//
+  function santri()
+  {
+      $variabel['data'] = $this->m_santri->lihatdata();
+      $this->layout->renderizin('back-end/perizinan/santri/v_santri',$variabel,'back-end/perizinan/santri/v_santri_js');
+  }
+
+  function santrilihat()
+  {
+      $nis = $this->input->get("nis");
+      $exec = $this->m_santri->lihatdatasatu($nis);
+      if ($exec->num_rows()>0){
+          $variabel['data'] = $exec ->row_array();
+          $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
+          $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); ;
+          $this->layout->renderizin('back-end/perizinan/santri/v_santri_lihat',$variabel,'back-end/perizinan/santri/v_santri_js');
+      } else {
+          redirect(base_url("admin/perizinan_santriwati/santri"));
+      }
+
+  }
+
+  function santritingkat()
+  {
+      $nis = $this->input->post("nis");
+      $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis);
+      $this->load->view('back-end/perizinan/santri/v_santri_tingkat',$variabel);
+  }
+
+  function santritingkatpondokan()
+  {
+      $nis = $this->input->post("nis");
+      $variabel['tingkat'] = $this->m_santri->lihattingkatanpondokan($nis);
+      $this->load->view('back-end/perizinan/santri/v_santri_tingkatpondokan',$variabel);
+  }
+
+  function santriberkas()
+  {
+      $nis = $this->input->get("nis");
+      $exec = $this->m_santri->lihatdatasatu($nis);
+      if ($exec->num_rows()>0){
+          $variabel['santri'] = $exec->row_array();
+          $variabel['data'] = $this->m_santri->lihatdataberkas($nis);
+          $this->layout->renderizin('back-end/perizinan/santri/v_santriberkas',$variabel,'back-end/perizinan/santri/v_santriberkas_js');
+      } else {
+          redirect(base_url("admin/perizinan/santri"));
+      }
+
+  }
+  //akhir//
 
 //Bagian Utak Atik By Ilyas
   function datakeluar(){
