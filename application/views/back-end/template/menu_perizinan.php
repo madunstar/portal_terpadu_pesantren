@@ -33,7 +33,7 @@
 										</a>
 										<ul class="nav dk">
 											<li class="<?= (($menu == "perizinan") && ($submenu == 'santri') || ($submenu == 'santrilihat') || ($submenu == 'santriberkas') || ($submenu == 'santritambahberkas') || ($submenu == 'santrieditberkas') || ($submenu == 'ubahpelanggaran') || ($submenu == 'tambahpelanggaran') || ($submenu == 'pelanggaransantri') || ($submenu == 'prestasisantri') || ($submenu == 'ubahprestasi') || ($submenu == 'tambahprestasi')) ? "active" : ""; ?>">
-												<a href="<?php echo base_url() ?>admin/santriakd/santri" class="auto">
+												<a href="<?php echo base_url() ?>admin/perizinan/santri" class="auto">
 													<i class="i i-dot"></i>
 
 													<span>Data Santri</span>
@@ -42,7 +42,7 @@
 
 										</ul>
 									</li>
-                  <li class="<?= (($menu == "perizinan") && ($submenu == 'keluar') || ($submenu == 'aturdenda')|| ($submenu == 'kembali') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'index') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "perizinan") && ($submenu == 'keluar') || ($submenu == 'aturdenda')|| ($submenu == 'kembali') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
