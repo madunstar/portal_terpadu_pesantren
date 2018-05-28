@@ -7,6 +7,7 @@ class Layout {
     public $header = 'back-end/template/header';
     public $header_login = 'back-end/template/header_login';
     public $headerizin = 'back-end/template/header_perizinan';
+    public $headerizinp = 'back-end/template/header_perizinan_p';
     public $headerlaporan = 'back-end/template/header_laporan';
     public $headerakd = 'back-end/template/header_akademik';
     public $headerakdp = 'back-end/template/header_akademik_p';
@@ -40,6 +41,16 @@ class Layout {
 
     function renderizin($view,$data = null,$js = null){
         $this->ci->load->view($this->headerizin);
+        $this->ci->load->view($view,$data);
+        $this->ci->load->view($this->footer);
+        if ($js!=NULL) {
+            $this->ci->load->view($js,$data);
+        }
+        $this->ci->load->view($this->endhtml);
+    }
+
+    function renderizinp($view,$data = null,$js = null){
+        $this->ci->load->view($this->headerizinp);
         $this->ci->load->view($view,$data);
         $this->ci->load->view($this->footer);
         if ($js!=NULL) {
