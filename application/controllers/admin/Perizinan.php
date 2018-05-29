@@ -168,7 +168,6 @@ class Perizinan extends CI_Controller
 //Bagian Utak Atik By Ilyas
   function datakeluar(){
       $variabel['data'] = $this->m_perizinan->lihatdata();
-      //$variabel['id'] = $id_keluar;
       $this->layout->renderizin('back-end/perizinan/v_data_keluar',$variabel,'back-end/perizinan/keluar_js');
   }
 
