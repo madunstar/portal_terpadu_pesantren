@@ -14,7 +14,7 @@
               <h4 class="font-bold">Data Santri Kembali ke Pondok</h4>
             </header>
             <div class="panel-body">
-              <a href="<?php echo base_url() ?>admin/perizinan/kembali"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Kembali ke Pondok</button></a>
+              <a href="<?php echo base_url() ?>admin/perizinansantriwati/kembali"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Kembali ke Pondok</button></a>
               <div class="table-responsive">
                 <table class="table table-striped m-b-none" id="datatable">
                   <thead>
@@ -50,7 +50,7 @@
             <div class="panel-footer">
               <button type="button" data-toggle='modal' data-target='#cetaklap' name="button" class="btn btn-primary">Cetak Laporan <i class="fa fa-print"></i></button>
               <div class='modal' id='cetaklap' tabindex='-1' role='dialog'>
-                <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/perizinan/laporankembali' method='post'>
+                <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/perizinansantriwati/laporankembali' method='post'>
                  <div class='modal-dialog' role='document'>
                    <div class='modal-content'>
                      <div class='modal-header bg-primary'>

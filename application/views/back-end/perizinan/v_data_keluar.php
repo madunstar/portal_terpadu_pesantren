@@ -23,7 +23,7 @@
                       <th>No</th>
                       <th>NIS</th>
                       <th>Nama</th>
-                      <th>Kelas</th>
+
                       <th>Tanggal Keluar</th>
                       <th>Keperluan</th>
                       <th>Penjemput</th>
@@ -40,7 +40,7 @@
                             <td>".$i."</td>
                             <td>".$row['nis_santri']."</td>
                             <td>".$row['nama_lengkap']."</td>
-                            <td>".$row['jenis_sekolah_asal']."</td>
+                            
                             <td>".$row['tanggal_keluar']."</td>
                             <td>".$row['keperluan']."</td>
                             <td>".$row['nama_penjemput']."</td>

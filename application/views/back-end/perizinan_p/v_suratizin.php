@@ -69,7 +69,7 @@
         </div>
       </div>
       <div class="col-xs-12">
-        Demikian Surat Perizinan ini dibuat agar dapat digunakan sebagaimana mestinya <br><br><br>
+        Demikian Surat perizinansantriwati ini dibuat agar dapat digunakan sebagaimana mestinya <br><br><br>
       </div>
       <div class="col-xs-1">
       </div>
