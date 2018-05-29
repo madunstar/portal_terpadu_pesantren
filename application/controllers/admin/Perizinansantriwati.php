@@ -11,7 +11,7 @@ class Perizinansantriwati extends CI_Controller
     $this->load->library('session');
     $this->load->model('back-end/perizinan/m_dashboard');
     $this->load->model('back-end/perizinan/m_perizinan_p');
-    $this->load->model('back-end/perizinan/m_denda');
+    $this->load->model('back-end/perizinan/m_denda_p');
     $this->load->model('back-end/datamaster/m_santriwati');
     $this->load->library('layout_pendaftaran');
     $this->load->helper('indo_helper');
@@ -260,13 +260,13 @@ class Perizinansantriwati extends CI_Controller
   function izinhapus(){
       $id_keluar = $this->input->get("id");
       $exec = $this->m_perizinan_p->hapus($id_keluar);
-      redirect(base_url()."admin/perizinan_p/datakeluar?msg=1");
+      redirect(base_url()."admin/perizinansantriwati/datakeluar?msg=1");
   }
 
   function penjemputhapus(){
       $id_penjemput = $this->input->get("id");
       $exec = $this->m_perizinan_p->jemputhapus($id_penjemput);
-      redirect(base_url()."admin/perizinan_p/keluar?msg=1");
+      redirect(base_url()."admin/perizinansantriwati/keluar?msg=1");
   }
 
   function laporankeluar(){
@@ -295,7 +295,7 @@ class Perizinansantriwati extends CI_Controller
   function kembalidenda()
   {
     $nis_santri = $this->input->post("id_santri");
-    $datadenda = $this->m_denda->aturdenda();
+    $datadenda = $this->m_denda_p->aturdenda();
     foreach ($datadenda->result_array() as $row) {
         $denda = $row['denda_perjam'];
         $dendamaks = $row['denda_maks'];
@@ -378,7 +378,7 @@ class Perizinansantriwati extends CI_Controller
     $bulan = $this->input->post('bulan');
     $variabel['bulan'] = $bulan;
     $variabel['tahun'] = $tahun;
-    $variabel['semuadenda'] = $this->m_denda->semuadenda($tahun,$bulan);
+    $variabel['semuadenda'] = $this->m_denda_p->semuadenda($tahun,$bulan);
     $variabel['kenadenda'] = $this->m_perizinan_p->kenadenda($tahun,$bulan);
     $variabel['data'] = $this->m_perizinan_p->laporankembali($tahun,$bulan);
     $this->layout->renderlaporan('back-end/perizinan_p/v_lap_kembali',$variabel,'back-end/perizinan_p/denda_js');
@@ -388,7 +388,7 @@ class Perizinansantriwati extends CI_Controller
 
   function datadenda()
   {
-      $variabel['data'] = $this->m_denda->lihatdata();
+      $variabel['data'] = $this->m_denda_p->lihatdata();
       $this->layout->renderizinp('back-end/perizinan_p/v_denda',$variabel,'back-end/perizinan_p/denda_js');
   }
 
@@ -398,9 +398,9 @@ class Perizinansantriwati extends CI_Controller
       $denda = $this->input->get("denda");
       $variabel['id_denda'] = $this->input->get("denda");
       $variabel['nis'] = $this->input->get("nis");
-      $variabel['totalbayar'] = $this->m_denda->totalbayar($denda);
-      $variabel['statusdenda'] = $this->m_denda->statusdenda($denda);
-      $variabel['data'] = $this->m_denda->lihatbayar($nis);
+      $variabel['totalbayar'] = $this->m_denda_p->totalbayar($denda);
+      $variabel['statusdenda'] = $this->m_denda_p->statusdenda($denda);
+      $variabel['data'] = $this->m_denda_p->lihatbayar($nis);
       $this->layout->renderizinp('back-end/perizinan_p/v_data_bayar_denda',$variabel,'back-end/perizinan_p/denda_js');
   }
 
@@ -416,15 +416,15 @@ class Perizinansantriwati extends CI_Controller
         );
         $id_denda = $this->input->post('id_denda');
         $nis = $this->input->post('nis');
-        $besardenda = $this->m_denda->besardenda($id_denda);
-          $exec = $this->m_denda->tambahbayar($array);
+        $besardenda = $this->m_denda_p->besardenda($id_denda);
+          $exec = $this->m_denda_p->tambahbayar($array);
           if ($exec) {
-            $totalbayar = $this->m_denda->jumlahbayar($id_denda);
+            $totalbayar = $this->m_denda_p->jumlahbayar($id_denda);
             if ($totalbayar >= $besardenda){
               $arrayupdate=array(
                 'status_pembayaran' => 'lunas'
               );
-              $this->m_denda->editdenda($id_denda,$arrayupdate);
+              $this->m_denda_p->editdenda($id_denda,$arrayupdate);
               redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
             } else
             redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
@@ -439,15 +439,15 @@ class Perizinansantriwati extends CI_Controller
     $nis = $this->input->get("nis");
     $id_denda = $this->input->get("id_denda");
     $id_bayar = $this->input->get("id_bayar");
-    $besardenda = $this->m_denda->besardenda($id_denda);
-    $exec = $this->m_denda->hapus($id_bayar);
+    $besardenda = $this->m_denda_p->besardenda($id_denda);
+    $exec = $this->m_denda_p->hapus($id_bayar);
     if ($exec){
-      $totalbayar = $this->m_denda->jumlahbayar($id_denda);
+      $totalbayar = $this->m_denda_p->jumlahbayar($id_denda);
       if ($totalbayar < $besardenda){
         $arrayupdate=array(
           'status_pembayaran' => 'hutang'
         );
-        $this->m_denda->editdenda($id_denda,$arrayupdate);
+        $this->m_denda_p->editdenda($id_denda,$arrayupdate);
         redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
     } else redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
   } else redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=0"));
@@ -460,15 +460,15 @@ function laporandenda(){
   $bulan = $this->input->post('bulan');
   $variabel['bulan'] = $bulan;
   $variabel['tahun'] = $tahun;
-  $variabel['semuadenda'] = $this->m_denda->semuadenda($tahun,$bulan);
-  $variabel['dendalunas'] = $this->m_denda->dendalunas($tahun,$bulan);
-  $variabel['dendahutang'] = $this->m_denda->dendahutang($tahun,$bulan);
-  $variabel['data'] = $this->m_denda->laporandenda($tahun,$bulan);
+  $variabel['semuadenda'] = $this->m_denda_p->semuadenda($tahun,$bulan);
+  $variabel['dendalunas'] = $this->m_denda_p->dendalunas($tahun,$bulan);
+  $variabel['dendahutang'] = $this->m_denda_p->dendahutang($tahun,$bulan);
+  $variabel['data'] = $this->m_denda_p->laporandenda($tahun,$bulan);
   $this->layout->renderlaporan('back-end/perizinan_p/v_lap_denda',$variabel,'back-end/perizinan_p/denda_js');
 }
 
   function aturdenda(){
-    $datadenda = $this->m_denda->aturdenda();
+    $datadenda = $this->m_denda_p->aturdenda();
     $variabel['datadenda'] = $datadenda->row();
     $this->layout->renderizinp('back-end/perizinan_p/pengaturandenda',$variabel,'back-end/perizinan_p/denda_js');
 
@@ -486,7 +486,7 @@ function laporandenda(){
           'denda_perjam' => $this->input->post('dendajam'),
           'denda_maks' => $this->input->post('dendamaks'),
         );
-        $exec = $this->m_denda->updateaturdenda($arrayupdate);
+        $exec = $this->m_denda_p->updateaturdenda($arrayupdate);
         redirect(base_url("admin/perizinan_p/aturdenda?&msg=1"));
       }
       else{

@@ -294,7 +294,7 @@ class M_perizinan_p extends CI_Model{
 
     ///anis zone///
     function datasantrikembali(){
-      $this->db->select('nama_lengkap, tanggal_kembali, status_denda ');
+      $this->db->select('nama_lengkap, tb_perizinan_kembali_p.tanggal_kembali, status_denda ');
       $this->db->from('tb_perizinan_kembali_p');
       $this->db->join('tb_perizinan_keluar_p','tb_perizinan_keluar_p.id_keluar=tb_perizinan_kembali_p.id_keluar');
       $this->db->join('tb_santriwati', 'tb_perizinan_keluar_p.nis_santri=tb_santriwati.nis_lokal');
