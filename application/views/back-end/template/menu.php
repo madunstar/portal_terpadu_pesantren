@@ -163,23 +163,23 @@
                       </i>
                       <span class="font-bold">Perizinan</span>
                     </a>
-                    <ul class="nav dk">
-                      <li >
-                        <a href="profile.html" class="auto">
+										<ul class="nav dk">
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'datakeluar') || ($submenu == 'keluar') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/datakeluar" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Keluar Pondok</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="invoice.html" class="auto">
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'datakembali') || ($submenu == 'kembali') || ($submenu == 'kembalidenda')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/datakembali" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Kembali ke Pondok</span>
                         </a>
                       </li>
-                      <li >
-                        <a href="intro.html" class="auto">
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'datadenda') || ($submenu == 'riwayatbayardenda')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/datadenda" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Denda</span>
