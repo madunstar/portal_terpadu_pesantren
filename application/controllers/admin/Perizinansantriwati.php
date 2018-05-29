@@ -10,7 +10,7 @@ class Perizinansantriwati extends CI_Controller
     parent::__construct();
     $this->load->library('session');
     $this->load->model('back-end/perizinan/m_dashboard');
-    $this->load->model('back-end/perizinan/m_perizinan');
+    $this->load->model('back-end/perizinan/m_perizinan_p');
     $this->load->model('back-end/perizinan/m_denda');
     $this->load->model('back-end/datamaster/m_santriwati');
     $this->load->library('layout_pendaftaran');
@@ -53,15 +53,15 @@ class Perizinansantriwati extends CI_Controller
           if ($query->kata_sandi!=$kata_sandi) {
               $variabel['kata_sandi'] =$this->input->post('kata_sandi');
               $variabel['data'] = $array;
-              $this->layout->renderizinp('back-end/perizinan/v_ubah_sandi',$variabel);
+              $this->layout->renderizinp('back-end/perizinan_p/v_ubah_sandi',$variabel);
           } else if ($kata_sandibr!=$rekata_sandibr){
                $variabel['rekata_sandibr'] =$this->input->post('rekata_sandibr');
                $variabel['data'] = $array;
-               $this->layout->renderizinp('back-end/perizinan/v_ubah_sandi',$variabel);
+               $this->layout->renderizinp('back-end/perizinan_p/v_ubah_sandi',$variabel);
           } else {
               $exec = $this->m_dashboard->ubahsandi($nama_akun,$kata_sandi,$kata_sandibr);
               if ($exec){
-                  redirect(base_url("admin/perizinan/ubahsandiadmin?nama_akun=".$nama_akun."&msg=1"));
+                  redirect(base_url("admin/perizinan_p/ubahsandiadmin?nama_akun=".$nama_akun."&msg=1"));
               }
           }
       } else {
@@ -69,9 +69,9 @@ class Perizinansantriwati extends CI_Controller
           $exec = $this->m_dashboard->lihatubahsandi($nama_akun);
           if ($exec->num_rows()>0){
               $variabel['data'] = $exec ->row_array();
-              $this->layout->renderizinp('back-end/perizinan/v_ubah_sandi',$variabel);
+              $this->layout->renderizinp('back-end/perizinan_p/v_ubah_sandi',$variabel);
           } else {
-              redirect(base_url("admin/perizinan"));
+              redirect(base_url("admin/perizinan_p"));
           }
       }
   }
@@ -111,7 +111,7 @@ class Perizinansantriwati extends CI_Controller
       $variabel['bayarbulanini'] = $this->m_dashboard->bayarbulanini($tahunini,$bulanini);
       $variabel['dendabulanini'] = $this->m_dashboard->dendabulanini($tahunini,$bulanini);
       //$variabel['hutangbulanini'] = $besarhutangbulanini;
-      $this->layout->renderizinp('back-end/perizinan/v_dashboard',$variabel,'back-end/perizinan/denda_js');
+      $this->layout->renderizinp('back-end/perizinan_p/v_dashboard',$variabel,'back-end/perizinan_p/denda_js');
   }
   //santriwati//
   function santriwati()
@@ -165,26 +165,26 @@ class Perizinansantriwati extends CI_Controller
   //akhir//
 //Bagian Utak Atik By Ilyas
   function datakeluar(){
-      $variabel['data'] = $this->m_perizinan->lihatdata();
+      $variabel['data'] = $this->m_perizinan_p->lihatdata();
       //$variabel['id'] = $id_keluar;
-      $this->layout->renderizinp('back-end/perizinan/v_data_keluar',$variabel,'back-end/perizinan/keluar_js');
+      $this->layout->renderizinp('back-end/perizinan_p/v_data_keluar',$variabel,'back-end/perizinan_p/keluar_js');
   }
 
   function datasantritampil(){
       $id=$this->input->post('id');
-      $data=$this->m_perizinan->tampildatasantri($id)->result();
+      $data=$this->m_perizinan_p->tampildatasantri($id)->result();
       echo json_encode($data);
   }
 
   function datapenjemputtampil(){
       $id=$this->input->post('id');
-      $data=$this->m_perizinan->tampildatapenjemput($id)->result();
+      $data=$this->m_perizinan_p->tampildatapenjemput($id)->result();
       echo json_encode($data);
   }
 
   function ceknissantri(){
     $nis_santri = $this->input->post('nis_santri');
-    if ($this->m_perizinan->cekdatasantri($nis_santri) == 1){
+    if ($this->m_perizinan_p->cekdatasantri($nis_santri) == 1){
       echo 1;
     }
     else{
@@ -216,8 +216,8 @@ class Perizinansantriwati extends CI_Controller
           $nis = $this->input->post('nis_santri');
           $tanggal_keluar = $this->input->post('tanggal_keluar');
           if ($id_penjemput=='Baru'){
-              $exectambahpenjemput = $this->m_perizinan->tambahdatapenjemput($penjemput);
-              $ambilidpenjemput = $this->m_perizinan->ambilidpenjemput($no_identitas);
+              $exectambahpenjemput = $this->m_perizinan_p->tambahdatapenjemput($penjemput);
+              $ambilidpenjemput = $this->m_perizinan_p->ambilidpenjemput($no_identitas);
               $izinkeluarpb=array(
                   'nis_santri'=> $this->input->post('nis_santri'),
                   'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
@@ -226,47 +226,47 @@ class Perizinansantriwati extends CI_Controller
                   'petugas'=> $nip_admin,
                   'status_keluar'=> $status_keluar,
               );
-              $exectambahizin = $this->m_perizinan->tambahizinkeluar($izinkeluarpb);
-              redirect('admin/perizinan/suratizin');
+              $exectambahizin = $this->m_perizinan_p->tambahizinkeluar($izinkeluarpb);
+              redirect('admin/perizinansantriwati/suratizin');
           }
           else{
-              $exectambahizin = $this->m_perizinan->tambahizinkeluar($izinkeluar);
+              $exectambahizin = $this->m_perizinan_p->tambahizinkeluar($izinkeluar);
 
-              //$exec2 = $this->m_perizinan->tambahdatapenjemput($penjemput);
-              //$this->layout->renderizinp('back-end/perizinan/v_keluarpondok','back-end/perizinan/keluar_js');
-              redirect('admin/perizinan/suratizin');
+              //$exec2 = $this->m_perizinan_p->tambahdatapenjemput($penjemput);
+              //$this->layout->renderizinp('back-end/perizinan_p/v_keluarpondok','back-end/perizinan_p/keluar_js');
+              redirect('admin/perizinansantriwati/suratizin');
           }
       }
 
       else{
-          $variabel['id_penjemput']=$this->m_perizinan->ambildatapenjemput();
-          $this->layout->renderizinp('back-end/perizinan/v_keluarpondok',$variabel,'back-end/perizinan/keluar_js');
+          $variabel['id_penjemput']=$this->m_perizinan_p->ambildatapenjemput();
+          $this->layout->renderizinp('back-end/perizinan_p/v_keluarpondok',$variabel,'back-end/perizinan_p/keluar_js');
       }
   }
 
   function suratizin(){
-      $execsuratizin = $this->m_perizinan->tampilsuratizin();
+      $execsuratizin = $this->m_perizinan_p->tampilsuratizin();
       $variabel['datasurat'] = $execsuratizin->row_array();
-      $this->layout->renderizinp('back-end/perizinan/v_suratizin',$variabel,'back-end/perizinan/keluar_js');
+      $this->layout->renderizinp('back-end/perizinan_p/v_suratizin',$variabel,'back-end/perizinan_p/keluar_js');
   }
 
   function cetak_suratizin(){
       $id_keluar = $this->input->get("id");
-      $execsuratizin = $this->m_perizinan->tampilsuratizinsatuan($id_keluar);
+      $execsuratizin = $this->m_perizinan_p->tampilsuratizinsatuan($id_keluar);
       $variabel['datasurat'] = $execsuratizin->row_array();
-      $this->layout->renderizinp('back-end/perizinan/v_suratizin',$variabel,'back-end/perizinan/keluar_js');
+      $this->layout->renderizinp('back-end/perizinan_p/v_suratizin',$variabel,'back-end/perizinan_p/keluar_js');
   }
 
   function izinhapus(){
       $id_keluar = $this->input->get("id");
-      $exec = $this->m_perizinan->hapus($id_keluar);
-      redirect(base_url()."admin/perizinan/datakeluar?msg=1");
+      $exec = $this->m_perizinan_p->hapus($id_keluar);
+      redirect(base_url()."admin/perizinan_p/datakeluar?msg=1");
   }
 
   function penjemputhapus(){
       $id_penjemput = $this->input->get("id");
-      $exec = $this->m_perizinan->jemputhapus($id_penjemput);
-      redirect(base_url()."admin/perizinan/keluar?msg=1");
+      $exec = $this->m_perizinan_p->jemputhapus($id_penjemput);
+      redirect(base_url()."admin/perizinan_p/keluar?msg=1");
   }
 
   function laporankeluar(){
@@ -274,22 +274,22 @@ class Perizinansantriwati extends CI_Controller
     $bulan = $this->input->post('bulan');
     $variabel['tahun'] = $tahun;
     $variabel['bulan'] = $bulan;
-    $variabel['totkeluar'] = $this->m_perizinan->totalkeluar($tahun,$bulan);;
-    $variabel['data'] = $this->m_perizinan->laporankeluar($tahun,$bulan);
-    $this->layout->renderlaporan('back-end/perizinan/v_lap_keluar',$variabel);
+    $variabel['totkeluar'] = $this->m_perizinan_p->totalkeluar($tahun,$bulan);;
+    $variabel['data'] = $this->m_perizinan_p->laporankeluar($tahun,$bulan);
+    $this->layout->renderlaporan('back-end/perizinan_p/v_lap_keluar',$variabel);
   }
 //Sampai Sini Bagian Utak Atik By Ilyas
 
   function datakembali()
   {
-      $variabel['santrikembali'] = $this->m_perizinan->datasantrikembali();
-      $this->layout->renderizinp('back-end/perizinan/data_kembali',$variabel,'back-end/perizinan/denda_js');
+      $variabel['santrikembali'] = $this->m_perizinan_p->datasantrikembali();
+      $this->layout->renderizinp('back-end/perizinan_p/data_kembali',$variabel,'back-end/perizinan_p/denda_js');
   }
 
   function kembali()
   {
-      $variabel['santrikeluar'] = $this->m_perizinan->datasantrikeluar();
-      $this->layout->renderizinp('back-end/perizinan/kembalipondok',$variabel);
+      $variabel['santrikeluar'] = $this->m_perizinan_p->datasantrikeluar();
+      $this->layout->renderizinp('back-end/perizinan_p/kembalipondok',$variabel);
   }
 
   function kembalidenda()
@@ -300,7 +300,7 @@ class Perizinansantriwati extends CI_Controller
         $denda = $row['denda_perjam'];
         $dendamaks = $row['denda_maks'];
       }
-    $santrikeluar = $this->m_perizinan->datasantrikeluarsatu($nis_santri);
+    $santrikeluar = $this->m_perizinan_p->datasantrikeluarsatu($nis_santri);
     foreach ($santrikeluar->result_array() as $santri) {
         $tanggalkeluar = $santri['tanggal_keluar'];
       }
@@ -331,8 +331,8 @@ class Perizinansantriwati extends CI_Controller
       }
     $variabel['santrikeluar'] = $santrikeluar->row();
     $variabel['totaldenda'] = $bayardenda;
-    $variabel['santrikeluarlagi'] = $this->m_perizinan->datasantrikeluar();
-    $this->layout->renderizinp('back-end/perizinan/kembalipondok1',$variabel);
+    $variabel['santrikeluarlagi'] = $this->m_perizinan_p->datasantrikeluar();
+    $this->layout->renderizinp('back-end/perizinan_p/kembalipondok1',$variabel);
   }
 
   function tambahdatakembali(){
@@ -354,10 +354,10 @@ class Perizinansantriwati extends CI_Controller
           'petugas' => $petugas
         );
       }
-      $exec = $this->m_perizinan->tambahdatakembali($arraykembali);
-      $exec1 = $this->m_perizinan->updatedatakeluar($id_keluar);
+      $exec = $this->m_perizinan_p->tambahdatakembali($arraykembali);
+      $exec1 = $this->m_perizinan_p->updatedatakeluar($id_keluar);
       if ($denda > 0){
-        $ambiliddatakembali = $this->m_perizinan->ambilidkembaliterakhir();
+        $ambiliddatakembali = $this->m_perizinan_p->ambilidkembaliterakhir();
         foreach ($ambiliddatakembali->result_array() as $row) {
             $id_kembali = $row['id_kembali'];
           }
@@ -366,9 +366,9 @@ class Perizinansantriwati extends CI_Controller
           'besar_denda' => $denda,
           'status_pembayaran' => $status_pembayaran
         );
-        $exec2= $this->m_perizinan->tambahdatadenda($arraydenda);
+        $exec2= $this->m_perizinan_p->tambahdatadenda($arraydenda);
       }
-      redirect(base_url("admin/perizinan/datakembali"));
+      redirect(base_url("admin/perizinan_p/datakembali"));
 
   }
 
@@ -379,9 +379,9 @@ class Perizinansantriwati extends CI_Controller
     $variabel['bulan'] = $bulan;
     $variabel['tahun'] = $tahun;
     $variabel['semuadenda'] = $this->m_denda->semuadenda($tahun,$bulan);
-    $variabel['kenadenda'] = $this->m_perizinan->kenadenda($tahun,$bulan);
-    $variabel['data'] = $this->m_perizinan->laporankembali($tahun,$bulan);
-    $this->layout->renderlaporan('back-end/perizinan/v_lap_kembali',$variabel,'back-end/perizinan/denda_js');
+    $variabel['kenadenda'] = $this->m_perizinan_p->kenadenda($tahun,$bulan);
+    $variabel['data'] = $this->m_perizinan_p->laporankembali($tahun,$bulan);
+    $this->layout->renderlaporan('back-end/perizinan_p/v_lap_kembali',$variabel,'back-end/perizinan_p/denda_js');
   }
 
 ///////////////////denda ini denda//////////////////////////
@@ -389,7 +389,7 @@ class Perizinansantriwati extends CI_Controller
   function datadenda()
   {
       $variabel['data'] = $this->m_denda->lihatdata();
-      $this->layout->renderizinp('back-end/perizinan/v_denda',$variabel,'back-end/perizinan/denda_js');
+      $this->layout->renderizinp('back-end/perizinan_p/v_denda',$variabel,'back-end/perizinan_p/denda_js');
   }
 
   function riwayatbayardenda()
@@ -401,7 +401,7 @@ class Perizinansantriwati extends CI_Controller
       $variabel['totalbayar'] = $this->m_denda->totalbayar($denda);
       $variabel['statusdenda'] = $this->m_denda->statusdenda($denda);
       $variabel['data'] = $this->m_denda->lihatbayar($nis);
-      $this->layout->renderizinp('back-end/perizinan/v_data_bayar_denda',$variabel,'back-end/perizinan/denda_js');
+      $this->layout->renderizinp('back-end/perizinan_p/v_data_bayar_denda',$variabel,'back-end/perizinan_p/denda_js');
   }
 
   function bayardenda(){
@@ -425,12 +425,12 @@ class Perizinansantriwati extends CI_Controller
                 'status_pembayaran' => 'lunas'
               );
               $this->m_denda->editdenda($id_denda,$arrayupdate);
-              redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
+              redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
             } else
-            redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
+            redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
 
           }
-          else redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=0"));
+          else redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=0"));
       }
 
   }
@@ -448,9 +448,9 @@ class Perizinansantriwati extends CI_Controller
           'status_pembayaran' => 'hutang'
         );
         $this->m_denda->editdenda($id_denda,$arrayupdate);
-        redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
-    } else redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
-  } else redirect(base_url("admin/perizinan/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=0"));
+        redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
+    } else redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
+  } else redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=0"));
   }
 
 
@@ -464,13 +464,13 @@ function laporandenda(){
   $variabel['dendalunas'] = $this->m_denda->dendalunas($tahun,$bulan);
   $variabel['dendahutang'] = $this->m_denda->dendahutang($tahun,$bulan);
   $variabel['data'] = $this->m_denda->laporandenda($tahun,$bulan);
-  $this->layout->renderlaporan('back-end/perizinan/v_lap_denda',$variabel,'back-end/perizinan/denda_js');
+  $this->layout->renderlaporan('back-end/perizinan_p/v_lap_denda',$variabel,'back-end/perizinan_p/denda_js');
 }
 
   function aturdenda(){
     $datadenda = $this->m_denda->aturdenda();
     $variabel['datadenda'] = $datadenda->row();
-    $this->layout->renderizinp('back-end/perizinan/pengaturandenda',$variabel,'back-end/perizinan/denda_js');
+    $this->layout->renderizinp('back-end/perizinan_p/pengaturandenda',$variabel,'back-end/perizinan_p/denda_js');
 
   }
 
@@ -487,13 +487,13 @@ function laporandenda(){
           'denda_maks' => $this->input->post('dendamaks'),
         );
         $exec = $this->m_denda->updateaturdenda($arrayupdate);
-        redirect(base_url("admin/perizinan/aturdenda?&msg=1"));
+        redirect(base_url("admin/perizinan_p/aturdenda?&msg=1"));
       }
       else{
-        redirect(base_url("admin/perizinan/aturdenda?&msg=0"));
+        redirect(base_url("admin/perizinan_p/aturdenda?&msg=0"));
       }}
       else{
-        redirect(base_url("admin/perizinan/aturdenda?&msg=2"));
+        redirect(base_url("admin/perizinan_p/aturdenda?&msg=2"));
       }
   }
 
