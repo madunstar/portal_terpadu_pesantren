@@ -15,7 +15,7 @@
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Data Penjemput","Gagal Menghapus Data Penjemput") ?>
-              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/perizinan/keluar')?>" method="post">
+              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/perizinansantriwati/keluar')?>" method="post">
                 <div class="form-group">
                       <div class="col-sm-10">
                         <input type="text"  class="form-control" name="nis_santri" id="nis_santri" placeholder="Nomor Induk Santri"  data-required="true">
@@ -110,7 +110,7 @@
                                 </div>
                           </div>
                   <footer class="panel-footer text-right">
-                    <input class="btn btn-sm btn-info" type="submit" name="button" value="Proses Perizinan" id="proses">
+                    <input class="btn btn-sm btn-info" type="submit" name="button" value="Proses perizinansantriwati" id="proses">
                   </footer>
             </form>
           </div>
