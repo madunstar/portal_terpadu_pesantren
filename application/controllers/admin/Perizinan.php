@@ -168,7 +168,6 @@ class Perizinan extends CI_Controller
 //Bagian Utak Atik By Ilyas
   function datakeluar(){
       $variabel['data'] = $this->m_perizinan->lihatdata();
-      //$variabel['id'] = $id_keluar;
       $this->layout->renderizin('back-end/perizinan/v_data_keluar',$variabel,'back-end/perizinan/keluar_js');
   }
 
@@ -187,6 +186,23 @@ class Perizinan extends CI_Controller
   function ceknissantri(){
     $nis_santri = $this->input->post('nis_santri');
     if ($this->m_perizinan->cekdatasantri($nis_santri) == 1){
+      echo 1;
+    }
+    else{
+      echo 0;
+    }
+  }
+
+  function cekjatahizin(){
+    $nis_santri = $this->input->post('nis_santri');
+    // $data_santri = $this->m_perizinan->tampildatasantri($nis_santri)->result();
+    // echo json_encode($data_santri);
+    $tgl_sekarang = strtotime(date("Y-m-d H:i:s")); //strtotime untuk mengubah menjadi detik
+    $ambiltglkeluar = $this->m_perizinan->ambiltglkeluar($nis_santri)->tanggal_keluar;
+    $tgl_keluar = strtotime($ambiltglkeluar);
+    $detik = $tgl_sekarang - $tgl_keluar;
+    $selisih_hari = $detik / 86400;
+    if ($selisih_hari >= 30){
       echo 1;
     }
     else{
@@ -217,26 +233,32 @@ class Perizinan extends CI_Controller
           );
           $nis = $this->input->post('nis_santri');
           $tanggal_keluar = $this->input->post('tanggal_keluar');
-          if ($id_penjemput=='Baru'){
-              $exectambahpenjemput = $this->m_perizinan->tambahdatapenjemput($penjemput);
-              $ambilidpenjemput = $this->m_perizinan->ambilidpenjemput($no_identitas);
-              $izinkeluarpb=array(
-                  'nis_santri'=> $this->input->post('nis_santri'),
-                  'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
-                  'keperluan'=> $this->input->post('keperluan'),
-                  'id_penjemput'=> $ambilidpenjemput->id_penjemput,
-                  'petugas'=> $nip_admin,
-                  'status_keluar'=> $status_keluar,
-              );
-              $exectambahizin = $this->m_perizinan->tambahizinkeluar($izinkeluarpb);
-              redirect('admin/perizinan/suratizin');
-          }
-          else{
-              $exectambahizin = $this->m_perizinan->tambahizinkeluar($izinkeluar);
+          $ceknis = $this->m_perizinan->cekdatasantri($nis);
+          if ($ceknis > 0){
+              if ($id_penjemput=='Baru'){
+                  $exectambahpenjemput = $this->m_perizinan->tambahdatapenjemput($penjemput);
+                  $ambilidpenjemput = $this->m_perizinan->ambilidpenjemput($no_identitas);
+                  $izinkeluarpb=array(
+                      'nis_santri'=> $this->input->post('nis_santri'),
+                      'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
+                      'keperluan'=> $this->input->post('keperluan'),
+                      'id_penjemput'=> $ambilidpenjemput->id_penjemput,
+                      'petugas'=> $nip_admin,
+                      'status_keluar'=> $status_keluar,
+                  );
+                  $exectambahizin = $this->m_perizinan->tambahizinkeluar($izinkeluarpb);
+                  redirect('admin/perizinan/suratizin');
+              }
+              else{
+                  $exectambahizin = $this->m_perizinan->tambahizinkeluar($izinkeluar);
 
-              //$exec2 = $this->m_perizinan->tambahdatapenjemput($penjemput);
-              //$this->layout->renderizin('back-end/perizinan/v_keluarpondok','back-end/perizinan/keluar_js');
-              redirect('admin/perizinan/suratizin');
+                  //$exec2 = $this->m_perizinan->tambahdatapenjemput($penjemput);
+                  //$this->layout->renderizin('back-end/perizinan/v_keluarpondok','back-end/perizinan/keluar_js');
+                  redirect('admin/perizinan/suratizin');
+              }
+          }
+          else {
+            redirect(base_url("admin/perizinan/keluar?msgnis=0"));
           }
       }
 

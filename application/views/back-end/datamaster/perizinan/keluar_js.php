@@ -51,7 +51,7 @@ $(document).ready(function(){
     //   return false;
     // }
     $.ajax({
-      url: "<?php echo base_url();?>admin/perizinan/ceknissantri",
+      url: "<?php echo base_url();?>admin/datamaster/ceknissantri",
       type: "POST",
       data: "nis_santri="+nis,
       dataType: "text",
@@ -71,7 +71,7 @@ $(document).ready(function(){
 		});
 
     $.ajax({
-      url: "<?php echo base_url();?>admin/perizinan/cekjatahizin",
+      url: "<?php echo base_url();?>admin/datamaster/cekjatahizin",
       type: "POST",
       data: "nis_santri="+nis,
       dataType: "text",
@@ -105,7 +105,7 @@ $(document).ready(function(){
     $('#tanggal_keluar').val(tahun+'-'+bulan+'-'+tanggal+' '+jam+':'+menit+':'+detik);
     //var id=$('#nis_santri').val();
     $.ajax({
-      url : "<?php echo base_url();?>admin/perizinan/datasantritampil",
+      url : "<?php echo base_url();?>admin/datamaster/datasantritampil",
       method : "POST",
       data : {id: nis},
       async : false,
@@ -125,7 +125,7 @@ $(document).ready(function(){
   $('#id_penjemput').change(function(){
     var id=$(this).val();
     $.ajax({
-      url : "<?php echo base_url();?>admin/perizinan/datapenjemputtampil",
+      url : "<?php echo base_url();?>admin/datamaster/datapenjemputtampil",
       method : "POST",
       data : {id: id},
       async : false,
@@ -187,7 +187,7 @@ $(document).ready(function(){
                text: 'Hapus',
                btnClass: 'btn-green',
                action: function(){
-                   window.location.assign("<?php echo base_url() ?>admin/perizinan/izinhapus?id="+v_id);
+                   window.location.assign("<?php echo base_url() ?>admin/datamaster/izinhapus?id="+v_id);
                }
            },
            batal: function () {
@@ -208,7 +208,7 @@ $(document).ready(function(){
                text: 'Hapus',
                btnClass: 'btn-green',
                action: function(){
-                   window.location.assign("<?php echo base_url() ?>admin/perizinan/penjemputhapus?id="+v_id);
+                   window.location.assign("<?php echo base_url() ?>admin/datamaster/penjemputhapus?id="+v_id);
                }
            },
            batal: function () {

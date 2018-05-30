@@ -16,7 +16,7 @@
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Data Penjemput","Gagal Menghapus Data Penjemput") ?>
               <?php pesan_get('msgnis',"Data Santri Ditemukan","Data Santri Tidak Ditemukan!","") ?>
-              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/perizinan/keluar')?>" method="post">
+              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/datamaster/keluar')?>" method="post">
 
                 <div class="form-group">
                   <label class="control-label col-sm-1">Izin Khusus</label>
