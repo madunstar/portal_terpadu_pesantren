@@ -425,12 +425,12 @@ class Perizinansantriwati extends CI_Controller
                 'status_pembayaran' => 'lunas'
               );
               $this->m_denda_p->editdenda($id_denda,$arrayupdate);
-              redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
+              redirect(base_url("admin/perizinansantriwati/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
             } else
-            redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
+            redirect(base_url("admin/perizinansantriwati/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
 
           }
-          else redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=0"));
+          else redirect(base_url("admin/perizinansantriwati/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=0"));
       }
 
   }

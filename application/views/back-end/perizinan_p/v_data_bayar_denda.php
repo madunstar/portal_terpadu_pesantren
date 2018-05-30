@@ -16,7 +16,7 @@
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menambahkan Data Bayar","Gagal Menambahkan Data Bayar") ?>
               <?php pesan_get('hps',"Berhasil Menghapus Data Bayar","Gagal Menghapus Data Bayar") ?>
-              <button data-toggle='modal' data-target='#tambahbayar' type="button" name="button" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Pembayaran Denda</button> <a class="btn btn-default btn-s-xs" href="<?php echo base_url() ?>admin/perizinan/datadenda"><i class="fa fa-list"></i> List Data Denda</a><br><br>
+              <button data-toggle='modal' data-target='#tambahbayar' type="button" name="button" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Pembayaran Denda</button> <a class="btn btn-default btn-s-xs" href="<?php echo base_url() ?>admin/perizinansantriwati/datadenda"><i class="fa fa-list"></i> List Data Denda</a><br><br>
               <div class="table-responsive">
                 <table class="table m-b-none" id="">
                   <thead>
@@ -49,7 +49,7 @@
                                <b>Apakah yakin menghapus data?</b>
                              </div>
                              <div class='modal-footer'>
-                               <a style='margin-left:5px' href='".base_url('admin/perizinan/bayardendahapus?id_bayar='.$row['id_bayar'].'&nis='.$row['nis_lokal'].'&id_denda='.$row['id_denda'].'')."'>
+                               <a style='margin-left:5px' href='".base_url('admin/perizinansantriwati/bayardendahapus?id_bayar='.$row['id_bayar'].'&nis='.$row['nis_lokal'].'&id_denda='.$row['id_denda'].'')."'>
                                <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
                                <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                              </div>
@@ -70,7 +70,7 @@
 
               </div>
               <div class='modal' id='tambahbayar' tabindex='-1' role='dialog'>
-                <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/perizinan/bayardenda' method='post'>
+                <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/perizinansantriwati/bayardenda' method='post'>
                  <div class='modal-dialog' role='document'>
                    <div class='modal-content'>
                      <div class='modal-header bg-primary'>
