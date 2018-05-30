@@ -15,7 +15,17 @@
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Data Penjemput","Gagal Menghapus Data Penjemput") ?>
+              <?php pesan_get('msgnis',"Data Santri Ditemukan","Data Santri Tidak Ditemukan!","") ?>
               <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/perizinansantriwati/keluar')?>" method="post">
+                <div class="form-group">
+                  <label class="control-label col-sm-1">Izin Khusus</label>
+                  <div class="col-sm-1">
+                    <label class="switch">
+                      <input type="checkbox" name="izin_khusus" id="izin_khusus">
+                        <span></span>
+                      </label>
+                  </div>
+                </div>
                 <div class="form-group">
                       <div class="col-sm-10">
                         <input type="text"  class="form-control" name="nis_santri" id="nis_santri" placeholder="Nomor Induk Santri"  data-required="true">

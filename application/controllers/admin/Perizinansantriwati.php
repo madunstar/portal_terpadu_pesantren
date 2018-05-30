@@ -192,6 +192,23 @@ class Perizinansantriwati extends CI_Controller
     }
   }
 
+  function cekjatahizin(){
+    $nis_santri = $this->input->post('nis_santri');
+    // $data_santri = $this->m_perizinan_p->tampildatasantri($nis_santri)->result();
+    // echo json_encode($data_santri);
+    $tgl_sekarang = strtotime(date("Y-m-d H:i:s")); //strtotime untuk mengubah menjadi detik
+    $ambiltglkeluar = $this->m_perizinan_p->ambiltglkeluar($nis_santri)->tanggal_keluar;
+    $tgl_keluar = strtotime($ambiltglkeluar);
+    $detik = $tgl_sekarang - $tgl_keluar;
+    $selisih_hari = $detik / 86400;
+    if ($selisih_hari >= 30){
+      echo 1;
+    }
+    else{
+      echo 0;
+    }
+  }
+
   function keluar(){
       $nip_admin = $this->session->userdata('nip_staff_admin');
       $id_penjemput = $this->input->post('id_penjemput');
@@ -215,26 +232,32 @@ class Perizinansantriwati extends CI_Controller
           );
           $nis = $this->input->post('nis_santri');
           $tanggal_keluar = $this->input->post('tanggal_keluar');
-          if ($id_penjemput=='Baru'){
-              $exectambahpenjemput = $this->m_perizinan_p->tambahdatapenjemput($penjemput);
-              $ambilidpenjemput = $this->m_perizinan_p->ambilidpenjemput($no_identitas);
-              $izinkeluarpb=array(
-                  'nis_santri'=> $this->input->post('nis_santri'),
-                  'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
-                  'keperluan'=> $this->input->post('keperluan'),
-                  'id_penjemput'=> $ambilidpenjemput->id_penjemput,
-                  'petugas'=> $nip_admin,
-                  'status_keluar'=> $status_keluar,
-              );
-              $exectambahizin = $this->m_perizinan_p->tambahizinkeluar($izinkeluarpb);
-              redirect('admin/perizinansantriwati/suratizin');
-          }
-          else{
-              $exectambahizin = $this->m_perizinan_p->tambahizinkeluar($izinkeluar);
+          $ceknis = $this->m_perizinan_p->cekdatasantri($nis);
+          if ($ceknis > 0){
+              if ($id_penjemput=='Baru'){
+                  $exectambahpenjemput = $this->m_perizinan_p->tambahdatapenjemput($penjemput);
+                  $ambilidpenjemput = $this->m_perizinan_p->ambilidpenjemput($no_identitas);
+                  $izinkeluarpb=array(
+                      'nis_santri'=> $this->input->post('nis_santri'),
+                      'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
+                      'keperluan'=> $this->input->post('keperluan'),
+                      'id_penjemput'=> $ambilidpenjemput->id_penjemput,
+                      'petugas'=> $nip_admin,
+                      'status_keluar'=> $status_keluar,
+                  );
+                  $exectambahizin = $this->m_perizinan_p->tambahizinkeluar($izinkeluarpb);
+                  redirect('admin/perizinan/suratizin');
+              }
+              else{
+                  $exectambahizin = $this->m_perizinan_p->tambahizinkeluar($izinkeluar);
 
-              //$exec2 = $this->m_perizinan_p->tambahdatapenjemput($penjemput);
-              //$this->layout->renderizinp('back-end/perizinan_p/v_keluarpondok','back-end/perizinan_p/keluar_js');
-              redirect('admin/perizinansantriwati/suratizin');
+                  //$exec2 = $this->m_perizinan_p->tambahdatapenjemput($penjemput);
+                  //$this->layout->renderizin('back-end/perizinan/v_keluarpondok','back-end/perizinan/keluar_js');
+                  redirect('admin/perizinansantriwati/suratizin');
+              }
+          }
+          else {
+            redirect(base_url("admin/perizinan/keluar?msgnis=0"));
           }
       }
 
@@ -448,9 +471,9 @@ class Perizinansantriwati extends CI_Controller
           'status_pembayaran' => 'hutang'
         );
         $this->m_denda_p->editdenda($id_denda,$arrayupdate);
-        redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
-    } else redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
-  } else redirect(base_url("admin/perizinan_p/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=0"));
+        redirect(base_url("admin/perizinansantriwati/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
+    } else redirect(base_url("admin/perizinansantriwati/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=1"));
+  } else redirect(base_url("admin/perizinansantriwati/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=0"));
   }
 
 
