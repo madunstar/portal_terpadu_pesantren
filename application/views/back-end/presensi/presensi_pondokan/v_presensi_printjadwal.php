@@ -16,11 +16,7 @@
           <img src="<?php echo base_url('assets/images/logo.png'); ?>" alt="">
         </div>
         <div class="col-xs-8 text-center">
-          <h4 class="font-bold">PRESENSI PESANTREN DARUL ILMI</h4>
-          <small>
-            JL. A. YANI KM. 19.2 KEL. LANDASAN ULIN BARAT, KEC. LIANGANGGANG
-            <br>BANJARBARU - KALIMANTAN SELATAN 70722</br>
-          </small>
+          <h5 class="font-bold">ABSENSI SANTRI MU'ALIMIN PONDOK PESANTREN DARUL ILMI  <?php echo $data2['tahun_ajaran'] ?></h5>
         </div>
         <div class="col-xs-2 h3 font-bold text-center">
         </div>
@@ -28,38 +24,69 @@
       <div class="line pull-in line-dashed b-b"></div>
       <br>
       <table border:"0px">
-      <tr><td>Mata Pelajaran </td><td> &nbsp : &nbsp</td><td> <?php echo $data['mata_pelajaran'] ?> </td></tr>
-      <tr><td>Ustadz/Ustadzah  </td><td>&nbsp : &nbsp</td><td> <?php echo $data['guru'] ?> </td> </tr>
-      <tr><td>Nama Kelas  </td><td>&nbsp : &nbsp</td><td> <?php echo $data2['nama_kelas_belajar'] ?></td> 
-      <tr><td>Tingkat  </td><td>&nbsp : &nbsp</td><td> <?php echo $data2['tingkat'] ?> <?php echo $data2['pondokan'] ?> </td> </tr>
-      <tr><td>Tahun Ajaran  </td><td>&nbsp : &nbsp</td><td> <?php echo $data2['tahun_ajaran'] ?> </td>
+     
+      <tr><td>Nama Kelas  </td><td>&nbsp : &nbsp</td><td> <?php echo $data2['nama_kelas_belajar'] ?></td><td width="500px"> </td><td>Wali Kelas  </td><td>&nbsp : &nbsp</td><td> <?php echo $data2['nama_lengkap'] ?></td></tr>
+      <tr><td>Tingkat  </td><td>&nbsp : &nbsp</td><td> <?php echo $data2['tingkat'] ?> <?php echo $data2['pondokan'] ?> </td><td width="500px"> </td><td>Ketua Kelas  </td><td>&nbsp : &nbsp</td><td></td></tr> </tr>
+      <tr><td>Bulan </td><td>&nbsp : &nbsp</td><td><?php echo $bulan ?></td>
        </tr>
       </table>
-      <table class="table table-bordered">
+      <table class="table table-bordered" class="print">
         <thead>
-          <tr>
-            <th rowspan="2" style="width:30px;text-align:center;">No.</th>
-            <th rowspan="2"  style="text-align:center;width:80px">NIS</th>
-            <th rowspan="2"  style="text-align:center">Nama</th>
-            <th colspan="16" style="text-align:center">Tanggal</th>
+          <tr class="halus">
+            <th rowspan="4" style="width:30px;text-align:center;">No.</th>
+            <th rowspan="4"  style="text-align:center;width:80px">NIS</th>
+            <th rowspan="4"  style="text-align:center">Nama</th>
+            <th colspan="5" style="text-align:center">Senin</th>
+            <th colspan="5" style="text-align:center">Selasa</th>
+            <th colspan="5" style="text-align:center">Rabu</th>
+            <th colspan="5" style="text-align:center">Kamis</th>
+            <th colspan="5" style="text-align:center">Sabtu</th>
+            <th colspan="3" style="text-align:center">Jumlah</th>
+            <th rowspan="4" style="text-align:center">Keterangan</th>
           </tr>
-          <tr>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
-            <th>&nbsp</th>
+          <tr  class="halus">
+            <th colspan="5">TGL :</th>
+            <th colspan="5">TGL :</th>
+            <th colspan="5">TGL :</th>
+            <th colspan="5">TGL :</th>
+            <th colspan="5">TGL :</th>
+            <th rowspan="3"  style="text-align:center;vertical-align:midle">S<br/>A<br/>K<br/>I<br/>T</th>
+            <th rowspan="3"  style="text-align:center;vertical-align:midle">I<br/>J<br/>I<br/>N</th>
+            <th rowspan="3"  style="text-align:center;vertical-align:midle">A<br/>L<br/>P<br/>A</th>
+          </tr>
+          <tr  class="halus">
+            <th colspan="5">Jam Ke</th>
+            <th colspan="5">Jam Ke</th>
+            <th colspan="5">Jam Ke</th>
+            <th colspan="5">Jam Ke</th>
+            <th colspan="5">Jam Ke</th>
+          </tr>
+          <tr  class="halus">
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
           </tr>
         </thead>
         <tbody>
@@ -68,7 +95,7 @@
           foreach($santri->result_array() as $row){
 
             echo "
-              <tr>
+              <tr class='halus'>
                 <td>".$i."</td>
                 <td>".$row['nis_lokal']."</td>
                 <td>".$row['nama_lengkap']."</td>
@@ -88,12 +115,70 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td> 
               </tr>
             "; $i++;
           }
           ?>
-           <tr>
-                <td colspan="3" style="text-align:right">Paraf Ustadz/Ustadzah : </td>
+           <tr  class='halus'>
+                <td colspan="3" style="text-align:right;height:60px">Mata Pelajaran : </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr  class='halus'>
+                <td colspan="3" style="text-align:right;height:60px">Ustadz: </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -125,14 +210,14 @@
               : <?php echo $santri->num_rows() ?> <br>
             </p>
           </div>
-          <div class="col-xs-3">
+          <!-- <div class="col-xs-3">
             Ustadz/Ustadzah
             <br/>
             <br/>
             <br/>
             <br/>
-            <?php echo $data['guru'] ?>
-          </div>
+            asd
+          </div> -->
         </div>
       </div>
 </div>

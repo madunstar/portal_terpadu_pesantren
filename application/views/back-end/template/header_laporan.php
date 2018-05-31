@@ -21,7 +21,9 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/js/calendar/bootstrap_calendar.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/confirm/jquery-confirm.min.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/datepicker/datepicker.css');?>" type="text/css" />
-
+  <style>
+    .print thead, tr, th, .halus {font-size: 11px; margin:0px; padding: 0px;}
+</style>
 </head>
 <body class="" >
   <section class="vbox">

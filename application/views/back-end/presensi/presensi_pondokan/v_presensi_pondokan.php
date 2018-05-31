@@ -22,7 +22,7 @@
 							<table class="table table-striped m-b-none" id="datatable">
 								<thead>
 									<tr>
-										<th style="width:140px">Aksi</th>
+										<th style="width:150px">Aksi</th>
 										<th>#</th>
 										<th>Tahun Ajaran</th>
 										<th>Kelas</th>
