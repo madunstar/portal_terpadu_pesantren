@@ -13,9 +13,9 @@ class m_rekap_santriwati extends CI_Model
     function datapelajaran()
     {
         $this->db->select('*');
-        $this->db->from('tb_presensi_jadwal_afilasi');
-        $this->db->join('tb_pelajaran', 'tb_presensi_jadwal_afilasi.id_mata_pelajaran = tb_pelajaran.id_pelajaran');
-        $this->db->join('tb_presensi_kelas_p', 'tb_presensi_jadwal_afilasi.id_kelas_belajar = tb_presensi_kelas_p.id_kelas_belajar');
+        $this->db->from('tb_presensi_jadwal_afilasi_p');
+        $this->db->join('tb_pelajaran', 'tb_presensi_jadwal_afilasi_p.id_mata_pelajaran = tb_pelajaran.id_pelajaran');
+        $this->db->join('tb_presensi_kelas_p', 'tb_presensi_jadwal_afilasi_p.id_kelas_belajar = tb_presensi_kelas_p.id_kelas_belajar');
         $this->db->join('tb_mata_pelajaran', 'tb_pelajaran.id_mata_pelajaran = tb_mata_pelajaran.id_mata_pelajaran');
         $this->db->join('tb_guru', 'tb_pelajaran.nip_guru = tb_guru.nip_guru');
         $this->db->join('tb_tahun_ajaran', 'tb_presensi_kelas_p.id_tahun = tb_tahun_ajaran.id_tahun');
