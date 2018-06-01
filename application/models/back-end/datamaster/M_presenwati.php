@@ -63,7 +63,7 @@ class M_presenwati extends CI_Model
    function lihatdatasantri($id_kelas_belajar)
    {
         $this->db->from("tb_kelas_santri_p");
-        $this->db->join("tb_santri","tb_santri.nis_lokal=tb_kelas_santri_p.nis_lokal");
+        $this->db->join("tb_santriwati","tb_santriwati.nis_lokal=tb_kelas_santri_p.nis_lokal");
         $this->db->where("tb_kelas_santri_p.id_kelas_belajar",$id_kelas_belajar);
         return $this->db->get();
    }
@@ -73,7 +73,7 @@ class M_presenwati extends CI_Model
         $exec = $this->lihatdatasatu($id_kelas_belajar)->row_array();
         $id_tahun = $exec['id_tahun'];
         $jenjang = $exec['jenjang'];
-        return $this->db->query("SELECT * FROM tb_santri WHERE NOT EXISTS (SELECT * FROM tb_kelas_santri_p inner join tb_presensi_kelas_p on tb_kelas_santri_p.id_kelas_belajar = tb_presensi_kelas_p.id_kelas_belajar  WHERE tb_santri.nis_lokal=tb_kelas_santri_p.nis_lokal and tb_presensi_kelas_p.id_tahun='$id_tahun') AND tb_santri.kelas='$jenjang' ");
+        return $this->db->query("SELECT * FROM tb_santriwati WHERE NOT EXISTS (SELECT * FROM tb_kelas_santri_p inner join tb_presensi_kelas_p on tb_kelas_santri_p.id_kelas_belajar = tb_presensi_kelas_p.id_kelas_belajar  WHERE tb_santriwati.nis_lokal=tb_kelas_santri_p.nis_lokal and tb_presensi_kelas_p.id_tahun='$id_tahun') AND tb_santriwati.kelas='$jenjang' ");
    }
 
    function tambahdatasantri($array)
@@ -84,7 +84,7 @@ class M_presenwati extends CI_Model
    function lihatdatasatusantri($id_kelas_santri)
    {
         $this->db->from("tb_kelas_santri_p");
-        $this->db->join("tb_santri","tb_santri.nis_lokal=tb_kelas_santri_p.nis_lokal");
+        $this->db->join("tb_santriwati","tb_santriwati.nis_lokal=tb_kelas_santri_p.nis_lokal");
         $this->db->where("tb_kelas_santri_p.id_kelas_santri",$id_kelas_santri);
         return $this->db->get();
    }
@@ -124,29 +124,29 @@ class M_presenwati extends CI_Model
          $this->db->group_by('id_mata_pelajaran');
          return $this->db->get();
      }
- 
+
      function tambahdatajadwal($array)
     {
         return $this->db->insert('tb_presensi_jadwal_afilasi_p',$array);
     }
- 
+
     function hapusjadwal($id_jadwal)
      {
          $this->db->where("id_jadwal",$id_jadwal);
          return $this->db->delete('tb_presensi_jadwal_afilasi_p');
      }
- 
+
      function lihatdatasatujadwal($id_jadwal)
      {
           $this->db->from("tb_presensi_jadwal_afilasi_p");
           $this->db->where("id_jadwal",$id_jadwal);
           return $this->db->get();
      }
- 
+
      function editdatajadwal($id_jadwal,$array)
      {
          $this->db->where("id_jadwal",$id_jadwal);
          return $this->db->update('tb_presensi_jadwal_afilasi_p',$array);
      }
- 
+
 }

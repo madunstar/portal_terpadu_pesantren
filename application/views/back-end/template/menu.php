@@ -105,7 +105,7 @@
                     </ul>
                   </li>
                   <li  class="<?= (($menu == "datamaster") && ($submenu == 'datakelasbelajar') || ($submenu == 'aturkelasbelajar') || ($submenu == 'datakelaspondokan') || ($submenu == 'datakelaspondwati') ||  ($submenu == 'datakelasbelawati') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'editkelaspondokan') ||  ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'editkelaspondwati') || ($submenu == 'lihatkelaspondokan') || ($submenu == 'pelajaranrekap') || ($submenu == 'pondokanrekap') || ($submenu == 'datarekapsantri') || ($submenu == 'datarekapguru') || ($submenu == 'datarekapsantripondokan') || ($submenu == 'datarekapgurupondokan') || ($submenu == 'jadwalafilasi') || ($submenu == 'jadwalpondokan') || ($submenu == 'jadwalpondwati')) ? "active" : ""; ?>">
-                  <li  class="<?= (($menu == "datamaster") && ($submenu == 'datakelasbelajar') || ($submenu == 'aturkelasbelajar') || ($submenu == 'datakelaspondokan') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'editkelaspondokan') || ($submenu == 'lihatkelaspondokan') || ($submenu == 'pelajaranrekap') || ($submenu == 'pelajaranrekapp') || ($submenu == 'pondokanrekap') || ($submenu == 'datarekapsantri') || ($submenu == 'datarekapguru') || ($submenu == 'datarekapsantripondokan') || ($submenu == 'datarekapgurupondokan') || ($submenu == 'jadwalafilasi') || ($submenu == 'jadwalpondokan')) ? "active" : ""; ?>">
+                  <li  class="<?= (($menu == "datamaster") && ($submenu == 'datakelasbelajar') || ($submenu == 'aturkelasbelajar') || ($submenu == 'datakelaspondokan') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'editkelaspondokan') || ($submenu == 'lihatkelaspondokan') || ($submenu == 'pelajaranrekap') || ($submenu == 'pelajaranrekapp') || ($submenu == 'pondokanrekap') || ($submenu == 'datarekapsantri') || ($submenu == 'datarekapguru') || ($submenu == 'datarekapsantripondokan') || ($submenu == 'datarekapgurupondokan') || ($submenu == 'jadwalafilasi') || ($submenu == 'jadwalpondokan') || ($submenu == 'pondokanrekapp') || ($submenu == 'datarekapsantripondokanp') || ($submenu == 'datarekapgurupondokanp')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -160,19 +160,25 @@
 											<li class="<?= (($menu == "datamaster") &&  ($submenu == 'pondokanrekap') || ($submenu == 'datarekapsantripondokan') || ($submenu == 'datarekapgurupondokan') ) ? "active" : ""; ?>">
 												<a href="<?php echo base_url() ?>admin/datamaster/pondokanrekap" class="auto">
 													<i class="i i-dot"></i>
-													<span>Rekap Presensi Pondokan</span>
+													<span>Presensi Pondokan Putra</span>
+												</a>
+											</li>
+											<li class="<?= (($menu == "datamaster") &&  ($submenu == 'pondokanrekapp') || ($submenu == 'datarekapsantripondokanp') || ($submenu == 'datarekapgurupondokanp') ) ? "active" : ""; ?>">
+												<a href="<?php echo base_url() ?>admin/datamaster/pondokanrekapp" class="auto">
+													<i class="i i-dot"></i>
+													<span>Presensi Pondokan Putri</span>
 												</a>
 											</li>
                       <li class="<?= (($menu == "datamaster") &&  ($submenu == 'pelajaranrekap') || ($submenu == 'datarekapsantri') || ($submenu == 'datarekapguru')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekap" class="auto">
                           <i class="i i-dot"></i>
-                          <span>Rekap Presensi Afiliasi Putra</span>
+                          <span>Presensi Afiliasi Putra</span>
                         </a>
                       </li>
-											<li class="<?= (($menu == "datamaster") &&  ($submenu == 'pelajaranrekapp') || ($submenu == 'datarekapsantri') || ($submenu == 'datarekapguru')) ? "active" : ""; ?>">
+											<li class="<?= (($menu == "datamaster") &&  ($submenu == 'pelajaranrekapp') || ($submenu == 'datarekapsantriwati') || ($submenu == 'datarekapgurup')) ? "active" : ""; ?>">
 												<a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekapp" class="auto">
 													<i class="i i-dot"></i>
-													<span>Rekap Presensi Afiliasi Putri</span>
+													<span>Presensi Afiliasi Putri</span>
 												</a>
 											</li>
                     </ul>

@@ -29,8 +29,8 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/datarekapsantripondokan?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'')."' class='btn btn-primary btn-xs' title='Lihat Rekap Santri'><i class='fa fa-users'></i></a>
-                      <a href='".base_url('admin/datamaster/datarekapgurupondokan?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'&jadwal='.$row['id_jadwal'].'&guru='.$row['nip_guru'].'')."' class='btn btn-success btn-xs' title='Lihat Rekap Guru'><i class='fa fa-user'></i></a>
+                      <a href='".base_url('admin/datamaster/datarekapsantripondokanp?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'')."' class='btn btn-primary btn-xs' title='Lihat Rekap santriwati'><i class='fa fa-users'></i></a>
+                      <a href='".base_url('admin/datamaster/datarekapgurupondokanp?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'&jadwal='.$row['id_jadwal'].'&guru='.$row['nip_guru'].'')."' class='btn btn-success btn-xs' title='Lihat Rekap Guru'><i class='fa fa-user'></i></a>
                       </td>
                       <td>".$row['nama_kelas_belajar']."</td>
                       <td>".$row['nama_mata_pelajaran']."</td>
