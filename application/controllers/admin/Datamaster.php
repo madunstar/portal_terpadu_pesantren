@@ -44,6 +44,8 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_informasi');
         $this->load->model('back-end/datamaster/m_denda');
         $this->load->model('back-end/datamaster/m_perizinan');
+        $this->load->model('back-end/datamaster/m_presensipondwati');
+        $this->load->model('back-end/datamaster/m_presenwati');
         $this->load->library('layout');
         $this->load->library('PHPExcel');
         $this->load->helper('indo_helper');
@@ -448,7 +450,6 @@ class Datamaster extends CI_Controller{
         } else {
             redirect(base_url("admin/datamaster/santriwati"));
         }
-
     }
 
     function santriwatitambahberkas()
@@ -477,7 +478,6 @@ class Datamaster extends CI_Controller{
                 if ($exec) redirect(base_url("admin/datamaster/santriwatitambahberkas?nis=".$nis_lokal."&msg=1"));
                 else redirect(base_url("admin/datamaster/santriwatiberkastambah?nis=".$nis_lokal."&msg=0"));
             } else {
-
                 $this->layout->render('back-end/datamaster/santriwati/v_santriberkas_tambah',$variabel,'back-end/datamaster/santriwati/v_santriberkas_js');
             }
         } else {
@@ -4457,24 +4457,24 @@ function tambahinformasi()
 
 function editinformasi()
 {
-$id_pengumuman = $this->input->get("idpengumuman");
-  if ($this->input->post()){
-          $array=array(
-              'isi_pengumuman'=> $this->input->post('isi_pengumuman'),
-              'judul_pengumuman'=> $this->input->post('judul_pengumuman'),
-              'link_pengumuman'=> $this->input->post('link_pengumuman'),
-              'tanggal_pengumuman'=>$this->input->post('tanggal_pengumuman')
-              );
-          $exec = $this->m_informasi->editdata($id_pengumuman,$array);
-          if ($exec)redirect(base_url("admin/datamaster/editinformasi?idpengumuman=".$id_pengumuman."&msg=1"));
-          else redirect(base_url("admin/datamaster/editinformasi?idpengumuman=".$id_pengumuman."&msg=0"));
-  } else {
-    $exec =$this->m_informasi->data($id_pengumuman);
-    if ($exec->num_rows()>0){
-        $variabel['data'] = $exec ->row_array();
-        $this->layout->render('back-end/informasi/v_editinformasi',$variabel,'back-end/informasi/informasi_js');
-  }
-}
+    $id_pengumuman = $this->input->get("idpengumuman");
+    if ($this->input->post()){
+            $array=array(
+                'isi_pengumuman'=> $this->input->post('isi_pengumuman'),
+                'judul_pengumuman'=> $this->input->post('judul_pengumuman'),
+                'link_pengumuman'=> $this->input->post('link_pengumuman'),
+                'tanggal_pengumuman'=>$this->input->post('tanggal_pengumuman')
+                );
+            $exec = $this->m_informasi->editdata($id_pengumuman,$array);
+            if ($exec)redirect(base_url("admin/datamaster/editinformasi?idpengumuman=".$id_pengumuman."&msg=1"));
+            else redirect(base_url("admin/datamaster/editinformasi?idpengumuman=".$id_pengumuman."&msg=0"));
+    } else {
+        $exec =$this->m_informasi->data($id_pengumuman);
+        if ($exec->num_rows()>0){
+            $variabel['data'] = $exec ->row_array();
+            $this->layout->render('back-end/informasi/v_editinformasi',$variabel,'back-end/informasi/informasi_js');
+    }
+    }
 }
 
 function deleteinformasi()
@@ -4621,7 +4621,6 @@ function contohimport(){
             $this->m_pendidikan->upload_contoh($filename);
             unlink('./assets/import/'.$filename);
             redirect(base_url("admin/datamaster/pendidikan"));
-
       }
 }
 
@@ -4629,6 +4628,583 @@ function downloadcontohimport(){
   $this->load->helper('download');
   force_download('assets/import/contoh.xlsx',NULL);
 }
+
+
+
+function datakelaspondwati()
+{
+    $variabel['data']=$this->m_presensipondwati->lihatdata();
+    $this->layout->render('back-end/presensi/presensi_pondwati/v_presensi_pondokan',$variabel,'back-end/presensi/presensi_pondwati/v_preskelas_js');
+}
+
+function aturkelaspondwati(){
+    if ($this->input->post()){
+        $array=array(
+            'nip_guru'=> $this->input->post('nip_guru'),
+            'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+            'kd_kelas'=> $this->input->post('kd_kelas'),
+            'status_kelas'=>$this->input->post('status_kelas'),
+            'id_tahun'=>$this->input->post('id_tahun'),
+            'pondokan'=>$this->input->post('pondokan'),
+            'tingkat'=>$this->input->post('tingkatan')
+            );
+        $exec = $this->m_presensipondwati->tambahdata($array);
+        if ($exec) redirect(base_url("admin/datamaster/aturkelaspondwati?msg=1"));
+        else redirect(base_url("admin/datamaster/aturkelaspondwati?msg=0"));
+    } else {
+        $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+        $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+        $variabel['guru']=$this->m_guru->lihatdata();
+        $variabel['pondokan']=$this->m_pondokan->lihatdata();
+        $this->layout->render('back-end/presensi/presensi_pondwati/v_presensi_atur',$variabel,'back-end/presensi/presensi_pondwati/v_preskelas_js');
+    }
+}
+
+function editkelaspondwati()
+    {
+        if ($this->input->post()) {
+            $array=array(
+                'nip_guru'=> $this->input->post('nip_guru'),
+                'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+                'kd_kelas'=> $this->input->post('kd_kelas'),
+                'status_kelas'=>$this->input->post('status_kelas'),
+                'id_tahun'=>$this->input->post('id_tahun'),
+                'pondokan'=>$this->input->post('pondokan'),
+                'tingkat'=>$this->input->post('tingkatan')
+                );
+            $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+            $exec = $this->m_presensipondwati->editdata($id_kelas_belajar,$array);
+            if ($exec){
+                redirect(base_url("admin/datamaster/editkelaspondwati?id=".$id_kelas_belajar."&msg=1"));
+            }
+      } else {
+            $id_kelas_belajar = $this->input->get("id");
+            $exec = $this->m_presensipondwati->lihatdatasatu($id_kelas_belajar);
+            if ($exec->num_rows()>0){
+                $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+                $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+                $variabel['guru']=$this->m_guru->lihatdata();
+                $variabel['data'] = $exec->row_array();
+                $variabel['pondokan']=$this->m_pondokan->lihatdata();
+                $variabel['tingkatan']=$this->m_pondokan->lihatdatatingkatan($variabel['data']['pondokan']);
+                $this->layout->render('back-end/presensi/presensi_pondwati/v_presensi_edit',$variabel,'back-end/presensi/presensi_pondwati/v_preskelas_js');
+            } else {
+                redirect(base_url("admin/datamaster/datakelaspondwati"));
+            }
+      }
+    }
+
+    function hapuskelaspondwati()
+    {
+       $id = $this->input->get("id");
+       $exec = $this->m_presensipondwati->hapus($id);
+       redirect(base_url()."admin/datamaster/datakelaspondwati?msg=1");
+    }
+
+    function lihatkelaspondwati()
+    {
+        $id_kelas_belajar = $this->input->get("id");
+        $exec = $this->m_presensipondwati->lihatdatasatulengkap($id_kelas_belajar);
+        if ($exec->num_rows()>0){
+            $variabel['data'] = $exec->row_array();
+            $variabel['santri'] = $this->m_presensipondwati->lihatdatasantri($id_kelas_belajar);
+            $this->layout->render('back-end/presensi/presensi_pondwati/v_presensi_lihat',$variabel,'back-end/presensi/presensi_pondwati/v_preskelas_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelaspondwati"));
+        }
+    }
+    function kelaseditpondwati()
+    {
+        $idkelaspondokan = $this->input->post("id");
+        $variabel['data'] = $this->m_presensipondwati->lihatdatasatu($idkelaspondokan)->row_array();
+        $this->load->view("back-end/presensi/presensi_pondwati/v_presensi_editstatus",$variabel);
+
+    }
+    function editpondwatiproses()
+    {
+        $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+        $status_kelas = $this->input->post("status_kelas");
+        $array = array (
+            "status_kelas"=>$status_kelas
+        );
+        $exec = $this->m_presensipondwati->editdata($id_kelas_belajar,$array);
+    }
+
+    function lihatkelaspondokansantriwati()
+    {
+        $id = $this->input->get("id");
+        $exec = $this->m_presensipondwati->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0){
+            $variabel['santri'] = $exec->row_array();
+            $variabel['data'] = $this->m_presensipondwati->lihatdatasantri($id);
+            $this->layout->render('back-end/presensi/presensi_pondwati/v_santri',$variabel,'back-end/presensi/presensi_pondwati/v_santri_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelaspondwati"));
+        }
+    }
+
+    
+    function kelastambahsantripondwati()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $variabel['lissantri'] = $this->m_presensipondwati->lissantri($idkelaspondokan);
+        $this->load->view("back-end/presensi/presensi_pondwati/v_santri_tambah",$variabel);
+    }
+    function tambahsantripondwatiproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $nis = $this->input->post("nis");
+        $array = array (
+            "id_kelas_belajar"=>$idkelasbelajar,
+            "nis_lokal"=>$nis
+        );
+        $exec = $this->m_presensipondwati->tambahdatasantri($array);
+
+    }
+    function hapuskelassantripondwati()
+    {
+       $id = $this->input->get("id");
+       $idkelas = $this->input->get("idkelas");
+       $exec = $this->m_presensipondwati->hapussantri($id);
+       redirect(base_url()."admin/datamaster/lihatkelaspondokansantriwati?id=".$idkelas."&h=1");
+    }
+
+    function kelaseditsantripondwati()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $variabel['lissantri'] = $this->m_presensipondwati->lissantri($idkelaspondokan);
+        $id_kelas_santri = $this->input->post("id");
+        $variabel['data'] = $this->m_presensipondwati->lihatdatasatusantri('2')->row_array();
+        $this->load->view("back-end/presensi/presensi_pondwati/v_santri_edit",$variabel);
+    }
+
+    function editsantripondwatiproses()
+    {
+        $idkelaspondokan = $this->input->post("idkelaspondokan");
+        $nis = $this->input->post("nis");
+        $id_kelas_santri = $this->input->post("id_kelas_santri");
+        $array = array (
+            "nis_lokal"=>$nis
+        );
+        $exec = $this->m_presensipondwati->editdatasantri($id_kelas_santri,$array);
+    }
+
+    function jadwalpondwati()
+    {
+        $id = $this->input->get("id");
+        $exec = $this->m_presensipondwati->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0) {
+            $variabel['jadwal'] = $exec->row_array();
+            $variabel['datasenin'] = $this->m_presensipondwati->lihatdatajadwal($id,'Senin');
+            $variabel['dataselasa'] = $this->m_presensipondwati->lihatdatajadwal($id,'Selasa');
+            $variabel['datarabu'] = $this->m_presensipondwati->lihatdatajadwal($id,'Rabu');
+            $variabel['datakamis'] = $this->m_presensipondwati->lihatdatajadwal($id,'Kamis');
+            $variabel['datajumat'] = $this->m_presensipondwati->lihatdatajadwal($id,"Jum'at");
+            $variabel['datasabtu'] = $this->m_presensipondwati->lihatdatajadwal($id,'Sabtu');
+            $variabel['dataahad'] = $this->m_presensipondwati->lihatdatajadwal($id,'Ahad');
+
+            $this->layout->render('back-end/presensi/presensi_pondwati/v_jadwal',$variabel,'back-end/presensi/presensi_pondwati/v_jadwal_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelaspondwati"));
+        }
+    }
+
+    function tambahjadwalpondwati()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
+        $variabel['jam'] = $this->m_pak_pondokan->lihatdata();
+        $this->load->view("back-end/presensi/presensi_pondwati/v_jadwal_tambah",$variabel);
+    }
+
+    function tambahjadwalpondwatiproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $id_pelajaran = $this->input->post("mata_pelajaran");
+        $hari = $this->input->post("hari");
+        $jam = $this->input->post("jam");
+
+
+        $array = array (
+            "id_kelas_belajar"=>$idkelasbelajar,
+            "id_mata_pelajaran"=>$id_pelajaran,
+            "hari"=>$hari,
+            "jam"=>$jam
+        );
+        if ($id_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]="Istirahat";
+            $array["nip"]="Istirahat";
+            $array["guru"]="Istirahat";
+        } else {
+            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+            $array["nip"]=$data['nip_guru'];
+            $array["guru"]=$data['nama_lengkap'];
+        }
+        $exec = $this->m_presensipondwati->tambahdatajadwal($array);
+    }
+
+    function editjadwalpondwati()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $id_jadwal = $this->input->post("id");
+
+        $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
+        $variabel['jam'] = $this->m_pak_pondokan->lihatdata();
+
+        $variabel['data'] = $this->m_presensipondwati->lihatdatasatujadwal($id_jadwal)->row_array();
+        $this->load->view("back-end/presensi/presensi_pondwati/v_jadwal_edit",$variabel);
+    }
+
+    function editjadwalpondwatiproses()
+    {
+        $id_jadwal = $this->input->post("idjadwal");
+
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $id_pelajaran = $this->input->post("mata_pelajaran");
+        $hari = $this->input->post("hari");
+        $jam = $this->input->post("jam");
+
+        $array = array (
+            "id_mata_pelajaran"=>$id_pelajaran,
+            "jam"=>$jam
+        );
+        if ($id_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]="Istirahat";
+            $array["nip"]="Istirahat";
+            $array["guru"]="Istirahat";
+        } else {
+            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+            $array["nip"]=$data['nip_guru'];
+            $array["guru"]=$data['nama_lengkap'];
+        }
+        $exec = $this->m_presensipondwati->editdatajadwal($id_jadwal,$array);
+    }
+
+    function hapusjadwalpondwati()
+    {
+       $id = $this->input->get("id");
+       $idkelas = $this->input->get("idkelas");
+       $exec = $this->m_presensipondwati->hapusjadwal($id);
+       redirect(base_url()."admin/datamaster/jadwalpondwati?id=".$idkelas."&h=1");
+    }
+
+    
+function printkelaspondwati(){
+    $id = $this->input->get("id");
+    $exec = $this->m_presensipondwati->lihatdatasatulengkap($id);
+    if ($exec->num_rows()>0) {
+        $variabel['jadwal'] = $exec->row_array();
+        $variabel['bulan'] = array ('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+        $variabel['id'] = $id;
+        $this->layout->render('back-end/presensi/presensi_pondwati/v_presensi_print',$variabel,'back-end/presensi/presensi_pondwati/v_presensi_printjs');
+    } else {
+        redirect(base_url("admin/datamaster/datakelaspondwati"));
+    }
+}
+
+
+function printjadwalpondwati(){
+    $bulan = $this->input->get("id");
+    $kelas = $this->input->get("kelas");
+    // $data = $this->m_presensipondokan->lihatdatasatujadwal($id)->row_array();
+    // $variabel['data'] = $data;
+    $variabel['bulan'] = $bulan;
+    $variabel['data2'] =  $this->m_presensipondwati->lihatdatasatulengkap($kelas)->row_array();
+    $variabel['santri'] = $this->m_presensipondwati->lihatdatasantri($kelas);
+    $this->layout->renderlaporan('back-end/presensi/presensi_pondwati/v_presensi_printjadwal',$variabel,'back-end/presensi/presensi_pondwati/v_presensi_printjadwal_js');
+  }
+
+function datakelasbelawati()
+   {
+      $variabel['data']=$this->m_presenwati->lihatdata();
+      $this->layout->render('back-end/presensi/presensi_kelwati/v_presensi_kelas',$variabel,'back-end/presensi/presensi_kelwati/v_preskelas_js');
+   }
+
+   function aturkelasbelawati(){
+        if ($this->input->post()){
+            $array=array(
+                'nip_guru'=> $this->input->post('nip_guru'),
+                'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+                'kd_kelas'=> $this->input->post('kd_kelas'),
+                'status_kelas'=>$this->input->post('status_kelas'),
+                'id_tahun'=>$this->input->post('id_tahun'),
+                'jenjang'=>$this->input->post('jenjang'),
+                'tingkat'=>$this->input->post('tingkatan')
+                );
+            $exec = $this->m_presenwati->tambahdata($array);
+            if ($exec) redirect(base_url("admin/datamaster/aturkelasbelawati?msg=1"));
+            else redirect(base_url("admin/datamaster/aturkelasbelawati?msg=0"));
+        } else {
+            $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+            $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+            $variabel['guru']=$this->m_guru->lihatdata();
+            $variabel['jenjang']=$this->m_jenjang->lihatdata();
+            $this->layout->render('back-end/presensi/presensi_kelwati/v_presensi_atur',$variabel,'back-end/presensi/presensi_kelwati/v_preskelas_js');
+        }
+   }
+
+   function hapuskelasbelawati()
+    {
+       $id = $this->input->get("id");
+       $exec = $this->m_presenwati->hapus($id);
+       redirect(base_url()."admin/datamaster/datakelasbelawati?msg=1");
+    }
+
+    function editkelasbelawati()
+    {
+        if ($this->input->post()) {
+            $array=array(
+                'nip_guru'=> $this->input->post('nip_guru'),
+                'nama_kelas_belajar'=> $this->input->post('nama_kelas_belajar'),
+                'kd_kelas'=> $this->input->post('kd_kelas'),
+                'status_kelas'=>$this->input->post('status_kelas'),
+                'id_tahun'=>$this->input->post('id_tahun'),
+                'jenjang'=>$this->input->post('jenjang'),
+                'tingkat'=>$this->input->post('tingkatan')
+                );
+            $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+            $exec = $this->m_presenwati->editdata($id_kelas_belajar,$array);
+            if ($exec){
+                redirect(base_url("admin/datamaster/editkelasbelawati?id=".$id_kelas_belajar."&msg=1"));
+            }
+      } else {
+            $id_kelas_belajar = $this->input->get("id");
+            $exec = $this->m_presenwati->lihatdatasatu($id_kelas_belajar);
+            if ($exec->num_rows()>0){
+                $variabel['ruangkelas']=$this->m_kelas->lihatdata();
+                $variabel['tahunajaran']=$this->m_tahun_ajaran->lihatdata();
+                $variabel['guru']=$this->m_guru->lihatdata();
+                $variabel['data'] = $exec->row_array();
+                $variabel['jenjang']=$this->m_jenjang->lihatdata();
+                $variabel['tingkatan']=$this->m_jenjang->lihatdatatingkatan($variabel['data']['jenjang']);
+                $this->layout->render('back-end/presensi/presensi_kelwati/v_presensi_edit',$variabel,'back-end/presensi/presensi_kelwati/v_preskelas_js');
+            } else {
+                redirect(base_url("admin/datamaster/datakelasbelawati"));
+            }
+      }
+
+
+    }
+
+
+    function lihatkelasbelawati()
+    {
+        $id_kelas_belajar = $this->input->get("id");
+        $exec = $this->m_presenwati->lihatdatasatulengkap($id_kelas_belajar);
+        if ($exec->num_rows()>0){
+            $variabel['data'] = $exec->row_array();
+            $variabel['santri'] = $this->m_presenwati->lihatdatasantri($id_kelas_belajar);
+            $this->layout->render('back-end/presensi/presensi_kelwati/v_presensi_lihat',$variabel,'back-end/presensi/presensi_kelwati/v_preskelas_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelasbelawati"));
+        }
+    }
+
+    function hapuskelassantriwati()
+    {
+       $id = $this->input->get("id");
+       $idkelas = $this->input->get("idkelas");
+       $exec = $this->m_presenwati->hapussantri($id);
+       redirect(base_url()."admin/datamaster/lihatkelasbelajarsantriwati?id=".$idkelas."&h=1");
+    }
+
+    function lihatkelasbelajarsantriwati()
+    {
+        $id = $this->input->get("id");
+        $exec = $this->m_presenwati->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0){
+            $variabel['santri'] = $exec->row_array();
+            $variabel['data'] = $this->m_presenwati->lihatdatasantri($id);
+            $this->layout->render('back-end/presensi/presensi_kelwati/v_santri',$variabel,'back-end/presensi/presensi_kelwati/v_santri_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelasbelajar"));
+        }
+    }
+
+    function kelastambahsantriwati()
+    {
+        $idkelasbelajar = $this->input->post("id_kelas_belajar");
+        $variabel['lissantri'] = $this->m_presenwati->lissantri($idkelasbelajar);
+        $this->load->view("back-end/presensi/presensi_kelwati/v_santri_tambah",$variabel);
+
+    }
+    function tambahsantriwatiproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $nis = $this->input->post("nis");
+        $array = array (
+            "id_kelas_belajar"=>$idkelasbelajar,
+            "nis_lokal"=>$nis
+        );
+        $exec = $this->m_presenwati->tambahdatasantri($array);
+
+    }
+    function kelaseditsantriwati()
+    {
+        $idkelasbelajar = $this->input->post("id_kelas_belajar");
+        $variabel['lissantri'] = $this->m_presenwati->lissantri($idkelasbelajar);
+        $id_kelas_santri = $this->input->post("id");
+        $variabel['data'] = $this->m_presenwati->lihatdatasatusantri($id_kelas_santri)->row_array();
+        $this->load->view("back-end/presensi/presensi_kelwati/v_santri_edit",$variabel);
+
+    }
+
+    function editsantriwatiproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $nis = $this->input->post("nis");
+        $id_kelas_santri = $this->input->post("id_kelas_santri");
+        $array = array (
+            "nis_lokal"=>$nis
+        );
+        $exec = $this->m_presenwati->editdatasantri($id_kelas_santri,$array);
+    }
+
+    function kelaseditbelawati()
+    {
+        $idkelasbelajar = $this->input->post("id");
+        $variabel['data'] = $this->m_presenwati->lihatdatasatu($idkelasbelajar)->row_array();
+        $this->load->view("back-end/presensi/presensi_kelwati/v_presensi_editstatus",$variabel);
+
+    }
+
+    function editkelasproseswati()
+    {
+        $id_kelas_belajar = $this->input->post("id_kelas_belajar");
+        $status_kelas = $this->input->post("status_kelas");
+        $array = array (
+            "status_kelas"=>$status_kelas
+        );
+        $exec = $this->m_presenwati->editdata($id_kelas_belajar,$array);
+    }
+
+    function jadwalafiwati()
+    {
+        $id = $this->input->get("id");
+        $exec = $this->m_presenwati->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0) {
+            $variabel['jadwal'] = $exec->row_array();
+            $variabel['datasenin'] = $this->m_presenwati->lihatdatajadwal($id,'Senin');
+            $variabel['dataselasa'] = $this->m_presenwati->lihatdatajadwal($id,'Selasa');
+            $variabel['datarabu'] = $this->m_presenwati->lihatdatajadwal($id,'Rabu');
+            $variabel['datakamis'] = $this->m_presenwati->lihatdatajadwal($id,'Kamis');
+            $variabel['datajumat'] = $this->m_presenwati->lihatdatajadwal($id,"Jum'at");
+            $variabel['datasabtu'] = $this->m_presenwati->lihatdatajadwal($id,'Sabtu');
+            $variabel['dataahad'] = $this->m_presenwati->lihatdatajadwal($id,'Ahad');
+            $this->layout->render('back-end/presensi/presensi_kelwati/v_jadwal',$variabel,'back-end/presensi/presensi_kelwati/v_jadwal_js');
+        } else {
+            redirect(base_url("admin/datamaster/datakelasbelawati"));
+        }
+    }
+
+    function tambahjadwalafiwati()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
+        $variabel['jam'] = $this->m_pak_afilasi->lihatdata();
+        $this->load->view("back-end/presensi/presensi_kelwati/v_jadwal_tambah",$variabel);
+    }
+
+    function tambahjadwalafiwatiproses()
+    {
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $id_pelajaran = $this->input->post("mata_pelajaran");
+        $hari = $this->input->post("hari");
+        $jam = $this->input->post("jam");
+
+        $array = array (
+            "id_kelas_belajar"=>$idkelasbelajar,
+            "id_mata_pelajaran"=>$id_pelajaran,
+            "hari"=>$hari,
+            "jam"=>$jam
+        );
+
+        if ($id_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]="Istirahat";
+            $array["nip"]="Istirahat";
+            $array["guru"]="Istirahat";
+        } else {
+            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+            $array["nip"]=$data['nip_guru'];
+            $array["guru"]=$data['nama_lengkap'];
+        }
+        $exec = $this->m_presenwati->tambahdatajadwal($array);
+
+    }
+    function editjadwalafiwati()
+    {
+        $idkelaspondokan = $this->input->post("id_kelas_belajar");
+        $id_jadwal = $this->input->post("id");
+
+         $variabel['pelajaran'] = $this->m_pelajaran->lihatdata();
+        $variabel['jam'] = $this->m_pak_afilasi->lihatdata();
+
+        $variabel['data'] = $this->m_presenwati->lihatdatasatujadwal($id_jadwal)->row_array();
+        $this->load->view("back-end/presensi/presensi_kelwati/v_jadwal_edit",$variabel);
+
+    }
+
+    function editjadwalafiwatiproses()
+    {
+        $id_jadwal = $this->input->post("idjadwal");
+
+        $idkelasbelajar = $this->input->post("idkelasbelajar");
+        $id_pelajaran = $this->input->post("mata_pelajaran");
+        $hari = $this->input->post("hari");
+        $jam = $this->input->post("jam");
+
+        $array = array (
+            "id_mata_pelajaran"=>$id_pelajaran,
+            "jam"=>$jam
+        );
+        if ($id_pelajaran=="Istirahat"){
+            $array["mata_pelajaran"]="Istirahat";
+            $array["nip"]="Istirahat";
+            $array["guru"]="Istirahat";
+        } else {
+            $data = $this->m_pelajaran->lihatdatasatu($id_pelajaran)->row_array();
+            $array["mata_pelajaran"]=$data['nama_mata_pelajaran'];
+            $array["nip"]=$data['nip_guru'];
+            $array["guru"]=$data['nama_lengkap'];
+        }
+        $exec = $this->m_presenwati->editdatajadwal($id_jadwal,$array);
+    }
+
+    function hapusjadwalafiwati()
+    {
+       $id = $this->input->get("id");
+       $idkelas = $this->input->get("idkelas");
+       $exec = $this->m_presenwati->hapusjadwal($id);
+       redirect(base_url()."admin/datamaster/jadwalafiwati?id=".$idkelas."&h=1");
+    }
+
+    function printkelasafiwati(){
+        $id = $this->input->get("id");
+        $exec = $this->m_presenwati->lihatdatasatulengkap($id);
+        if ($exec->num_rows()>0) {
+            $variabel['jadwal'] = $exec->row_array();
+            $variabel['bulan'] = array ('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+            $variabel['id'] = $id;
+            $this->layout->render('back-end/presensi/presensi_kelwati/v_presensi_print',$variabel,'back-end/presensi/presensi_kelwati/v_presensi_printjs');
+        } else {
+            redirect(base_url("admin/datamaster/datakelasbelajar"));
+        }
+    }
+    
+    
+    function printjadwalafiwati(){
+        $bulan = $this->input->get("id");
+        $kelas = $this->input->get("kelas");
+        // $data = $this->m_presenwati->lihatdatasatujadwal($id)->row_array();
+        // $variabel['data'] = $data;
+        $variabel['bulan'] = $bulan;
+        $variabel['data2'] =  $this->m_presenwati->lihatdatasatulengkap($kelas)->row_array();
+        $variabel['santri'] = $this->m_presenwati->lihatdatasantri($kelas);
+        $this->layout->renderlaporan('back-end/presensi/presensi_kelwati/v_presensi_printjadwal',$variabel,'back-end/presensi/presensi_kelwati/v_presensi_printjadwal_js');
+      }
 
 
 

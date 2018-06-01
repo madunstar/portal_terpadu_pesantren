@@ -104,7 +104,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li  class="<?= (($menu == "datamaster") && ($submenu == 'datakelasbelajar') || ($submenu == 'aturkelasbelajar') || ($submenu == 'datakelaspondokan') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'editkelaspondokan') || ($submenu == 'lihatkelaspondokan') || ($submenu == 'pelajaranrekap') || ($submenu == 'pondokanrekap') || ($submenu == 'datarekapsantri') || ($submenu == 'datarekapguru') || ($submenu == 'datarekapsantripondokan') || ($submenu == 'datarekapgurupondokan') || ($submenu == 'jadwalafilasi') || ($submenu == 'jadwalpondokan')) ? "active" : ""; ?>">
+                  <li  class="<?= (($menu == "datamaster") && ($submenu == 'datakelasbelajar') || ($submenu == 'aturkelasbelajar') || ($submenu == 'datakelaspondokan') || ($submenu == 'datakelaspondwati') ||  ($submenu == 'datakelasbelawati') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'editkelaspondokan') ||  ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'editkelaspondwati') || ($submenu == 'lihatkelaspondokan') || ($submenu == 'pelajaranrekap') || ($submenu == 'pondokanrekap') || ($submenu == 'datarekapsantri') || ($submenu == 'datarekapguru') || ($submenu == 'datarekapsantripondokan') || ($submenu == 'datarekapgurupondokan') || ($submenu == 'jadwalafilasi') || ($submenu == 'jadwalpondokan') || ($submenu == 'jadwalpondwati')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -138,6 +138,24 @@
                           <span>Atur Kelas Afilasi</span>
                         </a>
                       </li>
+                     
+                      <li  class="<?= (($menu == "datamaster") &&  ($submenu == 'datakelaspondwati'  || $submenu == 'jadwalpondwati')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/datakelaspondwati" class="auto">
+
+                          <i class="i i-dot"></i>
+
+                          <span>Atur Kelas Pondwati</span>
+                        </a>
+                      </li>
+                      <li  class="<?= (($menu == "datamaster") &&  ($submenu == 'datakelasbelawati' || $submenu == 'jadwalafiwati')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/datakelasbelawati" class="auto">
+
+                          <i class="i i-dot"></i>
+
+                          <span>Atur Kelas Afiwati</span>
+                        </a>
+                      </li>
+
 											<li class="<?= (($menu == "datamaster") &&  ($submenu == 'pondokanrekap') || ($submenu == 'datarekapsantripondokan') || ($submenu == 'datarekapgurupondokan') ) ? "active" : ""; ?>">
 												<a href="<?php echo base_url() ?>admin/datamaster/pondokanrekap" class="auto">
 													<i class="i i-dot"></i>
