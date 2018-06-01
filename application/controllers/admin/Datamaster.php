@@ -45,6 +45,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_informasi');
         $this->load->model('back-end/datamaster/m_denda');
         $this->load->model('back-end/datamaster/m_perizinan');
+        $this->load->model('back-end/datamaster/m_pengaturan');
         $this->load->library('layout');
         $this->load->library('PHPExcel');
         $this->load->helper('indo_helper');
@@ -4710,6 +4711,27 @@ function downloadcontohimport(){
   force_download('assets/import/contoh.xlsx',NULL);
 }
 
+function pengaturanportal()
+{
+
+  $variabel['datatahun'] = $this->m_pengaturan->datatahun();
+  $variabel['tb_pengaturan_pendaftaran'] = $this->m_pengaturan->get_tb_pengaturan();
+  $this->layout->render('back-end/datamaster/pengaturan',$variabel,'back-end/datamaster/pengaturan_js');
+}
+
+function edit_pengaturan(){
+  $params = array(
+    'tahun_ajaran' => $this->input->post('tahun_ajaran'),
+  );
+  $this->m_pengaturan->update_tb_pengaturan_pendaftran($params);
+  $this->session->set_flashdata('response',"
+      <div class='alert alert-success'>
+          <button type='button' class='close' data-dismiss='alert'>&times;</button>
+          <strong>Selamat!</strong> Pengaturan Berhasil Dirubah <span class='fa fa-check'></span>
+      </div>
+  ");
+  redirect('admin/datamaster/pengaturanportal');
+}
 
 
 }
