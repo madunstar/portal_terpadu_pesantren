@@ -45,12 +45,12 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_informasi');
         $this->load->model('back-end/datamaster/m_denda');
         $this->load->model('back-end/datamaster/m_perizinan');
-<<<<<<< HEAD
+
         $this->load->model('back-end/datamaster/m_pengaturan');
-=======
+
         $this->load->model('back-end/datamaster/m_presensipondwati');
         $this->load->model('back-end/datamaster/m_presenwati');
->>>>>>> menambah-ci
+
         $this->load->library('layout');
         $this->load->library('PHPExcel');
         $this->load->helper('indo_helper');
@@ -4848,7 +4848,7 @@ function editkelaspondwati()
         }
     }
 
-    
+
     function kelastambahsantripondwati()
     {
         $idkelaspondokan = $this->input->post("id_kelas_belajar");
@@ -4995,7 +4995,7 @@ function editkelaspondwati()
        redirect(base_url()."admin/datamaster/jadwalpondwati?id=".$idkelas."&h=1");
     }
 
-    
+
 function printkelaspondwati(){
     $id = $this->input->get("id");
     $exec = $this->m_presensipondwati->lihatdatasatulengkap($id);
@@ -5298,8 +5298,8 @@ function datakelasbelawati()
             redirect(base_url("admin/datamaster/datakelasbelajar"));
         }
     }
-    
-    
+
+
     function printjadwalafiwati(){
         $bulan = $this->input->get("id");
         $kelas = $this->input->get("kelas");
