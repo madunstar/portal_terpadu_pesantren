@@ -3,10 +3,11 @@
 
   <section class="vbox bg-white">
     <header class="header b-b b-light hidden-print">
-      <a href="<?php echo base_url() ?>admin/perizinansantriwati/datadenda" class="btn btn-sm btn-warning pull-right">Kembali</a>
+      <a href="<?php echo base_url() ?>admin/datamaster/datarekapgurupondokan?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>&jadwal=<?php echo $jadwal ?>&guru=<?php echo $nip_guru ?>" class="btn btn-sm btn-warning pull-right">Kembali</a>
+
       <p class="pull-right"></p>
       <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>&nbsp;&nbsp;
-      <p>Laporan Denda</p>
+      <p>Laporan Rekap Presensi Guru</p>
     </header>
 
     <section class="scrollable wrapper">
@@ -27,15 +28,16 @@
       </div>
       <div class="line pull-in line-dashed b-b"></div>
       <br>
-      <h5>Laporan Denda <b>Bulan <?php echo bulan($bulan) ?> Tahun <?php echo $tahun ?></b></h5>
+      <h5>Laporan Presensi Guru <b><?php echo $matpel ?></b> Kelas <b><?php echo $namakelas ?></b></h5>
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>no</th>
-            <th>NIS</th>
+            <th width="5%">no</th>
             <th>Nama</th>
-            <th>Besar Denda</th>
-            <th>Status Denda</th>
+            <th>Mata Pelajaran</th>
+            <th>Tanggal</th>
+            <th>Status Presensi</th>
+
           </tr>
         </thead>
         <tbody>
@@ -46,10 +48,11 @@
             echo "
               <tr>
                 <td>".$i."</td>
-                <td>".$row['nis_lokal']."</td>
                 <td>".$row['nama_lengkap']."</td>
-                <td>".$row['besar_denda']."</td>
-                <td>".$row['status_pembayaran']."</td>
+                <td>".$row['nama_mata_pelajaran']."</td>
+                <td>".$row['tanggal_rekap']."</td>
+                <td>".$row['status_presensi']."</td>
+
               </tr>
             "; $i++;
           }
@@ -60,16 +63,18 @@
         <div class="row">
           <div class="col-xs-3">
             <p>
-              Total Denda <br><br>
-              Total Denda Dibayar <br><br>
-              Total Denda Hutang  <br>
+              Total Guru Hadir <br><br>
+              Total Guru Izin  <br><br>
+              Total Guru Sakit  <br><br>
+              Total Guru Alfa  <br><br>
             </p>
           </div>
           <div class="col-xs-3">
             <p>
-              : <?php echo $semuadenda['total']?> <br><br>
-              : <?php echo $dendalunas['total']?> <br><br>
-              : <?php echo $dendahutang['total']?>  <br>
+              : <?php echo $guruhadir['total'] ?> <br><br>
+              : <?php echo $guruizin['total'] ?> <br><br>
+              : <?php echo $gurusakit['total'] ?> <br><br>
+              : <?php echo $gurualfa['total'] ?> <br><br>
             </p>
           </div>
         </div>
