@@ -78,6 +78,15 @@ class M_perizinan_p extends CI_Model{
         return $this->db->insert('tb_perizinan_penjemput',$penjemput);
     }
 
+    function ambiltglkeluar($nis_santri){
+        $this->db->select('tanggal_keluar');
+        $this->db->from('tb_perizinan_keluar_p');
+        $this->db->where('nis_santri',$nis_santri);
+        $this->db->order_by('id_keluar','DESC');
+        $this->db->limit(1);
+        return $this->db->get()->row();
+    }
+
     function ambilidpenjemput($no_identitas){
         $this->db->select('id_penjemput');
         $this->db->from('tb_perizinan_penjemput');

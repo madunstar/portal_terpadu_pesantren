@@ -16,7 +16,7 @@ class M_denda_p extends CI_Model
         $this->db->from('tb_perizinan_denda_p');
         $this->db->join('tb_perizinan_kembali_p', 'tb_perizinan_denda_p.id_kembali = tb_perizinan_kembali_p.id_kembali');
         $this->db->join('tb_perizinan_keluar_p', 'tb_perizinan_kembali_p.id_keluar = tb_perizinan_keluar_p.id_keluar');
-        $this->db->join('tb_santri', 'tb_perizinan_keluar_p.nis_santri = tb_santri.nis_lokal');
+        $this->db->join('tb_santriwati', 'tb_perizinan_keluar_p.nis_santri = tb_santriwati.nis_lokal');
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar_p.id_penjemput = tb_perizinan_penjemput.id_penjemput');
         return $this->db->get();
     }
@@ -27,9 +27,9 @@ class M_denda_p extends CI_Model
       $this->db->join('tb_perizinan_denda_p', 'tb_perizinan_bayar_p.id_denda = tb_perizinan_denda_p.id_denda');
       $this->db->join('tb_perizinan_kembali_p', 'tb_perizinan_denda_p.id_kembali = tb_perizinan_kembali_p.id_kembali');
       $this->db->join('tb_perizinan_keluar_p', 'tb_perizinan_kembali_p.id_keluar = tb_perizinan_keluar_p.id_keluar');
-      $this->db->join('tb_santri', 'tb_perizinan_keluar_p.nis_santri = tb_santri.nis_lokal');
+      $this->db->join('tb_santriwati', 'tb_perizinan_keluar_p.nis_santri = tb_santriwati.nis_lokal');
       $this->db->join('tb_akun_admin', 'tb_akun_admin.nama_akun = tb_perizinan_bayar_p.petugas');
-      $this->db->where('tb_santri.nis_lokal', $nis);
+      $this->db->where('tb_santriwati.nis_lokal', $nis);
       return $this->db->get();
     }
 
@@ -87,7 +87,7 @@ class M_denda_p extends CI_Model
       $this->db->from('tb_perizinan_denda_p');
       $this->db->join('tb_perizinan_kembali_p', 'tb_perizinan_denda_p.id_kembali = tb_perizinan_kembali_p.id_kembali');
       $this->db->join('tb_perizinan_keluar_p', 'tb_perizinan_kembali_p.id_keluar = tb_perizinan_keluar_p.id_keluar');
-      $this->db->join('tb_santri', 'tb_perizinan_keluar_p.nis_santri = tb_santri.nis_lokal');
+      $this->db->join('tb_santriwati', 'tb_perizinan_keluar_p.nis_santri = tb_santriwati.nis_lokal');
       $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar_p.id_penjemput = tb_perizinan_penjemput.id_penjemput');
       $this->db->where('year(tb_perizinan_kembali_p.tanggal_kembali)',$tahun);
       $this->db->where('month(tb_perizinan_kembali_p.tanggal_kembali)',$bulan);
@@ -112,7 +112,7 @@ class M_denda_p extends CI_Model
       $this->db->from('tb_perizinan_denda_p');
         $this->db->join('tb_perizinan_kembali_p', 'tb_perizinan_denda_p.id_kembali = tb_perizinan_kembali_p.id_kembali');
         $this->db->join('tb_perizinan_keluar_p', 'tb_perizinan_kembali_p.id_keluar = tb_perizinan_keluar_p.id_keluar');
-        $this->db->join('tb_santri', 'tb_perizinan_keluar_p.nis_santri = tb_santri.nis_lokal');
+        $this->db->join('tb_santriwati', 'tb_perizinan_keluar_p.nis_santri = tb_santriwati.nis_lokal');
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar_p.id_penjemput = tb_perizinan_penjemput.id_penjemput');
         $this->db->where('year(tb_perizinan_kembali_p.tanggal_kembali)',$tahun);
         $this->db->where('month(tb_perizinan_kembali_p.tanggal_kembali)',$bulan);
@@ -125,7 +125,7 @@ class M_denda_p extends CI_Model
       $this->db->from('tb_perizinan_denda_p');
         $this->db->join('tb_perizinan_kembali_p', 'tb_perizinan_denda_p.id_kembali = tb_perizinan_kembali_p.id_kembali');
         $this->db->join('tb_perizinan_keluar_p', 'tb_perizinan_kembali_p.id_keluar = tb_perizinan_keluar_p.id_keluar');
-        $this->db->join('tb_santri', 'tb_perizinan_keluar_p.nis_santri = tb_santri.nis_lokal');
+        $this->db->join('tb_santriwati', 'tb_perizinan_keluar_p.nis_santri = tb_santriwati.nis_lokal');
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar_p.id_penjemput = tb_perizinan_penjemput.id_penjemput');
         $this->db->where('year(tb_perizinan_kembali_p.tanggal_kembali)',$tahun);
         $this->db->where('month(tb_perizinan_kembali_p.tanggal_kembali)',$bulan);
@@ -139,7 +139,7 @@ class M_denda_p extends CI_Model
       $this->db->from('tb_perizinan_denda_p');
         $this->db->join('tb_perizinan_kembali_p', 'tb_perizinan_denda_p.id_kembali = tb_perizinan_kembali_p.id_kembali');
         $this->db->join('tb_perizinan_keluar_p', 'tb_perizinan_kembali_p.id_keluar = tb_perizinan_keluar_p.id_keluar');
-        $this->db->join('tb_santri', 'tb_perizinan_keluar_p.nis_santri = tb_santri.nis_lokal');
+        $this->db->join('tb_santriwati', 'tb_perizinan_keluar_p.nis_santri = tb_santriwati.nis_lokal');
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar_p.id_penjemput = tb_perizinan_penjemput.id_penjemput');
         $this->db->where('year(tb_perizinan_kembali_p.tanggal_kembali)',$tahun);
         $this->db->where('month(tb_perizinan_kembali_p.tanggal_kembali)',$bulan);
