@@ -139,7 +139,7 @@
                           <span>Atur Kelas Afilasi</span>
                         </a>
                       </li>
-                     
+
                       <li  class="<?= (($menu == "datamaster") &&  ($submenu == 'datakelaspondwati'  || $submenu == 'jadwalpondwati')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/datakelaspondwati" class="auto">
 
@@ -177,7 +177,7 @@
 											</li>
                     </ul>
                   </li>
-                  <li >
+									<li class="<?= (($menu == "datamaster") && ($submenu == 'keluar') || ($submenu == 'aturdenda')|| ($submenu == 'kembali') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
