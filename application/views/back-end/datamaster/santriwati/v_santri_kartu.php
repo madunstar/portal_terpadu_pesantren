@@ -71,9 +71,9 @@ BANJARBARU - KALIMANTAN SELATAN 70722
             <td></td>
             <td>Kepala Sekolah</td>
             </tr> 
-            <tr style="height:3px">
+            <tr>
             <td></td>
-            <td></td>
+            <td><img src="<?php echo base_url() ?>assets/images/mualimat.png" width="50px"/></td>
             </tr>
             <tr>
             <td></td>
