@@ -166,13 +166,13 @@
                       <li class="<?= (($menu == "datamaster") &&  ($submenu == 'pelajaranrekap') || ($submenu == 'datarekapsantri') || ($submenu == 'datarekapguru')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekap" class="auto">
                           <i class="i i-dot"></i>
-                          <span>Rekap Presensi Kelas Afiliasi</span>
+                          <span>Rekap Presensi Afiliasi Putra</span>
                         </a>
                       </li>
 											<li class="<?= (($menu == "datamaster") &&  ($submenu == 'pelajaranrekapp') || ($submenu == 'datarekapsantri') || ($submenu == 'datarekapguru')) ? "active" : ""; ?>">
 												<a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekapp" class="auto">
 													<i class="i i-dot"></i>
-													<span>Rekap Presensi Kelas Afiliasi</span>
+													<span>Rekap Presensi Afiliasi Putri</span>
 												</a>
 											</li>
                     </ul>
@@ -332,6 +332,13 @@
                       <span class="font-bold">Informasi</span>
                     </a>
                   </li>
+									<li  class="<?= (($menu == "datamaster") && ($submenu == 'pengaturanportal')) ? "active" : ""; ?>">
+										<a href="<?php echo base_url('admin/datamaster/pengaturanportal')?>" class="auto">
+											<i class="fa fa-cogs">
+											</i>
+											<span class="font-bold">Pengaturan</span>
+										</a>
+									</li>
                 </ul>
 
 
