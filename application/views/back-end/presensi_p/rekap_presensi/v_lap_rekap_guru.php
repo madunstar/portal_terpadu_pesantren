@@ -3,7 +3,7 @@
 
   <section class="vbox bg-white">
     <header class="header b-b b-light hidden-print">
-      <a href="<?php echo base_url() ?>admin/datamaster/datarekapguru?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>&jadwal=<?php echo $jadwal ?>&guru=<?php echo $nip_guru ?>" class="btn btn-sm btn-warning pull-right">Kembali</a>
+      <a href="<?php echo base_url() ?>admin/datamaster/datarekapgurup?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>&jadwal=<?php echo $jadwal ?>&guru=<?php echo $nip_guru ?>" class="btn btn-sm btn-warning pull-right">Kembali</a>
 
       <p class="pull-right"></p>
       <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>&nbsp;&nbsp;
@@ -52,7 +52,7 @@
                 <td>".$row['nama_mata_pelajaran']."</td>
                 <td>".$row['tanggal_rekap']."</td>
                 <td>".$row['status_presensi']."</td>
-                
+
               </tr>
             "; $i++;
           }
