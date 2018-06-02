@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        List Jadwal  Kelas Pondokan
+        List Jadwal  Kelas Afilasi
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
@@ -15,7 +15,7 @@
         <?php pesan_get('ed',"Berhasil Mengedit Jadwal","Gagal Mengedit Jadwal") ?>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="margin: 10px 0 10px 10px" id="tambahjadwal">
         <i class="fa fa-plus"></i> Tambah Jadwal</button> &nbsp
-        <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/santriakd/datakelaspondokan" class="btn btn-s-md btn-default" ><i class="fa fa-arrow-left"></i> Kembali</a>
+        <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/santriwatiakd/datakelasbelajar" class="btn btn-s-md btn-default" ><i class="fa fa-arrow-left"></i> Kembali</a>
         <div class="row">
         <div class="col-md-12" style="margin:10px">
         <div class="row">
@@ -202,7 +202,7 @@
         <hr />
         <div class="row" >
         <div class="col-md-4"  style="margin:0 auto">
-           <table class="table table-bordered" style="width:80%;font-size:10px">
+           <table class="table table-bordered" style="width:80%">
                 <tr  align="center">
                   <td colspan="5" align="center"><strong>Ahad</strong></td>
                 </tr>

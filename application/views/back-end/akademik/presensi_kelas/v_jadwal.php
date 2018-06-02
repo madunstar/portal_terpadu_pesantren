@@ -1,4 +1,4 @@
-<section id="content" style="width:100%">
+style="width:80%;font-size:10px<section id="content" style="width:100%">
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
@@ -20,7 +20,7 @@
         <div class="col-md-12" style="margin:10px">
         <div class="row">
           <div class="col-md-4">
-              <table class="table table-bordered" style="width:80%">
+              <table class="table table-bordered" style="width:80%;font-size:10px">
                 <tr  align="center">
                   <td colspan="5" align="center"><strong>Senin</strong></td>
                 </tr>
@@ -49,7 +49,7 @@
           </div>
 
           <div class="col-md-4">
-          <table class="table table-bordered" style="width:80%">
+          <table class="table table-bordered" style="width:80%;font-size:10px">
                 <tr  align="center">
                   <td colspan="5" align="center"><strong>Selasa</strong></td>
                 </tr>
@@ -78,7 +78,7 @@
           </div>
 
            <div class="col-md-4">
-           <table class="table table-bordered" style="width:80%">
+           <table class="table table-bordered" style="width:80%;font-size:10px">
                 <tr  align="center">
                   <td colspan="5" align="center"><strong>Rabu</strong></td>
                 </tr>
@@ -111,7 +111,7 @@
         <hr />
         <div class="row">
           <div class="col-md-4">
-          <table class="table table-bordered" style="width:80%">
+          <table class="table table-bordered" style="width:80%;font-size:10px">
                 <tr  align="center">
                   <td colspan="5" align="center"><strong>Kamis</strong></td>
                 </tr>
@@ -140,7 +140,7 @@
           </div>
 
           <div class="col-md-4">
-          <table class="table table-bordered" style="width:80%">
+          <table class="table table-bordered" style="width:80%;font-size:10px">
                 <tr  align="center">
                   <td colspan="5" align="center"><strong>Jum'at</strong></td>
                 </tr>
@@ -169,7 +169,7 @@
           </div>
 
            <div class="col-md-4">
-           <table class="table table-bordered" style="width:80%">
+           <table class="table table-bordered" style="width:80%;font-size:10px">
                 <tr  align="center">
                   <td colspan="5" align="center"><strong>Sabtu</strong></td>
                 </tr>
