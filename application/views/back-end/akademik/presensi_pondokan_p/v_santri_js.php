@@ -4,7 +4,7 @@
 
    $(".hapus").click(function (e) {
     var v_id = this.id;
-    var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
+    var v_idkelasbelajar = "<?php echo $santriwati['id_kelas_belajar'] ?>";
     $.confirm({
         title: 'Hapus!',
         content: 'Yakin ingin menghapus ?',
@@ -13,7 +13,7 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/santriakd/hapuskelassantripondokan?id="+v_id+"&idkelas="+v_idkelasbelajar);
+                    window.location.assign("<?php echo base_url() ?>admin/santriwatiakd/hapuskelassantripondokan?id="+v_id+"&idkelas="+v_idkelasbelajar);
                 }
             },
             batal: function () {
@@ -25,8 +25,8 @@
 
     // Form Tambah Stock
     $("#tambahsantri").click(function(e) {
-        var v_url = "<?php echo base_url() ?>admin/santriakd/kelastambahsantripondokan";
-        var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
+        var v_url = "<?php echo base_url() ?>admin/santriwatiakd/kelastambahsantripondokan";
+        var v_idkelasbelajar = "<?php echo $santriwati['id_kelas_belajar'] ?>";
         $.ajax({
 				type: 'POST',
 				url: v_url,
@@ -42,8 +42,8 @@
                 complete: function () {
                     $('.chosen-select').chosen({width: "inherit"})
                     $('#tambahsantriproses').click(function (e) {
-                        var v_url = "<?php echo base_url() ?>admin/santriakd/tambahsantripondokproses";
-                        var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
+                        var v_url = "<?php echo base_url() ?>admin/santriwatiakd/tambahsantripondokproses";
+                        var v_idkelasbelajar = "<?php echo $santriwati['id_kelas_belajar'] ?>";
                         var v_nis = $('#nis_lokal').val();
                         $.ajax({
                             type: 'POST',
@@ -66,7 +66,7 @@
                                 $('body').removeClass('modal-open');
                                 $('body').css('padding-right', '');
                                 $("#myModal").hide();
-                                window.location.assign("<?php echo base_url() ?>admin/santriakd/lihatkelaspondokansantri?id=<?php echo $santri['id_kelas_belajar'] ?>&msg=1")
+                                window.location.assign("<?php echo base_url() ?>admin/santriwatiakd/lihatkelaspondokansantri?id=<?php echo $santriwati['id_kelas_belajar'] ?>&msg=1")
                                 //isidata();
                                 //pesanpop('Pesan !', 'Berhasil menambah data Gudang.', 'success')
                             }
@@ -80,8 +80,8 @@
 
 
     $(".editsantri").click(function(e) {
-        var v_url = "<?php echo base_url() ?>admin/santriakd/kelaseditsantripondokan";
-        var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
+        var v_url = "<?php echo base_url() ?>admin/santriwatiakd/kelaseditsantripondokan";
+        var v_idkelasbelajar = "<?php echo $santriwati['id_kelas_belajar'] ?>";
         var v_id = this.id;
         $.ajax({
 				type: 'POST',
@@ -100,8 +100,8 @@
                 complete: function () {
                     $('.chosen-select').chosen({width: "inherit"});
                     $('#editsantriproses').click(function (e) {
-                        var v_url = "<?php echo base_url() ?>admin/santriakd/editsantripondokanproses";
-                        var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
+                        var v_url = "<?php echo base_url() ?>admin/santriwatiakd/editsantripondokanproses";
+                        var v_idkelasbelajar = "<?php echo $santriwati['id_kelas_belajar'] ?>";
                         var v_nis = $('#nis_lokal').val();
                         var v_id_kelas_santri = $('#id_kelas_santri').val();
                         $.ajax({
@@ -126,7 +126,7 @@
                                 $('body').removeClass('modal-open');
                                 $('body').css('padding-right', '');
                                 $("#myModal").hide();
-                                window.location.assign("<?php echo base_url() ?>admin/santriakd/lihatkelaspondokansantri?id=<?php echo $santri['id_kelas_belajar'] ?>&ed=1")
+                                window.location.assign("<?php echo base_url() ?>admin/santriwatiakd/lihatkelaspondokansantri?id=<?php echo $santriwati['id_kelas_belajar'] ?>&ed=1")
                                 //isidata();
                                 //pesanpop('Pesan !', 'Berhasil menambah data Gudang.', 'success')
                             }

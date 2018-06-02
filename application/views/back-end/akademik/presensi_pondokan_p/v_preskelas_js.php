@@ -12,7 +12,7 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/santriakd/hapuskelaspondokan?id="+v_id);
+                    window.location.assign("<?php echo base_url() ?>admin/santriwatiakd/hapuskelaspondokan?id="+v_id);
                 }
             },
             batal: function () {
@@ -25,7 +25,7 @@
 
 
     $(".edit").click(function(e) {
-        var v_url = "<?php echo base_url() ?>admin/santriakd/kelaseditpondokan";
+        var v_url = "<?php echo base_url() ?>admin/santriwatiakd/kelaseditpondokan";
         var v_id = this.id;
         $.ajax({
 				type: 'POST',
@@ -42,7 +42,7 @@
 				},
                 complete: function () {
                     $('#editpondokanproses').click(function (e) {
-                        var v_url = "<?php echo base_url() ?>admin/santriakd/editpondokanproses";
+                        var v_url = "<?php echo base_url() ?>admin/santriwatiakd/editpondokanproses";
                         var v_status_kelas = $('#status_kelas').val();
                         var v_id_kelas_belajar = $('#id_kelas_belajar').val();
                         $.ajax({
@@ -60,7 +60,7 @@
                             },
                             success: function (response) {
 
-                                window.location.assign("<?php echo base_url() ?>admin/santriakd/datakelaspondokan?ed=1")
+                                window.location.assign("<?php echo base_url() ?>admin/santriwatiakd/datakelaspondokan?ed=1")
                             }
                         });
 
@@ -73,7 +73,7 @@
     $('#pondokan').change(function(){
         var id=$(this).val();
         $.ajax({
-            url : "<?php echo base_url();?>admin/santriakd/datatingkatpondokan",
+            url : "<?php echo base_url();?>admin/santriwatiakd/datatingkatpondokan",
             method : "POST",
             data : {pondokan: id},
             async : false,

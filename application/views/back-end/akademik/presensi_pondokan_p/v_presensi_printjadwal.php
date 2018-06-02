@@ -3,10 +3,10 @@
 
   <section class="vbox bg-white">
     <header class="header b-b b-light hidden-print">
-      <a href="<?php echo base_url() ?>admin/santriakd/datakelaspondokan" class="btn btn-sm btn-warning pull-right">Kembali</a>
+      <a href="<?php echo base_url() ?>admin/santriwatiakd/datakelaspondokan" class="btn btn-sm btn-warning pull-right">Kembali</a>
       <p class="pull-right"></p>
       <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>&nbsp;&nbsp;
-      <p>Daftar Presensi Santri</p>
+      <p>Daftar Presensi santriwati</p>
     </header>
 
     <section class="scrollable wrapper">
@@ -65,7 +65,7 @@
         <tbody>
           <?php
           $i = 1;
-          foreach($santri->result_array() as $row){
+          foreach($santriwati->result_array() as $row){
 
             echo "
               <tr>
@@ -117,12 +117,12 @@
         <div class="row">
           <div class="col-xs-2">
             <p>
-              Total Santri  <br><br>
+              Total santriwati  <br><br>
             </p>
           </div>
           <div class="col-xs-7">
             <p>
-              : <?php echo $santri->num_rows() ?> <br>
+              : <?php echo $santriwati->num_rows() ?> <br>
             </p>
           </div>
           <div class="col-xs-3">

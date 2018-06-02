@@ -13,7 +13,7 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/santriakd/hapusjadwalpondokan?id="+v_id+"&idkelas="+v_idkelasbelajar);
+                    window.location.assign("<?php echo base_url() ?>admin/santriwatiakd/hapusjadwalpondokan?id="+v_id+"&idkelas="+v_idkelasbelajar);
                 }
             },
             batal: function () {
@@ -25,7 +25,7 @@
 
     // Form Tambah Stock
     $("#tambahjadwal").click(function(e) {
-        var v_url = "<?php echo base_url() ?>admin/santriakd/tambahjadwalpondokan";
+        var v_url = "<?php echo base_url() ?>admin/santriwatiakd/tambahjadwalpondokan";
         var v_idkelasbelajar = "<?php echo $jadwal['id_kelas_belajar'] ?>";
         $.ajax({
 				type: 'POST',
@@ -42,7 +42,7 @@
                 complete: function () {
                     $('.chosen-select').chosen({width: "362px"})
                     $('#tambahjadwalproses').click(function (e) {
-                        var v_url = "<?php echo base_url() ?>admin/santriakd/tambahjadwalpondokanproses";
+                        var v_url = "<?php echo base_url() ?>admin/santriwatiakd/tambahjadwalpondokanproses";
                         var v_idkelasbelajar = "<?php echo $jadwal['id_kelas_belajar'] ?>";
                         var v_mata_pelajaran = $('#mata_pelajaran').val();
                         var v_hari = $('#hari').val();
@@ -70,7 +70,7 @@
                                 $('body').removeClass('modal-open');
                                 $('body').css('padding-right', '');
                                 $("#myModal").hide();
-                                window.location.assign("<?php echo base_url() ?>admin/santriakd/jadwalpondokan?id=<?php echo $jadwal['id_kelas_belajar'] ?>&msg=1")
+                                window.location.assign("<?php echo base_url() ?>admin/santriwatiakd/jadwalpondokan?id=<?php echo $jadwal['id_kelas_belajar'] ?>&msg=1")
                                 //isidata();
                                 //pesanpop('Pesan !', 'Berhasil menambah data Gudang.', 'success')
                             }
@@ -84,7 +84,7 @@
 
 
     $(".editjadwal").click(function(e) {
-        var v_url = "<?php echo base_url() ?>admin/santriakd/editjadwalpondokan";
+        var v_url = "<?php echo base_url() ?>admin/santriwatiakd/editjadwalpondokan";
         var v_idkelasbelajar = "<?php echo $jadwal['id_kelas_belajar'] ?>";
         var v_id = this.id;
         $.ajax({
@@ -104,7 +104,7 @@
                 complete: function () {
                     $('.chosen-select').chosen({width: "362px"});
                     $('#editjadwalproses').click(function (e) {
-                        var v_url = "<?php echo base_url() ?>admin/santriakd/editjadwalpondokanproses";
+                        var v_url = "<?php echo base_url() ?>admin/santriwatiakd/editjadwalpondokanproses";
                         var v_idkelasbelajar = "<?php echo $jadwal['id_kelas_belajar'] ?>";
                         var v_mata_pelajaran = $('#mata_pelajaran').val();
                         var v_jam = $('#jam').val();
@@ -132,7 +132,7 @@
                                 $('body').removeClass('modal-open');
                                 $('body').css('padding-right', '');
                                 $("#myModal").hide();
-                                window.location.assign("<?php echo base_url() ?>admin/santriakd/jadwalpondokan?id=<?php echo $jadwal['id_kelas_belajar'] ?>&ed=1")
+                                window.location.assign("<?php echo base_url() ?>admin/santriwatiakd/jadwalpondokan?id=<?php echo $jadwal['id_kelas_belajar'] ?>&ed=1")
                                 //isidata();
                                 //pesanpop('Pesan !', 'Berhasil menambah data Gudang.', 'success')
                             }
