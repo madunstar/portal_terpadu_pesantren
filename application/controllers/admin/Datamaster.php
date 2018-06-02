@@ -41,6 +41,7 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_rekap_guru');
         $this->load->model('back-end/datamaster/m_rekap_guru_p');
         $this->load->model('back-end/datamaster/m_rekap_guru_pondokan');
+        $this->load->model('back-end/datamaster/m_rekap_guru_pondokan_p');
         $this->load->model('back-end/datamaster/m_akun_ortu');
         $this->load->model('back-end/datamaster/m_pak_pondokan');
         $this->load->model('back-end/datamaster/m_pak_afilasi');
@@ -2732,6 +2733,86 @@ function kecamatanhapus()
      $variabel['santrialfa'] = $this->m_rekap_santri_pondokan_p->totalalfa($kel,$pel,$tgl);
        $this->layout->renderlaporan('back-end/presensi_p/rekap_presensi_pondokan/v_lap_rekap_harian',$variabel,'back-end/presensi_p/rekap_presensi_pondokan/v_rekap_js');
    }
+
+   //pondokan santriwati guru//
+   function datarekapgurupondokanp(){
+     $pel = $this->input->get('pelajaran');
+     $kel = $this->input->get('kelas');
+     $tgl = $this->input->get('tanggal');
+     $nip = $this->input->get('guru');
+      $variabel['data'] = $this->m_rekap_guru_pondokan_p->rekapguru($pel,$kel);
+      $variabel['tanggal'] = $tgl;
+      $variabel['kelas'] = $kel;
+      $variabel['pelajaran'] = $pel;
+      $variabel['nip_guru'] =$nip;
+      $variabel['namakelas'] = $this->m_rekap_guru_pondokan_p->kelas($kel);
+      $variabel['matpel'] = $this->m_rekap_guru_pondokan_p->pelajaran($pel);
+      $variabel['guru'] = $this->m_rekap_guru_pondokan_p->dataguru($nip);
+      $this->layout->render('back-end/presensi_p/rekap_presensi_pondokan/v_data_rekap_guru',$variabel,'back-end/presensi_p/rekap_presensi_pondokan/v_rekap_js');
+   }
+
+   function tambahrekapgurupondokanp(){
+     if ($this->input->post()){
+       $array = array(
+         'id_pelajaran' => $this->input->post('pel'),
+         'id_kelas' => $this->input->post('kel'),
+         'status_presensi' => $this->input->post('status'),
+         'nip_guru' => $this->input->post('nip'),
+         'tanggal_rekap' => $this->input->post('tanggal_rekap')
+       );
+      $today = date('Y-m-d');
+      $tglr = $this->input->post('tanggal_rekap');
+     $tgl = $this->input->post('tgl');
+     $kel = $this->input->post('kel');
+     $pel = $this->input->post('pel');
+     $jdw = $this->input->post('jdw');
+     $nip = $this->input->post('nip');
+     if ($tglr > $today) {
+       redirect(base_url("admin/datamaster/datarekapgurupondokanp?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&psn=0"));
+     } else{
+       $exec = $this->m_rekap_guru_pondokan_p->tambahdata($array);
+       if ($exec){
+         redirect(base_url("admin/datamaster/datarekapgurupondokanp?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&msg=1"));
+       } else{
+         redirect(base_url("admin/datamaster/datarekapgurupondokanp?kelas=$kel&pelajaran=$pel&tanggal=$tgl&guru=$nip&msg=0"));
+       }
+      }
+     }
+   }
+
+   function hapusrekapgurupondokanp(){
+     $id_rekap = $this->input->get('id');
+     $jdw = $this->input->get('jadwal');
+     $tgl = $this->input->get('tanggal');
+     $kel = $this->input->get('kelas');
+     $pel = $this->input->get('pelajaran');
+     $nip = $this->input->get('guru');
+     $exec = $this->m_rekap_guru_pondokan_p->hapus($id_rekap);
+     redirect(base_url("admin/datamaster/datarekapgurupondokanp?kelas=$kel&pelajaran=$pel&tanggal=$tgl&jadwal=$jdw&guru=$nip&psn=1"));
+   }
+
+   function laporanrekapgurupondokanp(){
+     $jdw = $this->input->get('jadwal');
+     $tgl = $this->input->get('tanggal');
+     $kel = $this->input->get('kelas');
+     $pel = $this->input->get('pelajaran');
+     $nip = $this->input->get('guru');
+      $variabel['data'] = $this->m_rekap_guru_pondokan_p->rekapguru($pel,$kel);
+      $variabel['tanggal'] = $tgl;
+      $variabel['kelas'] = $kel;
+      $variabel['pelajaran'] = $pel;
+      $variabel['jadwal'] = $jdw;
+      $variabel['nip_guru'] =$nip;
+      $variabel['namakelas'] = $this->m_rekap_guru_pondokan_p->kelas($kel);
+      $variabel['matpel'] = $this->m_rekap_guru_pondokan_p->pelajaran($pel);
+      $variabel['guru'] = $this->m_rekap_guru_pondokan_p->dataguru($nip);
+      $variabel['guruhadir'] = $this->m_rekap_guru_pondokan_p->totalhadir($pel,$kel);
+      $variabel['guruizin'] = $this->m_rekap_guru_pondokan_p->totalizin($pel,$kel);
+      $variabel['gurusakit'] = $this->m_rekap_guru_pondokan_p->totalsakit($pel,$kel);
+      $variabel['gurualfa'] = $this->m_rekap_guru_pondokan_p->totalalfa($pel,$kel);
+      $this->layout->renderlaporan('back-end/presensi_p/rekap_presensi_pondokan/v_lap_rekap_guru',$variabel,'back-end/presensi_p/rekap_presensi_pondokan/v_rekap_js');
+   }
+   //akhir rekap guru//
    ///////////////////////////mulai rekap presensi santri kelas afilasi//
 
    function pelajaranrekap(){
