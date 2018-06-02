@@ -50,7 +50,7 @@
                            <b>Apakah yakin menghapus data?</b>
                          </div>
                          <div class='modal-footer'>
-                           <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusrekapguru?id='.$row['id_rekap'].'&kelas='.$kelas.'&pelajaran='.$pelajaran.'&tanggal='.$tanggal.'&guru='.$nip_guru.'')."'>
+                           <a style='margin-left:5px' href='".base_url('admin/datamaster/hapusrekapgurup?id='.$row['id_rekap'].'&kelas='.$kelas.'&pelajaran='.$pelajaran.'&tanggal='.$tanggal.'&guru='.$nip_guru.'')."'>
                            <button type='button' class='btn btn-sm btn-danger'>Konfirmasi</button></a>
                            <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                          </div>
@@ -64,8 +64,8 @@
         </table>
       </div>
       <footer class="panel-footer text-right">
-        <a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekap" type="button" class="btn btn-default" name="button"><i class="fa fa-list"></i> Daftar Pelajaran</a>
-        <a href="<?php echo base_url() ?>admin/datamaster/laporanrekapguru?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>&guru=<?php echo $nip_guru ?>" type="button" class="btn btn-primary" name="button"><i class="fa fa-print"></i> Cetak Rekap Kehadiran</a>
+        <a href="<?php echo base_url() ?>admin/datamaster/pelajaranrekapp" type="button" class="btn btn-default" name="button"><i class="fa fa-list"></i> Daftar Pelajaran</a>
+        <a href="<?php echo base_url() ?>admin/datamaster/laporanrekapgurup?kelas=<?php echo $kelas ?>&pelajaran=<?php echo $pelajaran ?>&tanggal=<?php echo $tanggal ?>&guru=<?php echo $nip_guru ?>" type="button" class="btn btn-primary" name="button"><i class="fa fa-print"></i> Cetak Rekap Kehadiran</a>
       </footer>
     </section>
     <!-- ini tambah data -->
@@ -81,7 +81,7 @@
            <h4 class='modal-title'>Tambah Rekap Santri</h4>
          </div>
          <div class='modal-body'>
-                  <form class="form-horizontal mb-lg" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/tambahrekapguru" method="post">
+                  <form class="form-horizontal mb-lg" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/tambahrekapgurup" method="post">
                     <div class="form-group">
                       <label class="col-sm-3 control-label" for="input-id-1">Guru</label>
                       <div class="col-sm-8">
