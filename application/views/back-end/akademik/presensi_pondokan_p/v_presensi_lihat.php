@@ -13,7 +13,7 @@
 							<h4 class="font-bold">Lihat Data Presensi Kelas Pondokan</h4>
 						</header>
 						<div class="panel-body">
-							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriakd/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>"
+							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriwatiakd/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>"
 							method="post">
 								<div class="row">
 									<div class="col-sm-12">
@@ -100,21 +100,21 @@
 									<div class="col-sm-12">
 											<hr/>
 											<div class="text-center" style="margin-bottom:10px">
-												<a href="<?php echo base_url() ?>admin/santriakd/lihatkelaspondokansantri?id=<?php echo $data['id_kelas_belajar'] ?>" class="btn btn-default" margin="auto"><i class="fa fa-edit"></i> Edit Daftar Santri</a>
+												<a href="<?php echo base_url() ?>admin/santriwatiakd/lihatkelaspondokansantri?id=<?php echo $data['id_kelas_belajar'] ?>" class="btn btn-default" margin="auto"><i class="fa fa-edit"></i> Edit Daftar santriwati</a>
 											</div>
 											<table class="table" style="width:80%" align="center">
 												<thead>
 													<tr>
 													<th>NIS Lokal</th>
 													<th>NISN</th>
-													<th>Nama Santri</th>
+													<th>Nama santriwati</th>
 													<th>Tanggal Lahir</th>
 													<th>Jenis Kelamin</th>
 													</tr>
 												</thead>
 												<tbody>
 													<?php
-														foreach($santri->result_array() as $row){
+														foreach($santriwati->result_array() as $row){
 														echo "
 															<tr>
 															<td>".$row['nis_lokal']."</td>
@@ -131,10 +131,10 @@
 									</div>
 								</div>
 								<footer class="panel-footer text-right bg-light lter">
-									<a href="<?php echo base_url() ?>admin/santriakd/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>" type="submit" class="btn btn-success btn-s-xs">
+									<a href="<?php echo base_url() ?>admin/santriwatiakd/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>" type="submit" class="btn btn-success btn-s-xs">
 										<i class="fa fa-save"></i> Edit</a>
 									&nbsp
-									<a href="<?php echo base_url('admin/santriakd/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
+									<a href="<?php echo base_url('admin/santriwatiakd/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
 										<i class="fa fa-list"></i> List Kelas Belajar</a>
 							</form>
 							</footer>

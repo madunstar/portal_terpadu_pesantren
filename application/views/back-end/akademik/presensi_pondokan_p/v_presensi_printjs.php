@@ -5,7 +5,7 @@
        if (id==null) {
 
        } else {
-        window.open("<?php echo base_url() ?>admin/santriakd/printjadwalpondokan?id="+id+"", '_blank');
+        window.open("<?php echo base_url() ?>admin/santriwatiakd/printjadwalpondokan?id="+id+"", '_blank');
        }
    });
 

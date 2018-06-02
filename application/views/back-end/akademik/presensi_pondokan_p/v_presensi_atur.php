@@ -15,7 +15,7 @@
 						</header>
 						<div class="panel-body">
 							<?php pesan_get('msg',"Berhasil Menambahkan  Data Kelas Belajar","Gagal Menambah Data Kelas Belajar") ?>
-							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriakd/aturkelaspondokan"
+							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriwatiakd/aturkelaspondokan"
 							method="post">
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Nama Kelas</label>
@@ -102,7 +102,7 @@
 							<button type="submit" class="btn btn-success btn-s-xs">
 								<i class="fa fa-save"></i> Simpan</button>
 							&nbsp
-							<a href="<?php echo base_url('admin/santriakd/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
+							<a href="<?php echo base_url('admin/santriwatiakd/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
 								<i class="fa fa-list"></i> List Kelas Belajar</a>
 							</form>
 

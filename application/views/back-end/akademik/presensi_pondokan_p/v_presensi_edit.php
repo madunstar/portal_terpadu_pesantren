@@ -14,7 +14,7 @@
 						</header>
 						<div class="panel-body">
            					 <?php pesan_get('msg',"Berhasil Mengedit Kelas Belajar","Gagal Mengedit Kelas Belajar") ?>
-							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriakd/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>" method="post">
+							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriwatiakd/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>" method="post">
 							<input type="hidden" class="form-control" name="id_kelas_belajar" data-required="true" value="<?php echo $data['id_kelas_belajar'] ?>" />
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Nama Kelas</label>
@@ -100,7 +100,7 @@
 							<button type="submit" class="btn btn-success btn-s-xs">
 								<i class="fa fa-save"></i> Simpan</button>
 							&nbsp
-							<a href="<?php echo base_url('admin/santriakd/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
+							<a href="<?php echo base_url('admin/santriwatiakd/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
 								<i class="fa fa-list"></i> List Kelas Belajar</a>
 							</form>
 						</footer>

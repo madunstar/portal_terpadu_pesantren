@@ -15,7 +15,7 @@
         <?php pesan_get('ed',"Berhasil Mengedit Jadwal","Gagal Mengedit Jadwal") ?>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="margin: 10px 0 10px 10px" id="tambahjadwal">
         <i class="fa fa-plus"></i> Tambah Jadwal</button> &nbsp
-        <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/santriakd/datakelaspondokan" class="btn btn-s-md btn-default" ><i class="fa fa-arrow-left"></i> Kembali</a>
+        <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/santriwatiakd/datakelaspondokan" class="btn btn-s-md btn-default" ><i class="fa fa-arrow-left"></i> Kembali</a>
         <div class="row">
         <div class="col-md-12" style="margin:10px">
         <div class="row">
