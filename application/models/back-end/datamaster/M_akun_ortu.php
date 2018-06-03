@@ -43,6 +43,13 @@ class M_akun_ortu extends CI_Model
     //     }
     // }
 
+    function tambahjenisakun()
+    {
+        return $this->db->query('UPDATE tb_akun_ortu RIGHT JOIN tb_santri ON nis_lokal = id_ortu
+                          SET jenis_akun = IF(jenis_kelamin = "L", "santri", IF(jenis_kelamin = "P", "santriwati", jenis_akun))
+                          WHERE jenis_akun = ""');
+    }
+
     function tambahdata($array)
     {
         return $this->db->insert('tb_akun_ortu',$array);

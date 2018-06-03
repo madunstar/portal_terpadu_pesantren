@@ -14,7 +14,7 @@
               <h4 class="font-bold">Data Santri Keluar Pondok</h4>
             </header>
             <div class="panel-body">
-            <a href="<?php echo base_url() ?>admin/perizinansantriwati/keluar"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Buat perizinansantriwati Keluar</button></a>
+            <a href="<?php echo base_url() ?>admin/perizinansantriwati/keluar"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Buat Perizinan Santriwati Keluar</button></a>
               <div class="table-responsive">
                 <?php pesan_get('msg',"Berhasil Menghapus Izin Keluar","Gagal Menghapus Izin Keluar") ?>
                 <table class="table table-striped m-b-none" id="datatable">
@@ -23,8 +23,8 @@
                       <th>No</th>
                       <th>NIS</th>
                       <th>Nama</th>
-
                       <th>Tanggal Keluar</th>
+                      <th>Tanggal Rencana Kembali</th>
                       <th>Keperluan</th>
                       <th>Penjemput</th>
                       <th>Status Keluar</th>
@@ -40,8 +40,8 @@
                             <td>".$i."</td>
                             <td>".$row['nis_santri']."</td>
                             <td>".$row['nama_lengkap']."</td>
-                          
                             <td>".$row['tanggal_keluar']."</td>
+                            <td>".$row['harus_kembali']."</td>
                             <td>".$row['keperluan']."</td>
                             <td>".$row['nama_penjemput']."</td>
                             <td>".$row['status_keluar']."</td>

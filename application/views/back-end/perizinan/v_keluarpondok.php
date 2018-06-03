@@ -60,7 +60,7 @@
                       </div>
                 </div>
                 <div class="form-group">
-                      <label class="col-sm-1 control-label">Tanggal keluar</label>
+                      <label class="col-sm-1 control-label">Tanggal Keluar</label>
                       <div class="col-sm-10">
                         <input type="text" class="input-sm input-s form-control" name="tanggal_keluar" id="tanggal_keluar" placeholder="Tanggal Keluar" readonly/>
                       </div>

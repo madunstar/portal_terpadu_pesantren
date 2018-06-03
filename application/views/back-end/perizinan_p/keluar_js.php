@@ -16,6 +16,58 @@ $(document).ready(function(){
 
   $('#hapus').attr('disabled','disabled');
   $('#proses').attr('disabled','disabled');
+
+  // $( function() {
+  //   $( "#harus_kembali" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
+  // } );
+  //var TanggalIni = new Date();
+  var nowDate = new Date();
+  var FromEndDate = new Date();
+  var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
+
+  $("#harus_kembali").datepicker({
+    format: 'yyyy-mm-dd'
+    // startDate: '2014-08-01',
+		// endDate: '2014-08-15'
+  })
+  // }).on('changeDate', function(selected){
+  //       FromEndDate = new Date(selected.date.valueOf());
+  //       FromEndDate.setDate(FromEndDate.getDate(new Date(selected.date.valueOf())));
+  //     });
+
+
+//   $('.datepicker').datepicker({
+//     format: 'mm/dd/yyyy',
+//     startDate: '-3d'
+// });
+  //$("#harus_kembali").datepicker({ minDate:0});
+
+  //var TanggalIni = new Date();
+  //$("#harus_kembali").datepicker();
+
+  // $(function() {
+  //     $( "#harus_kembali" ).datepicker({
+  //         numberOfMonths: 3,
+  //         showButtonPanel: true,
+  //         minDate: TanggalIni
+  //     });
+  // });
+
+  // var dates = $("#harus_kembali").datetimepicker({
+  //   defaultDate: "+1w",
+  //   changeMonth: true,
+  //   numberOfMonths: 3,
+  //   minDate: TanggalIni,
+  //   maxDate: "06/09/2018",
+  //   onSelect: function(selectedDate) {
+  //       var option = this.id == "harus_kembali" ? "minDate" : "maxDate",
+  //           instance = $(this).data("datepicker"),
+  //           date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+  //       dates.not(this).datepicker("option", option, date);
+  //   }
+  // });
+
+
   $('#Lanjutkan').click(function(){
     var angka = /^[0-9]+$/;
     var nis=$('#nis_santri').val();
@@ -50,6 +102,7 @@ $(document).ready(function(){
     //   alert("NIS terdiri dari 13 digit !");
     //   return false;
     // }
+
     $.ajax({
       url: "<?php echo base_url();?>admin/perizinansantriwati/ceknissantri",
       type: "POST",

@@ -64,7 +64,7 @@
       <footer class="panel-footer text-right bg-light lter">
       <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
       &nbsp
-      <a href="<?php echo base_url() ?>orangtua/portalortusantri/ubahsandi?id=<?php echo $data['id_ortu']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
+      <a href="<?php echo base_url() ?>orangtua/portalortusantriwati/ubahsandi?id=<?php echo $data['id_ortu']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
       </footer>
       </form>
 

@@ -11,8 +11,8 @@
                 <img src="<?php echo base_url('assets/images/logo.png'); ?>" alt="">
               </div>
               <a class="navbar-brand block" href="index.html">LOGIN PORTAL ORANGTUA PESANTREN DARUL ILMI</a>
-              <?php pesan_get('msg',"Sukses","Akun Portal Orangtua Tidak Terdaftar! Silahkan Masuk ke Halaman Pendaftaran","ID dan Kata Sandi tidak cocok") ?>
-              <?php pesan_get('msgid',"Sukses","Akun Portal Orangtua Tidak Aktif! Silahkan Hubungi Staff Administrasi","Error") ?>
+              <?php pesan_get('msg',"Sukses","Akun Portal Orangtua <b>Tidak Terdaftar!</b> Silahkan Hubungi Staff Administrasi","ID dan Kata Sandi tidak cocok") ?>
+              <?php pesan_get('msgid',"Sukses","Akun Portal Orangtua <b>Tidak Aktif!</b> Silahkan Hubungi Staff Administrasi","Error") ?>
               <form  action="<?php echo base_url()?>orangtua/login/ceklogin" method="post" data-validate="parsley">
                 <div class="list-group">
                   <div class="list-group-item">

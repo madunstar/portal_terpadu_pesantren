@@ -4727,6 +4727,7 @@ function pakafilasiedit()
 /////akun ortu santri/////////////
 
 function dataakunortu(){
+  $exec = $this->m_akun_ortu->tambahjenisakun();
   $variabel['data'] = $this->m_akun_ortu->lihatdata();
   $this->layout->render('back-end/datamaster/ortu/v_akun_ortu',$variabel,'back-end//datamaster/ortu/v_akun_ortu_js');
 }
@@ -4734,7 +4735,7 @@ function dataakunortu(){
 function buatakunortu(){
   $array= array(
     'id_ortu' => $this->input->post('id'),
-    'kata_sandi' => $this->input->post('sandi'),
+    'kata_sandi' => md5($this->input->post('sandi')),
     'email_ortu' => $this->input->post('email'),
     'status_akun' => 'aktif'
   );
@@ -4765,7 +4766,7 @@ function akunortunonaktif(){
 function resetsandiortu(){
   $id = $this->input->get('id');
   $array = array(
-    'kata_sandi' => $id
+    'kata_sandi' => md5($id)
   );
 
   $exec = $this->m_akun_ortu->editdata($id,$array);

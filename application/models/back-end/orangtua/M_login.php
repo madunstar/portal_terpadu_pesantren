@@ -5,12 +5,6 @@ class M_login extends CI_Model{
     $this->load->database();
   }
 
-  // function ceklogin($data)
-  // {
-  //   $query = $this->db->get_where('tb_akun_ortu', $data);
-  //   return $query;
-  // }
-
   function cekid($id_ortu){
     $this->db->select('*');
     $this->db->from('tb_akun_ortu');
