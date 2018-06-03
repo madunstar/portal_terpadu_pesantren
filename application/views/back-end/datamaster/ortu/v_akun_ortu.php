@@ -16,11 +16,11 @@
         <table class="table table-striped " id="datatable">
           <thead>
             <tr>
-
-              <th>ID Orangtua atau Wali</th>
+              <th>ID Orangtua</th>
+              <th>Nama Orangtua</th>
               <th>Alamat Email</th>
+              <th>Jenis Akun</th>
               <th>Status Akun</th>
-
             </tr>
           </thead>
           <tbody>
@@ -28,7 +28,9 @@
                 foreach($data->result_array() as $row){ ?>
                     <tr>
                       <td><?php echo $row['nis_lokal'] ?></td>
+                      <td><?php echo $row['nama_ortu'] ?></td>
                       <td><?php echo $row['email_ortu'] ?></td>
+                      <td><?php echo $row['jenis_akun'] ?></td>
                       <td><?php echo
                           (($row['status_akun'] == 'aktif' ) ? '<a href="'.base_url("admin/datamaster/akunortunonaktif?id=".$row["nis_lokal"]."").'" class="btn btn-success btn-xs" >Aktif</a> <a href="'.base_url("admin/datamaster/resetsandiortu?id=".$row["nis_lokal"]."").'" class="btn btn-warning btn-xs" >Reset Sandi</a>'
                           : (($row['status_akun'] == 'tidak aktif') ? '<a href="'.base_url("admin/datamaster/akunortuaktif?id=".$row["nis_lokal"]."").'" class="btn btn-warning btn-xs" >Tidak Aktif</a>'

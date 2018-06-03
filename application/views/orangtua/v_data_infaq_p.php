@@ -11,7 +11,7 @@
         <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
-              <h4 class="font-bold">Data Infaq Santri</h4>
+              <h4 class="font-bold">Data Infaq Santriwati</h4>
             </header>
             <div class="panel-body">
 

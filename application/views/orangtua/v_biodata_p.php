@@ -2,15 +2,15 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Santri</h3>
+      <h3 class="m-b-none">Santriwati</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Lihat Santri
+        Lihat Santriwati
       </header>
       <div class="panel-body">
        <form class="bs-example form-horizontal" data-validate="parsley" action="" method="">
-       <a href="<?php echo base_url('orangtua/portalortusantri/dashboard') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
+       <a href="<?php echo base_url('orangtua/portalortusantriwati/dashboard') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -53,7 +53,7 @@
               <label class="col-lg-4 control-label">Jenis Kelamin</label>
               <div class="col-lg-8">
                 <select class="form-control"  name="jenis_kelamin" readonly/>
-                  <option value="L" <?php if ($data['jenis_kelamin']=="L")  echo "selected" ?> >Laki-laki</option>
+                  <option value="L" <?php if ($data['jenis_kelamin']=="P")  echo "selected" ?> >Perempuan</option>
                 </select>
               </div>
             </div>

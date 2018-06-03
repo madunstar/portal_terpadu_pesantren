@@ -91,7 +91,7 @@
                 <table class="table table-bordered">
                   <thead>
                     <th>Tanggal Izin</th>
-                    <th>keperluan</th>
+                    <th>Keperluan</th>
                     <th>Penjemput</th>
                     <th>Status izin</th>
                   </thead>

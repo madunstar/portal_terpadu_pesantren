@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class portal_ortu extends CI_Controller {
+class Portalortusantri extends CI_Controller {
   public $id = '';
   public function __construct(){
     parent::__construct();
@@ -18,17 +18,22 @@ class portal_ortu extends CI_Controller {
     if ($this->session->userdata('id_ortu')=='') {
         redirect('orangtua/login');
     }
+    else if ($this->session->userdata('jenis_akun') == 'santriwati') {
+        redirect('orangtua/portalortusantriwati/dashboard');
+    }
   }
 
   public function index(){
     $variabel['nama_ortu'] = $this->session->userdata('nama_ortu');
     $variabel['id_ortu'] = $this->session->userdata('id_ortu');
-    redirect(base_url('orangtua/portal_ortu/dashboard'));
+    $variabel['jenis_akun'] = $this->session->userdata('jenis_akun');
+    redirect(base_url('orangtua/portalortusantri/dashboard'));
   }
 
   function logout(){
     $this->session->unset_userdata('id_ortu');
     $this->session->unset_userdata('nama_ortu');
+    $this->session->unset_userdata('jenis_akun');
     session_destroy();
     redirect('orangtua/login');
   }
@@ -57,7 +62,7 @@ class portal_ortu extends CI_Controller {
           } else {
               $exec = $this->m_dashboard->ubahsandi($id_ortu,$kata_sandi,$kata_sandibr);
               if ($exec){
-                  redirect(base_url('orangtua/portal_ortu/ubahsandi?id='.$id_ortu.'&msg=1'));
+                  redirect(base_url('orangtua/portalortusantri/ubahsandi?id='.$id_ortu.'&msg=1'));
               }
           }
       } else {
@@ -66,7 +71,7 @@ class portal_ortu extends CI_Controller {
               $variabel['data'] = $exec->row_array();
               $this->layout_ortu->render('orangtua/v_ubah_sandi',$variabel);
           } else {
-              redirect(base_url('orangtua/portal_ortu/dashboard'));
+              redirect(base_url('orangtua/portalortusantri/dashboard'));
           }
       }
   }
@@ -98,7 +103,7 @@ class portal_ortu extends CI_Controller {
         $variabel['tingkatpondokan'] = $this->m_biodatasantri->lihattingkatanpondokan($this->id); ;
         $this->layout_ortu->render('orangtua/v_biodata',$variabel,'orangtua/v_orangtua_js');
     } else {
-        redirect(base_url('santri/orangtua/biodata'));
+        redirect(base_url('orangtua/portalortusantri/dashboard'));
     }
   }
 
