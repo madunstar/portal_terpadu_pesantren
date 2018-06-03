@@ -4798,7 +4798,7 @@ function tambahinformasi()
           else redirect(base_url("admin/datamaster/tambahinformasi?msg=0"));
   } else {
     $variabel= '';
-    $this->layout->render('back-end/informasi/v_tambahinformasi',$variabel,'back-end/informasi/informasi_js');
+    $this->layout->render2('back-end/informasi/v_tambahinformasi',$variabel,'back-end/informasi/informasi_js');
   }
 }
 
@@ -4820,7 +4820,7 @@ function editinformasi()
         $exec =$this->m_informasi->data($id_pengumuman);
         if ($exec->num_rows()>0){
             $variabel['data'] = $exec ->row_array();
-            $this->layout->render('back-end/informasi/v_editinformasi',$variabel,'back-end/informasi/informasi_js');
+            $this->layout->render2('back-end/informasi/v_editinformasi',$variabel,'back-end/informasi/informasi_js');
     }
     }
 }
