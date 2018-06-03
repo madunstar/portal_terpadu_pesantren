@@ -17,13 +17,12 @@
             <a href="<?php echo base_url() ?>admin/perizinan/keluar"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Buat Perizinan Keluar</button></a>
               <div class="table-responsive">
                 <?php pesan_get('msg',"Berhasil Menghapus Izin Keluar","Gagal Menghapus Izin Keluar") ?>
-                <table class="table table-striped m-b-none" id="datatable">
+                <table class="table table-striped" id="datatable">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th style="width:10px">No</th>
                       <th>NIS</th>
                       <th>Nama</th>
-
                       <th>Tanggal Keluar</th>
                       <th>Keperluan</th>
                       <th>Penjemput</th>
@@ -40,7 +39,6 @@
                             <td>".$i."</td>
                             <td>".$row['nis_santri']."</td>
                             <td>".$row['nama_lengkap']."</td>
-                            
                             <td>".$row['tanggal_keluar']."</td>
                             <td>".$row['keperluan']."</td>
                             <td>".$row['nama_penjemput']."</td>

@@ -1,4 +1,7 @@
 <script type="text/javascript">
+
+$('#datatable').DataTable({});
+
 $(document).ready(function(){
   $('.text-danger').text("");
   $('.text-success').text("");
@@ -176,7 +179,7 @@ $(document).ready(function(){
     });
   });
 
-  $('#datatable').DataTable({});
+
   $(".hapusizin").click(function (e) {
    var v_id = this.id;
    $.confirm({
