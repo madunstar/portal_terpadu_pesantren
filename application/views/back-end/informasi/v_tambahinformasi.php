@@ -40,7 +40,7 @@
                         <div class="col-lg-9">
                           <textarea class="summernote" id="isi_pengumuman" name="isi_pengumuman"></textarea>
                       </div>
-
+                      
                       </div>
                       <div class="form-group">
                         <label class="col-lg-2 control-label">Tautan</label>

@@ -34,6 +34,19 @@ class m_rekap_guru extends CI_Model
       return $this->db->get();
     }
 
+    function rekapgurup($pel,$kel)
+    {
+      $this->db->select('*');
+      $this->db->from('tb_presensi_rekap_guru_afilasi');
+      $this->db->join('tb_pelajaran', 'tb_presensi_rekap_guru_afilasi.id_pelajaran = tb_pelajaran.id_pelajaran');
+      $this->db->join('tb_presensi_kelas_p', 'tb_presensi_rekap_guru_afilasi.id_kelas = tb_presensi_kelas_p.id_kelas_belajar');
+      $this->db->join('tb_mata_pelajaran', 'tb_pelajaran.id_mata_pelajaran = tb_mata_pelajaran.id_mata_pelajaran');
+      $this->db->join('tb_guru', 'tb_pelajaran.nip_guru = tb_guru.nip_guru');
+      $this->db->where('tb_presensi_rekap_guru_afilasi.id_pelajaran',$pel);
+      $this->db->where('tb_presensi_rekap_guru_afilasi.id_kelas',$kel);
+      return $this->db->get();
+    }
+
     function dataguru($nip){
       $this->db->select('nama_lengkap');
       $this->db->from('tb_guru');
