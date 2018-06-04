@@ -3,7 +3,7 @@
     $('#datatable').DataTable({
         "bStateSave"    : true,
         "ajax"          : {
-                            url :"<?php echo base_url(); ?>admin/datamaster/datakelaspondwatiajax", // json datasource
+                            url :"<?php echo base_url(); ?>admin/datamaster/datakelasbelawatiajax", // json datasource
                             type: "post",  // method  , by default get
                             error: function(){  // error handling
                                 $(".employee-grid-error").html("");
