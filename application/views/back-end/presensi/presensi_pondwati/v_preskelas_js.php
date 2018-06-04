@@ -1,29 +1,47 @@
 <script>
 
-   $('#datatable').DataTable({});
+   $('#datatable').DataTable({
+        "bStateSave"    : true,
+        "ajax"          : {
+                            url :"<?php echo base_url(); ?>admin/datamaster/datakelaspondwatiajax", // json datasource
+                            type: "post",  // method  , by default get
+                            error: function(){  // error handling
+                                $(".employee-grid-error").html("");
+                                $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                                $("#employee-grid_processing").css("display","none");
+                            }
+                        },
+        "processing"    : true,
+        "serverSide"    : true,
+        "columnDefs"    : [
+                            { "orderable": false, "targets": [0]
+                            }
+                        ],
+						
+		"responsive": true,
+        "fnDrawCallback": function(oSettings){
+            $(".hapus").click(function (e) {
+                var v_id = this.id;
+                $.confirm({
+                    title: 'Hapus!',
+                    content: 'Yakin ingin menghapus ?',
+                    buttons: {
+                        hapus: {
+                            text: 'Hapus',
+                            btnClass: 'btn-green',
+                            action: function(){
+                                window.location.assign("<?php echo base_url() ?>admin/datamaster/hapuskelaspondwati?id="+v_id);
+                            }
+                        },
+                        batal: function () {
 
-   $(".hapus").click(function (e) {
-    var v_id = this.id;
-    $.confirm({
-        title: 'Hapus!',
-        content: 'Yakin ingin menghapus ?',
-        buttons: {
-            hapus: {
-                text: 'Hapus',
-                btnClass: 'btn-green',
-                action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/datamaster/hapuskelaspondwati?id="+v_id);
-                }
-            },
-            batal: function () {
+                        }
 
-            }
+                    }
+                    });
+                });
 
-        }
-        });
-    });
-
-    
+                
     $(".edit").click(function(e) {
         var v_url = "<?php echo base_url() ?>admin/datamaster/kelaseditpondwati";
         var v_id = this.id;
@@ -89,5 +107,12 @@
             }
         });
     });
+
+
+        }
+   });
+
+  
+    
 
 </script>

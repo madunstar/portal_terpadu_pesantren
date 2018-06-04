@@ -148,5 +148,69 @@ class M_presensi extends CI_Model
          $this->db->where("id_jadwal",$id_jadwal);
          return $this->db->update('tb_presensi_jadwal_afilasi',$array);
      }
+
+     public function lihatdataajax()
+     {
+         $requestData= $_REQUEST;
+         $columns = array( 
+             // datatable column index  => database column name
+                 0=>'tahun_ajaran', 
+                 1=>'nama_kelas_belajar', 
+                 2=> 'nama_kelas',
+                 3=> 'nama_lengkap',
+                 3=> 'jenjang',
+                 3=> 'tingkat'
+         );
+         $sql = "SELECT * ";
+         $sql.=" FROM tb_presensi_kelas inner join tb_guru on tb_guru.nip_guru=tb_presensi_kelas.nip_guru
+                 inner join tb_kelas on tb_kelas.kd_kelas=tb_presensi_kelas.kd_kelas
+                 inner join tb_tahun_ajaran on tb_tahun_ajaran.id_tahun=tb_presensi_kelas.id_tahun
+         WHERE 1=1 ";
+         $query=$this->db->query($sql);
+         $totalData = $query->num_rows();
+         $totalFiltered = $totalData; 
+         if( !empty($requestData['search']['value']) ) {
+             $sql.= " AND ( tahun_ajaran LIKE '%".$requestData['search']['value']."%' "; 
+             $sql.=" OR nama_kelas_belajar LIKE '%".$requestData['search']['value']."%'  "; 
+             $sql.=" OR nama_kelas LIKE '%".$requestData['search']['value']."%'  ";	
+             $sql.=" OR nama_lengkap LIKE '%".$requestData['search']['value']."%'  ";
+             $sql.=" OR jenjang LIKE '%".$requestData['search']['value']."%'  ";
+             $sql.=" OR tingkat LIKE '%".$requestData['search']['value']."%' ) "; 				
+         }
+         $query=$this->db->query($sql);
+         $totalFiltered = $query->num_rows();
+         $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']." LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+         $query=$this->db->query($sql);
+         $data = array();
+         $no=1;
+         foreach($query->result_array() as $row) {  // preparing an array
+             $nestedData=array(); 
+         
+             $akd = "   <a href='".base_url('admin/datamaster/lihatkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Hapus'><i class='fa fa-eye'></i></a>
+             <a href='".base_url('admin/datamaster/editkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+             <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
+             <a href='".base_url('admin/datamaster/printkelasafilasi?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs print' title='print' id='".$row['id_kelas_belajar']."'><i class='fa fa-print'></i></a>";
+             $nestedData[] = $akd;
+             $nestedData[] = $row['tahun_ajaran'];
+             $nestedData[] = $row["nama_kelas_belajar"];
+             $nestedData[] = $row["nama_kelas"];
+             $nestedData[] = $row['nama_lengkap'];
+             $nestedData[] = $row['jenjang'];
+             $nestedData[] = $row['tingkat'];
+             $nestedData[] = "<a href='".base_url('admin/datamaster/jadwalafilasi?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-clock-o'></i> Jadwal</a>";
+             $nestedData[] = "<button class='btn ".($row['status_kelas']=="Aktif"?"btn-success":"btn-warning")." btn-xs edit'  title='Edit' id='".$row['id_kelas_belajar']."' data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i> ".$row['status_kelas']."</button>";
+             $nestedData[] = "<a href='".base_url('admin/datamaster/lihatkelasbelajarsantri?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-list'></i> Santri</a>";
+             $data[] = $nestedData;
+             $no++;
+         }
+         $json_data = array(
+             "draw"            => intval( $requestData['draw'] ),
+             "recordsTotal"    => intval( $totalData ), 
+             "recordsFiltered" => intval( $totalFiltered ), 
+             "data"            => $data 
+             );
+ 
+         echo json_encode($json_data); 
+     }
  
 }

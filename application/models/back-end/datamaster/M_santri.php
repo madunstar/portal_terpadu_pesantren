@@ -274,8 +274,7 @@ class M_santri extends CI_Model
             if( !empty($requestData['search']['value']) ) {
                 $sql.= " AND ( tb_santri.nis_lokal LIKE '%".$requestData['search']['value']."%' "; 
                 $sql.=" OR tb_santri.nama_lengkap LIKE '%".$requestData['search']['value']."%'  "; 	
-                $sql.=" OR tb_santri.nisn LIKE '%".$requestData['search']['value']."%'  "; 	
-                $sql.=" OR tb_santri.gender LIKE '%".$requestData['search']['value']."%' )  ";				
+                $sql.=" OR tb_santri.nisn LIKE '%".$requestData['search']['value']."%' ) "; 				
             }
             $query=$this->db->query($sql);
             $totalFiltered = $query->num_rows();

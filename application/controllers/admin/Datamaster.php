@@ -177,6 +177,11 @@ class Datamaster extends CI_Controller{
         $variabel['data'] = $this->m_santriwati->lihatdata();
         $this->layout->render('back-end/datamaster/santriwati/v_santri',$variabel,'back-end/datamaster/santriwati/v_santri_js');
     }
+    function santriwatiajax()
+    {
+        $this->m_santriwati->listsantriajax();
+
+    }
     function santriwatilihat()
     {
         $nis = $this->input->get("nis");
@@ -2252,6 +2257,11 @@ function kecamatanhapus()
       $this->layout->render('back-end/presensi/presensi_kelas/v_presensi_kelas',$variabel,'back-end/presensi/presensi_kelas/v_preskelas_js');
    }
 
+   function datakelasbelajarajax()
+   {
+        $this->m_presensi->lihatdataajax();
+   }
+
    function aturkelasbelajar(){
         if ($this->input->post()){
             $array=array(
@@ -4244,6 +4254,10 @@ function pondokanedit()
       $variabel['data']=$this->m_presensipondokan->lihatdata();
       $this->layout->render('back-end/presensi/presensi_pondokan/v_presensi_pondokan',$variabel,'back-end/presensi/presensi_pondokan/v_preskelas_js');
    }
+   function datakelaspondokanajax()
+   {
+      $this->m_presensipondokan->lihatdataajax();
+   }
 
    function aturkelaspondokan(){
     if ($this->input->post()){
@@ -5077,6 +5091,11 @@ function datakelaspondwati()
     $this->layout->render('back-end/presensi/presensi_pondwati/v_presensi_pondokan',$variabel,'back-end/presensi/presensi_pondwati/v_preskelas_js');
 }
 
+function datakelaspondwatiajax()
+{
+   $this->m_presensipondwati->lihatdataajax();
+}
+
 function aturkelaspondwati(){
     if ($this->input->post()){
         $array=array(
@@ -5360,6 +5379,10 @@ function datakelasbelawati()
    {
       $variabel['data']=$this->m_presenwati->lihatdata();
       $this->layout->render('back-end/presensi/presensi_kelwati/v_presensi_kelas',$variabel,'back-end/presensi/presensi_kelwati/v_preskelas_js');
+   }
+   function datakelasbelawatiajax()
+   {
+     $this->m_presenwati->lihatdataajax();
    }
 
    function aturkelasbelawati(){

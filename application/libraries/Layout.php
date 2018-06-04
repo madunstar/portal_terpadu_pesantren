@@ -41,6 +41,7 @@ class Layout {
         $this->ci->load->view($this->endhtml);
     }
 
+
     function renderlogin($view,$data = null,$js = null){
         $this->ci->load->view($this->header_login);
         $this->ci->load->view($view,$data);
