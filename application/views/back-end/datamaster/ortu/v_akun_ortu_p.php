@@ -28,7 +28,7 @@
             if($akun == 0){
 
               echo '
-                    <div class="text-center">
+                    <div class="text-center" style="margin-top:10px">
                       <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#'.$idakun.'" >Buat Akun</button>
                     </div>
 
