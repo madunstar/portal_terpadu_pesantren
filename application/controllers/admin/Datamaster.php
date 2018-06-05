@@ -570,13 +570,12 @@ class Datamaster extends CI_Controller{
     // CRUD Santri
     function santri()
     {
-        $variabel['data'] = $this->m_santri->lihatdata();
+        $variabel['data'] = '';
         $this->layout->render('back-end/datamaster/santri/v_santri',$variabel,'back-end/datamaster/santri/v_santri_js');
     }
     function santriajax()
     {
         $this->m_santri->listsantriajax();
-
     }
     function santrilihat()
     {
@@ -4742,19 +4741,22 @@ function pakafilasiedit()
 
 function dataakunortu(){
   $exec = $this->m_akun_ortu->tambahjenisakun();
-  $variabel['data'] = $this->m_akun_ortu->lihatdata();
+  $nis = $this->input->get('nis');
+  $variabel['data'] = $this->m_akun_ortu->lihatdata($nis);
   $this->layout->render('back-end/datamaster/ortu/v_akun_ortu',$variabel,'back-end//datamaster/ortu/v_akun_ortu_js');
 }
 
 function buatakunortu(){
+  $id = $this->input->post('id');
   $array= array(
     'id_ortu' => $this->input->post('id'),
     'kata_sandi' => md5($this->input->post('sandi')),
     'email_ortu' => $this->input->post('email'),
+    'jenis_akun' => 'santri',
     'status_akun' => 'aktif'
   );
   $exec = $this->m_akun_ortu->tambahdata($array);
-  redirect(base_url()."admin/datamaster/dataakunortu?msg=1");
+  redirect(base_url()."admin/datamaster/dataakunortu?msg=1&nis=$id");
 }
 
 function akunortuaktif(){
@@ -4763,7 +4765,7 @@ function akunortuaktif(){
   );
   $id = $this->input->get('id');
   $exec = $this->m_akun_ortu->editdata($id,$array);
-  redirect(base_url()."admin/datamaster/dataakunortu?aktif=1");
+  redirect(base_url()."admin/datamaster/dataakunortu?aktif=1&nis=$id");
 
 }
 
@@ -4773,7 +4775,7 @@ function akunortunonaktif(){
   );
   $id = $this->input->get('id');
   $exec = $this->m_akun_ortu->editdata($id,$array);
-  redirect(base_url()."admin/datamaster/dataakunortu?aktif=0");
+  redirect(base_url()."admin/datamaster/dataakunortu?aktif=0&nis=$id");
 
 }
 
@@ -4784,7 +4786,7 @@ function resetsandiortu(){
   );
 
   $exec = $this->m_akun_ortu->editdata($id,$array);
-  redirect(base_url()."admin/datamaster/dataakunortu?reset=1");
+  redirect(base_url()."admin/datamaster/dataakunortu?reset=1&nis=$id");
 
 }
 ////////////akhir akun ortu///////////////

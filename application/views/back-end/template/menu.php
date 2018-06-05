@@ -255,13 +255,6 @@
                       <span class="font-bold">Lain lain</span>
                     </a>
                     <ul class="nav dk">
-											<li class="<?= (($menu == "datamaster") &&  ($submenu == 'dataakunortu')) ? "active" : ""; ?>">
-												<a href="<?php echo base_url() ?>admin/datamaster/dataakunortu" class="auto">
-													<i class="i i-dot"></i>
-
-													<span>Data Akun Orang Tua Santri</span>
-												</a>
-											</li>
                       <li class="<?= (($menu == "datamaster") &&  ($submenu == 'admin') || ($submenu == 'adminedit') || ($submenu == 'admintambah')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/admin" class="auto">
                           <i class="i i-dot"></i>
