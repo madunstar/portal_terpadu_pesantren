@@ -25,15 +25,16 @@
           </thead>
           <tbody>
             <?php
-              if($akun == 0){
+            if($akun == 0){
 
-                echo '
-                    <div class="text-center" style="margin-top:10px">
+              echo '
+                    <div class="text-center">
                       <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#'.$idakun.'" >Buat Akun</button>
                     </div>
-                        '
-                ;
-              } else {
+
+                    '
+              ;
+            } else {
                 foreach($data->result_array() as $row){ ?>
                     <tr>
                       <td><?php echo $row['nis_lokal'] ?></td>
@@ -41,8 +42,8 @@
                       <td><?php echo $row['email_ortu'] ?></td>
                       <td><?php echo $row['jenis_akun'] ?></td>
                       <td><?php echo
-                          (($row['status_akun'] == 'aktif' ) ? '<a href="'.base_url("admin/datamaster/akunortunonaktif?id=".$row["nis_lokal"]."&jenis=".$row['jenis_akun']."").'" class="btn btn-success btn-xs" >Aktif</a> <a href="'.base_url("admin/datamaster/resetsandiortu?id=".$row["nis_lokal"]."&jenis=".$row['jenis_akun']."").'" class="btn btn-warning btn-xs" >Reset Sandi</a>'
-                          : (($row['status_akun'] == 'tidak aktif') ? '<a href="'.base_url("admin/datamaster/akunortuaktif?id=".$row["nis_lokal"]."&jenis=".$row['jenis_akun']."").'" class="btn btn-warning btn-xs" >Tidak Aktif</a>'
+                          (($row['status_akun'] == 'aktif' ) ? '<a href="'.base_url("admin/datamaster/akunortunonaktifp?id=".$row["nis_lokal"]."&jenis=".$row['jenis_akun']."").'" class="btn btn-success btn-xs" >Aktif</a> <a href="'.base_url("admin/datamaster/resetsandiortup?id=".$row["nis_lokal"]."&jenis=".$row['jenis_akun']."").'" class="btn btn-warning btn-xs" >Reset Sandi</a>'
+                          : (($row['status_akun'] == 'tidak aktif') ? '<a href="'.base_url("admin/datamaster/akunortuaktifp?id=".$row["nis_lokal"]."&jenis=".$row['jenis_akun']."").'" class="btn btn-warning btn-xs" >Tidak Aktif</a>'
                           : '<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#'.$row['nis_lokal'].'" >Belum Ada</button>'))
                       ?>
                       </td>
@@ -60,7 +61,7 @@
                        <h4 class='modal-title'>Tambah Data Akun</h4>
                      </div>
                      <div class='modal-body form-horizontal'>
-                         <form class="form-horizontal" data-validate="parsley" action='<?php echo base_url()?>admin/datamaster/buatakunortu' method="post">
+                         <form class="form-horizontal" data-validate="parsley" action='<?php echo base_url()?>admin/datamaster/buatakunortup' method="post">
                          <div class='form-group'>
                            <label class='col-sm-3 control-label' for='input-id-1'>ID Orang tua</label>
                            <div class='col-sm-8'>

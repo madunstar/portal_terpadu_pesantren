@@ -3,7 +3,7 @@
     $('#datatable').DataTable({
         "bStateSave"    : true,
         "ajax"          : {
-                            url :"<?php echo base_url(); ?>admin/datamaster/santriajax", // json datasource
+                            url :"<?php echo base_url(); ?>admin/datamaster/santriwatiajax", // json datasource
                             type: "post",  // method  , by default get
                             error: function(){  // error handling
                                 $(".employee-grid-error").html("");
@@ -17,7 +17,7 @@
                             { "orderable": false, "targets": [0]
                             }
                         ],
-						
+
 		"responsive": true,
         "fnDrawCallback": function(oSettings){
             $(".hapus").click(function (e) {
@@ -40,7 +40,7 @@
                 }
                 });
             });
-          
+
             $(".edit").click(function(e) {
                 var v_url = "<?php echo base_url() ?>admin/datamaster/santritingkat";
                 var v_id = this.id;
@@ -84,7 +84,7 @@
         }
    });
 
-  
+
 
     $('#provinsi').change(function(){
         var id=$(this).val();
@@ -147,7 +147,7 @@
     });
 
 
-  
+
 
 });
 </script>
