@@ -4743,7 +4743,18 @@ function dataakunortu(){
   $exec = $this->m_akun_ortu->tambahjenisakun();
   $nis = $this->input->get('nis');
   $variabel['data'] = $this->m_akun_ortu->lihatdata($nis);
-  $this->layout->render('back-end/datamaster/ortu/v_akun_ortu',$variabel,'back-end//datamaster/ortu/v_akun_ortu_js');
+  $variabel['akun'] = $this->m_akun_ortu->periksaakun($nis);
+  $variabel['idakun'] = $nis;
+  $this->layout->render('back-end/datamaster/ortu/v_akun_ortu',$variabel,'back-end/datamaster/ortu/v_akun_ortu_js');
+}
+
+function dataakunortup(){
+  $exec = $this->m_akun_ortu->tambahjenisakun();
+  $nis = $this->input->get('nis');
+  $variabel['data'] = $this->m_akun_ortu->lihatdatap($nis);
+  $variabel['akun'] = $this->m_akun_ortu->periksaakunp($nis);
+  $variabel['idakun'] = $nis;
+  $this->layout->render('back-end/datamaster/ortu/v_akun_ortu_p',$variabel,'back-end/datamaster/ortu/v_akun_ortu_js');
 }
 
 function buatakunortu(){
@@ -4759,14 +4770,37 @@ function buatakunortu(){
   redirect(base_url()."admin/datamaster/dataakunortu?msg=1&nis=$id");
 }
 
+function buatakunortup(){
+  $id = $this->input->post('id');
+  $array= array(
+    'id_ortu' => $this->input->post('id'),
+    'kata_sandi' => md5($this->input->post('sandi')),
+    'email_ortu' => $this->input->post('email'),
+    'jenis_akun' => 'santriwati',
+    'status_akun' => 'aktif'
+  );
+  $exec = $this->m_akun_ortu->tambahdata($array);
+  redirect(base_url()."admin/datamaster/dataakunortup?msg=1&nis=$id");
+}
+
 function akunortuaktif(){
   $array = array(
     'status_akun' => 'aktif'
   );
   $id = $this->input->get('id');
-  $exec = $this->m_akun_ortu->editdata($id,$array);
+  $jenis = $this->input->get('jenis');
+  $exec = $this->m_akun_ortu->editdata($id,$jenis,$array);
   redirect(base_url()."admin/datamaster/dataakunortu?aktif=1&nis=$id");
+}
 
+function akunortuaktifp(){
+  $array = array(
+    'status_akun' => 'aktif'
+  );
+  $id = $this->input->get('id');
+  $jenis = $this->input->get('jenis');
+  $exec = $this->m_akun_ortu->editdata($id,$jenis,$array);
+  redirect(base_url()."admin/datamaster/dataakunortup?aktif=1&nis=$id");
 }
 
 function akunortunonaktif(){
@@ -4774,8 +4808,20 @@ function akunortunonaktif(){
     'status_akun' => 'tidak aktif'
   );
   $id = $this->input->get('id');
-  $exec = $this->m_akun_ortu->editdata($id,$array);
+  $jenis = $this->input->get('jenis');
+  $exec = $this->m_akun_ortu->editdata($id,$jenis,$array);
   redirect(base_url()."admin/datamaster/dataakunortu?aktif=0&nis=$id");
+
+}
+
+function akunortunonaktifp(){
+  $array = array(
+    'status_akun' => 'tidak aktif'
+  );
+  $id = $this->input->get('id');
+  $jenis = $this->input->get('jenis');
+  $exec = $this->m_akun_ortu->editdata($id,$jenis,$array);
+  redirect(base_url()."admin/datamaster/dataakunortup?aktif=0&nis=$id");
 
 }
 
@@ -4784,9 +4830,20 @@ function resetsandiortu(){
   $array = array(
     'kata_sandi' => md5($id)
   );
-
-  $exec = $this->m_akun_ortu->editdata($id,$array);
+  $jenis = $this->input->get('jenis');
+  $exec = $this->m_akun_ortu->editdata($id,$jenis,$array);
   redirect(base_url()."admin/datamaster/dataakunortu?reset=1&nis=$id");
+
+}
+
+function resetsandiortup(){
+  $id = $this->input->get('id');
+  $array = array(
+    'kata_sandi' => md5($id)
+  );
+  $jenis = $this->input->get('jenis');
+  $exec = $this->m_akun_ortu->editdata($id,$jenis,$array);
+  redirect(base_url()."admin/datamaster/dataakunortup?reset=1&nis=$id");
 
 }
 ////////////akhir akun ortu///////////////
