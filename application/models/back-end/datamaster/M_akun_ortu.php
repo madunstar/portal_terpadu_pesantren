@@ -10,11 +10,12 @@ class M_akun_ortu extends CI_Model
         parent::__construct();
     }
 
-    function lihatdata()
+    function lihatdata($nis)
     {
         $this->db->select('*');
         $this->db->from('tb_akun_ortu');
         $this->db->join('tb_santri', 'nis_lokal = id_ortu','right');
+        $this->db->where('tb_santri.nis_lokal',$nis);
         return $this->db->get();
     }
 
