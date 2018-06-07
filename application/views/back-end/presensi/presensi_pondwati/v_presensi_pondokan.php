@@ -31,7 +31,7 @@
 										<th>Tingkat</th>
 										<th>jadwal Pelajaran</th>
 										<th>Status</th>
-										<th>Santri</th>
+										<th>Santriwati</th>
 									</tr>
 								</thead>
 								<tbody>
