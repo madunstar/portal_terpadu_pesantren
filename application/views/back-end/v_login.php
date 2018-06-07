@@ -10,6 +10,7 @@
 
         <section class="m-b-lg">
           <div class="text-center">
+            <p></p>
           <img src="<?php echo base_url('assets/images/logo.png'); ?>" alt="">
         </div>
           <a class="navbar-brand block" href="index.html">LOGIN ADMIN PORTAL PESANTREN DARUL ILMI</a>

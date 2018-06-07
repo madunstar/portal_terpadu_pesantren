@@ -11,21 +11,21 @@
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
                   <li  class="<?= (($menu == "orangtua") && ($submenu == 'dashboard')) ? "active" : ""; ?>">
-                    <a href="<?php echo base_url() ?>orangtua/portal_ortu/dashboard" class="auto">
+                    <a href="<?php echo base_url() ?>orangtua/portalortusantri/dashboard" class="auto">
                       <i class="fa fa-dashboard">
                       </i>
                       <span class="font-bold">Dashboard</span>
                     </a>
                   </li>
                   <li class="<?= (($menu == "orangtua") && ($submenu == 'biodata'))  ? "active" : ""; ?>">
-                    <a href="<?php echo base_url() ?>orangtua/portal_ortu/biodata" class="auto">
+                    <a href="<?php echo base_url() ?>orangtua/portalortusantri/biodata" class="auto">
                       <i class="fa fa-user">
                       </i>
                       <span class="font-bold">Biodata Santri</span>
                     </a>
                   </li>
 									<li class="<?= (($menu == "orangtua") && ($submenu == 'prestasidanpelanggaran'))  ? "active" : ""; ?>">
-										<a href="<?php echo base_url() ?>orangtua/portal_ortu/prestasidanpelanggaran" class="auto">
+										<a href="<?php echo base_url() ?>orangtua/portalortusantri/prestasidanpelanggaran" class="auto">
 											<span class="pull-right text-muted">
 											</span>
 											<i class="fa fa-money">
@@ -35,7 +35,7 @@
 
 									</li>
                   <li class="<?= (($menu == "orangtua") && ($submenu == 'statusperizinan'))  ? "active" : ""; ?>">
-                    <a href="<?php echo base_url() ?>orangtua/portal_ortu/statusperizinan" class="auto">
+                    <a href="<?php echo base_url() ?>orangtua/portalortusantri/statusperizinan" class="auto">
                       <span class="pull-right text-muted">
                       </span>
                       <i class="fa fa-folder-open">
@@ -44,7 +44,7 @@
                     </a>
                   </li>
                   <li class="<?= (($menu == "orangtua") && ($submenu == 'databayarinfaq'))  ? "active" : ""; ?>">
-                    <a href="<?php echo base_url() ?>orangtua/portal_ortu/databayarinfaq" class="auto">
+                    <a href="<?php echo base_url() ?>orangtua/portalortusantri/databayarinfaq" class="auto">
                       <span class="pull-right text-muted">
                       </span>
                       <i class="fa fa-money">
@@ -54,7 +54,7 @@
 
                   </li>
                   <li class="<?= (($menu == "orangtua") && ($submenu == 'informasi'))  ? "active" : ""; ?>" >
-                    <a href="<?php echo base_url() ?>orangtua/portal_ortu/informasi" class="auto">
+                    <a href="<?php echo base_url() ?>orangtua/portalortusantri/informasi" class="auto">
                       <span class="pull-right text-muted">
 
                       </span>
@@ -75,7 +75,7 @@
           </section>
 
           <footer class="footer hidden-xs no-padder text-center-nav-xs">
-            <a href="<?php echo base_url() ?>orangtua/portal_ortu/logout" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
+            <a href="<?php echo base_url() ?>orangtua/portalortusantri/logout" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
               <i class="i i-logout"></i>
             </a>
             <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">

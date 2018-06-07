@@ -10,12 +10,44 @@ class M_akun_ortu extends CI_Model
         parent::__construct();
     }
 
-    function lihatdata()
+    function lihatdata($nis)
     {
         $this->db->select('*');
         $this->db->from('tb_akun_ortu');
         $this->db->join('tb_santri', 'nis_lokal = id_ortu','right');
+        $this->db->where('tb_santri.nis_lokal',$nis);
+        $this->db->where('tb_akun_ortu.jenis_akun','santri');
         return $this->db->get();
+    }
+
+    function periksaakun($nis)
+    {
+      $this->db->select('*');
+      $this->db->from('tb_akun_ortu');
+      $this->db->join('tb_santri', 'nis_lokal = id_ortu','right');
+      $this->db->where('tb_santri.nis_lokal',$nis);
+      $this->db->where('tb_akun_ortu.jenis_akun','santri');
+      return $this->db->get()->num_rows();
+    }
+
+    function lihatdatap($nis)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_akun_ortu');
+        $this->db->join('tb_santriwati', 'nis_lokal = id_ortu','right');
+        $this->db->where('tb_santriwati.nis_lokal',$nis);
+        $this->db->where('tb_akun_ortu.jenis_akun','santriwati');
+        return $this->db->get();
+    }
+
+    function periksaakunp($nis)
+    {
+      $this->db->select('*');
+      $this->db->from('tb_akun_ortu');
+      $this->db->join('tb_santriwati', 'nis_lokal = id_ortu','right');
+      $this->db->where('tb_santriwati.nis_lokal',$nis);
+      $this->db->where('tb_akun_ortu.jenis_akun','santriwati');
+      return $this->db->get()->num_rows();
     }
 
     // function lihatdatasatu($nama_akun)
@@ -43,14 +75,23 @@ class M_akun_ortu extends CI_Model
     //     }
     // }
 
+    function tambahjenisakun()
+    {
+        return $this->db->query('UPDATE tb_akun_ortu RIGHT JOIN tb_santri ON nis_lokal = id_ortu
+                          SET jenis_akun = IF(jenis_kelamin = "L", "santri", IF(jenis_kelamin = "P", "santriwati", jenis_akun))
+                          WHERE jenis_akun = ""');
+    }
+
     function tambahdata($array)
     {
         return $this->db->insert('tb_akun_ortu',$array);
     }
 
-    function editdata($id,$array)
+
+    function editdata($id,$jenis,$array)
     {
         $this->db->where("id_ortu",$id);
+        $this->db->where("jenis_akun",$jenis);
         return $this->db->update('tb_akun_ortu',$array);
     }
 

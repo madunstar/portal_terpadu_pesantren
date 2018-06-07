@@ -16,13 +16,15 @@
   <!-- Custom styles for this template-->
   <link rel="stylesheet" href="<?php echo base_url('assets/css/icon.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/css/font.css');?>" type="text/css" />
-  <link rel="stylesheet" href="<?php echo base_url('assets/js/datatables/datatables.css');?>" type="text/css"/>
   <link rel="stylesheet" href="<?php echo base_url('assets/css/app.css');?>" type="text/css" />
+
+  <link rel="stylesheet" href="<?php echo base_url('assets/js/datatables/datatables.css');?>" type="text/css"/>
+
   <link rel="stylesheet" href="<?php echo base_url('assets/js/calendar/bootstrap_calendar.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/confirm/jquery-confirm.min.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/datepicker/datepicker.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/chosen/chosen.css');?>" type="text/css" />
-  <link rel="stylesheet" href="<?php echo base_url('assets/js/summernote/summernote.css');?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url('assets/js/summernote/summernote.css');?>" rel="stylesheet" type="text/css" />
 </head>
 <body class="" >
   <section class="vbox">

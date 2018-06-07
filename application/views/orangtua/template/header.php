@@ -52,11 +52,11 @@
             <ul class="dropdown-menu animated fadeInRight">
               <li>
                 <span class="arrow top"></span>
-                <a href="<?php echo base_url('orangtua/portal_ortu/ubahsandi?nis='.$nis_lokal);?>">Ubah Kata Sandi </a>
+                <a href="<?php echo base_url('orangtua/portalortusantri/ubahsandi?id='.$nis_lokal);?>">Ubah Kata Sandi </a>
               </li>
               <li class="divider"></li>
               <li>
-                <a href="<?php echo base_url()?>orangtua/portal_ortu/logout"  ><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
+                <a href="<?php echo base_url()?>orangtua/portalortusantri/logout"  ><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
               </li>
             </ul>
           </li>

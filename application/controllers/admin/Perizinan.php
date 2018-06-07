@@ -264,7 +264,7 @@ class Perizinan extends CI_Controller
 
       else{
           $variabel['id_penjemput']=$this->m_perizinan->ambildatapenjemput();
-          $this->layout->renderizin('back-end/perizinan/v_keluarpondok',$variabel,'back-end/perizinan/keluar_js');
+          $this->layout->renderizin2('back-end/perizinan/v_keluarpondok',$variabel,'back-end/perizinan/keluar_js');
       }
   }
 

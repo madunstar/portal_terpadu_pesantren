@@ -194,8 +194,6 @@ class Perizinansantriwati extends CI_Controller
 
   function cekjatahizin(){
     $nis_santri = $this->input->post('nis_santri');
-    // $data_santri = $this->m_perizinan_p->tampildatasantri($nis_santri)->result();
-    // echo json_encode($data_santri);
     $tgl_sekarang = strtotime(date("Y-m-d H:i:s")); //strtotime untuk mengubah menjadi detik
     $ambiltglkeluar = $this->m_perizinan_p->ambiltglkeluar($nis_santri)->tanggal_keluar;
     $tgl_keluar = strtotime($ambiltglkeluar);
@@ -218,6 +216,7 @@ class Perizinansantriwati extends CI_Controller
           $izinkeluar=array(
               'nis_santri'=> $this->input->post('nis_santri'),
               'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
+              'harus_kembali'=> $this->input->post('harus_kembali'),
               'keperluan'=> $this->input->post('keperluan'),
               'id_penjemput'=> $id_penjemput,
               'petugas'=> $nip_admin,
@@ -240,6 +239,7 @@ class Perizinansantriwati extends CI_Controller
                   $izinkeluarpb=array(
                       'nis_santri'=> $this->input->post('nis_santri'),
                       'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
+                      'harus_kembali'=> $this->input->post('harus_kembali'),
                       'keperluan'=> $this->input->post('keperluan'),
                       'id_penjemput'=> $ambilidpenjemput->id_penjemput,
                       'petugas'=> $nip_admin,

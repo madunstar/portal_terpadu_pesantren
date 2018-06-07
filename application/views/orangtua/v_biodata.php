@@ -6,12 +6,11 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Lihat Santri 
+        Lihat Santri
       </header>
       <div class="panel-body">
-      <?php pesan_get('msg',"Berhasil Menambahkan Santri","Gagal Menambahkan Santri") ?>
-       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santritambah" method="post">
-       <a href="<?php echo base_url('admin/datamaster/santri') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
+       <form class="bs-example form-horizontal" data-validate="parsley" action="" method="">
+       <a href="<?php echo base_url('orangtua/portalortusantri/dashboard') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -55,7 +54,6 @@
               <div class="col-lg-8">
                 <select class="form-control"  name="jenis_kelamin" readonly/>
                   <option value="L" <?php if ($data['jenis_kelamin']=="L")  echo "selected" ?> >Laki-laki</option>
-                  <option value="P" <?php if ($data['jenis_kelamin']=="P")  echo "selected" ?> >Perempuan</option>
                 </select>
               </div>
             </div>
@@ -155,7 +153,7 @@
                 <input type="text" class="form-control"  name="status_tempat_tinggal" value="<?php echo $data['status_tempat_tinggal']; ?>" readonly/>
               </div>
             </div>
-            
+
           </div>
           <div class="col-md-6">
           <div class="form-group">
@@ -289,7 +287,7 @@
 
         <div class="row" >
           <div class="col-md-6">
-          
+
             <div class="tingkatanjenjang">
             <fieldset class="table-responsive">
             <legend>Tingkat Kelas</legend>
@@ -322,7 +320,7 @@
           </div>
 
           <div class="col-md-6">
-          
+
           <div class="tingkatanjenjang">
           <fieldset class="table-responsive">
           <legend>Tingkat Kelas Pondokan</legend>
@@ -356,7 +354,7 @@
         </div>
 
       </div>
-    
+
       </form>
 
 

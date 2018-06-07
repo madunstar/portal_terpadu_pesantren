@@ -4,10 +4,6 @@ Class Login extends CI_Controller{
     function __construct(){
 		parent::__construct();
 		$this->load->model('back-end/orangtua/m_login');
-		//$this->load->library(array('form_validation','session'));
-		// $this->load->helper('url');
-		// $this->load->helper(array('form', 'url'));
-		// $this->load->database();
     $this->load->library('layout_pendaftaran');
 	}
 
@@ -35,9 +31,12 @@ Class Login extends CI_Controller{
             foreach ($cek->result_array() as $datauser) {
               $sess_data['id_ortu'] = $datauser['id_ortu'];
               $sess_data['nama_ortu'] = $datauser['nama_ortu'];
+              $sess_data['jenis_akun'] = $datauser['jenis_akun'];
               $this->session->set_userdata($sess_data);
             }
-            redirect(base_url("orangtua/portal_ortu/dashboard"));
+            if ($cek->jenis_akun == "santri"){
+              redirect(base_url("orangtua/portalortusantri/dashboard"));
+            } else { redirect(base_url("orangtua/portalortusantriwati/dashboard"));}
           } else { redirect(base_url("orangtua/login?msg=2"));}
         }
       }

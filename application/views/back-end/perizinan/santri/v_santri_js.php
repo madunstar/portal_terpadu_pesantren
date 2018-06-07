@@ -1,6 +1,7 @@
 <script>
+$('#datatable').DataTable({}); 
  $(document).ready(function(){
-   $('#datatable').DataTable({});
+
 
    $(".hapus").click(function (e) {
     var v_nis = this.id;
