@@ -307,7 +307,8 @@ class M_perizinan_p extends CI_Model{
       $this->db->from('tb_perizinan_kembali_p');
       $this->db->join('tb_perizinan_keluar_p','tb_perizinan_keluar_p.id_keluar=tb_perizinan_kembali_p.id_keluar');
       $this->db->join('tb_santriwati', 'tb_perizinan_keluar_p.nis_santri=tb_santriwati.nis_lokal');
-      return $this->db->get();
+      $this->db->order_by('id_kembali','ASC');
+	  return $this->db->get();
     }
 
     function datasantrikeluar(){
@@ -318,12 +319,12 @@ class M_perizinan_p extends CI_Model{
       return $this->db->get();
     }
 
-    function datasantrikeluarsatu($nis_lokal){
-      $this->db->select('id_keluar, nis_santri, nama_lengkap, tanggal_keluar, keperluan, nama_penjemput ');
+    function datasantrikeluarsatu($id_keluar){
+      $this->db->select('id_keluar, nis_santri, nama_lengkap, tanggal_keluar, tanggal_kembali, keperluan, nama_penjemput ');
       $this->db->from('tb_perizinan_keluar_p');
-      $this->db->join('tb_santriwati','tb_santriwati.nis_lokal='.$nis_lokal.'');
+      $this->db->join('tb_santriwati','tb_santriwati.nis_lokal=tb_perizinan_keluar_p.nis_santri');
       $this->db->join('tb_perizinan_penjemput','tb_perizinan_penjemput.id_penjemput = tb_perizinan_keluar_p.id_penjemput');
-      $this->db->where("tb_perizinan_keluar_p.nis_santri",$nis_lokal);
+      $this->db->where("tb_perizinan_keluar_p.id_keluar",$id_keluar);
       return $this->db->get();
     }
 
