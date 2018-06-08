@@ -175,11 +175,11 @@ class M_santriwati extends CI_Model
       }
 
       function lihattingkatan($nis_lokal){
-        return $this->db->query("SELECT `tb_kelas_santriwati`.nis_lokal,`tb_presensi_kelas`.`id_kelas_belajar`, `tb_presensi_kelas`.`nama_kelas_belajar`, `tb_presensi_kelas`.`jenjang`, `tb_presensi_kelas`.`tingkat`, `tb_tahun_ajaran`.`tahun_ajaran` FROM `tb_kelas_santriwati` inner join `tb_presensi_kelas` on `tb_presensi_kelas`.`id_kelas_belajar`=`tb_kelas_santriwati`.`id_kelas_belajar` inner join `tb_tahun_ajaran` on `tb_tahun_ajaran`.`id_tahun`=`tb_presensi_kelas`.`id_tahun` where `nis_lokal` = '$nis_lokal' order by `tb_presensi_kelas`.`tingkat` asc ");
+        return $this->db->query("SELECT `tb_kelas_santri_p`.nis_lokal,`tb_presensi_kelas`.`id_kelas_belajar`, `tb_presensi_kelas`.`nama_kelas_belajar`, `tb_presensi_kelas`.`jenjang`, `tb_presensi_kelas`.`tingkat`, `tb_tahun_ajaran`.`tahun_ajaran` FROM `tb_kelas_santri_p` inner join `tb_presensi_kelas` on `tb_presensi_kelas`.`id_kelas_belajar`=`tb_kelas_santri_p`.`id_kelas_belajar` inner join `tb_tahun_ajaran` on `tb_tahun_ajaran`.`id_tahun`=`tb_presensi_kelas`.`id_tahun` where `nis_lokal` = '$nis_lokal' order by `tb_presensi_kelas`.`tingkat` asc ");
       }
 
       function lihattingkatanpondokan($nis_lokal){
-        return $this->db->query("SELECT `tb_pondokan_santriwati`.nis_lokal,`tb_presensi_pondokan`.`id_kelas_belajar`, `tb_presensi_pondokan`.`nama_kelas_belajar`, `tb_presensi_pondokan`.`pondokan`, `tb_presensi_pondokan`.`tingkat`, `tb_tahun_ajaran`.`tahun_ajaran` FROM `tb_pondokan_santriwati` inner join `tb_presensi_pondokan` on `tb_presensi_pondokan`.`id_kelas_belajar`=`tb_pondokan_santriwati`.`id_kelas_belajar` inner join `tb_tahun_ajaran` on `tb_tahun_ajaran`.`id_tahun`=`tb_presensi_pondokan`.`id_tahun` where `nis_lokal` = '$nis_lokal' order by `tb_presensi_pondokan`.`tingkat` asc ");
+        return $this->db->query("SELECT `tb_pondokan_santri_p`.nis_lokal,`tb_presensi_pondokan`.`id_kelas_belajar`, `tb_presensi_pondokan`.`nama_kelas_belajar`, `tb_presensi_pondokan`.`pondokan`, `tb_presensi_pondokan`.`tingkat`, `tb_tahun_ajaran`.`tahun_ajaran` FROM `tb_pondokan_santri_p` inner join `tb_presensi_pondokan` on `tb_presensi_pondokan`.`id_kelas_belajar`=`tb_pondokan_santri_p`.`id_kelas_belajar` inner join `tb_tahun_ajaran` on `tb_tahun_ajaran`.`id_tahun`=`tb_presensi_pondokan`.`id_tahun` where `nis_lokal` = '$nis_lokal' order by `tb_presensi_pondokan`.`tingkat` asc ");
       }
 
       public function upload_santri($filename){
