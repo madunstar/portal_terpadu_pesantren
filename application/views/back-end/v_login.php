@@ -14,7 +14,8 @@
           <img src="<?php echo base_url('assets/images/logo.png'); ?>" alt="">
         </div>
           <a class="navbar-brand block" href="index.html">LOGIN ADMIN PORTAL PESANTREN DARUL ILMI</a>
-          <?php pesan_get('msg',"Sukses","Nama Akun tidak terdaftar","Nama Akun dan Kata Sandi tidak cocok") ?>
+          <?php pesan_get('msg',"Sukses","Nama Akun Tidak Terdaftar!","Nama Akun dan Kata Sandi Tidak Cocok!") ?>
+          <?php pesan_get('msg2',"","Role Akun Tidak Terdata!","") ?>
           <form  action="<?php echo base_url()?>admin/login/ceklogin" method="post" data-validate="parsley">
             <div class="list-group">
               <div class="list-group-item">

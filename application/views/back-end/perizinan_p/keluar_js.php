@@ -17,56 +17,15 @@ $(document).ready(function(){
   $('#hapus').attr('disabled','disabled');
   $('#proses').attr('disabled','disabled');
 
-  // $( function() {
-  //   $( "#harus_kembali" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
-  // } );
-  //var TanggalIni = new Date();
-  var nowDate = new Date();
-  var FromEndDate = new Date();
-  var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
-
   $("#harus_kembali").datepicker({
-    format: 'yyyy-mm-dd'
-    // startDate: '2014-08-01',
-		// endDate: '2014-08-15'
-  })
-  // }).on('changeDate', function(selected){
-  //       FromEndDate = new Date(selected.date.valueOf());
-  //       FromEndDate.setDate(FromEndDate.getDate(new Date(selected.date.valueOf())));
-  //     });
+    format: 'yyyy-mm-dd',
+    startDate: '+2d'
+  });
 
-
-//   $('.datepicker').datepicker({
-//     format: 'mm/dd/yyyy',
-//     startDate: '-3d'
-// });
-  //$("#harus_kembali").datepicker({ minDate:0});
-
-  //var TanggalIni = new Date();
-  //$("#harus_kembali").datepicker();
-
-  // $(function() {
-  //     $( "#harus_kembali" ).datepicker({
-  //         numberOfMonths: 3,
-  //         showButtonPanel: true,
-  //         minDate: TanggalIni
-  //     });
-  // });
-
-  // var dates = $("#harus_kembali").datetimepicker({
-  //   defaultDate: "+1w",
-  //   changeMonth: true,
-  //   numberOfMonths: 3,
-  //   minDate: TanggalIni,
-  //   maxDate: "06/09/2018",
-  //   onSelect: function(selectedDate) {
-  //       var option = this.id == "harus_kembali" ? "minDate" : "maxDate",
-  //           instance = $(this).data("datepicker"),
-  //           date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
-  //       dates.not(this).datepicker("option", option, date);
-  //   }
-  // });
-
+  $("#harus_kembali").on('hide', function(datetext) {
+    datetext = $('#harus_kembali').val() + ' ' + '07' + ':' + '00' + ':' + '00';
+    $('#harus_kembali').val(datetext);
+  });
 
   $('#Lanjutkan').click(function(){
     var angka = /^[0-9]+$/;
@@ -156,7 +115,6 @@ $(document).ready(function(){
     var menit = tgl.getMinutes();
     var detik = tgl.getSeconds();
     $('#tanggal_keluar').val(tahun+'-'+bulan+'-'+tanggal+' '+jam+':'+menit+':'+detik);
-    //var id=$('#nis_santri').val();
     $.ajax({
       url : "<?php echo base_url();?>admin/perizinansantriwati/datasantritampil",
       method : "POST",

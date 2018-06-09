@@ -20,31 +20,33 @@ Class Login extends CI_Controller{
         $cek = $this->m_login->ceklogin($nama_akun, $encrypt_sandi);
         if ($cek->num_rows() > 0) {
           foreach ($cek->result_array() as $datauser) {
-            //$sess_data['logged_in'] = TRUE;
             $sess_data['nip_staff_admin'] = $datauser['nip_staff_admin'];
             $sess_data['nama_akun'] = $datauser['nama_akun'];
   					$sess_data['kode_role_admin'] = $datauser['kode_role_admin'];
             $sess_data['password'] = $datauser['kata_sandi'];
             $this->session->set_userdata($sess_data);
           }
-          if ($this->session->userdata('kode_role_admin')=='adm_pd') {
+          if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
   					redirect('admin/pendaftaran');
   				}
-  				else if ($this->session->userdata('kode_role_admin')=='akd') {
+  				else if ($this->session->userdata('kode_role_admin') == 'adm_dms') {
   					redirect('admin/datamaster');
   				}
-  				elseif ($this->session->userdata('kode_role_admin')=='adm_prz') {
-  					redirect('admin/perizinan');
+  				else if ($this->session->userdata('kode_role_admin') == 'przputra') {
+  					redirect('admin/perizinansantri');
   				}
-          elseif ($this->session->userdata('kode_role_admin')=='przputri') {
+          else if ($this->session->userdata('kode_role_admin') == 'przputri') {
   					redirect('admin/perizinansantriwati');
   				}
-          elseif ($this->session->userdata('kode_role_admin')=='akdputra') {
+          else if ($this->session->userdata('kode_role_admin') == 'akdputra') {
   					redirect('admin/santriakd');
   				}
-          elseif ($this->session->userdata('kode_role_admin')=='akdputri') {
+          else if ($this->session->userdata('kode_role_admin') == 'akdputri') {
   					redirect('admin/santriwatiakd');
   				}
+          else {
+            redirect(base_url("admin/login?msg2=0"));
+          }
         } else {
           redirect(base_url("admin/login?msg=2"));
         }

@@ -16,7 +16,7 @@
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Data Penjemput","Gagal Menghapus Data Penjemput") ?>
               <?php pesan_get('msgnis',"Data Santri Ditemukan","Data Santri Tidak Ditemukan!","") ?>
-              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/perizinan/keluar')?>" method="post">
+              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/perizinansantri/keluar')?>" method="post">
 
                 <div class="form-group">
                   <label class="control-label col-sm-1">Izin Khusus</label>
@@ -63,6 +63,12 @@
                       <label class="col-sm-1 control-label">Tanggal Keluar</label>
                       <div class="col-sm-10">
                         <input type="text" class="input-sm input-s form-control" name="tanggal_keluar" id="tanggal_keluar" placeholder="Tanggal Keluar" readonly/>
+                      </div>
+                </div>
+                <div class="form-group">
+                      <label class="col-sm-1 control-label">Tanggal Rencana Kembali</label>
+                      <div class="col-sm-10 date">
+                        <input type="text" class="input-sm input-s form-control" name="harus_kembali" id="harus_kembali" placeholder="Tanggal Rencana Kembali"/>
                       </div>
                 </div>
                 <div class="form-group">
