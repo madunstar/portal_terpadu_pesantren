@@ -2,11 +2,11 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">santriwati</h3>
+      <h3 class="m-b-none">Santriwati</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Lihat santriwati
+        Lihat Santriwati
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan santriwati","Gagal Menambahkan santriwati") ?>
@@ -369,7 +369,7 @@
       </div>
       <footer class="panel-footer text-right bg-light lter">
         &nbsp
-        <a href="<?php echo base_url('admin/perizinansantriwati/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List santriwati</a>
+        <a href="<?php echo base_url('admin/perizinansantriwati/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santriwati</a>
       </footer>
       </form>
 

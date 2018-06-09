@@ -55,11 +55,11 @@
 
           <li>
             <span class="arrow top"></span>
-            <a href="<?php echo base_url('admin/perizinan/ubahsandiadmin?nama_akun='.$nama_akun);?>">Ubah Kata Sandi </a>
+            <a href="<?php echo base_url('admin/perizinansantriwati/ubahsandiadmin?nama_akun='.$nama_akun);?>">Ubah Kata Sandi </a>
           </li>
           <li class="divider"></li>
           <li>
-            <a href="<?php echo base_url() ?>admin/perizinan/logout"><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
+            <a href="<?php echo base_url() ?>admin/perizinansantriwati/logout"><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
           </li>
         </ul>
       </li>

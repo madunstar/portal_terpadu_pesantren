@@ -45,17 +45,26 @@ class Santriakd extends CI_Controller
     $this->load->library('PHPExcel');
     $this->load->helper('indo_helper');
     $this->load->helper('text');
-    if ($this->session->userdata('nama_akun')=="") {
+    if ($this->session->userdata('nama_akun') == '') {
+        redirect('admin/login');
+    }
+    else if ($this->session->userdata('kode_role_admin') == '') {
         redirect('admin/login');
     }
     else if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
         redirect('admin/pendaftaran');
     }
-    else if ($this->session->userdata('kode_role_admin') == 'akd') {
+    else if ($this->session->userdata('kode_role_admin') == 'adm_dms') {
         redirect('admin/datamaster');
     }
-    else if ($this->session->userdata('kode_role_admin') == 'adm_prz') {
-        redirect('admin/perizinan');
+    else if ($this->session->userdata('kode_role_admin') == 'przputra') {
+      redirect('admin/perizinansantri');
+    }
+    else if ($this->session->userdata('kode_role_admin') == 'przputri') {
+      redirect('admin/perizinansantriwati');
+    }
+    else if ($this->session->userdata('kode_role_admin') == 'akdputri') {
+      redirect('admin/santriwatiakd');
     }
     $this->load->helper('text');
     setlocale(LC_ALL, 'INDONESIA');
