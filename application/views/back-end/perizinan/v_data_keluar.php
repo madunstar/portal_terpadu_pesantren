@@ -14,16 +14,17 @@
               <h4 class="font-bold">Data Santri Keluar Pondok</h4>
             </header>
             <div class="panel-body">
-            <a href="<?php echo base_url() ?>admin/perizinan/keluar"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Buat Perizinan Keluar</button></a>
+            <a href="<?php echo base_url() ?>admin/perizinansantri/keluar"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Buat Perizinan Keluar</button></a>
               <div class="table-responsive">
                 <?php pesan_get('msg',"Berhasil Menghapus Izin Keluar","Gagal Menghapus Izin Keluar") ?>
                 <table class="table table-striped" id="datatable">
                   <thead>
                     <tr>
-                      <th style="width:10px">No</th>
+                      <th>No</th>
                       <th>NIS</th>
                       <th>Nama</th>
                       <th>Tanggal Keluar</th>
+                      <th>Tanggal Rencana Kembali</th>
                       <th>Keperluan</th>
                       <th>Penjemput</th>
                       <th>Status Keluar</th>
@@ -40,11 +41,12 @@
                             <td>".$row['nis_santri']."</td>
                             <td>".$row['nama_lengkap']."</td>
                             <td>".$row['tanggal_keluar']."</td>
+                            <td>".$row['harus_kembali']."</td>
                             <td>".$row['keperluan']."</td>
                             <td>".$row['nama_penjemput']."</td>
                             <td>".$row['status_keluar']."</td>
                             <td>
-                              <a href='".base_url('admin/perizinan/cetak_suratizin?id='.$row['id_keluar'].'')."' class='btn btn-primary btn-xs' title='Cetak Surat Izin'><i class='fa fa-print'></i></a>
+                              <a href='".base_url('admin/perizinansantri/cetak_suratizin?id='.$row['id_keluar'].'')."' class='btn btn-primary btn-xs' title='Cetak Surat Izin'><i class='fa fa-print'></i></a>
                               <a href='#' class='btn btn-danger btn-xs hapusizin' title='Hapus' name='hapusizin' id='".$row['id_keluar']."'><i class='fa fa-trash-o'></i></a>
                             </td>
                             </tr>
@@ -60,7 +62,7 @@
             <div class="panel-footer">
               <button type="button" data-toggle='modal' data-target='#cetaklap' name="button" class="btn btn-primary">Cetak Laporan <i class="fa fa-print"></i></button>
               <div class='modal' id='cetaklap' tabindex='-1' role='dialog'>
-                <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/perizinan/laporankeluar' method='post'>
+                <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/perizinansantri/laporankeluar' method='post'>
                  <div class='modal-dialog' role='document'>
                    <div class='modal-content'>
                      <div class='modal-header bg-primary'>
