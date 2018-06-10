@@ -3179,9 +3179,9 @@ function kecamatanhapus()
 
 ///////////////////////////////////////////memulai perizinan////////////////////////////////////////////////
 //mulai keluar pondok//
-function datakeluar(){
+  function datakeluar(){
       $variabel['data'] = $this->m_perizinan->lihatdata();
-      $this->layout->render('back-end/datamaster/perizinan/v_data_keluar',$variabel,'back-end/datamaster/perizinan/keluar_js');
+      $this->layout->render2('back-end/datamaster/perizinan/v_data_keluar',$variabel,'back-end/datamaster/perizinan/keluar_js');
   }
 
   function datasantritampil(){
@@ -3230,6 +3230,7 @@ function datakeluar(){
           $izinkeluar=array(
               'nis_santri'=> $this->input->post('nis_santri'),
               'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
+              'harus_kembali'=> $this->input->post('harus_kembali'),
               'keperluan'=> $this->input->post('keperluan'),
               'id_penjemput'=> $id_penjemput,
               'petugas'=> $nip_admin,
@@ -3252,6 +3253,7 @@ function datakeluar(){
                   $izinkeluarpb=array(
                       'nis_santri'=> $this->input->post('nis_santri'),
                       'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
+                      'harus_kembali'=> $this->input->post('harus_kembali'),
                       'keperluan'=> $this->input->post('keperluan'),
                       'id_penjemput'=> $ambilidpenjemput->id_penjemput,
                       'petugas'=> $nip_admin,
@@ -3272,7 +3274,7 @@ function datakeluar(){
 
       else{
           $variabel['id_penjemput']=$this->m_perizinan->ambildatapenjemput();
-          $this->layout->render('back-end/datamaster/perizinan/v_keluarpondok',$variabel,'back-end/datamaster/perizinan/keluar_js');
+          $this->layout->render2('back-end/datamaster/perizinan/v_keluarpondok',$variabel,'back-end/datamaster/perizinan/keluar_js');
       }
   }
 
@@ -3313,20 +3315,17 @@ function datakeluar(){
 //akhir keluar pondok//
 
 //mulai kembali ke pondok//
-function datakembali()
-  {
+  function datakembali(){
       $variabel['santrikembali'] = $this->m_perizinan->datasantrikembali();
       $this->layout->render('back-end/datamaster/perizinan/data_kembali',$variabel,'back-end/datamaster/perizinan/denda_js');
   }
 
-  function kembali()
-  {
+  function kembali(){
       $variabel['santrikeluar'] = $this->m_perizinan->datasantrikeluar();
       $this->layout->render('back-end/datamaster/perizinan/kembalipondok',$variabel);
   }
 
-  function kembalidenda()
-  {
+  function kembalidenda(){
     $nis_santri = $this->input->post("id_santri");
     $datadenda = $this->m_denda->aturdenda();
     foreach ($datadenda->result_array() as $row) {
@@ -3365,7 +3364,7 @@ function datakembali()
     $variabel['santrikeluar'] = $santrikeluar->row();
     $variabel['totaldenda'] = $bayardenda;
     $variabel['santrikeluarlagi'] = $this->m_perizinan->datasantrikeluar();
-    $this->layout->render('back-end/datamaster/perizinan/kembalipondok1',$variabel);
+    $this->layout->render2('back-end/datamaster/perizinan/kembalipondok1',$variabel);
   }
 
   function tambahdatakembali(){
@@ -3406,7 +3405,6 @@ function datakembali()
   }
 
   function laporankembali(){
-
     $tahun = $this->input->post('tahun');
     $bulan = $this->input->post('bulan');
     $variabel['bulan'] = $bulan;
@@ -3496,6 +3494,38 @@ function datakembali()
     $this->layout->renderlaporan('back-end/datamaster/perizinan/v_lap_denda',$variabel,'back-end/datamaster/perizinan/denda_js');
   }
 //akhir data denda//
+
+//mulai atur denda//
+  function aturdenda(){
+    $datadenda = $this->m_denda->aturdenda();
+    $variabel['datadenda'] = $datadenda->row();
+    $this->layout->render('back-end/datamaster/perizinan/pengaturandenda',$variabel,'back-end/datamaster/perizinan/denda_js');
+
+  }
+
+  function updateaturdenda(){
+
+    $password = $this->session->userdata('password');
+    $kata_sandi = md5($this->input->post('password'));
+    $kata_sandi2 = md5($this->input->post('password2'));
+
+    if ($kata_sandi == $kata_sandi2){
+      if ($kata_sandi == $password) {
+        $arrayupdate=array(
+          'denda_perjam' => $this->input->post('dendajam'),
+          'denda_maks' => $this->input->post('dendamaks'),
+        );
+        $exec = $this->m_denda->updateaturdenda($arrayupdate);
+        redirect(base_url("admin/datamaster/aturdenda?&msg=1"));
+      }
+      else{
+        redirect(base_url("admin/datamaster/aturdenda?&msg=0"));
+      }}
+      else{
+        redirect(base_url("admin/datamaster/aturdenda?&msg=2"));
+      }
+  }
+//akhir atur denda//
 
 ///////////////////////////////////////////akhir perizinan////////////////////////////////////////////////
 

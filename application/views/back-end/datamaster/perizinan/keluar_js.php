@@ -16,6 +16,17 @@ $(document).ready(function(){
 
   $('#hapus').attr('disabled','disabled');
   $('#proses').attr('disabled','disabled');
+
+  $("#harus_kembali").datepicker({
+    format: 'yyyy-mm-dd',
+    startDate: '+2d'
+  });
+
+  $("#harus_kembali").on('hide', function(datetext) {
+    datetext = $('#harus_kembali').val() + ' ' + '07' + ':' + '00' + ':' + '00';
+    $('#harus_kembali').val(datetext);
+  });
+
   $('#Lanjutkan').click(function(){
     var angka = /^[0-9]+$/;
     var nis=$('#nis_santri').val();

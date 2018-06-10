@@ -215,6 +215,13 @@
                           <span>Data Denda</span>
                         </a>
                       </li>
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'aturdenda')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/aturdenda" class="auto">
+                          <i class="i i-dot"></i>
+
+                          <span>Pengaturan Denda</span>
+                        </a>
+                      </li>
                     </ul>
                   </li>
 									<li  class="<?= (($menu == "datamaster") && ($submenu == 'databayarinfaq')|| ($submenu == 'bayarinfaq') || ($submenu == 'databayarinfaqp')|| ($submenu == 'bayarinfaqp')) ? "active" : ""; ?>">
