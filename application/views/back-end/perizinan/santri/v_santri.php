@@ -17,7 +17,7 @@
 								<th>Nama</th>
 								<th>NIS</th>
 								<th>NISN</th>
-								<th>Gender</th>
+								<th>Jenis Kelamin</th>
 								<th>Pondokan</th>
 								<th>Afilasi</th>
 								<th>Ekstra</th>
@@ -53,31 +53,6 @@
 	</section>
 
 </section>
-<!-- modal import -->
-<div class='modal' id='import' tabindex='-1' role='dialog'>
- <div class='modal-dialog' role='document'>
-	 <div class='modal-content'>
-		 <div class='modal-header bg-default'>
-
-			 <h4 class='modal-title'>Upload file Excel</h4>
-		 </div>
-		 <div class='modal-body form-horizontal'>
-			 <form class="" action="<?php echo base_url() ?>admin/perizinansantri/santriwatiimport" method="post"  enctype="multipart/form-data">
-				 <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="excel_santri" data-required="true">
-				 <button class="btn btn-primary" type="submit" name="button">upload</button>
-				 <br>
-
-				 <p><small>Pastikan Format Isian File Excel Data Santri Sesusai dengan <a class="text-info" href="<?php echo base_url() ?>admin/perizinansantri/downloadcontohimport"><b>Contoh Berikut</b></a></small></p>
-			 </form>
-		 </div>
-		 <div class='modal-footer'>
-
-			 <button type='button' class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
-		 </div>
-	 </div>
- </div>
- </diV>
- <!-- akhir -->
 
 <div id="myModaledit" class="modal fade" role="dialog">
 	<div class="modal-dialog" id="modal-dialog">

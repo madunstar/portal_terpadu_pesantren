@@ -130,7 +130,7 @@ class Perizinansantri extends CI_Controller
   function santri()
   {
       $variabel['data'] = $this->m_santri->lihatdata();
-      $this->layout->renderizin('back-end/perizinan/santri/v_santri',$variabel,'back-end/perizinan/santri/v_santri_js');
+      $this->layout->renderizin2('back-end/perizinan/santri/v_santri',$variabel,'back-end/perizinan/santri/v_santri_js');
   }
 
   function santrilihat()

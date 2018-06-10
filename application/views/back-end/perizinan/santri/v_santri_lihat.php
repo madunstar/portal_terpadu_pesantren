@@ -52,10 +52,11 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Jenis Kelamin</label>
               <div class="col-lg-8">
-                <select class="form-control"  name="jenis_kelamin" readonly/>
-                  <option value="L" <?php if ($data['jenis_kelamin']=="L")  echo "selected" ?> >Laki-laki</option>
-                  <option value="P" <?php if ($data['jenis_kelamin']=="P")  echo "selected" ?> >Perempuan</option>
-                </select>
+                <input class="form-control" size="16" type="text" readonly name="jenis_kelamin" data-required="true"
+                  value=<?php if ($data['jenis_kelamin']=="L")  echo "Laki-laki";
+                              else if ($data['jenis_kelamin']=="P")  echo "Perempuan"
+                        ?>
+                />
               </div>
             </div>
             <div class="form-group">

@@ -129,7 +129,7 @@ class Perizinansantriwati extends CI_Controller
   function santriwati()
   {
       $variabel['data'] = $this->m_santriwati->lihatdata();
-      $this->layout->renderizinp('back-end/perizinan_p/santriwati/v_santri',$variabel,'back-end/perizinan_p/santriwati/v_santri_js');
+      $this->layout->renderizinp2('back-end/perizinan_p/santriwati/v_santri',$variabel,'back-end/perizinan_p/santriwati/v_santri_js');
   }
 
   function santriwatilihat()

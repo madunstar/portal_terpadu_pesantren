@@ -81,6 +81,16 @@ class Layout {
         $this->ci->load->view($this->endhtml);
     }
 
+    function renderizinp2($view,$data = null,$js = null){
+        $this->ci->load->view($this->headerizinp);
+        $this->ci->load->view($view,$data);
+        $this->ci->load->view($this->footer2);
+        if ($js!=NULL) {
+            $this->ci->load->view($js,$data);
+        }
+        $this->ci->load->view($this->endhtml);
+    }
+
     function renderfront($view,$data = null,$js = null){
         $this->ci->load->view($this->headerfront);
         $this->ci->load->view($view,$data);
