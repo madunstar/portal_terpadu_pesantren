@@ -47,7 +47,7 @@
                             <td>".$row['status_keluar']."</td>
                             <td>
                               <a href='".base_url('admin/perizinansantri/cetak_suratizin?id='.$row['id_keluar'].'')."' class='btn btn-primary btn-xs' title='Cetak Surat Izin'><i class='fa fa-print'></i></a>
-                              <a href='#' class='btn btn-danger btn-xs hapusizin' title='Hapus' name='hapusizin' id='".$row['id_keluar']."'><i class='fa fa-trash-o'></i></a>
+                              <a href='#' class='btn btn-danger btn-xs hapusizin' title='Hapus' id='".$row['id_keluar']."'><i class='fa fa-trash-o'></i></a>
                             </td>
                             </tr>
                         ";$i++;

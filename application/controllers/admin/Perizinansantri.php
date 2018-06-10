@@ -180,7 +180,7 @@ class Perizinansantri extends CI_Controller
 //Bagian Utak Atik By Ilyas
   function datakeluar(){
       $variabel['data'] = $this->m_perizinan->lihatdata();
-      $this->layout->renderizin('back-end/perizinan/v_data_keluar',$variabel,'back-end/perizinan/keluar_js');
+      $this->layout->renderizin2('back-end/perizinan/v_data_keluar',$variabel,'back-end/perizinan/keluar_js');
   }
 
   function datasantritampil(){
