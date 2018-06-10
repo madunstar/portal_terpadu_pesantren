@@ -38,7 +38,7 @@
                           <td>".$row['besar_denda']."</td>
                           <td>".$row['status_pembayaran']."</td>
                           <td>".$row['tanggal_kembali']."</td>
-                          <td><a href='".base_url('admin/perizinan/riwayatbayardenda?nis='.$row['nis_lokal'].'&denda='.$row['id_denda'].'')."'><button class='btn btn-xs btn-primary'>lihat riwayat pembayaran</button></a></td>
+                          <td><a href='".base_url('admin/perizinansantri/riwayatbayardenda?nis='.$row['nis_lokal'].'&denda='.$row['id_denda'].'')."'><button class='btn btn-xs btn-primary'>lihat riwayat pembayaran</button></a></td>
                         </tr>
                       ";
                     }
@@ -49,7 +49,7 @@
               <div class="panel-footer">
                 <button type="button" data-toggle='modal' data-target='#cetaklap' name="button" class="btn btn-primary">Cetak Laporan <i class="fa fa-print"></i></button>
                 <div class='modal' id='cetaklap' tabindex='-1' role='dialog'>
-                  <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/perizinan/laporandenda' method='post'>
+                  <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/perizinansantri/laporandenda' method='post'>
                    <div class='modal-dialog' role='document'>
                      <div class='modal-content'>
                        <div class='modal-header bg-primary'>

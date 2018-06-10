@@ -1,7 +1,5 @@
 <script>
-
    $('#datatable').DataTable({});
-
    $(".hapus").click(function (e) {
     var v_id = this.id;
     $.confirm({
@@ -12,7 +10,7 @@
                 text: 'Hapus',
                 btnClass: 'btn-green',
                 action: function(){
-                    window.location.assign("<?php echo base_url() ?>admin/datamaster/adminhapus?nama_akun="+v_id);
+                    window.location.assign("<?php echo base_url() ?>admin/perizinansantri/izinhapus?id="+v_id);
                 }
             },
             batal: function () {
@@ -22,7 +20,4 @@
         }
         });
     });
-
-    
-
 </script>
