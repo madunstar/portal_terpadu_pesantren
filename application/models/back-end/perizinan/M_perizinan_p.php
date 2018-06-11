@@ -484,5 +484,5 @@ class M_perizinan_p extends CI_Model{
         return $this->db->get()
           ->row_array();
     }
-    ///end anis zone///
+    ///end anis raline zone///
 }
