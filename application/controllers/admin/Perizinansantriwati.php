@@ -325,37 +325,20 @@ class Perizinansantriwati extends CI_Controller
 
   function kembalidenda()
   {
-    $nis_santri = $this->input->post("id_santri");
+    $id_keluar = $this->input->post("id_keluar");
     $datadenda = $this->m_denda_p->aturdenda();
     foreach ($datadenda->result_array() as $row) {
         $denda = $row['denda_perjam'];
         $dendamaks = $row['denda_maks'];
       }
-    $santrikeluar = $this->m_perizinan_p->datasantrikeluarsatu($nis_santri);
+    $santrikeluar = $this->m_perizinan_p->datasantrikeluarsatu($id_keluar);
     foreach ($santrikeluar->result_array() as $santri) {
         $tanggalkeluar = $santri['tanggal_keluar'];
+		$tanggalkembali = $santri['tanggal_kembali'];
       }
-      $tglkmblshrsny = date('Y-m-d H:i:s', strtotime('+1 days 07:00:00', strtotime($tanggalkeluar)));
-      $tglkmblshrsny2 = date('Y-m-d H:i:s', strtotime('+2 days 07:00:00', strtotime($tanggalkeluar)));
       $today = date("Y-m-d H:i:s");
-      if ($today > $tglkmblshrsny) {
-        if ($today < $tglkmblshrsny2){
-        $jamtoday = date("H:i");
-        $jamtoday = new DateTime($jamtoday);
-        $jamkembali = new DateTime("07:00");
-        $selisihjam = $jamkembali->diff($jamtoday);
-        $jamselisih = $selisihjam->format('%h');
-        $totaldenda = $jamselisih*$denda;
-        if ($totaldenda < $dendamaks){
-          $bayardenda = $totaldenda;
-        }
-        elseif ($totaldenda >= $dendamaks) {
-          $bayardenda = $dendamaks;
-        }
-      }
-      elseif ($today > $tglkmblshrsny2 ) {
+      if ($today > $tanggalkembali) {
          $bayardenda = $dendamaks;
-      }
       }
       else {
         $bayardenda = 0;
@@ -399,7 +382,7 @@ class Perizinansantriwati extends CI_Controller
         );
         $exec2= $this->m_perizinan_p->tambahdatadenda($arraydenda);
       }
-      redirect(base_url("admin/perizinan_p/datakembali"));
+      redirect(base_url("admin/perizinansantriwati/datakembali"));
 
   }
 
