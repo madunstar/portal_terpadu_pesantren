@@ -50,8 +50,10 @@
           <span class="thumb-sm avatar pull-left">
             <img src="<?php echo base_url('assets/images/a0.png'); ?>" alt="...">
           </span>
-          <?php $nama_akun = $this->session->userdata('nama_akun');
-          echo $nama_akun;?> <b class="caret"></b>
+          <?php 
+             $nama_akun = $this->session->userdata('nama_akun');
+             $rule = $this->session->userdata('kode_role_admin');
+             echo $nama_akun;?> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu animated fadeInRight">
 
@@ -70,5 +72,11 @@
   <section>
     <section class="hbox stretch">
   <?php
-   $this->load->view("back-end/template/menu");
+   if ($rule=="akdputra") {
+     $this->load->view("back-end/template/menu_akademik");
+   } else if ($rule=="akdputri") {
+    $this->load->view("back-end/template/menu_akademik_p");
+   }  else {
+    $this->load->view("back-end/template/menu");
+   }
    ?>

@@ -2,16 +2,15 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">santriwati</h3>
+      <h3 class="m-b-none">Santri</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Lihat santriwati
+        Lihat Santri
       </header>
       <div class="panel-body">
-      <?php pesan_get('msg',"Berhasil Menambahkan santriwati","Gagal Menambahkan santriwati") ?>
-       <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/perizinan/santritambah" method="post">
-       <a href="<?php echo base_url('admin/perizinan/santri') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
+       <form class="bs-example form-horizontal" data-validate="parsley" action="" method="">
+       <a href="<?php echo base_url('admin/perizinansantri/santri') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -369,7 +368,7 @@
       </div>
       <footer class="panel-footer text-right bg-light lter">
         &nbsp
-        <a href="<?php echo base_url('admin/perizinan/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List santriwati</a>
+        <a href="<?php echo base_url('admin/perizinansantri/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
       </footer>
       </form>
 

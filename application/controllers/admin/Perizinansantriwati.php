@@ -15,14 +15,26 @@ class Perizinansantriwati extends CI_Controller
     $this->load->model('back-end/datamaster/m_santriwati');
     $this->load->library('layout_pendaftaran');
     $this->load->helper('indo_helper');
-    if ($this->session->userdata('nama_akun')=="") {
+    if ($this->session->userdata('nama_akun') == '') {
+        redirect('admin/login');
+    }
+    else if ($this->session->userdata('kode_role_admin') == '') {
         redirect('admin/login');
     }
     else if ($this->session->userdata('kode_role_admin') == 'adm_pd') {
         redirect('admin/pendaftaran');
     }
-    else if ($this->session->userdata('kode_role_admin') == 'akd') {
+    else if ($this->session->userdata('kode_role_admin') == 'adm_dms') {
         redirect('admin/datamaster');
+    }
+    else if ($this->session->userdata('kode_role_admin') == 'przputra') {
+      redirect('admin/perizinansantri');
+    }
+    else if ($this->session->userdata('kode_role_admin') == 'akdputra') {
+      redirect('admin/santriakd');
+    }
+    else if ($this->session->userdata('kode_role_admin') == 'akdputri') {
+      redirect('admin/santriwatiakd');
     }
     $this->load->helper('text');
     setlocale(LC_ALL, 'INDONESIA');
@@ -250,9 +262,6 @@ class Perizinansantriwati extends CI_Controller
               }
               else{
                   $exectambahizin = $this->m_perizinan_p->tambahizinkeluar($izinkeluar);
-
-                  //$exec2 = $this->m_perizinan_p->tambahdatapenjemput($penjemput);
-                  //$this->layout->renderizin('back-end/perizinan/v_keluarpondok','back-end/perizinan/keluar_js');
                   redirect('admin/perizinansantriwati/suratizin');
               }
           }

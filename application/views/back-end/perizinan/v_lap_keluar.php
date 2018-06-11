@@ -3,7 +3,7 @@
 
   <section class="vbox bg-white">
     <header class="header b-b b-light hidden-print">
-      <a href="<?php echo base_url() ?>admin/perizinan/datakeluar" class="btn btn-sm btn-warning pull-right">Kembali</a>
+      <a href="<?php echo base_url() ?>admin/perizinansantri/datakeluar" class="btn btn-sm btn-warning pull-right">Kembali</a>
       <p class="pull-right"></p>
       <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>&nbsp;&nbsp;
       <p>Laporan Data Santri Keluar Pondok</p>
@@ -36,6 +36,7 @@
             <th>Nama</th>
             <th>Kelas</th>
             <th>Tanggal Keluar</th>
+            <th>Tanggal Rencana Kembali</th>
             <th>Keperluan</th>
             <th>Penjemput</th>
             <th>Status Keluar</th>
@@ -53,6 +54,7 @@
                 <td>".$row['nama_lengkap']."</td>
                 <td>".$row['jenis_sekolah_asal']."</td>
                 <td>".$row['tgl_keluar']."</td>
+                <td>".$row['harus_kembali']."</td>
                 <td>".$row['keperluan']."</td>
                 <td>".$row['nama_penjemput']."</td>
                 <td>".$row['status_keluar']."</td>

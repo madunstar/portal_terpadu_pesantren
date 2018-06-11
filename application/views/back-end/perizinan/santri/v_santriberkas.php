@@ -2,16 +2,16 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Berkas santri "<?php echo $santri['nama_lengkap'] ?> (<?php echo $santri['nis_lokal'] ?>)"</h3>
+      <h3 class="m-b-none">Berkas Santri "<?php echo $santri['nama_lengkap'] ?> (<?php echo $santri['nis_lokal'] ?>)"</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        List Berkas santri
+        List Berkas Santri
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus  Data Berkas santri","Gagal Menghapus Data Berkas santri") ?>
-      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/perizinan/santri" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> List santri</a>
+      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/perizinansantri/santri" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> List Santri</a>
 
         <table class="table table-striped " id="datatable">
           <thead>
