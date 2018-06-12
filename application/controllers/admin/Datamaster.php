@@ -585,10 +585,12 @@ class Datamaster extends CI_Controller{
         $variabel['data'] = '';
         $this->layout->render('back-end/datamaster/santri/v_santri',$variabel,'back-end/datamaster/santri/v_santri_js');
     }
+
     function santriajax()
     {
         $this->m_santri->listsantriajax();
     }
+
     function santrilihat()
     {
         $nis = $this->input->get("nis");
@@ -1439,7 +1441,7 @@ class Datamaster extends CI_Controller{
     function staff()
     {
         $variabel['data'] = $this->m_staff->lihatdata();
-        $this->layout->render('back-end/datamaster/staff/v_staff',$variabel,'back-end/datamaster/staff/v_staff_js');
+        $this->layout->render2('back-end/datamaster/staff/v_staff',$variabel,'back-end/datamaster/staff/v_staff_js');
     }
 
     function stafflihat()
