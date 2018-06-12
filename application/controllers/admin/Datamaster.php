@@ -301,18 +301,18 @@ class Datamaster extends CI_Controller{
             }
 
         } else {
-             $variabel['provinsi']=$this->m_santri->ambilprovinsi();
-             $variabel['transportasi']=$this->m_santri->ambiltransportasi();
-             $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
+             $variabel['provinsi']=$this->m_santriwati->ambilprovinsi();
+             $variabel['transportasi']=$this->m_santriwati->ambiltransportasi();
+             $variabel['pekerjaan']=$this->m_santriwati->ambilpekerjaan();
              $variabel['pendidikan']
-             =$this->m_santri->ambilpendidikan();
-             $variabel['kabupaten']=$this->m_santri->ambilkabupaten("");
-             $variabel['kecamatan']=$this->m_santri->ambilkecamatan("");
-             $variabel['desa']=$this->m_santri->ambildesa("");
+             =$this->m_santriwati->ambilpendidikan();
+             $variabel['kabupaten']=$this->m_santriwati->ambilkabupaten("");
+             $variabel['kecamatan']=$this->m_santriwati->ambilkecamatan("");
+             $variabel['desa']=$this->m_santriwati->ambildesa("");
              $variabel['jenjang']=$this->m_jenjang->lihatdata();
              $variabel['pondokan']=$this->m_pondokan->lihatdata();
 
-            $this->layout->render('back-end/datamaster/santri/v_santri_tambah',$variabel,'back-end/datamaster/santri/v_santri_js');
+            $this->layout->render('back-end/datamaster/santriwati/v_santri_tambah',$variabel,'back-end/datamaster/santriwati/v_santri_js');
         }
     }
 
