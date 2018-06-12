@@ -22,8 +22,7 @@
 							<table class="table table-striped m-b-none" id="datatable">
 								<thead>
 									<tr>
-										<th style="width:150px">Aksi</th>
-										<th>#</th>
+										<th style="width:160px">Aksi</th>
 										<th>Tahun Ajaran</th>
 										<th>Kelas</th>
 										<th>Ruangan</th>
@@ -36,33 +35,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php
-                    $i=0;
-                    foreach($data->result_array() as $row){
-                      $i++;
-                      echo "
-                        <tr>
-
-                          <td>
-                          <a href='".base_url('admin/santriakd/lihatkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Hapus'><i class='fa fa-eye'></i></a>
-                          <a href='".base_url('admin/santriakd/editkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-						  <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
-						  <a href='".base_url('admin/santriakd/printkelasafilasi?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs print' title='print' id='".$row['id_kelas_belajar']."'><i class='fa fa-print'></i></a>
-                          </td>
-                          <td>".$i."</td>
-                          <td>".$row['tahun_ajaran']."</td>
-                          <td>".$row['nama_kelas_belajar']."</td>
-                          <td>".$row['nama_kelas']."</td>
-                          <td>".$row['nama_lengkap']."</td>
-                          <td>".$row['jenjang']."</td>
-						  <td>".$row['tingkat']."</td>
-						  <td><a href='".base_url('admin/santriakd/jadwalafilasi?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-clock-o'></i> Jadwal</a></td>
-                          <td><button class='btn ".($row['status_kelas']=="Aktif"?"btn-success":"btn-warning")." btn-xs edit'  title='Edit' id='".$row['id_kelas_belajar']."' data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i> ".$row['status_kelas']."</button></td>
-                          <td><a href='".base_url('admin/santriakd/lihatkelasbelajarsantri?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-list'></i> Santri</a></td>
-                        </tr>
-                      ";
-                    }
-                ?>
+								
 								</tbody>
 							</table>
 						</div>

@@ -1,13 +1,13 @@
 
 </section>
 </section>
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.2.3.min.js');?>"></script>
+<script src="<?php echo base_url('assets/js/jquery-2.2.3.min.js');?>"></script>
 <script src="<?php // echo base_url('assets/js/jquery.min.js');?>"></script>
   <!-- Bootstrap -->
   <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
   <!-- App -->
   <script src="<?php echo base_url('assets/js/app.js');?>"></script>
-  <script src="<?php echo base_url('assets/js/datatables2/datatables.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/datatables.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/js/slimscroll/jquery.slimscroll.min.js');?>"></script>
 
   <script src="<?php echo base_url('assets/js/charts/easypiechart/jquery.easy-pie-chart.js');?>"></script>

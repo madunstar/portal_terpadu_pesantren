@@ -11,11 +11,11 @@
 				</header>
 				<div class="table-responsive">
 					<?php pesan_get('psn',"Berhasil Import Data Santri","Gagal Import Data Santri","Salah") ?>
-
 					<?php pesan_get('msg',"Berhasil Menghapus Data Santri","Gagal Menghapus Data Santri") ?>
+
 					<a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/santriakd/santritambah" class="btn btn-s-md btn-success btn-rounded">
 						<i class="fa fa-plus"></i> Tambah data</a>
-						<button class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#import" ><i class="fa fa-download"></i> Import Data</button>
+							<button class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#import" ><i class="fa fa-download"></i> Import Data</button>
 
 					<table class="table table-striped " id="datatable">
 						<thead>
@@ -31,31 +31,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php
-                foreach($data->result_array() as $row){
-                  echo "
-                    <tr>
-                      <td>
-                      <a href='".base_url('admin/santriakd/santrilihat?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
-                      <a href='".base_url('admin/santriakd/santriedit?nis='.$row['nis_lokal'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-											<a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['nis_lokal']."'><i class='fa fa-trash-o'></i></a>
-											<a href='".base_url('admin/santriakd/cetakkartu?nis='.$row['nis_lokal'].'')."' class='btn btn-info btn-xs' title='cetak' id='".$row['nis_lokal']."' target='_blank'><i class='fa fa-print'></i></a>
-                      </td>
-                      <td>".$row['nama_lengkap']."</td>
-                      <td>".$row['nis_lokal']."</td>
-                      <td>".$row['nisn']."</td>
-											<td>".($row['jenis_kelamin']=="L"?"Laki-laki":"Perempuan")."</td>
-											<td><button class='btn btn-default btn-xs edit2'  title='Edit' id='".$row['nis_lokal']."' data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-list'></i> ".$row['pondokan']."</button></td>
-                      <td><button class='btn btn-default btn-xs edit'  title='Edit' id='".$row['nis_lokal']."' data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-list'></i> ".$row['kelas']."</button></td>
-                      <td>
-                        <a href='".base_url('admin/santriakd/santriberkas?nis='.$row['nis_lokal'].'')."' class='btn btn-success btn-xs' title='Berkas'><i class='fa fa-file-text-o'></i></a>
-                        <a href='".base_url('admin/santriakd/prestasisantri?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Prestasi'><i class='fa fa-trophy'></i></a>
-                        <a href='".base_url('admin/santriakd/pelanggaransantri?nis='.$row['nis_lokal'].'')."' class='btn btn-danger btn-xs' title='Pelanggaran'><i class='fa fa-ban'></i></a>
-                      </td>
-                    </tr>
-                  ";
-                }
-            ?>
+						
 						</tbody>
 					</table>
 				</div>

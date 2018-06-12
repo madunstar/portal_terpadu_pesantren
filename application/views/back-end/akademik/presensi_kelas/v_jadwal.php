@@ -1,4 +1,4 @@
-style="width:80%;font-size:10px<section id="content" style="width:100%">
+<section id="content" style="width:100%">
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
@@ -105,8 +105,8 @@ style="width:80%;font-size:10px<section id="content" style="width:100%">
                 ?>
                 </table>
           </div>
-
-
+          
+          
         </div>
         <hr />
         <div class="row">
@@ -196,13 +196,13 @@ style="width:80%;font-size:10px<section id="content" style="width:100%">
                 ?>
                 </table>
           </div>
-
-
+          
+          
         </div>
         <hr />
         <div class="row" >
         <div class="col-md-4"  style="margin:0 auto">
-           <table class="table table-bordered" style="width:80%">
+           <table class="table table-bordered" style="width:80%;font-size:10px">
                 <tr  align="center">
                   <td colspan="5" align="center"><strong>Ahad</strong></td>
                 </tr>
@@ -246,7 +246,7 @@ style="width:80%;font-size:10px<section id="content" style="width:100%">
     <!-- Modal content-->
     <div class="modal-content" id="modal-tambah">
     <div class="modal-body">
-
+    
     </div>
     </div>
   </div>

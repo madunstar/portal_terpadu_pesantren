@@ -61,7 +61,7 @@
     <!-- Modal content-->
     <div class="modal-content" id="modal-tambah">
     <div class="modal-body">
-
+    
     </div>
     </div>
   </div>

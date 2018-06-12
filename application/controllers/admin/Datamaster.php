@@ -73,7 +73,7 @@ class Datamaster extends CI_Controller{
           redirect('admin/perizinansantriwati');
         }
         else if ($this->session->userdata('kode_role_admin') == 'akdputra') {
-          redirect('admin/santriakd');
+        //   redirect('admin/santriakd');
         }
         else if ($this->session->userdata('kode_role_admin') == 'akdputri') {
           redirect('admin/santriwatiakd');
@@ -301,18 +301,18 @@ class Datamaster extends CI_Controller{
             }
 
         } else {
-             $variabel['provinsi']=$this->m_santri->ambilprovinsi();
-             $variabel['transportasi']=$this->m_santri->ambiltransportasi();
-             $variabel['pekerjaan']=$this->m_santri->ambilpekerjaan();
+             $variabel['provinsi']=$this->m_santriwati->ambilprovinsi();
+             $variabel['transportasi']=$this->m_santriwati->ambiltransportasi();
+             $variabel['pekerjaan']=$this->m_santriwati->ambilpekerjaan();
              $variabel['pendidikan']
-             =$this->m_santri->ambilpendidikan();
-             $variabel['kabupaten']=$this->m_santri->ambilkabupaten("");
-             $variabel['kecamatan']=$this->m_santri->ambilkecamatan("");
-             $variabel['desa']=$this->m_santri->ambildesa("");
+             =$this->m_santriwati->ambilpendidikan();
+             $variabel['kabupaten']=$this->m_santriwati->ambilkabupaten("");
+             $variabel['kecamatan']=$this->m_santriwati->ambilkecamatan("");
+             $variabel['desa']=$this->m_santriwati->ambildesa("");
              $variabel['jenjang']=$this->m_jenjang->lihatdata();
              $variabel['pondokan']=$this->m_pondokan->lihatdata();
 
-            $this->layout->render('back-end/datamaster/santri/v_santri_tambah',$variabel,'back-end/datamaster/santri/v_santri_js');
+            $this->layout->render('back-end/datamaster/santriwati/v_santri_tambah',$variabel,'back-end/datamaster/santriwati/v_santri_js');
         }
     }
 
@@ -585,10 +585,12 @@ class Datamaster extends CI_Controller{
         $variabel['data'] = '';
         $this->layout->render('back-end/datamaster/santri/v_santri',$variabel,'back-end/datamaster/santri/v_santri_js');
     }
+
     function santriajax()
     {
         $this->m_santri->listsantriajax();
     }
+
     function santrilihat()
     {
         $nis = $this->input->get("nis");
@@ -1439,7 +1441,7 @@ class Datamaster extends CI_Controller{
     function staff()
     {
         $variabel['data'] = $this->m_staff->lihatdata();
-        $this->layout->render('back-end/datamaster/staff/v_staff',$variabel,'back-end/datamaster/staff/v_staff_js');
+        $this->layout->render2('back-end/datamaster/staff/v_staff',$variabel,'back-end/datamaster/staff/v_staff_js');
     }
 
     function stafflihat()
