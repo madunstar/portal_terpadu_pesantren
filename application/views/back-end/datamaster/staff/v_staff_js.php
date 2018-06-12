@@ -1,6 +1,8 @@
 <script>
 
-   $('#datatable').DataTable({});
+$(document).ready( function () {
+ $('#datatable').DataTable();
+} );
 
    $(".hapus").click(function (e) {
     var v_nip = this.id;
@@ -18,7 +20,7 @@
             batal: function () {
 
             }
-            
+
         }
         });
     });
