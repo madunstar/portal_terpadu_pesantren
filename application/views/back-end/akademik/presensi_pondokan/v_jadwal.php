@@ -105,8 +105,8 @@
                 ?>
                 </table>
           </div>
-
-
+          
+          
         </div>
         <hr />
         <div class="row">
@@ -196,8 +196,8 @@
                 ?>
                 </table>
           </div>
-
-
+          
+          
         </div>
         <hr />
         <div class="row" >
@@ -246,7 +246,7 @@
     <!-- Modal content-->
     <div class="modal-content" id="modal-tambah">
     <div class="modal-body">
-
+    
     </div>
     </div>
   </div>

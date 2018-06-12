@@ -4,7 +4,7 @@
 
    $(".hapus").click(function (e) {
     var v_id = this.id;
-    var v_nis = "<?php echo $santriwati['nis_lokal'] ?>";
+    var v_nis = "<?php echo $santri['nis_lokal'] ?>";
     $.confirm({
         title: 'Hapus!',
         content: 'Yakin ingin menghapus ?',
@@ -19,7 +19,7 @@
             batal: function () {
 
             }
-
+            
         }
         });
     });

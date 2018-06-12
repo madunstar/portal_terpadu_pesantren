@@ -15,18 +15,19 @@
 						</header>
 						<div class="panel-body">
 							<?php pesan_get('msg',"Berhasil Menambahkan  Data Kelas Belajar","Gagal Menambah Data Kelas Belajar") ?>
-
-								<div class="form-group">
-									<label class="col-sm-2 control-label"> Pilih Pelajaran</label>
+						
+							<div class="form-group">
+									<label class="col-sm-2 control-label"> Pilih Bulan</label>
 									<div class="col-sm-6">
-										<select class="form-control m-b  chosen-select" name="id_jadwal" id="id_jadwal" data-required="true">
-											<option value="" selected disabled>.: Pilih Pelajaran:.</option>
+										<select class="form-control m-b  chosen-select" name="bulan" id="bulan" data-required="true">
+											<option value="" selected disabled>.: Pilih Bulan:.</option>
 											<?php
-												foreach($listjadwal->result_array() as $row){
-													echo "<option value='".$row['id_jadwal']."'>".$row['mata_pelajaran']." (".$row['guru'].")</option>";
+												foreach($bulan as $row){
+													echo "<option value='".$row."'>".$row."</option>";
 												}
 											?>
 										</select>
+										<input type="hidden" value="<?php echo $id ?>" name="idkelas"  id="idkelas" />
 
 									</div>
 								</div>

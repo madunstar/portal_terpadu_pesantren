@@ -73,7 +73,7 @@ class Datamaster extends CI_Controller{
           redirect('admin/perizinansantriwati');
         }
         else if ($this->session->userdata('kode_role_admin') == 'akdputra') {
-          redirect('admin/santriakd');
+        //   redirect('admin/santriakd');
         }
         else if ($this->session->userdata('kode_role_admin') == 'akdputri') {
           redirect('admin/santriwatiakd');

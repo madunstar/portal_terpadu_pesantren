@@ -12,7 +12,6 @@
 </header>
 <body>
 
-
       <div style="width:85mm;height:53mm;border:1px solid #cecece;border-radius:10px;padding:5px; background-image:url('<?php echo base_url()."assets/images/1.jpg')"; ?>;background-repeat: no-repeat;background-size:cover" >
       <table> 
         <tr>
@@ -62,7 +61,7 @@ BANJARBARU - KALIMANTAN SELATAN 70722
        
 
       </table>
-      <table  style="font-size:7px;font-family:arial;line-height:4px">
+      <table  style="font-size:7px;font-family:arial;line-height:3px">
             <tr>
             <td style="width:225px"></td>
             <td>Banjarbaru, <?php echo date("d-m-Y") ?></td>
@@ -71,13 +70,10 @@ BANJARBARU - KALIMANTAN SELATAN 70722
             <td></td>
             <td>Kepala Sekolah</td>
             </tr> 
-            <tr style="height:3px">
-            <td></td>
-            <td></td>
-            </tr>
+         
             <tr>
             <td></td>
-            <td>Madan</td>
+            <td><img src="<?php echo base_url() ?>assets/images/mualimat.png" width="50px"/> <br/>Madan</td>
             </tr>
             <tr>
             <td></td>

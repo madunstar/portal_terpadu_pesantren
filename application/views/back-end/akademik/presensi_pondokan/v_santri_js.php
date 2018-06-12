@@ -37,10 +37,10 @@
 				success: function (response) {
 					$("#loading").hide();
 					$('#modal-tambah').html(response);
-
+                   
 				},
                 complete: function () {
-                    $('.chosen-select').chosen({width: "inherit"})
+                    $('.chosen-select').chosen({width: "inherit"}) 
                     $('#tambahsantriproses').click(function (e) {
                         var v_url = "<?php echo base_url() ?>admin/santriakd/tambahsantripondokproses";
                         var v_idkelasbelajar = "<?php echo $santri['id_kelas_belajar'] ?>";
@@ -60,7 +60,7 @@
                                 //pesanpop('Pesan !', 'Gagal menambah data gudang.', 'error')
                             },
                             success: function (response) {
-                                $("#loading").hide();
+                                $("#loading").hide();   
                                 $("#myModal").removeClass("in");
                                 $(".modal-backdrop").remove();
                                 $('body').removeClass('modal-open');
@@ -75,7 +75,7 @@
 					});
                 }
             });
-
+       
     });
 
 
@@ -120,7 +120,7 @@
                                 //pesanpop('Pesan !', 'Gagal menambah data gudang.', 'error')
                             },
                             success: function (response) {
-                                $("#loading").hide();
+                                $("#loading").hide();   
                                 $("#myModal").removeClass("in");
                                 $(".modal-backdrop").remove();
                                 $('body').removeClass('modal-open');
@@ -135,7 +135,7 @@
 					});
                 }
             });
-
+       
     });
 
 </script>

@@ -2,14 +2,14 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">santriwati</h3>
+      <h3 class="m-b-none">Santri</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Edit Data santriwati
+        Edit Data Santri
       </header>
       <div class="panel-body">
-      <?php pesan_get('msg',"Berhasil Mengedit Data santriwati","Gagal Mengedit Data santriwati") ?>
+      <?php pesan_get('msg',"Berhasil Mengedit Data Santri","Gagal Mengedit Data Santri") ?>
        <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriwatiakd/santriwatiedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" method="post"   enctype="multipart/form-data">
        <a href="<?php echo base_url('admin/santriwatiakd/santriwati') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
@@ -409,7 +409,7 @@
       &nbsp
       <a href="<?php echo base_url() ?>admin/santriwatiakd/santriwatiedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
       &nbsp
-      <a href="<?php echo base_url('admin/santriwatiakd/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List santriwati</a>
+      <a href="<?php echo base_url('admin/santriwatiakd/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
       </footer>
       </form>
 

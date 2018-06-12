@@ -37,10 +37,10 @@
 				success: function (response) {
 					$("#loading").hide();
 					$('#modal-tambah').html(response);
-
+                   
 				},
                 complete: function () {
-                    $('.chosen-select').chosen({width: "362px"})
+                    $('.chosen-select').chosen({width: "362px"}) 
                     $('#tambahjadwalproses').click(function (e) {
                         var v_url = "<?php echo base_url() ?>admin/santriakd/tambahjadwalpondokanproses";
                         var v_idkelasbelajar = "<?php echo $jadwal['id_kelas_belajar'] ?>";
@@ -64,7 +64,7 @@
                                 //pesanpop('Pesan !', 'Gagal menambah data gudang.', 'error')
                             },
                             success: function (response) {
-                                $("#loading").hide();
+                                $("#loading").hide();   
                                 $("#myModal").removeClass("in");
                                 $(".modal-backdrop").remove();
                                 $('body').removeClass('modal-open');
@@ -79,7 +79,7 @@
 					});
                 }
             });
-
+       
     });
 
 
@@ -116,7 +116,7 @@
                                 idkelasbelajar: v_idkelasbelajar,
                                 mata_pelajaran: v_mata_pelajaran,
                                 jam: v_jam,
-                                idjadwal : v_id_jadwal
+                                idjadwal : v_id_jadwal 
                             },
                             beforeSend: function () {
                                 $("#loading").show();
@@ -126,7 +126,7 @@
                                 //pesanpop('Pesan !', 'Gagal menambah data gudang.', 'error')
                             },
                             success: function (response) {
-                                $("#loading").hide();
+                                $("#loading").hide();   
                                 $("#myModal").removeClass("in");
                                 $(".modal-backdrop").remove();
                                 $('body').removeClass('modal-open');
@@ -141,7 +141,7 @@
 					});
                 }
             });
-
+       
     });
 
 </script>

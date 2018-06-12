@@ -1,5 +1,5 @@
 <script>
-
+ 
   $('#datatable').DataTable({
         "bStateSave"    : true,
         "ajax"          : {
@@ -83,33 +83,34 @@
                         });
 
 					});
+                    
                 }
             });
        
     });
-
-    $('#pondokan').change(function(){
-        var id=$(this).val();
-        $.ajax({
-            url : "<?php echo base_url();?>admin/datamaster/datatingkatpondokan",
-            method : "POST",
-            data : {pondokan: id},
-            async : false,
-            dataType : 'json',
-            success: function(data){
-                var html ='<option value="" disabled selected>.: Pilih Tingkatan :.</option>';
-                    var i;
-                    for(i=0; i<data.length; i++){
-                        html += '<option value="'+data[i].tingkat+'">'+data[i].tingkat+'</option>';
-                    }
-                    $('#tingkatan').html(html);
-
-            }
-        });
-    });
+    
+  
         }
    });
+   $('#pondokan').change(function(){
+       
+       var id=$(this).val();
+       $.ajax({
+           url : "<?php echo base_url();?>admin/datamaster/datatingkatpondokan",
+           method : "POST",
+           data : {pondokan: id},
+           async : false,
+           dataType : 'json',
+           success: function(data){
+               var html ='<option value="" disabled selected>.: Pilih Tingkatan :.</option>';
+                   var i;
+                   for(i=0; i<data.length; i++){
+                       html += '<option value="'+data[i].tingkat+'">'+data[i].tingkat+'</option>';
+                   }
+                   $('#tingkatan').html(html);
 
-   
+           }
+       });
+   });
 
 </script>
