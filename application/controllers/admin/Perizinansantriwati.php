@@ -168,7 +168,7 @@ class Perizinansantriwati extends CI_Controller
       if ($exec->num_rows()>0){
           $variabel['santriwati'] = $exec->row_array();
           $variabel['data'] = $this->m_santriwati->lihatdataberkas($nis);
-          $this->layout->renderizinp('back-end/perizinan_p/santriwati/v_santriberkas',$variabel,'back-end/perizinan_p/santriwati/v_santriberkas_js');
+          $this->layout->renderizinp2('back-end/perizinan_p/santriwati/v_santriberkas',$variabel,'back-end/perizinan_p/santriwati/v_santriberkas_js');
       } else {
           redirect(base_url("admin/perizinansantriwati/santriwati"));
       }
@@ -307,14 +307,14 @@ class Perizinansantriwati extends CI_Controller
     $variabel['bulan'] = $bulan;
     $variabel['totkeluar'] = $this->m_perizinan_p->totalkeluar($tahun,$bulan);;
     $variabel['data'] = $this->m_perizinan_p->laporankeluar($tahun,$bulan);
-    $this->layout->renderlaporan('back-end/perizinan_p/v_lap_keluar',$variabel);
+    $this->layout->renderlaporanp('back-end/perizinan_p/v_lap_keluar',$variabel);
   }
 //Sampai Sini Bagian Utak Atik By Ilyas
 
   function datakembali()
   {
       $variabel['santrikembali'] = $this->m_perizinan_p->datasantrikembali();
-      $this->layout->renderizinp('back-end/perizinan_p/data_kembali',$variabel,'back-end/perizinan_p/denda_js');
+      $this->layout->renderizinp2('back-end/perizinan_p/data_kembali',$variabel,'back-end/perizinan_p/denda_js');
   }
 
   function kembali()
@@ -334,7 +334,7 @@ class Perizinansantriwati extends CI_Controller
     $santrikeluar = $this->m_perizinan_p->datasantrikeluarsatu($id_keluar);
     foreach ($santrikeluar->result_array() as $santri) {
         $tanggalkeluar = $santri['tanggal_keluar'];
-		$tanggalkembali = $santri['tanggal_kembali'];
+		$tanggalkembali = $santri['harus_kembali'];
       }
       $today = date("Y-m-d H:i:s");
       if ($today > $tanggalkembali) {
@@ -395,7 +395,7 @@ class Perizinansantriwati extends CI_Controller
     $variabel['semuadenda'] = $this->m_denda_p->semuadenda($tahun,$bulan);
     $variabel['kenadenda'] = $this->m_perizinan_p->kenadenda($tahun,$bulan);
     $variabel['data'] = $this->m_perizinan_p->laporankembali($tahun,$bulan);
-    $this->layout->renderlaporan('back-end/perizinan_p/v_lap_kembali',$variabel,'back-end/perizinan_p/denda_js');
+    $this->layout->renderlaporanp('back-end/perizinan_p/v_lap_kembali',$variabel,'back-end/perizinan_p/denda_js');
   }
 
 ///////////////////denda ini denda//////////////////////////
@@ -403,7 +403,7 @@ class Perizinansantriwati extends CI_Controller
   function datadenda()
   {
       $variabel['data'] = $this->m_denda_p->lihatdata();
-      $this->layout->renderizinp('back-end/perizinan_p/v_denda',$variabel,'back-end/perizinan_p/denda_js');
+      $this->layout->renderizinp2('back-end/perizinan_p/v_denda',$variabel,'back-end/perizinan_p/denda_js');
   }
 
   function riwayatbayardenda()
@@ -478,7 +478,7 @@ function laporandenda(){
   $variabel['dendalunas'] = $this->m_denda_p->dendalunas($tahun,$bulan);
   $variabel['dendahutang'] = $this->m_denda_p->dendahutang($tahun,$bulan);
   $variabel['data'] = $this->m_denda_p->laporandenda($tahun,$bulan);
-  $this->layout->renderlaporan('back-end/perizinan_p/v_lap_denda',$variabel,'back-end/perizinan_p/denda_js');
+  $this->layout->renderlaporanp('back-end/perizinan_p/v_lap_denda',$variabel,'back-end/perizinan_p/denda_js');
 }
 
   function aturdenda(){

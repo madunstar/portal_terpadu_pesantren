@@ -11,7 +11,7 @@
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Mengubah Kata Sandi","Gagal Mengubah Kata Sandi") ?>
        <form class="bs-example form-horizontal" data-validate="parsley" action="" method="post">
-       <a href="<?php echo base_url('admin/perizinansantriwati/dashboard') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
+       <a href="<?php echo base_url('admin/perizinansantriwati') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
