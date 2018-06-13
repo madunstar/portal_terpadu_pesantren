@@ -430,7 +430,7 @@ class M_perizinan extends CI_Model{
     }
 
     function datasantrikeluarsatu($id_keluar){
-      $this->db->select('id_keluar, nis_santri, nama_lengkap, tanggal_keluar, tanggal_kembali, keperluan, nama_penjemput ');
+      $this->db->select('id_keluar, nis_santri, nama_lengkap, tanggal_keluar, harus_kembali, keperluan, nama_penjemput ');
       $this->db->from('tb_perizinan_keluar');
       $this->db->join('tb_santri','tb_santri.nis_lokal=tb_perizinan_keluar.nis_santri');
       $this->db->join('tb_perizinan_penjemput','tb_perizinan_penjemput.id_penjemput = tb_perizinan_keluar.id_penjemput');

@@ -14,7 +14,7 @@
               <h4 class="font-bold">Input Data Santri Kembali ke Pondok</h4>
             </header>
             <div class="panel-body">
-              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/perizinan/kembalidenda" method="post">
+              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/perizinansantri/kembalidenda" method="post">
                   <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-id-1">Pilih Santri</label>
                   <div class="col-sm-8">
@@ -31,7 +31,7 @@
                 </div>
               </form>
                 <div class="line line-dashed b-b line-lg pull-in"></div>
-                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/perizinan/tambahdatakembali" method="post">
+                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/perizinansantri/tambahdatakembali" method="post">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Nama</label>
                       <div class="col-sm-8" name="nama">
@@ -59,14 +59,14 @@
                           <input type="text" class="form-control" id="input-id-1" value="<?php echo $santrikeluar->nama_penjemput;?>" readonly>
                         </div>
                 </div>
-				
+
 				<div class="form-group">
                       <label class="col-sm-2 control-label">Tanggal & Jam Kembali Seharusnya</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" id="input-id-1" value="<?php  echo $santrikeluar->tanggal_kembali;?>" readonly>
+                        <input type="text" class="form-control" id="input-id-1" value="<?php  echo $santrikeluar->harus_kembali;?>" readonly>
                       </div>
                 </div>
-				
+
                 <div class="form-group">
                       <label class="col-sm-2 control-label">Tanggal & Jam Kembali Sekarang</label>
                       <div class="col-sm-8">

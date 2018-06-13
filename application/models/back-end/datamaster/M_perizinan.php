@@ -36,12 +36,107 @@ class M_perizinan extends CI_Model{
             HOUR(tanggal_keluar),":",
             MINUTE(tanggal_keluar),":",
             SECOND(tanggal_keluar)
-        ) AS tanggal_keluar, keperluan, nama_penjemput, status_keluar');
+        ) AS tanggal_keluar, CONCAT(
+            CASE DAYOFWEEK(harus_kembali)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(harus_kembali)," ",
+            CASE MONTH(harus_kembali)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(harus_kembali)," Pukul ",
+            HOUR(harus_kembali),":",
+            MINUTE(harus_kembali),":",
+            SECOND(harus_kembali)
+        ) AS harus_kembali, keperluan, nama_penjemput, status_keluar, "Muallimin" AS pondokan');
         $this->db->from('tb_perizinan_keluar');
-        $this->db->join('tb_santri', 'nis_santri = nis_lokal');
+        $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
-        $this->db->order_by('id_keluar','ASC');
-        return $this->db->get();
+        $muallimin = $this->db->get_compiled_select();
+
+        $this->db->select('id_keluar, nis_santri, nama_lengkap, jenis_sekolah_asal,
+        CONCAT(
+            CASE DAYOFWEEK(tanggal_keluar)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(tanggal_keluar)," ",
+            CASE MONTH(tanggal_keluar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(tanggal_keluar)," Pukul ",
+            HOUR(tanggal_keluar),":",
+            MINUTE(tanggal_keluar),":",
+            SECOND(tanggal_keluar)
+        ) AS tanggal_keluar, CONCAT(
+            CASE DAYOFWEEK(harus_kembali)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(harus_kembali)," ",
+            CASE MONTH(harus_kembali)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(harus_kembali)," Pukul ",
+            HOUR(harus_kembali),":",
+            MINUTE(harus_kembali),":",
+            SECOND(harus_kembali)
+        ) AS harus_kembali, keperluan, nama_penjemput, status_keluar, "Muallimat" AS pondokan');
+        $this->db->from('tb_perizinan_keluar_p');
+        $this->db->join('tb_santriwati', 'tb_perizinan_keluar_p.nis_santri = tb_santriwati.nis_lokal');
+        $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar_p.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+        $muallimat = $this->db->get_compiled_select();
+
+        return $query = $this->db->query($muallimin . ' UNION ' . $muallimat . ' ORDER BY id_keluar ASC');
     }
 
     function ambildatapenjemput(){
@@ -129,7 +224,36 @@ class M_perizinan extends CI_Model{
             HOUR(tanggal_keluar),":",
             MINUTE(tanggal_keluar),":",
             SECOND(tanggal_keluar)
-        ) AS tanggal_keluar, tb_perizinan_keluar.keperluan AS keperluan, tb_perizinan_penjemput.nama_penjemput AS nama_penjemput, tb_perizinan_penjemput.hubungan_penjemput AS hubungan,
+        ) AS tanggal_keluar, CONCAT(
+            CASE DAYOFWEEK(harus_kembali)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(harus_kembali)," ",
+            CASE MONTH(harus_kembali)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(harus_kembali)," Pukul ",
+            HOUR(harus_kembali),":",
+            MINUTE(harus_kembali),":",
+            SECOND(harus_kembali)
+        ) AS harus_kembali, tb_perizinan_keluar.keperluan AS keperluan, tb_perizinan_penjemput.nama_penjemput AS nama_penjemput, tb_perizinan_penjemput.hubungan_penjemput AS hubungan,
         CONCAT(
             CASE DAYOFWEEK(tanggal_keluar)
               WHEN 1 THEN "Minggu"
@@ -197,7 +321,36 @@ class M_perizinan extends CI_Model{
             HOUR(tanggal_keluar),":",
             MINUTE(tanggal_keluar),":",
             SECOND(tanggal_keluar)
-        ) AS tanggal_keluar, tb_perizinan_keluar.keperluan AS keperluan, tb_perizinan_penjemput.nama_penjemput AS nama_penjemput, tb_perizinan_penjemput.hubungan_penjemput AS hubungan,
+        ) AS tanggal_keluar, CONCAT(
+            CASE DAYOFWEEK(harus_kembali)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(harus_kembali)," ",
+            CASE MONTH(harus_kembali)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(harus_kembali)," Pukul ",
+            HOUR(harus_kembali),":",
+            MINUTE(harus_kembali),":",
+            SECOND(harus_kembali)
+        ) AS harus_kembali, tb_perizinan_keluar.keperluan AS keperluan, tb_perizinan_penjemput.nama_penjemput AS nama_penjemput, tb_perizinan_penjemput.hubungan_penjemput AS hubungan,
         CONCAT(
             CASE DAYOFWEEK(tanggal_keluar)
               WHEN 1 THEN "Minggu"
@@ -285,7 +438,36 @@ class M_perizinan extends CI_Model{
           HOUR(tanggal_keluar),":",
           MINUTE(tanggal_keluar),":",
           SECOND(tanggal_keluar)
-      ) AS tgl_keluar, keperluan, nama_penjemput, status_keluar');
+      ) AS tgl_keluar, CONCAT(
+            CASE DAYOFWEEK(harus_kembali)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(harus_kembali)," ",
+            CASE MONTH(harus_kembali)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(harus_kembali)," Pukul ",
+            HOUR(harus_kembali),":",
+            MINUTE(harus_kembali),":",
+            SECOND(harus_kembali)
+        ) AS harus_kembali, keperluan, nama_penjemput, status_keluar');
       $this->db->from('tb_perizinan_keluar');
       $this->db->join('tb_santri', 'nis_santri = nis_lokal');
       $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');

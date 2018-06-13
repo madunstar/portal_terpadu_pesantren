@@ -53,6 +53,7 @@
           <div class="col-xs-2">
             <p class="font-bold">
               Tanggal Izin  <br><br>
+              Tanggal Rencana Kembali  <br><br>
               Keperluan <br><br>
               Penjemput  <br><br>
               Hubungan  <br><br>
@@ -61,6 +62,7 @@
           <div class="col-xs-7">
             <p>
               :  <?php echo $datasurat['tanggal_keluar'];?><br><br>
+              :  <?php echo $datasurat['harus_kembali'];?><br><br>
               :  <?php echo $datasurat['keperluan'];?><br><br>
               :  <?php echo $datasurat['nama_penjemput'];?><br><br>
               :  <?php echo $datasurat['hubungan'];?><br><br>

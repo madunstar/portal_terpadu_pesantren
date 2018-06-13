@@ -32,7 +32,7 @@
       <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
         <i class="fa fa-bars"></i>
       </a>
-      <a href="<?php echo base_url() ?>admin/perizinansantri" class="navbar-brand">
+      <a href="<?php echo base_url() ?>admin/perizinansantriwati" class="navbar-brand">
         <img src="<?php echo base_url('assets/images/logo.png'); ?>" class="m-r-sm" alt="scale">
         <span class="hidden-nav-xs" style="font-size:15px">Pesantren Darul Ilmi</span>
       </a>
@@ -56,11 +56,11 @@
 
           <li>
             <span class="arrow top"></span>
-            <a href="<?php echo base_url('admin/perizinansantri/ubahsandiadmin?nama_akun='.$nama_akun);?>">Ubah Kata Sandi </a>
+            <a href="<?php echo base_url('admin/perizinansantriwati/ubahsandiadmin?nama_akun='.$nama_akun);?>">Ubah Kata Sandi </a>
           </li>
           <li class="divider"></li>
           <li>
-            <a href="<?php echo base_url() ?>admin/perizinansantri/logout"><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
+            <a href="<?php echo base_url() ?>admin/perizinansantriwati/logout"><span class="fa fa-sign-out"></span>&nbsp;Keluar</a>
           </li>
         </ul>
       </li>

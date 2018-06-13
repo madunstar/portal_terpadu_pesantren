@@ -15,7 +15,7 @@
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Mengupdate Data Aturan Denda","Password Anda Salah","Password Anda Tidak Cocok") ?>
-                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/perizinan/updateaturdenda" method="post">
+                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/perizinansantriwati/updateaturdenda" method="post">
                 <div class="line line-dashed b-b line-lg pull-in"></div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Denda Per Jam</label>

@@ -9,6 +9,7 @@ class Layout {
     public $headerizin = 'back-end/template/header_perizinan';
     public $headerizinp = 'back-end/template/header_perizinan_p';
     public $headerlaporan = 'back-end/template/header_laporan';
+    public $headerlaporanp = 'back-end/template/header_laporan_p';
     public $headerakd = 'back-end/template/header_akademik';
     public $headerakdp = 'back-end/template/header_akademik_p';
 	//public $menu = 'template/menu';
@@ -81,6 +82,16 @@ class Layout {
         $this->ci->load->view($this->endhtml);
     }
 
+    function renderizinp2($view,$data = null,$js = null){
+        $this->ci->load->view($this->headerizinp);
+        $this->ci->load->view($view,$data);
+        $this->ci->load->view($this->footer2);
+        if ($js!=NULL) {
+            $this->ci->load->view($js,$data);
+        }
+        $this->ci->load->view($this->endhtml);
+    }
+
     function renderfront($view,$data = null,$js = null){
         $this->ci->load->view($this->headerfront);
         $this->ci->load->view($view,$data);
@@ -93,6 +104,16 @@ class Layout {
 
     function renderlaporan($view,$data = null,$js = null){
         $this->ci->load->view($this->headerlaporan);
+        $this->ci->load->view($view,$data);
+        $this->ci->load->view($this->footer);
+        if ($js!=NULL) {
+            $this->ci->load->view($js,$data);
+        }
+        $this->ci->load->view($this->endhtml);
+    }
+
+    function renderlaporanp($view,$data = null,$js = null){
+        $this->ci->load->view($this->headerlaporanp);
         $this->ci->load->view($view,$data);
         $this->ci->load->view($this->footer);
         if ($js!=NULL) {

@@ -97,7 +97,7 @@
 
             </div>
             <div class="panel-footer text-right">
-            <a href="<?php echo base_url() ?>admin/perizinan/datakeluar"><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
+            <a href="<?php echo base_url() ?>admin/perizinansantriwati/datakeluar"><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
             </div>
           </div>
           <div class="col-sm-6">

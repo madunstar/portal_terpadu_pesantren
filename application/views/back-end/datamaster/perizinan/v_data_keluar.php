@@ -17,17 +17,18 @@
             <a href="<?php echo base_url() ?>admin/datamaster/keluar"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Buat Perizinan Keluar</button></a>
               <div class="table-responsive">
                 <?php pesan_get('msg',"Berhasil Menghapus Izin Keluar","Gagal Menghapus Izin Keluar") ?>
-                <table class="table table-striped m-b-none" id="datatable">
+                <table class="table table-striped" id="datatable">
                   <thead>
                     <tr>
                       <th>No</th>
                       <th>NIS</th>
                       <th>Nama</th>
-
                       <th>Tanggal Keluar</th>
+                      <th>Tanggal Rencana Kembali</th>
                       <th>Keperluan</th>
                       <th>Penjemput</th>
                       <th>Status Keluar</th>
+                      <th>Pondokan</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -40,14 +41,24 @@
                             <td>".$i."</td>
                             <td>".$row['nis_santri']."</td>
                             <td>".$row['nama_lengkap']."</td>
-
                             <td>".$row['tanggal_keluar']."</td>
+                            <td>".$row['harus_kembali']."</td>
                             <td>".$row['keperluan']."</td>
                             <td>".$row['nama_penjemput']."</td>
                             <td>".$row['status_keluar']."</td>
+                            <td>";
+                              if ($row['pondokan'] == 'Muallimin'){
+                                echo "
+                                  <button class='btn btn-xs btn-primary'>Muallimin</button>
+                                ";
+                              } else if ($row['pondokan'] == 'Muallimat'){
+                                echo "
+                                  <button class='btn btn-xs btn-danger'>Muallimat</button>";
+                              }
+                            echo "
                             <td>
                               <a href='".base_url('admin/datamaster/cetak_suratizin?id='.$row['id_keluar'].'')."' class='btn btn-primary btn-xs' title='Cetak Surat Izin'><i class='fa fa-print'></i></a>
-                              <a href='#' class='btn btn-danger btn-xs hapusizin' title='Hapus' name='hapusizin' id='".$row['id_keluar']."'><i class='fa fa-trash-o'></i></a>
+                              <a href='#' class='btn btn-danger btn-xs hapusizin' title='Hapus' id='".$row['id_keluar']."'><i class='fa fa-trash-o'></i></a>
                             </td>
                             </tr>
                         ";$i++;

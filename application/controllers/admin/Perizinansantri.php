@@ -130,7 +130,7 @@ class Perizinansantri extends CI_Controller
   function santri()
   {
       $variabel['data'] = $this->m_santri->lihatdata();
-      $this->layout->renderizin('back-end/perizinan/santri/v_santri',$variabel,'back-end/perizinan/santri/v_santri_js');
+      $this->layout->renderizin2('back-end/perizinan/santri/v_santri',$variabel,'back-end/perizinan/santri/v_santri_js');
   }
 
   function santrilihat()
@@ -169,7 +169,7 @@ class Perizinansantri extends CI_Controller
       if ($exec->num_rows()>0){
           $variabel['santri'] = $exec->row_array();
           $variabel['data'] = $this->m_santri->lihatdataberkas($nis);
-          $this->layout->renderizin('back-end/perizinan/santri/v_santriberkas',$variabel,'back-end/perizinan/santri/v_santriberkas_js');
+          $this->layout->renderizin2('back-end/perizinan/santri/v_santriberkas',$variabel,'back-end/perizinan/santri/v_santriberkas_js');
       } else {
           redirect(base_url("admin/perizinansantri/santri"));
       }
@@ -180,7 +180,7 @@ class Perizinansantri extends CI_Controller
 //Bagian Utak Atik By Ilyas
   function datakeluar(){
       $variabel['data'] = $this->m_perizinan->lihatdata();
-      $this->layout->renderizin('back-end/perizinan/v_data_keluar',$variabel,'back-end/perizinan/keluar_js');
+      $this->layout->renderizin2('back-end/perizinan/v_data_keluar',$variabel,'back-end/perizinan/keluar_js');
   }
 
   function datasantritampil(){
@@ -229,6 +229,7 @@ class Perizinansantri extends CI_Controller
           $izinkeluar=array(
               'nis_santri'=> $this->input->post('nis_santri'),
               'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
+              'harus_kembali'=> $this->input->post('harus_kembali'),
               'keperluan'=> $this->input->post('keperluan'),
               'id_penjemput'=> $id_penjemput,
               'petugas'=> $nip_admin,
@@ -251,6 +252,7 @@ class Perizinansantri extends CI_Controller
                   $izinkeluarpb=array(
                       'nis_santri'=> $this->input->post('nis_santri'),
                       'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
+                      'harus_kembali'=> $this->input->post('harus_kembali'),
                       'keperluan'=> $this->input->post('keperluan'),
                       'id_penjemput'=> $ambilidpenjemput->id_penjemput,
                       'petugas'=> $nip_admin,
@@ -314,7 +316,7 @@ class Perizinansantri extends CI_Controller
   function datakembali()
   {
       $variabel['santrikembali'] = $this->m_perizinan->datasantrikembali();
-      $this->layout->renderizin('back-end/perizinan/data_kembali',$variabel,'back-end/perizinan/denda_js');
+      $this->layout->renderizin2('back-end/perizinan/data_kembali',$variabel,'back-end/perizinan/denda_js');
   }
 
   function kembali()
@@ -334,7 +336,7 @@ class Perizinansantri extends CI_Controller
     $santrikeluar = $this->m_perizinan->datasantrikeluarsatu($id_keluar);
     foreach ($santrikeluar->result_array() as $santri) {
         $tanggalkeluar = $santri['tanggal_keluar'];
-		$tanggalkembali = $santri['tanggal_kembali'];
+		$tanggalkembali = $santri['harus_kembali'];
       }
       $today = date("Y-m-d H:i:s");
       if ($today > $tanggalkembali) {
@@ -403,7 +405,7 @@ class Perizinansantri extends CI_Controller
   function datadenda()
   {
       $variabel['data'] = $this->m_denda->lihatdata();
-      $this->layout->renderizin('back-end/perizinan/v_denda',$variabel,'back-end/perizinan/denda_js');
+      $this->layout->renderizin2('back-end/perizinan/v_denda',$variabel,'back-end/perizinan/denda_js');
   }
 
   function riwayatbayardenda()
