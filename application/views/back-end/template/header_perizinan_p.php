@@ -31,7 +31,7 @@
       <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
         <i class="fa fa-bars"></i>
       </a>
-      <a href="<?php echo base_url() ?>admin/datamaster" class="navbar-brand">
+      <a href="<?php echo base_url() ?>admin/perizinansantriwati" class="navbar-brand">
         <img src="<?php echo base_url('assets/images/logo.png'); ?>" class="m-r-sm" alt="scale">
         <span class="hidden-nav-xs" style="font-size:15px">Pesantren Darul Ilmi</span>
       </a>
