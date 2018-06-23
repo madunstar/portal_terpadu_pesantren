@@ -3186,6 +3186,12 @@ function kecamatanhapus()
       $this->layout->render2('back-end/datamaster/perizinan/v_data_keluar',$variabel,'back-end/datamaster/perizinan/keluar_js');
   }
 
+  function lihatdatakeluar(){
+      $id_keluar = $this->input->post("id");
+      $variabel['lihat'] = $this->m_perizinan->lihatdatasatuan($id_keluar)->row_array();
+      $this->load->view('back-end/datamaster/perizinan/v_lihat_data_keluar',$variabel);
+  }
+
   function datasantritampil(){
       $id=$this->input->post('id');
       $data=$this->m_perizinan->tampildatasantri($id)->result();

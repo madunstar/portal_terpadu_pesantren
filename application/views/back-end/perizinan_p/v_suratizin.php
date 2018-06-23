@@ -33,7 +33,7 @@
           <div class="col-xs-12">
             Yang Bertanda Tangan Dibawah ini<br><br>
           </div>
-          <div class="col-xs-2">
+          <div class="col-xs-3">
             <p class="font-bold">
               Nama  <br><br>
               Kelas <br><br>
@@ -50,10 +50,10 @@
           <div class="col-xs-12">
             Menyatakan izin keluar dari Pondok Pesantren dengan keterangan <br><br>
           </div>
-          <div class="col-xs-2">
+          <div class="col-xs-3">
             <p class="font-bold">
               Tanggal Izin  <br><br>
-              Tanggal Rencana Kembali  <br><br>
+              Tanggal Kembali  <br><br>
               Keperluan <br><br>
               Penjemput  <br><br>
               Hubungan  <br><br>
