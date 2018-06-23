@@ -6,7 +6,7 @@ class M_perizinan extends CI_Model{
     }
 
     function lihatdata(){
-        $this->db->select('id_keluar, nis_santri, nama_lengkap, jenis_sekolah_asal,
+        $this->db->select('id_keluar, nama_lengkap,
         CONCAT(
             CASE DAYOFWEEK(tanggal_keluar)
               WHEN 1 THEN "Minggu"
@@ -32,7 +32,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(tanggal_keluar)," Pukul ",
+            YEAR(tanggal_keluar)," Jam ",
             HOUR(tanggal_keluar),":",
             MINUTE(tanggal_keluar),":",
             SECOND(tanggal_keluar)
@@ -61,7 +61,75 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(harus_kembali)," Pukul ",
+            YEAR(harus_kembali)," Jam ",
+            HOUR(harus_kembali),":",
+            MINUTE(harus_kembali),":",
+            SECOND(harus_kembali)
+        ) AS harus_kembali, status_keluar');
+        $this->db->from('tb_perizinan_keluar');
+        $this->db->join('tb_santri', 'nis_santri = nis_lokal');
+        $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+        $this->db->order_by('id_keluar','ASC');
+        return $this->db->get();
+    }
+
+    function lihatdatasatuan($id_keluar){
+        $this->db->select('id_keluar, nis_santri, nama_lengkap,
+        CONCAT(
+            CASE DAYOFWEEK(tanggal_keluar)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(tanggal_keluar)," ",
+            CASE MONTH(tanggal_keluar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(tanggal_keluar)," Jam ",
+            HOUR(tanggal_keluar),":",
+            MINUTE(tanggal_keluar),":",
+            SECOND(tanggal_keluar)
+        ) AS tanggal_keluar, CONCAT(
+            CASE DAYOFWEEK(harus_kembali)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(harus_kembali)," ",
+            CASE MONTH(harus_kembali)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(harus_kembali)," Jam ",
             HOUR(harus_kembali),":",
             MINUTE(harus_kembali),":",
             SECOND(harus_kembali)
@@ -69,7 +137,9 @@ class M_perizinan extends CI_Model{
         $this->db->from('tb_perizinan_keluar');
         $this->db->join('tb_santri', 'nis_santri = nis_lokal');
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+        $this->db->where('id_keluar',$id_keluar);
         $this->db->order_by('id_keluar','ASC');
+        $this->db->limit(1);
         return $this->db->get();
     }
 
@@ -154,7 +224,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(tanggal_keluar)," Pukul ",
+            YEAR(tanggal_keluar)," Jam ",
             HOUR(tanggal_keluar),":",
             MINUTE(tanggal_keluar),":",
             SECOND(tanggal_keluar)
@@ -183,7 +253,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(harus_kembali)," Pukul ",
+            YEAR(harus_kembali)," Jam ",
             HOUR(harus_kembali),":",
             MINUTE(harus_kembali),":",
             SECOND(harus_kembali)
@@ -251,7 +321,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(tanggal_keluar)," Pukul ",
+            YEAR(tanggal_keluar)," Jam ",
             HOUR(tanggal_keluar),":",
             MINUTE(tanggal_keluar),":",
             SECOND(tanggal_keluar)
@@ -280,7 +350,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(harus_kembali)," Pukul ",
+            YEAR(harus_kembali)," Jam ",
             HOUR(harus_kembali),":",
             MINUTE(harus_kembali),":",
             SECOND(harus_kembali)
@@ -368,7 +438,7 @@ class M_perizinan extends CI_Model{
             WHEN 11 THEN "November"
             WHEN 12 THEN "Desember"
           END," ",
-          YEAR(tanggal_keluar)," Pukul ",
+          YEAR(tanggal_keluar)," Jam ",
           HOUR(tanggal_keluar),":",
           MINUTE(tanggal_keluar),":",
           SECOND(tanggal_keluar)
@@ -397,7 +467,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(harus_kembali)," Pukul ",
+            YEAR(harus_kembali)," Jam ",
             HOUR(harus_kembali),":",
             MINUTE(harus_kembali),":",
             SECOND(harus_kembali)
