@@ -14,7 +14,7 @@
               <h4 class="font-bold">Input Data Santri Kembali ke Pondok</h4>
             </header>
             <div class="panel-body">
-              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/kembalidenda" method="post">
+              <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/kembalidendap" method="post">
                   <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-id-1">Pilih Santri</label>
                   <div class="col-sm-8">
@@ -31,7 +31,7 @@
                 </div>
               </form>
                 <div class="line line-dashed b-b line-lg pull-in"></div>
-                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/tambahdatakembali" method="post">
+                <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/tambahdatakembalip" method="post">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Nama</label>
                       <div class="col-sm-8" name="nama">
@@ -73,6 +73,7 @@
                         <input type="text" class="form-control" id="input-id-1" name="tanggal_kembali" value="<?php  echo date("Y-m-d H:i:s")?>" readonly>
                       </div>
                 </div>
+
                 <div class="form-group">
                       <label class="col-sm-2 control-label text-danger">Besar Denda</label>
                       <div class="col-sm-8">
