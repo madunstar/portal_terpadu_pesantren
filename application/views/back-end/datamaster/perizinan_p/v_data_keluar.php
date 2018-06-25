@@ -4,53 +4,60 @@
     <section class="scrollable padder">
       <div class="row m-b-md">
         <div class="col-sm-6">
-          <h3 class="m-b-xs text-black">Kembali ke Pondok</h3>
+          <h3 class="m-b-xs text-black">Keluar Pondok</h3>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
-              <h4 class="font-bold">Data Santri Kembali ke Pondok</h4>
+              <h4 class="font-bold">Data Santriwati Keluar Pondok</h4>
             </header>
             <div class="panel-body">
-              <a href="<?php echo base_url() ?>admin/datamaster/kembali"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Kembali ke Pondok</button></a>
+            <a href="<?php echo base_url() ?>admin/datamaster/keluarp"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Buat Perizinan Santriwati Keluar</button></a>
               <div class="table-responsive">
+                <?php pesan_get('msg',"Berhasil Menghapus Izin Keluar","Gagal Menghapus Izin Keluar") ?>
                 <table class="table table-striped m-b-none" id="datatable">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>Nama</th>
-                      <th>Kelas</th>
-                      <th>Tanggal Kembali</th>
-                      <th>Status Denda</th>
-
+                      <th>Tanggal Keluar</th>
+                      <th>Tanggal Rencana Kembali</th>
+                      <th>Status Keluar</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                      <?php
-                      foreach($santrikembali->result_array() as $row){
-                        if ($row['status_denda'] == 1)
-                        {$status_denda = "bayar denda";}
-                        elseif ($row['status_denda'] == 0)
-                        {$status_denda = "tidak bayar denda";}
+                    <?php
+                      $i = 1;
+                      foreach($data->result_array() as $row){
                         echo "
-                          <tr>
+                          <tr class='rowData'>
+                            <td>".$i."</td>
                             <td>".$row['nama_lengkap']."</td>
-                            <td></td>
-                            <td>".$row['tanggal_kembali']."</td>
-                            <td>".$status_denda."</td>
-                        ";
+                            <td>".$row['tanggal_keluar']."</td>
+                            <td>".$row['harus_kembali']."</td>
+                            <td>".$row['status_keluar']."</td>
+                            <td>
+                              <button class='btn btn-primary btn-xs lihat'  title='Lihat' id='".$row['id_keluar']."' data-toggle='modal' data-target='#myModaledit'><i class='fa fa-eye'></i></button>
+                              <a href='".base_url('admin/datamaster/cetak_suratizinp?id='.$row['id_keluar'].'')."' class='btn btn-success btn-xs' title='Cetak Surat Izin'><i class='fa fa-print'></i></a>
+                              <a href='#' class='btn btn-danger btn-xs hapusizin' title='Hapus' name='hapusizin' id='".$row['id_keluar']."'><i class='fa fa-trash-o'></i></a>
+                            </td>
+                            </tr>
+                        ";$i++;
                       }
-                      ?>
+                  ?>
                   </tbody>
                 </table>
               </div>
 
             </div>
+
             <div class="panel-footer">
               <button type="button" data-toggle='modal' data-target='#cetaklap' name="button" class="btn btn-primary">Cetak Laporan <i class="fa fa-print"></i></button>
               <div class='modal' id='cetaklap' tabindex='-1' role='dialog'>
-                <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/datamaster/laporankembali' method='post'>
+                <form class='form-horizontal' role='form' data-validate='parsley' action='<?php echo base_url() ?>admin/datamaster/laporankeluarp' method='post'>
                  <div class='modal-dialog' role='document'>
                    <div class='modal-content'>
                      <div class='modal-header bg-primary'>
@@ -97,11 +104,21 @@
               </div>
             </div>
 
-          </section>
-        </div>
           </div>
+            </div>
+          </section>
         </section>
       </section>
     </section>
 
   </section>
+
+  <div id="myModaledit" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" id="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" id="modal-edit">
+        <div class="modal-body">
+        </div>
+      </div>
+    </div>
+  </div>

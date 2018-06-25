@@ -263,7 +263,7 @@ class Perizinansantriwati extends CI_Controller
                       'status_keluar'=> $status_keluar,
                   );
                   $exectambahizin = $this->m_perizinan_p->tambahizinkeluar($izinkeluarpb);
-                  redirect('admin/perizinan/suratizin');
+                  redirect('admin/perizinansantriwati/suratizin');
               }
               else{
                   $exectambahizin = $this->m_perizinan_p->tambahizinkeluar($izinkeluar);
@@ -271,7 +271,7 @@ class Perizinansantriwati extends CI_Controller
               }
           }
           else {
-            redirect(base_url("admin/perizinan/keluar?msgnis=0"));
+            redirect(base_url("admin/perizinansantriwati/keluar?msgnis=0"));
           }
       }
 

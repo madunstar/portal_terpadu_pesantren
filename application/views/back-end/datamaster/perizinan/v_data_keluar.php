@@ -25,7 +25,6 @@
                       <th>Tanggal Keluar</th>
                       <th>Tanggal Rencana Kembali</th>
                       <th>Status Keluar</th>
-                      <th>Pondokan</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -40,16 +39,6 @@
                             <td>".$row['tanggal_keluar']."</td>
                             <td>".$row['harus_kembali']."</td>
                             <td>".$row['status_keluar']."</td>
-                            <td>";
-                              if ($row['pondokan'] == 'Muallimin'){
-                                echo "
-                                  <button class='btn btn-xs btn-primary'>Muallimin</button>
-                                ";
-                              } else if ($row['pondokan'] == 'Muallimat'){
-                                echo "
-                                  <button class='btn btn-xs btn-danger'>Muallimat</button>";
-                              }
-                            echo "
                             <td>
                               <button class='btn btn-primary btn-xs lihat'  title='Lihat' id='".$row['id_keluar']."' data-toggle='modal' data-target='#myModaledit'><i class='fa fa-eye'></i></button>
                               <a href='".base_url('admin/datamaster/cetak_suratizin?id='.$row['id_keluar'].'')."' class='btn btn-success btn-xs' title='Cetak Surat Izin'><i class='fa fa-print'></i></a>
@@ -125,11 +114,11 @@
   </section>
 
   <div id="myModaledit" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg" id="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content" id="modal-edit">
-        <div class="modal-body">
-        </div>
-      </div>
-    </div>
+  	<div class="modal-dialog modal-lg" id="modal-dialog">
+  		<!-- Modal content-->
+  		<div class="modal-content" id="modal-edit">
+  			<div class="modal-body">
+  			</div>
+  		</div>
+  	</div>
   </div>
