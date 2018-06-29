@@ -69,4 +69,284 @@ class M_admin extends CI_Model
         $this->db->order_by("nama_lengkap","ASC");
         return $this->db->get('tb_staff');
     }
+	
+	function datadendasantridasboard(){
+		$this->db->select('nama_lengkap, kelas, besar_bayar,
+		CONCAT(
+            CASE DAYOFWEEK(tanggal_bayar)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(tanggal_bayar)," ",
+            CASE MONTH(tanggal_bayar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(tanggal_bayar)
+        ) AS tanggal_bayar ');
+		$this->db->from('tb_perizinan_bayar');
+		$this->db->join('tb_perizinan_denda','tb_perizinan_denda.id_denda = tb_perizinan_bayar.id_denda');
+		$this->db->join('tb_perizinan_kembali','tb_perizinan_kembali.id_kembali = tb_perizinan_denda.id_kembali');
+		$this->db->join('tb_perizinan_keluar','tb_perizinan_keluar.id_keluar = tb_perizinan_kembali.id_keluar');
+		$this->db->join('tb_santri','tb_santri.nis_lokal = tb_perizinan_keluar.nis_santri');
+		$this->db->order_by('tanggal_bayar','DESC');
+		$this->db->limit(5);
+		return $this->db->get();
+		}
+	
+	function datadendasantriwatidasboard(){
+		$this->db->select('nama_lengkap, kelas, besar_bayar,
+		CONCAT(
+            CASE DAYOFWEEK(tanggal_bayar)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(tanggal_bayar)," ",
+            CASE MONTH(tanggal_bayar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(tanggal_bayar)
+        ) AS tanggal_bayar ');
+		$this->db->from('tb_perizinan_bayar_p');
+		$this->db->join('tb_perizinan_denda_p','tb_perizinan_denda_p.id_denda = tb_perizinan_bayar_p.id_denda');
+		$this->db->join('tb_perizinan_kembali_p','tb_perizinan_kembali_p.id_kembali = tb_perizinan_denda_p.id_kembali');
+		$this->db->join('tb_perizinan_keluar_p','tb_perizinan_keluar_p.id_keluar = tb_perizinan_kembali_p.id_keluar');
+		$this->db->join('tb_santriwati','tb_santriwati.nis_lokal = tb_perizinan_keluar_p.nis_santri');
+		$this->db->order_by('tanggal_bayar','DESC');
+		$this->db->limit(5);
+		return $this->db->get();
+		}
+	
+	function datasantrikeluardasboard()
+	{
+		$this->db->select('nama_lengkap, kelas, keperluan, 
+		 CONCAT(
+            CASE DAYOFWEEK(tanggal_keluar)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(tanggal_keluar)," ",
+            CASE MONTH(tanggal_keluar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(tanggal_keluar)," Jam ",
+            HOUR(tanggal_keluar),":",
+            MINUTE(tanggal_keluar),":",
+            SECOND(tanggal_keluar)
+        ) AS tanggal_keluar');
+		$this->db->from('tb_perizinan_keluar');
+		$this->db->join('tb_santri','tb_santri.nis_lokal = tb_perizinan_keluar.nis_santri');
+		$this->db->order_by('tanggal_keluar','DESC');
+		$this->db->limit(5);
+		return $this->db->get();
+	}
+	
+	function datasantriwatikeluardasboard()
+	{
+		$this->db->select('nama_lengkap, kelas, keperluan, 
+		 CONCAT(
+            CASE DAYOFWEEK(tanggal_keluar)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(tanggal_keluar)," ",
+            CASE MONTH(tanggal_keluar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(tanggal_keluar)," Jam ",
+            HOUR(tanggal_keluar),":",
+            MINUTE(tanggal_keluar),":",
+            SECOND(tanggal_keluar)
+        ) AS tanggal_keluar');
+		$this->db->from('tb_perizinan_keluar_p');
+		$this->db->join('tb_santriwati','tb_santriwati.nis_lokal = tb_perizinan_keluar_p.nis_santri');
+		$this->db->order_by('tanggal_keluar','DESC');
+		$this->db->limit(5);
+		return $this->db->get();
+		}
+	function datasantrisppdasboard()
+	{
+		$this->db->select('nama_lengkap, kelas, besar_bayar, 
+		 CONCAT(
+            CASE DAYOFWEEK(tanggal_bayar)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(tanggal_bayar)," ",
+            CASE MONTH(tanggal_bayar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(tanggal_bayar)," Jam ",
+            HOUR(tanggal_bayar),":",
+            MINUTE(tanggal_bayar),":",
+            SECOND(tanggal_bayar)
+        ) AS tanggal_bayar');
+		$this->db->from('tb_pembayaran_spp');
+		$this->db->join('tb_santri','tb_santri.nis_lokal = tb_pembayaran_spp.nis_santri');
+		$this->db->order_by('tanggal_bayar','DESC');
+		$this->db->limit(5);
+		return $this->db->get();
+	}
+	
+	function datasantriwatisppdasboard()
+	{		$this->db->select('nama_lengkap, kelas, besar_bayar, 
+		 CONCAT(
+            CASE DAYOFWEEK(tanggal_bayar)
+              WHEN 1 THEN "Minggu"
+              WHEN 2 THEN "Senin"
+              WHEN 3 THEN "Selasa"
+              WHEN 4 THEN "Rabu"
+              WHEN 5 THEN "Kamis"
+              WHEN 6 THEN "Jumat"
+              WHEN 7 THEN "Sabtu"
+            END,", ",
+            DAY(tanggal_bayar)," ",
+            CASE MONTH(tanggal_bayar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ",
+            YEAR(tanggal_bayar)," Jam ",
+            HOUR(tanggal_bayar),":",
+            MINUTE(tanggal_bayar),":",
+            SECOND(tanggal_bayar)
+        ) AS tanggal_bayar');
+		$this->db->from('tb_pembayaran_spp_p');
+		$this->db->join('tb_santriwati','tb_santriwati.nis_lokal = tb_pembayaran_spp_p.nis_santri');
+		$this->db->order_by('tanggal_bayar','DESC');
+		$this->db->limit(5);
+		return $this->db->get();
+		}
+		
+	function datatotalsantrikeluar(){
+		$this->db->select('CONCAT(CASE MONTH(tanggal_keluar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ", YEAR(tanggal_keluar)) AS tahun_bulan , COUNT(*) AS jumlah_bulan');
+		$this->db->from('tb_perizinan_keluar');
+		$this->db->group_by('year(tanggal_keluar),MONTH(tanggal_keluar)');
+		$this->db->order_by('tanggal_keluar','DESC');
+		$this->db->limit(6);
+		return $this->db->get();
+	}
+
+		function datatotalsantriwatikeluar(){
+		$this->db->select('CONCAT(CASE MONTH(tanggal_keluar)
+              WHEN 1 THEN "Januari"
+              WHEN 2 THEN "Februari"
+              WHEN 3 THEN "Maret"
+              WHEN 4 THEN "April"
+              WHEN 5 THEN "Mei"
+              WHEN 6 THEN "Juni"
+              WHEN 7 THEN "Juli"
+              WHEN 8 THEN "Agustus"
+              WHEN 9 THEN "September"
+              WHEN 10 THEN "Oktober"
+              WHEN 11 THEN "November"
+              WHEN 12 THEN "Desember"
+            END," ", YEAR(tanggal_keluar)) AS tahun_bulan , COUNT(*) AS jumlah_bulan');
+		$this->db->from('tb_perizinan_keluar_p');
+		$this->db->group_by('year(tanggal_keluar),MONTH(tanggal_keluar)');
+		$this->db->order_by('tanggal_keluar','DESC');
+		$this->db->limit(6);
+		return $this->db->get();
+	}
 }
