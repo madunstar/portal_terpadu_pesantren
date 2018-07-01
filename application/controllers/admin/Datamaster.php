@@ -47,7 +47,9 @@ class Datamaster extends CI_Controller{
         $this->load->model('back-end/datamaster/m_pak_afilasi');
         $this->load->model('back-end/datamaster/m_informasi');
         $this->load->model('back-end/datamaster/m_denda');
+        $this->load->model('back-end/datamaster/m_denda_p');
         $this->load->model('back-end/datamaster/m_perizinan');
+        $this->load->model('back-end/datamaster/m_perizinan_p');
 
         $this->load->model('back-end/datamaster/m_pengaturan');
 
@@ -85,6 +87,14 @@ class Datamaster extends CI_Controller{
     function index()
     {
         $variabel['nama_akun'] = $this->session->userdata('nama_akun');
+		$variabel['datainfaqsantri'] = $this->m_admin->datadendasantridasboard();
+		$variabel['datainfaqsantriwati'] = $this->m_admin->datadendasantriwatidasboard();
+		$variabel['datasantrikeluar'] = $this->m_admin->datasantrikeluardasboard();
+		$variabel['datasantriwatikeluar'] = $this->m_admin->datasantriwatikeluardasboard();
+		$variabel['datasantriwatispp'] = $this->m_admin->datasantriwatisppdasboard();
+		$variabel['datasantrispp'] = $this->m_admin->datasantrisppdasboard();
+		$variabel['datatotalsantrikeluar'] = $this->m_admin->datatotalsantrikeluar();
+		$variabel['datatotalsantriwatikeluar'] = $this->m_admin->datatotalsantriwatikeluar();
         $this->layout->render('back-end/datamaster/dashboard',$variabel);
     }
 
@@ -3186,15 +3196,44 @@ function kecamatanhapus()
       $this->layout->render2('back-end/datamaster/perizinan/v_data_keluar',$variabel,'back-end/datamaster/perizinan/keluar_js');
   }
 
+  function datakeluarp(){
+      $variabel['data'] = $this->m_perizinan_p->lihatdata();
+      $this->layout->render2('back-end/datamaster/perizinan_p/v_data_keluar',$variabel,'back-end/datamaster/perizinan_p/keluar_js');
+  }
+
+  function lihatdatakeluar(){
+      $id_keluar = $this->input->post("id");
+      $variabel['lihat'] = $this->m_perizinan->lihatdatasatuan($id_keluar)->row_array();
+      $this->load->view('back-end/datamaster/perizinan/v_lihat_data_keluar',$variabel);
+  }
+
+  function lihatdatakeluarp(){
+      $id_keluar = $this->input->post("id");
+      $variabel['lihat'] = $this->m_perizinan_p->lihatdatasatuan($id_keluar)->row_array();
+      $this->load->view('back-end/datamaster/perizinan_p/v_lihat_data_keluar',$variabel);
+  }
+
   function datasantritampil(){
       $id=$this->input->post('id');
       $data=$this->m_perizinan->tampildatasantri($id)->result();
       echo json_encode($data);
   }
 
+  function datasantriwatitampil(){
+      $id=$this->input->post('id');
+      $data=$this->m_perizinan_p->tampildatasantri($id)->result();
+      echo json_encode($data);
+  }
+
   function datapenjemputtampil(){
       $id=$this->input->post('id');
       $data=$this->m_perizinan->tampildatapenjemput($id)->result();
+      echo json_encode($data);
+  }
+
+  function datapenjemputtampilp(){
+      $id=$this->input->post('id');
+      $data=$this->m_perizinan_p->tampildatapenjemput($id)->result();
       echo json_encode($data);
   }
 
@@ -3208,10 +3247,35 @@ function kecamatanhapus()
     }
   }
 
+  function ceknissantriwati(){
+    $nis_santri = $this->input->post('nis_santri');
+    if ($this->m_perizinan_p->cekdatasantri($nis_santri) == 1){
+      echo 1;
+    }
+    else{
+      echo 0;
+    }
+  }
+
   function cekjatahizin(){
     $nis_santri = $this->input->post('nis_santri');
     $tgl_sekarang = strtotime(date("Y-m-d H:i:s")); //strtotime untuk mengubah menjadi detik
     $ambiltglkeluar = $this->m_perizinan->ambiltglkeluar($nis_santri)->tanggal_keluar;
+    $tgl_keluar = strtotime($ambiltglkeluar);
+    $detik = $tgl_sekarang - $tgl_keluar;
+    $selisih_hari = $detik / 86400;
+    if ($selisih_hari >= 30){
+      echo 1;
+    }
+    else{
+      echo 0;
+    }
+  }
+
+  function cekjatahizinp(){
+    $nis_santri = $this->input->post('nis_santri');
+    $tgl_sekarang = strtotime(date("Y-m-d H:i:s"));
+    $ambiltglkeluar = $this->m_perizinan_p->ambiltglkeluar($nis_santri)->tanggal_keluar;
     $tgl_keluar = strtotime($ambiltglkeluar);
     $detik = $tgl_sekarang - $tgl_keluar;
     $selisih_hari = $detik / 86400;
@@ -3280,10 +3344,73 @@ function kecamatanhapus()
       }
   }
 
+  function keluarp(){
+      $nip_admin = $this->session->userdata('nip_staff_admin');
+      $id_penjemput = $this->input->post('id_penjemput');
+      $no_identitas = $this->input->post('no_identitas');
+      $status_keluar = "keluar";
+      if ($this->input->post()){
+          $izinkeluar=array(
+              'nis_santri'=> $this->input->post('nis_santri'),
+              'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
+              'harus_kembali'=> $this->input->post('harus_kembali'),
+              'keperluan'=> $this->input->post('keperluan'),
+              'id_penjemput'=> $id_penjemput,
+              'petugas'=> $nip_admin,
+              'status_keluar'=> $status_keluar,
+          );
+          $penjemput=array(
+              'no_identitas'=> $no_identitas,
+              'nama_penjemput'=> $this->input->post('nama_penjemput'),
+              'no_telp'=> $this->input->post('no_telp'),
+              'alamat_penjemput'=> $this->input->post('alamat_penjemput'),
+              'hubungan_penjemput'=> $this->input->post('hubungan_penjemput')
+          );
+          $nis = $this->input->post('nis_santri');
+          $tanggal_keluar = $this->input->post('tanggal_keluar');
+          $ceknis = $this->m_perizinan_p->cekdatasantri($nis);
+          if ($ceknis > 0){
+              if ($id_penjemput=='Baru'){
+                  $exectambahpenjemput = $this->m_perizinan_p->tambahdatapenjemput($penjemput);
+                  $ambilidpenjemput = $this->m_perizinan_p->ambilidpenjemput($no_identitas);
+                  $izinkeluarpb=array(
+                      'nis_santri'=> $this->input->post('nis_santri'),
+                      'tanggal_keluar'=> $this->input->post('tanggal_keluar'),
+                      'harus_kembali'=> $this->input->post('harus_kembali'),
+                      'keperluan'=> $this->input->post('keperluan'),
+                      'id_penjemput'=> $ambilidpenjemput->id_penjemput,
+                      'petugas'=> $nip_admin,
+                      'status_keluar'=> $status_keluar,
+                  );
+                  $exectambahizin = $this->m_perizinan_p->tambahizinkeluar($izinkeluarpb);
+                  redirect('admin/datamaster/suratizinp');
+              }
+              else{
+                  $exectambahizin = $this->m_perizinan_p->tambahizinkeluar($izinkeluar);
+                  redirect('admin/datamaster/suratizinp');
+              }
+          }
+          else {
+            redirect(base_url("admin/datamaster/keluarp?msgnis=0"));
+          }
+      }
+
+      else{
+          $variabel['id_penjemput']=$this->m_perizinan_p->ambildatapenjemput();
+          $this->layout->render2('back-end/datamaster/perizinan_p/v_keluarpondok',$variabel,'back-end/datamaster/perizinan_p/keluar_js');
+      }
+  }
+
   function suratizin(){
       $execsuratizin = $this->m_perizinan->tampilsuratizin();
       $variabel['datasurat'] = $execsuratizin->row_array();
       $this->layout->render('back-end/datamaster/perizinan/v_suratizin',$variabel,'back-end/datamaster/perizinan/keluar_js');
+  }
+
+  function suratizinp(){
+      $execsuratizin = $this->m_perizinan_p->tampilsuratizin();
+      $variabel['datasurat'] = $execsuratizin->row_array();
+      $this->layout->render('back-end/datamaster/perizinan_p/v_suratizin',$variabel,'back-end/datamaster/perizinan_p/keluar_js');
   }
 
   function cetak_suratizin(){
@@ -3293,16 +3420,35 @@ function kecamatanhapus()
       $this->layout->render('back-end/datamaster/perizinan/v_suratizin',$variabel,'back-end/datamaster/perizinan/keluar_js');
   }
 
+  function cetak_suratizinp(){
+      $id_keluar = $this->input->get("id");
+      $execsuratizin = $this->m_perizinan_p->tampilsuratizinsatuan($id_keluar);
+      $variabel['datasurat'] = $execsuratizin->row_array();
+      $this->layout->render('back-end/datamaster/perizinan_p/v_suratizin',$variabel,'back-end/datamaster/perizinan_p/keluar_js');
+  }
+
   function izinhapus(){
       $id_keluar = $this->input->get("id");
       $exec = $this->m_perizinan->hapus($id_keluar);
       redirect(base_url()."admin/datamaster/datakeluar?msg=1");
   }
 
+  function izinhapusp(){
+      $id_keluar = $this->input->get("id");
+      $exec = $this->m_perizinan_p->hapus($id_keluar);
+      redirect(base_url()."admin/datamaster/datakeluarp?msg=1");
+  }
+
   function penjemputhapus(){
       $id_penjemput = $this->input->get("id");
       $exec = $this->m_perizinan->jemputhapus($id_penjemput);
       redirect(base_url()."admin/datamaster/keluar?msg=1");
+  }
+
+  function penjemputhapusp(){
+      $id_penjemput = $this->input->get("id");
+      $exec = $this->m_perizinan_p->jemputhapus($id_penjemput);
+      redirect(base_url()."admin/datamaster/keluarp?msg=1");
   }
 
   function laporankeluar(){
@@ -3314,59 +3460,87 @@ function kecamatanhapus()
     $variabel['data'] = $this->m_perizinan->laporankeluar($tahun,$bulan);
     $this->layout->renderlaporan('back-end/datamaster/perizinan/v_lap_keluar',$variabel);
   }
+
+  function laporankeluarp(){
+    $tahun = $this->input->post('tahun');
+    $bulan = $this->input->post('bulan');
+    $variabel['tahun'] = $tahun;
+    $variabel['bulan'] = $bulan;
+    $variabel['totkeluar'] = $this->m_perizinan_p->totalkeluar($tahun,$bulan);;
+    $variabel['data'] = $this->m_perizinan_p->laporankeluar($tahun,$bulan);
+    $this->layout->renderlaporan('back-end/datamaster/perizinan_p/v_lap_keluar',$variabel);
+  }
 //akhir keluar pondok//
 
 //mulai kembali ke pondok//
   function datakembali(){
-      $variabel['santrikembali'] = $this->m_perizinan->datasantrikembali();
-      $this->layout->render('back-end/datamaster/perizinan/data_kembali',$variabel,'back-end/datamaster/perizinan/denda_js');
+    $variabel['santrikembali'] = $this->m_perizinan->datasantrikembali();
+    $this->layout->render2('back-end/datamaster/perizinan/data_kembali',$variabel,'back-end/datamaster/perizinan/denda_js');
+  }
+
+  function datakembalip(){
+    $variabel['santrikembali'] = $this->m_perizinan_p->datasantrikembali();
+    $this->layout->render2('back-end/datamaster/perizinan_p/data_kembali',$variabel,'back-end/datamaster/perizinan_p/denda_js');
   }
 
   function kembali(){
-      $variabel['santrikeluar'] = $this->m_perizinan->datasantrikeluar();
-      $this->layout->render('back-end/datamaster/perizinan/kembalipondok',$variabel);
+    $variabel['santrikeluar'] = $this->m_perizinan->datasantrikeluar();
+    $this->layout->render('back-end/datamaster/perizinan/kembalipondok',$variabel);
+  }
+
+  function kembalip(){
+    $variabel['santrikeluar'] = $this->m_perizinan_p->datasantrikeluar();
+    $this->layout->render('back-end/datamaster/perizinan_p/kembalipondok',$variabel);
   }
 
   function kembalidenda(){
-    $nis_santri = $this->input->post("id_santri");
+	  $id_keluar = $this->input->post("id_keluar");
     $datadenda = $this->m_denda->aturdenda();
     foreach ($datadenda->result_array() as $row) {
-        $denda = $row['denda_perjam'];
-        $dendamaks = $row['denda_maks'];
-      }
-    $santrikeluar = $this->m_perizinan->datasantrikeluarsatu($nis_santri);
+      $denda = $row['denda_perjam'];
+      $dendamaks = $row['denda_maks'];
+    }
+    $santrikeluar = $this->m_perizinan->datasantrikeluarsatu($id_keluar);
     foreach ($santrikeluar->result_array() as $santri) {
-        $tanggalkeluar = $santri['tanggal_keluar'];
-      }
-      $tglkmblshrsny = date('Y-m-d H:i:s', strtotime('+1 days 07:00:00', strtotime($tanggalkeluar)));
-      $tglkmblshrsny2 = date('Y-m-d H:i:s', strtotime('+2 days 07:00:00', strtotime($tanggalkeluar)));
-      $today = date("Y-m-d H:i:s");
-      if ($today > $tglkmblshrsny) {
-        if ($today < $tglkmblshrsny2){
-        $jamtoday = date("H:i");
-        $jamtoday = new DateTime($jamtoday);
-        $jamkembali = new DateTime("07:00");
-        $selisihjam = $jamkembali->diff($jamtoday);
-        $jamselisih = $selisihjam->format('%h');
-        $totaldenda = $jamselisih*$denda;
-        if ($totaldenda < $dendamaks){
-          $bayardenda = $totaldenda;
-        }
-        elseif ($totaldenda >= $dendamaks) {
-          $bayardenda = $dendamaks;
-        }
-      }
-      elseif ($today > $tglkmblshrsny2 ) {
-         $bayardenda = $dendamaks;
-      }
-      }
-      else {
-        $bayardenda = 0;
-      }
+      $tanggalkeluar = $santri['tanggal_keluar'];
+		  $tanggalkembali = $santri['harus_kembali'];
+    }
+    $today = date("Y-m-d H:i:s");
+    if ($today > $tanggalkembali) {
+      $bayardenda = $dendamaks;
+    }
+    else {
+      $bayardenda = 0;
+    }
     $variabel['santrikeluar'] = $santrikeluar->row();
     $variabel['totaldenda'] = $bayardenda;
     $variabel['santrikeluarlagi'] = $this->m_perizinan->datasantrikeluar();
-    $this->layout->render2('back-end/datamaster/perizinan/kembalipondok1',$variabel);
+    $this->layout->render('back-end/datamaster/perizinan/kembalipondok1',$variabel);
+  }
+
+  function kembalidendap(){
+	  $id_keluar = $this->input->post("id_keluar");
+    $datadenda = $this->m_denda_p->aturdenda();
+    foreach ($datadenda->result_array() as $row) {
+      $denda = $row['denda_perjam'];
+      $dendamaks = $row['denda_maks'];
+    }
+    $santrikeluar = $this->m_perizinan_p->datasantrikeluarsatu($id_keluar);
+    foreach ($santrikeluar->result_array() as $santri) {
+      $tanggalkeluar = $santri['tanggal_keluar'];
+		  $tanggalkembali = $santri['harus_kembali'];
+    }
+    $today = date("Y-m-d H:i:s");
+    if ($today > $tanggalkembali) {
+      $bayardenda = $dendamaks;
+    }
+    else {
+      $bayardenda = 0;
+    }
+    $variabel['santrikeluar'] = $santrikeluar->row();
+    $variabel['totaldenda'] = $bayardenda;
+    $variabel['santrikeluarlagi'] = $this->m_perizinan_p->datasantrikeluar();
+    $this->layout->render('back-end/datamaster/perizinan_p/kembalipondok1',$variabel);
   }
 
   function tambahdatakembali(){
@@ -3381,29 +3555,64 @@ function kecamatanhapus()
       $status_pembayaran = "hutang";
     }
     if ($this->input->post()){
-        $arraykembali=array(
-          'id_keluar' => $this->input->post('id_keluar'),
-          'tanggal_kembali' => $this->input->post('tanggal_kembali'),
-          'status_denda' => $statusdenda,
-          'petugas' => $petugas
-        );
+      $arraykembali=array(
+        'id_keluar' => $this->input->post('id_keluar'),
+        'tanggal_kembali' => $this->input->post('tanggal_kembali'),
+        'status_denda' => $statusdenda,
+        'petugas' => $petugas
+      );
+    }
+    $exec = $this->m_perizinan->tambahdatakembali($arraykembali);
+    $exec1 = $this->m_perizinan->updatedatakeluar($id_keluar);
+    if ($denda > 0){
+      $ambiliddatakembali = $this->m_perizinan->ambilidkembaliterakhir();
+      foreach ($ambiliddatakembali->result_array() as $row) {
+        $id_kembali = $row['id_kembali'];
       }
-      $exec = $this->m_perizinan->tambahdatakembali($arraykembali);
-      $exec1 = $this->m_perizinan->updatedatakeluar($id_keluar);
-      if ($denda > 0){
-        $ambiliddatakembali = $this->m_perizinan->ambilidkembaliterakhir();
-        foreach ($ambiliddatakembali->result_array() as $row) {
-            $id_kembali = $row['id_kembali'];
-          }
-        $arraydenda=array(
-          'id_kembali' => $id_kembali,
-          'besar_denda' => $denda,
-          'status_pembayaran' => $status_pembayaran
-        );
-        $exec2= $this->m_perizinan->tambahdatadenda($arraydenda);
-      }
-      redirect(base_url("admin/datamaster/datakembali"));
+      $arraydenda=array(
+        'id_kembali' => $id_kembali,
+        'besar_denda' => $denda,
+        'status_pembayaran' => $status_pembayaran
+      );
+      $exec2= $this->m_perizinan->tambahdatadenda($arraydenda);
+    }
+    redirect(base_url("admin/datamaster/datakembali"));
+  }
 
+  function tambahdatakembalip(){
+    $petugas = $this->session->userdata('nama_akun');
+    $denda = $this->input->post('total_denda');
+    $id_keluar = $this->input->post('id_keluar');
+    if ($denda == 0){
+      $statusdenda = "0";
+    }
+    elseif ($denda > 0) {
+      $statusdenda = "1";
+      $status_pembayaran = "hutang";
+    }
+    if ($this->input->post()){
+      $arraykembali=array(
+        'id_keluar' => $this->input->post('id_keluar'),
+        'tanggal_kembali' => $this->input->post('tanggal_kembali'),
+        'status_denda' => $statusdenda,
+        'petugas' => $petugas
+      );
+    }
+    $exec = $this->m_perizinan_p->tambahdatakembali($arraykembali);
+    $exec1 = $this->m_perizinan_p->updatedatakeluar($id_keluar);
+    if ($denda > 0){
+      $ambiliddatakembali = $this->m_perizinan_p->ambilidkembaliterakhir();
+      foreach ($ambiliddatakembali->result_array() as $row) {
+        $id_kembali = $row['id_kembali'];
+      }
+      $arraydenda=array(
+        'id_kembali' => $id_kembali,
+        'besar_denda' => $denda,
+        'status_pembayaran' => $status_pembayaran
+      );
+      $exec2= $this->m_perizinan_p->tambahdatadenda($arraydenda);
+    }
+    redirect(base_url("admin/datamaster/datakembalip"));
   }
 
   function laporankembali(){
@@ -3416,12 +3625,28 @@ function kecamatanhapus()
     $variabel['data'] = $this->m_perizinan->laporankembali($tahun,$bulan);
     $this->layout->renderlaporan('back-end/datamaster/perizinan/v_lap_kembali',$variabel,'back-end/datamaster/perizinan/denda_js');
   }
+
+  function laporankembalip(){
+    $tahun = $this->input->post('tahun');
+    $bulan = $this->input->post('bulan');
+    $variabel['bulan'] = $bulan;
+    $variabel['tahun'] = $tahun;
+    $variabel['semuadenda'] = $this->m_denda_p->semuadenda($tahun,$bulan);
+    $variabel['kenadenda'] = $this->m_perizinan_p->kenadenda($tahun,$bulan);
+    $variabel['data'] = $this->m_perizinan_p->laporankembali($tahun,$bulan);
+    $this->layout->renderlaporan('back-end/datamaster/perizinan_p/v_lap_kembali',$variabel,'back-end/datamaster/perizinan_p/denda_js');
+  }
 //akhir kembali ke pondok//
 
 //mulai data denda//
   function datadenda(){
       $variabel['data'] = $this->m_denda->lihatdata();
-      $this->layout->render('back-end/datamaster/perizinan/v_denda',$variabel,'back-end/datamaster/perizinan/denda_js');
+      $this->layout->render2('back-end/datamaster/perizinan/v_denda',$variabel,'back-end/datamaster/perizinan/denda_js');
+  }
+
+  function datadendap(){
+      $variabel['data'] = $this->m_denda_p->lihatdata();
+      $this->layout->render2('back-end/datamaster/perizinan_p/v_denda',$variabel,'back-end/datamaster/perizinan_p/denda_js');
   }
 
   function riwayatbayardenda(){
@@ -3435,35 +3660,73 @@ function kecamatanhapus()
       $this->layout->render('back-end/datamaster/perizinan/v_data_bayar_denda',$variabel,'back-end/datamaster/perizinan/denda_js');
   }
 
+  function riwayatbayardendap(){
+      $nis = $this->input->get("nis");
+      $denda = $this->input->get("denda");
+      $variabel['id_denda'] = $this->input->get("denda");
+      $variabel['nis'] = $this->input->get("nis");
+      $variabel['totalbayar'] = $this->m_denda_p->totalbayar($denda);
+      $variabel['statusdenda'] = $this->m_denda_p->statusdenda($denda);
+      $variabel['data'] = $this->m_denda_p->lihatbayar($nis);
+      $this->layout->render('back-end/datamaster/perizinan_p/v_data_bayar_denda',$variabel,'back-end/datamaster/perizinan_p/denda_js');
+  }
+
   function bayardenda(){
     $tgl_bayar = date('Y-m-d');
     $petugas = $this->session->userdata('nama_akun');
     if ($this->input->post()){
-        $array=array(
-          'id_denda' => $this->input->post('id_denda'),
-          'besar_bayar' => $this->input->post('besar_bayar'),
-          'tanggal_bayar' => $tgl_bayar,
-          'petugas' => $petugas
-        );
-        $id_denda = $this->input->post('id_denda');
-        $nis = $this->input->post('nis');
-        $besardenda = $this->m_denda->besardenda($id_denda);
-          $exec = $this->m_denda->tambahbayar($array);
-          if ($exec) {
-            $totalbayar = $this->m_denda->jumlahbayar($id_denda);
-            if ($totalbayar >= $besardenda){
-              $arrayupdate=array(
-                'status_pembayaran' => 'lunas'
-              );
-              $this->m_denda->editdenda($id_denda,$arrayupdate);
-              redirect(base_url("admin/datamaster/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
-            } else
-            redirect(base_url("admin/datamaster/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
-
-          }
-          else redirect(base_url("admin/datamaster/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=0"));
+      $array=array(
+        'id_denda' => $this->input->post('id_denda'),
+        'besar_bayar' => $this->input->post('besar_bayar'),
+        'tanggal_bayar' => $tgl_bayar,
+        'petugas' => $petugas
+      );
+      $id_denda = $this->input->post('id_denda');
+      $nis = $this->input->post('nis');
+      $besardenda = $this->m_denda->besardenda($id_denda);
+      $exec = $this->m_denda->tambahbayar($array);
+      if ($exec) {
+        $totalbayar = $this->m_denda->jumlahbayar($id_denda);
+        if ($totalbayar >= $besardenda){
+          $arrayupdate=array(
+            'status_pembayaran' => 'lunas'
+          );
+          $this->m_denda->editdenda($id_denda,$arrayupdate);
+          redirect(base_url("admin/datamaster/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
+        } else
+        redirect(base_url("admin/datamaster/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=1"));
       }
+      else redirect(base_url("admin/datamaster/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&msg=0"));
+    }
+  }
 
+  function bayardendap(){
+    $tgl_bayar = date('Y-m-d');
+    $petugas = $this->session->userdata('nama_akun');
+    if ($this->input->post()){
+      $array=array(
+        'id_denda' => $this->input->post('id_denda'),
+        'besar_bayar' => $this->input->post('besar_bayar'),
+        'tanggal_bayar' => $tgl_bayar,
+        'petugas' => $petugas
+      );
+      $id_denda = $this->input->post('id_denda');
+      $nis = $this->input->post('nis');
+      $besardenda = $this->m_denda_p->besardenda($id_denda);
+      $exec = $this->m_denda_p->tambahbayar($array);
+      if ($exec) {
+        $totalbayar = $this->m_denda_p->jumlahbayar($id_denda);
+        if ($totalbayar >= $besardenda){
+          $arrayupdate=array(
+            'status_pembayaran' => 'lunas'
+          );
+          $this->m_denda_p->editdenda($id_denda,$arrayupdate);
+          redirect(base_url("admin/datamaster/riwayatbayardendap?nis=".$nis."&denda=".$id_denda."&msg=1"));
+        } else
+        redirect(base_url("admin/datamaster/riwayatbayardendap?nis=".$nis."&denda=".$id_denda."&msg=1"));
+      }
+      else redirect(base_url("admin/datamaster/riwayatbayardendap?nis=".$nis."&denda=".$id_denda."&msg=0"));
+    }
   }
 
   function bayardendahapus(){
@@ -3484,6 +3747,24 @@ function kecamatanhapus()
     } else redirect(base_url("admin/datamaster/riwayatbayardenda?nis=".$nis."&denda=".$id_denda."&hps=0"));
   }
 
+  function bayardendahapusp(){
+    $nis = $this->input->get("nis");
+    $id_denda = $this->input->get("id_denda");
+    $id_bayar = $this->input->get("id_bayar");
+    $besardenda = $this->m_denda_p->besardenda($id_denda);
+    $exec = $this->m_denda_p->hapus($id_bayar);
+    if ($exec){
+      $totalbayar = $this->m_denda_p->jumlahbayar($id_denda);
+      if ($totalbayar < $besardenda){
+        $arrayupdate=array(
+          'status_pembayaran' => 'hutang'
+        );
+        $this->m_denda_p->editdenda($id_denda,$arrayupdate);
+        redirect(base_url("admin/datamaster/riwayatbayardendap?nis=".$nis."&denda=".$id_denda."&hps=1"));
+      } else redirect(base_url("admin/datamaster/riwayatbayardendap?nis=".$nis."&denda=".$id_denda."&hps=1"));
+    } else redirect(base_url("admin/datamaster/riwayatbayardendap?nis=".$nis."&denda=".$id_denda."&hps=0"));
+  }
+
   function laporandenda(){
     $tahun = $this->input->post('tahun');
     $bulan = $this->input->post('bulan');
@@ -3495,6 +3776,18 @@ function kecamatanhapus()
     $variabel['data'] = $this->m_denda->laporandenda($tahun,$bulan);
     $this->layout->renderlaporan('back-end/datamaster/perizinan/v_lap_denda',$variabel,'back-end/datamaster/perizinan/denda_js');
   }
+
+  function laporandendap(){
+    $tahun = $this->input->post('tahun');
+    $bulan = $this->input->post('bulan');
+    $variabel['bulan'] = $bulan;
+    $variabel['tahun'] = $tahun;
+    $variabel['semuadenda'] = $this->m_denda_p->semuadenda($tahun,$bulan);
+    $variabel['dendalunas'] = $this->m_denda_p->dendalunas($tahun,$bulan);
+    $variabel['dendahutang'] = $this->m_denda_p->dendahutang($tahun,$bulan);
+    $variabel['data'] = $this->m_denda_p->laporandenda($tahun,$bulan);
+    $this->layout->renderlaporan('back-end/datamaster/perizinan_p/v_lap_denda',$variabel,'back-end/datamaster/perizinan_p/denda_js');
+  }
 //akhir data denda//
 
 //mulai atur denda//
@@ -3502,15 +3795,18 @@ function kecamatanhapus()
     $datadenda = $this->m_denda->aturdenda();
     $variabel['datadenda'] = $datadenda->row();
     $this->layout->render('back-end/datamaster/perizinan/pengaturandenda',$variabel,'back-end/datamaster/perizinan/denda_js');
+  }
 
+  function aturdendap(){
+    $datadenda = $this->m_denda_p->aturdenda();
+    $variabel['datadenda'] = $datadenda->row();
+    $this->layout->render('back-end/datamaster/perizinan_p/pengaturandenda',$variabel,'back-end/datamaster/perizinan_p/denda_js');
   }
 
   function updateaturdenda(){
-
     $password = $this->session->userdata('password');
     $kata_sandi = md5($this->input->post('password'));
     $kata_sandi2 = md5($this->input->post('password2'));
-
     if ($kata_sandi == $kata_sandi2){
       if ($kata_sandi == $password) {
         $arrayupdate=array(
@@ -3522,10 +3818,33 @@ function kecamatanhapus()
       }
       else{
         redirect(base_url("admin/datamaster/aturdenda?&msg=0"));
-      }}
-      else{
-        redirect(base_url("admin/datamaster/aturdenda?&msg=2"));
       }
+    }
+    else{
+      redirect(base_url("admin/datamaster/aturdenda?&msg=2"));
+    }
+  }
+
+  function updateaturdendap(){
+    $password = $this->session->userdata('password');
+    $kata_sandi = md5($this->input->post('password'));
+    $kata_sandi2 = md5($this->input->post('password2'));
+    if ($kata_sandi == $kata_sandi2){
+      if ($kata_sandi == $password) {
+        $arrayupdate=array(
+          'denda_perjam' => $this->input->post('dendajam'),
+          'denda_maks' => $this->input->post('dendamaks'),
+        );
+        $exec = $this->m_denda_p->updateaturdenda($arrayupdate);
+        redirect(base_url("admin/datamaster/aturdendap?&msg=1"));
+      }
+      else{
+        redirect(base_url("admin/datamaster/aturdendap?&msg=0"));
+      }
+    }
+    else{
+      redirect(base_url("admin/datamaster/aturdendap?&msg=2"));
+    }
   }
 //akhir atur denda//
 

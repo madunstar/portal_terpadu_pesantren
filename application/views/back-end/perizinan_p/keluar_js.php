@@ -17,14 +17,38 @@ $(document).ready(function(){
   $('#hapus').attr('disabled','disabled');
   $('#proses').attr('disabled','disabled');
 
+  $(".lihat").click(function(e) {
+    var v_url = "<?php echo base_url() ?>admin/perizinansantriwati/lihatdatakeluar";
+    var v_id = this.id;
+    $.ajax({
+      type: 'POST',
+      url: v_url,
+      data: {
+                   id : v_id
+                    },
+      beforeSend: function () {
+        $("#loading").show();
+      },
+      success: function (response) {
+        $("#loading").hide();
+        $('#modal-edit').html(response)
+      }
+    });
+  });
+
   $("#harus_kembali").datepicker({
     format: 'yyyy-mm-dd',
     startDate: '+2d'
   });
 
   $("#harus_kembali").on('hide', function(datetext) {
-    datetext = $('#harus_kembali').val() + ' ' + '07' + ':' + '00' + ':' + '00';
-    $('#harus_kembali').val(datetext);
+    if (harus_kembali.value == null || harus_kembali.value == ''){
+      $('#harus_kembali').val('');
+    }
+    else {
+      datetext = $('#harus_kembali').val() + ' ' + '07' + ':' + '00' + ':' + '00';
+      $('#harus_kembali').val(datetext);
+    }
   });
 
   $('#Lanjutkan').click(function(){

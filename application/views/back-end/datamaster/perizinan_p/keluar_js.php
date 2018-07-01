@@ -18,7 +18,7 @@ $(document).ready(function(){
   $('#proses').attr('disabled','disabled');
 
   $(".lihat").click(function(e) {
-    var v_url = "<?php echo base_url() ?>admin/datamaster/lihatdatakeluar";
+    var v_url = "<?php echo base_url() ?>admin/datamaster/lihatdatakeluarp";
     var v_id = this.id;
     $.ajax({
       type: 'POST',
@@ -85,8 +85,9 @@ $(document).ready(function(){
     //   alert("NIS terdiri dari 13 digit !");
     //   return false;
     // }
+
     $.ajax({
-      url: "<?php echo base_url();?>admin/datamaster/ceknissantri",
+      url: "<?php echo base_url();?>admin/datamaster/ceknissantriwati",
       type: "POST",
       data: "nis_santri="+nis,
       dataType: "text",
@@ -106,7 +107,7 @@ $(document).ready(function(){
 		});
 
     $.ajax({
-      url: "<?php echo base_url();?>admin/datamaster/cekjatahizin",
+      url: "<?php echo base_url();?>admin/datamaster/cekjatahizinp",
       type: "POST",
       data: "nis_santri="+nis,
       dataType: "text",
@@ -138,9 +139,8 @@ $(document).ready(function(){
     var menit = tgl.getMinutes();
     var detik = tgl.getSeconds();
     $('#tanggal_keluar').val(tahun+'-'+bulan+'-'+tanggal+' '+jam+':'+menit+':'+detik);
-    //var id=$('#nis_santri').val();
     $.ajax({
-      url : "<?php echo base_url();?>admin/datamaster/datasantritampil",
+      url : "<?php echo base_url();?>admin/datamaster/datasantriwatitampil",
       method : "POST",
       data : {id: nis},
       async : false,
@@ -160,7 +160,7 @@ $(document).ready(function(){
   $('#id_penjemput').change(function(){
     var id=$(this).val();
     $.ajax({
-      url : "<?php echo base_url();?>admin/datamaster/datapenjemputtampil",
+      url : "<?php echo base_url();?>admin/datamaster/datapenjemputtampilp",
       method : "POST",
       data : {id: id},
       async : false,
@@ -222,7 +222,7 @@ $(document).ready(function(){
                text: 'Hapus',
                btnClass: 'btn-green',
                action: function(){
-                   window.location.assign("<?php echo base_url() ?>admin/datamaster/izinhapus?id="+v_id);
+                   window.location.assign("<?php echo base_url() ?>admin/datamaster/izinhapusp?id="+v_id);
                }
            },
            batal: function () {
@@ -243,7 +243,7 @@ $(document).ready(function(){
                text: 'Hapus',
                btnClass: 'btn-green',
                action: function(){
-                   window.location.assign("<?php echo base_url() ?>admin/datamaster/penjemputhapus?id="+v_id);
+                   window.location.assign("<?php echo base_url() ?>admin/datamaster/penjemputhapusp?id="+v_id);
                }
            },
            batal: function () {

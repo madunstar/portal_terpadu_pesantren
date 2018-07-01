@@ -183,6 +183,12 @@ class Perizinansantri extends CI_Controller
       $this->layout->renderizin2('back-end/perizinan/v_data_keluar',$variabel,'back-end/perizinan/keluar_js');
   }
 
+  function lihatdatakeluar(){
+      $id_keluar = $this->input->post("id");
+      $variabel['lihat'] = $this->m_perizinan->lihatdatasatuan($id_keluar)->row_array();
+      $this->load->view('back-end/perizinan/v_lihat_data_keluar',$variabel);
+  }
+
   function datasantritampil(){
       $id=$this->input->post('id');
       $data=$this->m_perizinan->tampildatasantri($id)->result();

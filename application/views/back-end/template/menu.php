@@ -198,28 +198,56 @@
                         <a href="<?php echo base_url() ?>admin/datamaster/datakeluar" class="auto">
                           <i class="i i-dot"></i>
 
-                          <span>Keluar Pondok</span>
+                          <span>Keluar Pondok Putra</span>
+                        </a>
+                      </li>
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'datakeluarp') || ($submenu == 'keluarp') || ($submenu == 'suratizinp')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/datakeluarp" class="auto">
+                          <i class="i i-dot"></i>
+
+                          <span>Keluar Pondok Putri</span>
                         </a>
                       </li>
 											<li class="<?= (($menu == "datamaster") && ($submenu == 'datakembali') || ($submenu == 'kembali') || ($submenu == 'kembalidenda')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/datakembali" class="auto">
                           <i class="i i-dot"></i>
 
-                          <span>Kembali ke Pondok</span>
+                          <span>Kembali ke Pondok Putra</span>
+                        </a>
+                      </li>
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'datakembalip') || ($submenu == 'kembalip') || ($submenu == 'kembalidendap')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/datakembalip" class="auto">
+                          <i class="i i-dot"></i>
+
+                          <span>Kembali ke Pondok Putri</span>
                         </a>
                       </li>
 											<li class="<?= (($menu == "datamaster") && ($submenu == 'datadenda') || ($submenu == 'riwayatbayardenda')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/datadenda" class="auto">
                           <i class="i i-dot"></i>
 
-                          <span>Data Denda</span>
+                          <span>Data Denda Santri</span>
+                        </a>
+                      </li>
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'datadendap') || ($submenu == 'riwayatbayardendap')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/datadendap" class="auto">
+                          <i class="i i-dot"></i>
+
+                          <span>Data Denda Santriwati</span>
                         </a>
                       </li>
 											<li class="<?= (($menu == "datamaster") && ($submenu == 'aturdenda')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/aturdenda" class="auto">
                           <i class="i i-dot"></i>
 
-                          <span>Pengaturan Denda</span>
+                          <span>Pengaturan Denda Santri</span>
+                        </a>
+                      </li>
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'aturdendap')) ? "active" : ""; ?>">
+                        <a href="<?php echo base_url() ?>admin/datamaster/aturdendap" class="auto">
+                          <i class="i i-dot"></i>
+
+                          <span>Pengaturan Denda Santriwati</span>
                         </a>
                       </li>
                     </ul>

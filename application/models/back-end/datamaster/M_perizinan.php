@@ -6,7 +6,7 @@ class M_perizinan extends CI_Model{
     }
 
     function lihatdata(){
-        $this->db->select('id_keluar, nis_santri, nama_lengkap, jenis_sekolah_asal,
+        $this->db->select('id_keluar, nama_lengkap,
         CONCAT(
             CASE DAYOFWEEK(tanggal_keluar)
               WHEN 1 THEN "Minggu"
@@ -32,7 +32,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(tanggal_keluar)," Pukul ",
+            YEAR(tanggal_keluar)," Jam ",
             HOUR(tanggal_keluar),":",
             MINUTE(tanggal_keluar),":",
             SECOND(tanggal_keluar)
@@ -61,17 +61,20 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(harus_kembali)," Pukul ",
+            YEAR(harus_kembali)," Jam ",
             HOUR(harus_kembali),":",
             MINUTE(harus_kembali),":",
             SECOND(harus_kembali)
-        ) AS harus_kembali, keperluan, nama_penjemput, status_keluar, "Muallimin" AS pondokan');
+        ) AS harus_kembali, status_keluar');
         $this->db->from('tb_perizinan_keluar');
-        $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri = tb_santri.nis_lokal');
+        $this->db->join('tb_santri', 'nis_santri = nis_lokal');
         $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
-        $muallimin = $this->db->get_compiled_select();
+        $this->db->order_by('id_keluar','ASC');
+        return $this->db->get();
+    }
 
-        $this->db->select('id_keluar, nis_santri, nama_lengkap, jenis_sekolah_asal,
+    function lihatdatasatuan($id_keluar){
+        $this->db->select('id_keluar, nis_santri, nama_lengkap,
         CONCAT(
             CASE DAYOFWEEK(tanggal_keluar)
               WHEN 1 THEN "Minggu"
@@ -97,7 +100,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(tanggal_keluar)," Pukul ",
+            YEAR(tanggal_keluar)," Jam ",
             HOUR(tanggal_keluar),":",
             MINUTE(tanggal_keluar),":",
             SECOND(tanggal_keluar)
@@ -126,17 +129,18 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(harus_kembali)," Pukul ",
+            YEAR(harus_kembali)," Jam ",
             HOUR(harus_kembali),":",
             MINUTE(harus_kembali),":",
             SECOND(harus_kembali)
-        ) AS harus_kembali, keperluan, nama_penjemput, status_keluar, "Muallimat" AS pondokan');
-        $this->db->from('tb_perizinan_keluar_p');
-        $this->db->join('tb_santriwati', 'tb_perizinan_keluar_p.nis_santri = tb_santriwati.nis_lokal');
-        $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar_p.id_penjemput = tb_perizinan_penjemput.id_penjemput');
-        $muallimat = $this->db->get_compiled_select();
-
-        return $query = $this->db->query($muallimin . ' UNION ' . $muallimat . ' ORDER BY id_keluar ASC');
+        ) AS harus_kembali, keperluan, nama_penjemput, status_keluar');
+        $this->db->from('tb_perizinan_keluar');
+        $this->db->join('tb_santri', 'nis_santri = nis_lokal');
+        $this->db->join('tb_perizinan_penjemput', 'tb_perizinan_keluar.id_penjemput = tb_perizinan_penjemput.id_penjemput');
+        $this->db->where('id_keluar',$id_keluar);
+        $this->db->order_by('id_keluar','ASC');
+        $this->db->limit(1);
+        return $this->db->get();
     }
 
     function ambildatapenjemput(){
@@ -220,7 +224,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(tanggal_keluar)," Pukul ",
+            YEAR(tanggal_keluar)," Jam ",
             HOUR(tanggal_keluar),":",
             MINUTE(tanggal_keluar),":",
             SECOND(tanggal_keluar)
@@ -249,7 +253,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(harus_kembali)," Pukul ",
+            YEAR(harus_kembali)," Jam ",
             HOUR(harus_kembali),":",
             MINUTE(harus_kembali),":",
             SECOND(harus_kembali)
@@ -317,7 +321,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(tanggal_keluar)," Pukul ",
+            YEAR(tanggal_keluar)," Jam ",
             HOUR(tanggal_keluar),":",
             MINUTE(tanggal_keluar),":",
             SECOND(tanggal_keluar)
@@ -346,7 +350,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(harus_kembali)," Pukul ",
+            YEAR(harus_kembali)," Jam ",
             HOUR(harus_kembali),":",
             MINUTE(harus_kembali),":",
             SECOND(harus_kembali)
@@ -434,7 +438,7 @@ class M_perizinan extends CI_Model{
             WHEN 11 THEN "November"
             WHEN 12 THEN "Desember"
           END," ",
-          YEAR(tanggal_keluar)," Pukul ",
+          YEAR(tanggal_keluar)," Jam ",
           HOUR(tanggal_keluar),":",
           MINUTE(tanggal_keluar),":",
           SECOND(tanggal_keluar)
@@ -463,7 +467,7 @@ class M_perizinan extends CI_Model{
               WHEN 11 THEN "November"
               WHEN 12 THEN "Desember"
             END," ",
-            YEAR(harus_kembali)," Pukul ",
+            YEAR(harus_kembali)," Jam ",
             HOUR(harus_kembali),":",
             MINUTE(harus_kembali),":",
             SECOND(harus_kembali)
@@ -479,11 +483,12 @@ class M_perizinan extends CI_Model{
 
     ///anis zone///
     function datasantrikembali(){
-      $this->db->select('nama_lengkap, tb_perizinan_kembali.tanggal_kembali, status_denda');
-      $this->db->from('tb_perizinan_kembali');
+      $this->db->select('id_kembali, nama_lengkap, tb_perizinan_kembali.tanggal_kembali, status_denda');
+	  $this->db->from('tb_perizinan_kembali');
       $this->db->join('tb_perizinan_keluar','tb_perizinan_keluar.id_keluar=tb_perizinan_kembali.id_keluar');
       $this->db->join('tb_santri', 'tb_perizinan_keluar.nis_santri=tb_santri.nis_lokal');
-      return $this->db->get();
+      $this->db->order_by('id_kembali','ASC');
+	  return $this->db->get();
     }
 
     function datasantrikeluar(){
@@ -494,12 +499,12 @@ class M_perizinan extends CI_Model{
       return $this->db->get();
     }
 
-    function datasantrikeluarsatu($nis_lokal){
-      $this->db->select('id_keluar, nis_santri, nama_lengkap, tanggal_keluar, keperluan, nama_penjemput ');
+    function datasantrikeluarsatu($id_keluar){
+      $this->db->select('id_keluar, nis_santri, nama_lengkap, tanggal_keluar, harus_kembali, keperluan, nama_penjemput ');
       $this->db->from('tb_perizinan_keluar');
-      $this->db->join('tb_santri','tb_santri.nis_lokal='.$nis_lokal.'');
+      $this->db->join('tb_santri','tb_santri.nis_lokal=tb_perizinan_keluar.nis_santri');
       $this->db->join('tb_perizinan_penjemput','tb_perizinan_penjemput.id_penjemput = tb_perizinan_keluar.id_penjemput');
-      $this->db->where("tb_perizinan_keluar.nis_santri",$nis_lokal);
+      $this->db->where("tb_perizinan_keluar.id_keluar",$id_keluar);
       return $this->db->get();
     }
 
