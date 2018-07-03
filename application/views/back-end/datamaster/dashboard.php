@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-12">
 			<section class="panel panel-default">
             <header class="panel-heading">
               <h4 class="font-bold">Data Perizinan Santri Terakhir</h4>
@@ -41,10 +41,10 @@
             <div class="panel-footer text-right">
               <a href="<?php echo base_url()?>admin/datamaster/datakeluar" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                </div>
-			</section>
+			
 			</div>
 		  
-		  <div class="col-sm-6">
+		  <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
               <h4 class="font-bold">Data Perizinan Santriwati Terakhir</h4>
@@ -80,8 +80,8 @@
                 </div>
 			</section>
           </div>
-	
-
+		</div>
+		<div class="row">
           <div class="col-sm-6">
             <section class="panel panel-default">
               <header class="panel-heading bg-light no-border">
@@ -104,7 +104,7 @@
                 <div class="panel-footer text-right bg-muted">
                   <a href="<?php echo base_url()?>admin/datamaster/datakeluar" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                 </div>
-              </section>
+           
             </div>
 			
 			<div class="col-sm-6">
@@ -129,10 +129,10 @@
                 <div class="panel-footer text-right bg-muted">
                   <a href="<?php echo base_url()?>admin/datamaster/datakeluarp" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                 </div>
-              </section>
+              
             </div>
 			
-		<div class="col-sm-6">
+		<div class="col-sm-12">
               <section class="panel panel-default">
                 <header class="panel-heading">
                   <h4 class="font-bold">Data Pembayaran Infaq SPP Santri terakhir</h4>
@@ -167,9 +167,9 @@
                   <a href="<?php echo base_url()?>admin/datamaster/databayarinfaq" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                 </div>
               
-			  </div>
+          </div>
 			  
-			  <div class="col-sm-6">
+			  <div class="col-sm-12">
               <section class="panel panel-default">
                 <header class="panel-heading">
                   <h4 class="font-bold">Data Pembayaran Infaq SPP Santriwati Terakhir</h4>
@@ -203,11 +203,10 @@
                 <div class="panel-footer text-right">
                   <a href="<?php echo base_url()?>admin/datamaster/databayarinfaqp" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                 </div>
-              </div>
-			  
-            </div>
+			 
+          </div>
           
-        	
+			
             <div class="col-sm-6">
               <section class="panel panel-default">
                 <header class="panel-heading">
@@ -242,7 +241,8 @@
                 <div class="panel-footer text-right">
                   <a href="<?php echo base_url()?>admin/datamaster/datadenda" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                 </div>
-              </div>
+              
+          </div>
 			  
 			  <div class="col-sm-6">
               <section class="panel panel-default">
@@ -282,9 +282,8 @@
             </div>
           </section>
         </section>
-      
+    
 	  
 	  </section>
     </section>
-
   </section>

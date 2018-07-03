@@ -11,16 +11,16 @@
         <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
-              <h4 class="font-bold">Input Data Santri Kembali ke Pondok</h4>
+              <h4 class="font-bold">Input Data Santriwati Kembali ke Pondok</h4>
             </header>
             <div class="panel-body">
 
                 <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/perizinansantriwati/kembalidenda" method="post">
                 <div class="form-group">
-                  <label class="col-sm-2 control-label" for="input-id-1">Pilih Santri</label>
+                  <label class="col-sm-2 control-label" for="input-id-1">Pilih Santriwati</label>
                   <div class="col-sm-8">
                     <select name="id_keluar" id="id_keluar" class="form-control chosen-select" data-required="true">
-                      <option value="">-PILIH SANTRI KELUAR-</option>
+                      <option value="">-PILIH SANTRIWATI KELUAR-</option>
                       <?php foreach($santrikeluar->result_array() as $row):?>
                         <option value="<?php echo $row['id_keluar'];?>"><?php echo $row['nis_santri'];?></option>
                       <?php endforeach;?>
