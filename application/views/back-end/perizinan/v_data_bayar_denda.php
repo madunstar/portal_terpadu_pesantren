@@ -16,7 +16,7 @@
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menambahkan Data Bayar","Gagal Menambahkan Data Bayar") ?>
               <?php pesan_get('hps',"Berhasil Menghapus Data Bayar","Gagal Menghapus Data Bayar") ?>
-              <button data-toggle='modal' data-target='#tambahbayar' type="button" name="button" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Pembayaran Denda</button> <a class="btn btn-default btn-s-xs" href="<?php echo base_url() ?>admin/perizinansantri/datadenda"><i class="fa fa-list"></i> List Data Denda</a><br><br>
+              <button <?php if ($statusdenda['status_pembayaran'] =="lunas") echo "disabled" ?> data-toggle='modal' data-target='#tambahbayar' type="button" name="button" class="btn btn-success"><i class="fa fa-plus"></i> Tambah Pembayaran Denda</button> <a class="btn btn-default btn-s-xs" href="<?php echo base_url() ?>admin/perizinansantri/datadenda"><i class="fa fa-list"></i> List Data Denda</a><br><br>
               <div class="table-responsive">
                 <table class="table m-b-none" id="">
                   <thead>
