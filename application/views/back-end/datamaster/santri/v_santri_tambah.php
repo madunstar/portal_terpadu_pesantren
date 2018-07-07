@@ -59,7 +59,7 @@
               <div class="col-lg-8">
                 <select class="form-control"  name="jenis_kelamin"/>
                   <option value="L" <?php if (set_value('jenis_kelamin')=="L")  echo "selected" ?> >Laki-laki</option>
-                  <option value="P" <?php if (set_value('jenis_kelamin')=="P")  echo "selected" ?> >Perempuan</option>
+
                 </select>
               </div>
             </div>
@@ -172,7 +172,13 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Jarak Ke Sekolah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="jarak_ke_sekolah" value="<?php echo set_value('jarak_ke_sekolah'); ?>"/>
+                <select class="form-control"  name="jarak_ke_sekolah" id="jarak_ke_sekolah" data-required="">
+                  <option value="1" <?php if ($data['jarak_ke_sekolah']==1)  echo "selected" ?> >< 1 Km</option>
+                  <option value="2" <?php if ($data['jarak_ke_sekolah']==2)  echo "selected" ?> >1 - 3 Km</option>
+                  <option value="3" <?php if ($data['jarak_ke_sekolah']==3)  echo "selected" ?> >3 - 5 Km</option>
+                  <option value="4" <?php if ($data['jarak_ke_sekolah']==4)  echo "selected" ?> >5 - 10 Km</option>
+                  <option value="5" <?php if ($data['jarak_ke_sekolah']==5)  echo "selected" ?> >> 10 Km</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
@@ -386,7 +392,7 @@
 										<input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="foto">
 									</div>
               </div>
-           
+
           </div>
         </div>
       </div>
