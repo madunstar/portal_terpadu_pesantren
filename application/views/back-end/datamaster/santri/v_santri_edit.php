@@ -176,11 +176,11 @@
               <label class="col-lg-4 control-label">Jarak Ke Sekolah</label>
               <div class="col-lg-8">
                 <select class="form-control"  name="jarak_ke_sekolah" id="jarak_ke_sekolah" data-required="">
-                  <option value="1" <?php if ($data['jarak_ke_sekolah']==1)  echo "selected" ?> >< 1 Km</option>
-                  <option value="2" <?php if ($data['jarak_ke_sekolah']==2)  echo "selected" ?> >1 - 3 Km</option>
-                  <option value="3" <?php if ($data['jarak_ke_sekolah']==3)  echo "selected" ?> >3 - 5 Km</option>
-                  <option value="4" <?php if ($data['jarak_ke_sekolah']==4)  echo "selected" ?> >5 - 10 Km</option>
-                  <option value="5" <?php if ($data['jarak_ke_sekolah']==5)  echo "selected" ?> >> 10 Km</option>
+                  <option value="Kurang dari 1 Km" <?php if ($data['jarak_ke_sekolah']=='Kurang dari 1 Km')  echo "selected" ?> >Kurang dari 1 Km</option>
+                  <option value="1 - 3 Km" <?php if ($data['jarak_ke_sekolah']=='1 - 3 Km')  echo "selected" ?> >1 - 3 Km</option>
+                  <option value="3 - 5 Km" <?php if ($data['jarak_ke_sekolah']=='3 - 5 Km')  echo "selected" ?> >3 - 5 Km</option>
+                  <option value="5 - 10 Km" <?php if ($data['jarak_ke_sekolah']=='5 - 10 Km')  echo "selected" ?> >5 - 10 Km</option>
+                  <option value="Lebih dari 10 Km" <?php if ($data['jarak_ke_sekolah']=='Lebih dari 10 Km')  echo "selected" ?> >Lebih dari 10 Km</option>
                 </select>
               </div>
             </div>
@@ -301,9 +301,15 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">Penghasilan Orang Tua</label>
+              <label class="col-lg-4 control-label">Penghasilan Orang Tua (Rp)</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="penghasilan_orang_tua" value="<?php echo $data['penghasilan_orang_tua']; ?>" />
+                <select class="form-control"  name="penghasilan_orang_tua" id="penghasilan_orang_tua" data-required="">
+                  <option value="Kurang dari 1juta" <?php if ($data['penghasilan_orang_tua']=='Kurang dari 1juta')  echo "selected" ?> >Kurang dari 1juta</option>
+                  <option value="1 - 2 juta" <?php if ($data['penghasilan_orang_tua']=='1 - 2 juta')  echo "selected" ?> >1 - 2 juta</option>
+                  <option value="2 - 5 juta" <?php if ($data['penghasilan_orang_tua']=='2 - 5 juta')  echo "selected" ?> >2 - 5 juta</option>
+                  <option value="5 - 10 juta" <?php if ($data['penghasilan_orang_tua']=='5 - 10 juta')  echo "selected" ?> >5 - 10 juta</option>
+                  <option value="Lebih dari 10 juta" <?php if ($data['penghasilan_orang_tua']=='Lebih dari 10 juta')  echo "selected" ?> >Lebih dari 10 juta</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
