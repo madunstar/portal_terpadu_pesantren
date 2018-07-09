@@ -155,7 +155,7 @@
 						</div>
 				</div>
 				<footer class="panel-footer text-right bg-light lter">
-					<a href="<?php echo base_url('admin/santriwatiakd/guruedit?nip=1') ?>" class="btn btn-success btn-s-xs">
+					<a href="<?php echo base_url('admin/santriwatiakd/guruedit?nip='.$data['nip_guru']) ?>" class="btn btn-success btn-s-xs">
 						<i class="fa fa-edit"></i> Edit </a>
 					&nbsp
 					<a href="<?php echo base_url('admin/santriwatiakd/guru') ?>" class="btn btn-default btn-s-xs">
