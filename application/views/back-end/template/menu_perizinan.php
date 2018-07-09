@@ -72,13 +72,13 @@
                           <span>Data Denda</span>
                         </a>
                       </li>
-											<li class="<?= (($menu == "perizinan") && ($submenu == 'aturdenda')  ) ? "active" : ""; ?>">
-												<a href="<?php echo base_url() ?>admin/perizinansantri/aturdenda" class="auto">
+											<!-- <li class="<?php// (($menu == "perizinan") && ($submenu == 'aturdenda')  ) ? "active" : ""; ?>">
+												<a href="<?php // echo base_url() ?>admin/perizinansantri/aturdenda" class="auto">
 													<i class="i i-dot"></i>
 
 													<span>Pengaturan Denda</span>
 												</a>
-											</li>
+											</li> -->
                     </ul>
                   </li>
                 </ul>

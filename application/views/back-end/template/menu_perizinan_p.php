@@ -76,13 +76,13 @@
                         </a>
                       </li>
 
-											<li class="<?= (($menu == "perizinansantriwati") && ($submenu == 'aturdenda')  ) ? "active" : ""; ?>">
-												<a href="<?php echo base_url() ?>admin/perizinansantriwati/aturdenda" class="auto">
+											<!-- <li class="<?php // (($menu == "perizinansantriwati") && ($submenu == 'aturdenda')  ) ? "active" : ""; ?>">
+												<a href="<?php // echo base_url() ?>admin/perizinansantriwati/aturdenda" class="auto">
 													<i class="i i-dot"></i>
 
 													<span>Pengaturan Denda</span>
 												</a>
-											</li>
+											</li> -->
                     </ul>
                   </li>
 

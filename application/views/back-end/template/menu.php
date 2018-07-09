@@ -183,7 +183,7 @@
 											</li>
                     </ul>
                   </li>
-									<li class="<?= (($menu == "datamaster") && ($submenu == 'keluar') || ($submenu == 'aturdenda')|| ($submenu == 'kembali') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
+									<li class="<?= (($menu == "datamaster") && ($submenu == 'keluar') || ($submenu == 'aturdenda')|| ($submenu == 'kembali') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'suratizin') || ($submenu == 'datakeluarp') || ($submenu == 'keluarp') || ($submenu == 'suratizinp') || ($submenu == 'datakembalip') || ($submenu == 'kembalip') || ($submenu == 'kembalidendap') || ($submenu == 'datadendap') || ($submenu == 'riwayatbayardendap')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -236,20 +236,20 @@
                           <span>Data Denda Santriwati</span>
                         </a>
                       </li>
-											<li class="<?= (($menu == "datamaster") && ($submenu == 'aturdenda')) ? "active" : ""; ?>">
-                        <a href="<?php echo base_url() ?>admin/datamaster/aturdenda" class="auto">
+											<!-- <li class="<?php// (($menu == "datamaster") && ($submenu == 'aturdenda')) ? "active" : ""; ?>">
+                        <a href="<?php// echo base_url() ?>admin/datamaster/aturdenda" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Pengaturan Denda Santri</span>
                         </a>
-                      </li>
-											<li class="<?= (($menu == "datamaster") && ($submenu == 'aturdendap')) ? "active" : ""; ?>">
-                        <a href="<?php echo base_url() ?>admin/datamaster/aturdendap" class="auto">
+                      </li> -->
+											<!-- <li class="<?php// (($menu == "datamaster") && ($submenu == 'aturdendap')) ? "active" : ""; ?>">
+                        <a href="<?php// echo base_url() ?>admin/datamaster/aturdendap" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Pengaturan Denda Santriwati</span>
                         </a>
-                      </li>
+                      </li> -->
                     </ul>
                   </li>
 									<li  class="<?= (($menu == "datamaster") && ($submenu == 'databayarinfaq')|| ($submenu == 'bayarinfaq') || ($submenu == 'databayarinfaqp')|| ($submenu == 'bayarinfaqp')) ? "active" : ""; ?>">
