@@ -150,7 +150,7 @@ $(document).ready(function(){
         $('#nis_santri').parent().find('.text-danger').text("");
         $('#nis_santri').parent().find('.text-success').text("Data ditemukan!");
         nama_lengkap.value = data[0].nama_lengkap;
-        kelas.value = data[0].jenis_sekolah_asal;
+        kelas.value = data[0].kelas;
         nama_lengkap_ayah.value = data[0].nama_lengkap_ayah;
         nama_lengkap_ibu.value = data[0].nama_lengkap_ibu;
       }
