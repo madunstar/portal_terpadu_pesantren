@@ -43,7 +43,7 @@
           <div class="col-xs-7">
             <p>
               :  <?php echo $datasurat['nama_santri'];?><br><br>
-              :  <?php echo $datasurat['sekolah'];?><br><br>
+              :  <?php echo $datasurat['kelas'];?><br><br>
               :  <?php echo $datasurat['hp'];?><br><br>
             </p>
           </div>
