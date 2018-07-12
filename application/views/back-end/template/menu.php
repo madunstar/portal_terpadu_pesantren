@@ -64,7 +64,7 @@
                       <a href="<?php echo base_url() ?>admin/datamaster/kelas" class="auto">
                           <i class="i i-dot"></i>
 
-                          <span>Data Kelas</span>
+                          <span>Data Ruang Kelas</span>
                         </a>
                       </li>
                       <li class="<?= ((($menu == "datamaster") &&  ($submenu == 'jenjang')) || (($submenu == 'jenjangtingkat')) ) ? "active" : ""; ?>">

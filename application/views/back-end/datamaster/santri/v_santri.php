@@ -31,7 +31,7 @@
 							</tr>
 						</thead>
 						<tbody>
-						
+
 						</tbody>
 					</table>
 				</div>
@@ -54,7 +54,7 @@
 				 <button class="btn btn-primary" type="submit" name="button">upload</button>
 				 <br>
 
-				 <p><small>Pastikan Format Isian File Excel Data Santri Sesusai dengan <a class="text-info" href="<?php echo base_url() ?>admin/santriakd/downloadcontohimport"><b>Contoh Berikut</b></a></small></p>
+				 <p><small>Pastikan Format Isian File Excel Data Santri Sesusai dengan <a class="text-info" href="<?php echo base_url() ?>admin/datamaster/downloadcontohimport"><b>Contoh Berikut</b></a></small></p>
 			 </form>
 		 </div>
 		 <div class='modal-footer'>
