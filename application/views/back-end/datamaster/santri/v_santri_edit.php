@@ -53,7 +53,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Tanggal Lahir</label>
               <div class="col-lg-8">
-              <input class="datepicker-input form-control" size="16" type="text"  data-date-format="dd-mm-yyyy" name="tgl_lahir" data-required="true" value="<?php echo tanggal($data['tgl_lahir']); ?>" readonly/>
+              <input class="form-control" id="lahir" size="16" type="text" name="tgl_lahir" data-required="true" value="<?php echo tanggal($data['tgl_lahir']); ?>" readonly/>
               </div>
             </div>
             <div class="form-group">

@@ -809,7 +809,7 @@ class Datamaster extends CI_Controller{
                 $variabel['jenjang']=$this->m_jenjang->lihatdata();
                 $variabel['pondokan']=$this->m_pondokan->lihatdata();
 
-                $this->layout->render('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
+                $this->layout->render2('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
             } else {
                 $config['upload_path'] = './assets/images/foto';
                 $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|PNG|png';
@@ -852,7 +852,7 @@ class Datamaster extends CI_Controller{
                  $variabel['desa']=$this->m_santri->ambildesa($data['kecamatan']);
                  $variabel['jenjang']=$this->m_jenjang->lihatdata();
                  $variabel['pondokan']=$this->m_pondokan->lihatdata();
-                $this->layout->render('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
+                $this->layout->render2('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
             } else {
                 redirect(base_url("admin/datamaster/santri"));
             }
