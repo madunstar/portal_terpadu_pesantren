@@ -1,4 +1,5 @@
 <script>
+    $('#timepicker').timepicker();
 
    $('#datatable').DataTable({});
 
@@ -18,9 +19,13 @@
             batal: function () {
 
             }
-            
+
         }
         });
     });
+
+
+
+
 
 </script>
