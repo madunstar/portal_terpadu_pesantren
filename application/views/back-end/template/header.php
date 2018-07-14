@@ -23,8 +23,10 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/js/calendar/bootstrap_calendar.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/confirm/jquery-confirm.min.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/datepicker/datepicker.css');?>" type="text/css" />
+  <link rel="stylesheet" href="<?php echo base_url('assets/js/timepicker/bootstrap-timepicker.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/chosen/chosen.css');?>" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/js/summernote/summernote.css');?>" rel="stylesheet" type="text/css" />
+  
 </head>
 <body class="" >
   <section class="vbox">
@@ -50,7 +52,7 @@
           <span class="thumb-sm avatar pull-left">
             <img src="<?php echo base_url('assets/images/a0.png'); ?>" alt="...">
           </span>
-          <?php 
+          <?php
              $nama_akun = $this->session->userdata('nama_akun');
              $rule = $this->session->userdata('kode_role_admin');
              echo $nama_akun;?> <b class="caret"></b>
