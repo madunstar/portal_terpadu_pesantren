@@ -19,7 +19,7 @@
                   <div class="form-group">
                     <label class="col-lg-4 control-label">Pak</label>
                     <div class="col-lg-8">
-                      <input type="hidden" class="form-control" name="id" data-required="true" value="<?php echo $data['id']; ?>"/> 
+                      <input type="hidden" class="form-control" name="id" data-required="true" value="<?php echo $data['id']; ?>"/>
                       <!-- biar mudah mengambil kode kelasnya -->
                       <input type="text" class="form-control" name="pak" data-required="true" value="<?php echo $data['pak']; ?>"/>
                     </div>
@@ -27,7 +27,7 @@
                   <div class="form-group">
                     <label class="col-lg-4 control-label">Tingkat Kelas</label>
                     <div class="col-lg-8">
-                      <input type="text" class="form-control" name="jam" data-required="true" value="<?php echo $data['jam']; ?>"
+                      <input type="time" class="form-control" name="jam" data-required="true" value="<?php echo $data['jam']; ?>"
                       />
                     </div>
                   </div>
