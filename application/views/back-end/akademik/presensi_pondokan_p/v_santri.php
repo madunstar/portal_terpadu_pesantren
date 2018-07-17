@@ -15,7 +15,7 @@
       <?php pesan_get('ed',"Berhasil Mengedit santriwati","Gagal Mengedit santriwati") ?>
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="margin: 10px 0 10px 10px" id="tambahsantri">
       <i class="fa fa-plus"></i> Tambah santriwati</button> &nbsp
-      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/santriwatiakd/lihatkelaspondokansantri" class="btn btn-s-md btn-default" ><i class="fa fa-arrow-left"></i> Kembali</a>
+      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/santriwatiakd/datakelaspondwati" class="btn btn-s-md btn-default" ><i class="fa fa-arrow-left"></i> Kembali</a>
 
         <table class="table table-striped " id="datatable">
           <thead>

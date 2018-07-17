@@ -83,7 +83,7 @@
                           <span>Atur Pelajaran</span>
                         </a>
                       </li>
-                      <li  class="<?= (($menu == "santriakd") &&  ($submenu == 'datakelaspondokan') || ($submenu == 'aturkelaspondokan') || ($submenu == 'lihatkelaspondokansantri' )|| ($submenu == 'jadwalpondokan') || ($submenu == 'lihatkelaspondokan')) ? "active" : ""; ?>">
+                      <li  class="<?= (($menu == "santriakd") &&  ($submenu == 'datakelaspondokan') || ($submenu == 'aturkelaspondokan') || ($submenu == 'editkelaspondokan') || ($submenu == 'lihatkelaspondokansantri' )|| ($submenu == 'jadwalpondokan') || ($submenu == 'lihatkelaspondokan')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/santriakd/datakelaspondokan" class="auto">
 
                           <i class="i i-dot"></i>
@@ -96,7 +96,7 @@
 
                           <i class="i i-dot"></i>
 
-                          <span>Atur Kelas Afilasi</span>
+                          <span>Atur Kelas Afiliasi</span>
                         </a>
                       </li>
 											<li class="<?= (($menu == "santriakd") &&  ($submenu == 'pondokanrekap') || ($submenu == 'datarekapsantripondokan') || ($submenu == 'datarekapgurupondokan') ) ? "active" : ""; ?>">
