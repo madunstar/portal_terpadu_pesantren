@@ -163,9 +163,9 @@ class Santriakd extends CI_Controller
         $variabel['tingkat'] = $this->m_santri->lihattingkatanpondokan($nis);
         $this->load->view('back-end/akademik/santri/v_santri_tingkatpondokan',$variabel);
     }
-	
-	
-	
+
+
+
 	function datakotakab2()
     {
       $id=$this->input->post('provinsi');
@@ -784,7 +784,7 @@ class Santriakd extends CI_Controller
            $variabel['kabupaten']=$this->m_santri->ambilkabupaten("");
            $variabel['kecamatan']=$this->m_santri->ambilkecamatan("");
            $variabel['desa']=$this->m_santri->ambildesa("");
-          $this->layout->renderakd('back-end/akademik/guru/v_guru_tambah',$variabel,'back-end/akdemik/guru/v_guru_js');
+          $this->layout->renderakd('back-end/akademik/guru/v_guru_tambah',$variabel,'back-end/akademik/guru/v_guru_js');
       }
   }
 
@@ -1345,7 +1345,7 @@ class Santriakd extends CI_Controller
        $variabel['lissantri'] = $this->m_presensi->lissantri($idkelasbelajar);
        $id_kelas_santri = $this->input->post("id");
        $variabel['data'] = $this->m_presensi->lihatdatasatusantri($id_kelas_santri)->row_array();
-       $this->load->view("back-end/akdemik/presensi_kelas/v_santri_edit",$variabel);
+       $this->load->view("back-end/akademik/presensi_kelas/v_santri_edit",$variabel);
 
    }
 
