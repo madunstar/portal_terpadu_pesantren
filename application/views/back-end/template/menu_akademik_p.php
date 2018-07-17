@@ -32,7 +32,7 @@
                       <span class="font-bold">Data Master</span>
                     </a>
                     <ul class="nav dk">
-                      <li class="<?= ((($menu == "santriwatiakd") || ($menu == "santriwatiakd")) && ($submenu == 'santriwati') || ($submenu == 'santriwatitambah') || ($submenu == 'santriwatilihat') || ($submenu == 'santriwatiedit') || ($submenu == 'santriwatilihat') || ($submenu == 'santriwatiberkas') || ($submenu == 'santriwatitambahberkas') || ($submenu == 'santriwatieditberkas') || ($submenu == 'ubahpelanggaranp') || ($submenu == 'tambahpelanggaranp') || ($submenu == 'pelanggaransantriwati') || ($submenu == 'prestasisantriwati') || ($submenu == 'ubahprestasip') || ($submenu == 'tambahprestasip')) ? "active" : ""; ?>">
+                      <li class="<?= ((($menu == "santriwatiakd") || ($menu == "santriwatiakd")) && ($submenu == 'santriwati') || ($submenu == 'santriwatitambah') || ($submenu == 'santriwatilihat') || ($submenu == 'santriwatiedit') || ($submenu == 'santriwatiberkas') || ($submenu == 'santriwatitambahberkas') || ($submenu == 'santriwatieditberkas') || ($submenu == 'ubahpelanggaranp') || ($submenu == 'tambahpelanggaranp') || ($submenu == 'pelanggaransantriwati') || ($submenu == 'prestasisantriwati') || ($submenu == 'ubahprestasip') || ($submenu == 'tambahprestasip')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/santriwatiakd/santriwati" class="auto">
                           <i class="i i-dot"></i>
 
@@ -65,7 +65,7 @@
                     </ul>
                   </li>
 									<!-- presensi -->
-                  <li  class="<?= ((($menu == "santriakd") ||($menu == "santriwatiakd")) && ($submenu == 'datakelasbelajar') || ($submenu == 'aturkelasbelajar') || ($submenu == 'lihatkelasbelajar') || ($submenu == 'editkelasbelajar') || ($submenu == 'datakelaspondokan') || ($submenu == 'aturkelaspondokan') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'editkelaspondokan') || ($submenu == 'lihatkelaspondokan') || ($submenu == 'pelajaranrekap') || ($submenu == 'pondokanrekap') || ($submenu == 'datarekapsantri') || ($submenu == 'datarekapguru') || ($submenu == 'datarekapsantripondokan') || ($submenu == 'datarekapgurupondokan') || ($submenu == 'jadwalafilasi') || ($submenu == 'jadwalpondokan') || ($submenu == 'pelajaran')  || ($submenu == 'pelajarantambah') || ($submenu == 'pelajaranedit') || ($submenu == 'pelajaranlihat') || ($submenu == 'datakelaspondwati') ||  ($submenu == 'datakelasbelawati') || ($submenu == 'editkelaspondwati') ||  ($submenu == 'jadwalpondwati') ||  ($submenu == 'printkelasafiwati') || ($submenu == 'datakelasbelawati') || ($submenu == 'datakelaspondwati') || ($submenu == 'aturkelasbelawati') || ($submenu == 'aturkelaspondwati')  || ($submenu == 'lihatkelasbelajarsantriwati') || ($submenu == 'lihatkelaspondokansantriwati')) ? "active" : ""; ?>">
+                  <li  class="<?= ((($menu == "santriakd") ||($menu == "santriwatiakd")) && ($submenu == 'datakelasbelajar') || ($submenu == 'aturkelasbelajar') || ($submenu == 'lihatkelasbelajar') || ($submenu == 'editkelasbelajar') || ($submenu == 'datakelaspondokan') || ($submenu == 'aturkelaspondokan') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'lihatkelaspondokansantri') || ($submenu == 'editkelaspondokan') || ($submenu == 'lihatkelaspondokan') || ($submenu == 'pelajaranrekap') || ($submenu == 'pondokanrekap') || ($submenu == 'datarekapsantri') || ($submenu == 'datarekapguru') || ($submenu == 'datarekapsantripondokan') || ($submenu == 'datarekapgurupondokan') || ($submenu == 'jadwalafilasi') || ($submenu == 'jadwalpondokan') || ($submenu == 'pelajaran')  || ($submenu == 'pelajarantambah') || ($submenu == 'pelajaranedit') || ($submenu == 'pelajaranlihat') || ($submenu == 'datakelaspondwati') ||  ($submenu == 'datakelasbelawati') || ($submenu == 'editkelaspondwati') || ($submenu == 'aturkelasbelawati') || ($submenu == 'lihatkelasbelawati') || ($submenu == 'editkelasbelawati') || ($submenu == 'lihatkelaspondwati') ||  ($submenu == 'jadwalpondwati') ||  ($submenu == 'printkelasafiwati') || ($submenu == 'datakelasbelawati') || ($submenu == 'datakelaspondwati') || ($submenu == 'aturkelasbelawati') || ($submenu == 'aturkelaspondwati')  || ($submenu == 'lihatkelasbelajarsantriwati') || ($submenu == 'lihatkelaspondokansantriwati')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -116,20 +116,20 @@
                         </a>
                       </li> -->
 
-                       <li  class="<?= (($menu == "santriwatiakd") &&  ($submenu == 'datakelaspondwati'  || $submenu == 'jadwalpondwati')) ? "active" : ""; ?>">
+                       <li  class="<?= (($menu == "santriwatiakd") &&  ($submenu == 'datakelaspondwati') || ($submenu == 'aturkelaspondwati') || ($submenu == 'lihatkelaspondwati') || ($submenu == 'editkelaspondwati')  || ($submenu == 'jadwalpondwati')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/santriwatiakd/datakelaspondwati" class="auto">
 
                           <i class="i i-dot"></i>
 
-                          <span>Atur Kelas Pondwati</span>
+                          <span>Atur Kelas Pondokan</span>
                         </a>
                       </li>
-                      <li  class="<?= (($menu == "santriwatiakd") &&  ($submenu == 'datakelasbelawati' || $submenu == 'jadwalafiwati')) ? "active" : ""; ?>">
+                      <li  class="<?= (($menu == "santriwatiakd") &&  ($submenu == 'datakelasbelawati') || ($submenu == 'jadwalafiwati') || ($submenu == 'aturkelasbelawati') || ($submenu == 'lihatkelasbelawati') || ($submenu == 'editkelasbelawati') || ($submenu=='lihatkelasbelajarsantriwati')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/santriwatiakd/datakelasbelawati" class="auto">
 
                           <i class="i i-dot"></i>
 
-                          <span>Atur Kelas Afiwati</span>
+                          <span>Atur Kelas Afiliasi</span>
                         </a>
                       </li>
 

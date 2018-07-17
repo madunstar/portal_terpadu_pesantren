@@ -20,7 +20,7 @@
                       <span class="font-bold">Beranda</span>
                     </a>
                   </li>
-                  <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'santriedit') || ($submenu == 'santritambah') || ($submenu == 'jenjangtambah') || ($submenu == 'dataakunortu') || ($submenu == 'dataakunortup') || ($submenu == 'pondokantambah') || ($submenu == 'jenjangtingkat') || ($submenu == 'pondokantingkat') || ($submenu == 'santriwati') || ($submenu == 'santriwatitambah') || ($submenu == 'santriwatilihat') || ($submenu == 'santriwatiedit') || ($submenu == 'guru') || ($submenu == 'staff') || ($submenu == 'kelas') || ($submenu == 'matpel') || ($submenu == 'jenjang') || ($submenu == 'jenjangtingkat') || ($submenu == 'pondokan') || ($submenu == 'pakpondokan') || ($submenu == 'pakafilasi')) ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'ubahpelanggaran') || ($submenu == 'tambahpelanggaran') || ($submenu == 'pelanggaransantri') || ($submenu == 'ubahpelanggaranp') || ($submenu == 'tambahpelanggaranp') || ($submenu == 'pelanggaransantriwati') || ($submenu == 'prestasisantriwati') || ($submenu == 'ubahprestasip') || ($submenu == 'tambahprestasip') || ($submenu == 'prestasisantri') || ($submenu == 'ubahprestasi') || ($submenu == 'tambahprestasi') || ($submenu == 'santrilihat') || ($submenu == 'santriedit') || ($submenu == 'santritambah') || ($submenu == 'santriberkas') || ($submenu == 'santritambahberkas') || ($submenu == 'santrieditberkas') || ($submenu == 'jenjangtambah') || ($submenu == 'dataakunortu') || ($submenu == 'dataakunortup') || ($submenu == 'pondokantambah') || ($submenu == 'jenjangtingkat') || ($submenu == 'pondokantingkat') || ($submenu == 'santriwati') || ($submenu == 'santriwatitambah') || ($submenu == 'santriwatilihat') || ($submenu == 'santriwatiedit') || ($submenu == 'santriwatiberkas') || ($submenu == 'santriwatitambahberkas') || ($submenu == 'santriwatieditberkas') || ($submenu == 'guru') || ($submenu == 'staff') || ($submenu == 'kelas') || ($submenu == 'matpel') || ($submenu == 'jenjang') || ($submenu == 'jenjangtingkat') || ($submenu == 'pondokan') || ($submenu == 'pakpondokan') || ($submenu == 'pakafilasi')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -32,14 +32,14 @@
                       <span class="font-bold">Data Master</span>
                     </a>
                     <ul class="nav dk">
-                      <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'dataakunortu') || ($submenu == 'santriedit') || ($submenu == 'santritambah')) ? "active" : ""; ?>">
+                      <li class="<?= (($menu == "datamaster") && ($submenu == 'santri') || ($submenu == 'santrilihat') || ($submenu == 'dataakunortu') || ($submenu == 'santriedit') || ($submenu == 'santritambah') || ($submenu == 'santriberkas') || ($submenu == 'santritambahberkas') || ($submenu == 'santrieditberkas') || ($submenu == 'ubahpelanggaran') || ($submenu == 'tambahpelanggaran') || ($submenu == 'pelanggaransantri') || ($submenu == 'prestasisantri') || ($submenu == 'ubahprestasi') || ($submenu == 'tambahprestasi')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/santri" class="auto">
                           <i class="i i-dot"></i>
 
                           <span>Data Santri</span>
                         </a>
                       </li>
-											<li class="<?= (($menu == "datamaster") && ($submenu == 'santriwati') || ($submenu == 'dataakunortup')) ? "active" : ""; ?>">
+											<li class="<?= (($menu == "datamaster") && ($submenu == 'santriwati') || ($submenu == 'ubahpelanggaranp') || ($submenu == 'tambahpelanggaranp') || ($submenu == 'pelanggaransantriwati') || ($submenu == 'prestasisantriwati') || ($submenu == 'ubahprestasip') || ($submenu == 'tambahprestasip') || ($submenu == 'dataakunortup') || ($submenu == 'santriwatitambah') || ($submenu == 'santriwatilihat') || ($submenu == 'santriwatiedit') || ($submenu == 'santriwatiberkas') || ($submenu == 'santriwatitambahberkas') || ($submenu == 'santriwatieditberkas')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/santriwati" class="auto">
                           <i class="i i-dot"></i>
 
@@ -130,7 +130,7 @@
                           <span class="small">Atur Kelas Pondokan Santri</span>
                         </a>
                       </li>
-                      <li  class="<?= (($menu == "datamaster") &&  ($submenu == 'datakelasbelajar' || $submenu == 'jadwalafilasi') || ($submenu == 'aturkelasbelajar') || ($submenu == 'lihatkelasbelajar') || ($submenu == 'editkelasbelajar') || ($submenu == 'lihatkelasbelajarsantri')) ? "active" : ""; ?>">
+                      <li  class="<?= (($menu == "datamaster") &&  ($submenu == 'datakelasbelajar') || ($submenu == 'jadwalafilasi') || ($submenu == 'aturkelasbelajar') || ($submenu == 'lihatkelasbelajar') || ($submenu == 'editkelasbelajar') || ($submenu == 'lihatkelasbelajarsantri')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/datamaster/datakelasbelajar" class="auto">
 
                           <i class="i i-dot"></i>
