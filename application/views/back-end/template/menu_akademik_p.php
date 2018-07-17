@@ -32,17 +32,7 @@
                       <span class="font-bold">Data Master</span>
                     </a>
                     <ul class="nav dk">
-
-                      <!-- <li class="<?= ((($menu == "santriwatiakd") || ($menu == "santriwatiakd")) && ($submenu == 'santriwati') || ($submenu == 'santriwatilihat') || ($submenu == 'santriwatiberkas') || ($submenu == 'santriwatitambahberkas') || ($submenu == 'santriwatieditberkas') || ($submenu == 'ubahpelanggaranp') || ($submenu == 'tambahpelanggaranp') || ($submenu == 'pelanggaransantriwati') || ($submenu == 'prestasisantriwati') || ($submenu == 'ubahprestasip') || ($submenu == 'tambahprestasip')) ? "active" : ""; ?>">
-                        <a href="<?php echo base_url() ?>admin/santriwatiakd/santriwati" class="auto">
-                          <i class="i i-dot"></i>
-
-                          <span>Data Santriwati</span>
-                        </a>
-                      </li> -->
-
-
-                      <li class="<?= ((($menu == "santriwatiakd") || ($menu == "santriwatiakd")) && ($submenu == 'santriwati') || ($submenu == 'santriwatilihat') || ($submenu == 'santriwatiberkas') || ($submenu == 'santriwatitambahberkas') || ($submenu == 'santriwatieditberkas') || ($submenu == 'ubahpelanggaranp') || ($submenu == 'tambahpelanggaranp') || ($submenu == 'pelanggaransantriwati') || ($submenu == 'prestasisantriwati') || ($submenu == 'ubahprestasip') || ($submenu == 'tambahprestasip')) ? "active" : ""; ?>">
+                      <li class="<?= ((($menu == "santriwatiakd") || ($menu == "santriwatiakd")) && ($submenu == 'santriwati') || ($submenu == 'santriwatitambah') || ($submenu == 'santriwatilihat') || ($submenu == 'santriwatiedit') || ($submenu == 'santriwatilihat') || ($submenu == 'santriwatiberkas') || ($submenu == 'santriwatitambahberkas') || ($submenu == 'santriwatieditberkas') || ($submenu == 'ubahpelanggaranp') || ($submenu == 'tambahpelanggaranp') || ($submenu == 'pelanggaransantriwati') || ($submenu == 'prestasisantriwati') || ($submenu == 'ubahprestasip') || ($submenu == 'tambahprestasip')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/santriwatiakd/santriwati" class="auto">
                           <i class="i i-dot"></i>
 
@@ -62,7 +52,7 @@
                       <a href="<?php echo base_url() ?>admin/santriwatiakd/kelas" class="auto">
                           <i class="i i-dot"></i>
 
-                          <span>Data Kelas</span>
+                          <span>Data Ruang Kelas</span>
                         </a>
                       </li>
                       <li class="<?= (($menu == "santriwatiakd") &&  ($submenu == 'matpel') || ($submenu == 'matpellihat') || ($submenu == 'matpeltambah') || ($submenu == 'matpeledit')) ? "active" : ""; ?>">

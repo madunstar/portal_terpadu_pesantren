@@ -299,7 +299,7 @@ class M_santri extends CI_Model
                 $nestedData[] = "<a href='".base_url('admin/santriakd/santriberkas?nis='.$row['nis_lokal'].'')."' class='btn btn-success btn-xs' title='Berkas'><i class='fa fa-file-text-o'></i></a>
                 <a href='".base_url('admin/santriakd/prestasisantri?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Prestasi'><i class='fa fa-trophy'></i></a>
                 <a href='".base_url('admin/santriakd/pelanggaransantri?nis='.$row['nis_lokal'].'')."' class='btn btn-danger btn-xs' title='Pelanggaran'><i class='fa fa-ban'></i></a>
-                <a href='".base_url('admin/santriakd/dataakunortu?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Akun Orang Tua'><i class='fa fa-cogs'></i></a>";
+                ";
 
                 $data[] = $nestedData;
                 $no++;

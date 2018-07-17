@@ -295,9 +295,9 @@ class M_santriwati extends CI_Model
               $nestedData[] = "<button class='btn btn-default btn-xs edit2'  title='Edit' id='".$row['nis_lokal']."' data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-list'></i> ".$row['pondokan']."</button>";
               $nestedData[] = "<button class='btn btn-default btn-xs edit'  title='Edit' id='".$row['nis_lokal']."' data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-list'></i> ".$row['kelas']."</button>";
               $nestedData[] = "<a href='".base_url('admin/santriwatiakd/santriwatiberkas?nis='.$row['nis_lokal'].'')."' class='btn btn-success btn-xs' title='Berkas'><i class='fa fa-file-text-o'></i></a>
-              <a href='".base_url('admin/santriwatiakd/prestasisantri?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Prestasi'><i class='fa fa-trophy'></i></a>
-              <a href='".base_url('admin/santriwatiakd/pelanggaransantri?nis='.$row['nis_lokal'].'')."' class='btn btn-danger btn-xs' title='Pelanggaran'><i class='fa fa-ban'></i></a>
-              <a href='".base_url('admin/santriwatiakd/dataakunortup?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Akun Orang Tua'><i class='fa fa-cogs'></i></a>";
+              <a href='".base_url('admin/santriwatiakd/prestasisantriwati?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Prestasi'><i class='fa fa-trophy'></i></a>
+              <a href='".base_url('admin/santriwatiakd/pelanggaransantriwati?nis='.$row['nis_lokal'].'')."' class='btn btn-danger btn-xs' title='Pelanggaran'><i class='fa fa-ban'></i></a>
+              ";
               $data[] = $nestedData;
               $no++;
           }
