@@ -42,7 +42,7 @@
 
 										</ul>
 									</li>
-                  <li class="<?= (($menu == "perizinansantriwati") && ($submenu == 'keluar') || ($submenu == 'aturdenda')|| ($submenu == 'kembali') || ($submenu == 'cetak_suratizin') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "perizinansantriwati") && ($submenu == 'keluar') || ($submenu == 'riwayatbayardenda')|| ($submenu == 'kembali') || ($submenu == 'cetak_suratizin') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
