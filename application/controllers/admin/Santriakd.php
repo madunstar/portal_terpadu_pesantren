@@ -1218,6 +1218,16 @@ class Santriakd extends CI_Controller
      $variabel['data']=$this->m_presensi->lihatdata();
      $this->layout->renderakd('back-end/akademik/presensi_kelas/v_presensi_kelas',$variabel,'back-end/akademik/presensi_kelas/v_preskelas_js');
   }
+  function datakelasbelajarajax()
+   {
+        $this->m_presensi->lihatdataajax();
+   }
+   function datatingkatjenjang()
+   {
+     $jenjang=$this->input->post('jenjang');
+     $data=$this->m_jenjang->datatingkatajax($jenjang);
+     echo json_encode($data);
+   }
 
   function aturkelasbelajar(){
        if ($this->input->post()){
