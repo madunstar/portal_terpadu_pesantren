@@ -17,7 +17,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">NIS</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" name="nis_lokal" data-required="true" value="<?php echo set_value('nis_lokal'); ?>" />
+                <input type="text" class="form-control" name="nis_lokal"  value="<?php echo set_value('nis_lokal'); ?>" />
                 <?php if(isset($nis_lokal)) {
                          echo '<label style="color:red;font-size:10px">NIS sudah pernah diinput !</label>';
                        }
@@ -27,7 +27,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">NISN</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nisn" data-required="true"  value="<?php echo set_value('nisn'); ?>"/>
+                <input type="text" class="form-control"  name="nisn"   value="<?php echo set_value('nisn'); ?>"/>
               </div>
             </div>
             <div class="form-group">
@@ -39,19 +39,19 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" name="nama_lengkap" data-required="true" value="<?php echo set_value('nama_lengkap'); ?>"/>
+                <input type="text" class="form-control" name="nama_lengkap"  value="<?php echo set_value('nama_lengkap'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Tempat Lahir</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="tempat_lahir" data-required="true" value="<?php echo set_value('tempat_lahir'); ?>"/>
+                <input type="text" class="form-control"  name="tempat_lahir"  value="<?php echo set_value('tempat_lahir'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Tanggal Lahir</label>
               <div class="col-lg-8">
-              <input class="datepicker-input form-control" size="16" type="text" readonly data-date-format="dd-mm-yyyy" name="tgl_lahir" data-required="true" value="<?php echo set_value('tgl_lahir'); ?>"/>
+              <input class="datepicker-input form-control" size="16" type="text" readonly data-date-format="dd-mm-yyyy" name="tgl_lahir"  value="<?php echo set_value('tgl_lahir'); ?>"/>
               </div>
             </div>
             <div class="form-group">
@@ -84,7 +84,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Provinsi</label>
               <div class="col-lg-8">
-              <select class="form-control"  name="provinsi" id="provinsi" data-required="true">
+              <select class="form-control"  name="provinsi" id="provinsi" >
                 <option value="" disabled  <?php if (set_value('provinsi')=="") echo "selected" ?>>Pilih Provinsi</option>
                 <?php
                      foreach($provinsi->result_array() as $row) {
@@ -97,7 +97,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Kabupaten/Kota</label>
               <div class="col-lg-8">
-              <select class="form-control id_kota_kab"  name="kabupaten_kota"  id="kabupaten_kota" data-required="true">
+              <select class="form-control id_kota_kab"  name="kabupaten_kota"  id="kabupaten_kota" >
               <option value="" disabled <?php if (set_value('kabupaten_kota')=="") echo "selected" ?>>Pilih Kabupaten/Kota</option>
               <?php
                      foreach($kabupaten->result_array() as $row) {
@@ -110,7 +110,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Kecamatan</label>
               <div class="col-lg-8">
-              <select class="form-control id_kota_kab"  name="kecamatan"  id="kecamatan" data-required="true">
+              <select class="form-control id_kota_kab"  name="kecamatan"  id="kecamatan" >
               <option value="" disabled <?php if (set_value("kecamatan")=="") echo "selected" ?>>Pilih Kecamatan</option>
               <?php
                      foreach($kecamatan->result_array() as $row) {
@@ -123,7 +123,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Desa/Kelurahan</label>
               <div class="col-lg-8">
-              <select class="form-control"  name="desa_kelurahan" id="desa_kelurahan" data-required="true">
+              <select class="form-control"  name="desa_kelurahan" id="desa_kelurahan" >
               <option value="" disabled <?php if (set_value('desa_kelurahan')=="") echo "selected" ?>>Pilih Desa/Kelurahan</option>
                 <?php
                      foreach($desa->result_array() as $row) {
@@ -174,18 +174,18 @@
               <label class="col-lg-4 control-label">Jarak Ke Sekolah</label>
               <div class="col-lg-8">
                 <select class="form-control"  name="jarak_ke_sekolah" id="jarak_ke_sekolah" data-required="">
-                  <option value="Kurang dari 1 Km" <?php if ($data['jarak_ke_sekolah']=='Kurang dari 1 Km')  echo "selected" ?> >Kurang dari 1 Km</option>
-                  <option value="1 - 3 Km" <?php if ($data['jarak_ke_sekolah']=='1 - 3 Km')  echo "selected" ?> >1 - 3 Km</option>
-                  <option value="3 - 5 Km" <?php if ($data['jarak_ke_sekolah']=='3 - 5 Km')  echo "selected" ?> >3 - 5 Km</option>
-                  <option value="5 - 10 Km" <?php if ($data['jarak_ke_sekolah']=='5 - 10 Km')  echo "selected" ?> >5 - 10 Km</option>
-                  <option value="Lebih dari 10 Km" <?php if ($data['jarak_ke_sekolah']=='Lebih dari 10 Km')  echo "selected" ?> >Lebih dari 10 Km</option>
+                  <option value="Kurang dari 1 Km">Kurang dari 1 Km</option>
+                  <option value="1 - 3 Km">1 - 3 Km</option>
+                  <option value="3 - 5 Km">3 - 5 Km</option>
+                  <option value="5 - 10 Km">5 - 10 Km</option>
+                  <option value="Lebih dari 10 Km">Lebih dari 10 Km</option>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Alat Transportasi</label>
               <div class="col-lg-8">
-              <select class="form-control"  name="alat_transportasi"  data-required="true">
+              <select class="form-control"  name="alat_transportasi"  >
                 <option value="" disabled selected>Pilih Alat Transportasi</option>
                 <?php
                      foreach($transportasi->result_array() as $row) {
@@ -207,25 +207,25 @@
           <div class="form-group">
               <label class="col-lg-4 control-label">No Kartu Keluarga</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" data-required="true"  name="no_kk" value="<?php echo set_value('no_kk'); ?>"/>
+                <input type="text" class="form-control"   name="no_kk" value="<?php echo set_value('no_kk'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" data-required="true"  name="nik_ayah" value="<?php echo set_value('nik_ayah'); ?>"/>
+                <input type="text" class="form-control"   name="nik_ayah" value="<?php echo set_value('nik_ayah'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" data-required="true"  name="nama_lengkap_ayah" value="<?php echo set_value('nama_lengkap_ayah'); ?>"/>
+                <input type="text" class="form-control"   name="nama_lengkap_ayah" value="<?php echo set_value('nama_lengkap_ayah'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Ayah</label>
               <div class="col-lg-8">
-              <select type="text" class="form-control" data-required="true"  name="pendidikan_terakhir_ayah">
+              <select type="text" class="form-control"   name="pendidikan_terakhir_ayah">
               <option value="" disabled <?php if (set_value('pendidikan_terakhir_ayah')=="") echo "selected" ?>>Pilih Pendidikan</option>
               <?php
                    foreach($pendidikan->result_array() as $row) {
@@ -238,7 +238,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Pekerjaan Ayah</label>
               <div class="col-lg-8">
-              <select class="form-control" data-required="true"  name="pekerjaan_ayah">
+              <select class="form-control"   name="pekerjaan_ayah">
               <option value="" <?php if (set_value('pekerjaan_ayah')=="") echo "selected" ?>>Pilih  Pekerjaan</option>
               <?php
                    foreach($pekerjaan->result_array() as $row) {
@@ -257,19 +257,19 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Ibu</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" data-required="true"  name="nik_ibu" value="<?php echo set_value('nik_ibu'); ?>"/>
+                <input type="text" class="form-control"   name="nik_ibu" value="<?php echo set_value('nik_ibu'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama Ibu</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" data-required="true"  name="nama_lengkap_ibu" value="<?php echo set_value('nama_lengkap_ibu'); ?>"/>
+                <input type="text" class="form-control"   name="nama_lengkap_ibu" value="<?php echo set_value('nama_lengkap_ibu'); ?>"/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Ibu</label>
               <div class="col-lg-8">
-              <select  class="form-control" data-required="true"  name="pendidikan_terakhir_ibu">
+              <select  class="form-control"   name="pendidikan_terakhir_ibu">
               <option value="" disabled <?php if (set_value('pendidikan_terakhir_ibu')=="") echo "selected" ?>>Pilih Pendidikan</option>
               <?php
                    foreach($pendidikan->result_array() as $row) {
@@ -282,7 +282,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Pekerjaan Ibu</label>
               <div class="col-lg-8">
-              <select class="form-control" data-required="true"  name="pekerjaan_ibu">
+              <select class="form-control"   name="pekerjaan_ibu">
               <option value=""  <?php if (set_value('pekerjaan_ibu')=="") echo "selected" ?>>Pilih Pekerjaan</option>
               <?php
                    foreach($pekerjaan->result_array() as $row) {
@@ -303,11 +303,11 @@
               <label class="col-lg-4 control-label">Penghasilan Orang Tua (Rp)</label>
               <div class="col-lg-8">
                 <select class="form-control"  name="penghasilan_orang_tua" id="penghasilan_orang_tua" data-required="">
-                  <option value="Kurang dari 1juta" <?php if ($data['penghasilan_orang_tua']=='Kurang dari 1juta')  echo "selected" ?> >Kurang dari 1juta</option>
-                  <option value="1 - 2 juta" <?php if ($data['penghasilan_orang_tua']=='1 - 2 juta')  echo "selected" ?> >1 - 2 juta</option>
-                  <option value="2 - 5 juta" <?php if ($data['penghasilan_orang_tua']=='2 - 5 juta')  echo "selected" ?> >2 - 5 juta</option>
-                  <option value="5 - 10 juta" <?php if ($data['penghasilan_orang_tua']=='5 - 10 juta')  echo "selected" ?> >5 - 10 juta</option>
-                  <option value="Lebih dari 10 juta" <?php if ($data['penghasilan_orang_tua']=='Lebih dari 10 juta')  echo "selected" ?> >Lebih dari 10 juta</option>
+                  <option value="Kurang dari 1juta">Kurang dari 1juta</option>
+                  <option value="1 - 2 juta">1 - 2 juta</option>
+                  <option value="2 - 5 juta" >2 - 5 juta</option>
+                  <option value="5 - 10 juta">5 - 10 juta</option>
+                  <option value="Lebih dari 10 juta">Lebih dari 10 juta</option>
                 </select>
               </div>
             </div>
@@ -370,7 +370,7 @@
             <div class="form-group">
 									<label class="col-sm-4 control-label">Kelas Pondokan</label>
 									<div class="col-sm-8">
-										<select class="form-control m-b" name="pondokan" id="pondokan" data-required="true">
+										<select class="form-control m-b" name="pondokan" id="pondokan" >
 											<option value="" selected disabled>.: Pilih Kelas Pondokan:.</option>
 											<?php
 												foreach($pondokan->result_array() as $row){
