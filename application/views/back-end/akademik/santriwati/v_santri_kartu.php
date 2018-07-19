@@ -77,11 +77,11 @@ BANJARBARU - KALIMANTAN SELATAN 70722
             </tr>
             <tr>
             <td></td>
-            <td>Madan</td>
+            <td><?php echo $kepsek['kepsekmualimat'] ?></td>
             </tr>
             <tr>
             <td></td>
-            <td>234567654345</td>
+            <td><?php echo $kepsek['nipkepsekmualimat'] ?></td>
             </tr>
       </table>
       </div>

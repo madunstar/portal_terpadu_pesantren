@@ -5329,6 +5329,7 @@ function printjadwalafilasi(){
         $variabel['data'] = $exec ->row_array();
         // $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
         // $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); ;
+        $variabel['kepsek'] = $this->m_pengaturan->get_tb_pengaturan();
         $this->load->view('back-end/datamaster/santri/v_santri_kartu',$variabel);
     } else {
         redirect(base_url("admin/datamaster/santri"));
@@ -5399,7 +5400,8 @@ function cetakkartup(){
       $this->_generate_barcode_p($nis,'BCGcode39');
       $variabel['data'] = $exec ->row_array();
       // $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
-      // $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); ;
+      // $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); 
+      $variabel['kepsek'] = $this->m_pengaturan->get_tb_pengaturan();
       $this->load->view('back-end/datamaster/santriwati/v_santri_kartu',$variabel);
   } else {
       redirect(base_url("admin/datamaster/santriwati"));
@@ -5495,7 +5497,12 @@ function pengaturanportal()
 function edit_pengaturan(){
   $params = array(
     'tahun_ajaran' => $this->input->post('tahun_ajaran'),
+    'kepsekmualimin' => $this->input->post('kepsekmualimin'),
+    'nipkepsekmualimin' => $this->input->post('nipkepsekmualimin'),
+    'kepsekmualimat' => $this->input->post('kepsekmualimat'),
+    'nipkepsekmualimat' => $this->input->post('nipkepsekmualimat'),
   );
+
   $this->m_pengaturan->update_tb_pengaturan_pendaftran($params);
   $this->session->set_flashdata('response',"
       <div class='alert alert-success'>

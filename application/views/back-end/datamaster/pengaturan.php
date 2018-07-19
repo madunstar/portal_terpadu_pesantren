@@ -24,13 +24,37 @@
               <div class="line line-dashed b-b line-lg pull-in"></div>
                     <div class="form-group ">
 
-                      <label class="col-sm-2 control-label" for="input-id-1">Tahun Ajaran</label>
-                      <div class="col-sm-10">
+                      <label class="col-sm-3 control-label" for="input-id-1">Tahun Ajaran</label>
+                      <div class="col-sm-8">
                         <select class="form-control" name="tahun_ajaran">
                           <?php foreach ($datatahun->result_array() as $tahun) {?>
                             <option value= "<?php echo $tahun['id_tahun']?>" <?php if ($tahun['id_tahun']==$tb_pengaturan_pendaftaran['tahun_ajaran'])  echo "selected" ?>> <?php echo $tahun['tahun_ajaran']?> </option>
                         <?php  } ?>
                       </select>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-3 control-label" for="input-id-1">Kepala Sekolah Mualimin</label>
+                      <div class="col-sm-8">
+                            <input type="text" class="form-control"  name="kepsekmualimin"  id="kepsekmualimin"  value="<?php echo $tb_pengaturan_pendaftaran['kepsekmualimin'] ?>"  required/>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-3 control-label" for="input-id-1">NIP Kepala Sekolah Mualimin</label>
+                      <div class="col-sm-8">
+                            <input type="text" class="form-control"  name="nipkepsekmualimin" id="nipkepsekmualimin" value="<?php echo $tb_pengaturan_pendaftaran['nipkepsekmualimin'] ?>"  required />
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-3 control-label" for="input-id-1">Kepala Sekolah Mualimat</label>
+                      <div class="col-sm-8">
+                            <input type="text" class="form-control"  name="kepsekmualimat" id="kepsekmualimat" value="<?php echo $tb_pengaturan_pendaftaran['kepsekmualimat'] ?>"  required/>
+                      </div>
+                    </div>
+                    <div class="form-group ">
+                      <label class="col-sm-3 control-label" for="input-id-1">NIP Kepala Sekolah Mualimat</label>
+                      <div class="col-sm-8">
+                            <input type="text" class="form-control"  name="nipkepsekmualimat" id="nipkepsekmualimat" value="<?php echo $tb_pengaturan_pendaftaran['nipkepsekmualimat'] ?>"  required/>
                       </div>
                     </div>
                       <div class="line line-dashed b-b line-lg pull-in"></div>

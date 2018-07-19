@@ -10,6 +10,7 @@ class Santriwatiakd extends CI_Controller
     $this->load->model('back-end/datamaster/m_admin');
     $this->load->model('back-end/datamaster/m_santri');
     $this->load->model('back-end/datamaster/akademik/m_santriwati');
+    $this->load->model('back-end/datamaster/m_pengaturan');
     $this->load->model('back-end/datamaster/m_guru');
     $this->load->model('back-end/datamaster/m_staff');
     $this->load->model('back-end/datamaster/m_provinsi');
@@ -181,6 +182,7 @@ class Santriwatiakd extends CI_Controller
     if ($exec->num_rows()>0){
         $this->_generate_barcode_p($nis,'BCGcode39');
         $variabel['data'] = $exec ->row_array();
+        $variabel['kepsek'] = $this->m_pengaturan->get_tb_pengaturan();
         // $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
         // $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); ;
         $this->load->view('back-end/akademik/santriwati/v_santri_kartu',$variabel);

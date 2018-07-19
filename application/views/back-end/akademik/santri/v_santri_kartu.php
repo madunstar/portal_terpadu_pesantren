@@ -73,11 +73,11 @@ BANJARBARU - KALIMANTAN SELATAN 70722
          
             <tr>
             <td></td>
-            <td><img src="<?php echo base_url() ?>assets/images/mualimat.png" width="50px"/> <br/>Madan</td>
+            <td><img src="<?php echo base_url() ?>assets/images/mualimin.png" width="50px"/> <br/><?php echo $kepsek['kepsekmualimin'] ?></td>
             </tr>
             <tr>
             <td></td>
-            <td>234567654345</td>
+            <td><?php echo $kepsek['nipkepsekmualimin'] ?></td>
             </tr>
       </table>
       </div>
