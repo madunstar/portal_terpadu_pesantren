@@ -2,11 +2,11 @@
 	<section class="vbox">
 		<section class="scrollable padder">
 			<div class="m-b-md">
-				<h3 class="m-b-none">Santri</h3>
+				<h3 class="m-b-none">Santriwati</h3>
 			</div>
 			<section class="panel panel-default" style="width:100%">
 				<header class="panel-heading">
-					List Santri
+					List Santriwati
 					<i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
 				</header>
 				<div class="table-responsive">
@@ -31,7 +31,7 @@
 							</tr>
 						</thead>
 						<tbody>
-						
+
 						</tbody>
 					</table>
 				</div>

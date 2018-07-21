@@ -2,16 +2,16 @@
 	<section class="vbox">
 		<section class="scrollable padder">
 			<div class="m-b-md">
-				<h3 class="m-b-none">Berkas Santri "
+				<h3 class="m-b-none">Berkas Santriwati "
 					<?php echo $santri['nama_lengkap'] ?> (
 					<?php echo $santri['nis_lokal'] ?>)"</h3>
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input Berkas Santri
+					Input Berkas Santriwati
 				</header>
 				<div class="panel-body">
-				
+
 					<?php pesan_get('msg',"Berhasil Menambahkan Santri","Gagal Menambahkan Santri") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santriwatitambahberkas?nis=<?php echo $santri['nis_lokal'] ?>"
 					method="post" enctype="multipart/form-data">

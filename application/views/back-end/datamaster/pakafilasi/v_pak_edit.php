@@ -25,7 +25,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-lg-4 control-label">Tingkat Kelas</label>
+                    <label class="col-lg-4 control-label">Jam</label>
                     <div class="col-lg-8">
                       <input type="time" class="form-control" name="jam" data-required="true" value="<?php echo $data['jam']; ?>"
                       />

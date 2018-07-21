@@ -12,7 +12,7 @@
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Mengedit Data Berkas staff","Gagal Mengedit Data Berkas staff") ?>
-					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/staffeditberkas?id=<?php echo $data['id_berkas'] ?>&nip=<?php echo $staff['nip_staff'] ?>"
+					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/staffeditberkas?nip=<?php echo $staff['nip_staff'] ?>&id=<?php echo $data['id_berkas'] ?>"
 					method="post" enctype="multipart/form-data">
 					<a href="<?php echo base_url('admin/datamaster/staffberkas?nip='.$staff['nip_staff'].'') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
 						<div class="row">

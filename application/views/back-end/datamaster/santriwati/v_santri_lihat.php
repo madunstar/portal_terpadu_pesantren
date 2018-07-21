@@ -2,11 +2,11 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Santri</h3>
+      <h3 class="m-b-none">Santriwati</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Lihat Santri
+        Lihat Santriwati
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Santri","Gagal Menambahkan Santri") ?>
@@ -368,9 +368,9 @@
 
       </div>
       <footer class="panel-footer text-right bg-light lter">
-      <a href="<?php echo base_url('admin/datamaster/santriwatiedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
+      <a href="<?php echo base_url('admin/datamaster/santriwatiedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-warning btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
         &nbsp
-        <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
+        <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santriwati</a>
       </footer>
       </form>
 

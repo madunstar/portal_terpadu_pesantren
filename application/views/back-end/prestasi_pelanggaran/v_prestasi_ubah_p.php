@@ -2,7 +2,7 @@
 	<section class="vbox">
 		<section class="scrollable padder">
 			<div class="m-b-md">
-				<h3 class="m-b-none">Prestasi Santri</h3>
+				<h3 class="m-b-none">Prestasi Santriwati</h3>
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
@@ -54,8 +54,8 @@
 					<button type="submit" class="btn btn-success btn-s-xs">
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp;
-					<a href="<?php echo base_url() ?>admin/datamaster/ubahprestasip?id=<?php if (isset($id_prestasilama)) echo $id_prestasilama;
-		       else echo $data['id_prestasi']; ?>&nis=<?php echo $data['nis_santri'] ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
+					<a href="<?php echo base_url() ?>admin/datamaster/ubahprestasip?nis=<?php echo $data['nis_santri']; ?>&id=<?php if (isset($id_prestasilama)) echo $id_prestasilama;
+		       else echo $data['id_prestasi']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
 						 &nbsp;
 					<a href="<?php echo base_url('admin/datamaster/prestasisantriwati?nis='.$data['nis_santri'].'') ?>" class="btn btn-default btn-s-xs">
 						<i class="fa fa-list"></i> List Prestasi</a>

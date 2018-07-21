@@ -2,11 +2,11 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Santri</h3>
+      <h3 class="m-b-none">Santriwati</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Input Santri
+        Input Santriwati
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Santriwati","Gagal Menambahkan Santriwati") ?>
@@ -406,7 +406,7 @@
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
-        <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
+        <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santriwati</a>
       </footer>
       </form>
 

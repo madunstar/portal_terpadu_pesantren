@@ -2,13 +2,13 @@
 	<section class="vbox">
 		<section class="scrollable padder">
 			<div class="m-b-md">
-				<h3 class="m-b-none">Berkas Santri "
+				<h3 class="m-b-none">Berkas Santriwati "
 					<?php echo $santri['nama_lengkap'] ?> (
 					<?php echo $santri['nis_lokal'] ?>)"</h3>
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Edit Berkas Santri
+					Edit Berkas Santriwati
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Mengedit Data Berkas Santri","Gagal Mengedit Data Berkas Santri") ?>
