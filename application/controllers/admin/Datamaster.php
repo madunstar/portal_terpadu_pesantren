@@ -3874,6 +3874,7 @@ function databayarinfaqp(){
     $nis = $this->input->get('nis');
     $variabel['nama_santri'] = $this->m_infaq_p->lihatsantrisatu($nis);
     $variabel['data'] = $this->m_infaq_p->detilinfaq($nis);
+
     $this->layout->render('back-end/infaq/v_detil_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
   }
 
@@ -3939,11 +3940,16 @@ function databayarinfaqp(){
     $nis = $this->input->get('nis');
     $variabel['nama_santri'] = $this->m_infaq->lihatsantrisatu($nis);
     $variabel['data'] = $this->m_infaq->detilinfaq($nis);
+    $variabel['nissantri'] = $nis;
     $this->layout->render('back-end/infaq/v_detil_infaq',$variabel,'back-end/infaq/v_infaq_js');
   }
 
   function bayarinfaq(){
+    $nis = $this->input->get('nis');
     if($this->input->post()){
+      $nis = $this->input->post('id_santri');
+      $bulan = $this->input->post('bulan');
+      $tahun = $this->input->post('tahun');
       $array = array(
         'nis_santri' => $this->input->post('id_santri'),
         'tanggal_bayar' => date('Y-m-d'),
@@ -3953,14 +3959,21 @@ function databayarinfaqp(){
         'status_bayar' => 'lunas',
         'petugas' => $this->session->userdata('nama_akun')
       );
-      $exec = $this->m_infaq->tambahdata($array);
-      if($exec){
-        redirect(base_url("admin/datamaster/bayarinfaq?msg=1"));
+      if ($this->m_infaq->cekdata($nis,$bulan,$tahun)==0){
+        $exec = $this->m_infaq->tambahdata($array);
+        if($exec){
+          redirect(base_url("admin/datamaster/bayarinfaq?nis=$nis&msg=1"));
+        } else{
+          redirect(base_url("admin/datamaster/bayarinfaq?nis=$nis&msg=0"));
+        }
       } else{
-        redirect(base_url("admin/datamaster/bayarinfaq?msg=0"));
+        redirect(base_url("admin/datamaster/bayarinfaq?nis=$nis&msg=0"));
       }
+
     }else{
-      $variabel['daftarsantri'] = $this->m_infaq->datasantri();
+
+      $variabel['nama_santri'] = $this->m_infaq->lihatsantrisatu($nis);
+      $variabel['nissantri'] = $nis;
       $this->layout->render('back-end/infaq/v_bayar_infaq',$variabel,'back-end/infaq/v_infaq_js');
     }
 
@@ -5400,7 +5413,7 @@ function cetakkartup(){
       $this->_generate_barcode_p($nis,'BCGcode39');
       $variabel['data'] = $exec ->row_array();
       // $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
-      // $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); 
+      // $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis);
       $variabel['kepsek'] = $this->m_pengaturan->get_tb_pengaturan();
       $this->load->view('back-end/datamaster/santriwati/v_santri_kartu',$variabel);
   } else {
