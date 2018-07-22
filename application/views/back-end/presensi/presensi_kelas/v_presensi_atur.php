@@ -17,6 +17,8 @@
 							<?php pesan_get('msg',"Berhasil Menambahkan  Data Kelas Belajar","Gagal Menambah Data Kelas Belajar") ?>
 							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/aturkelasbelajar"
 							method="post">
+							<a href="<?php echo base_url('admin/datamaster/datakelasbelajar') ?>" style="color:#3b994a;margin-left:10px">
+								<i class="fa fa-chevron-left"></i> Kembali</a>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Nama Kelas</label>
 									<div class="col-sm-6">

@@ -100,7 +100,7 @@
 									<div class="col-sm-12">
 											<hr/>
 											<div class="text-center" style="margin-bottom:10px">
-												<a href="<?php echo base_url() ?>admin/datamaster/lihatkelasbelajarsantri?id=<?php echo $data['id_kelas_belajar'] ?>" class="btn btn-default" margin="auto"><i class="fa fa-edit"></i> Edit Daftar Santri</a>
+												<a href="<?php echo base_url() ?>admin/datamaster/lihatkelasbelajarsantri?id=<?php echo $data['id_kelas_belajar'] ?>" class="btn btn-warning" margin="auto"><i class="fa fa-edit"></i> Edit Daftar Santri</a>
 											</div>
 											<table class="table" style="width:80%" align="center">
 												<thead>
@@ -131,7 +131,7 @@
 									</div>
 								</div>
 								<footer class="panel-footer text-right bg-light lter">
-									<a href="<?php echo base_url() ?>admin/datamaster/editkelasbelajar?id=<?php echo $data['id_kelas_belajar'] ?>" type="submit" class="btn btn-success btn-s-xs">
+									<a href="<?php echo base_url() ?>admin/datamaster/editkelasbelajar?id=<?php echo $data['id_kelas_belajar'] ?>" type="submit" class="btn btn-warning btn-s-xs">
 										<i class="fa fa-save"></i> Edit</a>
 									&nbsp
 									<a href="<?php echo base_url('admin/datamaster/datakelasbelajar') ?>" class="btn btn-default btn-s-xs">

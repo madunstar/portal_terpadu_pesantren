@@ -15,7 +15,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label class="col-lg-4 control-label">ID tahun</label>
+              <label class="col-lg-4 control-label">ID Tahun Ajaran</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control" name="id_tahun" data-required="true" value="<?php echo $data['id_tahun']; ?>" />
                 <input type="hidden" class="form-control" name="id_tahunlama" data-required="true" value="<?php
@@ -27,7 +27,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">tahun_ajaran</label>
+              <label class="col-lg-4 control-label">Tahun Ajaran</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control"  name="tahun_ajaran" data-required="true"  value="<?php echo $data['tahun_ajaran']; ?>" />
               </div>
@@ -41,7 +41,7 @@
       <a href="<?php echo base_url() ?>admin/datamaster/tahunajaredit?id_tahun=<?php if (isset($id_tahunlama)) echo $id_tahunlama;
        else echo $data['id_tahun']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
       &nbsp
-      <a href="<?php echo base_url('admin/datamaster/tahunajar') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data tahun</a>
+      <a href="<?php echo base_url('admin/datamaster/tahunajar') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Tahun Ajaran</a>
       </footer>
       </form>
 

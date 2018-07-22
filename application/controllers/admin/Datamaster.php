@@ -5297,8 +5297,8 @@ function printkelaspondokan(){
 
 
 function printjadwalpondokan(){
-    $bulan = $this->input->get("id");
-    $kelas = $this->input->get("kelas");
+    $bulan = $this->input->get("bulan");
+    $kelas = $this->input->get("id");
     // $data = $this->m_presensipondokan->lihatdatasatujadwal($id)->row_array();
     // $variabel['data'] = $data;
     $variabel['bulan'] = $bulan;
@@ -5323,8 +5323,8 @@ function printkelasafilasi(){
 
 
 function printjadwalafilasi(){
-    $bulan = $this->input->get("id");
-    $kelas = $this->input->get("kelas");
+    $bulan = $this->input->get("bulan");
+    $kelas = $this->input->get("id");
     // $data = $this->m_presensi->lihatdatasatujadwal($id)->row_array();
     // $variabel['data'] = $data;
     $variabel['bulan'] = $bulan;
