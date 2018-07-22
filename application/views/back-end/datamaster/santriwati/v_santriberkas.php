@@ -2,17 +2,17 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Berkas Santri "<?php echo $santri['nama_lengkap'] ?> (<?php echo $santri['nis_lokal'] ?>)"</h3>
+      <h3 class="m-b-none">Berkas Santriwati "<?php echo $santri['nama_lengkap'] ?> (<?php echo $santri['nis_lokal'] ?>)"</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        List Berkas Santri
+        List Berkas Santriwati
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus  Data Berkas Santri","Gagal Menghapus Data Berkas Santri") ?>
-      <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/santriwatitambahberkas?nis=<?php echo $santri['nis_lokal'] ?>" class="btn btn-s-md btn-success " ><i class="fa fa-plus"></i> Tambah Berkas</a> &nbsp
-      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/santriwati" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> List Santri</a>
+      <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/santriwatitambahberkas?nis=<?php echo $santri['nis_lokal'] ?>" class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah Berkas</a> &nbsp
+      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/santriwati" class="btn btn-s-md btn-default btn-rounded" ><i class="fa fa-list"></i> List Santriwati</a>
 
         <table class="table table-striped " id="datatable">
           <thead>

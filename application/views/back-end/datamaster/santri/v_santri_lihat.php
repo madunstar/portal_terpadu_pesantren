@@ -368,7 +368,7 @@
 
       </div>
       <footer class="panel-footer text-right bg-light lter">
-      <a href="<?php echo base_url('admin/datamaster/santriedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
+      <a href="<?php echo base_url('admin/datamaster/santriedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-warning btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
         &nbsp
         <a href="<?php echo base_url('admin/datamaster/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
       </footer>

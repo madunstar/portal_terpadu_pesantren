@@ -1388,7 +1388,7 @@ class Datamaster extends CI_Controller{
         }
 
         $exec = $this->m_guru->hapusberkas($id_berkas);
-        redirect(base_url()."admin/datamaster/guruberkas?msg=1&nip=".$nip."");
+        redirect(base_url()."admin/datamaster/guruberkas?nip=".$nip."&msg=1");
     }
 
     function gurueditberkas()
@@ -1419,8 +1419,8 @@ class Datamaster extends CI_Controller{
                 }
             }
             $exec = $this->m_guru->editdataaberkas($id_berkas,$array);
-            if ($exec) redirect(base_url("admin/datamaster/gurueditberkas?id=".$id_berkas."&nip=".$nip_guru."&msg=1"));
-            else redirect(base_url("admin/datamaster/gurueditberkas?id=".$id_berkas."&nip=".$nip_guru."&msg=0"));
+            if ($exec) redirect(base_url("admin/datamaster/gurueditberkas?nip=".$nip_guru."&id=".$id_berkas."&msg=1"));
+            else redirect(base_url("admin/datamaster/gurueditberkas?nip=".$nip_guru."&id=".$id_berkas."&msg=0"));
 
         } else {
             $nip = $this->input->get("nip");
@@ -1640,7 +1640,7 @@ class Datamaster extends CI_Controller{
         }
 
         $exec = $this->m_staff->hapusberkas($id_berkas);
-        redirect(base_url()."admin/datamaster/staffberkas?msg=1&nip=".$nip."");
+        redirect(base_url()."admin/datamaster/staffberkas?nip=".$nip."&msg=1");
     }
 
     function staffeditberkas()
@@ -1671,8 +1671,8 @@ class Datamaster extends CI_Controller{
                 }
             }
             $exec = $this->m_staff->editdataaberkas($id_berkas,$array);
-            if ($exec) redirect(base_url("admin/datamaster/staffeditberkas?id=".$id_berkas."&nip=".$nip_staff."&msg=1"));
-            else redirect(base_url("admin/datamaster/staffeditberkas?id=".$id_berkas."&nip=".$nip_staff."&msg=0"));
+            if ($exec) redirect(base_url("admin/datamaster/staffeditberkas?nip=".$nip_staff."&id=".$id_berkas."&msg=1"));
+            else redirect(base_url("admin/datamaster/staffeditberkas?nip=".$nip_staff."&id=".$id_berkas."&msg=0"));
 
         } else {
             $nip = $this->input->get("nip");
@@ -4426,7 +4426,7 @@ function jenjangedit()
         $idtingkatjenjang = $this->input->get("idtingkatjenjang");
         $jenjang = $this->input->get("jenjang");
         $exec = $this->m_jenjang->hapustingkat($idtingkatjenjang);
-        redirect(base_url()."admin/datamaster/jenjangtingkat?msg=1&jenjang=".$jenjang."");
+        redirect(base_url()."admin/datamaster/jenjangtingkat?jenjang=".$jenjang."&msg=1");
     }
 
     function jenjangedittingkat()
@@ -4439,8 +4439,8 @@ function jenjangedit()
                 'tingkat'=> $tingkat
             );
             $exec = $this->m_jenjang->editdatatingkat($idtingkatjenjang,$array);
-            if ($exec) redirect(base_url("admin/datamaster/jenjangedittingkat?id=".$idtingkatjenjang."&jenjang=".$jenjang."&msg=1"));
-            else redirect(base_url("admin/datamaster/jenjangedittingkat?id=".$idtingkatjenjang."&jenjang=".$jenjang."&msg=0"));
+            if ($exec) redirect(base_url("admin/datamaster/jenjangedittingkat?jenjang=".$jenjang."&id=".$idtingkatjenjang."&msg=1"));
+            else redirect(base_url("admin/datamaster/jenjangedittingkat?jenjang=".$jenjang."&id=".$idtingkatjenjang."&msg=0"));
         } else {
             $jenjang = $this->input->get("jenjang");
             $id = $this->input->get("id");
@@ -4580,7 +4580,7 @@ function pondokanedit()
         $idtingkatpondokan = $this->input->get("idtingkatpondokan");
         $pondokan = $this->input->get("pondokan");
         $exec = $this->m_pondokan->hapustingkat($idtingkatpondokan);
-        redirect(base_url()."admin/datamaster/pondokantingkat?msg=1&pondokan=".$pondokan."");
+        redirect(base_url()."admin/datamaster/pondokantingkat?pondokan=".$pondokan."&msg=1");
     }
 
     function pondokanedittingkat()
@@ -4593,8 +4593,8 @@ function pondokanedit()
                 'tingkat'=> $tingkat
             );
             $exec = $this->m_pondokan->editdatatingkat($idtingkatpondokan,$array);
-            if ($exec) redirect(base_url("admin/datamaster/pondokanedittingkat?id=".$idtingkatpondokan."&pondokan=".$pondokan."&msg=1"));
-            else redirect(base_url("admin/datamaster/pondokanedittingkat?id=".$idtingkatpondokan."&pondokan=".$pondokan."&msg=0"));
+            if ($exec) redirect(base_url("admin/datamaster/pondokanedittingkat?pondokan=".$pondokan."&id=".$idtingkatpondokan."&msg=1"));
+            else redirect(base_url("admin/datamaster/pondokanedittingkat?pondokan=".$pondokan."&id=".$idtingkatpondokan."&msg=0"));
         } else {
             $pondokan = $this->input->get("pondokan");
             $id = $this->input->get("id");

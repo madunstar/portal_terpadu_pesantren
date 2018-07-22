@@ -2,11 +2,11 @@
 	<section class="vbox">
 		<section class="scrollable padder">
 			<div class="m-b-md">
-				<h3 class="m-b-none">pelanggaran Santri</h3>
+				<h3 class="m-b-none">Pelanggaran Santri</h3>
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input pelanggaran  <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?>
+					Input Pelanggaran  <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?>
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Menambahkan pelanggaran","Gagal Menambahkan pelanggaran") ?>
