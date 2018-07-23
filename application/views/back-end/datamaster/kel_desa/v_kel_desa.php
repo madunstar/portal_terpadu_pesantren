@@ -12,7 +12,7 @@
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus Data Kelurahan dan Desa","Gagal Menghapus Data Kelurahan dan Desa") ?>
       <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/kel_desatambah"
-        class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah data Kelurahan dan Desa</a>
+        class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah Data Kelurahan dan Desa</a>
 
         <table class="table table-striped " id="datatable">
           <thead>

@@ -12,13 +12,13 @@
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus Data Pekerjaan","Gagal Menghapus Data Pekerjaan") ?>
       <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/pekerjaantambah"
-        class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah data pekerjaan</a>
+        class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah Data Pekerjaan</a>
 
         <table class="table table-striped " id="datatable">
           <thead>
             <tr>
               <th width="130px">Aksi</th>
-              <th>Id Pekerjaan</th>
+              <th>ID Pekerjaan</th>
               <th>Nama Pekerjaan</th>
             </tr>
           </thead>
