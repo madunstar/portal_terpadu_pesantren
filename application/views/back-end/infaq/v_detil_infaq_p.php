@@ -14,6 +14,7 @@
               <h4 class="font-bold">Detil Data Infaq <?php echo $nama_santri ?></h4>
             </header>
             <div class="panel-body">
+              <a href="<?php echo base_url() ?>admin/datamaster/bayarinfaqp?nis=<?php echo $nissantri?>"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Bayar Infaq Bulanan</button></a><br><br>
               <div class="table-responsive">
                 <table class="table table-striped m-b-none" id="datatable">
                   <thead>
@@ -46,7 +47,7 @@
 
             </div>
             <div class="panel-footer text-right bg-light lter">
-              <a href="<?php echo base_url('admin/datamaster/databayarinfaqp') ?>"><button type="button" name="button" class="btn btn-default">Kembali</button></a>
+              <a href="<?php echo base_url('admin/datamaster/santriwati') ?>"><button type="button" name="button" class="btn btn-default">Kembali</button></a>
           </div>
 
           </section>

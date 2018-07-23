@@ -3874,12 +3874,16 @@ function databayarinfaqp(){
     $nis = $this->input->get('nis');
     $variabel['nama_santri'] = $this->m_infaq_p->lihatsantrisatu($nis);
     $variabel['data'] = $this->m_infaq_p->detilinfaq($nis);
-
+    $variabel['nissantri'] = $nis;
     $this->layout->render('back-end/infaq/v_detil_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
   }
 
   function bayarinfaqp(){
+    $nis = $this->input->get('nis');
     if($this->input->post()){
+      $nis = $this->input->post('id_santri');
+      $bulan = $this->input->post('bulan');
+      $tahun = $this->input->post('tahun');
       $array = array(
         'nis_santri' => $this->input->post('id_santri'),
         'tanggal_bayar' => date('Y-m-d'),
@@ -3889,14 +3893,19 @@ function databayarinfaqp(){
         'status_bayar' => 'lunas',
         'petugas' => $this->session->userdata('nama_akun')
       );
+      if ($this->m_infaq_p->cekdata($nis,$bulan,$tahun)==0){
       $exec = $this->m_infaq_p->tambahdata($array);
       if($exec){
-        redirect(base_url("admin/datamaster/bayarinfaqp?msg=1"));
+        redirect(base_url("admin/datamaster/bayarinfaqp?nis=$nis&msg=1"));
       } else{
-        redirect(base_url("admin/datamaster/bayarinfaqp?msg=0"));
+        redirect(base_url("admin/datamaster/bayarinfaqp?nis=$nis&msg=0"));
       }
-    }else{
-      $variabel['daftarsantri'] = $this->m_infaq_p->datasantri();
+    } else{
+      redirect(base_url("admin/datamaster/bayarinfaqp?nis=$nis&msg=0"));
+    }}
+    else{
+      $variabel['nama_santri'] = $this->m_infaq_p->lihatsantrisatu($nis);
+      $variabel['nissantri'] = $nis;
       $this->layout->render('back-end/infaq/v_bayar_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
     }
 
