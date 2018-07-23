@@ -297,7 +297,8 @@ class M_santriwati extends CI_Model
               $nestedData[] = "<a href='".base_url('admin/datamaster/santriwatiberkas?nis='.$row['nis_lokal'].'')."' class='btn btn-success btn-xs' title='Berkas'><i class='fa fa-file-text-o'></i></a>
               <a href='".base_url('admin/datamaster/prestasisantriwati?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Prestasi'><i class='fa fa-trophy'></i></a>
               <a href='".base_url('admin/datamaster/pelanggaransantriwati?nis='.$row['nis_lokal'].'')."' class='btn btn-danger btn-xs' title='Pelanggaran'><i class='fa fa-ban'></i></a>
-              <a href='".base_url('admin/datamaster/dataakunortup?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Akun Orang Tua'><i class='fa fa-cogs'></i></a>";
+              <a href='".base_url('admin/datamaster/dataakunortup?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Akun Orang Tua'><i class='fa fa-cogs'></i></a>
+              <a href='".base_url('admin/datamaster/detilinfaqp?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='detil bayar infaq'><i class='fa fa-money'></i></a>";
               $data[] = $nestedData;
               $no++;
           }
