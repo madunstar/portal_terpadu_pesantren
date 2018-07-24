@@ -54,13 +54,13 @@
           </div>
         </div>
       </div>
-      
+
       <footer class="panel-footer text-right bg-light lter">
       <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
       &nbsp
       <a href="<?php echo base_url() ?>admin/datamaster/kel_desaedit?id_kel_desa=<?php echo $data['id_kel_desa']; ?>&id_provinsi=<?php echo $data['id_provinsi']; ?>&id_kota_kab=<?php echo $data['id_kota_kab']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
       &nbsp
-      <a href="<?php echo base_url('admin/datamaster/kel_desa') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Kelurahan dan Desa</a>
+      <a href="<?php echo base_url('admin/datamaster/kel_desa') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Kelurahan dan Desa</a>
       </footer>
       </form>
 

@@ -12,13 +12,13 @@
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus Data Pendidikan","Gagal Menghapus Data Pendidikan") ?>
       <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/pendidikantambah"
-        class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah data pendidikan</a>
+        class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah Data Pendidikan</a>
 
         <table class="table table-striped " id="datatable">
           <thead>
             <tr>
               <th width="130px">Aksi</th>
-              <th>Id Pendidikan</th>
+              <th>ID Pendidikan</th>
               <th>Nama Pendidikan</th>
             </tr>
           </thead>
@@ -39,7 +39,7 @@
             ?>
           </tbody>
         </table>
-        
+
       </div>
     </section>
   </section>

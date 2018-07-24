@@ -49,7 +49,7 @@
       &nbsp
       <a href="<?php echo base_url() ?>admin/datamaster/kecamatanedit?id_kecamatan=<?php echo $data['id_kecamatan']; ?>&id_provinsi=<?php echo $data['id_provinsi']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
       &nbsp
-      <a href="<?php echo base_url('admin/datamaster/kecamatan') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Kecamatan</a>
+      <a href="<?php echo base_url('admin/datamaster/kecamatan') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Kecamatan</a>
       </footer>
       </form>
 

@@ -2,24 +2,24 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Data tahun ajaran</h3>
+      <h3 class="m-b-none">Data Tahun Ajaran</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        List tahun ajaran
+        List Tahun Ajaran
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus Data tahun","Gagal Menghapus Data tahun") ?>
       <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/tahunajartambah"
-        class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah data tahun ajaran</a>
+        class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah Data Tahun Ajaran</a>
 
         <table class="table table-striped " id="datatable">
           <thead>
             <tr>
               <th width="130px">Aksi</th>
-              <th>Id tahun</th>
-              <th>tahun ajaran</th>
+              <th>ID Tahun</th>
+              <th>Tahun Ajaran</th>
             </tr>
           </thead>
           <tbody>
