@@ -17,7 +17,7 @@
 										<a href="<?php echo base_url() ?>admin/perizinansantriwati" class="auto">
 											<i class="fa fa-dashboard">
 											</i>
-											<span class="font-bold">Dashboard</span>
+											<span class="font-bold">Beranda</span>
 										</a>
 									</li>
 									<li class="<?= (($menu == "perizinansantriwati") && ($submenu == 'santriwati') || ($submenu == 'santriwatiberkas') || ($submenu == 'santritambahberkas') || ($submenu == 'santrieditberkas') || ($submenu == 'santriwatilihat') || ($submenu == 'ubahpelanggaran') || ($submenu == 'tambahpelanggaran') || ($submenu == 'pelanggaransantri') || ($submenu == 'prestasisantri') || ($submenu == 'ubahprestasi') || ($submenu == 'tambahprestasi') || ($submenu == 'guru') || ($submenu == 'gurutambah') || ($submenu == 'guruedit') || ($submenu == 'gurulihat') || ($submenu == 'guruberkas') || ($submenu == 'gurutambahberkas') || ($submenu == 'gurueditberkas')  || ($submenu == 'staff') || ($submenu == 'kelas') || ($submenu == 'kelastambah') || ($submenu == 'kelasedit') || ($submenu == 'matpel') || ($submenu == 'matpellihat') || ($submenu == 'matpeltambah') || ($submenu == 'matpeledit') || ($submenu == 'jenjang') || ($submenu == 'jenjangtingkat') || ($submenu == 'pondokan') || ($submenu == 'pakpondokan') || ($submenu == 'pakafilasi')) ? "active" : ""; ?>">
@@ -42,7 +42,7 @@
 
 										</ul>
 									</li>
-                  <li class="<?= (($menu == "perizinansantriwati") && ($submenu == 'keluar') || ($submenu == 'aturdenda')|| ($submenu == 'kembali') || ($submenu == 'cetak_suratizin') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
+                  <li class="<?= (($menu == "perizinansantriwati") && ($submenu == 'keluar') || ($submenu == 'riwayatbayardenda')|| ($submenu == 'kembali') || ($submenu == 'cetak_suratizin') || ($submenu == 'datakembali') || ($submenu == 'datakeluar') || ($submenu == 'datadenda') || ($submenu == 'kembalidenda') || ($submenu == 'pembayarandenda') || ($submenu == 'suratizin')) ? "active" : ""; ?>">
                     <a href="#" class="auto">
                       <span class="pull-right text-muted">
                         <i class="i i-circle-sm-o text"></i>
@@ -76,13 +76,13 @@
                         </a>
                       </li>
 
-											<li class="<?= (($menu == "perizinansantriwati") && ($submenu == 'aturdenda')  ) ? "active" : ""; ?>">
-												<a href="<?php echo base_url() ?>admin/perizinansantriwati/aturdenda" class="auto">
+											<!-- <li class="<?php // (($menu == "perizinansantriwati") && ($submenu == 'aturdenda')  ) ? "active" : ""; ?>">
+												<a href="<?php // echo base_url() ?>admin/perizinansantriwati/aturdenda" class="auto">
 													<i class="i i-dot"></i>
 
 													<span>Pengaturan Denda</span>
 												</a>
-											</li>
+											</li> -->
                     </ul>
                   </li>
 

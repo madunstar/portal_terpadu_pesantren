@@ -50,7 +50,7 @@
 		 </div>
 		 <div class='modal-body form-horizontal'>
 			 <form class="" action="<?php echo base_url() ?>admin/santriwatiakd/santriwatiimport" method="post"  enctype="multipart/form-data">
-				 <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="excel_santri" data-required="true">
+				 <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="excel_santri" >
 				 <button class="btn btn-primary" type="submit" name="button">upload</button>
 				 <br>
 

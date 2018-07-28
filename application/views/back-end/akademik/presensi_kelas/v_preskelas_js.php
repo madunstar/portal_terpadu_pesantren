@@ -87,7 +87,12 @@
        
     });
 
-    $('#jenjang').change(function(){
+
+        }
+   });
+
+ 
+ $('#jenjang').change(function(){
         var id=$(this).val();
         $.ajax({
             url : "<?php echo base_url();?>admin/santriakd/datatingkatjenjang",
@@ -106,10 +111,5 @@
             }
         });
     });
-
-        }
-   });
-
- 
 
 </script>

@@ -12,13 +12,13 @@
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus Data Provinsi","Gagal Menghapus Data Provinsi") ?>
       <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/provinsitambah"
-        class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah data provinsi</a>
+        class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah Data Provinsi</a>
 
         <table class="table table-striped " id="datatable">
           <thead>
             <tr>
               <th width="130px">Aksi</th>
-              <th>Id Provinsi</th>
+              <th>ID Provinsi</th>
               <th>Nama Provinsi</th>
             </tr>
           </thead>

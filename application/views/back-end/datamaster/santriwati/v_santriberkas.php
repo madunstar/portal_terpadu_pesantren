@@ -11,8 +11,8 @@
       </header>
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus  Data Berkas Santri","Gagal Menghapus Data Berkas Santri") ?>
-      <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/santriwatitambahberkas?nis=<?php echo $santri['nis_lokal'] ?>" class="btn btn-s-md btn-success " ><i class="fa fa-plus"></i> Tambah Berkas</a> &nbsp
-      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/santriwati" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> List Santri</a>
+      <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/santriwatitambahberkas?nis=<?php echo $santri['nis_lokal'] ?>" class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah Berkas</a> &nbsp
+      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/santriwati" class="btn btn-s-md btn-default btn-rounded" ><i class="fa fa-list"></i> List Santriwati</a>
 
         <table class="table table-striped " id="datatable">
           <thead>

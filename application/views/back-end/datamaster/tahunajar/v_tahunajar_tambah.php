@@ -2,7 +2,7 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Data tahun Ajaran</h3>
+      <h3 class="m-b-none">Data Tahun Ajaran</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
@@ -17,7 +17,7 @@
             <div class="form-group">
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">tahun ajaran</label>
+              <label class="col-lg-4 control-label">Tahun Ajaran</label>
               <div class="col-lg-8">
                 <input type="text" class="form-control"  name="tahun_ajaran" data-required="true"  value="<?php echo set_value('tahun_ajaran'); ?>"/>
               </div>
@@ -28,7 +28,7 @@
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
-        <a href="<?php echo base_url('admin/datamaster/tahunajar') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data tahun</a>
+        <a href="<?php echo base_url('admin/datamaster/tahunajar') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Tahun Ajaran</a>
       </footer>
       </form>
 

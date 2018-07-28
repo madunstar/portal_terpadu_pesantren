@@ -19,28 +19,28 @@
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Mata Pelajaran</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" name="nama_matpel" data-required="true" placeholder="Masukkan Mata Pelajaran..." value="<?php echo set_value('nama_matpel'); ?>"
+										<input type="text" class="form-control" name="nama_matpel" data-required="true" value="<?php echo set_value('nama_matpel'); ?>"
 										/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Tingkat</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" name="tingkat_matpel" data-required="true" placeholder="Masukkan TIngkat Mata Pelajaran..." value="<?php echo set_value('tingkat_matpel'); ?>"
+										<input type="text" class="form-control" name="tingkat_matpel" data-required="true" value="<?php echo set_value('tingkat_matpel'); ?>"
 										/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Semester</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" name="semester_matpel" data-required="true" placeholder="Masukkan Semester Mata Pelajaran..." value="<?php echo set_value('semester_matpel'); ?>"
+										<input type="text" class="form-control" name="semester_matpel" data-required="true" value="<?php echo set_value('semester_matpel'); ?>"
 										/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Kelas</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" name="kelas_matpel" data-required="true" placeholder="Masukkan Kelas Mata Pelajaran..." value="<?php echo set_value('kelas_matpel'); ?>"
+										<input type="text" class="form-control" name="kelas_matpel" data-required="true" value="<?php echo set_value('kelas_matpel'); ?>"
 										/>
 									</div>
 								</div>

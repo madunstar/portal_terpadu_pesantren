@@ -46,6 +46,7 @@ class Layout {
     function renderlogin($view,$data = null,$js = null){
         $this->ci->load->view($this->header_login);
         $this->ci->load->view($view,$data);
+        $this->ci->load->view($this->footer);
         if ($js!=NULL) {
             $this->ci->load->view($js,$data);
         }

@@ -809,7 +809,7 @@ class Datamaster extends CI_Controller{
                 $variabel['jenjang']=$this->m_jenjang->lihatdata();
                 $variabel['pondokan']=$this->m_pondokan->lihatdata();
 
-                $this->layout->render('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
+                $this->layout->render2('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
             } else {
                 $config['upload_path'] = './assets/images/foto';
                 $config['allowed_types'] = 'jpg|jpeg|JPG|JPEG|pdf|PNG|png';
@@ -852,7 +852,7 @@ class Datamaster extends CI_Controller{
                  $variabel['desa']=$this->m_santri->ambildesa($data['kecamatan']);
                  $variabel['jenjang']=$this->m_jenjang->lihatdata();
                  $variabel['pondokan']=$this->m_pondokan->lihatdata();
-                $this->layout->render('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
+                $this->layout->render2('back-end/datamaster/santri/v_santri_edit',$variabel,'back-end/datamaster/santri/v_santri_js');
             } else {
                 redirect(base_url("admin/datamaster/santri"));
             }
@@ -1388,7 +1388,7 @@ class Datamaster extends CI_Controller{
         }
 
         $exec = $this->m_guru->hapusberkas($id_berkas);
-        redirect(base_url()."admin/datamaster/guruberkas?msg=1&nip=".$nip."");
+        redirect(base_url()."admin/datamaster/guruberkas?nip=".$nip."&msg=1");
     }
 
     function gurueditberkas()
@@ -1419,8 +1419,8 @@ class Datamaster extends CI_Controller{
                 }
             }
             $exec = $this->m_guru->editdataaberkas($id_berkas,$array);
-            if ($exec) redirect(base_url("admin/datamaster/gurueditberkas?id=".$id_berkas."&nip=".$nip_guru."&msg=1"));
-            else redirect(base_url("admin/datamaster/gurueditberkas?id=".$id_berkas."&nip=".$nip_guru."&msg=0"));
+            if ($exec) redirect(base_url("admin/datamaster/gurueditberkas?nip=".$nip_guru."&id=".$id_berkas."&msg=1"));
+            else redirect(base_url("admin/datamaster/gurueditberkas?nip=".$nip_guru."&id=".$id_berkas."&msg=0"));
 
         } else {
             $nip = $this->input->get("nip");
@@ -1640,7 +1640,7 @@ class Datamaster extends CI_Controller{
         }
 
         $exec = $this->m_staff->hapusberkas($id_berkas);
-        redirect(base_url()."admin/datamaster/staffberkas?msg=1&nip=".$nip."");
+        redirect(base_url()."admin/datamaster/staffberkas?nip=".$nip."&msg=1");
     }
 
     function staffeditberkas()
@@ -1671,8 +1671,8 @@ class Datamaster extends CI_Controller{
                 }
             }
             $exec = $this->m_staff->editdataaberkas($id_berkas,$array);
-            if ($exec) redirect(base_url("admin/datamaster/staffeditberkas?id=".$id_berkas."&nip=".$nip_staff."&msg=1"));
-            else redirect(base_url("admin/datamaster/staffeditberkas?id=".$id_berkas."&nip=".$nip_staff."&msg=0"));
+            if ($exec) redirect(base_url("admin/datamaster/staffeditberkas?nip=".$nip_staff."&id=".$id_berkas."&msg=1"));
+            else redirect(base_url("admin/datamaster/staffeditberkas?nip=".$nip_staff."&id=".$id_berkas."&msg=0"));
 
         } else {
             $nip = $this->input->get("nip");
@@ -3874,11 +3874,16 @@ function databayarinfaqp(){
     $nis = $this->input->get('nis');
     $variabel['nama_santri'] = $this->m_infaq_p->lihatsantrisatu($nis);
     $variabel['data'] = $this->m_infaq_p->detilinfaq($nis);
+    $variabel['nissantri'] = $nis;
     $this->layout->render('back-end/infaq/v_detil_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
   }
 
   function bayarinfaqp(){
+    $nis = $this->input->get('nis');
     if($this->input->post()){
+      $nis = $this->input->post('id_santri');
+      $bulan = $this->input->post('bulan');
+      $tahun = $this->input->post('tahun');
       $array = array(
         'nis_santri' => $this->input->post('id_santri'),
         'tanggal_bayar' => date('Y-m-d'),
@@ -3888,14 +3893,19 @@ function databayarinfaqp(){
         'status_bayar' => 'lunas',
         'petugas' => $this->session->userdata('nama_akun')
       );
+      if ($this->m_infaq_p->cekdata($nis,$bulan,$tahun)==0){
       $exec = $this->m_infaq_p->tambahdata($array);
       if($exec){
-        redirect(base_url("admin/datamaster/bayarinfaqp?msg=1"));
+        redirect(base_url("admin/datamaster/bayarinfaqp?nis=$nis&msg=1"));
       } else{
-        redirect(base_url("admin/datamaster/bayarinfaqp?msg=0"));
+        redirect(base_url("admin/datamaster/bayarinfaqp?nis=$nis&msg=0"));
       }
-    }else{
-      $variabel['daftarsantri'] = $this->m_infaq_p->datasantri();
+    } else{
+      redirect(base_url("admin/datamaster/bayarinfaqp?nis=$nis&msg=0"));
+    }}
+    else{
+      $variabel['nama_santri'] = $this->m_infaq_p->lihatsantrisatu($nis);
+      $variabel['nissantri'] = $nis;
       $this->layout->render('back-end/infaq/v_bayar_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
     }
 
@@ -3939,11 +3949,16 @@ function databayarinfaqp(){
     $nis = $this->input->get('nis');
     $variabel['nama_santri'] = $this->m_infaq->lihatsantrisatu($nis);
     $variabel['data'] = $this->m_infaq->detilinfaq($nis);
+    $variabel['nissantri'] = $nis;
     $this->layout->render('back-end/infaq/v_detil_infaq',$variabel,'back-end/infaq/v_infaq_js');
   }
 
   function bayarinfaq(){
+    $nis = $this->input->get('nis');
     if($this->input->post()){
+      $nis = $this->input->post('id_santri');
+      $bulan = $this->input->post('bulan');
+      $tahun = $this->input->post('tahun');
       $array = array(
         'nis_santri' => $this->input->post('id_santri'),
         'tanggal_bayar' => date('Y-m-d'),
@@ -3953,14 +3968,21 @@ function databayarinfaqp(){
         'status_bayar' => 'lunas',
         'petugas' => $this->session->userdata('nama_akun')
       );
-      $exec = $this->m_infaq->tambahdata($array);
-      if($exec){
-        redirect(base_url("admin/datamaster/bayarinfaq?msg=1"));
+      if ($this->m_infaq->cekdata($nis,$bulan,$tahun)==0){
+        $exec = $this->m_infaq->tambahdata($array);
+        if($exec){
+          redirect(base_url("admin/datamaster/bayarinfaq?nis=$nis&msg=1"));
+        } else{
+          redirect(base_url("admin/datamaster/bayarinfaq?nis=$nis&msg=0"));
+        }
       } else{
-        redirect(base_url("admin/datamaster/bayarinfaq?msg=0"));
+        redirect(base_url("admin/datamaster/bayarinfaq?nis=$nis&msg=0"));
       }
+
     }else{
-      $variabel['daftarsantri'] = $this->m_infaq->datasantri();
+
+      $variabel['nama_santri'] = $this->m_infaq->lihatsantrisatu($nis);
+      $variabel['nissantri'] = $nis;
       $this->layout->render('back-end/infaq/v_bayar_infaq',$variabel,'back-end/infaq/v_infaq_js');
     }
 
@@ -4413,7 +4435,7 @@ function jenjangedit()
         $idtingkatjenjang = $this->input->get("idtingkatjenjang");
         $jenjang = $this->input->get("jenjang");
         $exec = $this->m_jenjang->hapustingkat($idtingkatjenjang);
-        redirect(base_url()."admin/datamaster/jenjangtingkat?msg=1&jenjang=".$jenjang."");
+        redirect(base_url()."admin/datamaster/jenjangtingkat?jenjang=".$jenjang."&msg=1");
     }
 
     function jenjangedittingkat()
@@ -4426,8 +4448,8 @@ function jenjangedit()
                 'tingkat'=> $tingkat
             );
             $exec = $this->m_jenjang->editdatatingkat($idtingkatjenjang,$array);
-            if ($exec) redirect(base_url("admin/datamaster/jenjangedittingkat?id=".$idtingkatjenjang."&jenjang=".$jenjang."&msg=1"));
-            else redirect(base_url("admin/datamaster/jenjangedittingkat?id=".$idtingkatjenjang."&jenjang=".$jenjang."&msg=0"));
+            if ($exec) redirect(base_url("admin/datamaster/jenjangedittingkat?jenjang=".$jenjang."&id=".$idtingkatjenjang."&msg=1"));
+            else redirect(base_url("admin/datamaster/jenjangedittingkat?jenjang=".$jenjang."&id=".$idtingkatjenjang."&msg=0"));
         } else {
             $jenjang = $this->input->get("jenjang");
             $id = $this->input->get("id");
@@ -4567,7 +4589,7 @@ function pondokanedit()
         $idtingkatpondokan = $this->input->get("idtingkatpondokan");
         $pondokan = $this->input->get("pondokan");
         $exec = $this->m_pondokan->hapustingkat($idtingkatpondokan);
-        redirect(base_url()."admin/datamaster/pondokantingkat?msg=1&pondokan=".$pondokan."");
+        redirect(base_url()."admin/datamaster/pondokantingkat?pondokan=".$pondokan."&msg=1");
     }
 
     function pondokanedittingkat()
@@ -4580,8 +4602,8 @@ function pondokanedit()
                 'tingkat'=> $tingkat
             );
             $exec = $this->m_pondokan->editdatatingkat($idtingkatpondokan,$array);
-            if ($exec) redirect(base_url("admin/datamaster/pondokanedittingkat?id=".$idtingkatpondokan."&pondokan=".$pondokan."&msg=1"));
-            else redirect(base_url("admin/datamaster/pondokanedittingkat?id=".$idtingkatpondokan."&pondokan=".$pondokan."&msg=0"));
+            if ($exec) redirect(base_url("admin/datamaster/pondokanedittingkat?pondokan=".$pondokan."&id=".$idtingkatpondokan."&msg=1"));
+            else redirect(base_url("admin/datamaster/pondokanedittingkat?pondokan=".$pondokan."&id=".$idtingkatpondokan."&msg=0"));
         } else {
             $pondokan = $this->input->get("pondokan");
             $id = $this->input->get("id");
@@ -5284,8 +5306,8 @@ function printkelaspondokan(){
 
 
 function printjadwalpondokan(){
-    $bulan = $this->input->get("id");
-    $kelas = $this->input->get("kelas");
+    $bulan = $this->input->get("bulan");
+    $kelas = $this->input->get("id");
     // $data = $this->m_presensipondokan->lihatdatasatujadwal($id)->row_array();
     // $variabel['data'] = $data;
     $variabel['bulan'] = $bulan;
@@ -5310,8 +5332,8 @@ function printkelasafilasi(){
 
 
 function printjadwalafilasi(){
-    $bulan = $this->input->get("id");
-    $kelas = $this->input->get("kelas");
+    $bulan = $this->input->get("bulan");
+    $kelas = $this->input->get("id");
     // $data = $this->m_presensi->lihatdatasatujadwal($id)->row_array();
     // $variabel['data'] = $data;
     $variabel['bulan'] = $bulan;
@@ -5329,6 +5351,7 @@ function printjadwalafilasi(){
         $variabel['data'] = $exec ->row_array();
         // $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
         // $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); ;
+        $variabel['kepsek'] = $this->m_pengaturan->get_tb_pengaturan();
         $this->load->view('back-end/datamaster/santri/v_santri_kartu',$variabel);
     } else {
         redirect(base_url("admin/datamaster/santri"));
@@ -5399,7 +5422,8 @@ function cetakkartup(){
       $this->_generate_barcode_p($nis,'BCGcode39');
       $variabel['data'] = $exec ->row_array();
       // $variabel['tingkat'] = $this->m_santri->lihattingkatan($nis); ;
-      // $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis); ;
+      // $variabel['tingkatpondokan'] = $this->m_santri->lihattingkatanpondokan($nis);
+      $variabel['kepsek'] = $this->m_pengaturan->get_tb_pengaturan();
       $this->load->view('back-end/datamaster/santriwati/v_santri_kartu',$variabel);
   } else {
       redirect(base_url("admin/datamaster/santriwati"));
@@ -5495,7 +5519,12 @@ function pengaturanportal()
 function edit_pengaturan(){
   $params = array(
     'tahun_ajaran' => $this->input->post('tahun_ajaran'),
+    'kepsekmualimin' => $this->input->post('kepsekmualimin'),
+    'nipkepsekmualimin' => $this->input->post('nipkepsekmualimin'),
+    'kepsekmualimat' => $this->input->post('kepsekmualimat'),
+    'nipkepsekmualimat' => $this->input->post('nipkepsekmualimat'),
   );
+
   $this->m_pengaturan->update_tb_pengaturan_pendaftran($params);
   $this->session->set_flashdata('response',"
       <div class='alert alert-success'>

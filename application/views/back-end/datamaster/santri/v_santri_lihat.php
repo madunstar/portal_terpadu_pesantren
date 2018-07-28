@@ -6,7 +6,9 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
+
         Lihat Data Santri 
+
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Data Santri","Gagal Menambahkan Data Santri") ?>
@@ -155,7 +157,7 @@
                 <input type="text" class="form-control"  name="status_tempat_tinggal" value="<?php echo $data['status_tempat_tinggal']; ?>" readonly/>
               </div>
             </div>
-            
+
           </div>
           <div class="col-md-6">
           <div class="form-group">
@@ -293,14 +295,14 @@
                   <img src="<?php echo base_url()."assets/images/foto/".$data['foto']; ?>" class="thumbnail" width="200px"/>
                 <?php } ?>
               </div>
-			  	</div> 
+			  	</div>
 
           </div>
         </div>
 
         <div class="row" style="margin:20px">
           <div class="col-md-6">
-          
+
             <div class="tingkatanjenjang">
             <fieldset>
             <legend>Tingkat Kelas</legend>
@@ -333,7 +335,7 @@
           </div>
 
           <div class="col-md-6">
-          
+
           <div class="tingkatanjenjang">
           <fieldset>
           <legend>Tingkat Kelas Pondokan</legend>
@@ -368,7 +370,11 @@
 
       </div>
       <footer class="panel-footer text-right bg-light lter">
+<<<<<<< HEAD
       <a href="<?php echo base_url('admin/datamaster/santriedit?nis=1') ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Ubah </a>
+=======
+      <a href="<?php echo base_url('admin/datamaster/santriedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-warning btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
+>>>>>>> menambah-ci
         &nbsp
         <a href="<?php echo base_url('admin/datamaster/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santri</a>
       </footer>

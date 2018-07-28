@@ -1,7 +1,7 @@
 +function ($) { "use strict";
 
   $(function(){
- 	
+
 	// sparkline
 	var sr, sparkline = function($re){
 		$(".sparkline").each(function(){
@@ -22,9 +22,9 @@
 	// easypie
 	var easypie = function(){
 	$('.easypiechart').each(function(){
-		var $this = $(this), 
-		$data = $this.data(), 
-		$step = $this.find('.step'), 
+		var $this = $(this),
+		$data = $this.data(),
+		$step = $this.find('.step'),
 		$target_value = parseInt($($data.target).text()),
 		$value = 0;
 		$data.barColor || ( $data.barColor = function($percent) {
@@ -46,9 +46,11 @@
 		});
 	};
 	easypie();
-  
+
 	// datepicker
-	$(".datepicker-input").each(function(){ $(this).datepicker();});
+	$(".datepicker-input").each(function(){ $(this).datepicker({
+  });
+  });
 
 	// dropfile
 	$('.dropfile').each(function(){
@@ -94,7 +96,7 @@
     $(document).on('updateNav', function(){
       $self.slimScroll($data);
     });
-	});	
+	});
 
 	// portlet
 	$('.portlet').each(function(){
@@ -141,7 +143,7 @@
 			}
 		);
 	});
-	
+
 	// add notes
 	function addMsg($msg){
 		var $el = $('.nav-user'), $n = $('.count:first', $el), $v = parseInt($n.text());
@@ -156,7 +158,7 @@
                     'Sophi sent you a email<br>'+
                     '<small class="text-muted">1 minutes ago</small>'+
                   '</span>'+
-                '</a>';	
+                '</a>';
   setTimeout(function(){addMsg($msg);}, 1500);
 
 	//chosen

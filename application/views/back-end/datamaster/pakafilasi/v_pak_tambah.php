@@ -26,11 +26,12 @@
 								<div class="form-group">
 									<label class="col-lg-4 control-label">Jam</label>
 									<div class="col-lg-8">
-										<input type="text" class="form-control" name="jam" data-required="true" value="<?php echo set_value('jam'); ?>"
+										<input type="time" class="form-control" name="jam" data-required="true" value="<?php echo set_value('jam'); ?>"
 										/>
+
 									</div>
 								</div>
-								
+
 						</div>
 						</div>
 				</div>

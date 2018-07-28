@@ -54,8 +54,8 @@
 					<button type="submit" class="btn btn-success btn-s-xs">
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp;
-					<a href="<?php echo base_url() ?>admin/datamaster/ubahpelanggaran?id=<?php if (isset($id_pelanggaranlama)) echo $id_pelanggaranlama;
-		       else echo $data['id_pelanggaran']; ?>&nis=<?php echo $data['nis_santri'] ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Atur Ulang</a>
+					<a href="<?php echo base_url() ?>admin/datamaster/ubahpelanggaran?nis=<?php echo $data['nis_santri']; ?>&id=<?php if (isset($id_pelanggaranlama)) echo $id_pelanggaranlama;
+		       else echo $data['id_pelanggaran']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Atur Ulang</a>
 						 &nbsp;
 					<a href="<?php echo base_url('admin/datamaster/pelanggaransantri?nis='.$data['nis_santri'].'') ?>" class="btn btn-default btn-s-xs">
 						<i class="fa fa-list"></i> Daftar Pelanggaran</a>

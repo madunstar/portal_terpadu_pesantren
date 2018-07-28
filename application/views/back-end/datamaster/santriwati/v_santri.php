@@ -6,7 +6,9 @@
 			</div>
 			<section class="panel panel-default" style="width:100%">
 				<header class="panel-heading">
+
 					Data Santriwati
+
 					<i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
 				</header>
 				<div class="table-responsive">
@@ -31,7 +33,7 @@
 							</tr>
 						</thead>
 						<tbody>
-						
+
 						</tbody>
 					</table>
 				</div>

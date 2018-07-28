@@ -149,7 +149,7 @@ class M_perizinan extends CI_Model{
     }
 
     function tampildatasantri($id){
-        $this->db->select('nis_lokal, nama_lengkap, jenis_sekolah_asal, nama_lengkap_ayah, nama_lengkap_ibu');
+        $this->db->select('nis_lokal, nama_lengkap, kelas, nama_lengkap_ayah, nama_lengkap_ibu');
         $this->db->from('tb_santri');
         $this->db->where('nis_lokal',$id);
         return $this->db->get();
@@ -198,7 +198,7 @@ class M_perizinan extends CI_Model{
     }
 
     function tampilsuratizin(){
-        $this->db->select('tb_santri.nama_lengkap AS nama_santri, tb_santri.jenis_sekolah_asal AS sekolah, tb_santri.hp AS hp,
+        $this->db->select('tb_santri.nama_lengkap AS nama_santri, tb_santri.kelas AS kelas, tb_santri.hp AS hp,
         CONCAT(
             CASE DAYOFWEEK(tanggal_keluar)
               WHEN 1 THEN "Minggu"
@@ -295,7 +295,7 @@ class M_perizinan extends CI_Model{
     }
 
     function tampilsuratizinsatuan($id_keluar){
-        $this->db->select('tb_santri.nama_lengkap AS nama_santri, tb_santri.jenis_sekolah_asal AS sekolah, tb_santri.hp AS hp,
+        $this->db->select('tb_santri.nama_lengkap AS nama_santri, tb_santri.kelas AS kelas, tb_santri.hp AS hp,
         CONCAT(
             CASE DAYOFWEEK(tanggal_keluar)
               WHEN 1 THEN "Minggu"
@@ -412,7 +412,7 @@ class M_perizinan extends CI_Model{
     }
 
     function laporankeluar($tahun,$bulan){
-      $this->db->select('nis_santri, nama_lengkap, jenis_sekolah_asal,
+      $this->db->select('nis_santri, nama_lengkap, kelas,
       CONCAT(
           CASE DAYOFWEEK(tanggal_keluar)
             WHEN 1 THEN "Minggu"

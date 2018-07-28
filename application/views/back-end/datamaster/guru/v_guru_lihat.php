@@ -74,7 +74,7 @@
 									<label class="col-lg-4 control-label">Pendidikan Terakhir</label>
 									<div class="col-lg-8">
 									<input type="text" class="form-control" name="pendidikan_terakhir" value="<?php echo $data['pendidikan_terakhir']; ?>" readonly />
-									
+
 									</div>
 								</div>
 								<div class="form-group">
@@ -149,13 +149,13 @@
 										<img src="<?php echo base_url()."assets/images/foto/".$data['foto']; ?>" class="thumbnail" width="200px"/>
 										<?php } ?>
 									</div>
-			  					</div> 
+			  					</div>
 
 							</div>
 						</div>
 				</div>
 				<footer class="panel-footer text-right bg-light lter">
-					<a href="<?php echo base_url('admin/datamaster/guruedit?nip=1') ?>" class="btn btn-success btn-s-xs">
+					<a href="<?php echo base_url('admin/datamaster/nip='.$data['nip_guru']) ?>" class="btn btn-success btn-s-xs">
 						<i class="fa fa-edit"></i> Ubah </a>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/guru') ?>" class="btn btn-default btn-s-xs">

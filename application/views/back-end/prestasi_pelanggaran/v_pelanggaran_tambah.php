@@ -6,7 +6,7 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Tambah Pelanggaran  <?php echo $santri['nama_lengkap']?> (<?php echo $santri['nis_lokal']?>)
+					Tambah Pelanggaran  <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?>
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Menambahkan pelanggaran","Gagal Menambahkan pelanggaran") ?>

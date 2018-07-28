@@ -11,8 +11,10 @@
 					Ubah Berkas guru
 				</header>
 				<div class="panel-body">
+
 					<?php pesan_get('msg',"Berhasil Mengubah Data Berkas guru","Gagal Mengubah Data Berkas guru") ?>
-					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/gurueditberkas?id=<?php echo $data['id_berkas'] ?>&nip=<?php echo $guru['nip_guru'] ?>"
+					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/gurueditberkas?nip=<?php echo $guru['nip_guru'] ?>&id=<?php echo $data['id_berkas'] ?>"
+
 					method="post" enctype="multipart/form-data">
 					<a href="<?php echo base_url('admin/datamaster/guruberkas?nip='.$guru['nip_guru'].'') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
 						<div class="row">

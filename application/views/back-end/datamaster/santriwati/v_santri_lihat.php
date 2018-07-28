@@ -6,7 +6,9 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
+
         Lihat Santriwati 
+
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Santriwati","Gagal Menambahkan Santriwati") ?>
@@ -155,7 +157,7 @@
                 <input type="text" class="form-control"  name="status_tempat_tinggal" value="<?php echo $data['status_tempat_tinggal']; ?>" readonly/>
               </div>
             </div>
-            
+
           </div>
           <div class="col-md-6">
           <div class="form-group">
@@ -293,14 +295,14 @@
                   <img src="<?php echo base_url()."assets/images/foto/".$data['foto']; ?>" class="thumbnail" width="200px"/>
                 <?php } ?>
               </div>
-			  	</div> 
+			  	</div>
 
           </div>
         </div>
 
         <div class="row" style="margin:20px">
           <div class="col-md-6">
-          
+
             <div class="tingkatanjenjang">
             <fieldset>
             <legend>Tingkat Kelas</legend>
@@ -333,7 +335,7 @@
           </div>
 
           <div class="col-md-6">
-          
+
           <div class="tingkatanjenjang">
           <fieldset>
           <legend>Tingkat Kelas Pondokan</legend>
@@ -368,9 +370,15 @@
 
       </div>
       <footer class="panel-footer text-right bg-light lter">
+<<<<<<< HEAD
       <a href="<?php echo base_url('admin/datamaster/santriwatiedit?nis=1') ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Ubah </a>
         &nbsp
         <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santriwati</a>
+=======
+      <a href="<?php echo base_url('admin/datamaster/santriwatiedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-warning btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
+        &nbsp
+        <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santriwati</a>
+>>>>>>> menambah-ci
       </footer>
       </form>
 

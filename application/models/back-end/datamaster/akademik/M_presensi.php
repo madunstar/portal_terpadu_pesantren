@@ -124,25 +124,25 @@ class M_presensi extends CI_Model
          $this->db->group_by('id_mata_pelajaran');
          return $this->db->get();
      }
- 
+
      function tambahdatajadwal($array)
     {
         return $this->db->insert('tb_presensi_jadwal_afilasi',$array);
     }
- 
+
     function hapusjadwal($id_jadwal)
      {
          $this->db->where("id_jadwal",$id_jadwal);
          return $this->db->delete('tb_presensi_jadwal_afilasi');
      }
- 
+
      function lihatdatasatujadwal($id_jadwal)
      {
           $this->db->from("tb_presensi_jadwal_afilasi");
           $this->db->where("id_jadwal",$id_jadwal);
           return $this->db->get();
      }
- 
+
      function editdatajadwal($id_jadwal,$array)
      {
          $this->db->where("id_jadwal",$id_jadwal);
@@ -152,10 +152,10 @@ class M_presensi extends CI_Model
      public function lihatdataajax()
      {
          $requestData= $_REQUEST;
-         $columns = array( 
+         $columns = array(
              // datatable column index  => database column name
-                 0=>'tahun_ajaran', 
-                 1=>'nama_kelas_belajar', 
+                 0=>'tahun_ajaran',
+                 1=>'nama_kelas_belajar',
                  2=> 'nama_kelas',
                  3=> 'nama_lengkap',
                  3=> 'jenjang',
@@ -168,14 +168,14 @@ class M_presensi extends CI_Model
          WHERE 1=1 ";
          $query=$this->db->query($sql);
          $totalData = $query->num_rows();
-         $totalFiltered = $totalData; 
+         $totalFiltered = $totalData;
          if( !empty($requestData['search']['value']) ) {
-             $sql.= " AND ( tahun_ajaran LIKE '%".$requestData['search']['value']."%' "; 
-             $sql.=" OR nama_kelas_belajar LIKE '%".$requestData['search']['value']."%'  "; 
-             $sql.=" OR nama_kelas LIKE '%".$requestData['search']['value']."%'  ";	
+             $sql.= " AND ( tahun_ajaran LIKE '%".$requestData['search']['value']."%' ";
+             $sql.=" OR nama_kelas_belajar LIKE '%".$requestData['search']['value']."%'  ";
+             $sql.=" OR nama_kelas LIKE '%".$requestData['search']['value']."%'  ";
              $sql.=" OR nama_lengkap LIKE '%".$requestData['search']['value']."%'  ";
              $sql.=" OR jenjang LIKE '%".$requestData['search']['value']."%'  ";
-             $sql.=" OR tingkat LIKE '%".$requestData['search']['value']."%' ) "; 				
+             $sql.=" OR tingkat LIKE '%".$requestData['search']['value']."%' ) ";
          }
          $query=$this->db->query($sql);
          $totalFiltered = $query->num_rows();
@@ -184,11 +184,11 @@ class M_presensi extends CI_Model
          $data = array();
          $no=1;
          foreach($query->result_array() as $row) {  // preparing an array
-             $nestedData=array(); 
-         
-             $akd = "   <a href='".base_url('admin/santriakd/lihatkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Hapus'><i class='fa fa-eye'></i></a>
-             <a href='".base_url('admin/santriakd/editkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-             <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
+             $nestedData=array();
+
+             $akd = "   <a href='".base_url('admin/santriakd/lihatkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Hapus'><i class='fa fa-eye'></i></a>
+             <a href='".base_url('admin/santriakd/editkelasbelajar?id='.$row['id_kelas_belajar'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+             <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
              <a href='".base_url('admin/santriakd/printkelasafilasi?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs print' title='print' id='".$row['id_kelas_belajar']."'><i class='fa fa-print'></i></a>";
              $nestedData[] = $akd;
              $nestedData[] = $row['tahun_ajaran'];
@@ -197,20 +197,20 @@ class M_presensi extends CI_Model
              $nestedData[] = $row['nama_lengkap'];
              $nestedData[] = $row['jenjang'];
              $nestedData[] = $row['tingkat'];
-             $nestedData[] = "<a href='".base_url('admin/santriakd/jadwalafilasi?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-clock-o'></i> Jadwal</a>";
+             $nestedData[] = "<a href='".base_url('admin/santriakd/jadwalafilasi?id='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-clock-o'></i> Jadwal</a>";
              $nestedData[] = "<button class='btn ".($row['status_kelas']=="Aktif"?"btn-success":"btn-warning")." btn-xs edit'  title='Edit' id='".$row['id_kelas_belajar']."' data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i> ".$row['status_kelas']."</button>";
-             $nestedData[] = "<a href='".base_url('admin/santriakd/lihatkelasbelajarsantri?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-list'></i> Santri</a>";
+             $nestedData[] = "<a href='".base_url('admin/santriakd/lihatkelasbelajarsantri?id='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-list'></i> Santri</a>";
              $data[] = $nestedData;
              $no++;
          }
          $json_data = array(
              "draw"            => intval( $requestData['draw'] ),
-             "recordsTotal"    => intval( $totalData ), 
-             "recordsFiltered" => intval( $totalFiltered ), 
-             "data"            => $data 
+             "recordsTotal"    => intval( $totalData ),
+             "recordsFiltered" => intval( $totalFiltered ),
+             "data"            => $data
              );
- 
-         echo json_encode($json_data); 
+
+         echo json_encode($json_data);
      }
- 
+
 }

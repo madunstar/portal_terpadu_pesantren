@@ -88,7 +88,7 @@ class M_presensipondokan extends CI_Model
         $this->db->where("tb_pondokan_santri.id_kelas_santri",$id_kelas_santri);
         return $this->db->get();
    }
-   
+
 
    function cekdataberkas($id_berkas)
     {
@@ -153,10 +153,10 @@ class M_presensipondokan extends CI_Model
     public function lihatdataajax()
     {
         $requestData= $_REQUEST;
-        $columns = array( 
+        $columns = array(
             // datatable column index  => database column name
-                0=>'tahun_ajaran', 
-                1=>'nama_kelas_belajar', 
+                0=>'tahun_ajaran',
+                1=>'nama_kelas_belajar',
                 2=> 'nama_kelas',
                 3=> 'nama_lengkap',
                 3=> 'pondokan',
@@ -169,14 +169,14 @@ class M_presensipondokan extends CI_Model
         WHERE 1=1 ";
         $query=$this->db->query($sql);
         $totalData = $query->num_rows();
-        $totalFiltered = $totalData; 
+        $totalFiltered = $totalData;
         if( !empty($requestData['search']['value']) ) {
-            $sql.= " AND ( tahun_ajaran LIKE '%".$requestData['search']['value']."%' "; 
-            $sql.=" OR nama_kelas_belajar LIKE '%".$requestData['search']['value']."%'  "; 
-            $sql.=" OR nama_kelas LIKE '%".$requestData['search']['value']."%'  ";	
+            $sql.= " AND ( tahun_ajaran LIKE '%".$requestData['search']['value']."%' ";
+            $sql.=" OR nama_kelas_belajar LIKE '%".$requestData['search']['value']."%'  ";
+            $sql.=" OR nama_kelas LIKE '%".$requestData['search']['value']."%'  ";
             $sql.=" OR nama_lengkap LIKE '%".$requestData['search']['value']."%'  ";
             $sql.=" OR pondokan LIKE '%".$requestData['search']['value']."%'  ";
-            $sql.=" OR tingkat LIKE '%".$requestData['search']['value']."%' ) "; 				
+            $sql.=" OR tingkat LIKE '%".$requestData['search']['value']."%' ) ";
         }
         $query=$this->db->query($sql);
         $totalFiltered = $query->num_rows();
@@ -185,11 +185,11 @@ class M_presensipondokan extends CI_Model
         $data = array();
         $no=1;
         foreach($query->result_array() as $row) {  // preparing an array
-            $nestedData=array(); 
-        
-            $akd = "    <a href='".base_url('admin/santriakd/lihatkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
-            <a href='".base_url('admin/santriakd/editkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-            <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
+            $nestedData=array();
+
+            $akd = "    <a href='".base_url('admin/santriakd/lihatkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
+            <a href='".base_url('admin/santriakd/editkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+            <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
             <a href='".base_url('admin/santriakd/printkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs print' title='print' id='".$row['id_kelas_belajar']."'><i class='fa fa-print'></i></a>";
             $nestedData[] = $akd;
             $nestedData[] = $row['tahun_ajaran'];
@@ -206,12 +206,12 @@ class M_presensipondokan extends CI_Model
         }
         $json_data = array(
             "draw"            => intval( $requestData['draw'] ),
-            "recordsTotal"    => intval( $totalData ), 
-            "recordsFiltered" => intval( $totalFiltered ), 
-            "data"            => $data 
+            "recordsTotal"    => intval( $totalData ),
+            "recordsFiltered" => intval( $totalFiltered ),
+            "data"            => $data
             );
 
-        echo json_encode($json_data); 
+        echo json_encode($json_data);
     }
 
 

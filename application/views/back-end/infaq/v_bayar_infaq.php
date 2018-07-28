@@ -19,12 +19,8 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-id-1">Pilih Santri</label>
                     <div class="col-sm-8">
-                      <select name="id_santri" id="id_santri" class="form-control chosen-select" data-required="true">
-                        <option value="">-PILIH SANTRI-</option>
-                        <?php foreach($daftarsantri->result_array() as $row):?>
-                          <option value="<?php echo $row['nis_lokal'];?>"><?php echo $row['nama_lengkap'];?>&nbsp;|&nbsp;<?php echo $row['nis_lokal'];?></option>
-                        <?php endforeach;?>
-                      </select>
+                      <input type="text" class="form-control" value="<?php echo $nama_santri ?>" />
+                      <input type="hidden" value="<?php echo $nissantri?>" name="id_santri"/>
                     </div>
                   </div>
                   <div class='form-group'>
@@ -77,7 +73,7 @@
                   </div>
 
                   <footer class="panel-footer text-right">
-                    <a href="<?php echo base_url() ?>admin/datamaster/databayarinfaq"><button type="button" class="btn btn-s-xs btn-default"><i class="fa fa-list"></i> Data Pembayaran</button></a>
+                    <a href="<?php echo base_url() ?>admin/datamaster/detilinfaq?nis=<?php echo $nissantri?>"><button type="button" class="btn btn-s-xs btn-default"><i class="fa fa-list"></i> Data Pembayaran</button></a>
                     <button type="submit" class="btn btn-s-xs btn-info"><i class="fa fa-save"></i> Proses Pembayaran</button>
                   </footer>
 

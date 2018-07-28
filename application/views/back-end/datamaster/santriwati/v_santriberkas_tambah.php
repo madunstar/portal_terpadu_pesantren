@@ -9,9 +9,10 @@
 			<section class="panel panel-default">
 				<header class="panel-heading">
 					Tambah Berkas Santri
+
 				</header>
 				<div class="panel-body">
-				
+
 					<?php pesan_get('msg',"Berhasil Menambahkan Santri","Gagal Menambahkan Santri") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santriwatitambahberkas?nis=<?php echo $santri['nis_lokal'] ?>"
 					method="post" enctype="multipart/form-data">

@@ -33,7 +33,7 @@
 										<input type="text" class="form-control" name="tingkat_matpel" data-required="true" value="<?php echo $data['tingkat_mata_pelajaran']; ?>"
 										readonly/>
 									</div>
-								</div>		
+								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
@@ -53,8 +53,10 @@
 						</div>
 				</div>
 				<footer class="panel-footer text-right bg-light lter">
-					<a href="<?php echo base_url('admin/datamaster/matpeledit?id_matpel='.$data['id_mata_pelajaran'].'') ?>" class="btn btn-success btn-s-xs">
+
+					<a href="<?php echo base_url('admin/datamaster/matpeledit?id_matpel='.$data['id_mata_pelajaran'].'') ?>" class="btn btn-warning btn-s-xs">
 						<i class="fa fa-edit"></i> Ubah </a>
+
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/matpel') ?>" class="btn btn-default btn-s-xs">
 						<i class="fa fa-list"></i> Daftar Mata Pelajaran</a>

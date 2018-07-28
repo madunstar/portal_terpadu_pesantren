@@ -2,7 +2,7 @@
 <section class="vbox">
   <section class="scrollable padder">
     <div class="m-b-md">
-      <h3 class="m-b-none">Pak</h3>
+      <h3 class="m-b-none">Pak Afiliasi</h3>
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">

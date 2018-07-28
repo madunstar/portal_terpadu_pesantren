@@ -1,4 +1,12 @@
 <script>
+
+$("#lahir").datepicker({
+  startView: 2,
+  maxViewMode: 2,
+  format: 'yyyy-mm-dd'
+});
+
+
    $('#datatable').DataTable({
         "bStateSave"    : true,
         "ajax"          : {
@@ -16,10 +24,10 @@
                             { "orderable": false, "targets": [0]
                             }
                         ],
-						
+
 		"responsive": true,
         "fnDrawCallback": function(oSettings){
-            
+
             $(".hapus").click(function (e) {
             var v_nis = this.id;
             $.confirm({
@@ -36,7 +44,7 @@
                     batal: function () {
 
                     }
-                    
+
                 }
                 });
             });
@@ -58,7 +66,7 @@
 					$('#modal-edit').html(response)
 				}
             });
-       
+
     });
 
     $(".edit2").click(function(e) {
@@ -78,18 +86,18 @@
 					$('#modal-edit').html(response)
 				}
             });
-       
+
     });
 
 
-                
+
         }
    });
 
 
  $(document).ready(function(){
 
-  
+
 
     $('#provinsi').change(function(){
         var id=$(this).val();
@@ -152,6 +160,6 @@
     });
 
 
-    
+
 });
 </script>

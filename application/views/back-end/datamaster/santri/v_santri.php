@@ -31,7 +31,7 @@
 							</tr>
 						</thead>
 						<tbody>
-						
+
 						</tbody>
 					</table>
 				</div>
@@ -53,8 +53,7 @@
 				 <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="excel_santri" data-required="true">
 				 <button class="btn btn-primary" type="submit" name="button">Unggah</button>
 				 <br>
-
-				 <p><small>Pastikan Format Data Pada File Excel Data Santri Sesuai Dengan <a class="text-info" href="<?php echo base_url() ?>admin/santriakd/downloadcontohimport"><b>Contoh Berikut</b></a></small></p>
+				 <p><small>Pastikan Format Data Pada File Excel Data Santri Sesuai Dengan <a class="text-info" href="<?php echo base_url() ?>admin/datamaster/downloadcontohimport"><b>Contoh Berikut</b></a></small></p>
 			 </form>
 		 </div>
 		 <div class='modal-footer'>

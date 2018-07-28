@@ -180,7 +180,7 @@ class M_santri extends CI_Model
       }
 
       function lihattingkatanpondokan($nis_lokal){
-        return $this->db->query("SELECT `tb_kelas_santri`.nis_lokal,`tb_presensi_pondokan`.`id_kelas_belajar`, `tb_presensi_pondokan`.`nama_kelas_belajar`, `tb_presensi_pondokan`.`pondokan`, `tb_presensi_pondokan`.`tingkat`, `tb_tahun_ajaran`.`tahun_ajaran` FROM `tb_kelas_santri` inner join `tb_presensi_pondokan` on `tb_presensi_pondokan`.`id_kelas_belajar`=`tb_kelas_santri`.`id_kelas_belajar` inner join `tb_tahun_ajaran` on `tb_tahun_ajaran`.`id_tahun`=`tb_presensi_pondokan`.`id_tahun` where `nis_lokal` = '$nis_lokal' order by `tb_presensi_pondokan`.`tingkat` asc ");
+        return $this->db->query("SELECT `tb_pondokan_santri`.nis_lokal,`tb_presensi_pondokan`.`id_kelas_belajar`, `tb_presensi_pondokan`.`nama_kelas_belajar`, `tb_presensi_pondokan`.`pondokan`, `tb_presensi_pondokan`.`tingkat`, `tb_tahun_ajaran`.`tahun_ajaran` FROM `tb_pondokan_santri` inner join `tb_presensi_pondokan` on `tb_presensi_pondokan`.`id_kelas_belajar`=`tb_pondokan_santri`.`id_kelas_belajar` inner join `tb_tahun_ajaran` on `tb_tahun_ajaran`.`id_tahun`=`tb_presensi_pondokan`.`id_tahun` where `nis_lokal` = '$nis_lokal' order by `tb_presensi_pondokan`.`tingkat` asc ");
       }
 
 
@@ -299,8 +299,8 @@ class M_santri extends CI_Model
                 $nestedData[] = "<a href='".base_url('admin/datamaster/santriberkas?nis='.$row['nis_lokal'].'')."' class='btn btn-success btn-xs' title='Berkas'><i class='fa fa-file-text-o'></i></a>
                 <a href='".base_url('admin/datamaster/prestasisantri?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Prestasi'><i class='fa fa-trophy'></i></a>
                 <a href='".base_url('admin/datamaster/pelanggaransantri?nis='.$row['nis_lokal'].'')."' class='btn btn-danger btn-xs' title='Pelanggaran'><i class='fa fa-ban'></i></a>
-                <a href='".base_url('admin/datamaster/dataakunortu?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Akun Orang Tua'><i class='fa fa-cogs'></i></a>";
-
+                <a href='".base_url('admin/datamaster/dataakunortu?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Akun Orang Tua'><i class='fa fa-cogs'></i></a>
+                <a href='".base_url('admin/datamaster/detilinfaq?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='detil bayar infaq'><i class='fa fa-money'></i></a>";
                 $data[] = $nestedData;
                 $no++;
             }

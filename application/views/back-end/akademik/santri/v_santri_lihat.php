@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Lihat Santri 
+        Lihat Santri
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Santri","Gagal Menambahkan Santri") ?>
@@ -155,7 +155,7 @@
                 <input type="text" class="form-control"  name="status_tempat_tinggal" value="<?php echo $data['status_tempat_tinggal']; ?>" readonly/>
               </div>
             </div>
-            
+
           </div>
           <div class="col-md-6">
           <div class="form-group">
@@ -293,14 +293,14 @@
                   <img src="<?php echo base_url()."assets/images/foto/".$data['foto']; ?>" class="thumbnail" width="200px"/>
                 <?php } ?>
               </div>
-			  	</div> 
+			  	</div>
 
           </div>
         </div>
 
         <div class="row" style="margin:20px">
           <div class="col-md-6">
-          
+
             <div class="tingkatanjenjang">
             <fieldset>
             <legend>Tingkat Kelas</legend>
@@ -333,7 +333,7 @@
           </div>
 
           <div class="col-md-6">
-          
+
           <div class="tingkatanjenjang">
           <fieldset>
           <legend>Tingkat Kelas Pondokan</legend>
@@ -368,7 +368,7 @@
 
       </div>
       <footer class="panel-footer text-right bg-light lter">
-      <a href="<?php echo base_url('admin/santriakd/santriedit?nis=1') ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
+      <a href="<?php echo base_url('admin/santriakd/santriedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
         &nbsp
         <a href="<?php echo base_url('admin/santriakd/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
       </footer>

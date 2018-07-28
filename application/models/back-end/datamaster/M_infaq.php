@@ -79,4 +79,12 @@ class M_infaq extends CI_Model
         $this->db->where("id_pembayaran",$id_infaq);
         return $this->db->delete('tb_pembayaran_spp');
     }
+
+    function cekdata($nis,$bulan,$tahun)
+    {
+        $this->db->where("nis_santri",$nis);
+        $this->db->where("spp_bulan",$bulan);
+        $this->db->where("spp_tahun",$tahun);
+        return $this->db->get('tb_pembayaran_spp')->num_rows();
+    }
 }

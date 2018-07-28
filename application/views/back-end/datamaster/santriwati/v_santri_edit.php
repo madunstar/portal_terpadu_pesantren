@@ -17,8 +17,8 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">NIS</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" name="nis_lokal" data-required="true" value="<?php echo $data['nis_lokal']; ?>" />
-                <input type="hidden" class="form-control" name="nis_lokal2" data-required="true" value="<?php
+                <input type="text" class="form-control" name="nis_lokal"  value="<?php echo $data['nis_lokal']; ?>" />
+                <input type="hidden" class="form-control" name="nis_lokal2"  value="<?php
                 if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" />
                 <?php if(isset($nis_lokal)) {
                          echo '<label style="color:red;font-size:10px">NIS ada yang sama ! NIS asal "'.$nis_lokal2.'"</label>';
@@ -29,7 +29,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">NISN</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nisn" data-required="true"  value="<?php echo $data['nisn']; ?>" />
+                <input type="text" class="form-control"  name="nisn"   value="<?php echo $data['nisn']; ?>" />
               </div>
             </div>
             <div class="form-group">
@@ -41,26 +41,26 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control" name="nama_lengkap" data-required="true" value="<?php echo $data['nama_lengkap']; ?>" />
+                <input type="text" class="form-control" name="nama_lengkap"  value="<?php echo $data['nama_lengkap']; ?>" />
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Tempat Lahir</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="tempat_lahir" data-required="true" value="<?php echo $data['tempat_lahir']; ?>" />
+                <input type="text" class="form-control"  name="tempat_lahir"  value="<?php echo $data['tempat_lahir']; ?>" />
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Tanggal Lahir</label>
               <div class="col-lg-8">
-              <input class="datepicker-input form-control" size="16" type="text"  data-date-format="dd-mm-yyyy" name="tgl_lahir" data-required="true" value="<?php echo tanggal($data['tgl_lahir']); ?>" readonly/>
+              <input class="datepicker-input form-control" size="16" type="text"  data-date-format="dd-mm-yyyy" name="tgl_lahir"  value="<?php echo tanggal($data['tgl_lahir']); ?>" readonly/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Jenis Kelamin</label>
               <div class="col-lg-8">
                 <select class="form-control"  name="jenis_kelamin" />
-                  <option value="L" <?php if ($data['jenis_kelamin']=="L")  echo "selected" ?> >Laki-laki</option>
+
                   <option value="P" <?php if ($data['jenis_kelamin']=="P")  echo "selected" ?> >Perempuan</option>
                 </select>
               </div>
@@ -86,7 +86,7 @@
             <div class="form-group">
             <label class="col-lg-4 control-label">Provinsi</label>
             <div class="col-lg-8">
-              <select class="form-control"  name="provinsi" id="provinsi" data-required="true">
+              <select class="form-control"  name="provinsi" id="provinsi" >
               <option value="" disabled <?php if ($data['provinsi']=="") echo "selected" ?>>Pilih Provinsi</option>
               <?php
                    foreach($provinsi->result_array() as $row) {
@@ -99,7 +99,7 @@
           <div class="form-group">
           <label class="col-lg-4 control-label">Kabupaten/Kota</label>
           <div class="col-lg-8">
-          <select class="form-control id_kota_kab"  name="kabupaten_kota"  id="kabupaten_kota" data-required="true">
+          <select class="form-control id_kota_kab"  name="kabupaten_kota"  id="kabupaten_kota" >
           <option value="" disabled <?php if ($data['kabupaten_kota']=="") echo "selected" ?>>Pilih Kabupaten/Kota</option>
             <?php
                  foreach($kabupaten->result_array() as $row) {
@@ -113,7 +113,7 @@
         <div class="form-group">
         <label class="col-lg-4 control-label">Kecamatan</label>
         <div class="col-lg-8">
-        <select class="form-control id_kota_kab"  name="kecamatan"  id="kecamatan" data-required="true" >
+        <select class="form-control id_kota_kab"  name="kecamatan"  id="kecamatan"  >
         <option value="" disabled  <?php if ($data['kecamatan']=="") echo "selected" ?>>Pilih Kecamatan</option>
           <?php
                foreach($kecamatan->result_array() as $row) {
@@ -126,7 +126,7 @@
       <div class="form-group">
       <label class="col-lg-4 control-label">Desa/Kelurahan</label>
       <div class="col-lg-8">
-        <select class="form-control"  name="desa_kelurahan" id="desa_kelurahan" data-required="true">
+        <select class="form-control"  name="desa_kelurahan" id="desa_kelurahan" >
         <option value="" disabled <?php if ($data['desa_kelurahan']=="") echo "selected" ?>>Pilih Desa/Kelurahan</option>
         <?php
              foreach($desa->result_array() as $row) {
@@ -175,7 +175,13 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Jarak Ke Sekolah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="jarak_ke_sekolah" value="<?php echo $data['jarak_ke_sekolah']; ?>" />
+                <select class="form-control"  name="jarak_ke_sekolah" id="jarak_ke_sekolah" data-required="">
+                  <option value="Kurang dari 1 Km" <?php if ($data['jarak_ke_sekolah']=='Kurang dari 1 Km')  echo "selected" ?> >Kurang dari 1 Km</option>
+                  <option value="1 - 3 Km" <?php if ($data['jarak_ke_sekolah']=='1 - 3 Km')  echo "selected" ?> >1 - 3 Km</option>
+                  <option value="3 - 5 Km" <?php if ($data['jarak_ke_sekolah']=='3 - 5 Km')  echo "selected" ?> >3 - 5 Km</option>
+                  <option value="5 - 10 Km" <?php if ($data['jarak_ke_sekolah']=='5 - 10 Km')  echo "selected" ?> >5 - 10 Km</option>
+                  <option value="Lebih dari 10 Km" <?php if ($data['jarak_ke_sekolah']=='Lebih dari 10 Km')  echo "selected" ?> >Lebih dari 10 Km</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
@@ -297,7 +303,16 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Penghasilan Orang Tua</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="penghasilan_orang_tua" value="<?php echo $data['penghasilan_orang_tua']; ?>" />
+                <label class="col-lg-4 control-label">Penghasilan Orang Tua (Rp)</label>
+                <div class="col-lg-8">
+                  <select class="form-control"  name="penghasilan_orang_tua" id="penghasilan_orang_tua" data-required="">
+                    <option value="Kurang dari 1juta" <?php if ($data['penghasilan_orang_tua']=='Kurang dari 1juta')  echo "selected" ?> >Kurang dari 1juta</option>
+                    <option value="1 - 2 juta" <?php if ($data['penghasilan_orang_tua']=='1 - 2 juta')  echo "selected" ?> >1 - 2 juta</option>
+                    <option value="2 - 5 juta" <?php if ($data['penghasilan_orang_tua']=='2 - 5 juta')  echo "selected" ?> >2 - 5 juta</option>
+                    <option value="5 - 10 juta" <?php if ($data['penghasilan_orang_tua']=='5 - 10 juta')  echo "selected" ?> >5 - 10 juta</option>
+                    <option value="Lebih dari 10 juta" <?php if ($data['penghasilan_orang_tua']=='Lebih dari 10 juta')  echo "selected" ?> >Lebih dari 10 juta</option>
+                  </select>
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -360,7 +375,7 @@
             <div class="form-group">
 									<label class="col-sm-4 control-label">Kelas Pondokan</label>
 									<div class="col-sm-8">
-										<select class="form-control m-b" name="pondokan" id="pondokan" data-required="true">
+										<select class="form-control m-b" name="pondokan" id="pondokan" >
 											<option value="" selected disabled>.: Pilih Kelas Pondokan:.</option>
 											<?php
 												foreach($pondokan->result_array() as $row){
@@ -373,7 +388,7 @@
             <div class="form-group">
 									<label class="col-sm-4 control-label">Kelas Afilasi</label>
 									<div class="col-sm-8">
-										<select class="form-control m-b" name="kelas" id="kelas" data-required="true">
+										<select class="form-control m-b" name="kelas" id="kelas" >
 											<option value="" selected disabled>.: Pilih Kelas Afilasi:.</option>
 											<?php
 												foreach($jenjang->result_array() as $row){
@@ -409,7 +424,11 @@
       &nbsp
       <a href="<?php echo base_url() ?>admin/datamaster/santriwatiedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Atur Ulang</a>
       &nbsp
+<<<<<<< HEAD
       <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santri</a>
+=======
+      <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santriwati</a>
+>>>>>>> menambah-ci
       </footer>
       </form>
 
