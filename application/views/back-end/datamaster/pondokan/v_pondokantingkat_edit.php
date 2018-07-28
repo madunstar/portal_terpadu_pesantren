@@ -8,10 +8,10 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Edit Tingkat pondokan
+					Ubah Tingkat pondokan
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Mengedit Data Tingkat pondokan","Gagal Mengedit Data Tingkat pondokan") ?>
+					<?php pesan_get('msg',"Berhasil Mengubah Data Tingkat pondokan","Gagal Mengubah Data Tingkat pondokan") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/pondokanedittingkat?id=<?php echo $data['idtingkatpondokan'] ?>&pondokan=<?php echo $pondokan['pondokan'] ?>"
 					method="post" enctype="multipart/form-data">
 					<a href="<?php echo base_url('admin/datamaster/pondokantingkat?pondokan='.$pondokan['pondokan'].'') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
@@ -34,7 +34,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/pondokantingkat?pondokan='.$pondokan['pondokan'].'') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Tingkat</a>
+						<i class="fa fa-list"></i> Daftar Tingkat</a>
 				</footer>
 				</form>
 

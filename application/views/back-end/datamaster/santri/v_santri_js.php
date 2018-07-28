@@ -23,8 +23,8 @@
             $(".hapus").click(function (e) {
             var v_nis = this.id;
             $.confirm({
-                title: 'Hapus!',
-                content: 'Yakin ingin menghapus ?',
+                title: 'Oops!',
+				content: 'Apakah anda yakin ingin menghapus data ini ?',
                 buttons: {
                     hapus: {
                         text: 'Hapus',

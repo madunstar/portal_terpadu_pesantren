@@ -20,8 +20,8 @@
                     <tr>
                       <th width="20%">Nama</th>
                       <th width="25%">Kelas</th>
-                      <th width="25%">Keperluan izin</th>
-                      <th>Tanggal izin</th>
+                      <th width="25%">Keperluan Izin</th>
+                      <th>Tanggal Izin</th>
 
                     </tr>
                   </thead>
@@ -56,8 +56,8 @@
                     <tr>
                       <th width="20%">Nama</th>
                       <th width="25%">Kelas</th>
-                      <th width="25%">Keperluan izin</th>
-                      <th>Tanggal izin</th>
+                      <th width="25%">Keperluan Izin</th>
+                      <th>Tanggal Izin</th>
 
                     </tr>
                   </thead>
@@ -144,8 +144,8 @@
                         <tr>
                           <th width="20%">Nama</th>
                           <th width="25%">Kelas</th>
-                          <th width="25%">Besar Pembayar</th>
-                          <th>Tanggal Bayar</th>
+                          <th width="25%">Besar Pembayaran SPP</th>
+                          <th>Tanggal Pembayar SPP</th>
 
                         </tr>
                       </thead>
@@ -181,8 +181,8 @@
                         <tr>
                           <th width="20%">Nama</th>
                           <th width="25%">Kelas</th>
-                          <th width="25%">Besar Pembayar</th>
-                          <th>Tanggal Bayar</th>
+                          <th width="25%">Besar Pembayaran SPP</th>
+                          <th>Tanggal Pembayaran SPP</th>
 
                         </tr>
                       </thead>
@@ -219,8 +219,8 @@
                         <tr>
                           <th width="20%">Nama</th>
                           <th width="25%">Kelas</th>
-                          <th width="25%">Besar Pembayar</th>
-                          <th>Tanggal Bayar</th>
+                          <th width="25%">Besar Pembayaran Denda</th>
+                          <th>Tanggal Pembayaran Denda</th>
 
                         </tr>
                       </thead>
@@ -256,8 +256,8 @@
                         <tr>
                           <th width="20%">Nama</th>
                           <th width="25%">Kelas</th>
-                          <th width="25%">Besar Pembayar</th>
-                          <th>Tanggal Bayar</th>
+                          <th width="25%">Besar Pembayaran Denda</th>
+                          <th>Tanggal Pembayaran Denda</th>
 
                         </tr>
                       </thead>

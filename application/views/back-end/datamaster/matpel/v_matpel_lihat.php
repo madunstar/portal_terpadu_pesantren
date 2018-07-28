@@ -54,10 +54,10 @@
 				</div>
 				<footer class="panel-footer text-right bg-light lter">
 					<a href="<?php echo base_url('admin/datamaster/matpeledit?id_matpel='.$data['id_mata_pelajaran'].'') ?>" class="btn btn-success btn-s-xs">
-						<i class="fa fa-edit"></i> Edit </a>
+						<i class="fa fa-edit"></i> Ubah </a>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/matpel') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Mata Pelajaran</a>
+						<i class="fa fa-list"></i> Daftar Mata Pelajaran</a>
 				</footer>
 				</form>
 

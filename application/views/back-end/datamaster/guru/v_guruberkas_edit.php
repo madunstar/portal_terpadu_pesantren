@@ -8,10 +8,10 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Edit Berkas guru
+					Ubah Berkas guru
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Mengedit Data Berkas guru","Gagal Mengedit Data Berkas guru") ?>
+					<?php pesan_get('msg',"Berhasil Mengubah Data Berkas guru","Gagal Mengubah Data Berkas guru") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/gurueditberkas?id=<?php echo $data['id_berkas'] ?>&nip=<?php echo $guru['nip_guru'] ?>"
 					method="post" enctype="multipart/form-data">
 					<a href="<?php echo base_url('admin/datamaster/guruberkas?nip='.$guru['nip_guru'].'') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
@@ -39,7 +39,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/guruberkas?nip='.$guru['nip_guru'].'') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Berkas</a>
+						<i class="fa fa-list"></i> Daftar Berkas</a>
 				</footer>
 				</form>
 

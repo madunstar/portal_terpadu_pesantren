@@ -2,13 +2,13 @@
 	<section class="vbox">
 		<section class="scrollable padder">
 			<div class="m-b-md">
-				<h3 class="m-b-none">Berkas Santri "
+				<h3 class="m-b-none">Berkas Santriwati "
 					<?php echo $santri['nama_lengkap'] ?> (
 					<?php echo $santri['nis_lokal'] ?>)"</h3>
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Edit Berkas Santri
+					Ubah Berkas Santri
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Mengedit Data Berkas Santri","Gagal Mengedit Data Berkas Santri") ?>
@@ -39,7 +39,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/santriwatiberkas?nis='.$santri['nis_lokal'].'') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Berkas</a>
+						<i class="fa fa-list"></i> Daftar Berkas</a>
 				</footer>
 				</form>
 

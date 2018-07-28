@@ -2,16 +2,16 @@
 	<section class="vbox">
 		<section class="scrollable padder">
 			<div class="m-b-md">
-				<h3 class="m-b-none">Berkas staff "
+				<h3 class="m-b-none">Berkas Staff "
 					<?php echo $staff['nama_lengkap'] ?> (
 					<?php echo $staff['nip_staff'] ?>)"</h3>
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Edit Berkas staff
+					Ubah Berkas staff
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Mengedit Data Berkas staff","Gagal Mengedit Data Berkas staff") ?>
+					<?php pesan_get('msg',"Berhasil Mengubah Data Berkas staff","Gagal Mengubah Data Berkas staff") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/staffeditberkas?id=<?php echo $data['id_berkas'] ?>&nip=<?php echo $staff['nip_staff'] ?>"
 					method="post" enctype="multipart/form-data">
 					<a href="<?php echo base_url('admin/datamaster/staffberkas?nip='.$staff['nip_staff'].'') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
@@ -39,7 +39,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/staffberkas?nip='.$staff['nip_staff'].'') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Berkas</a>
+						<i class="fa fa-list"></i> Daftar Berkas</a>
 				</footer>
 				</form>
 

@@ -47,10 +47,10 @@
 				</div>
 				<footer class="panel-footer text-right bg-light lter">
 					<a href="<?php echo base_url('admin/datamaster/kelasedit?kd_kelas='.$data['kd_kelas'].'') ?>" class="btn btn-success btn-s-xs">
-						<i class="fa fa-edit"></i> Edit </a>
+						<i class="fa fa-edit"></i> Ubah </a>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/kelas') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List kelas</a>
+						<i class="fa fa-list"></i> Daftar Kelas</a>
 				</footer>
 				</form>
 

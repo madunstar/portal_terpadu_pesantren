@@ -6,7 +6,7 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input Jenjang
+					Tambah Jenjang
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Menambahkan Jenjang","Gagal Menambahkan Jenjang") ?>
@@ -44,7 +44,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/jenjang') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Jenjang</a>
+						<i class="fa fa-list"></i> Daftar Jenjang</a>
 				</footer>
 				</form>
 				</div>

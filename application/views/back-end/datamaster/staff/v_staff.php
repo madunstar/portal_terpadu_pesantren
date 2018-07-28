@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        List Staff
+        Data Staff
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
@@ -19,7 +19,7 @@
               <th width="135px">Aksi</th>
               <th>Nama</th>
               <th>NIP</th>
-              <th>Gender</th>
+              <th>Jenis Kelamin</th>
               <th width="90px">Berkas</th>
             </tr>
           </thead>

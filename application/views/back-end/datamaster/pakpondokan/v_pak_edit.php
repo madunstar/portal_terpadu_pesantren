@@ -6,10 +6,10 @@
       </div>
       <section class="panel panel-default">
         <header class="panel-heading">
-          Jadwal
+          Edit Jadwal
         </header>
         <div class="panel-body">
-          <?php pesan_get('msg',"Berhasil Mengedit Data Kelas","Gagal Mengedit Data Kelas") ?>
+          <?php pesan_get('msg',"Berhasil Mengedit Data Jadwal","Gagal Mengedit Data Jadwal") ?>
           <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/datamaster/pakpondokanedit?id='.$data['id'].'') ?>"
             method="post">
             <a href="<?php echo base_url('admin/datamaster/pakpondokan') ?>" style="color:#3b994a;margin-left:10px">
@@ -40,7 +40,7 @@
                 &nbsp
                 <a href="<?php echo base_url('admin/datamaster/pakpondokanedit?id='.$data['id'].'') ?>"
                   class="btn btn-default btn-s-xs">
-                  <i class="fa fa-refresh"></i> Reset</a>
+                  <i class="fa fa-refresh"></i> Atur Ulang</a>
                   &nbsp
                   </footer>
                 </form>

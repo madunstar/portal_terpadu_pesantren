@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        List Pondokan Kelas
+        Data Pondokan Kelas
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
@@ -28,8 +28,8 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/pondokanedit?pondokan='.$row['pondokan'].'')."' class='btn btn-success btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
-                      <a href='#' class='btn btn-success btn-xs hapus' title='Hapus' id='".$row['pondokan']."'><i class='fa fa-trash-o'></i></a>
+                      <a href='".base_url('admin/datamaster/pondokanedit?pondokan='.$row['pondokan'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                      <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['pondokan']."'><i class='fa fa-trash-o'></i></a>
                       </td>
                       <td>".$row['pondokan']."</td>
                       <td>".$row['namapondokan']."</td>

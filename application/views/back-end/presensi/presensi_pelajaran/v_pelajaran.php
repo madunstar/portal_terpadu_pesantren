@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        List Pelajaran
+        Data Pelajaran
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
@@ -22,7 +22,7 @@
               <th>Nama Mata Pelajaran</th>
               <th>Tingkat Kelas</th>
               <th>Semester</th>
-              <th>Ruangan Kelas</th>
+              <th>Ruang Kelas</th>
             </tr>
           </thead>
           <tbody>

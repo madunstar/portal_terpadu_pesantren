@@ -6,13 +6,13 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        List Jadwal  Kelas Afilasi
+        Data Jadwal  Kelas Afilasi
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
         <?php pesan_get('msg',"Berhasil Menambah Jadwal","Gagal Menambah Jadwal") ?>
         <?php pesan_get('h',"Berhasil Menghapus Jadwal","Gagal Menghapus Jadwal") ?>
-        <?php pesan_get('ed',"Berhasil Mengedit Jadwal","Gagal Mengedit Jadwal") ?>
+        <?php pesan_get('ed',"Berhasil Mengubah Jadwal","Gagal Mengubah Jadwal") ?>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" style="margin: 10px 0 10px 10px" id="tambahjadwal">
         <i class="fa fa-plus"></i> Tambah Jadwal</button> &nbsp
         <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/datakelasbelawati" class="btn btn-s-md btn-default" ><i class="fa fa-arrow-left"></i> Kembali</a>

@@ -103,7 +103,7 @@
 								<i class="fa fa-save"></i> Simpan</button>
 							&nbsp
 							<a href="<?php echo base_url('admin/datamaster/datakelasbelajar') ?>" class="btn btn-default btn-s-xs">
-								<i class="fa fa-list"></i> List Kelas Belajar</a>
+								<i class="fa fa-list"></i> Daftar Kelas Belajar</a>
 							</form>
 
 						</footer>

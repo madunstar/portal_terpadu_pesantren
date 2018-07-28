@@ -6,13 +6,13 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        List Berkas Guru
+        Daftar Berkas Guru
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus  Data Berkas Guru","Gagal Menghapus Data Berkas Guru") ?>
       <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/gurutambahberkas?nip=<?php echo $guru['nip_guru'] ?>" class="btn btn-s-md btn-success " ><i class="fa fa-plus"></i> Tambah Berkas</a> &nbsp
-      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/guru" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> List Guru</a>
+      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/guru" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> Daftar Guru</a>
 
         <table class="table table-striped " id="datatable">
           <thead>

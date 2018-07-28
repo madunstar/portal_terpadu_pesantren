@@ -2,11 +2,11 @@
 	<section class="vbox">
 		<section class="scrollable padder">
 			<div class="m-b-md">
-				<h3 class="m-b-none">Prestasi Santri</h3>
+				<h3 class="m-b-none">Prestasi Santriwati</h3>
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input Prestasi  <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?>
+					Tambah Prestasi  <?php echo $santri['nama_lengkap']?> (<?php echo $santri['nis_lokal']?>)
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Menambahkan Prestasi","Gagal Menambahkan Prestasi") ?>
@@ -31,7 +31,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-lg-4 control-label">Tanggal Diperoleh</label>
+									<label class="col-lg-4 control-label">Waktu Prestasi Diperoleh</label>
 									<div class="col-lg-8">
 										<input type="text" class="form-control datepicker-input" data-date-format="yyyy-mm-dd" readonly name="tanggal_prestasi" data-required="true" placeholder="." value=""
 										/>
@@ -53,7 +53,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/prestasisantriwati?nis='.$nis_santri.'') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Prestasi</a>
+						<i class="fa fa-list"></i> Daftar Prestasi</a>
 				</footer>
 				</form>
 				</div>

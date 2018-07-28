@@ -6,10 +6,10 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Edit Data Pondokan
+					Ubah Data Pondokan
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Mengedit Data Pondokan","Gagal Mengedit Data Pondokan") ?>
+					<?php pesan_get('msg',"Berhasil Mengubah Data Pondokan","Gagal Mengubah Data Pondokan") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/pondokanedit?pondokan=<?php if (isset($pondokan2)) echo $pondokan2; else echo $data['pondokan']; ?>"
 					method="post">
 						<a href="<?php echo base_url('admin/datamaster/pondokan') ?>" style="color:#3b994a;margin-left:10px">
@@ -49,10 +49,10 @@
 					&nbsp
 					<a href="<?php echo base_url() ?>admin/datamaster/pondokanedit?pondokan=<?php if (isset($pondokan2)) echo $pondokan2; else echo $data['pondokan']; ?>"
 					class="btn btn-default btn-s-xs">
-						<i class="fa fa-refresh"></i> Reset</a>
+						<i class="fa fa-refresh"></i> Atur Ulang</a>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/pondokan') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Pondokan</a>
+						<i class="fa fa-list"></i> Daftar Pondokan</a>
 				</footer>
 				</form>
 

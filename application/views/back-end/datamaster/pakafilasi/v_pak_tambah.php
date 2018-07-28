@@ -6,10 +6,10 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input Data Jadwal
+					Tambah Data Jadwal
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Menambahkan Kelas","Gagal Menambahkan Kelas") ?>
+					<?php pesan_get('msg',"Berhasil Menambahkan Jadwal","Gagal Menambahkan Jadwal") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/pakafilasitambah"
 					method="post">
 						<a href="<?php echo base_url('admin/datamaster/pakafilasi') ?>" style="color:#3b994a;margin-left:10px">
@@ -39,7 +39,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/pakafilasi') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Pak</a>
+						<i class="fa fa-list"></i> Daftar Pak</a>
 				</footer>
 				</form>
 

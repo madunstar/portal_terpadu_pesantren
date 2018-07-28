@@ -6,10 +6,10 @@
       </div>
       <section class="panel panel-default">
         <header class="panel-heading">
-          Edit Data Kelas
+          Ubah Data Kelas
         </header>
         <div class="panel-body">
-          <?php pesan_get('msg',"Berhasil Mengedit Data Kelas","Gagal Mengedit Data Kelas") ?>
+          <?php pesan_get('msg',"Berhasil Mengubah Data Kelas","Gagal Mengubah Data Kelas") ?>
           <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url('admin/datamaster/kelasedit?kd_kelas='.$data['kd_kelas'].'') ?>"
             method="post">
             <a href="<?php echo base_url('admin/datamaster/kelas') ?>" style="color:#3b994a;margin-left:10px">
@@ -48,10 +48,10 @@
                 &nbsp
                 <a href="<?php echo base_url('admin/datamaster/kelasedit?kd_kelas='.$data['kd_kelas'].'') ?>"
                   class="btn btn-default btn-s-xs">
-                  <i class="fa fa-refresh"></i> Reset</a>
+                  <i class="fa fa-refresh"></i> Atur Ulang</a>
                   &nbsp
                   <a href="<?php echo base_url('admin/datamaster/kelas') ?>" class="btn btn-default btn-s-xs">
-                    <i class="fa fa-list"></i> List Mata Pelajaran</a>
+                    <i class="fa fa-list"></i> Daftar Kelas</a>
                   </footer>
                 </form>
 

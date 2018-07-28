@@ -132,10 +132,10 @@
 								</div>
 								<footer class="panel-footer text-right bg-light lter">
 									<a href="<?php echo base_url() ?>admin/datamaster/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>" type="submit" class="btn btn-success btn-s-xs">
-										<i class="fa fa-save"></i> Edit</a>
+										<i class="fa fa-save"></i> Ubah</a>
 									&nbsp
 									<a href="<?php echo base_url('admin/datamaster/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
-										<i class="fa fa-list"></i> List Kelas Belajar</a>
+										<i class="fa fa-list"></i> Daftar Kelas Belajar</a>
 							</form>
 							</footer>
 
