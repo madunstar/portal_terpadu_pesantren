@@ -11,7 +11,7 @@
         <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
-              <h4 class="font-bold">Input Bayar Infaq</h4>
+              <h4 class="font-bold">Tambah Pembayaran Infaq</h4>
             </header>
             <div class="panel-body">
                 <?php pesan_get('msg',"Berhasil Menambahkan Pembayaran","Gagal Menambahkan Pembayaran") ?>
@@ -57,7 +57,7 @@
                     </div>
                   </div>
                   <div class='form-group'>
-                  <label class="col-sm-2 control-label" for="input-id-1">Besar Bayar</label>
+                  <label class="col-sm-2 control-label" for="input-id-1">Besar Pembayaran</label>
                   <div class="col-sm-5">
                     <select class="form-control" name="besarbayar" data-required="true">
                       <?php $d = 150000;

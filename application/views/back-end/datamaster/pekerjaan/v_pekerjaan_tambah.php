@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Input Data Pekerjaan
+        Tambah Data Pekerjaan
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Data Pekerjaan","Gagal Menambahkan Data Pekerjaan") ?>
@@ -36,7 +36,7 @@
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
-        <a href="<?php echo base_url('admin/datamaster/pekerjaan') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Pekerjaan</a>
+        <a href="<?php echo base_url('admin/datamaster/pekerjaan') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Data Pekerjaan</a>
       </footer>
       </form>
 

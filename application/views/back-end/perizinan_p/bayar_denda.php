@@ -11,7 +11,7 @@
         <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
-              <h4 class="font-bold">Input Data Santri Bayar Denda</h4>
+              <h4 class="font-bold">Tambah Data Santri Bayar Denda</h4>
             </header>
             <div class="panel-body">
               <form class="bs-example form-horizontal" data-validate="parsley" action="" method="post">

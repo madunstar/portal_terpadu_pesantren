@@ -6,10 +6,10 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Edit Data Pekerjaan
+        Ubah Data Pekerjaan
       </header>
       <div class="panel-body">
-      <?php pesan_get('msg',"Berhasil Mengedit Data Pekerjaan","Gagal Mengedit Data Pekerjaan") ?>
+      <?php pesan_get('msg',"Berhasil Mengubah Data Pekerjaan","Gagal Mengubah Data Pekerjaan") ?>
        <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/pekerjaanedit?id_pekerjaan=<?php if (isset($id_pekerjaanlama)) echo $id_pekerjaanlama; else echo $data['id_pekerjaan']; ?>" method="post">
        <a href="<?php echo base_url('admin/datamaster/pekerjaan') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
@@ -39,9 +39,9 @@
       <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
       &nbsp
       <a href="<?php echo base_url() ?>admin/datamaster/pekerjaanedit?id_pekerjaan=<?php if (isset($id_pekerjaanlama)) echo $id_pekerjaanlama;
-       else echo $data['id_pekerjaan']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
+       else echo $data['id_pekerjaan']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Atur Ulang</a>
       &nbsp
-      <a href="<?php echo base_url('admin/datamaster/pekerjaan') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Pekerjaan</a>
+      <a href="<?php echo base_url('admin/datamaster/pekerjaan') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Data Pekerjaan</a>
       </footer>
       </form>
 

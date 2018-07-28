@@ -19,12 +19,12 @@
                 <table class="table table-striped m-b-none" id="datatable">
                   <thead>
                     <tr>
-                      <th>Tanggal Bayar</th>
+                      <th>Tanggal Pembayaran</th>
                       <th>Petugas</th>
                       <th>Infaq Bulan</th>
                       <th>Infaq Tahun</th>
                       <th>Status Infaq</th>
-                      <th>Besar Bayar</th>
+                      <th>Besar Pembayaran</th>
                     </tr>
                   </thead>
                   <tbody>

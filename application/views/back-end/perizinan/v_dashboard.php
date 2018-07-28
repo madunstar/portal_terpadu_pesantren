@@ -70,8 +70,8 @@
                   <thead>
                     <tr>
                       <th width="20%">Nama</th>
-                      <th width="25%">Keperluan izin</th>
-                      <th>tanggal izin</th>
+                      <th width="25%">Keperluan Izin</th>
+                      <th>Tanggal Izin</th>
                       <th>Penjemput</th>
                       <th>Status Izin</th>
                     </tr>
@@ -117,11 +117,11 @@
                   <div class="panel-body clearfix collapse" id='detil1'>
                     <div class="dropdown m-r">
                       <div class="well b bg-light m-t">
-                        <div class="h5 font-bold">Detil</div>
+                        <div class="h5 font-bold">Detail</div>
                       <div class="line pull-in line-dashed b-b"></div>
                         <table class="table table-hover table-striped">
                           <tr>
-                            <td>Stantri izin</td>
+                            <td>Santri Izin</td>
                             <td><?php echo $datatahunini['total'] ?></td>
                           </tr>
                           <tr>
@@ -146,11 +146,11 @@
                   <div class="panel-body clearfix collapse" id='detil2'>
                     <div class="dropdown m-r">
                       <div class="well b bg-light m-t">
-                        <div class="h5 font-bold">Detil</div>
+                        <div class="h5 font-bold">Detail</div>
                       <div class="line pull-in line-dashed b-b"></div>
                         <table class="table table-hover table-striped">
                           <tr>
-                            <td>Stantri izin</td>
+                            <td>Santri Izin</td>
                             <td><?php echo $datatahunlalu['total'] ?></td>
                           </tr>
                           <tr>
@@ -174,11 +174,11 @@
                   <div class="panel-body clearfix collapse" id='detil3'>
                     <div class="dropdown m-r">
                       <div class="well b bg-light m-t">
-                        <div class="h5 font-bold">Detil</div>
+                        <div class="h5 font-bold">Detail</div>
                       <div class="line pull-in line-dashed b-b"></div>
                         <table class="table table-hover table-striped">
                           <tr>
-                            <td>Stantri izin</td>
+                            <td>Santri Izin</td>
                             <td><?php echo $datatahunbelakang['total'] ?></td>
                           </tr>
                           <tr>
@@ -204,16 +204,16 @@
             <div class="col-sm-6">
               <section class="panel panel-default">
                 <header class="panel-heading">
-                  <h4 class="font-bold">Data Pembayaran Infaq Denda terakhir</h4>
+                  <h4 class="font-bold">Data Pembayaran Infaq Denda Terakhir</h4>
                 </header>
                 <div class="panel-body">
                   <div class="table-responsive">
                     <table class="table table-striped m-b-none" id="datacontoh">
                       <thead>
                         <tr>
-                          <th >tanggal Bayar</th>
+                          <th >Tanggal Pembayaran</th>
                           <th width="30%">Nama</th>
-                          <th >Besar Bayar</th>
+                          <th >Besar Pembayaran</th>
                         </tr>
                       </thead>
                       <tbody>

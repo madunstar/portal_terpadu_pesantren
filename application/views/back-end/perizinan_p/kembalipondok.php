@@ -11,7 +11,7 @@
         <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
-              <h4 class="font-bold">Input Data Santriwati Kembali ke Pondok</h4>
+              <h4 class="font-bold">Tambah Data Santriwati Kembali ke Pondok</h4>
             </header>
             <div class="panel-body">
 
