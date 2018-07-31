@@ -9,7 +9,7 @@
 					Edit Data Guru
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Mengedit Data Guru","Gagal Mengedit Data Guru") ?>
+					<?php pesan_get('msg',"Berhasil Mengubah Data Guru","Gagal Mengubah Data Guru") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/guruedit?nip=<?php if (isset($nip_guru2)) echo $nip_guru2; else echo $data['nip_guru']; ?>"
 					method="post" enctype="multipart/form-data">
 						<a href="<?php echo base_url('admin/datamaster/guru') ?>" style="color:#3b994a;margin-left:10px">
@@ -210,10 +210,10 @@
 					&nbsp
 					<a href="<?php echo base_url() ?>admin/datamaster/guruedit?nip=<?php if (isset($nip_guru2)) echo $nip_guru2; else echo $data['nip_guru']; ?>"
 					class="btn btn-default btn-s-xs">
-						<i class="fa fa-refresh"></i> Reset</a>
+						<i class="fa fa-refresh"></i> Atur Ulang</a>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/guru') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Guru</a>
+						<i class="fa fa-list"></i> Daftar Guru</a>
 				</footer>
 				</form>
 

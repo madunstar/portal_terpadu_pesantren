@@ -369,7 +369,7 @@
       </div>
       <footer class="panel-footer text-right bg-light lter">
         &nbsp
-        <a href="<?php echo base_url('admin/perizinansantri/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
+        <a href="<?php echo base_url('admin/perizinansantri/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santri</a>
       </footer>
       </form>
 

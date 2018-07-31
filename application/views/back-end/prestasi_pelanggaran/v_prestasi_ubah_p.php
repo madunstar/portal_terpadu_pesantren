@@ -6,7 +6,7 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Ubah Prestasi  <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?>
+					Ubah Prestasi  <?php echo $santri['nama_lengkap']?> (<?php echo $santri['nis_lokal']?>)
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Mengubah Prestasi","Gagal Mengubah Prestasi") ?>
@@ -33,7 +33,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-lg-4 control-label">Tanggal Diperoleh</label>
+									<label class="col-lg-4 control-label">Waktu Prestasi Diperoleh</label>
 									<div class="col-lg-8">
 										<input type="text" class="form-control datepicker-input" data-date-format="yyyy-mm-dd" readonly name="tanggal_prestasi" data-required="true" placeholder="." value="<?php echo $data['tanggal_prestasi']?>"
 										/>
@@ -55,10 +55,11 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp;
 					<a href="<?php echo base_url() ?>admin/datamaster/ubahprestasip?nis=<?php echo $data['nis_santri']; ?>&id=<?php if (isset($id_prestasilama)) echo $id_prestasilama;
-		       else echo $data['id_prestasi']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
+		       else echo $data['id_prestasi']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Atur Ulang</a>
+
 						 &nbsp;
 					<a href="<?php echo base_url('admin/datamaster/prestasisantriwati?nis='.$data['nis_santri'].'') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Prestasi</a>
+						<i class="fa fa-list"></i> Daftar Prestasi</a>
 				</footer>
 				</form>
 				</div>

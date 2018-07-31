@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Input Data Kota dan Kabupaten Indonesia
+        Tambah Data Kota dan Kabupaten Indonesia
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Data Kota dan Kabupaten","Gagal Menambahkan Data Kota dan Kabupaten") ?>
@@ -37,7 +37,7 @@
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
-        <a href="<?php echo base_url('admin/datamaster/kota_kab') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Kota dan Kabupaten</a>
+        <a href="<?php echo base_url('admin/datamaster/kota_kab') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Data Kota dan Kabupaten</a>
       </footer>
       </form>
 

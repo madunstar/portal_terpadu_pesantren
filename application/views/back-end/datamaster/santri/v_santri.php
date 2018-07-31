@@ -6,7 +6,7 @@
 			</div>
 			<section class="panel panel-default" style="width:100%">
 				<header class="panel-heading">
-					List Santri
+					Data Santri
 					<i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
 				</header>
 				<div class="table-responsive">
@@ -14,7 +14,7 @@
 					<?php pesan_get('msg',"Berhasil Menghapus Data Santri","Gagal Menghapus Data Santri") ?>
 
 					<a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/santritambah" class="btn btn-s-md btn-success btn-rounded">
-						<i class="fa fa-plus"></i> Tambah data</a>
+						<i class="fa fa-plus"></i> Tambah Data</a>
 							<button class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#import" ><i class="fa fa-download"></i> Import Data</button>
 
 					<table class="table table-striped " id="datatable">
@@ -24,10 +24,10 @@
 								<th>Nama</th>
 								<th>NIS</th>
 								<th>NISN</th>
-								<th>Gender</th>
+								<th>Jenis Kelamin</th>
 								<th>Pondokan</th>
 								<th>Afilasi</th>
-								<th>Ekstra</th>
+								<th>Pilihan Lainnya</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -46,15 +46,14 @@
 	 <div class='modal-content'>
 		 <div class='modal-header bg-default'>
 
-			 <h4 class='modal-title'>Upload file Excel</h4>
+			 <h4 class='modal-title'>Unggah File Excel</h4>
 		 </div>
 		 <div class='modal-body form-horizontal'>
 			 <form class="" action="<?php echo base_url() ?>admin/datamaster/santriimport" method="post"  enctype="multipart/form-data">
 				 <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="excel_santri" data-required="true">
-				 <button class="btn btn-primary" type="submit" name="button">upload</button>
+				 <button class="btn btn-primary" type="submit" name="button">Unggah</button>
 				 <br>
-
-				 <p><small>Pastikan Format Isian File Excel Data Santri Sesusai dengan <a class="text-info" href="<?php echo base_url() ?>admin/datamaster/downloadcontohimport"><b>Contoh Berikut</b></a></small></p>
+				 <p><small>Pastikan Format Data Pada File Excel Data Santri Sesuai Dengan <a class="text-info" href="<?php echo base_url() ?>admin/datamaster/downloadcontohimport"><b>Contoh Berikut</b></a></small></p>
 			 </form>
 		 </div>
 		 <div class='modal-footer'>

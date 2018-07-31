@@ -6,7 +6,7 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input Pelanggaran  <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?>
+					Tambah Pelanggaran  <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?>
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Menambahkan pelanggaran","Gagal Menambahkan pelanggaran") ?>
@@ -17,7 +17,7 @@
 						<div class="row">
 							<div class="col-md-8">
 								<div class="form-group">
-									<label class="col-lg-4 control-label">pelanggaran</label>
+									<label class="col-lg-4 control-label">Pelanggaran</label>
 									<div class="col-lg-8">
 										<input type="text" class="form-control" name="nama_pelanggaran" data-required="true" placeholder="" value=""
 										/>
@@ -53,7 +53,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/pelanggaransantri?nis='.$nis_santri.'') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List pelanggaran</a>
+						<i class="fa fa-list"></i> Daftar Pelanggaran</a>
 				</footer>
 				</form>
 				</div>

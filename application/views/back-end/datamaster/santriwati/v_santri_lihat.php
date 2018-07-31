@@ -6,10 +6,12 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Lihat Santriwati
+
+        Lihat Santriwati 
+
       </header>
       <div class="panel-body">
-      <?php pesan_get('msg',"Berhasil Menambahkan Santri","Gagal Menambahkan Santri") ?>
+      <?php pesan_get('msg',"Berhasil Menambahkan Santriwati","Gagal Menambahkan Santriwati") ?>
        <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/santritambah" method="post">
        <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
@@ -368,9 +370,15 @@
 
       </div>
       <footer class="panel-footer text-right bg-light lter">
+<<<<<<< HEAD
+      <a href="<?php echo base_url('admin/datamaster/santriwatiedit?nis=1') ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Ubah </a>
+        &nbsp
+        <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santriwati</a>
+=======
       <a href="<?php echo base_url('admin/datamaster/santriwatiedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-warning btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
         &nbsp
         <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santriwati</a>
+>>>>>>> menambah-ci
       </footer>
       </form>
 

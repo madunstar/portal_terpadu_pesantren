@@ -6,7 +6,7 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input Data Mata Pelajaran
+					Tambah Data Mata Pelajaran
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Menambahkan Mata Pelajaran","Gagal Menambahkan Mata Pelajaran") ?>

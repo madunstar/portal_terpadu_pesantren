@@ -6,7 +6,7 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input Data Pelajaran
+					Tambah Data Pelajaran
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Menambahkan Pelajaran","Gagal Menambahkan Pelajaran") ?>
@@ -50,7 +50,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/pelajaran') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Pelajaran</a>
+						<i class="fa fa-list"></i> Daftar Pelajaran</a>
 				</footer>
 				</form>
 

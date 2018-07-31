@@ -5,7 +5,7 @@
     <header class="header b-b b-light hidden-print">
     <a href="<?php echo base_url() ?>admin/datamaster/printkelaspondokan?id=<?php echo $data2['id_kelas_belajar'] ?>" class="btn btn-sm btn-warning pull-right">Kembali</a>
       <p class="pull-right"></p>
-      <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>&nbsp;&nbsp;
+      <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Cetak</a>&nbsp;&nbsp;
       <p>Daftar Presensi Santri</p>
     </header>
 

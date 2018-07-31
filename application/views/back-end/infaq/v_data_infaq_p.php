@@ -55,8 +55,8 @@
                     <tr>
                       <th>NIS</th>
                       <th>Nama</th>
-                      <th>Besar Bayar</th>
-                      <th>Tanggal Bayar</th>
+                      <th>Besar Pembayaran</th>
+                      <th>Tanggal Pembayaran</th>
                       <th>Petugas</th>
                       <th>Aksi</th>
                     </tr>

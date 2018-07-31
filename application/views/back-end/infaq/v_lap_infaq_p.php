@@ -5,8 +5,8 @@
     <header class="header b-b b-light hidden-print">
       <a href="<?php echo base_url() ?>admin/datamaster/databayarinfaqp" class="btn btn-sm btn-warning pull-right">Kembali</a>
       <p class="pull-right"></p>
-      <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>&nbsp;&nbsp;
-      <p>Laporan Pembayran Infaq</p>
+      <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Cetak</a>&nbsp;&nbsp;
+      <p>Laporan Pembayaran Infaq Santriwati</p>
     </header>
 
     <section class="scrollable wrapper">
@@ -27,16 +27,16 @@
       </div>
       <div class="line pull-in line-dashed b-b"></div>
       <br>
-      <h5>Laporan Pembayran Infaq <b>Bulan <?php echo bulan($bulan) ?> Tahun <?php echo $tahun ?></b></h5>
+      <h5>Laporan Pembayaran Infaq Santriwati<b>Bulan <?php echo bulan($bulan) ?> Tahun <?php echo $tahun ?></b></h5>
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>no</th>
+            <th>No</th>
             <th>NIS</th>
             <th>Nama</th>
-            <th>Tanggal Bayar</th>
+            <th>Tanggal Pembayaran</th>
             <th>Status Infaq</th>
-            <th>Besar Bayar</th>
+            <th>Besar Pembayaran</th>
           </tr>
         </thead>
         <tbody>
@@ -51,7 +51,7 @@
                 <td>".$row['nama_lengkap']."</td>
                 <td>".$row['tanggal_bayar']."</td>
                 <td>".$row['status_bayar']."</td>
-                <td>".$row['besar_bayar']."</td>
+                <td> Rp. ".$row['besar_bayar']."</td>
               </tr>
             "; $i++;
           }

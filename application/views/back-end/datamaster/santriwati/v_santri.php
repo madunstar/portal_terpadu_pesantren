@@ -6,7 +6,9 @@
 			</div>
 			<section class="panel panel-default" style="width:100%">
 				<header class="panel-heading">
-					List Santriwati
+
+					Data Santriwati
+
 					<i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
 				</header>
 				<div class="table-responsive">
@@ -24,7 +26,7 @@
 								<th>Nama</th>
 								<th>NIS</th>
 								<th>NISN</th>
-								<th>Gender</th>
+								<th>Jenis Kelamin</th>
 								<th>Pondokan</th>
 								<th>Afilasi</th>
 								<th>Ekstra</th>
@@ -46,7 +48,7 @@
 	 <div class='modal-content'>
 		 <div class='modal-header bg-default'>
 
-			 <h4 class='modal-title'>Upload file Excel</h4>
+			 <h4 class='modal-title'>Unggah file Excel</h4>
 		 </div>
 		 <div class='modal-body form-horizontal'>
 			 <form class="" action="<?php echo base_url() ?>admin/datamaster/santriwatiimport" method="post"  enctype="multipart/form-data">
@@ -54,7 +56,7 @@
 				 <button class="btn btn-primary" type="submit" name="button">upload</button>
 				 <br>
 
-				 <p><small>Pastikan Format Isian File Excel Data Santri Sesusai dengan <a class="text-info" href="<?php echo base_url() ?>admin/datamaster/downloadcontohimport"><b>Contoh Berikut</b></a></small></p>
+				 <p><small>Pastikan Format Isian File Excel Data Santri Sesuai dengan <a class="text-info" href="<?php echo base_url() ?>admin/datamaster/downloadcontohimport"><b>Contoh Berikut</b></a></small></p>
 			 </form>
 		 </div>
 		 <div class='modal-footer'>

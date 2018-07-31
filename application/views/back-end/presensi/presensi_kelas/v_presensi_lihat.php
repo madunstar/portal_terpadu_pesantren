@@ -10,7 +10,7 @@
 				<div class="col-sm-12">
 					<section class="panel panel-default">
 						<header class="panel-heading">
-							<h4 class="font-bold">Edit Data Presensi Kelas Afilasi</h4>
+							<h4 class="font-bold">Ubah Data Presensi Kelas Afilasi</h4>
 						</header>
 						<div class="panel-body">
 							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/editkelasbelajar?id=<?php echo $data['id_kelas_belajar'] ?>"
@@ -131,11 +131,13 @@
 									</div>
 								</div>
 								<footer class="panel-footer text-right bg-light lter">
+
 									<a href="<?php echo base_url() ?>admin/datamaster/editkelasbelajar?id=<?php echo $data['id_kelas_belajar'] ?>" type="submit" class="btn btn-warning btn-s-xs">
-										<i class="fa fa-save"></i> Edit</a>
+										<i class="fa fa-save"></i> Ubah</a>
+
 									&nbsp
 									<a href="<?php echo base_url('admin/datamaster/datakelasbelajar') ?>" class="btn btn-default btn-s-xs">
-										<i class="fa fa-list"></i> List Kelas Belajar</a>
+										<i class="fa fa-list"></i> Daftar Kelas Belajar</a>
 							</form>
 							</footer>
 

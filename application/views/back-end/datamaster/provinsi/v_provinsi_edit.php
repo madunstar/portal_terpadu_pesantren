@@ -6,10 +6,10 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Edit Data Provinsi Indonesia
+        Ubah Data Provinsi Indonesia
       </header>
       <div class="panel-body">
-      <?php pesan_get('msg',"Berhasil Mengedit Data Provinsi","Gagal Mengedit Data Provinsi") ?>
+      <?php pesan_get('msg',"Berhasil Mengubah Data Provinsi","Gagal Mengubah Data Provinsi") ?>
        <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/provinsiedit?id_provinsi=<?php if (isset($id_provinsilama)) echo $id_provinsilama; else echo $data['id_provinsi']; ?>" method="post">
        <a href="<?php echo base_url('admin/datamaster/provinsi') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
@@ -39,9 +39,9 @@
       <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
       &nbsp
       <a href="<?php echo base_url() ?>admin/datamaster/provinsiedit?id_provinsi=<?php if (isset($id_provinsilama)) echo $id_provinsilama;
-       else echo $data['id_provinsi']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
+       else echo $data['id_provinsi']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Atur Ulang</a>
       &nbsp
-      <a href="<?php echo base_url('admin/datamaster/provinsi') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Provinsi</a>
+      <a href="<?php echo base_url('admin/datamaster/provinsi') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Data Provinsi</a>
       </footer>
       </form>
 

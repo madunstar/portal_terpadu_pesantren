@@ -7,7 +7,7 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input Pondokan Tingkat
+					Tambah Pondokan Tingkat
 				</header>
 				<div class="panel-body">
 				
@@ -32,7 +32,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/pondokantingkat?pondokan='.$pondokan['pondokan'].'') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Tingkat</a>
+						<i class="fa fa-list"></i> Daftar Tingkat</a>
 				</footer>
 				</form>
 

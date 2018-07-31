@@ -1,7 +1,7 @@
 <section id="content">
   <section class="vbox bg-white">
     <header class="header b-b b-light hidden-print">
-      <button href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</button>
+      <button href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Cetak</button>
       <p>Surat Izin</p>
     </header>
     <section class="scrollable wrapper">

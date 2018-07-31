@@ -6,7 +6,8 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Input Santriwati
+
+        Tambah Santriwati
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Santriwati","Gagal Menambahkan Santriwati") ?>
@@ -406,7 +407,11 @@
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
+<<<<<<< HEAD
+        <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santriwati</a>
+=======
         <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santriwati</a>
+>>>>>>> menambah-ci
       </footer>
       </form>
 

@@ -11,7 +11,7 @@
         <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
-              <h4 class="font-bold">Input Data Santri Keluar Pondok</h4>
+              <h4 class="font-bold"> Buat Perizinan Santri Keluar Pondok</h4>
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Data Penjemput","Gagal Menghapus Data Penjemput") ?>

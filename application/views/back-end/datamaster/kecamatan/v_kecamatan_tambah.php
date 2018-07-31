@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Input Data Kecamatan Indonesia
+        Tambah Data Kecamatan Indonesia
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Data Kecamatan","Gagal Menambahkan Data Kecamatan") ?>
@@ -45,7 +45,7 @@
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
-        <a href="<?php echo base_url('admin/datamaster/kecamatan') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Kecamatan</a>
+        <a href="<?php echo base_url('admin/datamaster/kecamatan') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Data Kecamatan</a>
       </footer>
       </form>
 

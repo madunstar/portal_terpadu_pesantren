@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Edit Data Santriwati
+        Ubah Data Santriwati
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Mengedit Data Santri","Gagal Mengedit Data Santri") ?>
@@ -400,7 +400,7 @@
               </div>
 
             <div class="form-group">
-                <label class="col-sm-4 control-label">Foto</label>
+                <label class="col-sm-4 control-label">Unggah Foto</label>
                 <div class="col-sm-8">
                   <input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="foto">
                 </div>
@@ -422,9 +422,13 @@
       <footer class="panel-footer text-right bg-light lter">
       <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
       &nbsp
-      <a href="<?php echo base_url() ?>admin/datamaster/santriwatiedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
+      <a href="<?php echo base_url() ?>admin/datamaster/santriwatiedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Atur Ulang</a>
       &nbsp
+<<<<<<< HEAD
+      <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santri</a>
+=======
       <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santriwati</a>
+>>>>>>> menambah-ci
       </footer>
       </form>
 

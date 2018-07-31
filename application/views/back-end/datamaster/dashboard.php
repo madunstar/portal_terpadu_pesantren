@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-12">
 			<section class="panel panel-default">
             <header class="panel-heading">
               <h4 class="font-bold">Data Perizinan Santri Terakhir</h4>
@@ -20,8 +20,8 @@
                     <tr>
                       <th width="20%">Nama</th>
                       <th width="25%">Kelas</th>
-                      <th width="25%">Keperluan izin</th>
-                      <th>Tanggal izin</th>
+                      <th width="25%">Keperluan Izin</th>
+                      <th>Tanggal Izin</th>
 
                     </tr>
                   </thead>
@@ -41,10 +41,10 @@
             <div class="panel-footer text-right">
               <a href="<?php echo base_url()?>admin/datamaster/datakeluar" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                </div>
-			</section>
+			
 			</div>
 		  
-		  <div class="col-sm-6">
+		  <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
               <h4 class="font-bold">Data Perizinan Santriwati Terakhir</h4>
@@ -56,8 +56,8 @@
                     <tr>
                       <th width="20%">Nama</th>
                       <th width="25%">Kelas</th>
-                      <th width="25%">Keperluan izin</th>
-                      <th>Tanggal izin</th>
+                      <th width="25%">Keperluan Izin</th>
+                      <th>Tanggal Izin</th>
 
                     </tr>
                   </thead>
@@ -80,8 +80,8 @@
                 </div>
 			</section>
           </div>
-	
-
+		</div>
+		<div class="row">
           <div class="col-sm-6">
             <section class="panel panel-default">
               <header class="panel-heading bg-light no-border">
@@ -104,7 +104,7 @@
                 <div class="panel-footer text-right bg-muted">
                   <a href="<?php echo base_url()?>admin/datamaster/datakeluar" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                 </div>
-              </section>
+           
             </div>
 			
 			<div class="col-sm-6">
@@ -129,10 +129,10 @@
                 <div class="panel-footer text-right bg-muted">
                   <a href="<?php echo base_url()?>admin/datamaster/datakeluarp" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                 </div>
-              </section>
+              
             </div>
 			
-		<div class="col-sm-6">
+		<div class="col-sm-12">
               <section class="panel panel-default">
                 <header class="panel-heading">
                   <h4 class="font-bold">Data Pembayaran Infaq SPP Santri terakhir</h4>
@@ -144,8 +144,8 @@
                         <tr>
                           <th width="20%">Nama</th>
                           <th width="25%">Kelas</th>
-                          <th width="25%">Besar Pembayar</th>
-                          <th>Tanggal Bayar</th>
+                          <th width="25%">Besar Pembayaran SPP</th>
+                          <th>Tanggal Pembayar SPP</th>
 
                         </tr>
                       </thead>
@@ -167,9 +167,9 @@
                   <a href="<?php echo base_url()?>admin/datamaster/databayarinfaq" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                 </div>
               
-			  </div>
+          </div>
 			  
-			  <div class="col-sm-6">
+			  <div class="col-sm-12">
               <section class="panel panel-default">
                 <header class="panel-heading">
                   <h4 class="font-bold">Data Pembayaran Infaq SPP Santriwati Terakhir</h4>
@@ -181,8 +181,8 @@
                         <tr>
                           <th width="20%">Nama</th>
                           <th width="25%">Kelas</th>
-                          <th width="25%">Besar Pembayar</th>
-                          <th>Tanggal Bayar</th>
+                          <th width="25%">Besar Pembayaran SPP</th>
+                          <th>Tanggal Pembayaran SPP</th>
 
                         </tr>
                       </thead>
@@ -203,11 +203,10 @@
                 <div class="panel-footer text-right">
                   <a href="<?php echo base_url()?>admin/datamaster/databayarinfaqp" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                 </div>
-              </div>
-			  
-            </div>
+			 
+          </div>
           
-        	
+			
             <div class="col-sm-6">
               <section class="panel panel-default">
                 <header class="panel-heading">
@@ -220,8 +219,8 @@
                         <tr>
                           <th width="20%">Nama</th>
                           <th width="25%">Kelas</th>
-                          <th width="25%">Besar Pembayar</th>
-                          <th>Tanggal Bayar</th>
+                          <th width="25%">Besar Pembayaran Denda</th>
+                          <th>Tanggal Pembayaran Denda</th>
 
                         </tr>
                       </thead>
@@ -242,7 +241,8 @@
                 <div class="panel-footer text-right">
                   <a href="<?php echo base_url()?>admin/datamaster/datadenda" ><button class="btn btn-sm btn-info">Selengkapnya <span class="fa fa-arrow-circle-right"></span></button></a>
                 </div>
-              </div>
+              
+          </div>
 			  
 			  <div class="col-sm-6">
               <section class="panel panel-default">
@@ -256,8 +256,8 @@
                         <tr>
                           <th width="20%">Nama</th>
                           <th width="25%">Kelas</th>
-                          <th width="25%">Besar Pembayar</th>
-                          <th>Tanggal Bayar</th>
+                          <th width="25%">Besar Pembayaran Denda</th>
+                          <th>Tanggal Pembayaran Denda</th>
 
                         </tr>
                       </thead>
@@ -282,9 +282,8 @@
             </div>
           </section>
         </section>
-      
+    
 	  
 	  </section>
     </section>
-
   </section>

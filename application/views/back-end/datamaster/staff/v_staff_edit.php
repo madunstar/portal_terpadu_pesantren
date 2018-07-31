@@ -6,10 +6,10 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Edit Data Staff
+					Ubah Data Staff
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Mengedit Data Staff","Gagal Mengedit Data Staff") ?>
+					<?php pesan_get('msg',"Berhasil Mengubah Data Staff","Gagal Mengubah Data Staff") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/staffedit?nip=<?php if (isset($nip_staff2)) echo $nip_staff2; else echo $data['nip_staff']; ?>"
 					method="post">
 						<a href="<?php echo base_url('admin/datamaster/staff') ?>" style="color:#3b994a;margin-left:10px">
@@ -168,10 +168,10 @@
 					&nbsp
 					<a href="<?php echo base_url() ?>admin/datamaster/staffedit?nip=<?php if (isset($nip_staff2)) echo $nip_staff2; else echo $data['nip_staff']; ?>"
 					class="btn btn-default btn-s-xs">
-						<i class="fa fa-refresh"></i> Reset</a>
+						<i class="fa fa-refresh"></i> Atur Ulang</a>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/staff') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Staff</a>
+						<i class="fa fa-list"></i> Daftar Staff</a>
 				</footer>
 				</form>
 

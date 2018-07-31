@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Input Data Kelurahan dan Desa Indonesia
+        Tambah Data Kelurahan dan Desa Indonesia
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Data Kelurahan dan Desa","Gagal Menambahkan Data Kelurahan dan Desa") ?>
@@ -99,7 +99,7 @@
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
-        <a href="<?php echo base_url('admin/datamaster/kel_desa') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Kelurahan dan Desa</a>
+        <a href="<?php echo base_url('admin/datamaster/kel_desa') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Data Kelurahan dan Desa</a>
       </footer>
       </form>
 
