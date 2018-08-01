@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Input Data Provinsi Indonesia
+        Tambah Data Provinsi Indonesia
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Data Provinsi","Gagal Menambahkan Data Provinsi") ?>
@@ -36,7 +36,7 @@
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
-        <a href="<?php echo base_url('admin/datamaster/provinsi') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Provinsi</a>
+        <a href="<?php echo base_url('admin/datamaster/provinsi') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Data Provinsi</a>
       </footer>
       </form>
 

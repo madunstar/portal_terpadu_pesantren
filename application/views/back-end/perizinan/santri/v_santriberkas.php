@@ -6,11 +6,11 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        List Berkas Santri
+        Daftar Berkas Santri
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="table-responsive">
-      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/perizinansantri/santri" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> List Santri</a>
+      <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/perizinansantri/santri" class="btn btn-s-md btn-default" ><i class="fa fa-list"></i> Daftar Santri</a>
         <table class="table table-striped " id="datatable">
           <thead>
             <tr>

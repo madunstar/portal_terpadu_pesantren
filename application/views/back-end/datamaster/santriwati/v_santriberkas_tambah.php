@@ -8,7 +8,8 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input Berkas Santriwati
+					Tambah Berkas Santri
+
 				</header>
 				<div class="panel-body">
 
@@ -39,7 +40,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/santriwatiberkas?nis='.$santri['nis_lokal'].'') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Berkas</a>
+						<i class="fa fa-list"></i> Daftar Berkas</a>
 				</footer>
 				</form>
 

@@ -120,11 +120,12 @@
 						</div>
 				</div>
 				<footer class="panel-footer text-right bg-light lter">
+
 					<a href="<?php echo base_url('admin/datamaster/staffedit?nip='.$data['nip_staff']) ?>" class="btn btn-warning btn-s-xs">
-						<i class="fa fa-edit"></i> Edit </a>
+						<i class="fa fa-edit"></i> Ubah </a>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/staff') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Staff</a>
+						<i class="fa fa-list"></i> Daftar Staff</a>
 				</footer>
 				</form>
 

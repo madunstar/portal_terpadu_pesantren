@@ -8,10 +8,10 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Edit Tingkat jenjang
+					Ubah Tingkat jenjang
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Mengedit Data Tingkat jenjang","Gagal Mengedit Data Tingkat jenjang") ?>
+					<?php pesan_get('msg',"Berhasil Mengubah Data Tingkat jenjang","Gagal Mengubah Data Tingkat jenjang") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/jenjangedittingkat?id=<?php echo $data['idtingkatjenjang'] ?>&jenjang=<?php echo $jenjang['jenjang'] ?>"
 					method="post" enctype="multipart/form-data">
 					<a href="<?php echo base_url('admin/datamaster/jenjangtingkat?jenjang='.$jenjang['jenjang'].'') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
@@ -34,7 +34,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/jenjangtingkat?jenjang='.$jenjang['jenjang'].'') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Tingkat</a>
+						<i class="fa fa-list"></i> Daftar Tingkat</a>
 				</footer>
 				</form>
 

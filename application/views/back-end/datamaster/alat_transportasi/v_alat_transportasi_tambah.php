@@ -6,7 +6,7 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Input Data Alat Transportasi
+        Tambah Data Alat Transportasi
       </header>
       <div class="panel-body">
       <?php pesan_get('msg',"Berhasil Menambahkan Data Alat Transportasi","Gagal Menambahkan Data Alat Transportasi") ?>
@@ -36,7 +36,7 @@
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
-        <a href="<?php echo base_url('admin/datamaster/alat_transportasi') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Alat Transportasi</a>
+        <a href="<?php echo base_url('admin/datamaster/alat_transportasi') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Data Alat Transportasi</a>
       </footer>
       </form>
 

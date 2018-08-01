@@ -370,7 +370,7 @@
       </div>
       <footer class="panel-footer text-right bg-light lter">
         &nbsp
-        <a href="<?php echo base_url('admin/perizinansantriwati/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santriwati</a>
+        <a href="<?php echo base_url('admin/perizinansantriwati/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santriwati</a>
       </footer>
       </form>
 

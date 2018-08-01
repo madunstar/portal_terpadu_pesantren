@@ -6,7 +6,7 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Input Staff
+					Tambah Staff
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Menambahkan Staff","Gagal Menambahkan Staff") ?>
@@ -164,7 +164,7 @@
 						<i class="fa fa-save"></i> Simpan</button>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/staff') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Staff</a>
+						<i class="fa fa-list"></i> Daftar Staff</a>
 				</footer>
 				</form>
 

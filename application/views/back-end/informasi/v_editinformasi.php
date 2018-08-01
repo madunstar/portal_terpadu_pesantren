@@ -11,10 +11,10 @@
         <div class="col-sm-12">
           <section class="panel panel-info">
             <header class="panel-heading">
-              <b>Tambah Informasi</b>
+              <b>Ubah Informasi</b>
             </header>
             <div class="panel-body">
-              <?php pesan_get('msg',"Berhasil Mengedit Data Informasi","Gagal Mengedit Data Informasi") ?>
+              <?php pesan_get('msg',"Berhasil Mengubah Data Informasi","Gagal Mengubah Data Informasi") ?>
                <form class="bs-example form-horizontal" data-validate="parsley"
                 action="<?php echo base_url() ?>admin/datamaster/editinformasi?idpengumuman=<?php echo $data['id_pengumuman'];?>" method="post"
                 onsubmit="getEditorContents(this);">

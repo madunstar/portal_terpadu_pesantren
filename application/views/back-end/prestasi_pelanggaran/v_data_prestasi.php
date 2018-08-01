@@ -12,12 +12,13 @@
           <section class="panel panel-default">
 
             <header class="panel-heading">
-              <h4 class="font-bold">Data Prestasi <?php echo $santri['nama_lengkap']?> / <?php echo $santri['nis_lokal']?></h4>
+              <h4 class="font-bold">Data Prestasi <?php echo $santri['nama_lengkap']?> (<?php echo $santri['nis_lokal']?>)</h4>
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Data Prestasi","Gagal Menghapus Data Prestasi") ?>
             <a href="<?php echo base_url() ?>admin/datamaster/tambahprestasi?nis=<?php echo $santri['nis_lokal']?>"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Prestasi</button></a>
-            <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/santri" class="btn btn-s-md btn-default btn-rounded" ><i class="fa fa-list"></i> List Santri</a>
+            <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/santri" class="btn btn-s-md btn-default btn-rounded" ><i class="fa fa-list"></i> Daftar Santri</a>
+
 
               <div class="table-responsive">
                 <table class="table table-striped m-b-none" id="datatable">
@@ -25,7 +26,7 @@
                     <tr>
                       <th>Aksi</th>
                       <th >Prestasi</th>
-                      <th >Tanggal Diperoleh</th>
+                      <th >Waktu Prestasi Diperoleh</th>
                       <th >Jenis Prestasi</th>
                       <th>Keterangan</th>
                     </tr>

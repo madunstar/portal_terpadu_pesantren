@@ -14,7 +14,7 @@
 						</header>
 						<div class="panel-body table-responsive">
 							<?php pesan_get('msg',"Berhasil Menghapus Data Kelas Belajar","Gagal Menghapus Data Kelas Belajar") ?>
-							<?php pesan_get('ed',"Berhasil Mengedit Kelas Belajar","Gagal Mengedit Kelas Belajar") ?>
+							<?php pesan_get('ed',"Berhasil Mengubah Kelas Belajar","Gagal Mengubah Kelas Belajar") ?>
 							<a href="<?php echo base_url() ?>admin/datamaster/aturkelasbelawati">
 								<button type="button" name="button" class="btn btn-success btn-rounded">
 									<i class="fa fa-plus"></i> Atur Kelas Baru</button>

@@ -34,10 +34,10 @@
 						</div>
 						<footer class="panel-footer text-right bg-light lter">
 							<button id="print" class="btn btn-success btn-s-xs">
-								<i class="fa fa-save"></i> Print</button>
+								<i class="fa fa-save"></i> Cetak</button>
 							&nbsp
 							<a href="<?php echo base_url('admin/datamaster/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
-								<i class="fa fa-list"></i> List Kelas Belajar</a>
+								<i class="fa fa-list"></i> Daftar Kelas Belajar</a>
 
 						</footer>
 

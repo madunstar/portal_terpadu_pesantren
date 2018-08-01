@@ -6,10 +6,10 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Edit Data Kecamatan Indonesia
+        Ubah Data Kecamatan Indonesia
       </header>
       <div class="panel-body">
-      <?php pesan_get('msg',"Berhasil Mengedit Data Kecamatan","Gagal Mengedit Data Kecamatan") ?>
+      <?php pesan_get('msg',"Berhasil Mengubah Data Kecamatan","Gagal Mengubah Data Kecamatan") ?>
        <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/kel_desaedit?id_kel_desa=<?php echo $data['id_kel_desa']; ?>" method="post">
        <a href="<?php echo base_url('admin/datamaster/kel_desa') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
@@ -58,9 +58,9 @@
       <footer class="panel-footer text-right bg-light lter">
       <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
       &nbsp
-      <a href="<?php echo base_url() ?>admin/datamaster/kel_desaedit?id_kel_desa=<?php echo $data['id_kel_desa']; ?>&id_provinsi=<?php echo $data['id_provinsi']; ?>&id_kota_kab=<?php echo $data['id_kota_kab']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
+      <a href="<?php echo base_url() ?>admin/datamaster/kel_desaedit?id_kel_desa=<?php echo $data['id_kel_desa']; ?>&id_provinsi=<?php echo $data['id_provinsi']; ?>&id_kota_kab=<?php echo $data['id_kota_kab']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Atur ULang</a>
       &nbsp
-      <a href="<?php echo base_url('admin/datamaster/kel_desa') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Kelurahan dan Desa</a>
+      <a href="<?php echo base_url('admin/datamaster/kel_desa') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Data Kelurahan dan Desa</a>
       </footer>
       </form>
 

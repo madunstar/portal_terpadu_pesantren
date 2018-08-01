@@ -10,10 +10,10 @@
 				<div class="col-sm-12">
 					<section class="panel panel-default">
 						<header class="panel-heading">
-							<h4 class="font-bold">Edit Data Presensi Kelas Pondokan</h4>
+							<h4 class="font-bold">Ubah Data Presensi Kelas Pondokan</h4>
 						</header>
 						<div class="panel-body">
-           					 <?php pesan_get('msg',"Berhasil Mengedit Kelas Belajar","Gagal Mengedit Kelas Belajar") ?>
+           					 <?php pesan_get('msg',"Berhasil Mengubah Kelas Belajar","Gagal Mengubah Kelas Belajar") ?>
 							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>" method="post">
 							<input type="hidden" class="form-control" name="id_kelas_belajar" data-required="true" value="<?php echo $data['id_kelas_belajar'] ?>" />
 								<div class="form-group">

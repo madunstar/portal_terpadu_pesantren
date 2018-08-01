@@ -6,10 +6,10 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Edit Data Pendidikan
+        Ubah Data Pendidikan
       </header>
       <div class="panel-body">
-      <?php pesan_get('msg',"Berhasil Mengedit Data Pendidikan","Gagal Mengedit Data Pendidikan") ?>
+      <?php pesan_get('msg',"Berhasil Mengubah Data Pendidikan","Gagal Mengubah Data Pendidikan") ?>
        <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/pendidikanedit?id_pendidikan=<?php if (isset($id_pendidikanlama)) echo $id_pendidikanlama; else echo $data['id_pendidikan']; ?>" method="post">
        <a href="<?php echo base_url('admin/datamaster/pendidikan') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
@@ -39,9 +39,9 @@
       <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
       &nbsp
       <a href="<?php echo base_url() ?>admin/datamaster/pendidikanedit?id_pendidikan=<?php if (isset($id_pendidikanlama)) echo $id_pendidikanlama;
-       else echo $data['id_pendidikan']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Reset</a>
+       else echo $data['id_pendidikan']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Atur Ulang</a>
       &nbsp
-      <a href="<?php echo base_url('admin/datamaster/pendidikan') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Data Pendidikan</a>
+      <a href="<?php echo base_url('admin/datamaster/pendidikan') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Data Pendidikan</a>
       </footer>
       </form>
 

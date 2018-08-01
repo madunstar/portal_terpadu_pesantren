@@ -5,7 +5,7 @@
     <header class="header b-b b-light hidden-print">
       <a href="<?php echo base_url() ?>admin/perizinansantri/datadenda" class="btn btn-sm btn-warning pull-right">Kembali</a>
       <p class="pull-right"></p>
-      <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>&nbsp;&nbsp;
+      <a href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Cetak</a>&nbsp;&nbsp;
       <p>Laporan Denda</p>
     </header>
 
@@ -31,7 +31,7 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>no</th>
+            <th>No</th>
             <th>NIS</th>
             <th>Nama</th>
             <th>Besar Denda</th>

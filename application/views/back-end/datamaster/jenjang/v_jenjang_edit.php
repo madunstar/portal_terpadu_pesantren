@@ -6,7 +6,7 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Edit Data Jenjang
+					Ubah Data Jenjang
 				</header>
 				<div class="panel-body">
 					<?php pesan_get('msg',"Berhasil Mengedit Data Jenjang","Gagal Mengedit Data Jenjang") ?>
@@ -49,10 +49,10 @@
 					&nbsp
 					<a href="<?php echo base_url() ?>admin/datamaster/jenjangedit?jenjang=<?php if (isset($jenjang2)) echo $jenjang2; else echo $data['jenjang']; ?>"
 					class="btn btn-default btn-s-xs">
-						<i class="fa fa-refresh"></i> Reset</a>
+						<i class="fa fa-refresh"></i> Atur Ulang</a>
 					&nbsp
 					<a href="<?php echo base_url('admin/datamaster/jenjang') ?>" class="btn btn-default btn-s-xs">
-						<i class="fa fa-list"></i> List Jenjang</a>
+						<i class="fa fa-list"></i> Daftar Jenjang</a>
 				</footer>
 				</form>
 

@@ -30,3 +30,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/tests/
 /tests/results/
 assets/berkas/berkasguru/40668.jpg
+application/views/back-end/prestasi_pelanggaran/v_prestasi_ubah_p.php
