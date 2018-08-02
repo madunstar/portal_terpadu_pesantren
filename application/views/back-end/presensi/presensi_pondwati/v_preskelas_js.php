@@ -88,7 +88,12 @@
        
     });
 
-    $('#pondokan').change(function(){
+
+        }
+   });
+
+  
+  $('#pondokan').change(function(){
         var id=$(this).val();
         $.ajax({
             url : "<?php echo base_url();?>admin/datamaster/datatingkatpondokan",
@@ -108,11 +113,6 @@
         });
     });
 
-
-        }
-   });
-
-  
     
 
 </script>
