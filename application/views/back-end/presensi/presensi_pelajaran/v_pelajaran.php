@@ -11,7 +11,7 @@
       </header>
       <div class="table-responsive">
       <?php pesan_get('msg',"Berhasil Menghapus Data Pelajaran","Gagal Menghapus Data Pelajaran") ?>
-      <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/pelajarantambah" class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah data</a>
+      <a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/datamaster/pelajarantambah" class="btn btn-s-md btn-success btn-rounded" ><i class="fa fa-plus"></i> Tambah Data</a>
 
         <table class="table table-striped " id="datatable">
           <thead>
@@ -32,7 +32,7 @@
                     <tr>
                       <td>
                       <a href='".base_url('admin/datamaster/pelajaranlihat?id_pelajaran='.$row['id_pelajaran'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
-                      <a href='".base_url('admin/datamaster/pelajaranedit?id_pelajaran='.$row['id_pelajaran'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                      <a href='".base_url('admin/datamaster/pelajaranedit?id_pelajaran='.$row['id_pelajaran'].'')."' class='btn btn-warning btn-xs' title='Ubah'><i class='fa fa-edit'></i></a>
                       <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_pelajaran']."'><i class='fa fa-trash-o'></i></a>
                       </td>
                       <td>".$row['nip_guru']."</td>

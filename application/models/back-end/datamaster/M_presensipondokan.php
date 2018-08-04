@@ -188,9 +188,9 @@ class M_presensipondokan extends CI_Model
             $nestedData=array();
 
             $akd = "    <a href='".base_url('admin/datamaster/lihatkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-eye'></i></a>
-            <a href='".base_url('admin/datamaster/editkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+            <a href='".base_url('admin/datamaster/editkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-warning btn-xs' title='Ubah'><i class='fa fa-edit'></i></a>
             <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_kelas_belajar']."'><i class='fa fa-trash-o'></i></a>
-            <a href='".base_url('admin/datamaster/printkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-success btn-xs print' title='print' id='".$row['id_kelas_belajar']."'><i class='fa fa-print'></i></a>";
+            <a href='".base_url('admin/datamaster/printkelaspondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-info btn-xs print' title='Cetak' id='".$row['id_kelas_belajar']."'><i class='fa fa-print'></i></a>";
             $nestedData[] = $akd;
             $nestedData[] = $row['tahun_ajaran'];
             $nestedData[] = $row["nama_kelas_belajar"];
@@ -198,9 +198,9 @@ class M_presensipondokan extends CI_Model
             $nestedData[] = $row['nama_lengkap'];
             $nestedData[] = $row['pondokan'];
             $nestedData[] = $row['tingkat'];
-            $nestedData[] = "<a href='".base_url('admin/datamaster/jadwalpondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-clock-o'></i> Jadwal</a>";
-            $nestedData[] = "<button class='btn ".($row['status_kelas']=="Aktif"?"btn-success":"btn-warning")." btn-xs edit'  title='Edit' id='".$row['id_kelas_belajar']."' data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i> ".$row['status_kelas']."</button>";
-            $nestedData[] = "<a href='".base_url('admin/datamaster/lihatkelaspondokansantri?id='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat'><i class='fa fa-list'></i> Santri</a>";
+            $nestedData[] = "<a href='".base_url('admin/datamaster/jadwalpondokan?id='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat Jadwal'><i class='fa fa-clock-o'></i> Jadwal</a>";
+            $nestedData[] = "<button class='btn ".($row['status_kelas']=="Aktif"?"btn-success":"btn-warning")." btn-xs edit'  title='Ubah Status' id='".$row['id_kelas_belajar']."' data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i> ".$row['status_kelas']."</button>";
+            $nestedData[] = "<a href='".base_url('admin/datamaster/lihatkelaspondokansantri?id='.$row['id_kelas_belajar'].'')."' class='btn btn-primary btn-xs' title='Lihat Daftar Santri'><i class='fa fa-list'></i> Santri</a>";
             $data[] = $nestedData;
             $no++;
         }

@@ -38,7 +38,7 @@
                   foreach ($datasenin->result_array() as $row){
                     $i++;
                     echo "<tr>
-                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Edit' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
+                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Ubah' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
                           <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_jadwal']."'><i class='fa fa-trash-o'></i></a></p></td>
                           <td>".$i."</td>
                           <td>".$row['jam']."</td>
@@ -67,7 +67,7 @@
                   foreach ($dataselasa->result_array() as $row){
                     $i++;
                     echo "<tr>
-                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Edit' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
+                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Ubah' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
                           <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_jadwal']."'><i class='fa fa-trash-o'></i></a></p></td>
                           <td>".$i."</td>
                           <td>".$row['jam']."</td>
@@ -96,7 +96,7 @@
                   foreach ($datarabu->result_array() as $row){
                     $i++;
                     echo "<tr>
-                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Edit' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
+                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Ubah' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
                           <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_jadwal']."'><i class='fa fa-trash-o'></i></a></p></td>
                           <td>".$i."</td>
                           <td>".$row['jam']."</td>
@@ -129,7 +129,7 @@
                   foreach ($datakamis->result_array() as $row){
                     $i++;
                     echo "<tr>
-                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Edit' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
+                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Ubah' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
                           <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_jadwal']."'><i class='fa fa-trash-o'></i></a></p></td>
                           <td>".$i."</td>
                           <td>".$row['jam']."</td>
@@ -158,7 +158,7 @@
                   foreach ($datajumat->result_array() as $row){
                     $i++;
                     echo "<tr>
-                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Edit' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
+                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Ubah' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
                           <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_jadwal']."'><i class='fa fa-trash-o'></i></a></p></td>
                           <td>".$i."</td>
                           <td>".$row['jam']."</td>
@@ -187,7 +187,7 @@
                   foreach ($datasabtu->result_array() as $row){
                     $i++;
                     echo "<tr>
-                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Edit' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
+                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Ubah' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
                           <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_jadwal']."'><i class='fa fa-trash-o'></i></a></p></td>
                           <td>".$i."</td>
                           <td>".$row['jam']."</td>
@@ -220,7 +220,7 @@
                   foreach ($dataahad->result_array() as $row){
                     $i++;
                     echo "<tr>
-                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Edit' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
+                          <td><p style='width:50px'> <button class='btn btn-warning btn-xs editjadwal' title='Ubah' id='".$row['id_jadwal']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
                           <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_jadwal']."'><i class='fa fa-trash-o'></i></a></p></td>
                           <td>".$i."</td>
                           <td>".$row['jam']."</td>

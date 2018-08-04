@@ -34,7 +34,7 @@
                   echo "
                     <tr>
                       <td>
-                      <button class='btn btn-warning btn-xs editsantri' title='Edit' id='".$row['id_kelas_santri']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
+                      <button class='btn btn-warning btn-xs editsantri' title='Ubah' id='".$row['id_kelas_santri']."'  data-toggle='modal' data-target='#myModaledit' ><i class='fa fa-edit'></i></button>
                       <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_kelas_santri']."'><i class='fa fa-trash-o'></i></a>
                       </td>
                       <td>".$row['nis_lokal']."</td>

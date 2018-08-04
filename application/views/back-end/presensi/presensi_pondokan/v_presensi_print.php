@@ -11,11 +11,11 @@
 				<div class="col-sm-12">
 					<section class="panel panel-default">
 						<header class="panel-heading">
-							<h4 class="font-bold">Print Presensi</h4>
+							<h4 class="font-bold">Cetak Presensi</h4>
 						</header>
 						<div class="panel-body">
 							<?php pesan_get('msg',"Berhasil Menambahkan  Data Kelas Belajar","Gagal Menambah Data Kelas Belajar") ?>
-						
+
 								<div class="form-group">
 									<label class="col-sm-2 control-label"> Pilih Bulan</label>
 									<div class="col-sm-6">

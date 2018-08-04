@@ -1,14 +1,14 @@
 <script>
 
    $('#print').click(function(e){
-     var id = $('#bulan').val();
-       var kelas = $('#idkelas').val();
-       if (id==null) {
-         
+     var bulan = $('#bulan').val();
+       var id = $('#idkelas').val();
+       if (bulan==null) {
+
        } else {
-        window.open("<?php echo base_url() ?>admin/datamaster/printjadwalafiwati?id="+id+"&kelas="+kelas+"", '_blank');
+        window.open("<?php echo base_url() ?>admin/datamaster/printjadwalafiwati?id="+id+"&bulan="+bulan+"", '_blank');
        }
    });
-  
+
 
 </script>
