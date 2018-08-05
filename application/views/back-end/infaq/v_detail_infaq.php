@@ -11,7 +11,7 @@
         <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
-              <h4 class="font-bold">Detil Data Infaq <?php echo $nama_santri ?></h4>
+              <h4 class="font-bold">Detail Data Infaq <?php echo $nama_santri ?></h4>
             </header>
             <div class="panel-body">
               <a href="<?php echo base_url() ?>admin/datamaster/bayarinfaq?nis=<?php echo $nissantri?>"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Bayar Infaq Bulanan</button></a><br><br>

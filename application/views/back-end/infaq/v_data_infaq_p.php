@@ -71,8 +71,8 @@
                         <td>".$row['tanggal_bayar']."</td>
                         <td>".$row['petugas']."</td>
                         <td>
-                        <a href='".base_url('admin/datamaster/detilinfaqp?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='detil'><i class='fa fa-eye'></i></a>
-                        <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#".$row['id_pembayaran']."' title='hapus'><i class='fa fa-trash-o'></i></button>
+                        <a href='".base_url('admin/datamaster/detailinfaqp?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Lihat Detail'><i class='fa fa-eye'></i></a>
+                        <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#".$row['id_pembayaran']."' title='Hapus'><i class='fa fa-trash-o'></i></button>
                         </td>
                       </tr>
                       <div class='modal' id='".$row['id_pembayaran']."' tabindex='-1' role='dialog'>

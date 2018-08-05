@@ -73,7 +73,7 @@
                   </div>
 
                   <footer class="panel-footer text-right">
-                    <a href="<?php echo base_url() ?>admin/datamaster/detilinfaq?nis=<?php echo $nissantri?>"><button type="button" class="btn btn-s-xs btn-default"><i class="fa fa-list"></i> Data Pembayaran</button></a>
+                    <a href="<?php echo base_url() ?>admin/datamaster/detailinfaq?nis=<?php echo $nissantri?>"><button type="button" class="btn btn-s-xs btn-default"><i class="fa fa-list"></i> Data Pembayaran</button></a>
                     <button type="submit" class="btn btn-s-xs btn-info"><i class="fa fa-save"></i> Proses Pembayaran</button>
                   </footer>
 

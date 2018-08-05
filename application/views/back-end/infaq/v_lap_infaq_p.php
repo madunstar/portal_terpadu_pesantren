@@ -27,7 +27,7 @@
       </div>
       <div class="line pull-in line-dashed b-b"></div>
       <br>
-      <h5>Laporan Pembayaran Infaq Santriwati<b>Bulan <?php echo bulan($bulan) ?> Tahun <?php echo $tahun ?></b></h5>
+      <h5>Laporan Pembayaran Infaq Santriwati <b>Bulan <?php echo bulan($bulan) ?> Tahun <?php echo $tahun ?></b></h5>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -62,7 +62,7 @@
         <div class="row">
           <div class="col-xs-3">
             <p>
-              Total Santri Bayar <br><br>
+              Total Santriwati Bayar <br><br>
               Total Pembayaran Lunas <br><br>
             </p>
           </div>
