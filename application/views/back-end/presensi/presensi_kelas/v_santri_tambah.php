@@ -5,11 +5,11 @@
   <h4 class="modal-title">Tambah Santri</h4>
 </div>
 <div class="modal-body">
-    <?php 
+    <?php
       if ($lissantri->num_rows()>0) {
     ?>
       <div class="form-group mt-lg">
-        <label class="col-sm-3 control-label">NIS Siswa</label>
+        <label class="col-sm-3 control-label">NIS Santri</label>
         <div class="col-sm-8">
           <select id="nis_lokal" name="nis_lokal" class="form-control chosen-select">
           <?php
@@ -23,35 +23,35 @@
       </div>
     <div class="modal-footer">
       <div class="row">
-        <div class="col-md-12 text-right">  
+        <div class="col-md-12 text-right">
         <button type="button" class="btn btn-primary modal-confirm" id="tambahsantriproses">Tambah</button>
           <button type="button" class="btn btn-default modal-dismiss" data-dismiss="modal">Batal</button>
         </div>
       </div>
     </div>
-    <?php 
+    <?php
       } else {
     ?>
      <p align="center">Tidak Ada Santri</p>
     </div>
     <div class="modal-footer">
       <div class="row">
-        <div class="col-md-12 text-right">  
+        <div class="col-md-12 text-right">
           <button type="button" class="btn btn-default modal-dismiss" data-dismiss="modal">Batal</button>
         </div>
       </div>
     </div>
-    <?php 
-      } 
+    <?php
+      }
     ?>
-   
+
 
 </form>
-  <!-- 
+  <!--
   <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery-2.2.3.min.js'?>"></script>
 
   <script src="<?php echo base_url('assets/js/bootstrap.js');?>"></script>
-  
+
   <script src="<?php echo base_url('assets/js/app.js');?>"></script>
   <script src="<?php echo base_url('assets/js/slimscroll/jquery.slimscroll.min.js');?>"></script>
   <script src="<?php echo base_url('assets/js/chosen/chosen.jquery.min.js');?>"></script>

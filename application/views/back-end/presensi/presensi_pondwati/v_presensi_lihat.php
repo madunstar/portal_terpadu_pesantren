@@ -15,6 +15,8 @@
 						<div class="panel-body">
 							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/editkelaspondwati?id=<?php echo $data['id_kelas_belajar'] ?>"
 							method="post">
+							<a href="<?php echo base_url('admin/datamaster/datakelaspondwati') ?>" style="color:#3b994a;margin-left:10px">
+								<i class="fa fa-chevron-left"></i> Kembali</a>
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="row">
@@ -100,7 +102,7 @@
 									<div class="col-sm-12">
 											<hr/>
 											<div class="text-center" style="margin-bottom:10px">
-												<a href="<?php echo base_url() ?>admin/datamaster/lihatkelaspondokansantriwati?id=<?php echo $data['id_kelas_belajar'] ?>" class="btn btn-default" margin="auto"><i class="fa fa-edit"></i> Edit Daftar Santri</a>
+												<a href="<?php echo base_url() ?>admin/datamaster/lihatkelaspondokansantriwati?id=<?php echo $data['id_kelas_belajar'] ?>" class="btn btn-default btn-warning" margin="auto"><i class="fa fa-edit"></i> Edit Daftar Santri</a>
 											</div>
 											<table class="table" style="width:80%" align="center">
 												<thead>
@@ -131,8 +133,8 @@
 									</div>
 								</div>
 								<footer class="panel-footer text-right bg-light lter">
-									<a href="<?php echo base_url() ?>admin/datamaster/editkelaspondwati?id=<?php echo $data['id_kelas_belajar'] ?>" type="submit" class="btn btn-success btn-s-xs">
-										<i class="fa fa-save"></i> Ubah</a>
+									<a href="<?php echo base_url() ?>admin/datamaster/editkelaspondwati?id=<?php echo $data['id_kelas_belajar'] ?>" type="submit" class="btn btn-warning btn-s-xs">
+										<i class="fa fa-edit"></i> Ubah</a>
 									&nbsp
 									<a href="<?php echo base_url('admin/datamaster/datakelaspondwati') ?>" class="btn btn-default btn-s-xs">
 										<i class="fa fa-list"></i> Daftar Kelas Belajar</a>
