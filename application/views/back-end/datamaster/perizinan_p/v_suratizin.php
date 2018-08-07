@@ -1,6 +1,7 @@
 <section id="content">
   <section class="vbox bg-white">
     <header class="header b-b b-light hidden-print">
+      <a href="<?php echo base_url() ?>admin/datamaster/datakeluarp" class="btn btn-sm btn-warning pull-right">Kembali</a>
       <button href="#" class="btn btn-sm btn-info pull-right" onClick="window.print();">Cetak</button>
       <p>Surat Izin</p>
     </header>
