@@ -5816,8 +5816,8 @@ function printkelaspondwati(){
 
 
 function printjadwalpondwati(){
-    $bulan = $this->input->get("id");
-    $kelas = $this->input->get("kelas");
+    $bulan = $this->input->get("bulan");
+    $kelas = $this->input->get("id");
     // $data = $this->m_presensipondokan->lihatdatasatujadwal($id)->row_array();
     // $variabel['data'] = $data;
     $variabel['bulan'] = $bulan;
@@ -6110,8 +6110,8 @@ function datakelasbelawati()
 
 
     function printjadwalafiwati(){
-        $bulan = $this->input->get("id");
-        $kelas = $this->input->get("kelas");
+        $bulan = $this->input->get("bulan");
+        $kelas = $this->input->get("id");
         // $data = $this->m_presenwati->lihatdatasatujadwal($id)->row_array();
         // $variabel['data'] = $data;
         $variabel['bulan'] = $bulan;

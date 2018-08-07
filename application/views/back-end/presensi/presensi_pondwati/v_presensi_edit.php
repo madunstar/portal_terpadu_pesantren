@@ -15,6 +15,8 @@
 						<div class="panel-body">
            					 <?php pesan_get('msg',"Berhasil Mengubah Kelas Belajar","Gagal Mengubah Kelas Belajar") ?>
 							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/editkelaspondwati?id=<?php echo $data['id_kelas_belajar'] ?>" method="post">
+								<a href="<?php echo base_url('admin/datamaster/datakelaspondwati') ?>" style="color:#3b994a;margin-left:10px">
+									<i class="fa fa-chevron-left"></i> Kembali</a>
 							<input type="hidden" class="form-control" name="id_kelas_belajar" data-required="true" value="<?php echo $data['id_kelas_belajar'] ?>" />
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Nama Kelas</label>
@@ -33,7 +35,7 @@
 										?>
 										</select>
 									</div>
-								</div>  
+								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Ruang Kelas</label>
 									<div class="col-sm-6">

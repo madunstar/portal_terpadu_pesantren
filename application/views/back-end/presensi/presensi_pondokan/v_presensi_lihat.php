@@ -15,6 +15,8 @@
 						<div class="panel-body">
 							<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>"
 							method="post">
+							<a href="<?php echo base_url('admin/datamaster/datakelaspondokan') ?>" style="color:#3b994a;margin-left:10px">
+								<i class="fa fa-chevron-left"></i> Kembali</a>
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="row">
@@ -133,7 +135,7 @@
 								<footer class="panel-footer text-right bg-light lter">
 
 									<a href="<?php echo base_url() ?>admin/datamaster/editkelaspondokan?id=<?php echo $data['id_kelas_belajar'] ?>" type="submit" class="btn btn-warning btn-s-xs">
-										<i class="fa fa-save"></i> Ubah</a>
+										<i class="fa fa-edit"></i> Ubah</a>
 
 									&nbsp
 									<a href="<?php echo base_url('admin/datamaster/datakelaspondokan') ?>" class="btn btn-default btn-s-xs">
