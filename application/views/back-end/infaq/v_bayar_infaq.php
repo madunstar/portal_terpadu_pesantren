@@ -14,12 +14,12 @@
               <h4 class="font-bold">Tambah Pembayaran Infaq</h4>
             </header>
             <div class="panel-body">
-                <?php pesan_get('msg',"Berhasil Menambahkan Pembayaran","Gagal Menambahkan Pembayaran") ?>
+                <?php pesan_get('msg',"Berhasil Menambahkan Pembayaran","Gagal Menambahkan Pembayaran, Pembayaran Telah Dilunas") ?>
                 <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/datamaster/bayarinfaq" method="post">
                   <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input-id-1">Pilih Santri</label>
+                    <label class="col-sm-2 control-label" for="input-id-1">Nama Santri</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" value="<?php echo $nama_santri ?>" />
+                      <input type="text" class="form-control" readonly value="<?php echo $nama_santri ?>" />
                       <input type="hidden" value="<?php echo $nissantri?>" name="id_santri"/>
                     </div>
                   </div>

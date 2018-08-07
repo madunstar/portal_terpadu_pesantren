@@ -15,7 +15,6 @@
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Pembayaran","Gagal Menghapus Pembayaran") ?>
-              <a href="<?php echo base_url() ?>admin/datamaster/bayarinfaqp"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Data</button></a><br><br>
               <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/databayarinfaqp" method="post">
               <div class='form-group'>
                 <div class="col-sm-5">
