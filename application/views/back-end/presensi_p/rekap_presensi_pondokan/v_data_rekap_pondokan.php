@@ -87,7 +87,7 @@
      <div class='modal-dialog' role='document'>
        <div class='modal-content'>
          <div class='modal-header bg-default'>
-           <h4 class='modal-title'>Tambah Rekap santriwati</h4>
+           <h4 class='modal-title'>Tambah Rekap Santriwati</h4>
          </div>
          <div class='modal-body'>
            <?php
@@ -95,7 +95,7 @@
            ?>
                   <form class="form-horizontal mb-lg" action="<?php echo base_url() ?>admin/datamaster/tambahrekappondokanp" method="post">
                     <div class="form-group">
-                      <label class="col-sm-3 control-label" for="input-id-1">santriwati</label>
+                      <label class="col-sm-3 control-label" for="input-id-1">Santriwati</label>
                       <div class="col-sm-8">
                         <select class="form-control data-validate" name="nis">
                           <?php
@@ -113,7 +113,7 @@
                           <option value="hadir">hadir</option>
                           <option value="izin">izin</option>
                           <option value="sakit">sakit</option>
-                          <option value="alfa">alfa</option>
+                          <option value="alfa">alpa</option>
                         </select>
                       </div>
                     </div>
@@ -129,7 +129,7 @@
          <?php
            } else {
          ?>
-          <p align="center">Tidak Ada santriwati</p>
+          <p align="center">Tidak Ada Santriwati</p>
          </div>
          <div class="modal-footer">
            <div class="row">

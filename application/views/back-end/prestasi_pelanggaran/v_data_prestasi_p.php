@@ -37,7 +37,7 @@
                             <tr>
                               <td>
 
-                              <a href='".base_url('admin/datamaster/ubahprestasip?nis='.$row['nis_santri'].'&id='.$row['id_prestasi'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                              <a href='".base_url('admin/datamaster/ubahprestasip?nis='.$row['nis_santri'].'&id='.$row['id_prestasi'].'')."' class='btn btn-warning btn-xs' title='Ubah'><i class='fa fa-edit'></i></a>
                               <button class='btn btn-danger btn-xs' title='Hapus' data-toggle='modal' data-target='#".$row['id_prestasi']."'><i class='fa fa-trash-o'></i></button>
                               </td>
                               <td>".$row['prestasi']."</td>

@@ -11,7 +11,7 @@
         <div class="col-sm-12">
           <section class="panel panel-default">
             <header class="panel-heading">
-              <h4 class="font-bold">Data Santri Kembali ke Pondok</h4>
+              <h4 class="font-bold">Data Santriwati Kembali ke Pondok</h4>
             </header>
             <div class="panel-body">
               <a href="<?php echo base_url() ?>admin/datamaster/kembalip"><button type="button" name="button" class="btn btn-success btn-rounded"><i class="fa fa-plus"></i> Tambah Kembali ke Pondok</button></a>
@@ -87,7 +87,7 @@
                          </div>
                        </div>
                      <div class='modal-footer'>
-                       <button type='submit' class='btn btn-sm btn-success'>Cetak <i class="fa fa-check"></i></button>
+                       <button type='submit' class='btn btn-sm btn-success'>Cetak <i class="fa fa-print"></i></button>
                        <button type='button' class='btn btn-sm btn-default' data-dismiss='modal'>Batal</button>
                      </div>
                    </div>

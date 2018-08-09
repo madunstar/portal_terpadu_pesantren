@@ -28,7 +28,7 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/kelasedit?kd_kelas='.$row['kd_kelas'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                      <a href='".base_url('admin/datamaster/kelasedit?kd_kelas='.$row['kd_kelas'].'')."' class='btn btn-warning btn-xs' title='Ubah'><i class='fa fa-edit'></i></a>
                       <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['kd_kelas']."'><i class='fa fa-trash-o'></i></a>
                       </td>
                       <td>".$row['nama_kelas']."</td>

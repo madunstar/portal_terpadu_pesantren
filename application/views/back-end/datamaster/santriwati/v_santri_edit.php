@@ -301,8 +301,6 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-4 control-label">Penghasilan Orang Tua</label>
-              <div class="col-lg-8">
                 <label class="col-lg-4 control-label">Penghasilan Orang Tua (Rp)</label>
                 <div class="col-lg-8">
                   <select class="form-control"  name="penghasilan_orang_tua" id="penghasilan_orang_tua" data-required="">
@@ -314,7 +312,6 @@
                   </select>
                 </div>
               </div>
-            </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Wali</label>
               <div class="col-lg-8">
@@ -423,12 +420,7 @@
       <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
       &nbsp
       <a href="<?php echo base_url() ?>admin/datamaster/santriwatiedit?nis=<?php if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" class="btn btn-default btn-s-xs"><i class="fa fa-refresh"></i > Atur Ulang</a>
-      &nbsp
-<<<<<<< HEAD
-      <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santri</a>
-=======
-      <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santriwati</a>
->>>>>>> menambah-ci
+      <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santriwati</a>
       </footer>
       </form>
 

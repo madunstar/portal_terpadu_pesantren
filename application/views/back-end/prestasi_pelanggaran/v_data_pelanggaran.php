@@ -39,7 +39,7 @@
                             <tr>
                               <td>
 
-                              <a href='".base_url('admin/datamaster/ubahpelanggaran?nis='.$row['nis_santri'].'&id='.$row['id_pelanggaran'].'')."' class='btn btn-warning btn-xs' title='Edit'><i class='fa fa-edit'></i></a>
+                              <a href='".base_url('admin/datamaster/ubahpelanggaran?nis='.$row['nis_santri'].'&id='.$row['id_pelanggaran'].'')."' class='btn btn-warning btn-xs' title='Ubah'><i class='fa fa-edit'></i></a>
                               <button class='btn btn-danger btn-xs' title='Hapus' data-toggle='modal' data-target='#".$row['id_pelanggaran']."'><i class='fa fa-trash-o'></i></button>
                               </td>
                               <td>".$row['pelanggaran']."</td>
