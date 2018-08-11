@@ -15,7 +15,7 @@
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Pembayaran","Gagal Menghapus Pembayaran") ?>
-              
+
               <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url();?>admin/datamaster/databayarinfaq" method="post">
               <div class='form-group'>
                 <div class="col-sm-5">
@@ -71,7 +71,7 @@
                         <td>".$row['tanggal_bayar']."</td>
                         <td>".$row['petugas']."</td>
                         <td>
-
+                        <a href='".base_url('admin/datamaster/detailinfaq?nis='.$row['nis_lokal'].'')."' class='btn btn-primary btn-xs' title='Lihat Detail'><i class='fa fa-eye'></i></a>
                         <button class='btn btn-danger btn-xs' data-toggle='modal' data-target='#".$row['id_pembayaran']."' title='hapus'><i class='fa fa-trash-o'></i></button>
                         </td>
                       </tr>

@@ -20,7 +20,7 @@ class M_infaq_p extends CI_Model
         return $this->db->get();
     }
 
-    function detilinfaq($nis)
+    function detailinfaq($nis)
     {
       $this->db->select('*');
       $this->db->from('tb_pembayaran_spp_p');

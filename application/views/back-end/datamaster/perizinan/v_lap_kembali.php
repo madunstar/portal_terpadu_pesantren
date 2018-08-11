@@ -31,7 +31,7 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>no</th>
+            <th>No</th>
             <th>NIS</th>
             <th>Nama</th>
             <th>Tanggal Keluar</th>

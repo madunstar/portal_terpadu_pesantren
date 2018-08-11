@@ -3879,12 +3879,12 @@ function databayarinfaqp(){
     }
   }
 
-  function detilinfaqp(){
+  function detailinfaqp(){
     $nis = $this->input->get('nis');
     $variabel['nama_santri'] = $this->m_infaq_p->lihatsantrisatu($nis);
-    $variabel['data'] = $this->m_infaq_p->detilinfaq($nis);
+    $variabel['data'] = $this->m_infaq_p->detailinfaq($nis);
     $variabel['nissantri'] = $nis;
-    $this->layout->render('back-end/infaq/v_detil_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
+    $this->layout->render('back-end/infaq/v_detail_infaq_p',$variabel,'back-end/infaq/v_infaq_js');
   }
 
   function bayarinfaqp(){
@@ -3954,12 +3954,12 @@ function databayarinfaqp(){
       }
     }
 
-  function detilinfaq(){
+  function detailinfaq(){
     $nis = $this->input->get('nis');
     $variabel['nama_santri'] = $this->m_infaq->lihatsantrisatu($nis);
-    $variabel['data'] = $this->m_infaq->detilinfaq($nis);
+    $variabel['data'] = $this->m_infaq->detailinfaq($nis);
     $variabel['nissantri'] = $nis;
-    $this->layout->render('back-end/infaq/v_detil_infaq',$variabel,'back-end/infaq/v_infaq_js');
+    $this->layout->render('back-end/infaq/v_detail_infaq',$variabel,'back-end/infaq/v_infaq_js');
   }
 
   function bayarinfaq(){

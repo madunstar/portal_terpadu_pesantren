@@ -7,7 +7,7 @@
     <section class="panel panel-default">
       <header class="panel-heading">
 
-        Lihat Santriwati 
+        Lihat Santriwati
 
       </header>
       <div class="panel-body">
@@ -370,15 +370,9 @@
 
       </div>
       <footer class="panel-footer text-right bg-light lter">
-<<<<<<< HEAD
-      <a href="<?php echo base_url('admin/datamaster/santriwatiedit?nis=1') ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Ubah </a>
+      <a href="<?php echo base_url('admin/datamaster/santriwatiedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-warning btn-s-xs"><i class="fa fa-edit"></i> Ubah </a>
         &nbsp
         <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santriwati</a>
-=======
-      <a href="<?php echo base_url('admin/datamaster/santriwatiedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-warning btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
-        &nbsp
-        <a href="<?php echo base_url('admin/datamaster/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santriwati</a>
->>>>>>> menambah-ci
       </footer>
       </form>
 

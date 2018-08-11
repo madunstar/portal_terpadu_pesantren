@@ -28,13 +28,13 @@
                 </div>
                 <div class="form-group">
                       <div class="col-sm-10">
-                        <input type="text"  class="form-control" name="nis_santri" id="nis_santri" placeholder="Nomor Induk Santri"  data-required="true">
+                        <input type="text"  class="form-control" name="nis_santri" id="nis_santri" placeholder="Nomor Induk Santriwati"  data-required="true">
                         <span class="text-danger" ></span>
                         <span class="text-success" ></span>
                       </div>
                       <div class="col-sm-2">
 
-                        <input type="button" class="btn btn-sm btn-info" name="button" id="Lanjutkan" value="Lanjutkan"></a>
+                        <input type="button" class="btn btn-sm btn-info" name="button" id="Lanjutkan" value="Lanjutkan" ></a>
                       </div>
                 </div>
                 <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -126,6 +126,7 @@
                                 </div>
                           </div>
                   <footer class="panel-footer text-right">
+                    <a style="margin: 10px 0 10px 0px" href="<?php echo base_url() ?>admin/datamaster/datakeluarp" class="btn btn-s-md btn-default" ><i class="fa fa-arrow-left"></i> Kembali</a>
                     <input class="btn btn-sm btn-info" type="submit" name="button" value="Proses perizinansantriwati" id="proses">
                   </footer>
             </form>

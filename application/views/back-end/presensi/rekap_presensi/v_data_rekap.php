@@ -51,7 +51,7 @@
                       <td>".$row['nama_mata_pelajaran']."</td>
                       <td>".$row['nama_kelas_belajar']."</td>
                       <td>".$row['status_presensi']."</td>
-                      
+
                     </tr>
                     <div class='modal' id='".$row['id_rekap']."' tabindex='-1' role='dialog'>
                      <div class='modal-dialog' role='document'>
@@ -113,7 +113,7 @@
                           <option value="hadir">hadir</option>
                           <option value="izin">izin</option>
                           <option value="sakit">sakit</option>
-                          <option value="alfa">alfa</option>
+                          <option value="alfa">alpa</option>
                         </select>
                       </div>
                     </div>

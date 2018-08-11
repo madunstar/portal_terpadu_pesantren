@@ -7,7 +7,7 @@
     <section class="panel panel-default">
       <header class="panel-heading">
 
-        Lihat Data Santri 
+        Lihat Data Santri
 
       </header>
       <div class="panel-body">
@@ -370,11 +370,7 @@
 
       </div>
       <footer class="panel-footer text-right bg-light lter">
-<<<<<<< HEAD
-      <a href="<?php echo base_url('admin/datamaster/santriedit?nis=1') ?>" class="btn btn-success btn-s-xs"><i class="fa fa-edit"></i> Ubah </a>
-=======
-      <a href="<?php echo base_url('admin/datamaster/santriedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-warning btn-s-xs"><i class="fa fa-edit"></i> Edit </a>
->>>>>>> menambah-ci
+      <a href="<?php echo base_url('admin/datamaster/santriedit?nis='.$data["nis_lokal"]) ?>" class="btn btn-warning btn-s-xs"><i class="fa fa-edit"></i> Ubah </a>
         &nbsp
         <a href="<?php echo base_url('admin/datamaster/santri') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santri</a>
       </footer>

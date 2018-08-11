@@ -29,7 +29,7 @@
                   echo "
                     <tr>
                       <td>
-                      <a href='".base_url('admin/datamaster/datarekapsantriwati?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'')."' class='btn btn-primary btn-xs' title='Lihat Rekap santriwati'><i class='fa fa-users'></i></a>
+                      <a href='".base_url('admin/datamaster/datarekapsantriwati?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'')."' class='btn btn-primary btn-xs' title='Lihat Rekap Santriwati'><i class='fa fa-users'></i></a>
                       <a href='".base_url('admin/datamaster/datarekapgurup?pelajaran='.$row['id_pelajaran'].'&kelas='.$row['id_kelas_belajar'].'&tanggal='.$tanggal.'&guru='.$row['nip_guru'].'')."' class='btn btn-success btn-xs' title='Lihat Rekap Guru'><i class='fa fa-user'></i></a>
                       </td>
                       <td>".$row['nama_kelas_belajar']."</td>
