@@ -1914,9 +1914,13 @@ function kota_kabhapus()
 // CRUD kecamatan
 function kecamatan()
 {
-    $variabel['data'] = $this->m_kecamatan->lihatdata();
-    $this->layout->render('back-end/datamaster/kecamatan/v_kecamatan',$variabel,'back-end/datamaster/kecamatan/v_kecamatan_js');
+    $variabel['data'] = "";
+    $this->layout->render('back-end/datamaster/kecamatan/v_kecamatan',$variabel,'back-end/datamaster/kecamatan/v_kecamatan_js.php');
 }
+
+function kecamatanajax(){
+	  $this->m_kecamatan->listkecamatanajax();
+  }
 
 function datakotakab()
 {
@@ -1985,10 +1989,15 @@ function kecamatanhapus()
   // CRUD kel_desa
   function kel_desa()
   {
-      $variabel['data'] = $this->m_kel_desa->lihatdata();
-      $this->layout->render('back-end/datamaster/kel_desa/v_kel_desa',$variabel,'back-end/datamaster/kel_desa/v_kel_desa_js');
+      $variabel['data'] = '';
+      $this->layout->render('back-end/datamaster/kel_desa/v_kel_desa',$variabel,'back-end/datamaster/kel_desa/v_kel_desa_js.php');
   }
 
+  function keldesaajax(){
+	  $this->m_kel_desa->listkeldesaajax();
+  }
+  
+  
   function datakecamatan()
   {
     $id=$this->input->post('id');

@@ -69,4 +69,54 @@ class M_kecamatan extends CI_Model
         $this->db->where("id_kecamatan",$id_kecamatan);
         return $this->db->delete('tb_kecamatan');
     }
+	
+	public function listkecamatanajax()
+        {
+            $requestData= $_REQUEST;
+            $columns = array(
+                // datatable column index  => database column name
+                    0=>'tb_kecamatan.nama_kecamatan',
+                    1=>'tb_kecamatan.nama_kecamatan',
+					2=>'tb_kecamatan.nama_kecamatan',
+					3=>'tb_kecamatan.nama_kecamatan'
+                    
+            );
+            $sql = "SELECT * ";
+            $sql.=" FROM tb_kecamatan  join tb_kota_kab on tb_kecamatan.id_kota_kab=tb_kota_kab.id_kota_kab join 
+      tb_provinsi on tb_kota_kab.id_provinsi=tb_provinsi.id_provinsi ";
+            $query=$this->db->query($sql);
+            $totalData = $query->num_rows();
+            $totalFiltered = $totalData;
+            if( !empty($requestData['search']['value']) ) {
+                $sql.= " AND ( tb_kecamatan.nama_kecamatan LIKE '%".$requestData['search']['value']."%' ";
+                $sql.=" OR tb_kecamatan.nama_kecamatan LIKE '%".$requestData['search']['value']."%'  )";
+                
+            }
+            $query=$this->db->query($sql);
+            $totalFiltered = $query->num_rows();
+            $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']." LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+            $query=$this->db->query($sql);
+            $data = array();
+            $no=1;
+            foreach($query->result_array() as $row) {  // preparing an array
+                $nestedData=array();
+                $akd = " <a href='".base_url('admin/datamaster/kecamatanedit?id_kecamatan='.$row['id_kecamatan'].'')."' class='btn btn-warning btn-xs' title='Ubah'><i class='fa fa-edit'></i></a>
+                <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_kecamatan']."'><i class='fa fa-trash-o'></i></a>
+                ";
+                $nestedData[] = $akd;
+                $nestedData[] = $row['nama_kecamatan'];
+				$nestedData[] = $row['nama_kota_kab'];
+                $nestedData[] = $row["nama_provinsi"];
+                $data[] = $nestedData;
+                $no++;
+            }
+            $json_data = array(
+                "draw"            => intval( $requestData['draw'] ),
+                "recordsTotal"    => intval( $totalData ),
+                "recordsFiltered" => intval( $totalFiltered ),
+                "data"            => $data
+                );
+
+            echo json_encode($json_data);
+        }
 }
