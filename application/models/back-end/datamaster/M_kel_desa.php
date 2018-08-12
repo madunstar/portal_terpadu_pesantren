@@ -77,4 +77,55 @@ class M_kel_desa extends CI_Model
         $this->db->where("id_kel_desa",$id_kel_desa);
         return $this->db->delete('tb_kel_desa');
     }
+	
+	 public function listkeldesaajax()
+        {
+            $requestData= $_REQUEST;
+            $columns = array(
+                // datatable column index  => database column name
+                    0=>'tb_kel_desa.nama_kel_desa',
+                    1=>'tb_kel_desa.nama_kel_desa',
+					2=>'tb_kel_desa.nama_kel_desa',
+					3=>'tb_kel_desa.nama_kel_desa'
+                    
+            );
+            $sql = "SELECT * ";
+            $sql.=" FROM tb_kel_desa join tb_kecamatan on tb_kel_desa.id_kecamatan=tb_kecamatan.id_kecamatan join tb_kota_kab on tb_kecamatan.id_kota_kab=tb_kota_kab.id_kota_kab join 
+      tb_provinsi on tb_kota_kab.id_provinsi=tb_provinsi.id_provinsi ";
+            $query=$this->db->query($sql);
+            $totalData = $query->num_rows();
+            $totalFiltered = $totalData;
+            if( !empty($requestData['search']['value']) ) {
+                $sql.= " AND ( tb_kel_desa.nama_kel_desa LIKE '%".$requestData['search']['value']."%' ";
+                $sql.=" OR tb_kecamatan.nama_kecamatan LIKE '%".$requestData['search']['value']."%'  )";
+                
+            }
+            $query=$this->db->query($sql);
+            $totalFiltered = $query->num_rows();
+            $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']." LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+            $query=$this->db->query($sql);
+            $data = array();
+            $no=1;
+            foreach($query->result_array() as $row) {  // preparing an array
+                $nestedData=array();
+                $akd = " <a href='".base_url('admin/datamaster/kel_desaedit?id_kel_desa='.$row['id_kel_desa'].'')."' class='btn btn-warning btn-xs' title='Ubah'><i class='fa fa-edit'></i></a>
+                <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_kel_desa']."'><i class='fa fa-trash-o'></i></a>
+                ";
+                $nestedData[] = $akd;
+                $nestedData[] = $row['nama_kel_desa'];
+                $nestedData[] = $row["nama_kecamatan"];
+				$nestedData[] = $row['nama_kota_kab'];
+                $nestedData[] = $row["nama_provinsi"];
+                $data[] = $nestedData;
+                $no++;
+            }
+            $json_data = array(
+                "draw"            => intval( $requestData['draw'] ),
+                "recordsTotal"    => intval( $totalData ),
+                "recordsFiltered" => intval( $totalFiltered ),
+                "data"            => $data
+                );
+
+            echo json_encode($json_data);
+        }
 }
