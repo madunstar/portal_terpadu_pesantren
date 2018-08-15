@@ -64,7 +64,6 @@
 .dataTables_wrapper .paginate_active {
   cursor: pointer;
   outline: 0;
-  border: 1px solid #d9d9d9;
   border-right-width: 0;
   background: #fff;
   padding: 4px 8px;
