@@ -1850,11 +1850,13 @@ class Datamaster extends CI_Controller{
 
 function kota_kab()
 {
-    $variabel['data'] = $this->m_kota_kab->lihatdata();
+    $variabel['data'] = "";
     $this->layout->render('back-end/datamaster/kota_kab/v_kota_kab',$variabel,'back-end/datamaster/kota_kab/v_kota_kab_js');
 }
 
-
+function kotakabajax(){
+	  $this->m_kota_kab->listkotakabajax();
+  }
 
 function kota_kabtambah()
 {
