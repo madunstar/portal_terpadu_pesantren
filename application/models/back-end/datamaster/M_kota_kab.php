@@ -55,4 +55,53 @@ class M_kota_kab extends CI_Model
         $this->db->where("id_kota_kab",$id_kota_kab);
         return $this->db->delete('tb_kota_kab');
     }
+	
+	public function listkotakabajax()
+        {
+            $requestData= $_REQUEST;
+            $columns = array(
+                // datatable column index  => database column name
+                    0=>'tb_kota_kab.nama_kota_kab',
+                    1=>'tb_kota_kab.nama_kota_kab',
+					2=>'tb_kota_kab.nama_kota_kab',
+					3=>'tb_kota_kab.nama_kota_kab'
+                    
+            );
+            $sql = "SELECT * ";
+            $sql.=" FROM tb_kota_kab  join tb_provinsi on tb_kota_kab.id_provinsi=tb_provinsi.id_provinsi ";
+            $query=$this->db->query($sql);
+            $totalData = $query->num_rows();
+            $totalFiltered = $totalData;
+            if( !empty($requestData['search']['value']) ) {
+                $sql.= " AND ( tb_kota_kab.nama_kecamatan LIKE '%".$requestData['search']['value']."%' ";
+                $sql.=" OR tb_provinsi.nama_provinsi LIKE '%".$requestData['search']['value']."%'  )";
+                
+            }
+            $query=$this->db->query($sql);
+            $totalFiltered = $query->num_rows();
+            $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']." LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+            $query=$this->db->query($sql);
+            $data = array();
+            $no=1;
+            foreach($query->result_array() as $row) {  // preparing an array
+                $nestedData=array();
+                $akd = " <a href='".base_url('admin/datamaster/kota_kabedit?id_kota_kab='.$row['id_kota_kab'].'')."' class='btn btn-warning btn-xs' title='Ubah'><i class='fa fa-edit'></i></a>
+                <a href='#' class='btn btn-danger btn-xs hapus' title='Hapus' id='".$row['id_kota_kab']."'><i class='fa fa-trash-o'></i></a>
+                ";
+                $nestedData[] = $akd;
+                
+				$nestedData[] = $row['nama_kota_kab'];
+                $nestedData[] = $row["nama_provinsi"];
+                $data[] = $nestedData;
+                $no++;
+            }
+            $json_data = array(
+                "draw"            => intval( $requestData['draw'] ),
+                "recordsTotal"    => intval( $totalData ),
+                "recordsFiltered" => intval( $totalFiltered ),
+                "data"            => $data
+                );
+
+            echo json_encode($json_data);
+        }
 }
