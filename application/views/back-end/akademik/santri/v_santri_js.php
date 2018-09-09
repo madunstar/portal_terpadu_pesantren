@@ -1,5 +1,23 @@
 <script>
+//$(document).ready(function(){
+   $("#lahir").datepicker({
+     startView: 2,
+     maxViewMode: 2,
+     format: 'dd-mm-yyyy'
+   });
+
    $('#datatable').DataTable({
+        "language": {
+           "zeroRecords": "Data yang dicari tidak ditemukan!",
+           "info": "Menampilkan _PAGE_ dari _PAGES_ halaman",
+           "infoEmpty": "Data tidak tersedia",
+           "infoFiltered": "(disaring dari _MAX_ data)",
+           "sSearch": "Pencarian: ",
+           "paginate": {
+             "next": "Selanjutnya",
+             "previous": "Sebelumnya"
+            }
+        },
         "bStateSave"    : true,
         "ajax"          : {
                             url :"<?php echo base_url(); ?>admin/santriakd/santriajax", // json datasource
@@ -16,15 +34,15 @@
                             { "orderable": false, "targets": [0]
                             }
                         ],
-						
+
 		"responsive": true,
         "fnDrawCallback": function(oSettings){
-            
+
             $(".hapus").click(function (e) {
             var v_nis = this.id;
             $.confirm({
-                title: 'Hapus!',
-                content: 'Yakin ingin menghapus ?',
+                title: 'Peringatan!',
+                content: 'Apakah anda yakin ingin menghapus data ini ?',
                 buttons: {
                     hapus: {
                         text: 'Hapus',
@@ -36,7 +54,7 @@
                     batal: function () {
 
                     }
-                    
+
                 }
                 });
             });
@@ -58,7 +76,7 @@
 					$('#modal-edit').html(response)
 				}
             });
-       
+
     });
 
     $(".edit2").click(function(e) {
@@ -78,18 +96,18 @@
 					$('#modal-edit').html(response)
 				}
             });
-       
+
     });
 
 
-                
+
         }
    });
 
 
  $(document).ready(function(){
 
-  
+
 
     $('#provinsi').change(function(){
         var id=$(this).val();
@@ -152,6 +170,6 @@
     });
 
 
-    
+
 });
 </script>

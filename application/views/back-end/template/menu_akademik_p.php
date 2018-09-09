@@ -14,7 +14,7 @@
                 <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Menu</div>
                 <ul class="nav nav-main" data-ride="collapse">
                   <li  class="<?= (($menu == "santriwatiakd") && ($submenu == 'index')) ? "active" : ""; ?>">
-                    <a href="<?php echo base_url() ?>admin/santriwatiakd/" class="auto">
+                    <a href="<?php echo base_url() ?>admin/santriwatiakd" class="auto">
                       <i class="fa fa-dashboard">
                       </i>
                       <span class="font-bold">Beranda</span>
@@ -83,38 +83,6 @@
                           <span>Atur Pelajaran</span>
                         </a>
                       </li>
-                      <!-- <li  class="<?= (($menu == "santriwatiakd") &&  ($submenu == 'datakelaspondokan'  || $submenu == 'jadwalpondokan')) ? "active" : ""; ?>">
-                        <a href="<?php echo base_url() ?>admin/santriwatiakd/datakelaspondokan" class="auto">
-
-                          <i class="i i-dot"></i>
-
-                          <span>Atur Kelas Pondokan</span>
-                        </a>
-                      </li>
-                      <li  class="<?= (($menu == "santriwatiakd") &&  ($submenu == 'datakelasbelajar' || $submenu == 'jadwalafilasi')) ? "active" : ""; ?>">
-                        <a href="<?php echo base_url() ?>admin/santriwatiakd/datakelasbelajar" class="auto">
-
-                          <i class="i i-dot"></i>
-
-                          <span>Atur Kelas Afilasi</span>
-                        </a>
-                      </li> -->
-                 <!-- <li  class="<?= ((($menu == "santriakd") ||($menu == "santriwatiakd")) &&  ($submenu == 'datakelaspondokan'  || $submenu == 'jadwalpondokan')) ? "active" : ""; ?>">
-                        <a href="<?php echo base_url() ?>admin/santriwatiakd/datakelaspondokan" class="auto">
-
-                          <i class="i i-dot"></i>
-
-                          <span>Atur Kelas Pondokan</span>
-                        </a>
-                      </li>
-                      <li  class="<?= ((($menu == "santriakd") ||($menu == "santriwatiakd")) &&  ($submenu == 'datakelasbelajar' || $submenu == 'jadwalafilasi')) ? "active" : ""; ?>">
-                        <a href="<?php echo base_url() ?>admin/santriwatiakd/datakelasbelajar" class="auto">
-
-                          <i class="i i-dot"></i>
-
-                          <span>Atur Kelas Afilasi</span>
-                        </a>
-                      </li> -->
 
                        <li  class="<?= (($menu == "santriwatiakd") &&  ($submenu == 'datakelaspondwati') || ($submenu == 'aturkelaspondwati') || ($submenu == 'lihatkelaspondwati') || ($submenu == 'editkelaspondwati')  || ($submenu == 'jadwalpondwati')) ? "active" : ""; ?>">
                         <a href="<?php echo base_url() ?>admin/santriwatiakd/datakelaspondwati" class="auto">
@@ -154,7 +122,7 @@
 
 
               </nav>
-              <!-- / nav -->
+              
             </div>
           </section>
 

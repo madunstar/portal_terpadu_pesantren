@@ -15,7 +15,7 @@
             </header>
             <div class="panel-body">
               <?php pesan_get('msg',"Berhasil Menghapus Data Informasi Pengumuman","Gagal Menghapus Data Informasi Pengumuman") ?>
-              <a href="<?php echo base_url() ?>admin/pendaftaran/tambahpengumuman"><button type="button" name="button" class="btn btn-success">Tambah Informasi</button></a>
+              <a href="<?php echo base_url() ?>admin/pendaftaran/tambahpengumuman"><button type="button" name="button" class="btn btn-success btn-rounded">Tambah Informasi</button></a>
 
               <div class="table-responsive">
 

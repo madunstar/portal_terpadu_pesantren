@@ -75,7 +75,7 @@ class Datamaster extends CI_Controller{
           redirect('admin/perizinansantriwati');
         }
         else if ($this->session->userdata('kode_role_admin') == 'akdputra') {
-        //   redirect('admin/santriakd');
+          redirect('admin/santriakd');
         }
         else if ($this->session->userdata('kode_role_admin') == 'akdputri') {
           redirect('admin/santriwatiakd');
@@ -87,14 +87,14 @@ class Datamaster extends CI_Controller{
     function index()
     {
         $variabel['nama_akun'] = $this->session->userdata('nama_akun');
-		$variabel['datainfaqsantri'] = $this->m_admin->datadendasantridasboard();
-		$variabel['datainfaqsantriwati'] = $this->m_admin->datadendasantriwatidasboard();
-		$variabel['datasantrikeluar'] = $this->m_admin->datasantrikeluardasboard();
-		$variabel['datasantriwatikeluar'] = $this->m_admin->datasantriwatikeluardasboard();
-		$variabel['datasantriwatispp'] = $this->m_admin->datasantriwatisppdasboard();
-		$variabel['datasantrispp'] = $this->m_admin->datasantrisppdasboard();
-		$variabel['datatotalsantrikeluar'] = $this->m_admin->datatotalsantrikeluar();
-		$variabel['datatotalsantriwatikeluar'] = $this->m_admin->datatotalsantriwatikeluar();
+    		$variabel['datainfaqsantri'] = $this->m_admin->datadendasantridasboard();
+    		$variabel['datainfaqsantriwati'] = $this->m_admin->datadendasantriwatidasboard();
+    		$variabel['datasantrikeluar'] = $this->m_admin->datasantrikeluardasboard();
+    		$variabel['datasantriwatikeluar'] = $this->m_admin->datasantriwatikeluardasboard();
+    		$variabel['datasantriwatispp'] = $this->m_admin->datasantriwatisppdasboard();
+    		$variabel['datasantrispp'] = $this->m_admin->datasantrisppdasboard();
+    		$variabel['datatotalsantrikeluar'] = $this->m_admin->datatotalsantrikeluar();
+    		$variabel['datatotalsantriwatikeluar'] = $this->m_admin->datatotalsantriwatikeluar();
         $this->layout->render('back-end/datamaster/dashboard',$variabel);
     }
 
@@ -1998,8 +1998,8 @@ function kecamatanhapus()
   function keldesaajax(){
 	  $this->m_kel_desa->listkeldesaajax();
   }
-  
-  
+
+
   function datakecamatan()
   {
     $id=$this->input->post('id');

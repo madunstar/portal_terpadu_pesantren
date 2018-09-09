@@ -1,4 +1,4 @@
-<?php 
+<?php
   if (isset($_GET['l'])) {
     $l = $_GET['l'];
   } else {
@@ -9,11 +9,11 @@
 	<section class="vbox">
 		<section class="scrollable padder">
 			<div class="m-b-md">
-				<h3 class="m-b-none">Verifikasi Calon Santri</h3>
+				<h3 class="m-b-none">Verifikasi Berkas Calon Santri</h3>
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Berkas Pendaftaran
+					Berkas Calon Santri
 				</header>
 				<div class="panel-body">
 					<?php echo $this->session->flashdata('error'); ?>
@@ -90,7 +90,7 @@
 								</table>
 							<!-- optional -->
 
-					
+
 
 						</div>
 					</div>
@@ -98,23 +98,23 @@
 									<label class="col-lg-7 control-label">Status Verifikasi</label>
 									<div class="col-lg-5">
 										<select class="form-control" name="status_berkas">
-												<option value="tidak lengkap" <?php echo ($data['status_berkas']=="tidak lengkap"?"selected":""); ?> >tidak lengkap</option>
-												<option value="menunggu verifikasi" <?php echo ($data['status_berkas']=="menunggu verifikasi"?"selected":""); ?> >menunggu verifikasi</option>
-												<option value="diverifikasi" <?php echo ($data['status_berkas']=="diverifikasi"?"selected":""); ?> >diverifikasi</option>
+												<option value="Tidak Lengkap" <?php echo ($data['status_berkas']=="Tidak Lengkap"?"selected":""); ?> >Tidak Lengkap</option>
+												<option value="Menunggu Verifikasi" <?php echo ($data['status_berkas']=="Menunggu Verifikasi"?"selected":""); ?> >Menunggu Verifikasi</option>
+												<option value="Diverifikasi" <?php echo ($data['status_berkas']=="Diverifikasi"?"selected":""); ?> >Diverifikasi</option>
 										</select>
 									</div>
 								</div>
 				</div>
-			
+
 				<footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
-        
-        <a href="<?php echo base_url("admin/pendaftaran/$l") ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
+
+        <a href="<?php echo base_url("admin/pendaftaran/$l") ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santri</a>
       </footer>
       </form>
 
 			</section>
-		
+
 
 			</div>
 		</section>

@@ -106,7 +106,7 @@ class Pendaftaran extends CI_Controller
           $exec = $this->m_dashboard->lihatubahsandi($nama_akun);
           if ($exec->num_rows()>0){
               $variabel['data'] = $exec ->row_array();
-              $this->layout->render('adminpendaftaran/v_ubah_sandi',$variabel);
+              $this->layout_pendaftaran->render('adminpendaftaran/v_ubah_sandi',$variabel);
           } else {
               redirect(base_url("admin/pendaftaran/dashboard"));
           }
@@ -200,7 +200,7 @@ function datapembayaran(){
 function verifikasibayar(){
   $email_akun = $this->input->get("email_pendaftar");
   $array = array(
-    "status_pembayaran"=> "diverifikasi"
+    "status_pembayaran"=> "Diverifikasi"
   );
   $this->m_pembayaran->editakun($email_akun,$array);
   redirect(base_url("admin/pendaftaran/datapembayaran?msg=1"));
@@ -209,7 +209,7 @@ function verifikasibayar(){
 function verifikasibatal(){
   $email_akun = $this->input->get("email_pendaftar");
   $array = array(
-    "status_pembayaran"=> "menunggu verifikasi"
+    "status_pembayaran"=> "Menunggu Verifikasi"
   );
   $this->m_pembayaran->editakun($email_akun,$array);
   redirect(base_url("admin/pendaftaran/datapembayaran?msg=0"));

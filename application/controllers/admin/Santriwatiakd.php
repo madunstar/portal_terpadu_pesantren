@@ -8,42 +8,40 @@ class Santriwatiakd extends CI_Controller
     parent::__construct();
     $this->load->library(array('form_validation','session'));
     $this->load->model('back-end/datamaster/m_admin');
-    $this->load->model('back-end/datamaster/m_santri');
-    $this->load->model('back-end/datamaster/akademik/m_santriwati');
+    //$this->load->model('back-end/datamaster/m_santri');
+    $this->load->model('back-end/akademik/m_santriwati');
     $this->load->model('back-end/datamaster/m_pengaturan');
     $this->load->model('back-end/datamaster/m_guru');
-    $this->load->model('back-end/datamaster/m_staff');
-    $this->load->model('back-end/datamaster/m_provinsi');
-    $this->load->model('back-end/datamaster/m_pendidikan');
-    $this->load->model('back-end/datamaster/m_pekerjaan');
-    $this->load->model('back-end/datamaster/m_alat_transportasi');
-    $this->load->model('back-end/datamaster/m_kota_kab');
-    $this->load->model('back-end/datamaster/m_kecamatan');
-    $this->load->model('back-end/datamaster/m_kel_desa');
+    //$this->load->model('back-end/datamaster/m_staff');
+    //$this->load->model('back-end/datamaster/m_provinsi');
+    //$this->load->model('back-end/datamaster/m_pendidikan');
+    //$this->load->model('back-end/datamaster/m_pekerjaan');
+    //$this->load->model('back-end/datamaster/m_alat_transportasi');
+    //$this->load->model('back-end/datamaster/m_kota_kab');
+    //$this->load->model('back-end/datamaster/m_kecamatan');
+    //$this->load->model('back-end/datamaster/m_kel_desa');
     $this->load->model('back-end/datamaster/m_tahun_ajaran');
     $this->load->model('back-end/datamaster/m_kelas');
     $this->load->model('back-end/datamaster/m_matpel');
     $this->load->model('back-end/datamaster/m_pelajaran');
-    $this->load->model('back-end/datamaster/m_infaq');
-    $this->load->model('back-end/datamaster/m_infaq_p');
-    $this->load->model('back-end/datamaster/akademik/m_presenwati');
-    $this->load->model('back-end/datamaster/m_prestasi');
+    //$this->load->model('back-end/datamaster/m_infaq');
+    //$this->load->model('back-end/datamaster/m_infaq_p');
+    $this->load->model('back-end/akademik/m_presenwati');
+    //$this->load->model('back-end/datamaster/m_prestasi');
     $this->load->model('back-end/datamaster/m_prestasi_p');
-    $this->load->model('back-end/datamaster/m_pelanggaran');
+    //$this->load->model('back-end/datamaster/m_pelanggaran');
     $this->load->model('back-end/datamaster/m_pelanggaran_p');
     $this->load->model('back-end/datamaster/m_jenjang');
     $this->load->model('back-end/datamaster/m_pondokan');
-    $this->load->model('back-end/datamaster/akademik/m_presensipondwati');
+    $this->load->model('back-end/akademik/m_presensipondwati');
     $this->load->model('back-end/datamaster/m_rekap_santriwati');
-    $this->load->model('back-end/datamaster/m_rekap_santriwati');
-    $this->load->model('back-end/datamaster/m_rekap_santri_pondokan_p');
     $this->load->model('back-end/datamaster/m_rekap_santri_pondokan_p');
     $this->load->model('back-end/datamaster/m_rekap_guru_p');
     $this->load->model('back-end/datamaster/m_rekap_guru_pondokan_p');
-    $this->load->model('back-end/datamaster/m_akun_ortu');
+    //$this->load->model('back-end/datamaster/m_akun_ortu');
     $this->load->model('back-end/datamaster/m_pak_pondokan');
     $this->load->model('back-end/datamaster/m_pak_afilasi');
-    $this->load->model('back-end/datamaster/m_informasi');
+    //$this->load->model('back-end/datamaster/m_informasi');
     $this->load->library('layout');
     $this->load->library('PHPExcel');
     $this->load->helper('indo_helper');
@@ -126,22 +124,22 @@ class Santriwatiakd extends CI_Controller
     require_once( APPPATH . 'libraries/barcodegen/BCGFontFile.php');
     require_once( APPPATH . 'libraries/barcodegen/BCGColor.php');
     require_once( APPPATH . 'libraries/barcodegen/BCGDrawing.php');
-  
+
     // Including the barcode technology
     // Ini bisa diganti-ganti mau yang 39, ato 128, dll, liat di folder barcodegen
     require_once( APPPATH . 'libraries/barcodegen/BCGcode39.barcode.php');
-  
+
     // Loading Font
     // kalo mau ganti font, jangan lupa tambahin dulu ke folder font, baru loadnya di sini
     $font = new BCGFontFile(APPPATH . 'libraries/font/Arial.ttf', $fontsize);
-  
+
     // Text apa yang mau dijadiin barcode, biasanya kode produk
     $text = $sparepart_code;
-  
+
     // The arguments are R, G, B for color.
     $color_black = new BCGColor(0, 0, 0);
     $color_white = new BCGColor(255, 255, 255);
-  
+
     $drawException = null;
     try {
         $code = new BCGcode39(); // kalo pake yg code39, klo yg lain mesti disesuaikan
@@ -154,7 +152,7 @@ class Santriwatiakd extends CI_Controller
     } catch(Exception $exception) {
         $drawException = $exception;
     }
-  
+
     /* Here is the list of the arguments
     1 - Filename (empty : display on screen)
     2 - Background color */
@@ -172,12 +170,12 @@ class Santriwatiakd extends CI_Controller
     $drawing->setFilename('assets/barcode/'. $filename_img_barcode);
     // proses penyimpanan barcode hasil generate
     $drawing->finish(BCGDrawing::IMG_FORMAT_PNG);
-  
+
     return $filename_img_barcode;
   }
   function cetakkartup(){
     $nis = $this->input->get("nis");
-  
+
     $exec = $this->m_santriwati->lihatdatasatu($nis);
     if ($exec->num_rows()>0){
         $this->_generate_barcode_p($nis,'BCGcode39');
@@ -189,7 +187,7 @@ class Santriwatiakd extends CI_Controller
     } else {
         redirect(base_url("admin/santriwati/santriwati"));
     }
-  
+
   }
   function index(){
     $variabel['nama_akun'] = $this->session->userdata('nama_akun');
@@ -197,7 +195,7 @@ class Santriwatiakd extends CI_Controller
   }
 
   //CRUD santriwati
-  
+
 
   function datakotakab2()
   {
@@ -616,7 +614,7 @@ class Santriwatiakd extends CI_Controller
       }
 
   }
-  
+
 //prestasi pelanggaran//
 //prestasi//
   function prestasisantriwati(){
@@ -1286,7 +1284,7 @@ class Santriwatiakd extends CI_Controller
   }
   //akhir pelajaran//
   //afiliasi//
-  
+
 
    function hapuskelassantri()
    {
@@ -2074,7 +2072,7 @@ function editkelaspondokan()
     force_download('assets/import/contoh.xlsx',NULL);
   }
   //end//
-  
+
 function datakelaspondwati()
 {
     $variabel['data']=$this->m_presensipondwati->lihatdata();
@@ -2658,7 +2656,7 @@ function datakelasbelawati()
         $variabel['santri'] = $this->m_presenwati->lihatdatasantri($kelas);
         $this->layout->renderlaporan('back-end/akademik/presensi_kelwati/v_presensi_printjadwal',$variabel,'back-end/akademik/presensi_kelwati/v_presensi_printjadwal_js');
       }
-      
+
     function datatingkatjenjang()
     {
       $jenjang=$this->input->post('jenjang');

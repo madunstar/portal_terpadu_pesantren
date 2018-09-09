@@ -32,7 +32,7 @@
 	<div class="modal-footer">
 		<div class="row">
 			<div class="col-md-12 text-right">
-				<button type="button" class="btn btn-default modal-dismiss" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-default modal-dismiss" data-dismiss="modal">Keluar</button>
 			</div>
 		</div>
 	</div>

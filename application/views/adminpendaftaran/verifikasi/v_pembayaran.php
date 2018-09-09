@@ -7,7 +7,7 @@
 
     <section class="panel panel-default">
       <header class="panel-heading">
-        Data Pembayaran
+        Data Pembayaran Calon Santri
         <i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
       </header>
       <div class="panel-body">
@@ -37,21 +37,21 @@
                       <td><?php echo $row['tanggal_pembayaran'] ?></td>
                       <td><?php echo $row['status_pembayaran'] ?></td>
                       <td>
-                        <a class="" target='__blank' <?php echo ($row['status_pembayaran'] == 'tidak lengkap' ? '' : 'href="'.base_url('assets/images/berkas/'.$row['bukti_pembayaran']).'"');?>><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-search"></i>&nbsp;lihat berkas</button></a>
+                        <a class="" target='__blank' <?php echo ($row['status_pembayaran'] == 'Tidak Lengkap' || $row['status_pembayaran'] == 'tidak lengkap' ? '' : 'href="'.base_url('assets/images/berkas/'.$row['bukti_pembayaran']).'"');?>><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-search"></i>&nbsp;Lihat Berkas</button></a>
                       </td>
                       <td>
                         <div class="form-group">
-                          <?php echo (($row['status_pembayaran'] == 'menunggu verifikasi') ?
+                          <?php echo ($row['status_pembayaran'] == 'Menunggu Verifikasi' || $row['status_pembayaran'] == 'menunggu verifikasi' ?
                           '
                             <form action="'.base_url().'admin/pendaftaran/verifikasibayar?email_pendaftar='.$row['email_pendaftar'].'" method="post">
-                            <button type="submit" class="btn btn-success btn-xs">verifikasi</button>
+                            <button type="submit" class="btn btn-success btn-xs">Verifikasi</button>
                             </form>
-                          ': (($row['status_pembayaran']== 'diverifikasi') ?
+                          ': (($row['status_pembayaran'] == 'Diverifikasi' || $row['status_pembayaran'] == 'diverifikasi') ?
                           '
                             <form action="'.base_url().'admin/pendaftaran/verifikasibatal?email_pendaftar='.$row['email_pendaftar'].'" method="post">
-                            <button type="submit" class="btn btn-danger btn-xs">batalkan verifikasi</button>
+                            <button type="submit" class="btn btn-danger btn-xs">Batalkan Verifikasi</button>
                             </form>
-                          ': '<button class="btn btn-danger btn-xs">pembayaran tidak lengkap</button>'))?>
+                          ': '<button class="btn btn-danger btn-xs">Pembayaran Tidak Lengkap</button>'))?>
                         </div>
 
                       </td>

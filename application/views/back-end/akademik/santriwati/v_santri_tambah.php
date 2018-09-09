@@ -9,7 +9,7 @@
         Input Santri
       </header>
       <div class="panel-body">
-      <?php pesan_get('msg',"Berhasil Menambahkan Santriwati","Gagal Menambahkan Santriwati") ?>
+      <?php pesan_get('msg',"Berhasil Menambah Data Santriwati","Gagal Menambah Data Santriwati") ?>
        <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>admin/santriwatiakd/santriwatitambah" method="post"  enctype="multipart/form-data">
        <a href="<?php echo base_url('admin/santriwatiakd/santriwati') ?>" style="color:#3b994a;margin-left:10px"><i class="fa fa-chevron-left"></i> Kembali</a>
         <div class="row">
@@ -51,7 +51,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Tanggal Lahir</label>
               <div class="col-lg-8">
-              <input class="datepicker-input form-control" size="16" type="text" readonly data-date-format="dd-mm-yyyy" name="tgl_lahir"  value="<?php echo set_value('tgl_lahir'); ?>"/>
+              <input class="datepicker-input form-control" id="lahir" size="16" type="text" readonly data-date-format="dd-mm-yyyy" name="tgl_lahir"  value="<?php echo set_value('tgl_lahir'); ?>"/>
               </div>
             </div>
             <div class="form-group">
@@ -294,7 +294,7 @@
 
            <div class="form-group">
               <label class="col-lg-4 control-label">Penghasilan Orang Tua</label>
-             
+
                 <div class="col-lg-8">
                   <select class="form-control"  name="penghasilan_orang_tua" id="penghasilan_orang_tua" >
                     <option value="Kurang dari 1juta"  >Kurang dari 1juta</option>
@@ -304,7 +304,7 @@
                     <option value="Lebih dari 10 juta" >Lebih dari 10 juta</option>
                   </select>
                 </div>
-            
+
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Wali</label>
@@ -389,7 +389,7 @@
                 </div>
               </div>
               <div class="form-group">
-									<label class="col-sm-4 control-label">Foto</label>
+									<label class="col-sm-4 control-label">Unggah Foto</label>
 									<div class="col-sm-8">
 										<input type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s" name="foto">
 									</div>
@@ -401,7 +401,7 @@
       <footer class="panel-footer text-right bg-light lter">
         <button type="submit" class="btn btn-success btn-s-xs"><i class="fa fa-save"></i> Simpan</button>
         &nbsp
-        <a href="<?php echo base_url('admin/santriwatiakd/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> List Santri</a>
+        <a href="<?php echo base_url('admin/santriwatiakd/santriwati') ?>" class="btn btn-default btn-s-xs"><i class="fa fa-list"></i> Daftar Santriwati</a>
       </footer>
       </form>
 

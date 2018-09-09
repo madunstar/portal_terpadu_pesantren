@@ -1,6 +1,7 @@
 <script>
  $(document).ready(function(){
-   $('#datatable').DataTable({});
-
+   $('#datatable').DataTable({
+      //"dom": '<lf<t>ip>'
+   });
 });
 </script>

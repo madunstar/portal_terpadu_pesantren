@@ -1,13 +1,23 @@
 <script>
-
-$("#lahir").datepicker({
-  startView: 2,
-  maxViewMode: 2,
-  format: 'yyyy-mm-dd'
-});
-
+//$(document).ready(function(){
+   $("#lahir").datepicker({
+     startView: 2,
+     maxViewMode: 2,
+     format: 'dd-mm-yyyy'
+   });
 
    $('#datatable').DataTable({
+       "language": {
+          "zeroRecords": "Data yang dicari tidak ditemukan!",
+          "info": "Menampilkan _PAGE_ dari _PAGES_ halaman",
+          "infoEmpty": "Data tidak tersedia",
+          "infoFiltered": "(disaring dari _MAX_ data)",
+          "sSearch": "Pencarian: ",
+          "paginate": {
+            "next": "Selanjutnya",
+            "previous": "Sebelumnya"
+           }
+       },
         "bStateSave"    : true,
         "ajax"          : {
                             url :"<?php echo base_url(); ?>admin/datamaster/santriajax", // json datasource
@@ -31,7 +41,7 @@ $("#lahir").datepicker({
             $(".hapus").click(function (e) {
             var v_nis = this.id;
             $.confirm({
-                title: 'Oops!',
+                title: 'Peringatan!',
 				content: 'Apakah anda yakin ingin menghapus data ini ?',
                 buttons: {
                     hapus: {

@@ -6,16 +6,15 @@
 			</div>
 			<section class="panel panel-default" style="width:100%">
 				<header class="panel-heading">
-					List Santri
+					Data Santri
 					<i class="fa fa-info-sign text-muted" data-toggle="tooltip" data-placement="bottom" data-title="ajax to load the data."></i>
 				</header>
 				<div class="table-responsive">
-					<?php pesan_get('psn',"Berhasil Import Data Santri","Gagal Import Data Santri","Salah") ?>
+					<?php pesan_get('psn',"Berhasil Impor Data Santri","Gagal Impor Data Santri","Salah") ?>
 					<?php pesan_get('msg',"Berhasil Menghapus Data Santri","Gagal Menghapus Data Santri") ?>
-
 					<a style="margin: 10px 0 10px 10px" href="<?php echo base_url() ?>admin/santriakd/santritambah" class="btn btn-s-md btn-success btn-rounded">
-						<i class="fa fa-plus"></i> Tambah data</a>
-							<button class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#import" ><i class="fa fa-download"></i> Import Data</button>
+						<i class="fa fa-plus"></i> Tambah Data</a>
+							<button class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#import" ><i class="fa fa-download"></i> Impor Data</button>
 
 					<table class="table table-striped " id="datatable">
 						<thead>
@@ -24,14 +23,14 @@
 								<th>Nama</th>
 								<th>NIS</th>
 								<th>NISN</th>
-								<th>Gender</th>
+								<th>Jenis Kelamin</th>
 								<th>Pondokan</th>
 								<th>Afilasi</th>
-								<th>Ekstra</th>
+								<th>Pilihan Lainnya</th>
 							</tr>
 						</thead>
 						<tbody>
-						
+
 						</tbody>
 					</table>
 				</div>

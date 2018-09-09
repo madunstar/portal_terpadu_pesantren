@@ -1,6 +1,23 @@
 <script>
- $(document).ready(function(){
+//$(document).ready(function(){
+   $("#lahir").datepicker({
+     startView: 2,
+     maxViewMode: 2,
+     format: 'dd-mm-yyyy'
+   });
+
     $('#datatable').DataTable({
+        "language": {
+           "zeroRecords": "Data yang dicari tidak ditemukan!",
+           "info": "Menampilkan _PAGE_ dari _PAGES_ halaman",
+           "infoEmpty": "Data tidak tersedia",
+           "infoFiltered": "(disaring dari _MAX_ data)",
+           "sSearch": "Pencarian: ",
+           "paginate": {
+             "next": "Selanjutnya",
+             "previous": "Sebelumnya"
+            }
+        },
         "bStateSave"    : true,
         "ajax"          : {
                             url :"<?php echo base_url(); ?>admin/santriwatiakd/santriwatiajax", // json datasource
@@ -23,8 +40,8 @@
             $(".hapus").click(function (e) {
             var v_nis = this.id;
             $.confirm({
-                title: 'Hapus!',
-                content: 'Yakin ingin menghapus ?',
+                title: 'Peringatan!',
+                content: 'Apakah anda yakin ingin menghapus data ini ?',
                 buttons: {
                     hapus: {
                         text: 'Hapus',
@@ -84,7 +101,7 @@
         }
    });
 
-
+$(document).ready(function(){
 
     $('#provinsi').change(function(){
         var id=$(this).val();
