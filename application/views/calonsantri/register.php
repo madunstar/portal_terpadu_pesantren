@@ -13,7 +13,7 @@
           <div class="text-center">
           <img src="<?php echo base_url('assets/images/logo.png'); ?>" alt="">
         </div>
-          <a class="navbar-brand block" href="index.html">PESANTREN DARUL ILMI</a>
+          <a class="navbar-brand block" href="">PESANTREN DARUL ILMI</a>
           <header class="wrapper text-center">
             <small>Daftarkan Email Anda Untuk Ketahap Selanjutnya</small>
           </header>
@@ -47,7 +47,7 @@
            </div>
           <button type="submit" class="btn btn-success btn-block ">Daftar</button>
         </form>
-        <small>Sudah Punya Akun?<a class="text-primary" href="<?php echo base_url('santri/login/') ?>"> <strong>Halaman Login</strong></a></small>
+        <small>Sudah Punya Akun?<a class="text-primary" href="<?php echo base_url('santri/login') ?>"> <strong>Halaman Login</strong></a></small>
         <div class="line line-dashed"></div>
         <footer id="footer">
         <p class="text-center text-muted"><small>&copy;2018</small></p>

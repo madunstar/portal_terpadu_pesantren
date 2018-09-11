@@ -12,7 +12,7 @@
           <div class="text-center">
           <img src="<?php echo base_url('assets/images/logo.png'); ?>" alt="">
         </div>
-          <a class="navbar-brand block" href="index.html">PESANTREN DARUL ILMI</a>
+          <a class="navbar-brand block" href="login">PESANTREN DARUL ILMI</a>
           <header class="wrapper text-center">
             <small>Masuk dengan Email untuk Melanjutkan Pendaftaran</small>
           </header>
@@ -29,7 +29,7 @@
            </div>
           <button type="submit" class="btn btn-success btn-lg btn-block ">Masuk</button>
         </form>
-        <small>Belum Punya Akun?<a class="text-primary" href="<?php echo base_url('santri/register/') ?>"> <strong>Halaman Pendaftaran</strong></a></small>
+        <small>Belum Punya Akun?<a class="text-primary" href="<?php echo base_url('santri/register') ?>"> <strong>Halaman Pendaftaran</strong></a></small>
         <div class="line line-dashed"></div>
         <footer id="footer">
           <p class="text-center text-muted"><small>&copy;2018</small></p>

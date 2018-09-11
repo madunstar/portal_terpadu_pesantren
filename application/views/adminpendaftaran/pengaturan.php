@@ -15,7 +15,7 @@
           <?php echo validation_errors(); ?>
           <section class="panel">
             <header class="panel-heading bg-dark">
-              <b>Pengaturan dasar</b>
+              <b>Pengaturan Dasar</b>
             </header>
             <?php $att_form = array('class'=>'form-horizontal','data-validate'=>'parsley','id'=>'pengaturan');
             echo form_open('admin/Pendaftaran/edit_pengaturan',$att_form); ?>
@@ -53,7 +53,7 @@
                       <div class="line line-dashed b-b line-lg pull-in"></div>
                     <div class="form-group col-sm-12">
 
-                      <button type="submit" data-loading-text="Menyimpan..." class="btn btn-success pull-right" name="button">Simpan</button>
+                      <button type="submit" data-loading-text="Menyimpan..." class="btn btn-success pull-right" name="button"><i class="fa fa-save"></i> Simpan</button>
 
                     </div>
 
@@ -74,7 +74,7 @@
 
                     <ul class="nav">
                       <li>
-                        <a href="#" class="panel-toggle"><button type="button" class="btn btn-danger" name="button">Reset Password Akun Pendaftar</button></a>
+                        <a href="#" class="panel-toggle"><button type="button" class="btn btn-primary" name="button"><i class="fa fa-list"></i> Daftar Akun Pendaftar</button></a>
                       </li>
                     </ul>
                   <div class="panel-body clearfix collapse">
@@ -97,10 +97,10 @@
                                 echo "
                                   <tr>
                                     <td>
-                                      <button class='btn btn-warning btn-xs' data-toggle='modal' data-target='#".$row['id_biodata']."' title='Ubah Password'><i class='fa fa-edit'></i></button>
+                                      <button class='btn btn-warning btn-xs' data-toggle='modal' data-target='#".$row['id_biodata']."' title='Ubah Kata Sandi'><i class='fa fa-edit'></i></button>
                                       <div class='form-group'>
                                       <form class='' data-validate='parsley' action='". base_url()."admin/pendaftaran/aktivasiakun?email_pendaftar=". $row['email_pendaftar']."' method='post'>
-                                      <button class='btn btn-success btn-xs' type='submit'>aktivasi akun</button>
+                                      <button class='btn btn-success btn-xs' type='submit'>Aktivasi Akun</button>
                                       </form>
                                       </div>
                                     </td>
@@ -129,7 +129,7 @@
 
                                        </div>
                                        <div class='modal-footer'>
-                                            <button type='submit' class='btn btn-sm btn-success'>Ubah Password</button>
+                                            <button type='submit' class='btn btn-sm btn-success'><i class='fa fa-save'></i> Simpan Kata Sandi</button>
                                             <button class='btn btn-secondary btn-sm' data-dismiss='modal'>Batal</button>
                                          </div>
                                        </div>

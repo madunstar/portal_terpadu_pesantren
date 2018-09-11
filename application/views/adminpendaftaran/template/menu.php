@@ -14,7 +14,7 @@
 							<a href="<?php echo base_url('admin/pendaftaran')?>" class="auto">
 								<i class="fa fa-dashboard">
 								</i>
-								<span class="font-bold">Dashboard</span>
+								<span class="font-bold">Beranda</span>
 							</a>
 						</li>
 						<li class="<?= (($menu == "pendaftaran") && ($submenu == 'semuapendaftar') || ($submenu == 'diverifikasi') || ($submenu == 'menunggu') || ($submenu == 'belumlengkap') ) ? "active" : ""; ?>" >

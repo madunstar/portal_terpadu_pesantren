@@ -41,13 +41,13 @@ function addakun()
       $array=array(
         'email_pendaftar'=> $this->input->post('email'),
         'kata_sandi'=> $encrypt_sandi,
-        'status_pendaftaran'=> ('tidak lengkap'),
-        'status_biodata'=> ('tidak lengkap'),
-        'status_berkas'=> ('tidak lengkap'),
-        'status_pembayaran'=> ('tidak lengkap'),
+        'status_pendaftaran'=> ('Tidak Lengkap'),
+        'status_biodata'=> ('Tidak Lengkap'),
+        'status_berkas'=> ('Tidak Lengkap'),
+        'status_pembayaran'=> ('Tidak Lengkap'),
         'jenis_pendaftaran'=> $this->input->post('tingkat'),
         'tanggal_daftar'=> $tgl_daftar,
-        'status_akun'=>('tidak aktif'),
+        'status_akun'=>('Tidak Aktif'),
         'tahun_ajaran'=> $tahun_ajaran,
         'asrama_pendaftar' =>$this->input->post('asrama')
       );

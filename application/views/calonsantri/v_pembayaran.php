@@ -6,12 +6,12 @@
 			</div>
 			<section class="panel panel-default">
 				<header class="panel-heading">
-					Bukti Pembayaran
+					Bukti Pembayaran Calon Santri
 				</header>
 				<div class="panel-body">
-					<?php pesan_get('msg',"Berhasil Mengupdate Bukti Pembayaran","Tipe file bukti pembayaran harus jpg","Tipe file bukti pembayaran harus jpg") ?>
-					<?php if ($cekbayar =="diverifikasi") $pesan='1'; else $pesan='2'; ?>
-					<?php pesanvar($pesan,"Tidak bisa mengubah pembayaran, pembayaran sudah diverifikasi","Gagal Mengupdate Biodata","Lengkapi pembayaran dengan data sebenarnya dan selengkap-lengkapnya") ?>
+					<?php pesan_get('msg',"Berhasil Menyimpan Bukti Pembayaran.","Tipe Berkas Bukti Pembayaran Harus JPG!","Tipe Berkas Bukti Pembayaran Harus JPG!") ?>
+					<?php if ($cekbayar =="diverifikasi" || $cekbayar =="Diverifikasi") $pesan='1'; else $pesan='2'; ?>
+					<?php pesanvar($pesan,"Pembayaran Telah Diverifikasi. Apabila Terdapat Perubahan Data, Dapat Menghubungi Petugas Administrasi.","Gagal Membarui Pembayaran","Lengkapi Pembayaran dengan Data Sebenarnya dan Selengkap-lengkapnya") ?>
 					<form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/pembayaran"
 					method="post" enctype="multipart/form-data">
 
@@ -20,7 +20,7 @@
 								<div class="form-group">
 									<label class="col-lg-2 control-label">Besar Pembayaran</label>
 									<div class="col-lg-4">
-										<input <?php if ($cekbayar =="diverifikasi") echo "readonly" ?> type="text" class="form-control" name="besar_pembayaran" data-required="true" value="<?php echo $data['besar_pembayaran']; ?>"
+										<input <?php if ($cekbayar =="diverifikasi" || $cekbayar =="Diverifikasi") echo "readonly" ?> type="text" class="form-control" name="besar_pembayaran" data-required="true" value="<?php echo $data['besar_pembayaran']; ?>"
 										/>
 									</div>
 								</div>
@@ -28,14 +28,14 @@
 								<div class="form-group">
 									<label class="col-sm-2 control-label">Tanggal Pembayaran</label>
 									<div class="col-sm-4">
-										<input <?php if ($cekbayar =="diverifikasi") echo "disabled" ?> class="datepicker-input form-control" size="16" type="text" data-date-format="dd-mm-yyyy" name="tanggal_pembayaran" data-required="true"
+										<input <?php if ($cekbayar =="diverifikasi" || $cekbayar =="Diverifikasi") echo "disabled" ?> class="datepicker-input form-control" size="16" type="text" data-date-format="dd-mm-yyyy" name="tanggal_pembayaran" data-required="true"
 										value="<?php if ($data['tanggal_pembayaran']=="0000-00-00") echo tanggal(date("Y-m-d")); else echo tanggal($data['tanggal_pembayaran']); ?>" readonly/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-2 control-label">Keterangan</label>
 									<div class="col-lg-4">
-										<textarea <?php if ($cekbayar =="diverifikasi") echo "readonly" ?> class="form-control" name="keterangan" ><?php echo $data['keterangan']; ?></textarea>
+										<textarea <?php if ($cekbayar =="diverifikasi" || $cekbayar =="Diverifikasi") echo "readonly" ?> class="form-control" name="keterangan" ><?php echo $data['keterangan']; ?></textarea>
 									</div>
 								</div>
 								<div class="form-group">
@@ -50,7 +50,7 @@
 								</script>
 									<label class="col-sm-2 control-label">Bukti Pembayaran</label>
 									<div class="col-sm-7">
-										<input <?php if ($cekbayar =="diverifikasi") echo "disabled" ?> type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s"
+										<input <?php if ($cekbayar =="diverifikasi" || $cekbayar =="Diverifikasi") echo "disabled" ?> type="file" class="filestyle" data-icon="false" data-classButton="btn btn-default" data-classInput="form-control inline v-middle input-s"
 										name="bukti_pembayaran" id="bukti_pembayaran" onchange="PreviewImage1();">
 										<br/>
 										<?php if ($data['bukti_pembayaran']!="") { ?>
@@ -69,7 +69,7 @@
 						<div class="col-md-2">
 						</div>
 						<div class="col-md-10">
-							<button type="submit" <?php if ($cekbayar =="diverifikasi") echo "disabled" ?> class="btn btn-success btn-s-xs">
+							<button type="submit" <?php if ($cekbayar =="diverifikasi" || $cekbayar =="Diverifikasi") echo "disabled" ?> class="btn btn-success btn-s-xs">
 								<i class="fa fa-save"></i> Simpan</button>
 						</div>
 

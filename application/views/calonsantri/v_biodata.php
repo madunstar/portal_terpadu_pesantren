@@ -6,50 +6,50 @@
     </div>
     <section class="panel panel-default">
       <header class="panel-heading">
-        Input Santri
+        Mengisi Biodata Calon Santri
       </header>
       <div class="panel-body">
-      <?php pesan_get('msg',"Berhasil mengupdate biodata","Gagal mengupdate biodata") ?>
-      <?php if ($cekakun['status_biodata']=="diverifikasi") $pesan='1'; else $pesan='2'; ?>
-      <?php pesanvar($pesan,"Tidak bisa mengubah biodata, biodata sudah diverifikasi","Gagal Mengupdate Biodata","Lengkapi biodata dengan data sebenarnya dan selengkap-lengkapnya") ?>
+      <?php pesan_get('msg',"Berhasil Menyimpan Biodata","Gagal Menyimpan Biodata") ?>
+      <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") $pesan='1'; else $pesan='2'; ?>
+      <?php pesanvar($pesan,"Biodata Telah Diverifikasi. Apabila Terdapat Perubahan Biodata, Dapat Menghubungi Petugas Administrasi.","Gagal Membarui Biodata","Lengkapi Biodata dengan Data Sebenarnya dan Selengkap-lengkapnya!") ?>
        <form class="bs-example form-horizontal" data-validate="parsley" action="<?php echo base_url() ?>santri/pendaftaran/biodata" method="post">
         <div class="row">
           <div class="col-md-6">
           <div class="form-group">
           <label class="col-lg-4 control-label">NIS</label>
           <div class="col-lg-8">
-            <input type="text" class="form-control" name="nis_lokal" data-required="true" value="<?php echo $data['nis_lokal']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?> />
+            <input type="text" class="form-control" name="nis_lokal" data-required="true" value="<?php echo $data['nis_lokal']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?> />
             <input type="hidden" class="form-control" name="nis_lokal2" data-required="true" value="<?php
             if (isset($nis_lokal2)) echo $nis_lokal2; else echo $data['nis_lokal']; ?>" />
-            <?php 
+            <?php
               if(isset($nis_lokal)) {
-                echo '<label style="color:red;font-size:10px">NIS ada yang sama ! NIS asal "'.$nis_lokal2.'"</label>';
-              } 
+                echo '<label style="color:red;font-size:10px">NIS Ada yang Sama! NIS Asal "'.$nis_lokal2.'"</label>';
+              }
             ?>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-4 control-label">NISN</label>
           <div class="col-lg-8">
-            <input type="text" class="form-control"  name="nisn" data-required="true"  value="<?php echo $data['nisn']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+            <input type="text" class="form-control"  name="nisn" data-required="true"  value="<?php echo $data['nisn']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-4 control-label">NIK</label>
           <div class="col-lg-8">
-            <input type="text" class="form-control"  name="nik" value="<?php echo $data['nik']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+            <input type="text" class="form-control"  name="nik" value="<?php echo $data['nik']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-4 control-label">Nama</label>
           <div class="col-lg-8">
-            <input type="text" class="form-control" name="nama_lengkap" data-required="true" value="<?php echo $data['nama_lengkap']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+            <input type="text" class="form-control" name="nama_lengkap" data-required="true" value="<?php echo $data['nama_lengkap']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-4 control-label">Tempat Lahir</label>
           <div class="col-lg-8">
-            <input type="text" class="form-control"  name="tempat_lahir" data-required="true" value="<?php echo $data['tempat_lahir']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+            <input type="text" class="form-control"  name="tempat_lahir" data-required="true" value="<?php echo $data['tempat_lahir']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
           </div>
         </div>
         <div class="form-group">
@@ -61,7 +61,7 @@
         <div class="form-group">
           <label class="col-lg-4 control-label">Jenis Kelamin</label>
           <div class="col-lg-8">
-            <select class="form-control"  name="jenis_kelamin" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+            <select class="form-control"  name="jenis_kelamin" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               <option value="L" <?php if ($data['jenis_kelamin']=="L")  echo "selected" ?> >Laki-laki</option>
               <option value="P" <?php if ($data['jenis_kelamin']=="P")  echo "selected" ?> >Perempuan</option>
             </select>
@@ -70,48 +70,48 @@
         <div class="form-group">
         <label class="col-lg-4 control-label">Nomor HP</label>
         <div class="col-lg-8">
-          <input type="text" class="form-control"  name="hp" value="<?php echo $data['hp']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+          <input type="text" class="form-control"  name="hp" value="<?php echo $data['hp']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
         </div>
       </div>
       <div class="form-group">
         <label class="col-lg-4 control-label">Alamat Lengkap</label>
         <div class="col-lg-8">
-          <textarea class="form-control"  name="alamat_lengkap" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>><?php echo $data['alamat_lengkap']; ?></textarea>
+          <textarea class="form-control"  name="alamat_lengkap" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>><?php echo $data['alamat_lengkap']; ?></textarea>
         </div>
       </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Provinsi</label>
               <div class="col-lg-8">
-                <select class="form-control"  name="provinsi" id="provinsi" data-required="true" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
+                <select class="form-control"  name="provinsi" id="provinsi" data-required="true" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>>
                 <option value="" disabled <?php if ($data['provinsi']=="") echo "selected" ?>>Pilih Provinsi</option>
-                <?php 
+                <?php
                      foreach($provinsi->result_array() as $row) {
                        echo "<option value='".$row['nama_provinsi']."' ".($data['provinsi']==$row['nama_provinsi']?"selected":"").">".$row['nama_provinsi']."</option>";
                     }
-                ?> 
+                ?>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Kabupaten/Kota</label>
               <div class="col-lg-8">
-              <select class="form-control id_kota_kab"  name="kabupaten_kota"  id="kabupaten_kota" data-required="true" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
+              <select class="form-control id_kota_kab"  name="kabupaten_kota"  id="kabupaten_kota" data-required="true" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>>
               <option value="" disabled <?php if ($data['kabupaten_kota']=="") echo "selected" ?>>Pilih Kabupaten/Kota</option>
-                <?php 
+                <?php
                      foreach($kabupaten->result_array() as $row) {
                        echo "<option value='".$row['nama_kota_kab']."' ".($data['kabupaten_kota']==$row['nama_kota_kab']?"selected":"").">".$row['nama_kota_kab']."</option>";
                     }
                 ?>
-                  
+
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Kecamatan</label>
               <div class="col-lg-8">
-              <select class="form-control id_kota_kab"  name="kecamatan"  id="kecamatan" data-required="true" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
+              <select class="form-control id_kota_kab"  name="kecamatan"  id="kecamatan" data-required="true" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>>
               <option value="" disabled  <?php if ($data['kecamatan']=="") echo "selected" ?>>Pilih Kecamatan</option>
-                <?php 
+                <?php
                      foreach($kecamatan->result_array() as $row) {
                        echo "<option value='".$row['nama_kecamatan']."' ".($data['kecamatan']==$row['nama_kecamatan']?"selected":"").">".$row['nama_kecamatan']."</option>";
                     }
@@ -122,9 +122,9 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Desa/Kelurahan</label>
               <div class="col-lg-8">
-                <select class="form-control"  name="desa_kelurahan" id="desa_kelurahan" data-required="true" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
+                <select class="form-control"  name="desa_kelurahan" id="desa_kelurahan" data-required="true" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>>
                 <option value="" disabled <?php if ($data['desa_kelurahan']=="") echo "selected" ?>>Pilih Desa/Kelurahan</option>
-                <?php 
+                <?php
                      foreach($desa->result_array() as $row) {
                        echo "<option value='".$row['nama_kel_desa']."' ".($data['desa_kelurahan']==$row['nama_kel_desa']?"selected":"").">".$row['nama_kel_desa']."</option>";
                     }
@@ -135,62 +135,62 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Kode Pos</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="kode_pos" value="<?php echo $data['kode_pos']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?> />
+                <input type="text" class="form-control"  name="kode_pos" value="<?php echo $data['kode_pos']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?> />
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Hobi</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="hobi" value="<?php echo $data['hobi']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="hobi" value="<?php echo $data['hobi']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Cita-cita</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="cita_cita" value="<?php echo $data['cita_cita']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="cita_cita" value="<?php echo $data['cita_cita']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Jenis Sekolah Asal</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="jenis_sekolah_asal" value="<?php echo $data['jenis_sekolah_asal']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="jenis_sekolah_asal" value="<?php echo $data['jenis_sekolah_asal']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Status Sekolah Asal</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="status_sekolah_asal" value="<?php echo $data['status_sekolah_asal']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="status_sekolah_asal" value="<?php echo $data['status_sekolah_asal']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nomor Peserta Ujian</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nomor_peserta_ujian" value="<?php echo $data['nomor_peserta_ujian']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="nomor_peserta_ujian" value="<?php echo $data['nomor_peserta_ujian']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Jarak Ke Sekolah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="jarak_ke_sekolah" value="<?php echo $data['jarak_ke_sekolah']; ?>"<?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?> />
+                <input type="text" class="form-control"  name="jarak_ke_sekolah" value="<?php echo $data['jarak_ke_sekolah']; ?>"<?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?> />
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Alat Transportasi</label>
               <div class="col-lg-8">
-                <select class="form-control"  name="alat_transportasi" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
+                <select class="form-control"  name="alat_transportasi" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>>
                 <option value="" disabled <?php if ($data['alat_transportasi']=="") echo "selected" ?> >Pilih Alat Transportasi</option>
-                <?php 
+                <?php
                      foreach($transportasi->result_array() as $row) {
                        echo "<option value='".$row['nama_alat_transportasi']."' ".($data['alat_transportasi']==$row['nama_alat_transportasi']?"selected":"").">".$row['nama_alat_transportasi']."</option>";
                     }
-                ?> 
+                ?>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Status Tempat Tinggal</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="status_tempat_tinggal" value="<?php echo $data['status_tempat_tinggal']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="status_tempat_tinggal" value="<?php echo $data['status_tempat_tinggal']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
 
@@ -199,167 +199,167 @@
           <div class="form-group">
               <label class="col-lg-4 control-label">No Kartu Keluarga</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="no_kk" value="<?php echo $data['no_kk']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="no_kk" value="<?php echo $data['no_kk']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nik_ayah" value="<?php echo $data['nik_ayah']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="nik_ayah" value="<?php echo $data['nik_ayah']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nama_lengkap_ayah" value="<?php echo $data['nama_lengkap_ayah']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="nama_lengkap_ayah" value="<?php echo $data['nama_lengkap_ayah']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Ayah</label>
               <div class="col-lg-8">
-                <select type="text" class="form-control"  name="pendidikan_terakhir_ayah" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
+                <select type="text" class="form-control"  name="pendidikan_terakhir_ayah" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>>
                 <option value="" disabled <?php if ($data['pendidikan_terakhir_ayah']=="") echo "selected" ?>>Pilih Pendidikan</option>
-                <?php 
+                <?php
                      foreach($pendidikan->result_array() as $row) {
                        echo "<option value='".$row['nama_pendidikan']."' ".($data['pendidikan_terakhir_ayah']==$row['nama_pendidikan']?"selected":"").">".$row['nama_pendidikan']."</option>";
                     }
-                ?> 
+                ?>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pekerjaan Ayah</label>
               <div class="col-lg-8">
-                <select class="form-control"  name="pekerjaan_ayah" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
+                <select class="form-control"  name="pekerjaan_ayah" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>>
                 <option value="" disabled <?php if ($data['pekerjaan_ayah']=="") echo "selected" ?>>Pilih  Pekerjaan</option>
-                <?php 
+                <?php
                      foreach($pekerjaan->result_array() as $row) {
                        echo "<option value='".$row['nama_pekerjaan']."' ".($data['pekerjaan_ayah']==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
                     }
-                ?> 
+                ?>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nomor HP Ayah</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="hpayah" value="<?php echo $data['hpayah']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="hpayah" value="<?php echo $data['hpayah']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Ibu</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nik_ibu"value="<?php echo $data['nik_ibu']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="nik_ibu"value="<?php echo $data['nik_ibu']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama Ibu</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nama_lengkap_ibu" value="<?php echo $data['nama_lengkap_ibu']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="nama_lengkap_ibu" value="<?php echo $data['nama_lengkap_ibu']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Ibu</label>
               <div class="col-lg-8">
-                <select  class="form-control"  name="pendidikan_terakhir_ibu" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
+                <select  class="form-control"  name="pendidikan_terakhir_ibu" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>>
                 <option value="" disabled <?php if ($data['pendidikan_terakhir_ibu']=="") echo "selected" ?>>Pilih Pendidikan</option>
-                <?php 
+                <?php
                      foreach($pendidikan->result_array() as $row) {
                        echo "<option value='".$row['nama_pendidikan']."' ".($data['pendidikan_terakhir_ibu']==$row['nama_pendidikan']?"selected":"").">".$row['nama_pendidikan']."</option>";
                     }
-                ?> 
+                ?>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pekerjaan Ibu</label>
               <div class="col-lg-8">
-                <select class="form-control"  name="pekerjaan_ibu" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
+                <select class="form-control"  name="pekerjaan_ibu" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>>
                 <option value="" disabled <?php if ($data['pekerjaan_ibu']=="") echo "selected" ?>>Pilih Pekerjaan</option>
-                <?php 
+                <?php
                      foreach($pekerjaan->result_array() as $row) {
                        echo "<option value='".$row['nama_pekerjaan']."' ".($data['pekerjaan_ibu']==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
                     }
-                ?> 
+                ?>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nomor HP Ibu</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="hpibu" value="<?php echo $data['hpibu']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="hpibu" value="<?php echo $data['hpibu']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Penghasilan Orang Tua</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="penghasilan_orang_tua" value="<?php echo $data['penghasilan_orang_tua']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="penghasilan_orang_tua" value="<?php echo $data['penghasilan_orang_tua']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <hr/>
-            <p align="center" style="color:#238e7b">Tidak Wajib/Opsional</p>
+            <b align="center" style="color:#238e7b">Tidak Wajib/Opsional</b>
             <div class="form-group">
               <label class="col-lg-4 control-label">NIK Wali</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nik_wali" value="<?php echo $data['nik_wali']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?> />
+                <input type="text" class="form-control"  name="nik_wali" value="<?php echo $data['nik_wali']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?> />
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nama Wali</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="nama_lengkap_wali" value="<?php echo $data['nama_lengkap_wali']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="nama_lengkap_wali" value="<?php echo $data['nama_lengkap_wali']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pendidikan Terakhir Wali</label>
               <div class="col-lg-8">
-                <select class="form-control"  name="pendidikan_terakhir_wali" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
+                <select class="form-control"  name="pendidikan_terakhir_wali" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>>
                 <option value="" disabled <?php if ($data['pendidikan_terakhir_wali']=="") echo "selected" ?>>Pilih Pendidikan</option>
-                <?php 
+                <?php
                      foreach($pendidikan->result_array() as $row) {
                        echo "<option value='".$row['nama_pendidikan']."' ".($data['pendidikan_terakhir_wali']==$row['nama_pendidikan']?"selected":"").">".$row['nama_pendidikan']."</option>";
                     }
-                ?> 
+                ?>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Pekerjaan Wali</label>
               <div class="col-lg-8">
-                <select class="form-control"  name="pekerjaan_wali" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>>
+                <select class="form-control"  name="pekerjaan_wali" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>>
                 <option value="" disabled <?php if ($data['pekerjaan_wali']=="") echo "selected" ?>>Pilih Pekerjaan</option>
-                <?php 
+                <?php
                      foreach($pekerjaan->result_array() as $row) {
                        echo "<option value='".$row['nama_pekerjaan']."' ".($data['pekerjaan_wali']==$row['nama_pekerjaan']?"selected":"").">".$row['nama_pekerjaan']."</option>";
                     }
-                ?> 
+                ?>
                 </select>
-                
+
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Nomor HP Wali</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="hpwali" value="<?php echo $data['hpwali']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="hpwali" value="<?php echo $data['hpwali']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Penghasilan Wali</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="penghasilan_wali" value="<?php echo $data['penghasilan_wali']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="penghasilan_wali" value="<?php echo $data['penghasilan_wali']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-4 control-label">Jumlah Saudara Kandung</label>
               <div class="col-lg-8">
-                <input type="text" class="form-control"  name="jumlah_saudara_kandung" value="<?php echo $data['jumlah_saudara_kandung']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "readonly" ?>/>
+                <input type="text" class="form-control"  name="jumlah_saudara_kandung" value="<?php echo $data['jumlah_saudara_kandung']; ?>" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "readonly" ?>/>
               </div>
             </div>
           </div>
         </div>
       </div>
       <footer class="panel-footer text-right bg-light lter">
-        <button type="submit" class="btn btn-success btn-s-xs" <?php if ($cekakun['status_biodata']=="diverifikasi") echo "disabled" ?>><i class="fa fa-save"></i> Simpan</button>
+        <button type="submit" class="btn btn-success btn-s-xs" <?php if ($cekakun['status_biodata']=="diverifikasi" || $cekakun['status_biodata']=="Diverifikasi") echo "disabled" ?>><i class="fa fa-save"></i> Simpan</button>
 
       </footer>
       </form>

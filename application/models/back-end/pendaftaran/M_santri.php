@@ -176,5 +176,30 @@ class M_santri extends CI_Model
       return $this->db->get();
     }
 
+    function lihatubahsandi($email_pendaftar)
+    {
+        $this->db->select('email_pendaftar, kata_sandi');
+        $this->db->from('tb_akun_pendaftar');
+        $this->db->where("email_pendaftar",$email_pendaftar);
+        return $this->db->get();
+    }
+
+    function cekubahsandi($email_pendaftar)
+    {
+        $query = $this->db->where(['email_pendaftar'=>$email_pendaftar])
+                          ->get('tb_akun_pendaftar');
+        if($query->num_rows() > 0){
+          return $query->row();
+        }
+    }
+
+    function ubahsandi($email_pendaftar, $kata_sandi, $kata_sandibr)
+    {
+        $this->db->set("kata_sandi",$kata_sandibr);
+        $this->db->where("email_pendaftar",$email_pendaftar);
+        $this->db->where("kata_sandi",$kata_sandi);
+        return $this->db->update('tb_akun_pendaftar');
+    }
+
 }
 ?>

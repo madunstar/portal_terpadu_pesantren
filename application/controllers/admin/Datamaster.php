@@ -5159,8 +5159,8 @@ function buatakunortu(){
     'id_ortu' => $this->input->post('id'),
     'kata_sandi' => md5($this->input->post('sandi')),
     'email_ortu' => $this->input->post('email'),
-    'jenis_akun' => 'santri',
-    'status_akun' => 'aktif'
+    'jenis_akun' => 'Santri',
+    'status_akun' => 'Aktif'
   );
   $exec = $this->m_akun_ortu->tambahdata($array);
   redirect(base_url()."admin/datamaster/dataakunortu?msg=1&nis=$id");
@@ -5172,8 +5172,8 @@ function buatakunortup(){
     'id_ortu' => $this->input->post('id'),
     'kata_sandi' => md5($this->input->post('sandi')),
     'email_ortu' => $this->input->post('email'),
-    'jenis_akun' => 'santriwati',
-    'status_akun' => 'aktif'
+    'jenis_akun' => 'Santriwati',
+    'status_akun' => 'Aktif'
   );
   $exec = $this->m_akun_ortu->tambahdata($array);
   redirect(base_url()."admin/datamaster/dataakunortup?msg=1&nis=$id");
@@ -5181,7 +5181,7 @@ function buatakunortup(){
 
 function akunortuaktif(){
   $array = array(
-    'status_akun' => 'aktif'
+    'status_akun' => 'Aktif'
   );
   $id = $this->input->get('id');
   $jenis = $this->input->get('jenis');
@@ -5191,7 +5191,7 @@ function akunortuaktif(){
 
 function akunortuaktifp(){
   $array = array(
-    'status_akun' => 'aktif'
+    'status_akun' => 'Aktif'
   );
   $id = $this->input->get('id');
   $jenis = $this->input->get('jenis');
@@ -5201,7 +5201,7 @@ function akunortuaktifp(){
 
 function akunortunonaktif(){
   $array = array(
-    'status_akun' => 'tidak aktif'
+    'status_akun' => 'Tidak Aktif'
   );
   $id = $this->input->get('id');
   $jenis = $this->input->get('jenis');
@@ -5212,7 +5212,7 @@ function akunortunonaktif(){
 
 function akunortunonaktifp(){
   $array = array(
-    'status_akun' => 'tidak aktif'
+    'status_akun' => 'Tidak Aktif'
   );
   $id = $this->input->get('id');
   $jenis = $this->input->get('jenis');

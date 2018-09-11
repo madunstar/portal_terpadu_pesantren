@@ -90,11 +90,11 @@ class Pendaftaran extends CI_Controller
           if ($query->kata_sandi!=$kata_sandi) {
               $variabel['kata_sandi'] =$this->input->post('kata_sandi');
               $variabel['data'] = $array;
-              $this->layout->render('adminpendaftaran/v_ubah_sandi',$variabel);
+              $this->layout_pendaftaran->render('adminpendaftaran/v_ubah_sandi',$variabel);
           } else if ($kata_sandibr!=$rekata_sandibr){
                $variabel['rekata_sandibr'] =$this->input->post('rekata_sandibr');
                $variabel['data'] = $array;
-               $this->layout->render('adminpendaftaran/v_ubah_sandi',$variabel);
+               $this->layout_pendaftaran->render('adminpendaftaran/v_ubah_sandi',$variabel);
           } else {
               $exec = $this->m_dashboard->ubahsandi($nama_akun,$kata_sandi,$kata_sandibr);
               if ($exec){
@@ -108,7 +108,7 @@ class Pendaftaran extends CI_Controller
               $variabel['data'] = $exec ->row_array();
               $this->layout_pendaftaran->render('adminpendaftaran/v_ubah_sandi',$variabel);
           } else {
-              redirect(base_url("admin/pendaftaran/dashboard"));
+              redirect(base_url("admin/pendaftaran"));
           }
       }
   }
@@ -171,7 +171,7 @@ class Pendaftaran extends CI_Controller
   function aktivasiakun(){
     $email_akun = $this->input->get("email_pendaftar");
     $params = array(
-      'status_akun' => 'aktif'
+      'status_akun' => 'Aktif'
     );
     $this->m_pengaturan->editstatus($email_akun,$params);
     $this->session->set_flashdata('response',"

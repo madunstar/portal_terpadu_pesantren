@@ -37,10 +37,10 @@ function ceklogin()
       foreach ($cekstatusakun->result_array() as $akun) {
           $statusakun = $akun['status_akun'];
         }
-      if ($statusakun == "tidak aktif"){
+      if ($statusakun == "tidak aktif" || $statusakun == "Tidak Aktif"){
         redirect(base_url("santri/login?akun=0"));
       }
-      elseif ($statusakun == "aktif"){
+      elseif ($statusakun == "aktif" || $statusakun == "Aktif"){
             $cek = $this->m_loginsantri->ceklogin($email, $katasandi);
             if ($cek->num_rows() > 0) {
               foreach ($cek->result_array() as $datasandi) {
@@ -60,9 +60,9 @@ function ceklogin()
 }
 }
 
-function logout(){
-      $this->session->sess_destroy();
-      redirect(base_url("santri/login"));
-}
+// function logout(){
+//       $this->session->sess_destroy();
+//       redirect(base_url("santri/login"));
+//     }
 }
 ?>

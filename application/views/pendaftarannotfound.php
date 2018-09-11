@@ -33,17 +33,18 @@
           <h3 class="text-danger animated fadeInDown font-bold">Untuk Saat Ini Pendaftaran Tidak Dapat Diakses</h3>
         </div>
         <div class="list-group bg-info auto m-b-sm m-b-lg bg-warning text-white">
-          <a href="#" class="list-group-item">
+          <a href="https://ppdarulilmi.com" class="list-group-item">
             <i class="fa fa-chevron-right icon-muted"></i>
             <i class="fa fa-fw fa-home icon-muted"></i> Ke Halaman Beranda
           </a>
-          <a href="#" class="list-group-item bg-war">
+          <a href="https://ppdarulilmi.com/#about" class="list-group-item bg-war">
             <i class="fa fa-chevron-right icon-muted"></i>
-            <i class="fa fa-fw fa-question icon-muted"></i> Temukan Kami
+            <i class="fa fa-fw fa-question icon-muted"></i> Tentang Kami
           </a>
           <a href="#" class="list-group-item">
             <i class="fa fa-chevron-right icon-muted"></i>
-            <span class="badge bg-dark">021-215-584</span>
+            <span class="badge bg-dark">ponpesdarulilmi@yahoo.co.id</span>
+            <span class="badge bg-dark">0511-7526-293</span>
             <i class="fa fa-fw fa-phone icon-muted"></i> Hubungi Kami
           </a>
         </div>

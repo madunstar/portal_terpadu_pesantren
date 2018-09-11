@@ -24,27 +24,18 @@ function __construct()
     }
   }
 
-/**
-* Index Page for this controller.
-*
-* Maps to the following URL
-*    http://example.com/index.php/welcome
-*  - or -
-*    http://example.com/index.php/welcome/index
-*  - or -
-* Since this controller is set as the default controller in
-* config/routes.php, it's displayed at http://example.com/
-*
-* So any other public methods not prefixed with an underscore will
-* map to /index.php/welcome/<method_name>
-* @see https://codeigniter.com/user_guide/general/urls.html
-*/
-
 //fungtion halaman
 
 function index()
 {
+  $variabel['email_pendaftar'] = $this->session->userdata('email_pendaftar');
   redirect(base_url("santri/pendaftaran/dashboard"));
+}
+
+function logout() {
+    $this->session->unset_userdata('email_pendaftar');
+    $this->session->sess_destroy();
+    redirect('santri/login');
 }
 
 function login()
@@ -57,6 +48,42 @@ function login()
   }
 }
 
+function ubahsandisantri(){
+    if ($this->input->post()) {
+        $array=array(
+            'email_pendaftar'=> $this->input->post('email_pendaftar'),
+            'kata_sandi'=> $this->input->post('kata_sandi'),
+        );
+        $email_pendaftar = $this->input->post('email_pendaftar');
+        $kata_sandi = md5($this->input->post("kata_sandi"));
+        $kata_sandibr = md5($this->input->post("kata_sandibr"));
+        $rekata_sandibr = md5($this->input->post("rekata_sandibr"));
+        $query = $this->m_santri->cekubahsandi($email_pendaftar);
+        if ($query->kata_sandi!=$kata_sandi) {
+            $variabel['kata_sandi'] = $this->input->post('kata_sandi');
+            $variabel['data'] = $array;
+            $this->layout_pendaftaran->renderfront('calonsantri/v_ubah_sandi',$variabel);
+        } else if ($kata_sandibr!=$rekata_sandibr){
+             $variabel['rekata_sandibr'] =$this->input->post('rekata_sandibr');
+             $variabel['data'] = $array;
+             $this->layout_pendaftaran->renderfront('calonsantri/v_ubah_sandi',$variabel);
+        } else {
+            $exec = $this->m_santri->ubahsandi($email_pendaftar,$kata_sandi,$kata_sandibr);
+            if ($exec){
+                redirect(base_url("santri/pendaftaran/ubahsandisantri?email_pendaftar=".$email_pendaftar."&msg=1"));
+            }
+        }
+    } else {
+        $email_pendaftar = $this->input->get("email_pendaftar");
+        $exec = $this->m_santri->lihatubahsandi($email_pendaftar);
+        if ($exec->num_rows()>0){
+            $variabel['data'] = $exec ->row_array();
+            $this->layout_pendaftaran->renderfront('calonsantri/v_ubah_sandi',$variabel);
+        } else {
+            redirect(base_url("santri/pendaftaran/dashboard"));
+        }
+    }
+}
 
 
 function dashboard()
@@ -66,7 +93,7 @@ function dashboard()
     foreach ($cekstatusbiodata->result_array() as $cek) {
         $cekstatusbio = $cek['status_biodata'];
       }
-    if (($cekstatusbio == "tidak lengkap") || ($cekstatusbio == "menunggu verifikasi")){
+    if (($cekstatusbio == "tidak lengkap" || $cekstatusbio == "Tidak Lengkap") || ($cekstatusbio == "menunggu verifikasi" || $cekstatusbio == "Menunggu Verifikasi")){
       $cekdatafoto=$this->m_dashboard->datafoto($email)->num_rows();
       if ($cekdatafoto == 0 )
       {
@@ -118,7 +145,7 @@ function dashboard()
 
       }
     }
-    elseif($cekstatusbio == "diverifikasi"){
+    elseif($cekstatusbio == "diverifikasi" || $cekstatusbio == "Diverifikasi"){
       $cekdatafoto=$this->m_dashboard->datafoto($email)->num_rows();
       if ($cekdatafoto == 0 )
       {
@@ -250,7 +277,7 @@ function biodata()
       $exec = $this->m_santri->editdatasantri($email,$array);
       if ($exec){
         $array2 = array (
-          "status_biodata"=>"menunggu verifikasi"
+          "status_biodata"=>"Menunggu Verifikasi"
           );
         $exec2 = $this->m_santri->editakun($email,$array2);
         redirect(base_url("santri/pendaftaran/biodata?msg=1"));
@@ -312,8 +339,8 @@ function berkas(){
       $this->session->set_flashdata('error',
       "<div class='alert alert-danger'>
           <button type='button' class='close' data-dismiss='alert'>&times;</button>
-          <strong>Oooppss!</strong> Tipe berkas yang anda upload tidak sesuai<br>
-          cobalah upload file jpg / jpeg / png
+          <strong>Mohon Maaf.</strong> Tipe Berkas yang Anda Unggah Tidak Sesuai.<br>
+          Cobalah Unggah File JPG/JPEG/PNG
       </div>"
       );
       $variabel['cekberkas'] =  $statusberkas;
@@ -348,14 +375,14 @@ function berkas(){
       if ($this->m_berkas->cekberkas($email,$nama_berkas)==0){
           $this->m_berkas->addberkas($data);
           $array2 = array (
-            "status_berkas"=>"menunggu verifikasi"
+            "status_berkas"=>"Menunggu Verifikasi"
            );
           $exec2 = $this->m_santri->editakun($email,$array2);
           redirect(base_url("santri/pendaftaran/berkas?msg=1"));
       } else{
         $this->m_berkas->editberkas($email,$nama_berkas,$data);
         $array2 = array (
-          "status_berkas"=>"menunggu verifikasi"
+          "status_berkas"=>"Menunggu Verifikasi"
          );
         $exec2 = $this->m_santri->editakun($email,$array2);
         redirect(base_url("santri/pendaftaran/berkas?msg=2"));
@@ -416,7 +443,7 @@ function pembayaran()
         }
         $this->m_pembayaran->edit($email,$data);
         $array2 = array (
-          "status_pembayaran"=>"menunggu verifikasi"
+          "status_pembayaran"=>"Menunggu Verifikasi"
          );
         $exec2 = $this->m_santri->editakun($email,$array2);
         redirect(base_url("santri/pendaftaran/pembayaran?msg=1"));
@@ -426,13 +453,13 @@ function pembayaran()
 
       $this->m_pembayaran->edit($email,$data);
       $array2 = array (
-        "status_pembayaran"=>"menunggu verifikasi"
+        "status_pembayaran"=>"Menunggu Verifikasi"
        );
       $exec2 = $this->m_santri->editakun($email,$array2);
       redirect(base_url("santri/pendaftaran/pembayaran?msg=1"));
 
     } else {
-      if ( ($statusbio == "diverifikasi") and ($statusberkas == "diverifikasi")) {
+      if ( ($statusbio == "diverifikasi" || $statusbio == "Diverifikasi") and ($statusberkas == "diverifikasi" || $statusberkas == "Diverifikasi")) {
         $variabel['cekbayar'] = $statusbayar;
         $variabel['data']=$this->m_pembayaran->ambilpembayaran($email)->row_array();
         $this->layout_pendaftaran->renderfront('calonsantri/v_pembayaran',$variabel,'calonsantri/v_pembayaran_js');
@@ -440,7 +467,7 @@ function pembayaran()
         $this->session->set_flashdata('response',"
             <div class='alert alert-danger'>
                 <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                <strong>Oooppss!</strong> Anda belum bisa melakukan pembayaran, Biodata atau Berkas Anda belum <strong>Diverifikasi</strong>
+                <strong>Mohon Maaf.</strong> Anda Belum Bisa Melakukan Pembayaran, Biodata atau Berkas Anda Belum <strong>Diverifikasi</strong>
             </div>
         ");
         redirect(base_url("santri/pendaftaran/dashboard"));

@@ -17,7 +17,7 @@
                     <a href="<?php echo base_url() ?>santri/pendaftaran/dashboard" class="auto">
                       <i class="fa fa-dashboard">
                       </i>
-                      <span class="font-bold">Dashboard</span>
+                      <span class="font-bold">Beranda</span>
                     </a>
                   </li>
                   <li class="<?= (($menu == "pendaftaran") && ($submenu == 'biodata'))  ? "active" : ""; ?>">
@@ -49,7 +49,7 @@
                   <li class="<?= (($menu == "pendaftaran") && ($submenu == 'pengumuman'))  ? "active" : ""; ?>" >
                     <a href="<?php echo base_url() ?>santri/pendaftaran/pengumuman" class="auto">
                       <span class="pull-right text-muted">
-                        
+
                       </span>
                       <i class="fa fa-info-circle">
                       </i>
@@ -60,15 +60,13 @@
 
                 </ul>
 
-
-
               </nav>
               <!-- / nav -->
             </div>
           </section>
 
           <footer class="footer hidden-xs no-padder text-center-nav-xs">
-            <a href="modal.lockme.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
+            <a href="<?php echo base_url()?>santri/pendaftaran/logout" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
               <i class="i i-logout"></i>
             </a>
             <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">

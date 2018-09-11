@@ -22,10 +22,10 @@ Class Login extends CI_Controller{
         foreach ($cekstatusakun->result_array() as $akun) {
             $statusakun = $akun['status_akun'];
           }
-        if ($statusakun == "tidak aktif"){
+        if ($statusakun == "tidak aktif" || $statusakun == "Tidak Aktif"){
           redirect(base_url("orangtua/login?msgid=0"));
         }
-        elseif ($statusakun == "aktif"){
+        elseif ($statusakun == "aktif" || $statusakun == "Aktif"){
           $cek = $this->m_login->ceklogin($id_ortu, $encrypt_sandi);
           if ($cek->num_rows() > 0) {
             foreach ($cek->result_array() as $datauser) {
@@ -34,7 +34,7 @@ Class Login extends CI_Controller{
               $sess_data['jenis_akun'] = $datauser['jenis_akun'];
               $this->session->set_userdata($sess_data);
             }
-            if ($cek->jenis_akun == "santri"){
+            if ($cek->jenis_akun == "santri" || $cek->jenis_akun == "Santri"){
               redirect(base_url("orangtua/portalortusantri/dashboard"));
             } else { redirect(base_url("orangtua/portalortusantriwati/dashboard"));}
           } else { redirect(base_url("orangtua/login?msg=2"));}

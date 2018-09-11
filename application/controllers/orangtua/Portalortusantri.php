@@ -18,7 +18,7 @@ class Portalortusantri extends CI_Controller {
     if ($this->session->userdata('id_ortu')=='') {
         redirect('orangtua/login');
     }
-    else if ($this->session->userdata('jenis_akun') == 'santriwati') {
+    else if ($this->session->userdata('jenis_akun') == 'santriwati' || $this->session->userdata('jenis_akun') == 'Santriwati') {
         redirect('orangtua/portalortusantriwati/dashboard');
     }
   }
