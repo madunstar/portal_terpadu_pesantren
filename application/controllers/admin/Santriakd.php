@@ -8,7 +8,7 @@ class Santriakd extends CI_Controller
     parent::__construct();
     $this->load->library(array('form_validation','session'));
     $this->load->model('back-end/datamaster/m_admin');
-    $this->load->model('back-end/datamaster/akademik//m_santri');
+    $this->load->model('back-end/datamaster/akademik/m_santri');
     $this->load->model('back-end/datamaster/m_santriwati');
     $this->load->model('back-end/datamaster/m_pengaturan');
     $this->load->model('back-end/datamaster/m_guru');
