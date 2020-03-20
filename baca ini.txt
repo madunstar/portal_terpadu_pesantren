@@ -1,0 +1,51 @@
+=versi standard=
++master
+ -santri
+  tambah, edit, lihat, cetak kartu pelajar, lihat berkas, lihat prestasi,   lihat pealnggaran, lihat pembayaran spp
+ -guru
+  tambah, edit, lihat, lihat berkas
+ -staff
+  tambah, edit, lihat, lihat berkas
+ -jenjang kelas
+  tambah jenjang, edit jenjang, tambah tingkat jenjang
+
++pembayaran infaq
+ -menampilkan data infaq tiap bulan
+ -lihat detail
+ -cetak laporan perbulan
+
++lain lain liat tabel
+ -data admin
+ -data pendidikan
+ -pekerjaan
+ -alat transportasi
+ -provinsi
+ -kabupaten / kota
+ -kecamatan
+ -desa / kelurahan
+ -tahun ajaran
+
++lihat pengaturan
+
+=versi pro=
++master
+ -akun santri / siswa
+ -data ruang kelas
+ -jam kelas
+ -data mata pelajaran
++presensi semuanya
++perizinan semuanya
++informasi
++portal untuk santri
+
+
+=login=
+portal admin
+http://localhost/portal_terpadu_pesantren/admin/login
+user : madan (super admin)
+pass : 123
+
+portal ortu
+http://localhost/portal_terpadu_pesantren/
+user : 1
+pass : 123
